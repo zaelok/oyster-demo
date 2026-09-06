@@ -39,11 +39,16 @@ from oyster.types import CATEGORIES
 
 MODES = ("reverse", "additive")
 
+# Matched case-insensitively: Swift and Java projects capitalise Tests/ and FooTests.swift.
 TEST_PATTERNS = (
     r"_test\.go$",
     r"(^|/)test_[^/]*\.py$",
     r"_test\.py$",
+    r"tests?\.(swift|java|kt|scala|cs)$",
+    r"_tests?\.rs$",
+    r"\.(test|spec)\.[jt]sx?$",
     r"(^|/)tests?/",
+    r"(^|/)testing/",
     r"(^|/)testdata/",
     r"(^|/)mocks?/",
     r"mockery",
@@ -103,7 +108,9 @@ BEHAVIOR_WORDS = ("crash", "error", "incorrect", "wrong", "fail", "500", "panic"
 _HUNK_RE = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(.*)$")
 _TICKET_RE = re.compile(r"\b[A-Z][A-Z0-9]{1,9}-\d+\b")
 _LEAK_RE = re.compile(
-    r"\b(fix(?:es|ed)?|bug|regression|hotfix|workaround|todo|fixme|hack)\b", re.IGNORECASE
+    r"\b(fix(?:es|ed)?|bug|regression|hotfix|workaround|todo|fixme|hack"
+    r"|vulnerab\w*|risk|security|unsafe|cve|exploit|ssrf)\b",
+    re.IGNORECASE,
 )
 _PR_URL_RE = re.compile(r"github\.com/([^/]+)/([^/]+)/pull/(\d+)")
 _COMMENT_RE = re.compile(r"^\s*(//|#|/\*|\*|--|<!--)")
@@ -391,7 +398,7 @@ def is_trivial(candidate: Candidate) -> bool:
 
 
 def is_test_path(path: str) -> bool:
-    return any(re.search(pattern, path) for pattern in TEST_PATTERNS)
+    return any(re.search(pattern, path, re.IGNORECASE) for pattern in TEST_PATTERNS)
 
 
 def is_noise_path(path: str) -> bool:
@@ -433,17 +440,24 @@ def leak_hits(diff_text: str) -> list[tuple[int, str]]:
 # ----------------------------------------------------------------- inputs
 
 
-def fetch_pr(url: str) -> tuple[dict, str]:
+def _gh(*args: str) -> str:
+    """Run the gh CLI and return stdout. gh always emits UTF-8; decoding with the platform
+    locale (cp1252 on Windows) makes subprocess's reader thread die on the first curly quote
+    or emoji in a PR body and hand back stdout=None, so the encoding is pinned."""
     gh = shutil.which("gh") or r"C:\Program Files\GitHub CLI\gh.exe"
-    view = subprocess.run(
-        [gh, "pr", "view", url, "--json", "title,body,labels,files"],
+    completed = subprocess.run(
+        [gh, *args],
         capture_output=True,
-        text=True,
+        encoding="utf-8",
+        errors="replace",
         check=True,
-    ).stdout
-    diff = subprocess.run(
-        [gh, "pr", "diff", url], capture_output=True, text=True, check=True
-    ).stdout
+    )
+    return completed.stdout
+
+
+def fetch_pr(url: str) -> tuple[dict, str]:
+    view = _gh("pr", "view", url, "--json", "title,body,labels,files")
+    diff = _gh("pr", "diff", url)
     return json.loads(view), diff
 
 

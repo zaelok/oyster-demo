@@ -227,9 +227,43 @@ def test_category_and_title_heuristics():
     assert clean_title("APSS-1: fixes the thing.") == "the thing"
 
 
-def test_leak_check_flags_fix_words_and_tickets():
+def test_fetch_pr_pins_utf8_decoding(monkeypatch):
+    import subprocess
+
+    from tools import pr_to_case
+
+    calls: list[dict] = []
+
+    def fake_run(args, **kwargs):
+        calls.append(kwargs)
+        stdout = '{"title": "curly “quotes”"}' if args[1] == "pr" and args[2] == "view" else "diff"
+        return subprocess.CompletedProcess(args, 0, stdout=stdout, stderr="")
+
+    monkeypatch.setattr(pr_to_case.subprocess, "run", fake_run)
+    view, diff = pr_to_case.fetch_pr("https://github.com/o/r/pull/1")
+    assert view["title"] == "curly “quotes”"
+    assert diff == "diff"
+    assert all(call["encoding"] == "utf-8" for call in calls)
+    assert all("text" not in call for call in calls)
+
+
+def test_leak_check_flags_fix_words_tickets_and_security_vocabulary():
     text = "--- a/x\n+++ b/x\n@@ -1 +1 @@\n+// APSS-12 workaround for the bug\n+ok := 1\n"
     assert leak_hits(text) == [(4, "+// APSS-12 workaround for the bug")]
+    docstring = "--- a/x\n+++ b/x\n@@ -1 +1 @@\n-    (SSRF risk: loopback, redirects)\n+    ok\n"
+    assert leak_hits(docstring) == [(4, "-    (SSRF risk: loopback, redirects)")]
+
+
+def test_test_paths_match_case_insensitively():
+    from tools.pr_to_case import is_test_path
+
+    assert is_test_path("Tests/NIOHTTP1Tests/HTTPResponseEncoderTest.swift")
+    assert is_test_path("src/test/java/FooTest.java")
+    assert is_test_path("core/src/FooTests.kt")
+    assert is_test_path("web/button.spec.tsx")
+    assert is_test_path("rust/src/verifier_tests.rs")
+    assert not is_test_path("Sources/NIOHTTP1/HTTPEncoder.swift")
+    assert not is_test_path("pkg/contest.go")
 
 
 def test_main_writes_valid_draft_and_review(tmp_path):
