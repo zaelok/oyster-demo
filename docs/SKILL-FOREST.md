@@ -140,7 +140,15 @@ it makes them explicit and shows what each weighting selects.
 | executors | the promotion node is a person by policy: a fixed binding, not a selectable one |
 | cost | blast radius enters the vector; the objective is asymmetric because a wrong go costs more than a wrong no-go |
 
-### 3.5 Skills with judged outputs
+### 3.5 Two instances written out in full
+
+[`instances/BUILD-CI.md`](instances/BUILD-CI.md) takes the model into a build and release
+platform, where ground truth is free and the objective has two error costs.
+[`instances/LIFE-PLANNING.md`](instances/LIFE-PLANNING.md) takes it to a person planning a
+path from school into work, where the executor owns the objective, the counterfactual is never
+observed, and wellbeing models supply the dimensions of the weight vector.
+
+### 3.6 Skills with judged outputs
 
 Design-document review, pull-request descriptions, runbook quality: no deterministic oracle.
 The scorer is a rubric applied by a judge, and the judge is itself a skill in the forest with

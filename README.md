@@ -231,6 +231,11 @@ complete and every path catches nothing. That is a valid and honest result; see 
   (task, expected, output, scorer, skill, executor, binding, composite, cost, prior, objective,
   provenance), code review as one instance, and bug fixing, incident root cause and deployment
   as the next ones.
+- [`docs/instances/BUILD-CI.md`](docs/instances/BUILD-CI.md): the model applied to a cloud
+  build and CI platform, where the oracles are free and the objective is asymmetric.
+- [`docs/instances/LIFE-PLANNING.md`](docs/instances/LIFE-PLANNING.md): the model applied to
+  a person planning from school into work, with wellbeing models as the objective's schema and
+  the person as the owner of the weights.
 - The results page: `uv run python -m tools.build_site` writes `site/index.html`, a single
   file with the table, a selection explorer (budget, latency, human cost per missed bug) and
   per-case provenance down to each node's reply. The `pages` workflow publishes it once the
