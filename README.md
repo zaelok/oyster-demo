@@ -88,6 +88,29 @@ CI never has an API key; it runs `install`, `lint`, `test` and `eval-mock`.
 `uv run ruff check . && uv run ruff format --check .`,
 `uv run python -m oyster.cli eval --provider mock`.
 
+## Building the corpus from bug-fix PRs
+
+The fastest honest source of seeded bugs is a real fix. `tools/pr_to_case.py` reverses a
+bug-fix pull request so the fixed code becomes "before", the buggy code becomes "after", and
+the lines the fix replaced become the seeded bug on the new-file side:
+
+```bash
+uv run python -m tools.pr_to_case --pr https://github.com/OWNER/REPO/pull/123 --id case-02 --out drafts
+```
+
+It drops tests, mocks, docs and generated files (a reversed diff that deletes a regression
+test gives the answer away), flags fixes that only added code (the bug is an absence, so the
+range is anchored for you to confirm), guesses a category from the PR text, runs the leak
+check for words like "fix" and ticket ids, and validates the draft. Each draft comes with a
+`.review.md` showing every candidate in context. You still choose the PRs, confirm category
+and range, rewrite the description as what is wrong, trim big diffs with `--files`, and move
+the file into `oyster/corpus/cases/` yourself. Saved `gh pr view --json title,body,labels,files`
+and `gh pr diff` output work offline via `--view` and `--diff`.
+
+Two caveats worth saying out loud: fixes from popular repos are in every model's training
+data, so prefer recent or obscure PRs; and a reversed fix contains nothing but the defect,
+which is easier than a real PR.
+
 ## Reading `results.md`
 
 ```
