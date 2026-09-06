@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 489,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 120,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Cast precedence changed: (int) counter % hostsSize casts the long counter to int before the modulo instead of after. For counter values beyond Integer range this truncates before the modulo, producing a different (and incorrect) index than (int)(counter % hostsSize).\", \"confidence\": 0.95}]}"
+}

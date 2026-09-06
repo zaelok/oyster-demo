@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 433,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 74,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removed @Nullable allows NPE if object is null; toString() called without null check.\", \"confidence\": 0.93}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 508,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 89,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1395, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts the client_secret query parameter; access_token and token, previously covered by the sensitiveParams list, are no longer redacted and will leak in any URL that gets logged or displayed.\", \"confidence\": 0.92}]}"
+}

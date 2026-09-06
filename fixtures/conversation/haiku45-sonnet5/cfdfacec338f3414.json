@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 417,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 58,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1394, \"category\": \"security\", \"description\": \"Removed redaction for access_token and token parameters; now only redacts client_secret.\", \"confidence\": 0.96}]}"
+}

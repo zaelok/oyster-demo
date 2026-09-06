@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 441,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 101,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Clamping to high-1 removed. Casting rand_uniform (sampled in [low, high)) to int32 can produce the value high itself due to float rounding, so the result is no longer guaranteed to stay in [low, high-1], breaking randint semantics.\", \"confidence\": 0.9}]}"
+}

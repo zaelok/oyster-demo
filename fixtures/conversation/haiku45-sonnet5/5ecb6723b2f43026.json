@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 393,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 79,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.\", \"confidence\": 0.88}]}"
+}

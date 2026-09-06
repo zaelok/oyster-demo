@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 367,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 63,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.\", \"confidence\": 0.91}]}"
+}

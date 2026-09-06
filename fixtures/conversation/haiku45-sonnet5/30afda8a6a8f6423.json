@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 477,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 82,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1387, \"line_end\": 1393, \"category\": \"security\", \"description\": \"sensitiveParams list (access_token, token) removed; only client_secret is now redacted, so access_token and token query params leak in sanitized URLs (e.g. in logs or error messages).\", \"confidence\": 0.96}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 332,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 4,
+  "text": "{\"findings\": []}"
+}

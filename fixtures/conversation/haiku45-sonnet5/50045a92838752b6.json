@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 410,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 66,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"Copy-paste error checks gamma.shape instead of beta.shape for beta validation.\", \"confidence\": 0.99}]}"
+}

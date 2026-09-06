@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 274,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 105,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask was changed from 0xffff to 0xfff, so getUnsignedShort now truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).\", \"confidence\": 0.95}]}"
+}

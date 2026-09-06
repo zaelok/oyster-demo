@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 456,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 104,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.\", \"confidence\": 0.97}, {\"file\": \"lib/common/threading.c\", \"line_start\": 166, \"line_end\": 166, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated cond if pthread_cond_init fails.\", \"confidence\": 0.97}]}"
+}

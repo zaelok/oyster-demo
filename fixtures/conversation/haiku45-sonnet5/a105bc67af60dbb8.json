@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 514,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 120,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"rangeInBuffer is now passed intLen (element count) instead of the overflow-checked byte size (intLen * MemoryLayout<T>.size), which undercounts required bytes for any T larger than 1 byte and also removes the overflow check entirely, allowing out-of-bounds ranges to pass verification on untrusted flatbuffer input.\", \"confidence\": 0.85}]}"
+}

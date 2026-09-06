@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 483,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 131,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On a failed/partial io.ReadFull, both call sites now return bytesRead (the count from before this read) instead of including the bytes actually consumed by this read attempt (previously n or bytesRead+n). Callers relying on the returned count to know exactly how many bytes were consumed from the stream on error will get an undercount when the length prefix or body read fails partway through.\", \"confidence\": 0.6}]}"
+}

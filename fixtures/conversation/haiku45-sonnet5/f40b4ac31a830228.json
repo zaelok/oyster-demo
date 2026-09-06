@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 563,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 130,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Cleanup on init failure removed; if pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, leaking memory.\", \"confidence\": 0.95}, {\"file\": \"lib/common/threading.c\", \"line_start\": 166, \"line_end\": 166, \"category\": \"logic\", \"description\": \"Same issue for the cond variable: if pthread_cond_init fails, the malloc'd *cond is no longer freed, leaking memory.\", \"confidence\": 0.95}]}"
+}

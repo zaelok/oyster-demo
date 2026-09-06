@@ -1,0 +1,61 @@
+{
+  "catch_rate": [
+    {
+      "category": "logic",
+      "model_alias": "cheap-model",
+      "rate": 0.8235294117647058,
+      "role": "cheap-scanner"
+    },
+    {
+      "category": "security",
+      "model_alias": "cheap-model",
+      "rate": 0.25,
+      "role": "cheap-scanner"
+    },
+    {
+      "category": "logic",
+      "model_alias": "strong-model",
+      "rate": 0.9411764705882353,
+      "role": "critic"
+    },
+    {
+      "category": "security",
+      "model_alias": "strong-model",
+      "rate": 0.5,
+      "role": "critic"
+    },
+    {
+      "category": "logic",
+      "model_alias": "strong-model",
+      "rate": 0.7058823529411765,
+      "role": "deep-reviewer"
+    },
+    {
+      "category": "security",
+      "model_alias": "strong-model",
+      "rate": 0.5,
+      "role": "deep-reviewer"
+    }
+  ],
+  "corpus_size": 17,
+  "mean_cost": [
+    {
+      "dollars": 0.0007071764705882353,
+      "latency_s": 0.0,
+      "model_alias": "cheap-model",
+      "role": "cheap-scanner"
+    },
+    {
+      "dollars": 0.0019630588235294115,
+      "latency_s": 0.0,
+      "model_alias": "strong-model",
+      "role": "critic"
+    },
+    {
+      "dollars": 0.001732,
+      "latency_s": 0.0,
+      "model_alias": "strong-model",
+      "role": "deep-reviewer"
+    }
+  ]
+}

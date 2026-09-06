@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 401,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 66,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 61, \"line_end\": 61, \"category\": \"logic\", \"description\": \"Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.\", \"confidence\": 0.94}]}"
+}

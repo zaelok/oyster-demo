@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 540,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 111,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"Confirmed: passing intLen (element count) instead of the overflow-checked byte size to rangeInBuffer undercounts required bytes for T larger than 1 byte and removes overflow protection, both of which can let out-of-bounds ranges pass verification on untrusted flatbuffer input.\", \"confidence\": 0.85}]}"
+}

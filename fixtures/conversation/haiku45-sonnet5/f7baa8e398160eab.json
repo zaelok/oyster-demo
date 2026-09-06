@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 437,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 139,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Cleanup on pthread_mutex_init failure (ZSTD_free(*mutex)) was removed; if pthread_mutex_init fails, the allocated mutex memory is now leaked instead of being freed.\", \"confidence\": 0.75}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"description\": \"Same issue for ZSTD_pthread_cond_init: cleanup (ZSTD_free(*cond)) on init failure was removed, causing a memory leak.\", \"confidence\": 0.75}]}"
+}

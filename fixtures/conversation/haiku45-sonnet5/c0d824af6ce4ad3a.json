@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 475,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 100,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Overflow-protected addition replaced with plain available + 1; if available equals Integer.MAX_VALUE this overflows to a negative array size, causing NegativeArraySizeException.\", \"confidence\": 0.85}]}"
+}

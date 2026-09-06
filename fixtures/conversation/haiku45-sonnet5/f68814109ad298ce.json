@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 366,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 162,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"The overflow-checked byte size computation (intLen * MemoryLayout<T>.size) was removed and rangeInBuffer is now called with intLen (an element count) instead of the byte size, and without overflow protection. This under-counts the bytes actually needed for T elements > 1 byte, allowing rangeInBuffer's bounds check to pass for buffers that are too small, and removes the overflow guard entirely, both of which can permit out-of-bounds access when verifying untrusted flatbuffer data.\", \"confidence\": 0.8}]}"
+}

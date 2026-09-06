@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 422,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 111,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The threshold was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's condition. Since the preceding else-if already matches versions >= V2_4_0_0, this branch is unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and get Version=7 instead of the intended 8.\", \"confidence\": 0.92}]}"
+}

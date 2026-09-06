@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 509,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 119,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"object().toString() replaces the null-safe String.valueOf(object()) and @Nullable was removed from the record component without adding a validating constructor, so a null literal constant now throws NullPointerException in toString() instead of returning \\\"null\\\".\", \"confidence\": 0.9}]}"
+}

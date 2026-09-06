@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 530,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 144,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. For counter values exceeding Integer.MAX_VALUE, truncating to int before the modulo can produce a different or negative value, yielding an incorrect or out-of-range index i, whereas computing the modulo in long space first (as before) kept the result within [0, hostsSize).\", \"confidence\": 0.65}]}"
+}

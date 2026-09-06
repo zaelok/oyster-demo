@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 355,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 176,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 96, \"category\": \"logic\", \"description\": \"Return value changed from n (bytes actually read in this call) to bytesRead on ReadFull failure; on a partial read the caller now gets an inaccurate byte count, which can break stream resync/error-handling logic that relies on knowing how many bytes were consumed.\", \"confidence\": 0.6}, {\"file\": \"request.go\", \"line_start\": 108, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Second ReadFull error path now returns bytesRead instead of bytesRead+n, dropping the partially read bytes of encodedReq from the reported count, same underreporting issue as the first hunk.\", \"confidence\": 0.65}]}"
+}

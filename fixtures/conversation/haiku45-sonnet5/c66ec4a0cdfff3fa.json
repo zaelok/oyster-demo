@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 398,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 163,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"The @Nullable annotation was removed from the record component but nothing prevents object from actually being null at runtime (record has no validating constructor shown), and toString() now calls object().toString() directly instead of the null-safe String.valueOf(object()). If a null constant literal is ever represented (e.g. for a `null` Java literal), toString() will throw NullPointerException where it previously returned \\\"null\\\".\", \"confidence\": 0.5}]}"
+}

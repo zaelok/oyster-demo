@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 469,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 133,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"Overflow-checked byte count (intLen * MemoryLayout<T>.size) is removed and rangeInBuffer is called with intLen (element count) instead of the byte size, undercounting bytes needed when MemoryLayout<T>.size > 1 and dropping overflow protection, which can let bounds checks pass for buffers too small to hold the verified data (out-of-bounds read on untrusted input).\", \"confidence\": 0.93}]}"
+}

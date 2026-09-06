@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 352,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 164,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Swift.max was changed to Swift.min, inverting the intent: instead of guaranteeing a floor of at least 16 capacity, it now caps capacity at a maximum of 16, drastically shrinking node capacity for larger Key types and hurting the B-tree's performance characteristics.\", \"confidence\": 0.85}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same max-to-min inversion bug repeated for the second capacity constant.\", \"confidence\": 0.85}]}"
+}

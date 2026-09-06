@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 413,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 226,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"toString() now calls object().toString() directly instead of String.valueOf(object()). Removing @Nullable from the record component does not add any runtime null-check or validation, so if a null Object ever reaches this record (Java annotations are not enforced at runtime), this throws NPE where the old code safely printed \\\"null\\\".\", \"confidence\": 0.55}, {\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"style\", \"description\": \"Removing @Nullable is only safe if all call sites are verified to never pass null; the diff gives no evidence of that invariant being newly enforced elsewhere.\", \"confidence\": 0.3}]}"
+}

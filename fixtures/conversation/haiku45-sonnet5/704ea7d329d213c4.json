@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 355,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 98,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"The clamp of the cast random int to high-1 was removed, so floating-point rounding in random_uniform can cause the cast result to equal high, producing an out-of-range value where an exclusive upper bound was intended.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 373,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 107,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Removed addWithOverflowProtection(available, 1) and replaced with a plain available + 1, reintroducing integer overflow risk if available is near Integer.MAX_VALUE, which would wrap to a negative array size.\", \"confidence\": 0.55}]}"
+}

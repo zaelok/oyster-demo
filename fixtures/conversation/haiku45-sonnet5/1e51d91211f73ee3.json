@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 356,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 91,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"V2_3_0_0 check duplicated as V2_4_0_0, which is already true from the branch above, so this branch is unreachable and the V2_3_0_0 version range never sets Version = 8, falling through to older version handling incorrectly.\", \"confidence\": 0.98}]}"
+}

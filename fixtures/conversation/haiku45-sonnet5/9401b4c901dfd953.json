@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 340,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 128,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"The clamp of the cast random int to high-1 was removed. random_uniform's upper bound is exclusive in theory but due to floating point rounding the sampled value can round up to exactly `high` after cast to int32, producing an out-of-range integer (e.g. randint(0, n) could return n), which the removed minimum() call was guarding against.\", \"confidence\": 0.55}]}"
+}

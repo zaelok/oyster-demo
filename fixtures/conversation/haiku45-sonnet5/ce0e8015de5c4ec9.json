@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 381,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 72,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.\", \"confidence\": 0.9}]}"
+}

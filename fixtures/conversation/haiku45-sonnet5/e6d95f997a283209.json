@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 478,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 120,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5656, \"line_end\": 5656, \"category\": \"logic\", \"description\": \"The clamp (cast to int32, subtract 1 from high, take minimum) was removed. random_uniform can return a value arbitrarily close to (but less than) high; after truncating cast to int32 this can equal high itself, producing a sampled integer equal to the exclusive upper bound instead of being clamped to high-1.\", \"confidence\": 0.7}]}"
+}

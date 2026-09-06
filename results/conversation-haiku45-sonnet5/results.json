@@ -1,0 +1,4402 @@
+{
+  "reports": [
+    {
+      "case_id": "case-adk-5415",
+      "caught_loose": [
+        "case-adk-5415-b1"
+      ],
+      "caught_strict": [
+        "case-adk-5415-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "caught_loose": [
+        "case-coremltools-2714-b1"
+      ],
+      "caught_strict": [
+        "case-coremltools-2714-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "caught_loose": [
+        "case-coremltools-2736-b1"
+      ],
+      "caught_strict": [
+        "case-coremltools-2736-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "caught_loose": [
+        "case-errorprone-5603-b1"
+      ],
+      "caught_strict": [
+        "case-errorprone-5603-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 1,
+      "missed": [
+        "case-flatbuffers-9081-b1",
+        "case-flatbuffers-9081-b2"
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "caught_loose": [
+        "case-gogithub-4126-b1"
+      ],
+      "caught_strict": [
+        "case-gogithub-4126-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 0,
+      "missed": [
+        "case-gogithub-4291-b1"
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 0,
+      "missed": [
+        "case-gson-3067-b1"
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "caught_loose": [
+        "case-pkl-1656-b1"
+      ],
+      "caught_strict": [
+        "case-pkl-1656-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "caught_loose": [
+        "case-sarama-3314-b2"
+      ],
+      "caught_strict": [
+        "case-sarama-3314-b2"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-sarama-3314-b1"
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "caught_loose": [
+        "case-sarama-3642-b1"
+      ],
+      "caught_strict": [
+        "case-sarama-3642-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "caught_loose": [
+        "case-servicetalk-3554-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3554-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "caught_loose": [
+        "case-servicetalk-3587-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3587-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "caught_loose": [
+        "case-servicetalk-3588-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3588-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "caught_loose": [
+        "case-swiftcollections-661-b1",
+        "case-swiftcollections-661-b2"
+      ],
+      "caught_strict": [
+        "case-swiftcollections-661-b1",
+        "case-swiftcollections-661-b2"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "caught_loose": [
+        "case-zstd-4486-b1"
+      ],
+      "caught_strict": [
+        "case-zstd-4486-b1"
+      ],
+      "false_positives": 1,
+      "missed": [
+        "case-zstd-4486-b2"
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "caught_loose": [
+        "case-zstd-4626-b1"
+      ],
+      "caught_strict": [
+        "case-zstd-4626-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-adk-5415",
+      "caught_loose": [
+        "case-adk-5415-b1"
+      ],
+      "caught_strict": [
+        "case-adk-5415-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "caught_loose": [
+        "case-coremltools-2714-b1"
+      ],
+      "caught_strict": [
+        "case-coremltools-2714-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "caught_loose": [
+        "case-coremltools-2736-b1"
+      ],
+      "caught_strict": [
+        "case-coremltools-2736-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "caught_loose": [
+        "case-errorprone-5603-b1"
+      ],
+      "caught_strict": [
+        "case-errorprone-5603-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "caught_loose": [
+        "case-flatbuffers-9081-b1"
+      ],
+      "caught_strict": [
+        "case-flatbuffers-9081-b1"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-flatbuffers-9081-b2"
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "caught_loose": [
+        "case-gogithub-4126-b1"
+      ],
+      "caught_strict": [
+        "case-gogithub-4126-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 0,
+      "missed": [
+        "case-gogithub-4291-b1"
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 0,
+      "missed": [
+        "case-gson-3067-b1"
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "caught_loose": [
+        "case-pkl-1656-b1"
+      ],
+      "caught_strict": [
+        "case-pkl-1656-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "caught_loose": [
+        "case-sarama-3314-b1"
+      ],
+      "caught_strict": [
+        "case-sarama-3314-b1"
+      ],
+      "false_positives": 1,
+      "missed": [
+        "case-sarama-3314-b2"
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "caught_loose": [
+        "case-sarama-3642-b1"
+      ],
+      "caught_strict": [
+        "case-sarama-3642-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "caught_loose": [
+        "case-servicetalk-3554-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3554-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "caught_loose": [
+        "case-servicetalk-3587-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3587-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "caught_loose": [
+        "case-servicetalk-3588-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3588-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "caught_loose": [
+        "case-swiftcollections-661-b1",
+        "case-swiftcollections-661-b2"
+      ],
+      "caught_strict": [
+        "case-swiftcollections-661-b1",
+        "case-swiftcollections-661-b2"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "caught_loose": [
+        "case-zstd-4486-b1"
+      ],
+      "caught_strict": [
+        "case-zstd-4486-b1"
+      ],
+      "false_positives": 1,
+      "missed": [
+        "case-zstd-4486-b2"
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "caught_loose": [
+        "case-zstd-4626-b1"
+      ],
+      "caught_strict": [
+        "case-zstd-4626-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-adk-5415",
+      "caught_loose": [
+        "case-adk-5415-b1"
+      ],
+      "caught_strict": [
+        "case-adk-5415-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 1,
+      "missed": [
+        "case-coremltools-2714-b1"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "caught_loose": [
+        "case-coremltools-2736-b1"
+      ],
+      "caught_strict": [
+        "case-coremltools-2736-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "caught_loose": [
+        "case-errorprone-5603-b1"
+      ],
+      "caught_strict": [
+        "case-errorprone-5603-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "caught_loose": [
+        "case-flatbuffers-9081-b1"
+      ],
+      "caught_strict": [
+        "case-flatbuffers-9081-b1"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-flatbuffers-9081-b2"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "caught_loose": [
+        "case-gogithub-4126-b1"
+      ],
+      "caught_strict": [
+        "case-gogithub-4126-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 0,
+      "missed": [
+        "case-gogithub-4291-b1"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "caught_loose": [
+        "case-gson-3067-b1"
+      ],
+      "caught_strict": [
+        "case-gson-3067-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "caught_loose": [
+        "case-pkl-1656-b1"
+      ],
+      "caught_strict": [
+        "case-pkl-1656-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "caught_loose": [
+        "case-sarama-3314-b2"
+      ],
+      "caught_strict": [
+        "case-sarama-3314-b2"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-sarama-3314-b1"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "caught_loose": [
+        "case-sarama-3642-b1"
+      ],
+      "caught_strict": [
+        "case-sarama-3642-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "caught_loose": [
+        "case-servicetalk-3554-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3554-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "caught_loose": [
+        "case-servicetalk-3587-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3587-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "caught_loose": [
+        "case-servicetalk-3588-b1"
+      ],
+      "caught_strict": [
+        "case-servicetalk-3588-b1"
+      ],
+      "false_positives": 0,
+      "missed": [],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "caught_loose": [
+        "case-swiftcollections-661-b1"
+      ],
+      "caught_strict": [
+        "case-swiftcollections-661-b1"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-swiftcollections-661-b2"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "caught_loose": [
+        "case-zstd-4486-b1"
+      ],
+      "caught_strict": [
+        "case-zstd-4486-b1"
+      ],
+      "false_positives": 0,
+      "missed": [
+        "case-zstd-4486-b2"
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "caught_loose": [],
+      "caught_strict": [],
+      "false_positives": 1,
+      "missed": [
+        "case-zstd-4626-b1"
+      ],
+      "path_id": "C"
+    }
+  ],
+  "results": [
+    {
+      "case_id": "case-adk-5415",
+      "cost": {
+        "dollars": 0.000714,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "Removed null check allows NoneType.round() to fail if eval_metric_result.score is None.",
+          "file": "src/google/adk/optimization/local_eval_sampler.py",
+          "line_end": 292,
+          "line_start": 292
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 389,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 65,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"Removed null check allows NoneType.round() to fail if eval_metric_result.score is None.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.000714,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Removed null check allows NoneType.round() to fail if eval_metric_result.score is None.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "cost": {
+        "dollars": 0.000695,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.92,
+          "description": "Simplified logic loses overflow detection and clamping of rand_int to high-1 range.",
+          "file": "coremltools/converters/mil/frontend/torch/ops.py",
+          "line_end": 5657,
+          "line_start": 5657
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 375,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 64,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Simplified logic loses overflow detection and clamping of rand_int to high-1 range.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.000695,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.92,
+              "description": "Simplified logic loses overflow detection and clamping of rand_int to high-1 range.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5657,
+              "line_start": 5657
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "cost": {
+        "dollars": 0.00074,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.99,
+          "description": "Copy-paste error checks gamma.shape instead of beta.shape for beta validation.",
+          "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+          "line_end": 294,
+          "line_start": 294
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 410,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 66,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"Copy-paste error checks gamma.shape instead of beta.shape for beta validation.\", \"confidence\": 0.99}]}"
+          },
+          "cost": {
+            "dollars": 0.00074,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.99,
+              "description": "Copy-paste error checks gamma.shape instead of beta.shape for beta validation.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "cost": {
+        "dollars": 0.000803,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.93,
+          "description": "Removed @Nullable allows NPE if object is null; toString() called without null check.",
+          "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+          "line_end": 201,
+          "line_start": 201
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 433,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 74,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removed @Nullable allows NPE if object is null; toString() called without null check.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.000803,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Removed @Nullable allows NPE if object is null; toString() called without null check.",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 201
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "cost": {
+        "dollars": 0.000731,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.94,
+          "description": "Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.",
+          "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+          "line_end": 61,
+          "line_start": 61
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 401,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 66,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 61, \"line_end\": 61, \"category\": \"logic\", \"description\": \"Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.\", \"confidence\": 0.94}]}"
+          },
+          "cost": {
+            "dollars": 0.000731,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.94,
+              "description": "Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 61,
+              "line_start": 61
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "cost": {
+        "dollars": 0.000707,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "security",
+          "confidence": 0.96,
+          "description": "Removed redaction for access_token and token parameters; now only redacts client_secret.",
+          "file": "github/github.go",
+          "line_end": 1394,
+          "line_start": 1391
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 417,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 58,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1394, \"category\": \"security\", \"description\": \"Removed redaction for access_token and token parameters; now only redacts client_secret.\", \"confidence\": 0.96}]}"
+          },
+          "cost": {
+            "dollars": 0.000707,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.96,
+              "description": "Removed redaction for access_token and token parameters; now only redacts client_secret.",
+              "file": "github/github.go",
+              "line_end": 1394,
+              "line_start": 1391
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "cost": {
+        "dollars": 0.000387,
+        "latency_s": 0.0
+      },
+      "findings": [],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 367,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000387,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "cost": {
+        "dollars": 0.000341,
+        "latency_s": 0.0
+      },
+      "findings": [],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 321,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000341,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "cost": {
+        "dollars": 0.000741,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.9,
+          "description": "Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.",
+          "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+          "line_end": 193,
+          "line_start": 193
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 381,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 72,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.000741,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "cost": {
+        "dollars": 0.000645,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.93,
+          "description": "Returns bytesRead without adding len(encodedReq), losing partial read count on error.",
+          "file": "request.go",
+          "line_end": 108,
+          "line_start": 108
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 375,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 54,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 108, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Returns bytesRead without adding len(encodedReq), losing partial read count on error.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.000645,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Returns bytesRead without adding len(encodedReq), losing partial read count on error.",
+              "file": "request.go",
+              "line_end": 108,
+              "line_start": 108
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "cost": {
+        "dollars": 0.00057,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.98,
+          "description": "Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.",
+          "file": "metadata_request.go",
+          "line_end": 34,
+          "line_start": 34
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 300,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 54,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.\", \"confidence\": 0.98}]}"
+          },
+          "cost": {
+            "dollars": 0.00057,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.98,
+              "description": "Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "cost": {
+        "dollars": 0.000704,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.99,
+          "description": "Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.",
+          "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+          "line_end": 134,
+          "line_start": 134
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 309,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.\", \"confidence\": 0.99}]}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.99,
+              "description": "Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "cost": {
+        "dollars": 0.000788,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.88,
+          "description": "Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.",
+          "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+          "line_end": 205,
+          "line_start": 205
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 393,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.\", \"confidence\": 0.88}]}"
+          },
+          "cost": {
+            "dollars": 0.000788,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.88,
+              "description": "Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "cost": {
+        "dollars": 0.000802,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.97,
+          "description": "Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.",
+          "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+          "line_end": 200,
+          "line_start": 200
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 407,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.\", \"confidence\": 0.97}]}"
+          },
+          "cost": {
+            "dollars": 0.000802,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "cost": {
+        "dollars": 0.000996,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.96,
+          "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+          "file": "Sources/SortedCollections/BTree/_BTree.swift",
+          "line_end": 34,
+          "line_start": 34
+        },
+        {
+          "category": "logic",
+          "confidence": 0.96,
+          "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+          "file": "Sources/SortedCollections/BTree/_BTree.swift",
+          "line_end": 46,
+          "line_start": 46
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 371,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 125,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}]}"
+          },
+          "cost": {
+            "dollars": 0.000996,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.96,
+              "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 34,
+              "line_start": 34
+            },
+            {
+              "category": "logic",
+              "confidence": 0.96,
+              "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 46
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "cost": {
+        "dollars": 0.000976,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.97,
+          "description": "Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.",
+          "file": "lib/common/threading.c",
+          "line_end": 146,
+          "line_start": 146
+        },
+        {
+          "category": "logic",
+          "confidence": 0.97,
+          "description": "Removed cleanup code leaks allocated cond if pthread_cond_init fails.",
+          "file": "lib/common/threading.c",
+          "line_end": 166,
+          "line_start": 166
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 456,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 104,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.\", \"confidence\": 0.97}, {\"file\": \"lib/common/threading.c\", \"line_start\": 166, \"line_end\": 166, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated cond if pthread_cond_init fails.\", \"confidence\": 0.97}]}"
+          },
+          "cost": {
+            "dollars": 0.000976,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.",
+              "file": "lib/common/threading.c",
+              "line_end": 146,
+              "line_start": 146
+            },
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Removed cleanup code leaks allocated cond if pthread_cond_init fails.",
+              "file": "lib/common/threading.c",
+              "line_end": 166,
+              "line_start": 166
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "cost": {
+        "dollars": 0.000682,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.91,
+          "description": "Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.",
+          "file": "lib/compress/zstd_ldm.c",
+          "line_end": 155,
+          "line_start": 155
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 367,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 63,
+            "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.\", \"confidence\": 0.91}]}"
+          },
+          "cost": {
+            "dollars": 0.000682,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.91,
+              "description": "Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.",
+              "file": "lib/compress/zstd_ldm.c",
+              "line_end": 155,
+              "line_start": 155
+            }
+          ],
+          "node_id": "a1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        }
+      ],
+      "path_id": "A"
+    },
+    {
+      "case_id": "case-adk-5415",
+      "cost": {
+        "dollars": 0.002436,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "None check removed. round(eval_metric_result.score, 2) is called unconditionally now, so a None score raises TypeError since NoneType has no __round__.",
+          "file": "src/google/adk/optimization/local_eval_sampler.py",
+          "line_end": 292,
+          "line_start": 292
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 389,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 65,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"Removed null check allows NoneType.round() to fail if eval_metric_result.score is None.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.000714,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Removed null check allows NoneType.round() to fail if eval_metric_result.score is None.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 456,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 81,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"None check removed. round(eval_metric_result.score, 2) is called unconditionally now, so a None score raises TypeError since NoneType has no __round__.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.001722,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "None check removed. round(eval_metric_result.score, 2) is called unconditionally now, so a None score raises TypeError since NoneType has no __round__.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "cost": {
+        "dollars": 0.002587,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.9,
+          "description": "Clamping to high-1 removed. Casting rand_uniform (sampled in [low, high)) to int32 can produce the value high itself due to float rounding, so the result is no longer guaranteed to stay in [low, high-1], breaking randint semantics.",
+          "file": "coremltools/converters/mil/frontend/torch/ops.py",
+          "line_end": 5657,
+          "line_start": 5657
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 375,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 64,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Simplified logic loses overflow detection and clamping of rand_int to high-1 range.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.000695,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.92,
+              "description": "Simplified logic loses overflow detection and clamping of rand_int to high-1 range.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5657,
+              "line_start": 5657
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 441,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 101,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Clamping to high-1 removed. Casting rand_uniform (sampled in [low, high)) to int32 can produce the value high itself due to float rounding, so the result is no longer guaranteed to stay in [low, high-1], breaking randint semantics.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.001892,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "Clamping to high-1 removed. Casting rand_uniform (sampled in [low, high)) to int32 can produce the value high itself due to float rounding, so the result is no longer guaranteed to stay in [low, high-1], breaking randint semantics.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5657,
+              "line_start": 5657
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "cost": {
+        "dollars": 0.0027660000000000002,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.98,
+          "description": "Copy-paste error: beta's shape check now compares self.gamma.shape instead of self.beta.shape, so an incompatible beta shape is not validated and a beta compatible with normalized_shape but shaped differently from gamma can be wrongly rejected.",
+          "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+          "line_end": 294,
+          "line_start": 294
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 410,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 66,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"Copy-paste error checks gamma.shape instead of beta.shape for beta validation.\", \"confidence\": 0.99}]}"
+          },
+          "cost": {
+            "dollars": 0.00074,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.99,
+              "description": "Copy-paste error checks gamma.shape instead of beta.shape for beta validation.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 478,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 107,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"Copy-paste error: beta's shape check now compares self.gamma.shape instead of self.beta.shape, so an incompatible beta shape is not validated and a beta compatible with normalized_shape but shaped differently from gamma can be wrongly rejected.\", \"confidence\": 0.98}]}"
+          },
+          "cost": {
+            "dollars": 0.002026,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.98,
+              "description": "Copy-paste error: beta's shape check now compares self.gamma.shape instead of self.beta.shape, so an incompatible beta shape is not validated and a beta compatible with normalized_shape but shaped differently from gamma can be wrongly rejected.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "cost": {
+        "dollars": 0.003011,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.9,
+          "description": "object().toString() replaces the null-safe String.valueOf(object()) and @Nullable was removed from the record component without adding a validating constructor, so a null literal constant now throws NullPointerException in toString() instead of returning \"null\".",
+          "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+          "line_end": 201,
+          "line_start": 201
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 433,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 74,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removed @Nullable allows NPE if object is null; toString() called without null check.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.000803,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Removed @Nullable allows NPE if object is null; toString() called without null check.",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 201
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 509,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 119,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"object().toString() replaces the null-safe String.valueOf(object()) and @Nullable was removed from the record component without adding a validating constructor, so a null literal constant now throws NullPointerException in toString() instead of returning \\\"null\\\".\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.002208,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "object().toString() replaces the null-safe String.valueOf(object()) and @Nullable was removed from the record component without adding a validating constructor, so a null literal constant now throws NullPointerException in toString() instead of returning \"null\".",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 201
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "cost": {
+        "dollars": 0.002999,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "security",
+          "confidence": 0.93,
+          "description": "Overflow-checked byte count (intLen * MemoryLayout<T>.size) is removed and rangeInBuffer is called with intLen (element count) instead of the byte size, undercounting bytes needed when MemoryLayout<T>.size > 1 and dropping overflow protection, which can let bounds checks pass for buffers too small to hold the verified data (out-of-bounds read on untrusted input).",
+          "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+          "line_end": 60,
+          "line_start": 58
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 401,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 66,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 61, \"line_end\": 61, \"category\": \"logic\", \"description\": \"Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.\", \"confidence\": 0.94}]}"
+          },
+          "cost": {
+            "dollars": 0.000731,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.94,
+              "description": "Removed overflow check for multiplication; passing intLen instead of byteCount skips size validation.",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 61,
+              "line_start": 61
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 469,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 133,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"Overflow-checked byte count (intLen * MemoryLayout<T>.size) is removed and rangeInBuffer is called with intLen (element count) instead of the byte size, undercounting bytes needed when MemoryLayout<T>.size > 1 and dropping overflow protection, which can let bounds checks pass for buffers too small to hold the verified data (out-of-bounds read on untrusted input).\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.002268,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.93,
+              "description": "Overflow-checked byte count (intLen * MemoryLayout<T>.size) is removed and rangeInBuffer is called with intLen (element count) instead of the byte size, undercounting bytes needed when MemoryLayout<T>.size > 1 and dropping overflow protection, which can let bounds checks pass for buffers too small to hold the verified data (out-of-bounds read on untrusted input).",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 60,
+              "line_start": 58
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "cost": {
+        "dollars": 0.0024809999999999997,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "security",
+          "confidence": 0.96,
+          "description": "sensitiveParams list (access_token, token) removed; only client_secret is now redacted, so access_token and token query params leak in sanitized URLs (e.g. in logs or error messages).",
+          "file": "github/github.go",
+          "line_end": 1393,
+          "line_start": 1387
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 417,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 58,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1394, \"category\": \"security\", \"description\": \"Removed redaction for access_token and token parameters; now only redacts client_secret.\", \"confidence\": 0.96}]}"
+          },
+          "cost": {
+            "dollars": 0.000707,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.96,
+              "description": "Removed redaction for access_token and token parameters; now only redacts client_secret.",
+              "file": "github/github.go",
+              "line_end": 1394,
+              "line_start": 1391
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 477,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 82,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1387, \"line_end\": 1393, \"category\": \"security\", \"description\": \"sensitiveParams list (access_token, token) removed; only client_secret is now redacted, so access_token and token query params leak in sanitized URLs (e.g. in logs or error messages).\", \"confidence\": 0.96}]}"
+          },
+          "cost": {
+            "dollars": 0.001774,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.96,
+              "description": "sensitiveParams list (access_token, token) removed; only client_secret is now redacted, so access_token and token query params leak in sanitized URLs (e.g. in logs or error messages).",
+              "file": "github/github.go",
+              "line_end": 1393,
+              "line_start": 1387
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "cost": {
+        "dollars": 0.001091,
+        "latency_s": 0.0
+      },
+      "findings": [],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 367,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000387,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 332,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "cost": {
+        "dollars": 0.0009530000000000001,
+        "latency_s": 0.0
+      },
+      "findings": [],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 321,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000341,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 286,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000612,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "cost": {
+        "dollars": 0.003103,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.6,
+          "description": "For most negative values the new code produces the same output as before since Long.toString already handles negative numbers. But for self == Long.MIN_VALUE, Math.abs(self) overflows and returns Long.MIN_VALUE unchanged (still negative), so Long.toString(Math.abs(self), radix) itself emits a leading '-', and the outer \"-\" is prepended on top, producing a doubled/incorrect sign in the result.",
+          "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+          "line_end": 193,
+          "line_start": 193
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 381,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 72,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.000741,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "Changed logic negates the sign but applies abs() causing incorrect radix conversion for negative numbers.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 456,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 145,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"For most negative values the new code produces the same output as before since Long.toString already handles negative numbers. But for self == Long.MIN_VALUE, Math.abs(self) overflows and returns Long.MIN_VALUE unchanged (still negative), so Long.toString(Math.abs(self), radix) itself emits a leading '-', and the outer \\\"-\\\" is prepended on top, producing a doubled/incorrect sign in the result.\", \"confidence\": 0.6}]}"
+          },
+          "cost": {
+            "dollars": 0.002362,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.6,
+              "description": "For most negative values the new code produces the same output as before since Long.toString already handles negative numbers. But for self == Long.MIN_VALUE, Math.abs(self) overflows and returns Long.MIN_VALUE unchanged (still negative), so Long.toString(Math.abs(self), radix) itself emits a leading '-', and the outer \"-\" is prepended on top, producing a doubled/incorrect sign in the result.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "cost": {
+        "dollars": 0.003079,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.75,
+          "description": "Returns bytesRead (accumulated before this read) instead of the actual number of bytes read by this ReadFull call, losing partial-read byte count information on error for the length-prefix read.",
+          "file": "request.go",
+          "line_end": 96,
+          "line_start": 95
+        },
+        {
+          "category": "logic",
+          "confidence": 0.93,
+          "description": "Returns bytesRead without adding the partial bytes read into encodedReq, so callers relying on the returned count to know how much of the stream was consumed on error get an undercount.",
+          "file": "request.go",
+          "line_end": 106,
+          "line_start": 106
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 375,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 54,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 108, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Returns bytesRead without adding len(encodedReq), losing partial read count on error.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.000645,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Returns bytesRead without adding len(encodedReq), losing partial read count on error.",
+              "file": "request.go",
+              "line_end": 108,
+              "line_start": 108
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 432,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 157,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"Returns bytesRead (accumulated before this read) instead of the actual number of bytes read by this ReadFull call, losing partial-read byte count information on error for the length-prefix read.\", \"confidence\": 0.75}, {\"file\": \"request.go\", \"line_start\": 106, \"line_end\": 106, \"category\": \"logic\", \"description\": \"Returns bytesRead without adding the partial bytes read into encodedReq, so callers relying on the returned count to know how much of the stream was consumed on error get an undercount.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.002434,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "Returns bytesRead (accumulated before this read) instead of the actual number of bytes read by this ReadFull call, losing partial-read byte count information on error for the length-prefix read.",
+              "file": "request.go",
+              "line_end": 96,
+              "line_start": 95
+            },
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Returns bytesRead without adding the partial bytes read into encodedReq, so callers relying on the returned count to know how much of the stream was consumed on error get an undercount.",
+              "file": "request.go",
+              "line_end": 106,
+              "line_start": 106
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "cost": {
+        "dollars": 0.002192,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.98,
+          "description": "V2_3_0_0 check duplicated as V2_4_0_0, which is already true from the branch above, so this branch is unreachable and the V2_3_0_0 version range never sets Version = 8, falling through to older version handling incorrectly.",
+          "file": "metadata_request.go",
+          "line_end": 34,
+          "line_start": 34
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 300,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 54,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.\", \"confidence\": 0.98}]}"
+          },
+          "cost": {
+            "dollars": 0.00057,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.98,
+              "description": "Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 356,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 91,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"V2_3_0_0 check duplicated as V2_4_0_0, which is already true from the branch above, so this branch is unreachable and the V2_3_0_0 version range never sets Version = 8, falling through to older version handling incorrectly.\", \"confidence\": 0.98}]}"
+          },
+          "cost": {
+            "dollars": 0.001622,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.98,
+              "description": "V2_3_0_0 check duplicated as V2_4_0_0, which is already true from the branch above, so this branch is unreachable and the V2_3_0_0 version range never sets Version = 8, falling through to older version handling incorrectly.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "cost": {
+        "dollars": 0.002454,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.99,
+          "description": "Mask changed from 0xffff to 0xfff drops the top 4 bits, so getUnsignedShort returns an incorrect value (up to 12-bit range) instead of correctly zero-extending a 16-bit short to int.",
+          "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+          "line_end": 134,
+          "line_start": 134
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 309,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.\", \"confidence\": 0.99}]}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.99,
+              "description": "Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 390,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 97,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"Mask changed from 0xffff to 0xfff drops the top 4 bits, so getUnsignedShort returns an incorrect value (up to 12-bit range) instead of correctly zero-extending a 16-bit short to int.\", \"confidence\": 0.99}]}"
+          },
+          "cost": {
+            "dollars": 0.00175,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.99,
+              "description": "Mask changed from 0xffff to 0xfff drops the top 4 bits, so getUnsignedShort returns an incorrect value (up to 12-bit range) instead of correctly zero-extending a 16-bit short to int.",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "cost": {
+        "dollars": 0.002738,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.85,
+          "description": "Overflow-protected addition replaced with plain available + 1; if available equals Integer.MAX_VALUE this overflows to a negative array size, causing NegativeArraySizeException.",
+          "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+          "line_end": 205,
+          "line_start": 205
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 393,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.\", \"confidence\": 0.88}]}"
+          },
+          "cost": {
+            "dollars": 0.000788,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.88,
+              "description": "Removed overflow protection allows available + 1 to overflow if available is Integer.MAX_VALUE.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 475,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 100,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Overflow-protected addition replaced with plain available + 1; if available equals Integer.MAX_VALUE this overflows to a negative array size, causing NegativeArraySizeException.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.00195,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.85,
+              "description": "Overflow-protected addition replaced with plain available + 1; if available equals Integer.MAX_VALUE this overflows to a negative array size, causing NegativeArraySizeException.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "cost": {
+        "dollars": 0.00298,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "Cast precedence changed: (int) counter % hostsSize casts the long counter to int before the modulo instead of after. For counter values beyond Integer range this truncates before the modulo, producing a different (and incorrect) index than (int)(counter % hostsSize).",
+          "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+          "line_end": 200,
+          "line_start": 200
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 407,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 79,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.\", \"confidence\": 0.97}]}"
+          },
+          "cost": {
+            "dollars": 0.000802,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 489,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 120,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Cast precedence changed: (int) counter % hostsSize casts the long counter to int before the modulo instead of after. For counter values beyond Integer range this truncates before the modulo, producing a different (and incorrect) index than (int)(counter % hostsSize).\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.002178,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Cast precedence changed: (int) counter % hostsSize casts the long counter to int before the modulo instead of after. For counter values beyond Integer range this truncates before the modulo, producing a different (and incorrect) index than (int)(counter % hostsSize).",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "cost": {
+        "dollars": 0.003704,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.93,
+          "description": "max replaced with min, so this now returns the minimum of 16 and capacityInBytes/stride instead of the maximum, shrinking node capacity below the intended floor of 16 whenever the computed value is larger.",
+          "file": "Sources/SortedCollections/BTree/_BTree.swift",
+          "line_end": 34,
+          "line_start": 34
+        },
+        {
+          "category": "logic",
+          "confidence": 0.93,
+          "description": "Same max-to-min inversion for the second capacity calculation, capping capacity at 16 instead of using it as a floor, reducing node capacity for larger Key types.",
+          "file": "Sources/SortedCollections/BTree/_BTree.swift",
+          "line_end": 46,
+          "line_start": 46
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 371,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 125,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}]}"
+          },
+          "cost": {
+            "dollars": 0.000996,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.96,
+              "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 34,
+              "line_start": 34
+            },
+            {
+              "category": "logic",
+              "confidence": 0.96,
+              "description": "Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 46
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 499,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 171,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"max replaced with min, so this now returns the minimum of 16 and capacityInBytes/stride instead of the maximum, shrinking node capacity below the intended floor of 16 whenever the computed value is larger.\", \"confidence\": 0.93}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same max-to-min inversion for the second capacity calculation, capping capacity at 16 instead of using it as a floor, reducing node capacity for larger Key types.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.002708,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "max replaced with min, so this now returns the minimum of 16 and capacityInBytes/stride instead of the maximum, shrinking node capacity below the intended floor of 16 whenever the computed value is larger.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 34,
+              "line_start": 34
+            },
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "Same max-to-min inversion for the second capacity calculation, capping capacity at 16 instead of using it as a floor, reducing node capacity for larger Key types.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 46
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "cost": {
+        "dollars": 0.003402,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "Cleanup on init failure removed; if pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, leaking memory.",
+          "file": "lib/common/threading.c",
+          "line_end": 146,
+          "line_start": 146
+        },
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "Same issue for the cond variable: if pthread_cond_init fails, the malloc'd *cond is no longer freed, leaking memory.",
+          "file": "lib/common/threading.c",
+          "line_end": 166,
+          "line_start": 166
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 456,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 104,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.\", \"confidence\": 0.97}, {\"file\": \"lib/common/threading.c\", \"line_start\": 166, \"line_end\": 166, \"category\": \"logic\", \"description\": \"Removed cleanup code leaks allocated cond if pthread_cond_init fails.\", \"confidence\": 0.97}]}"
+          },
+          "cost": {
+            "dollars": 0.000976,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Removed cleanup code leaks allocated mutex if pthread_mutex_init fails.",
+              "file": "lib/common/threading.c",
+              "line_end": 146,
+              "line_start": 146
+            },
+            {
+              "category": "logic",
+              "confidence": 0.97,
+              "description": "Removed cleanup code leaks allocated cond if pthread_cond_init fails.",
+              "file": "lib/common/threading.c",
+              "line_end": 166,
+              "line_start": 166
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 563,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 130,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"Cleanup on init failure removed; if pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, leaking memory.\", \"confidence\": 0.95}, {\"file\": \"lib/common/threading.c\", \"line_start\": 166, \"line_end\": 166, \"category\": \"logic\", \"description\": \"Same issue for the cond variable: if pthread_cond_init fails, the malloc'd *cond is no longer freed, leaking memory.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.002426,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Cleanup on init failure removed; if pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, leaking memory.",
+              "file": "lib/common/threading.c",
+              "line_end": 146,
+              "line_start": 146
+            },
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Same issue for the cond variable: if pthread_cond_init fails, the malloc'd *cond is no longer freed, leaking memory.",
+              "file": "lib/common/threading.c",
+              "line_end": 166,
+              "line_start": 166
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "cost": {
+        "dollars": 0.002626,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.8,
+          "description": "Guard for windowLog <= hashRateLog removed. If these fields are unsigned, windowLog - hashRateLog underflows to a very large value instead of a small/negative one, so BOUNDED clamps to ZSTD_HASHLOG_MAX rather than the previously guaranteed ZSTD_HASHLOG_MIN, changing behavior in that case.",
+          "file": "lib/compress/zstd_ldm.c",
+          "line_end": 155,
+          "line_start": 155
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 367,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-haiku-4-5 (no extended)",
+            "output_tokens": 63,
+            "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.\", \"confidence\": 0.91}]}"
+          },
+          "cost": {
+            "dollars": 0.000682,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.91,
+              "description": "Removed guard allows params->windowLog - params->hashRateLog to be negative when windowLog <= hashRateLog.",
+              "file": "lib/compress/zstd_ldm.c",
+              "line_end": 155,
+              "line_start": 155
+            }
+          ],
+          "node_id": "b1",
+          "parse_failed": false,
+          "role": "cheap-scanner"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 432,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 108,
+            "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"Guard for windowLog <= hashRateLog removed. If these fields are unsigned, windowLog - hashRateLog underflows to a very large value instead of a small/negative one, so BOUNDED clamps to ZSTD_HASHLOG_MAX rather than the previously guaranteed ZSTD_HASHLOG_MIN, changing behavior in that case.\", \"confidence\": 0.8}]}"
+          },
+          "cost": {
+            "dollars": 0.001944,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.8,
+              "description": "Guard for windowLog <= hashRateLog removed. If these fields are unsigned, windowLog - hashRateLog underflows to a very large value instead of a small/negative one, so BOUNDED clamps to ZSTD_HASHLOG_MAX rather than the previously guaranteed ZSTD_HASHLOG_MIN, changing behavior in that case.",
+              "file": "lib/compress/zstd_ldm.c",
+              "line_end": 155,
+              "line_start": 155
+            }
+          ],
+          "node_id": "b2",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "B"
+    },
+    {
+      "case_id": "case-adk-5415",
+      "cost": {
+        "dollars": 0.005059999999999999,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.9,
+          "description": "The None guard around round() was removed; round(eval_metric_result.score, 2) is now called unconditionally and raises TypeError whenever score is None.",
+          "file": "src/google/adk/optimization/local_eval_sampler.py",
+          "line_end": 292,
+          "line_start": 292
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 354,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 97,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"The None-check on eval_metric_result.score was removed; round() is now called unconditionally. If score can be None (as the prior code explicitly handled), this raises TypeError: type NoneType doesn't define __round__.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.001678,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "The None-check on eval_metric_result.score was removed; round() is now called unconditionally. If score can be None (as the prior code explicitly handled), this raises TypeError: type NoneType doesn't define __round__.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 463,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 72,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"Confirmed: the None guard removal means round() is called unconditionally, raising TypeError whenever score is None.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.001646,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "Confirmed: the None guard removal means round() is called unconditionally, raising TypeError whenever score is None.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 463,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 81,
+            "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"The None guard around round() was removed; round(eval_metric_result.score, 2) is now called unconditionally and raises TypeError whenever score is None.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.001736,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "The None guard around round() was removed; round(eval_metric_result.score, 2) is now called unconditionally and raises TypeError whenever score is None.",
+              "file": "src/google/adk/optimization/local_eval_sampler.py",
+              "line_end": 292,
+              "line_start": 292
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-coremltools-2714",
+      "cost": {
+        "dollars": 0.0060739999999999995,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.7,
+          "description": "The clamp (cast to int32, subtract 1 from high, take minimum) was removed. random_uniform can return a value arbitrarily close to (but less than) high; after truncating cast to int32 this can equal high itself, producing a sampled integer equal to the exclusive upper bound instead of being clamped to high-1.",
+          "file": "coremltools/converters/mil/frontend/torch/ops.py",
+          "line_end": 5656,
+          "line_start": 5656
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 340,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 128,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"The clamp of the cast random int to high-1 was removed. random_uniform's upper bound is exclusive in theory but due to floating point rounding the sampled value can round up to exactly `high` after cast to int32, producing an out-of-range integer (e.g. randint(0, n) could return n), which the removed minimum() call was guarding against.\", \"confidence\": 0.55}]}"
+          },
+          "cost": {
+            "dollars": 0.00196,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.55,
+              "description": "The clamp of the cast random int to high-1 was removed. random_uniform's upper bound is exclusive in theory but due to floating point rounding the sampled value can round up to exactly `high` after cast to int32, producing an out-of-range integer (e.g. randint(0, n) could return n), which the removed minimum() call was guarding against.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5657,
+              "line_start": 5657
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 479,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 100,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Confirmed: removing the minimum() clamp means float rounding near the exclusive upper bound can cast to exactly high after truncation to int32, yielding an out-of-range sampled integer that the removed clamp previously corrected.\", \"confidence\": 0.7}]}"
+          },
+          "cost": {
+            "dollars": 0.001958,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.7,
+              "description": "Confirmed: removing the minimum() clamp means float rounding near the exclusive upper bound can cast to exactly high after truncation to int32, yielding an out-of-range sampled integer that the removed clamp previously corrected.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5657,
+              "line_start": 5657
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 478,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 120,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5656, \"line_end\": 5656, \"category\": \"logic\", \"description\": \"The clamp (cast to int32, subtract 1 from high, take minimum) was removed. random_uniform can return a value arbitrarily close to (but less than) high; after truncating cast to int32 this can equal high itself, producing a sampled integer equal to the exclusive upper bound instead of being clamped to high-1.\", \"confidence\": 0.7}]}"
+          },
+          "cost": {
+            "dollars": 0.002156,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.7,
+              "description": "The clamp (cast to int32, subtract 1 from high, take minimum) was removed. random_uniform can return a value arbitrarily close to (but less than) high; after truncating cast to int32 this can equal high itself, producing a sampled integer equal to the exclusive upper bound instead of being clamped to high-1.",
+              "file": "coremltools/converters/mil/frontend/torch/ops.py",
+              "line_end": 5656,
+              "line_start": 5656
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-coremltools-2736",
+      "cost": {
+        "dollars": 0.00617,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "The beta shape check now compares self.gamma.shape instead of self.beta.shape against normalized_shape, so a beta with an incompatible shape is never caught, and the raised error message (which still references self.beta.shape) would also be misleading if gamma's mismatch triggers it.",
+          "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+          "line_end": 294,
+          "line_start": 294
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 375,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 126,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"The beta shape-compatibility check now uses self.gamma.shape instead of self.beta.shape, so an incompatible beta shape will not be caught (or a compatible beta could be wrongly rejected if gamma has a different, incompatible shape), and the raised error message reports self.beta.shape while the check used gamma's shape.\", \"confidence\": 0.93}]}"
+          },
+          "cost": {
+            "dollars": 0.00201,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.93,
+              "description": "The beta shape-compatibility check now uses self.gamma.shape instead of self.beta.shape, so an incompatible beta shape will not be caught (or a compatible beta could be wrongly rejected if gamma has a different, incompatible shape), and the raised error message reports self.beta.shape while the check used gamma's shape.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 513,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 95,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"Confirmed: the beta check now validates gamma's shape, so a mismatched beta shape is not caught, and the error message (referencing self.beta.shape) can also mismatch the shape actually checked.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.001976,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "Confirmed: the beta check now validates gamma's shape, so a mismatched beta shape is not caught, and the error message (referencing self.beta.shape) can also mismatch the shape actually checked.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 507,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 117,
+            "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"The beta shape check now compares self.gamma.shape instead of self.beta.shape against normalized_shape, so a beta with an incompatible shape is never caught, and the raised error message (which still references self.beta.shape) would also be misleading if gamma's mismatch triggers it.\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.002184,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "The beta shape check now compares self.gamma.shape instead of self.beta.shape against normalized_shape, so a beta with an incompatible shape is never caught, and the raised error message (which still references self.beta.shape) would also be misleading if gamma's mismatch triggers it.",
+              "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+              "line_end": 294,
+              "line_start": 294
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-errorprone-5603",
+      "cost": {
+        "dollars": 0.007063999999999999,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.75,
+          "description": "@Nullable was removed from the Literal record's object field but no validating constructor was added to reject null, and toString() now calls object().toString() instead of the null-safe String.valueOf(object()), so a Literal constructed with a null object throws NullPointerException in toString().",
+          "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+          "line_end": 201,
+          "line_start": 193
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 398,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 163,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"The @Nullable annotation was removed from the record component but nothing prevents object from actually being null at runtime (record has no validating constructor shown), and toString() now calls object().toString() directly instead of the null-safe String.valueOf(object()). If a null constant literal is ever represented (e.g. for a `null` Java literal), toString() will throw NullPointerException where it previously returned \\\"null\\\".\", \"confidence\": 0.5}]}"
+          },
+          "cost": {
+            "dollars": 0.002426,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.5,
+              "description": "The @Nullable annotation was removed from the record component but nothing prevents object from actually being null at runtime (record has no validating constructor shown), and toString() now calls object().toString() directly instead of the null-safe String.valueOf(object()). If a null constant literal is ever represented (e.g. for a `null` Java literal), toString() will throw NullPointerException where it previously returned \"null\".",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 572,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 112,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Confirmed: with @Nullable removed but no validating constructor added, a null object still reaches toString(), and object().toString() (vs. the removed null-safe String.valueOf) throws NullPointerException for a null constant literal.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.002264,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "Confirmed: with @Nullable removed but no validating constructor added, a null object still reaches toString(), and object().toString() (vs. the removed null-safe String.valueOf) throws NullPointerException for a null constant literal.",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 547,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 128,
+            "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"@Nullable was removed from the Literal record's object field but no validating constructor was added to reject null, and toString() now calls object().toString() instead of the null-safe String.valueOf(object()), so a Literal constructed with a null object throws NullPointerException in toString().\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.002374,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "@Nullable was removed from the Literal record's object field but no validating constructor was added to reject null, and toString() now calls object().toString() instead of the null-safe String.valueOf(object()), so a Literal constructed with a null object throws NullPointerException in toString().",
+              "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+              "line_end": 201,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-flatbuffers-9081",
+      "cost": {
+        "dollars": 0.00677,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "security",
+          "confidence": 0.85,
+          "description": "rangeInBuffer is now passed intLen (element count) instead of the overflow-checked byte size (intLen * MemoryLayout<T>.size), which undercounts required bytes for any T larger than 1 byte and also removes the overflow check entirely, allowing out-of-bounds ranges to pass verification on untrusted flatbuffer input.",
+          "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+          "line_end": 60,
+          "line_start": 58
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 366,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 162,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"The overflow-checked byte size computation (intLen * MemoryLayout<T>.size) was removed and rangeInBuffer is now called with intLen (an element count) instead of the byte size, and without overflow protection. This under-counts the bytes actually needed for T elements > 1 byte, allowing rangeInBuffer's bounds check to pass for buffers that are too small, and removes the overflow guard entirely, both of which can permit out-of-bounds access when verifying untrusted flatbuffer data.\", \"confidence\": 0.8}]}"
+          },
+          "cost": {
+            "dollars": 0.002352,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.8,
+              "description": "The overflow-checked byte size computation (intLen * MemoryLayout<T>.size) was removed and rangeInBuffer is now called with intLen (an element count) instead of the byte size, and without overflow protection. This under-counts the bytes actually needed for T elements > 1 byte, allowing rangeInBuffer's bounds check to pass for buffers that are too small, and removes the overflow guard entirely, both of which can permit out-of-bounds access when verifying untrusted flatbuffer data.",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 60,
+              "line_start": 58
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 540,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 111,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"Confirmed: passing intLen (element count) instead of the overflow-checked byte size to rangeInBuffer undercounts required bytes for T larger than 1 byte and removes overflow protection, both of which can let out-of-bounds ranges pass verification on untrusted flatbuffer input.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.00219,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.85,
+              "description": "Confirmed: passing intLen (element count) instead of the overflow-checked byte size to rangeInBuffer undercounts required bytes for T larger than 1 byte and removes overflow protection, both of which can let out-of-bounds ranges pass verification on untrusted flatbuffer input.",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 60,
+              "line_start": 58
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 514,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 120,
+            "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 58, \"line_end\": 60, \"category\": \"security\", \"description\": \"rangeInBuffer is now passed intLen (element count) instead of the overflow-checked byte size (intLen * MemoryLayout<T>.size), which undercounts required bytes for any T larger than 1 byte and also removes the overflow check entirely, allowing out-of-bounds ranges to pass verification on untrusted flatbuffer input.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.002228,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.85,
+              "description": "rangeInBuffer is now passed intLen (element count) instead of the overflow-checked byte size (intLen * MemoryLayout<T>.size), which undercounts required bytes for any T larger than 1 byte and also removes the overflow check entirely, allowing out-of-bounds ranges to pass verification on untrusted flatbuffer input.",
+              "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+              "line_end": 60,
+              "line_start": 58
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gogithub-4126",
+      "cost": {
+        "dollars": 0.00551,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "security",
+          "confidence": 0.92,
+          "description": "sanitizeURL now only redacts the client_secret query parameter; access_token and token, previously covered by the sensitiveParams list, are no longer redacted and will leak in any URL that gets logged or displayed.",
+          "file": "github/github.go",
+          "line_end": 1395,
+          "line_start": 1391
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 382,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 97,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1395, \"category\": \"security\", \"description\": \"sanitizeURL no longer redacts access_token or token query parameters (only client_secret), so these sensitive credentials will now be exposed in URLs that get logged or surfaced to users, e.g. in error messages or logs that call this function.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.001734,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.92,
+              "description": "sanitizeURL no longer redacts access_token or token query parameters (only client_secret), so these sensitive credentials will now be exposed in URLs that get logged or surfaced to users, e.g. in error messages or logs that call this function.",
+              "file": "github/github.go",
+              "line_end": 1395,
+              "line_start": 1391
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 490,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 89,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1395, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts client_secret; the access_token and token query parameters (previously covered by sensitiveParams) are no longer redacted and will leak in any URL that is logged or shown to the user.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.00187,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.92,
+              "description": "sanitizeURL now only redacts client_secret; the access_token and token query parameters (previously covered by sensitiveParams) are no longer redacted and will leak in any URL that is logged or shown to the user.",
+              "file": "github/github.go",
+              "line_end": 1395,
+              "line_start": 1391
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 508,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 89,
+            "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1391, \"line_end\": 1395, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts the client_secret query parameter; access_token and token, previously covered by the sensitiveParams list, are no longer redacted and will leak in any URL that gets logged or displayed.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.001906,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "security",
+              "confidence": 0.92,
+              "description": "sanitizeURL now only redacts the client_secret query parameter; access_token and token, previously covered by the sensitiveParams list, are no longer redacted and will leak in any URL that gets logged or displayed.",
+              "file": "github/github.go",
+              "line_end": 1395,
+              "line_start": 1391
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gogithub-4291",
+      "cost": {
+        "dollars": 0.002142,
+        "latency_s": 0.0
+      },
+      "findings": [],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 332,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 347,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000734,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 332,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-gson-3067",
+      "cost": {
+        "dollars": 0.0044659999999999995,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.5,
+          "description": "Switching URI serialization from toString() to toASCIIString() percent-encodes non-ASCII characters, changing the serialized form for URIs with unicode content and breaking compatibility with previously written JSON or any consumer comparing against the original toString() representation.",
+          "file": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+          "line_end": 733,
+          "line_start": 733
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 286,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000612,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 301,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 118,
+            "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching from value.toString() to value.toASCIIString() changes the serialized form of URIs containing non-ASCII/unicode characters (percent-encodes them), which can break compatibility with previously serialized JSON and any consumer expecting the original toString() representation.\", \"confidence\": 0.45}]}"
+          },
+          "cost": {
+            "dollars": 0.001782,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.45,
+              "description": "Switching from value.toString() to value.toASCIIString() changes the serialized form of URIs containing non-ASCII/unicode characters (percent-encodes them), which can break compatibility with previously serialized JSON and any consumer expecting the original toString() representation.",
+              "file": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+              "line_end": 733,
+              "line_start": 733
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 441,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 119,
+            "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching URI serialization from toString() to toASCIIString() percent-encodes non-ASCII characters, changing the serialized form for URIs with unicode content and breaking compatibility with previously written JSON or any consumer comparing against the original toString() representation.\", \"confidence\": 0.5}]}"
+          },
+          "cost": {
+            "dollars": 0.002072,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.5,
+              "description": "Switching URI serialization from toString() to toASCIIString() percent-encodes non-ASCII characters, changing the serialized form for URIs with unicode content and breaking compatibility with previously written JSON or any consumer comparing against the original toString() representation.",
+              "file": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+              "line_end": 733,
+              "line_start": 733
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-pkl-1656",
+      "cost": {
+        "dollars": 0.006062,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.8,
+          "description": "Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative), so calling toRadixString on Long.MIN_VALUE produces a malformed result instead of the correct value the original Long.toString(self, radix) produced.",
+          "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+          "line_end": 193,
+          "line_start": 193
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 346,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 124,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(self) overflows for self == Long.MIN_VALUE (Math.abs(Long.MIN_VALUE) returns Long.MIN_VALUE, still negative), so toRadixString(Long.MIN_VALUE, radix) produces an incorrect result (e.g. a doubled negative sign or wrong digits) whereas the original Long.toString(self, radix) handled this case correctly.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.001932,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "Math.abs(self) overflows for self == Long.MIN_VALUE (Math.abs(Long.MIN_VALUE) returns Long.MIN_VALUE, still negative), so toRadixString(Long.MIN_VALUE, radix) produces an incorrect result (e.g. a doubled negative sign or wrong digits) whereas the original Long.toString(self, radix) handled this case correctly.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 482,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 114,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE unchanged (still negative), so toRadixString on Long.MIN_VALUE produces a malformed result (e.g. duplicated/incorrect sign or digits) instead of the correct value the original Long.toString(self, radix) produced.\", \"confidence\": 0.8}]}"
+          },
+          "cost": {
+            "dollars": 0.002104,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.8,
+              "description": "Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE unchanged (still negative), so toRadixString on Long.MIN_VALUE produces a malformed result (e.g. duplicated/incorrect sign or digits) instead of the correct value the original Long.toString(self, radix) produced.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 498,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 103,
+            "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative), so calling toRadixString on Long.MIN_VALUE produces a malformed result instead of the correct value the original Long.toString(self, radix) produced.\", \"confidence\": 0.8}]}"
+          },
+          "cost": {
+            "dollars": 0.002026,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.8,
+              "description": "Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative), so calling toRadixString on Long.MIN_VALUE produces a malformed result instead of the correct value the original Long.toString(self, radix) produced.",
+              "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+              "line_end": 193,
+              "line_start": 193
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-sarama-3314",
+      "cost": {
+        "dollars": 0.006392,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.6,
+          "description": "Both io.ReadFull error paths now return bytesRead (the count before this read attempt) instead of the count including bytes actually consumed by the failing read (previously n or bytesRead+n), so callers using the returned count to know how many bytes were consumed on a partial/failed read get an undercount.",
+          "file": "request.go",
+          "line_end": 108,
+          "line_start": 96
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 340,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 132,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On a failed/partial io.ReadFull, the function now returns bytesRead (bytes accumulated before this read) instead of including the partial bytes actually read in this call (n, or bytesRead+n as before). Callers relying on the returned byte count to know how much of the stream was consumed on error will get an undercount, e.g. when the length prefix or body is read only partially before an error.\", \"confidence\": 0.6}]}"
+          },
+          "cost": {
+            "dollars": 0.002,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.6,
+              "description": "On a failed/partial io.ReadFull, the function now returns bytesRead (bytes accumulated before this read) instead of including the partial bytes actually read in this call (n, or bytesRead+n as before). Callers relying on the returned byte count to know how much of the stream was consumed on error will get an undercount, e.g. when the length prefix or body is read only partially before an error.",
+              "file": "request.go",
+              "line_end": 108,
+              "line_start": 96
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 483,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 131,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On a failed/partial io.ReadFull, both call sites now return bytesRead (the count from before this read) instead of including the bytes actually consumed by this read attempt (previously n or bytesRead+n). Callers relying on the returned count to know exactly how many bytes were consumed from the stream on error will get an undercount when the length prefix or body read fails partway through.\", \"confidence\": 0.6}]}"
+          },
+          "cost": {
+            "dollars": 0.002276,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.6,
+              "description": "On a failed/partial io.ReadFull, both call sites now return bytesRead (the count from before this read) instead of including the bytes actually consumed by this read attempt (previously n or bytesRead+n). Callers relying on the returned count to know exactly how many bytes were consumed from the stream on error will get an undercount when the length prefix or body read fails partway through.",
+              "file": "request.go",
+              "line_end": 108,
+              "line_start": 96
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 508,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 110,
+            "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Both io.ReadFull error paths now return bytesRead (the count before this read attempt) instead of the count including bytes actually consumed by the failing read (previously n or bytesRead+n), so callers using the returned count to know how many bytes were consumed on a partial/failed read get an undercount.\", \"confidence\": 0.6}]}"
+          },
+          "cost": {
+            "dollars": 0.002116,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.6,
+              "description": "Both io.ReadFull error paths now return bytesRead (the count before this read attempt) instead of the count including bytes actually consumed by the failing read (previously n or bytesRead+n), so callers using the returned count to know how many bytes were consumed on a partial/failed read get an undercount.",
+              "file": "request.go",
+              "line_end": 108,
+              "line_start": 96
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-sarama-3642",
+      "cost": {
+        "dollars": 0.005666,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.92,
+          "description": "The threshold was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's condition. Since the preceding else-if already matches versions >= V2_4_0_0, this branch is unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and get Version=7 instead of the intended 8.",
+          "file": "metadata_request.go",
+          "line_end": 34,
+          "line_start": 34
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 265,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 119,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The condition was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's threshold. Since the previous `else if version.IsAtLeast(V2_4_0_0)` already handles versions >= V2_4_0_0, this branch is now unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and incorrectly get Version = 7 instead of 8.\", \"confidence\": 0.9}]}"
+          },
+          "cost": {
+            "dollars": 0.00172,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.9,
+              "description": "The condition was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's threshold. Since the previous `else if version.IsAtLeast(V2_4_0_0)` already handles versions >= V2_4_0_0, this branch is now unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and incorrectly get Version = 7 instead of 8.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 396,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 120,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The condition was changed from V2_3_0_0 to V2_4_0_0, duplicating the previous branch's threshold. Since the prior 'else if version.IsAtLeast(V2_4_0_0)' already catches versions >= V2_4_0_0, this branch is now unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and incorrectly get Version = 7 instead of 8.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.001992,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.92,
+              "description": "The condition was changed from V2_3_0_0 to V2_4_0_0, duplicating the previous branch's threshold. Since the prior 'else if version.IsAtLeast(V2_4_0_0)' already catches versions >= V2_4_0_0, this branch is now unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and incorrectly get Version = 7 instead of 8.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 422,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 111,
+            "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The threshold was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's condition. Since the preceding else-if already matches versions >= V2_4_0_0, this branch is unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and get Version=7 instead of the intended 8.\", \"confidence\": 0.92}]}"
+          },
+          "cost": {
+            "dollars": 0.001954,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.92,
+              "description": "The threshold was changed from V2_3_0_0 to V2_4_0_0, duplicating the prior branch's condition. Since the preceding else-if already matches versions >= V2_4_0_0, this branch is unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the V2_1_0_0 branch and get Version=7 instead of the intended 8.",
+              "file": "metadata_request.go",
+              "line_end": 34,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3554",
+      "cost": {
+        "dollars": 0.0053,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.95,
+          "description": "The mask was changed from 0xffff to 0xfff, so getUnsignedShort truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).",
+          "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+          "line_end": 134,
+          "line_start": 134
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 274,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 105,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask was changed from 0xffff to 0xfff, so getUnsignedShort now truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.001598,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "The mask was changed from 0xffff to 0xfff, so getUnsignedShort now truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 390,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 105,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask was changed from 0xffff to 0xfff, so getUnsignedShort now truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.00183,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "The mask was changed from 0xffff to 0xfff, so getUnsignedShort now truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 416,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 104,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask was changed from 0xffff to 0xfff, so getUnsignedShort truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).\", \"confidence\": 0.95}]}"
+          },
+          "cost": {
+            "dollars": 0.001872,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.95,
+              "description": "The mask was changed from 0xffff to 0xfff, so getUnsignedShort truncates to 12 bits instead of 16, returning incorrect values for any short with bits set above bit 11 (e.g. 0x8000 & 0xfff = 0 instead of 32768).",
+              "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+              "line_end": 134,
+              "line_start": 134
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3587",
+      "cost": {
+        "dollars": 0.006698,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.4,
+          "description": "addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative int, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely; this requires available to reach Integer.MAX_VALUE, an extreme edge case.",
+          "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+          "line_end": 205,
+          "line_start": 205
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 358,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 128,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"The overflow-protected addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available is Integer.MAX_VALUE, this overflows to a negative number, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of being safely clamped.\", \"confidence\": 0.55}]}"
+          },
+          "cost": {
+            "dollars": 0.001996,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.55,
+              "description": "The overflow-protected addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available is Integer.MAX_VALUE, this overflows to a negative number, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of being safely clamped.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 498,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 127,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"The overflow-protected addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative number, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely.\", \"confidence\": 0.45}]}"
+          },
+          "cost": {
+            "dollars": 0.002266,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.45,
+              "description": "The overflow-protected addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative number, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 523,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 139,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative int, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely; this requires available to reach Integer.MAX_VALUE, an extreme edge case.\", \"confidence\": 0.4}]}"
+          },
+          "cost": {
+            "dollars": 0.002436,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.4,
+              "description": "addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative int, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely; this requires available to reach Integer.MAX_VALUE, an extreme edge case.",
+              "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+              "line_end": 205,
+              "line_start": 205
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-servicetalk-3588",
+      "cost": {
+        "dollars": 0.007189999999999999,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.65,
+          "description": "Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. Once counter exceeds Integer.MAX_VALUE, truncating to int before taking the modulo can yield a negative or otherwise incorrect value for i, instead of the always in-range [0, hostsSize) result produced by computing the modulo in long space first.",
+          "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+          "line_end": 200,
+          "line_start": 200
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 372,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 147,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. For counter values exceeding Integer.MAX_VALUE, casting to int first can produce a different (including negative) value before the modulo, yielding an incorrect or negative index i, whereas the original computed the modulo in long space first, keeping the result within [0, hostsSize).\", \"confidence\": 0.65}]}"
+          },
+          "cost": {
+            "dollars": 0.002214,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.65,
+              "description": "Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. For counter values exceeding Integer.MAX_VALUE, casting to int first can produce a different (including negative) value before the modulo, yielding an incorrect or negative index i, whereas the original computed the modulo in long space first, keeping the result within [0, hostsSize).",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 530,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 144,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. For counter values exceeding Integer.MAX_VALUE, truncating to int before the modulo can produce a different or negative value, yielding an incorrect or out-of-range index i, whereas computing the modulo in long space first (as before) kept the result within [0, hostsSize).\", \"confidence\": 0.65}]}"
+          },
+          "cost": {
+            "dollars": 0.0025,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.65,
+              "description": "Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. For counter values exceeding Integer.MAX_VALUE, truncating to int before the modulo can produce a different or negative value, yielding an incorrect or out-of-range index i, whereas computing the modulo in long space first (as before) kept the result within [0, hostsSize).",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 553,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 137,
+            "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. Once counter exceeds Integer.MAX_VALUE, truncating to int before taking the modulo can yield a negative or otherwise incorrect value for i, instead of the always in-range [0, hostsSize) result produced by computing the modulo in long space first.\", \"confidence\": 0.65}]}"
+          },
+          "cost": {
+            "dollars": 0.002476,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.65,
+              "description": "Operator precedence changed from (int)(counter % hostsSize) to (int)counter % hostsSize. Once counter exceeds Integer.MAX_VALUE, truncating to int before taking the modulo can yield a negative or otherwise incorrect value for i, instead of the always in-range [0, hostsSize) result produced by computing the modulo in long space first.",
+              "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+              "line_end": 200,
+              "line_start": 200
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-swiftcollections-661",
+      "cost": {
+        "dollars": 0.00635,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.85,
+          "description": "Swift.max(16, ...) was changed to Swift.min(16, ...) in both node-capacity calculations, inverting the intended floor of 16 into a ceiling of 16. For large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, node capacity now drops below the previously guaranteed minimum.",
+          "file": "Sources/SortedCollections/BTree/_BTree.swift",
+          "line_end": 46,
+          "line_start": 34
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 336,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 130,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Swift.max(16, ...) was changed to Swift.min(16, ...), inverting the intent of guaranteeing a minimum node capacity of 16. Now the computed capacity is capped at 16 instead of floored at 16, so when capacityInBytes / MemoryLayout<Key>.stride is less than 16 (e.g. large Key types), the node capacity can drop below the previously guaranteed minimum of 16.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.001972,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.85,
+              "description": "Swift.max(16, ...) was changed to Swift.min(16, ...), inverting the intent of guaranteeing a minimum node capacity of 16. Now the computed capacity is capped at 16 instead of floored at 16, so when capacityInBytes / MemoryLayout<Key>.stride is less than 16 (e.g. large Key types), the node capacity can drop below the previously guaranteed minimum of 16.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 478,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 127,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Swift.max(16, ...) was changed to Swift.min(16, ...), inverting the intent of guaranteeing a minimum node capacity of 16. The computed capacity is now capped at 16 instead of floored at 16, so for large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, the node capacity drops below the previously guaranteed minimum.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.002226,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.85,
+              "description": "Swift.max(16, ...) was changed to Swift.min(16, ...), inverting the intent of guaranteeing a minimum node capacity of 16. The computed capacity is now capped at 16 instead of floored at 16, so for large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, the node capacity drops below the previously guaranteed minimum.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 501,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 115,
+            "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Swift.max(16, ...) was changed to Swift.min(16, ...) in both node-capacity calculations, inverting the intended floor of 16 into a ceiling of 16. For large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, node capacity now drops below the previously guaranteed minimum.\", \"confidence\": 0.85}]}"
+          },
+          "cost": {
+            "dollars": 0.002152,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.85,
+              "description": "Swift.max(16, ...) was changed to Swift.min(16, ...) in both node-capacity calculations, inverting the intended floor of 16 into a ceiling of 16. For large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, node capacity now drops below the previously guaranteed minimum.",
+              "file": "Sources/SortedCollections/BTree/_BTree.swift",
+              "line_end": 46,
+              "line_start": 34
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-zstd-4486",
+      "cost": {
+        "dollars": 0.005816,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.75,
+          "description": "The cleanup that freed the ZSTD_malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed; if either init call returns non-zero, the previously allocated memory is now leaked instead of being freed.",
+          "file": "lib/common/threading.c",
+          "line_end": 167,
+          "line_start": 146
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 421,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 99,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 167, \"category\": \"logic\", \"description\": \"The cleanup that frees the malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed. If pthread_mutex_init or pthread_cond_init returns non-zero, the previously allocated ZSTD_malloc'd memory is now leaked instead of being freed.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.001832,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "The cleanup that frees the malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed. If pthread_mutex_init or pthread_cond_init returns non-zero, the previously allocated ZSTD_malloc'd memory is now leaked instead of being freed.",
+              "file": "lib/common/threading.c",
+              "line_end": 167,
+              "line_start": 146
+            }
+          ],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 532,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 91,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 167, \"category\": \"logic\", \"description\": \"The cleanup that freed the malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed. If either init call returns non-zero, the previously ZSTD_malloc'd memory is now leaked instead of being freed.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.001974,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "The cleanup that freed the malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed. If either init call returns non-zero, the previously ZSTD_malloc'd memory is now leaked instead of being freed.",
+              "file": "lib/common/threading.c",
+              "line_end": 167,
+              "line_start": 146
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 550,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 91,
+            "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 167, \"category\": \"logic\", \"description\": \"The cleanup that freed the ZSTD_malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed; if either init call returns non-zero, the previously allocated memory is now leaked instead of being freed.\", \"confidence\": 0.75}]}"
+          },
+          "cost": {
+            "dollars": 0.00201,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.75,
+              "description": "The cleanup that freed the ZSTD_malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed; if either init call returns non-zero, the previously allocated memory is now leaked instead of being freed.",
+              "file": "lib/common/threading.c",
+              "line_end": 167,
+              "line_start": 146
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    },
+    {
+      "case_id": "case-zstd-4626",
+      "cost": {
+        "dollars": 0.004778,
+        "latency_s": 0.0
+      },
+      "findings": [
+        {
+          "category": "logic",
+          "confidence": 0.65,
+          "description": "Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned, windowLog - hashRateLog underflows to a very large value instead of going negative, and BOUNDED then clamps to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.",
+          "file": "lib/compress/zstd_ldm.c",
+          "line_end": 154,
+          "line_start": 154
+        }
+      ],
+      "halted_reason": null,
+      "node_results": [
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 332,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 4,
+            "text": "{\"findings\": []}"
+          },
+          "cost": {
+            "dollars": 0.000704,
+            "latency_s": 0.0
+          },
+          "findings": [],
+          "node_id": "c1",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 347,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 121,
+            "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 154, \"line_end\": 154, \"category\": \"logic\", \"description\": \"Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned types, windowLog - hashRateLog underflows to a huge value instead of going negative, and BOUNDED would then clamp to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.\", \"confidence\": 0.65}]}"
+          },
+          "cost": {
+            "dollars": 0.001904,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.65,
+              "description": "Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned types, windowLog - hashRateLog underflows to a huge value instead of going negative, and BOUNDED would then clamp to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.",
+              "file": "lib/compress/zstd_ldm.c",
+              "line_end": 154,
+              "line_start": 154
+            }
+          ],
+          "node_id": "c2",
+          "parse_failed": false,
+          "role": "critic"
+        },
+        {
+          "completion": {
+            "cached_input_tokens": 0,
+            "input_tokens": 490,
+            "latency_s": 0.0,
+            "model_id": "chat:claude-sonnet-5 (medium)",
+            "output_tokens": 119,
+            "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 154, \"line_end\": 154, \"category\": \"logic\", \"description\": \"Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned, windowLog - hashRateLog underflows to a very large value instead of going negative, and BOUNDED then clamps to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.\", \"confidence\": 0.65}]}"
+          },
+          "cost": {
+            "dollars": 0.00217,
+            "latency_s": 0.0
+          },
+          "findings": [
+            {
+              "category": "logic",
+              "confidence": 0.65,
+              "description": "Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned, windowLog - hashRateLog underflows to a very large value instead of going negative, and BOUNDED then clamps to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.",
+              "file": "lib/compress/zstd_ldm.c",
+              "line_end": 154,
+              "line_start": 154
+            }
+          ],
+          "node_id": "c3",
+          "parse_failed": false,
+          "role": "deep-reviewer"
+        }
+      ],
+      "path_id": "C"
+    }
+  ]
+}

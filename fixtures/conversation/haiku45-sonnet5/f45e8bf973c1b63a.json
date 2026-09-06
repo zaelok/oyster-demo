@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 456,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 81,
+  "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"None check removed. round(eval_metric_result.score, 2) is called unconditionally now, so a None score raises TypeError since NoneType has no __round__.\", \"confidence\": 0.95}]}"
+}

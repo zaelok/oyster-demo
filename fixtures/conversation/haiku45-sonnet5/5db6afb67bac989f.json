@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 371,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 125,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Changed max to min reverses capacity logic; now returns minimum instead of maximum capacity.\", \"confidence\": 0.96}]}"
+}

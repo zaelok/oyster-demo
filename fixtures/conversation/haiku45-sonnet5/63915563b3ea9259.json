@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 479,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 100,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"Confirmed: removing the minimum() clamp means float rounding near the exclusive upper bound can cast to exactly high after truncation to int32, yielding an out-of-range sampled integer that the removed clamp previously corrected.\", \"confidence\": 0.7}]}"
+}

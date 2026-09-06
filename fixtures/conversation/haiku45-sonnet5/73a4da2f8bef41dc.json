@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 432,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 157,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"Returns bytesRead (accumulated before this read) instead of the actual number of bytes read by this ReadFull call, losing partial-read byte count information on error for the length-prefix read.\", \"confidence\": 0.75}, {\"file\": \"request.go\", \"line_start\": 106, \"line_end\": 106, \"category\": \"logic\", \"description\": \"Returns bytesRead without adding the partial bytes read into encodedReq, so callers relying on the returned count to know how much of the stream was consumed on error get an undercount.\", \"confidence\": 0.93}]}"
+}

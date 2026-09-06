@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 490,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 119,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 154, \"line_end\": 154, \"category\": \"logic\", \"description\": \"Removed the explicit windowLog <= hashRateLog guard. If windowLog and hashRateLog are unsigned, windowLog - hashRateLog underflows to a very large value instead of going negative, and BOUNDED then clamps to ZSTD_HASHLOG_MAX rather than the originally intended ZSTD_HASHLOG_MIN, silently picking the wrong hashLog for that edge case.\", \"confidence\": 0.65}]}"
+}

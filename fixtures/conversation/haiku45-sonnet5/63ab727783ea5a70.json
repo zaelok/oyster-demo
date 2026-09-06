@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 397,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 75,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1392, \"line_end\": 1393, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts client_secret; access_token and token are no longer redacted, so those secrets can leak into logs/errors that call this function.\", \"confidence\": 0.92}]}"
+}

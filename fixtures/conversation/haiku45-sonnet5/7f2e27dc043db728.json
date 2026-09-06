@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 501,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 115,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Swift.max(16, ...) was changed to Swift.min(16, ...) in both node-capacity calculations, inverting the intended floor of 16 into a ceiling of 16. For large Key types where capacityInBytes / MemoryLayout<Key>.stride is less than 16, node capacity now drops below the previously guaranteed minimum.\", \"confidence\": 0.85}]}"
+}

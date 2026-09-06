@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 499,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 171,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"max replaced with min, so this now returns the minimum of 16 and capacityInBytes/stride instead of the maximum, shrinking node capacity below the intended floor of 16 whenever the computed value is larger.\", \"confidence\": 0.93}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same max-to-min inversion for the second capacity calculation, capping capacity at 16 instead of using it as a floor, reducing node capacity for larger Key types.\", \"confidence\": 0.93}]}"
+}

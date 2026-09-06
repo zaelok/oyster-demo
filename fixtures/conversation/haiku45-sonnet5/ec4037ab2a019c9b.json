@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 421,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 99,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 167, \"category\": \"logic\", \"description\": \"The cleanup that frees the malloc'd mutex/cond on pthread_mutex_init/pthread_cond_init failure was removed. If pthread_mutex_init or pthread_cond_init returns non-zero, the previously allocated ZSTD_malloc'd memory is now leaked instead of being freed.\", \"confidence\": 0.75}]}"
+}

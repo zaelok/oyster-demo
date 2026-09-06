@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 340,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 132,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On a failed/partial io.ReadFull, the function now returns bytesRead (bytes accumulated before this read) instead of including the partial bytes actually read in this call (n, or bytesRead+n as before). Callers relying on the returned byte count to know how much of the stream was consumed on error will get an undercount, e.g. when the length prefix or body is read only partially before an error.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 523,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 139,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"addWithOverflowProtection(available, 1) was replaced with plain available + 1. If available equals Integer.MAX_VALUE this overflows to a negative int, causing new byte[min(negative, readChunkSize)] to throw NegativeArraySizeException instead of clamping safely; this requires available to reach Integer.MAX_VALUE, an extreme edge case.\", \"confidence\": 0.4}]}"
+}

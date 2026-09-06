@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 309,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 79,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"Mask changed from 0xffff to 0xfff loses one bit; getUnsignedShort will not correctly zero-extend short to int.\", \"confidence\": 0.99}]}"
+}

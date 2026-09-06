@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 375,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 54,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 108, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Returns bytesRead without adding len(encodedReq), losing partial read count on error.\", \"confidence\": 0.93}]}"
+}

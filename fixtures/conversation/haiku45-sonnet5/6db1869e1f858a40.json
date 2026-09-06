@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 572,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 112,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Confirmed: with @Nullable removed but no validating constructor added, a null object still reaches toString(), and object().toString() (vs. the removed null-safe String.valueOf) throws NullPointerException for a null constant literal.\", \"confidence\": 0.75}]}"
+}

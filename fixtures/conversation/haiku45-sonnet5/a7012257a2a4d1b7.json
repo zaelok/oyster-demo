@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 508,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 110,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"Both io.ReadFull error paths now return bytesRead (the count before this read attempt) instead of the count including bytes actually consumed by the failing read (previously n or bytesRead+n), so callers using the returned count to know how many bytes were consumed on a partial/failed read get an undercount.\", \"confidence\": 0.6}]}"
+}

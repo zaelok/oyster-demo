@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 281,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 107,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The condition was changed from V2_3_0_0 to V2_4_0_0, duplicating the check in the branch above. Since the preceding branch already handles IsAtLeast(V2_4_0_0), this branch becomes unreachable, so versions in [V2_3_0_0, V2_4_0_0) fall through to the wrong (lower) Version value instead of 8.\", \"confidence\": 0.95}]}"
+}

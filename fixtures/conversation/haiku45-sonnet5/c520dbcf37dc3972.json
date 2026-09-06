@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 300,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 54,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Duplicate version check for V2_4_0_0 makes the V2_3_0_0 branch unreachable.\", \"confidence\": 0.98}]}"
+}

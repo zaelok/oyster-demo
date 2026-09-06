@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 441,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-sonnet-5 (medium)",
+  "output_tokens": 119,
+  "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching URI serialization from toString() to toASCIIString() percent-encodes non-ASCII characters, changing the serialized form for URIs with unicode content and breaking compatibility with previously written JSON or any consumer comparing against the original toString() representation.\", \"confidence\": 0.5}]}"
+}

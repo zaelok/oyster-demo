@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 407,
+  "latency_s": 0.0,
+  "model_id": "chat:claude-haiku-4-5 (no extended)",
+  "output_tokens": 79,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Operator precedence error: (int) counter % hostsSize casts counter to int before modulo instead of after.\", \"confidence\": 0.97}]}"
+}
