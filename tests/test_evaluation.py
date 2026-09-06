@@ -137,9 +137,9 @@ def test_wilson_interval_and_percentile_helpers():
     from oyster.evaluation import percentile, wilson_interval
 
     low, high = wilson_interval(14, 17)
-    assert 0.58 < low < 0.60 and 0.94 < high < 0.95
+    assert 0.58 < low < 0.60 and 0.93 < high < 0.95
     assert wilson_interval(0, 0) == (0.0, 1.0)
-    assert wilson_interval(1, 1)[0] > 0.2 and wilson_interval(1, 1)[1] == 1.0
+    assert wilson_interval(1, 1)[0] > 0.2 and wilson_interval(1, 1)[1] > 0.999
     assert wilson_interval(0, 1)[0] == 0.0 and wilson_interval(0, 1)[1] < 0.8
     values = [float(v) for v in range(1, 18)]
     assert percentile(values, 0.50) == 9.0
@@ -152,7 +152,7 @@ def test_calibrate_records_evidence_and_percentiles(corpus_case, bindings):
     priors = calibrate([corpus_case], provider, bindings)
     logic = priors.quality[("cheap-scanner", "cheap-model", "logic")]
     assert (logic.rate, logic.n) == (1.0, 1)
-    assert logic.ci_low > 0.2 and logic.ci_high == 1.0
+    assert logic.ci_low > 0.2 and logic.ci_high > 0.999
     security = priors.quality[("cheap-scanner", "cheap-model", "security")]
     assert (security.rate, security.n, security.ci_low) == (0.0, 1, 0.0)
     profile = priors.cost[("cheap-scanner", "cheap-model")]

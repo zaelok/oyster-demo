@@ -125,7 +125,7 @@ def test_latency_is_predicted_at_p95_when_a_profile_exists(bindings):
 
     with_profile = priors()
     with_profile.cost[("cheap-scanner", "cheap-model")] = CostProfile(0.01, 0.02, 2.0, 150.0, 17)
-    quality, cost = predict(PATH_A, CASE, with_profile, bindings)
+    _quality, cost = predict(PATH_A, CASE, with_profile, bindings)
     assert cost.dollars == 0.01, "dollars stay at the mean"
     assert cost.latency_s == 150.0, "latency uses p95"
     selection = select(
