@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# CI never has an API key. eval-mock replays recorded fixtures (or, with none, produces an
+# honest all-zero table) so the green badge costs nobody a token.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: make install
+      - run: make lint
+      - run: make test
+      - run: make eval-mock
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: |
+            results.md
+            results.json

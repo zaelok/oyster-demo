@@ -1,0 +1,23 @@
+[project]
+name = "oyster-engine"
+version = "0.1.0"
+description = "OYSTER: orchestration with your success metrics, transparent evaluation and routing. Cost-aware path selection over a review graph, measured on a seeded-bug corpus."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.9",
+    "pydantic-settings>=2.5",
+    "anthropic>=0.40",
+    "rich>=13.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

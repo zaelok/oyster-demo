@@ -1,0 +1,22 @@
+{
+  "id": "case-dup-bug",
+  "diff": "--- a/pricing.py\n+++ b/pricing.py\n@@ -1,13 +1,14 @@\n TIERS = [(0, 0.0), (100, 0.05), (500, 0.10)]\n \n \n def discount_rate(quantity: int) -> float:\n     rate = 0.0\n     for threshold, tier_rate in TIERS:\n-        if quantity >= threshold:\n+        if quantity > threshold:\n             rate = tier_rate\n     return rate\n \n \n def total(quantity: int, unit_price: float) -> float:\n-    return quantity * unit_price * (1 - discount_rate(quantity))\n+    subtotal = quantity * unit_price\n+    return subtotal - subtotal * discount_rate(quantity)\n--- a/auth.py\n+++ b/auth.py\n@@ -20,6 +20,7 @@\n \n \n def find_user(db, name: str):\n-    return db.execute(\"SELECT * FROM users WHERE name = ?\", (name,))\n+    query = \"SELECT * FROM users WHERE name = '\" + name + \"'\"\n+    return db.execute(query)\n \n \n",
+  "seeded": [
+    {
+      "id": "case-01-b1",
+      "file": "pricing.py",
+      "line_start": 7,
+      "line_end": 7,
+      "category": "logic",
+      "description": "tier boundary changed from >= to >, so a quantity exactly at a threshold no longer earns that tier's discount"
+    },
+    {
+      "id": "case-01-b1",
+      "file": "auth.py",
+      "line_start": 23,
+      "line_end": 24,
+      "category": "security",
+      "description": "parameterized query replaced by string concatenation: SQL injection through name"
+    }
+  ]
+}

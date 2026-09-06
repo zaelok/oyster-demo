@@ -1,0 +1,14 @@
+{
+  "id": "case-NN",
+  "diff": "--- a/module.py\n+++ b/module.py\n@@ -1,3 +1,4 @@\n unchanged line\n-removed line\n+added line one\n+added line two\n unchanged line\n",
+  "seeded": [
+    {
+      "id": "case-NN-b1",
+      "file": "module.py",
+      "line_start": 2,
+      "line_end": 3,
+      "category": "logic",
+      "description": "what is wrong, stated so a reviewer could confirm it"
+    }
+  ]
+}

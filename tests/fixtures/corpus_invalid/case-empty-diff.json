@@ -1,0 +1,22 @@
+{
+  "id": "case-empty-diff",
+  "diff": "",
+  "seeded": [
+    {
+      "id": "case-01-b1",
+      "file": "pricing.py",
+      "line_start": 7,
+      "line_end": 7,
+      "category": "logic",
+      "description": "tier boundary changed from >= to >, so a quantity exactly at a threshold no longer earns that tier's discount"
+    },
+    {
+      "id": "case-01-b2",
+      "file": "auth.py",
+      "line_start": 23,
+      "line_end": 24,
+      "category": "security",
+      "description": "parameterized query replaced by string concatenation: SQL injection through name"
+    }
+  ]
+}
