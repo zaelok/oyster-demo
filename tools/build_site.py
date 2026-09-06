@@ -307,9 +307,25 @@ function init() {
   $('budget').max = (maxPer * 2).toFixed(4); $('budget').step = (maxPer / 50).toFixed(5); $('budget').value = (maxPer * 2).toFixed(4);
   $('lat').value = 120; $('h').value = 50;
   ['budget', 'lat', 'h'].forEach(id => $(id).addEventListener('input', renderSelect));
-  $('limitations').textContent = D.limitations;
+  $('limitations').innerHTML = miniMarkdown(D.limitations);
   $('built').textContent = D.built;
   renderAll();
+}
+function miniMarkdown(text) {
+  // Enough for the verbatim Limitations text: headings, bold, italics, bullet lists, paragraphs.
+  const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\*(.+?)\*/g, '<i>$1</i>');
+  const out = []; let list = [];
+  const flush = () => { if (list.length) { out.push('<ul>' + list.map(i => `<li>${i}</li>`).join('') + '</ul>'); list = []; } };
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (!line) { flush(); continue; }
+    if (line.startsWith('### ')) { flush(); out.push(`<h3 style="margin:14px 0 6px;font-size:15px">${inline(line.slice(4))}</h3>`); }
+    else if (line.startsWith('- ')) { list.push(inline(line.slice(2))); }
+    else if (list.length) { list[list.length - 1] += ' ' + inline(line); }
+    else { out.push(`<p style="margin:6px 0">${inline(line)}</p>`); }
+  }
+  flush();
+  return out.join('');
 }
 function renderAll() { renderRunMeta(); renderSummary(); renderSelect(); renderMatrix(); }
 if (!D.runs.length) { document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="card">No runs found under results/.</div>'); } else { init(); }
