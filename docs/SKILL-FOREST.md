@@ -160,11 +160,16 @@ about assumptions.
 
 A minimal generalization, in order of leverage:
 
-1. **A scenario plugin.** One protocol owning the four specific pieces: `load_tasks(dir)`,
-   `validate(task)`, `render(skill, task, upstream_outputs)`, `parse_output(text)`,
-   `score(outputs, expected)`. Code review moves to `scenarios/code_review/`; the engine types
-   stay frozen and become generic over the scenario's output type. Nothing in `graph`, `cost`,
-   `selector` or `evaluation` changes.
+1. **A scenario plugin.** Done: `oyster/scenario.py` is the protocol (`load_tasks`,
+   `render_messages`, `parse_output`, `keep`, `dedup_key`, `sort_key`, `expected`, `score`,
+   `prompt_keys`, `catalog`), `oyster/scenarios/code_review.py` gathers the review pieces
+   behind it without moving them, and `oyster/scenarios/bug_fixing.py` is the second instance.
+   The executor and evaluation take a scenario and default to code review, so every v1 call is
+   unchanged and the committed table replays identically. The genericity test
+   (`tests/test_bug_fixing_scenario.py`) runs a patch-producing flow, a cascade that hands the
+   first patch to the second node, and calibration, through the same engine with no engine
+   change. The structural scorer (files touched versus the reference fix) stands in until a
+   test runner is wired to real checkouts; `SubprocessRunner` is the shape of that.
 2. **The human executor is already prototyped.** Conversation mode's pack and ingest loop is a
    queue of tasks handed to a person and their answers taken back as completions. Naming it a
    provider with a cost per task makes people first-class bindings.

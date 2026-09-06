@@ -2,16 +2,23 @@
 tuple of nodes and edges, which is what lets one algorithm rank every strategy
 (architecture §1.5)."""
 
+from collections.abc import Collection
+
 from oyster.prompts.templates import TEMPLATES
 from oyster.types import Path
 
 __all__ = ["upstream_of", "validate_path"]
 
 
-def validate_path(path: Path, known_aliases: set[str]) -> None:
+def validate_path(
+    path: Path, known_aliases: set[str], known_prompt_keys: Collection[str] | None = None
+) -> None:
     """Raise ValueError with a specific message on the first violation, checked in rule order:
     unique ids, known edge endpoints, no cycles, topological node order, known model aliases,
-    known prompt keys. Roles may repeat across nodes; only ids must be unique."""
+    known prompt keys. Roles may repeat across nodes; only ids must be unique.
+
+    `known_prompt_keys` defaults to the code-review templates; a scenario passes its own."""
+    prompt_keys = set(known_prompt_keys) if known_prompt_keys is not None else set(TEMPLATES)
     seen: set[str] = set()
     for node in path.nodes:
         if node.id in seen:
@@ -45,7 +52,7 @@ def validate_path(path: Path, known_aliases: set[str]) -> None:
             )
 
     for node in path.nodes:
-        if node.prompt_key not in TEMPLATES:
+        if node.prompt_key not in prompt_keys:
             raise ValueError(
                 f"path {path.id!r}: node {node.id!r} uses unknown prompt key {node.prompt_key!r}"
             )

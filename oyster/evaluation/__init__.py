@@ -16,13 +16,14 @@ from collections import Counter, defaultdict
 from collections.abc import Sequence
 from dataclasses import asdict
 from datetime import UTC, datetime
+from typing import Any
 
 from oyster.cost import path_cost
 from oyster.executor import run_path
 from oyster.graph.catalog import CATALOG
-from oyster.matching import match
+from oyster.scenario import Scenario
+from oyster.scenarios.code_review import CODE_REVIEW
 from oyster.types import (
-    CorpusCase,
     Cost,
     CostProfile,
     Hook,
@@ -89,14 +90,17 @@ def calibration_paths(paths: Sequence[Path] = CATALOG) -> tuple[Path, ...]:
 
 
 def calibrate(
-    cases: Sequence[CorpusCase],
+    cases: Sequence[Any],
     provider: ModelProvider,
     bindings: dict[str, ModelBinding],
     paths: Sequence[Path] = CATALOG,
+    scenario: Scenario | None = None,
 ) -> Priors:
-    """catch_rate[(role, alias, category)] = strict catches of that category / seeded bugs of
-    that category, over every case, each node config run alone. Categories with no seeded
-    bugs get no entry rather than a fabricated zero. mean_cost is the mean Cost per config."""
+    """catch_rate[(role, alias, category)] = strict catches of that category / expected labels
+    of that category, over every case, each node config run alone. Categories with no expected
+    labels get no entry rather than a fabricated zero. mean_cost is the mean Cost per config.
+    `scenario` defaults to code review."""
+    scenario = scenario or CODE_REVIEW
     strict: Counter[tuple[str, str, str]] = Counter()
     seeded: Counter[tuple[str, str, str]] = Counter()
     costs: dict[tuple[str, str], list[Cost]] = defaultdict(list)
@@ -105,14 +109,15 @@ def calibrate(
         node = single.nodes[0]
         config = (node.role, node.model_alias)
         for case in cases:
-            result = run_path(single, case, provider, bindings)
-            report = match(result.findings, case.seeded, case.id, single.id)
+            result = run_path(single, case, provider, bindings, scenario=scenario)
+            report = scenario.score(result.findings, case, single.id)
             costs[config].append(result.cost)
-            category_of = {bug.id: bug.category for bug in case.seeded}
-            for bug in case.seeded:
-                seeded[(*config, bug.category)] += 1
-            for bug_id in report.caught_strict:
-                strict[(*config, category_of[bug_id])] += 1
+            expected = scenario.expected(case)
+            category_of = dict(expected)
+            for _expected_id, category in expected:
+                seeded[(*config, category)] += 1
+            for expected_id in report.caught_strict:
+                strict[(*config, category_of[expected_id])] += 1
 
     catch_rate = {key: strict[key] / count for key, count in seeded.items() if count > 0}
     quality = {
@@ -173,19 +178,22 @@ def percentile(values: Sequence[float], q: float) -> float:
 
 def evaluate(
     paths: Sequence[Path],
-    cases: Sequence[CorpusCase],
+    cases: Sequence[Any],
     provider: ModelProvider,
     bindings: dict[str, ModelBinding],
     hooks: Sequence[Hook] = (),
+    scenario: Scenario | None = None,
 ) -> tuple[tuple[PathResult, ...], tuple[MatchReport, ...]]:
-    """One PathResult and one MatchReport per (path, case), paths outer, cases inner."""
+    """One PathResult and one MatchReport per (path, case), paths outer, cases inner.
+    `scenario` defaults to code review."""
+    scenario = scenario or CODE_REVIEW
     results: list[PathResult] = []
     reports: list[MatchReport] = []
     for path in paths:
         for case in cases:
-            result = run_path(path, case, provider, bindings, hooks)
+            result = run_path(path, case, provider, bindings, hooks, scenario=scenario)
             results.append(result)
-            reports.append(match(result.findings, case.seeded, case.id, path.id))
+            reports.append(scenario.score(result.findings, case, path.id))
     return tuple(results), tuple(reports)
 
 

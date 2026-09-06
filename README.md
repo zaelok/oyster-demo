@@ -231,8 +231,13 @@ complete and every path catches nothing. That is a valid and honest result; see 
   (task, expected, output, scorer, skill, executor, binding, composite, cost, prior, objective,
   provenance), code review as one instance, and bug fixing, incident root cause and deployment
   as the next ones.
+- [`docs/PLATFORM.md`](docs/PLATFORM.md): the registry schemas (skill, executor, flow,
+  profile, corpus, role), the run manifest, the sparse matrix and what changed since the spec;
+  `registry/` holds the review skill as the first entry.
 - [`docs/instances/BUILD-CI.md`](docs/instances/BUILD-CI.md): the model applied to a cloud
-  build and CI platform, where the oracles are free and the objective is asymmetric.
+  build and CI platform, where the oracles are free and the objective is asymmetric;
+  [`docs/instances/BUILD-CI-PLAN.md`](docs/instances/BUILD-CI-PLAN.md) is the phased plan to
+  a first table on public Bazel repositories.
 - [`docs/instances/LIFE-PLANNING.md`](docs/instances/LIFE-PLANNING.md): the model applied to
   a person planning from school into work, with wellbeing models as the objective's schema and
   the person as the owner of the weights.
@@ -256,7 +261,9 @@ oyster/
   executor/           runs a path: hooks, cached diff, upstream findings, JSON repair
   selector/           predict and select under budget and latency tolerance
   evaluation/         calibrate, evaluate, render results.md
-  cli.py              calibrate | eval | select
+  scenario.py         the plugin protocol: task, expected, output, render, parse, keep, score
+  scenarios/          code_review (the first instance) and bug_fixing (the genericity test)
+  cli.py              calibrate | eval | select | pack | ingest
 tests/                one file per module, plus fixtures/ and an import-walk test
 fixtures/mock/        recorded completions for offline replay
 ```

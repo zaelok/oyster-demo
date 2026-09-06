@@ -20,13 +20,13 @@ import logging
 import re
 from collections.abc import Sequence
 from dataclasses import replace
+from typing import Any
 
 from oyster.cost import path_cost, price
 from oyster.graph import upstream_of
-from oyster.prompts import render_messages
+from oyster.scenario import Scenario
 from oyster.types import (
     CATEGORIES,
-    CorpusCase,
     Cost,
     Finding,
     Hook,
@@ -44,6 +44,7 @@ __all__ = [
     "UNBOUNDED",
     "BudgetHook",
     "diff_files",
+    "keep_known",
     "parse_findings",
     "run_path",
     "stats",
@@ -126,7 +127,9 @@ def _finding_from(item: object) -> Finding | None:
     return Finding(file, line_start, line_end, category, description, confidence)  # type: ignore[arg-type]
 
 
-def _keep_known(findings: Sequence[Finding], known: frozenset[str]) -> tuple[Finding, ...]:
+def keep_known(findings: Sequence[Finding], diff: str) -> tuple[Finding, ...]:
+    """Drop findings on files the diff does not touch, normalizing 'a/' and 'b/' prefixes."""
+    known = diff_files(diff)
     kept: list[Finding] = []
     for finding in findings:
         normalized = _normalize_file(finding.file)
@@ -138,39 +141,45 @@ def _keep_known(findings: Sequence[Finding], known: frozenset[str]) -> tuple[Fin
     return tuple(kept)
 
 
-def _upstream_findings(
-    path: Path, node_id: str, done: dict[str, NodeResult]
-) -> tuple[Finding, ...]:
-    seen: set[tuple[str, int, int, str]] = set()
-    merged: list[Finding] = []
+def _upstream_outputs(
+    path: Path, node_id: str, done: dict[str, NodeResult], scenario: Scenario
+) -> tuple[Any, ...]:
+    seen: set[Any] = set()
+    merged: list[Any] = []
     for upstream_id in upstream_of(path, node_id):
         result = done.get(upstream_id)
         if result is None:
             continue
-        for finding in result.findings:
-            key = (finding.file, finding.line_start, finding.line_end, finding.category)
+        for output in result.findings:
+            key = scenario.dedup_key(output)
             if key not in seen:
                 seen.add(key)
-                merged.append(finding)
-    merged.sort(key=lambda finding: (finding.file, finding.line_start))
+                merged.append(output)
+    merged.sort(key=scenario.sort_key)
     return tuple(merged)
 
 
-def _last_findings(results: Sequence[NodeResult]) -> tuple[Finding, ...]:
+def _last_findings(results: Sequence[NodeResult]) -> tuple[Any, ...]:
     return results[-1].findings if results else ()
 
 
 def run_path(
     path: Path,
-    case: CorpusCase,
+    case: Any,
     provider: ModelProvider,
     bindings: dict[str, ModelBinding],
     hooks: Sequence[Hook] = (),
     budget: Cost = UNBOUNDED,
+    scenario: Scenario | None = None,
 ) -> PathResult:
     """Execute path over case. `budget` is the run-level budget handed to hooks; it defaults to
-    unbounded because the spec signature carries none, and BudgetHook brings its own."""
-    known = diff_files(case.diff)
+    unbounded because the spec signature carries none, and BudgetHook brings its own.
+    `scenario` supplies rendering, parsing, filtering and output identity; it defaults to code
+    review so every v1 call site is unchanged."""
+    if scenario is None:
+        from oyster.scenarios.code_review import CODE_REVIEW
+
+        scenario = CODE_REVIEW
     results: list[NodeResult] = []
     done: dict[str, NodeResult] = {}
     spent = Cost.zero()
@@ -189,19 +198,19 @@ def run_path(
                 )
 
         binding = bindings[node.model_alias]
-        upstream = _upstream_findings(path, node.id, done)
-        system, user, cached_prefix = render_messages(node.prompt_key, case.diff, upstream)
+        upstream = _upstream_outputs(path, node.id, done, scenario)
+        system, user, cached_prefix = scenario.render_messages(node.prompt_key, case, upstream)
 
         completion = provider.complete(binding.model_id, system, user, cached_prefix)
         cost = price(completion, binding)
-        parsed = parse_findings(completion.text)
+        parsed = scenario.parse_output(completion.text)
         parse_failed = False
         if parsed is None:
             completion = provider.complete(
                 binding.model_id, system, user + REPAIR_SUFFIX, cached_prefix
             )
             cost = cost + price(completion, binding)
-            parsed = parse_findings(completion.text)
+            parsed = scenario.parse_output(completion.text)
             if parsed is None:
                 parse_failed = True
                 parsed = ()
@@ -209,7 +218,7 @@ def run_path(
         result = NodeResult(
             node_id=node.id,
             role=node.role,
-            findings=_keep_known(parsed, known),
+            findings=scenario.keep(parsed, case),
             completion=completion,
             cost=cost,
             parse_failed=parse_failed,
