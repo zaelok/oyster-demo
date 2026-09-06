@@ -6,6 +6,7 @@ immediately. Latency is perf_counter around the successful call.
 """
 
 import random
+import sys
 import time
 from collections.abc import Callable
 from typing import Any
@@ -17,7 +18,9 @@ from oyster.types import Completion
 MAX_ATTEMPTS = 3
 BACKOFF_S = (1.0, 2.0, 4.0)
 JITTER_S = 0.5
-MAX_OUTPUT_TOKENS = 4096
+# Thinking tokens count against max_tokens on the models that think by default (Sonnet 5,
+# Opus 5, Fable 5.1), and a capped response has no text to parse, so this is not lowballed.
+MAX_OUTPUT_TOKENS = 16000
 
 
 class AnthropicProvider:
@@ -29,7 +32,14 @@ class AnthropicProvider:
         sleep: Callable[[float], None] = time.sleep,
         rng: random.Random | None = None,
     ):
-        self._client = client if client is not None else anthropic.Anthropic(api_key=api_key)
+        if client is not None:
+            self._client = client
+        elif api_key:
+            self._client = anthropic.Anthropic(api_key=api_key)
+        else:
+            # Zero-arg client: the SDK resolves ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN or an
+            # `ant auth login` profile on its own.
+            self._client = anthropic.Anthropic()
         self._sleep = sleep
         self._rng = rng if rng is not None else random.Random()
 
@@ -57,6 +67,11 @@ class AnthropicProvider:
             request["system"] = system_blocks
 
         response, latency_s = self._call_with_retry(request)
+        stop_reason = getattr(response, "stop_reason", None)
+        if stop_reason not in (None, "end_turn", "stop_sequence"):
+            # A refusal or a max_tokens cut leaves no parseable text; the executor records the
+            # parse failure and the cost, this just makes the reason visible.
+            print(f"anthropic_provider: {model_id} stop_reason={stop_reason}", file=sys.stderr)
         usage = getattr(response, "usage", None)
         base_input = _usage_int(usage, "input_tokens")
         cache_read = _usage_int(usage, "cache_read_input_tokens")

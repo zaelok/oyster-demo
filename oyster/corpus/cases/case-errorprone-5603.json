@@ -1,0 +1,19 @@
+{
+  "id": "case-errorprone-5603",
+  "source": {
+    "pr": "https://github.com/google/error-prone/pull/5603",
+    "repo": "google/error-prone",
+    "number": 5603
+  },
+  "diff": "--- a/core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\n+++ b/core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\n@@ -190,7 +190,7 @@ private void add(ConstantExpression e) {\n   /** Represents a constant expression. */\n   public sealed interface ConstantExpression {\n     /** Represents a constant literal. */\n-    public static record Literal(@Nullable Object object) implements ConstantExpression {\n+    public static record Literal(Object object) implements ConstantExpression {\n       @Override\n       public void accept(ConstantExpressionVisitor visitor) {\n         visitor.visitConstant(object());\n@@ -198,7 +198,7 @@ public void accept(ConstantExpressionVisitor visitor) {\n \n       @Override\n       public final String toString() {\n-        return String.valueOf(object());\n+        return object().toString();\n       }\n     }\n \n",
+  "seeded": [
+    {
+      "id": "case-errorprone-5603-b1",
+      "file": "core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java",
+      "line_start": 201,
+      "line_end": 201,
+      "category": "logic",
+      "description": "object().toString() is called on a record component that can be null, so a null literal raises NullPointerException where String.valueOf handled it"
+    }
+  ]
+}

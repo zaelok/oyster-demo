@@ -25,6 +25,7 @@ ALLOWED: dict[str, set[str]] = {
     "oyster.providers": {
         "oyster.providers.mock_provider",
         "oyster.providers.anthropic_provider",
+        "oyster.providers.claude_code_provider",
         "oyster.providers.recording_provider",
     },
     "oyster.providers.mock_provider": {"oyster.cost"},
@@ -40,6 +41,14 @@ ALLOWED: dict[str, set[str]] = {
         "oyster.graph.catalog",
         "oyster.matching",
     },
+    "oyster.conversation": {
+        "oyster.cost",
+        "oyster.evaluation",
+        "oyster.executor",
+        "oyster.graph.catalog",
+        "oyster.providers.mock_provider",
+    },
+    "oyster.providers.claude_code_provider": set(),
 }
 ALWAYS = {"oyster.types", "oyster.config"}
 

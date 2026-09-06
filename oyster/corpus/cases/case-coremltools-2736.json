@@ -1,0 +1,19 @@
+{
+  "id": "case-coremltools-2736",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2736",
+    "repo": "apple/coremltools",
+    "number": 2736
+  },
+  "diff": "--- a/coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\n+++ b/coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\n@@ -291,7 +291,7 @@ def type_inference(self):\n         if self.gamma is not None and not layer_norm._is_compatible_shape(list(self.gamma.shape), normalized_shape):\n             raise ValueError(\"Expect shape {} for gamma, but get shape {} instead\".format(normalized_shape, self.gamma.shape))\n \n-        if self.beta is not None and not layer_norm._is_compatible_shape(list(self.beta.shape), normalized_shape):\n+        if self.beta is not None and not layer_norm._is_compatible_shape(list(self.gamma.shape), normalized_shape):\n             raise ValueError(\"Expect shape {} for beta, but get shape {} instead\".format(normalized_shape, self.beta.shape))\n \n         x_shape = self.x.shape\n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2736-b1",
+      "file": "coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py",
+      "line_start": 294,
+      "line_end": 294,
+      "category": "logic",
+      "description": "beta's shape is validated against gamma.shape instead of beta.shape, so a mismatched beta passes validation"
+    }
+  ]
+}

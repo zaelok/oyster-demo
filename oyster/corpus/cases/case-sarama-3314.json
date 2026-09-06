@@ -1,0 +1,27 @@
+{
+  "id": "case-sarama-3314",
+  "source": {
+    "pr": "https://github.com/IBM/sarama/pull/3314",
+    "repo": "IBM/sarama",
+    "number": 3314
+  },
+  "diff": "--- a/request.go\n+++ b/request.go\n@@ -92,8 +92,8 @@ func decodeRequest(r io.Reader) (*request, int, error) {\n \t\tlengthBytes = make([]byte, 4)\n \t)\n \n-\tif n, err := io.ReadFull(r, lengthBytes); err != nil {\n-\t\treturn nil, n, err\n+\tif _, err := io.ReadFull(r, lengthBytes); err != nil {\n+\t\treturn nil, bytesRead, err\n \t}\n \n \tbytesRead += len(lengthBytes)\n@@ -104,8 +104,8 @@ func decodeRequest(r io.Reader) (*request, int, error) {\n \t}\n \n \tencodedReq := make([]byte, length)\n-\tif n, err := io.ReadFull(r, encodedReq); err != nil {\n-\t\treturn nil, bytesRead + n, err\n+\tif _, err := io.ReadFull(r, encodedReq); err != nil {\n+\t\treturn nil, bytesRead, err\n \t}\n \n \tbytesRead += len(encodedReq)\n",
+  "seeded": [
+    {
+      "id": "case-sarama-3314-b1",
+      "file": "request.go",
+      "line_start": 95,
+      "line_end": 96,
+      "category": "logic",
+      "description": "on a short read of the length prefix the function returns the bytes read by that call instead of the running bytesRead total, so callers under-count consumed bytes"
+    },
+    {
+      "id": "case-sarama-3314-b2",
+      "file": "request.go",
+      "line_start": 107,
+      "line_end": 108,
+      "category": "logic",
+      "description": "on a short read of the body the function returns bytesRead + n, double counting relative to the accumulated total"
+    }
+  ]
+}

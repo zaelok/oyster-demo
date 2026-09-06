@@ -1,0 +1,19 @@
+{
+  "id": "case-servicetalk-3587",
+  "source": {
+    "pr": "https://github.com/apple/servicetalk/pull/3587",
+    "repo": "apple/servicetalk",
+    "number": 3587
+  },
+  "diff": "--- a/servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\n+++ b/servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\n@@ -202,7 +202,7 @@ private int readAvailableAndEmit(final int available, final int readByte) throws\n             final int readChunkSize = mapper.maxBufferSize();\n             final byte[] buffer;\n             if (readByte >= 0) {\n-                buffer = new byte[min(addWithOverflowProtection(available, 1), readChunkSize)];\n+                buffer = new byte[min(available + 1, readChunkSize)];\n                 buffer[writeIdx++] = (byte) readByte;\n             } else {\n                 buffer = new byte[min(available, readChunkSize)];\n",
+  "seeded": [
+    {
+      "id": "case-servicetalk-3587-b1",
+      "file": "servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java",
+      "line_start": 205,
+      "line_end": 205,
+      "category": "logic",
+      "description": "available + 1 can overflow int when sizing the read buffer, producing a negative array length instead of using overflow-protected addition"
+    }
+  ]
+}

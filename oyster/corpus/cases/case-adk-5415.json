@@ -1,0 +1,19 @@
+{
+  "id": "case-adk-5415",
+  "source": {
+    "pr": "https://github.com/google/adk-python/pull/5415",
+    "repo": "google/adk-python",
+    "number": 5415
+  },
+  "diff": "--- a/src/google/adk/optimization/local_eval_sampler.py\n+++ b/src/google/adk/optimization/local_eval_sampler.py\n@@ -289,11 +289,7 @@ def _extract_eval_data(\n         for eval_metric_result in per_invocation_result.eval_metric_results:\n           eval_metric_results.append({\n               \"metric_name\": eval_metric_result.metric_name,\n-              \"score\": (\n-                  round(eval_metric_result.score, 2)\n-                  if eval_metric_result.score is not None\n-                  else None\n-              ),  # accurate enough\n+              \"score\": round(eval_metric_result.score, 2),  # accurate enough\n               \"eval_status\": eval_metric_result.eval_status.name,\n           })\n         per_invocation_result_dict = {\n",
+  "seeded": [
+    {
+      "id": "case-adk-5415-b1",
+      "file": "src/google/adk/optimization/local_eval_sampler.py",
+      "line_start": 292,
+      "line_end": 292,
+      "category": "logic",
+      "description": "round(score, 2) is applied to a score that can be None, raising TypeError when a metric produced no score"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "case-zstd-4486",
+  "source": {
+    "pr": "https://github.com/facebook/zstd/pull/4486",
+    "repo": "facebook/zstd",
+    "number": 4486
+  },
+  "diff": "--- a/lib/common/threading.c\n+++ b/lib/common/threading.c\n@@ -143,13 +143,7 @@ int ZSTD_pthread_mutex_init(ZSTD_pthread_mutex_t* mutex, pthread_mutexattr_t con\n     *mutex = (pthread_mutex_t*)ZSTD_malloc(sizeof(pthread_mutex_t));\n     if (!*mutex)\n         return 1;\n-    {\n-        int const ret = pthread_mutex_init(*mutex, attr);\n-        if (ret != 0) {\n-            ZSTD_free(*mutex);\n-        }\n-        return ret;\n-    }\n+    return pthread_mutex_init(*mutex, attr);\n }\n \n int ZSTD_pthread_mutex_destroy(ZSTD_pthread_mutex_t* mutex)\n@@ -171,13 +164,7 @@ int ZSTD_pthread_cond_init(ZSTD_pthread_cond_t* cond, pthread_condattr_t const*\n     *cond = (pthread_cond_t*)ZSTD_malloc(sizeof(pthread_cond_t));\n     if (!*cond)\n         return 1;\n-    {\n-        int const ret = pthread_cond_init(*cond, attr);\n-        if (ret != 0) {\n-            ZSTD_free(*cond);\n-        }\n-        return ret;\n-    }\n+    return pthread_cond_init(*cond, attr);\n }\n \n int ZSTD_pthread_cond_destroy(ZSTD_pthread_cond_t* cond)\n",
+  "seeded": [
+    {
+      "id": "case-zstd-4486-b1",
+      "file": "lib/common/threading.c",
+      "line_start": 146,
+      "line_end": 146,
+      "category": "logic",
+      "description": "pthread_mutex_init failure returns without freeing the mutex that was just allocated, leaking it"
+    },
+    {
+      "id": "case-zstd-4486-b2",
+      "file": "lib/common/threading.c",
+      "line_start": 167,
+      "line_end": 167,
+      "category": "logic",
+      "description": "pthread_cond_init failure returns without freeing the cond that was just allocated, leaking it"
+    }
+  ]
+}

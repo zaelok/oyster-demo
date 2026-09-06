@@ -1,0 +1,19 @@
+{
+  "id": "case-zstd-4626",
+  "source": {
+    "pr": "https://github.com/facebook/zstd/pull/4626",
+    "repo": "facebook/zstd",
+    "number": 4626
+  },
+  "diff": "--- a/lib/compress/zstd_ldm.c\n+++ b/lib/compress/zstd_ldm.c\n@@ -152,11 +152,7 @@ void ZSTD_ldm_adjustParameters(ldmParams_t* params,\n         }\n     }\n     if (params->hashLog == 0) {\n-        if (params->windowLog <= params->hashRateLog) {\n-            params->hashLog = ZSTD_HASHLOG_MIN;\n-        } else {\n-            params->hashLog = BOUNDED(ZSTD_HASHLOG_MIN, params->windowLog - params->hashRateLog, ZSTD_HASHLOG_MAX);\n-        }\n+        params->hashLog = BOUNDED(ZSTD_HASHLOG_MIN, params->windowLog - params->hashRateLog, ZSTD_HASHLOG_MAX);\n     }\n     if (params->minMatchLength == 0) {\n         params->minMatchLength = LDM_MIN_MATCH_LENGTH;\n",
+  "seeded": [
+    {
+      "id": "case-zstd-4626-b1",
+      "file": "lib/compress/zstd_ldm.c",
+      "line_start": 155,
+      "line_end": 155,
+      "category": "logic",
+      "description": "hashLog is computed as windowLog - hashRateLog even when windowLog <= hashRateLog, so the subtraction underflows and the LDM hash table becomes huge"
+    }
+  ]
+}

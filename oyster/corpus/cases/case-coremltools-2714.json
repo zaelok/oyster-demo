@@ -1,0 +1,19 @@
+{
+  "id": "case-coremltools-2714",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2714",
+    "repo": "apple/coremltools",
+    "number": 2714
+  },
+  "diff": "--- a/coremltools/converters/mil/frontend/torch/ops.py\n+++ b/coremltools/converters/mil/frontend/torch/ops.py\n@@ -5654,10 +5654,7 @@ def _parse_positional_args(context, node) -> Tuple[Var]:\n \n     low, high, shape = _parse_positional_args(context, node)\n     rand_uniform = mb.random_uniform(shape=shape, low=low, high=high)\n-    rand_int_unclipped = mb.cast(x=rand_uniform, dtype=\"int32\")\n-    high_int = mb.cast(x=high, dtype=\"int32\")\n-    high_minus_one = mb.sub(x=high_int, y=1)\n-    rand_int = mb.minimum(x=rand_int_unclipped, y=high_minus_one, name=node.name)\n+    rand_int = mb.cast(x=rand_uniform, dtype=\"int32\", name=node.name)\n     context.add(rand_int)\n \n @register_torch_op\n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2714-b1",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 5657,
+      "line_end": 5657,
+      "category": "logic",
+      "description": "randint casts the uniform sample to int32 without clamping to high - 1, so the exclusive upper bound high itself can be generated"
+    }
+  ]
+}

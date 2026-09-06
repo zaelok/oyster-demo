@@ -1,0 +1,19 @@
+{
+  "id": "case-gogithub-4291",
+  "source": {
+    "pr": "https://github.com/google/go-github/pull/4291",
+    "repo": "google/go-github",
+    "number": 4291
+  },
+  "diff": "--- a/github/github.go\n+++ b/github/github.go\n@@ -884,7 +884,14 @@ func (c *Client) NewFormRequest(ctx context.Context, urlStr string, body io.Read\n }\n \n // checkURLPathTraversal returns ErrPathForbidden if urlStr contains \"..\" as a\n+// path segment (e.g. \"a/../b\"), preventing path traversal attacks. It does not\n+// match \"..\" embedded within a segment (e.g. \"file..txt\"). The check is\n+// performed only on the path portion of the URL, ignoring any query string or\n+// fragment.\n func checkURLPathTraversal(urlStr string) error {\n+\tif !strings.Contains(urlStr, \"..\") {\n+\t\treturn nil\n+\t}\n \tu, err := url.Parse(urlStr)\n \tif err != nil {\n \t\treturn err\n",
+  "seeded": [
+    {
+      "id": "case-gogithub-4291-b1",
+      "file": "github/github.go",
+      "line_start": 892,
+      "line_end": 894,
+      "category": "security",
+      "description": "the traversal check returns early when the raw URL has no literal '..', so percent-encoded dot segments (%2e%2e) bypass it"
+    }
+  ]
+}

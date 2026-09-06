@@ -1,0 +1,19 @@
+{
+  "id": "case-sarama-3642",
+  "source": {
+    "pr": "https://github.com/IBM/sarama/pull/3642",
+    "repo": "IBM/sarama",
+    "number": 3642
+  },
+  "diff": "--- a/metadata_request.go\n+++ b/metadata_request.go\n@@ -31,7 +31,7 @@ func NewMetadataRequest(version KafkaVersion, topics []string) *MetadataRequest\n \t\tm.Version = 11\n \t} else if version.IsAtLeast(V2_4_0_0) {\n \t\tm.Version = 9\n-\t} else if version.IsAtLeast(V2_3_0_0) {\n+\t} else if version.IsAtLeast(V2_4_0_0) {\n \t\tm.Version = 8\n \t} else if version.IsAtLeast(V2_1_0_0) {\n \t\tm.Version = 7\n",
+  "seeded": [
+    {
+      "id": "case-sarama-3642-b1",
+      "file": "metadata_request.go",
+      "line_start": 34,
+      "line_end": 34,
+      "category": "logic",
+      "description": "metadata request v8 is mapped to Kafka 2.4.0 instead of 2.3.0, so brokers on 2.3 receive a request version they do not support"
+    }
+  ]
+}

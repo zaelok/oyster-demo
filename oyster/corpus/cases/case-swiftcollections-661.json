@@ -1,0 +1,27 @@
+{
+  "id": "case-swiftcollections-661",
+  "source": {
+    "pr": "https://github.com/apple/swift-collections/pull/661",
+    "repo": "apple/swift-collections",
+    "number": 661
+  },
+  "diff": "--- a/Sources/SortedCollections/BTree/_BTree.swift\n+++ b/Sources/SortedCollections/BTree/_BTree.swift\n@@ -31,7 +31,7 @@ internal struct _BTree<Key: Comparable, Value> {\n     return 4\n     #else\n     let capacityInBytes = 128\n-    return Swift.max(16, capacityInBytes / MemoryLayout<Key>.stride)\n+    return Swift.min(16, capacityInBytes / MemoryLayout<Key>.stride)\n     #endif\n   }\n   \n@@ -43,7 +43,7 @@ internal struct _BTree<Key: Comparable, Value> {\n     return 5\n     #else\n     let capacityInBytes = 2000\n-    return Swift.max(16, capacityInBytes / MemoryLayout<Key>.stride)\n+    return Swift.min(16, capacityInBytes / MemoryLayout<Key>.stride)\n     #endif\n   }\n   \n",
+  "seeded": [
+    {
+      "id": "case-swiftcollections-661-b1",
+      "file": "Sources/SortedCollections/BTree/_BTree.swift",
+      "line_start": 34,
+      "line_end": 34,
+      "category": "logic",
+      "description": "min(16, capacity) caps the B-tree node capacity at 16 where max(16, ...) was intended, so nodes never grow with the key stride"
+    },
+    {
+      "id": "case-swiftcollections-661-b2",
+      "file": "Sources/SortedCollections/BTree/_BTree.swift",
+      "line_start": 46,
+      "line_end": 46,
+      "category": "logic",
+      "description": "same inverted min/max in the second capacity computation"
+    }
+  ]
+}

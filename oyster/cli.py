@@ -11,6 +11,7 @@ offline afterwards.
 """
 
 import argparse
+import os
 import subprocess
 import sys
 from collections.abc import Sequence
@@ -20,6 +21,7 @@ from rich.console import Console
 from rich.table import Table
 
 from oyster.config import BINDINGS, settings
+from oyster.conversation import collect_pending, ingest, write_pack
 from oyster.corpus import load_cases
 from oyster.cost import estimate_tokens
 from oyster.evaluation import (
@@ -35,7 +37,12 @@ from oyster.executor import BudgetHook
 from oyster.graph import validate_path
 from oyster.graph.catalog import CATALOG
 from oyster.prompts import render
-from oyster.providers import AnthropicProvider, MockProvider, RecordingProvider
+from oyster.providers import (
+    AnthropicProvider,
+    ClaudeCodeProvider,
+    MockProvider,
+    RecordingProvider,
+)
 from oyster.selector import select
 from oyster.types import CorpusCase, Cost, ModelProvider, Path, Priors
 
@@ -78,9 +85,28 @@ def _make_provider(
     if args.provider == "mock":
         return MockProvider(FsPath(args.fixtures))
 
-    if not settings.anthropic_api_key:
+    if args.provider == "claude-code":
+        calls = sum(len(path.nodes) for path in paths) * len(cases)
         console.print(
-            "[red]OYSTER_ANTHROPIC_API_KEY is not set; refusing to run the anthropic provider."
+            f"About to make up to {calls} calls through the Claude Code CLI on your "
+            "subscription (no API billing; counts against subscription usage limits). "
+            "Dollar figures in the table are API list prices for the tokens used."
+        )
+        if not args.yes:
+            answer = input("Proceed? [y/N] ")
+            if answer.strip().lower() not in {"y", "yes"}:
+                console.print("Aborted.")
+                sys.exit(1)
+        provider: ModelProvider = ClaudeCodeProvider()
+        if args.record:
+            provider = RecordingProvider(provider, FsPath(args.record))
+            console.print(f"Recording completions as mock fixtures under {args.record}")
+        return provider
+
+    if not settings.anthropic_api_key and not os.environ.get("ANTHROPIC_API_KEY"):
+        console.print(
+            "[red]Neither OYSTER_ANTHROPIC_API_KEY nor ANTHROPIC_API_KEY is set; refusing to "
+            "run the anthropic provider."
         )
         sys.exit(2)
 
@@ -160,7 +186,7 @@ def cmd_eval(args: argparse.Namespace) -> int:
         reports,
         BINDINGS,
         corpus_size=len(cases),
-        provider_name=args.provider,
+        provider_name=args.label or args.provider,
         corpus_commit=_corpus_commit(FsPath(args.corpus)),
     )
     FsPath(args.out).write_text(markdown, encoding="utf-8")
@@ -184,6 +210,60 @@ def cmd_eval(args: argparse.Namespace) -> int:
     console.print(table)
     console.print(f"Wrote {args.out} and {args.json_out}")
     return 0
+
+
+def cmd_pack(args: argparse.Namespace) -> int:
+    cases = _load_corpus(args.corpus)
+    fixtures = FsPath(args.fixtures)
+    pending = collect_pending(cases, fixtures, BINDINGS, CATALOG)
+    if not pending:
+        console.print(
+            f"[green]Nothing pending: every request is answered under {fixtures}. "
+            f"Run: python -m oyster.cli eval --provider mock --fixtures {fixtures} "
+            f'--label "conversation: <model> (estimated tokens)"'
+        )
+        return 0
+    pack_root = FsPath(args.out)
+    round_number = len([p for p in pack_root.glob("round-*") if p.is_dir()]) + 1
+    out_dir = pack_root / f"round-{round_number}"
+    pack_path, manifest_path = write_pack(pending, out_dir, batch_size=args.batch_size)
+    by_model: dict[str, int] = {}
+    for request in pending:
+        by_model[request.model_id] = by_model.get(request.model_id, 0) + 1
+    console.print(
+        f"Round {round_number}: {len(pending)} pending request(s) "
+        + ", ".join(f"{count} on {model}" for model, count in by_model.items())
+    )
+    console.print(f"Wrote {pack_path} and {manifest_path}")
+    console.print(
+        "Paste each message into a chat on the model it names, save the replies to a file, "
+        f"then: python -m oyster.cli ingest --pack {out_dir} --responses <file> "
+        f"--fixtures {fixtures} --model-label <label>"
+    )
+    return 0
+
+
+def cmd_ingest(args: argparse.Namespace) -> int:
+    manifest = FsPath(args.pack) / "manifest.json"
+    responses_text = FsPath(args.responses).read_text(encoding="utf-8")
+    report = ingest(
+        manifest,
+        responses_text,
+        FsPath(args.fixtures),
+        model_label=args.model_label,
+        latency_s=args.latency_s,
+    )
+    console.print(f"Wrote {len(report.written)} fixture(s) under {args.fixtures}")
+    if report.missing:
+        console.print(f"[yellow]No reply found for: {', '.join(report.missing)}")
+    if report.unparseable:
+        console.print(
+            f"[red]Reply is not a JSON findings object for: {', '.join(report.unparseable)}"
+        )
+    console.print(
+        "Next: python -m oyster.cli pack (emits the next round, or says nothing is pending)"
+    )
+    return 0 if not report.unparseable else 1
 
 
 def cmd_select(args: argparse.Namespace) -> int:
@@ -219,7 +299,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     def add_provider_args(p: argparse.ArgumentParser) -> None:
-        p.add_argument("--provider", choices=["mock", "anthropic"], default="mock")
+        p.add_argument("--provider", choices=["mock", "anthropic", "claude-code"], default="mock")
         p.add_argument("--corpus", default=settings.corpus_dir)
         p.add_argument("--fixtures", default=DEFAULT_FIXTURES, help="mock fixture dir")
         p.add_argument(
@@ -239,10 +319,28 @@ def build_parser() -> argparse.ArgumentParser:
     add_provider_args(ev)
     ev.add_argument("--out", default=settings.results_path)
     ev.add_argument("--json-out", default="results.json")
+    ev.add_argument("--label", default=None, help="provider label in results.md header")
     ev.add_argument("--budget", type=float, default=None, help="enable BudgetHook at $ budget")
     ev.add_argument("--latency", type=float, default=settings.latency_tolerance_s)
     ev.add_argument("--priors", default=None, help="priors.json for BudgetHook predictions")
     ev.set_defaults(func=cmd_eval)
+
+    pack = sub.add_parser(
+        "pack", help="conversation mode: write the next round of prompts to paste into a chat"
+    )
+    pack.add_argument("--corpus", default=settings.corpus_dir)
+    pack.add_argument("--fixtures", default="fixtures/conversation")
+    pack.add_argument("--out", default="packs")
+    pack.add_argument("--batch-size", type=int, default=20, help="requests per chat message")
+    pack.set_defaults(func=cmd_pack)
+
+    ing = sub.add_parser("ingest", help="conversation mode: store chat replies as fixtures")
+    ing.add_argument("--pack", required=True, help="the round directory holding manifest.json")
+    ing.add_argument("--responses", required=True, help="file with the pasted replies")
+    ing.add_argument("--fixtures", default="fixtures/conversation")
+    ing.add_argument("--model-label", required=True, help='e.g. "chat:claude-sonnet-5"')
+    ing.add_argument("--latency-s", type=float, default=0.0, help="not measured in chat; 0")
+    ing.set_defaults(func=cmd_ingest)
 
     sel = sub.add_parser("select", help="pick a path under a budget from calibrated priors")
     sel.add_argument("--budget", type=float, default=settings.budget_dollars)

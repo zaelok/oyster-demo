@@ -1,0 +1,19 @@
+{
+  "id": "case-servicetalk-3588",
+  "source": {
+    "pr": "https://github.com/apple/servicetalk/pull/3588",
+    "repo": "apple/servicetalk",
+    "number": 3588
+  },
+  "diff": "--- a/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\n+++ b/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\n@@ -197,8 +197,9 @@ int nextHost() {\n             while (true) {\n                 long counter = nextIndex();\n                 long pass = counter / hostsSize;\n-                int i = (int) (counter % hostsSize);\n+                int i = (int) counter % hostsSize;\n                 // We add a unique offset for each offset which could be anything so long as it's constant throughout\n+                // iteration. This is helpful in the  case where weights are [1, .. 1, 5] since the scheduling could\n                 // otherwise look something like this:\n                 //  ....\n                 //  [t, .., t, t]\n",
+  "seeded": [
+    {
+      "id": "case-servicetalk-3588-b1",
+      "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java",
+      "line_start": 200,
+      "line_end": 200,
+      "category": "logic",
+      "description": "(int) counter % hostsSize casts the long counter to int before the modulo, so once the counter passes Integer.MAX_VALUE the host index goes negative"
+    }
+  ]
+}

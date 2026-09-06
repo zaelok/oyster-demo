@@ -1,0 +1,19 @@
+{
+  "id": "case-pkl-1656",
+  "source": {
+    "pr": "https://github.com/apple/pkl/pull/1656",
+    "repo": "apple/pkl",
+    "number": 1656
+  },
+  "diff": "--- a/pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\n+++ b/pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\n@@ -1,4 +1,5 @@\n /*\n+ * Copyright \u6f0f 2024 Apple Inc. and the Pkl project authors. All rights reserved.\n  *\n  * Licensed under the Apache License, Version 2.0 (the \"License\");\n  * you may not use this file except in compliance with the License.\n@@ -190,7 +190,7 @@ public abstract static class toRadixString extends ExternalMethod1Node {\n     @Specialization\n     @TruffleBoundary\n     protected String eval(long self, long radix) {\n-      return Long.toString(self, (int) radix);\n+      return (self < 0 ? \"-\" : \"\") + Long.toString(Math.abs(self), (int) radix);\n     }\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-pkl-1656-b1",
+      "file": "pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java",
+      "line_start": 193,
+      "line_end": 193,
+      "category": "logic",
+      "description": "Math.abs(Long.MIN_VALUE) overflows back to MIN_VALUE, so toRadixString on math.minInt renders a wrong string; Long.toString handles the sign itself"
+    }
+  ]
+}

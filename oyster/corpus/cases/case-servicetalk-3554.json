@@ -1,0 +1,19 @@
+{
+  "id": "case-servicetalk-3554",
+  "source": {
+    "pr": "https://github.com/apple/servicetalk/pull/3554",
+    "repo": "apple/servicetalk",
+    "number": 3554
+  },
+  "diff": "--- a/servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\n+++ b/servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\n@@ -131,7 +131,7 @@ protected short getShortLENoBounds(int index) {\n \n     @Override\n     public final int getUnsignedShort(int index) {\n-        return getShort(index) & 0xffff;\n+        return getShort(index) & 0xfff;\n     }\n \n     @Override\n",
+  "seeded": [
+    {
+      "id": "case-servicetalk-3554-b1",
+      "file": "servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java",
+      "line_start": 134,
+      "line_end": 134,
+      "category": "logic",
+      "description": "getUnsignedShort masks the short with 0xfff instead of 0xffff, dropping the top nibble so any value above 0x0fff is returned wrong"
+    }
+  ]
+}

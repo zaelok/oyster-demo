@@ -1,0 +1,27 @@
+{
+  "id": "case-flatbuffers-9081",
+  "source": {
+    "pr": "https://github.com/google/flatbuffers/pull/9081",
+    "repo": "google/flatbuffers",
+    "number": 9081
+  },
+  "diff": "--- a/swift/Sources/FlatBuffers/Verifiable.swift\n+++ b/swift/Sources/FlatBuffers/Verifiable.swift\n@@ -56,15 +56,8 @@ extension Verifiable {\n     let len: UOffset = try verifier.getValue(at: position)\n     let intLen = Int(len)\n     let start = Int(clamping: (position &+ MemoryLayout<Int32>.size).magnitude)\n-    let byteCount = intLen.multipliedReportingOverflow(\n-      by: MemoryLayout<T>.size)\n-    guard !byteCount.overflow else {\n-      throw FlatbuffersErrors.outOfBounds(\n-        position: UInt.max,\n-        end: verifier.capacity)\n-    }\n     try verifier.isAligned(position: start, type: type.self)\n-    try verifier.rangeInBuffer(position: start, size: byteCount.partialValue)\n+    try verifier.rangeInBuffer(position: start, size: intLen)\n     return (start, intLen)\n   }\n }\n",
+  "seeded": [
+    {
+      "id": "case-flatbuffers-9081-b1",
+      "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+      "line_start": 59,
+      "line_end": 59,
+      "category": "security",
+      "description": "no overflow check when multiplying the vector length by the element size before the bounds check"
+    },
+    {
+      "id": "case-flatbuffers-9081-b2",
+      "file": "swift/Sources/FlatBuffers/Verifiable.swift",
+      "line_start": 60,
+      "line_end": 60,
+      "category": "security",
+      "description": "the verifier bounds-checks intLen bytes instead of intLen * element size, accepting truncated scalar vectors and allowing out-of-bounds reads"
+    }
+  ]
+}

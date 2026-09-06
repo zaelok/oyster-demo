@@ -1,0 +1,19 @@
+{
+  "id": "case-gson-3067",
+  "source": {
+    "pr": "https://github.com/google/gson/pull/3067",
+    "repo": "google/gson",
+    "number": 3067
+  },
+  "diff": "--- a/gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\n+++ b/gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\n@@ -730,7 +730,7 @@ public URI read(JsonReader in) throws IOException {\n \n         @Override\n         public void write(JsonWriter out, URI value) throws IOException {\n-          out.value(value == null ? null : value.toString());\n+          out.value(value == null ? null : value.toASCIIString());\n         }\n       };\n \n",
+  "seeded": [
+    {
+      "id": "case-gson-3067-b1",
+      "file": "gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+      "line_start": 733,
+      "line_end": 733,
+      "category": "logic",
+      "description": "the URI adapter writes toASCIIString(), so a non-ASCII URI is percent-encoded on write and does not round-trip to an equal URI"
+    }
+  ]
+}

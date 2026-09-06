@@ -88,6 +88,60 @@ CI never has an API key; it runs `install`, `lint`, `test` and `eval-mock`.
 `uv run ruff check . && uv run ruff format --check .`,
 `uv run python -m oyster.cli eval --provider mock`.
 
+## Running on a subscription instead of an API key
+
+A tool built to save money should not need API spend to prove it. Two routes run the same
+engine, prompts and matcher with no API billing; the results header labels which one produced
+the table.
+
+**Route 1: Claude Code CLI on your subscription (`--provider claude-code`).** The provider
+shells out to `claude -p` in print mode with the diff in `--system-prompt-file`, no tools and
+one turn, and reads the token usage the API reported from the CLI's JSON result. Numbers are
+real token counts priced at API list rates: what the run would have cost through the API.
+One-time setup, then the matrix:
+
+```bash
+claude setup-token        # or `claude auth login`; stores a subscription token for headless use
+```
+
+```bash
+uv run python -m tools.run_matrix --provider claude-code
+```
+
+`tools/run_matrix.py` runs calibrate, eval and select for three model pairs (Haiku 4.5 +
+Sonnet 5, Sonnet 5 + Opus 5, Haiku 4.5 + Fable 5.1) and writes `results/summary.md`. Calls
+count against subscription usage limits, not a bill.
+
+**Route 2: any chat window (`pack` / `ingest`).** No CLI, no key, works with claude.ai or any
+other subscription chat. The engine emits the prompts it would have sent, you paste them into
+a chat, and the replies become fixtures that the mock provider replays:
+
+```bash
+uv run python -m oyster.cli pack --fixtures fixtures/conversation --out packs
+```
+
+`packs/round-1/pack.md` holds the messages (by default 20 requests per message, grouped by the
+model each should run on) and `manifest.json` ties every request to its fixture key. Paste
+each message into a fresh chat on the named model, save the reply into a responses file, then:
+
+```bash
+uv run python -m oyster.cli ingest --pack packs/round-1 --responses replies.md --fixtures fixtures/conversation --model-label "chat:claude-sonnet-5"
+```
+
+Run `pack` again: round 2 contains the cascade's second node and the critic, whose prompts are
+built from the round 1 findings, and round 3 the final reviewer. When `pack` reports nothing
+pending, render the table:
+
+```bash
+uv run python -m oyster.cli eval --provider mock --fixtures fixtures/conversation --label "conversation: claude.ai Sonnet 5 (estimated tokens)"
+```
+
+For 17 cases that is 51 + 34 + 17 = 102 requests in three rounds, six chat messages per model
+pair. What differs from an API run, stated in the label: token counts are `chars // 4`
+estimates because a chat UI reports none, latency is not measured, and a batched message puts
+several requests in one context behind a transport wrapper; the per-request text is the exact
+template rendering, so `--batch-size 1` gives one prompt per chat with no wrapper.
+
 ## Building the corpus from bug-fix PRs
 
 The fastest honest source of seeded bugs is a real fix. `tools/pr_to_case.py` reverses a

@@ -1,0 +1,19 @@
+{
+  "id": "case-gogithub-4126",
+  "source": {
+    "pr": "https://github.com/google/go-github/pull/4126",
+    "repo": "google/go-github",
+    "number": 4126
+  },
+  "diff": "--- a/github/github.go\n+++ b/github/github.go\n@@ -1382,22 +1382,15 @@ func (r *RedirectionError) Is(target error) bool {\n \t\t\tr.Location != nil && v.Location != nil && r.Location.String() == v.Location.String()) // or they are both not nil and marshaled identically\n }\n \n-var sensitiveParams = []string{\"client_secret\", \"access_token\", \"token\"}\n-\n+// sanitizeURL redacts the client_secret parameter from the URL which may be\n // exposed to the user.\n func sanitizeURL(uri *url.URL) *url.URL {\n \tif uri == nil {\n \t\treturn nil\n \t}\n \tparams := uri.Query()\n-\tvar redacted bool\n-\tfor _, p := range sensitiveParams {\n-\t\tif len(params.Get(p)) > 0 {\n-\t\t\tparams.Set(p, \"REDACTED\")\n-\t\t\tredacted = true\n-\t\t}\n-\t}\n-\tif redacted {\n+\tif len(params.Get(\"client_secret\")) > 0 {\n+\t\tparams.Set(\"client_secret\", \"REDACTED\")\n \t\turi.RawQuery = params.Encode()\n \t}\n \treturn uri\n",
+  "seeded": [
+    {
+      "id": "case-gogithub-4126-b1",
+      "file": "github/github.go",
+      "line_start": 1392,
+      "line_end": 1393,
+      "category": "security",
+      "description": "sanitizeURL redacts only client_secret, so other sensitive query parameters such as tokens and passwords leak into error messages and logs"
+    }
+  ]
+}
