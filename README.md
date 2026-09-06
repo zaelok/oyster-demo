@@ -227,6 +227,10 @@ complete and every path catches nothing. That is a valid and honest result; see 
   clone, the three ways to make new numbers, adding an API vendor, comparing runs honestly.
 - [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md): a thirty-minute reading order through the
   code, with the rules that produce every number.
+- [`docs/SKILL-FOREST.md`](docs/SKILL-FOREST.md): the general model underneath the engine
+  (task, expected, output, scorer, skill, executor, binding, composite, cost, prior, objective,
+  provenance), code review as one instance, and bug fixing, incident root cause and deployment
+  as the next ones.
 - The results page: `uv run python -m tools.build_site` writes `site/index.html`, a single
   file with the table, a selection explorer (budget, latency, human cost per missed bug) and
   per-case provenance down to each node's reply. The `pages` workflow publishes it once the
@@ -331,7 +335,8 @@ Wave 4 so far:
 
 ## License
 
-[PolyForm Noncommercial 1.0.0](LICENSE): free for any noncommercial use, including research,
-evaluation and personal projects; commercial use needs a separate license from the author.
+[PolyForm Strict 1.0.0](LICENSE): you may read and run this software for noncommercial
+purposes. Distributing it, modifying it or building on it, and any commercial use need a
+separate license from the author. It is published to be read and evaluated.
 The corpus embeds short excerpts of third-party code that stay under their original licenses;
 see [`oyster/corpus/cases/SOURCES.md`](oyster/corpus/cases/SOURCES.md).
