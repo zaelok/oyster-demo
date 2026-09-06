@@ -17,3 +17,6 @@ dist/
 
 # Built by tools/build_site.py; published by the pages workflow.
 /site/
+
+# Local preview config for the in-app browser.
+/.claude/
