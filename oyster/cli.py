@@ -11,6 +11,7 @@ offline afterwards.
 """
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -224,7 +225,19 @@ def cmd_pack(args: argparse.Namespace) -> int:
         )
         return 0
     pack_root = FsPath(args.out)
-    round_number = len([p for p in pack_root.glob("round-*") if p.is_dir()]) + 1
+    rounds = sorted(
+        (p for p in pack_root.glob("round-*") if p.is_dir()),
+        key=lambda p: int(p.name.split("-", 1)[1]) if p.name[6:].isdigit() else 0,
+    )
+    if rounds and (rounds[-1] / "manifest.json").is_file():
+        latest = json.loads((rounds[-1] / "manifest.json").read_text(encoding="utf-8"))
+        if {entry["key"] for entry in latest} == {request.key for request in pending}:
+            console.print(
+                f"[yellow]Nothing new since {rounds[-1]}: the same {len(pending)} request(s) "
+                "are still unanswered. Paste its messages and run ingest before packing again."
+            )
+            return 0
+    round_number = len(rounds) + 1
     out_dir = pack_root / f"round-{round_number}"
     pack_path, manifest_path = write_pack(pending, out_dir, batch_size=args.batch_size)
     by_model: dict[str, int] = {}
