@@ -3,6 +3,8 @@ name = "oyster-engine"
 version = "0.1.0"
 description = "OYSTER: orchestration with your success metrics, transparent evaluation and routing. Cost-aware path selection over a review graph, measured on a seeded-bug corpus."
 readme = "README.md"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.9",

@@ -216,6 +216,22 @@ path, then the Limitations section verbatim. `results.json` retains every `PathR
 With no corpus cases and no recorded fixtures (the state of a fresh clone), the table is
 complete and every path catches nothing. That is a valid and honest result; see **Status**.
 
+## Documents
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): what and why. The graph model, the selection
+  objective, the evaluation method and the non-goals this slice commits to.
+- [`docs/BUILD-SPEC.md`](docs/BUILD-SPEC.md): how. Frozen contracts, per-module acceptance
+  criteria and the rule that an agent stops and reports rather than guesses. The engine was
+  built from this document by coding agents in one day; the tests enforce it.
+- [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md): reproducing the table from a bare
+  clone, the three ways to make new numbers, adding an API vendor, comparing runs honestly.
+- [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md): a thirty-minute reading order through the
+  code, with the rules that produce every number.
+- The results page: `uv run python -m tools.build_site` writes `site/index.html`, a single
+  file with the table, a selection explorer (budget, latency, human cost per missed bug) and
+  per-case provenance down to each node's reply. The `pages` workflow publishes it once the
+  repository is public.
+
 ## Repository layout
 
 ```
@@ -312,3 +328,10 @@ Wave 4 so far:
 3. Not yet done: a run with API-reported token counts, either `--provider claude-code` after
    `claude setup-token` (subscription, no bill) or `--provider anthropic` with a key, and the
    other model pairs in `tools/run_matrix.py` (Sonnet 5 + Opus 5, Haiku 4.5 + Fable 5.1).
+
+## License
+
+[PolyForm Noncommercial 1.0.0](LICENSE): free for any noncommercial use, including research,
+evaluation and personal projects; commercial use needs a separate license from the author.
+The corpus embeds short excerpts of third-party code that stay under their original licenses;
+see [`oyster/corpus/cases/SOURCES.md`](oyster/corpus/cases/SOURCES.md).
