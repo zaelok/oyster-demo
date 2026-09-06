@@ -1,0 +1,8 @@
+id: claude-haiku-4-5@chat
+kind: model
+model: claude-haiku-4-5
+settings: {effort: default, thinking: off}
+harness: claude.ai-chat
+rates: {input_per_1m: 1.00, output_per_1m: 5.00, cache_discount: 0.90}
+cost_dimensions: [dollars, latency_s]
+token_counts: estimated   # chars // 4; the chat harness reports none

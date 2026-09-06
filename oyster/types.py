@@ -1,7 +1,7 @@
 """Frozen contracts. Every module imports from here. Nothing here changes without a
 coordinated re-dispatch of dependent tasks."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal, Protocol
 
 Category = Literal["logic", "security", "style"]
@@ -121,12 +121,42 @@ class MatchReport:
 
 
 @dataclass(frozen=True)
+class QualityEstimate:
+    """v2 addition (2026-09-06): a catch rate with the evidence behind it. ci is a Wilson
+    95% interval on n seeded bugs of that category."""
+
+    rate: float
+    n: int
+    ci_low: float
+    ci_high: float
+
+
+@dataclass(frozen=True)
+class CostProfile:
+    """v2 addition (2026-09-06): cost as a distribution over n calibration cases, nearest-rank
+    percentiles. Latency tolerance is an SLO, so the selector checks it at p95."""
+
+    dollars_p50: float
+    dollars_p95: float
+    latency_p50: float
+    latency_p95: float
+    n: int
+
+
+@dataclass(frozen=True)
 class Priors:
-    """Calibrated quality priors. key is (role, model_alias, category)."""
+    """Calibrated quality priors. key is (role, model_alias, category).
+
+    v2 addition (2026-09-06): `quality` and `cost` carry the same keys as `catch_rate` and
+    `mean_cost` with sample sizes, intervals and percentiles. Both default to empty so every
+    v1 call site keeps working; the spec froze this file for the first build and these fields
+    are additive."""
 
     catch_rate: dict[tuple[str, str, str], float]
     mean_cost: dict[tuple[str, str], Cost]  # (role, model_alias)
     corpus_size: int
+    quality: dict[tuple[str, str, str], QualityEstimate] = field(default_factory=dict)
+    cost: dict[tuple[str, str], CostProfile] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)

@@ -2,37 +2,55 @@
   "catch_rate": [
     {
       "category": "logic",
+      "ci_high": 0.9380898628745101,
+      "ci_low": 0.5897007098262422,
       "model_alias": "cheap-model",
+      "n": 17,
       "rate": 0.8235294117647058,
       "role": "cheap-scanner"
     },
     {
       "category": "security",
+      "ci_high": 0.6993639475573634,
+      "ci_low": 0.045586062644636216,
       "model_alias": "cheap-model",
+      "n": 4,
       "rate": 0.25,
       "role": "cheap-scanner"
     },
     {
       "category": "logic",
+      "ci_high": 0.9895398693548358,
+      "ci_low": 0.730174547964372,
       "model_alias": "strong-model",
+      "n": 17,
       "rate": 0.9411764705882353,
       "role": "critic"
     },
     {
       "category": "security",
+      "ci_high": 0.8499642911798285,
+      "ci_low": 0.15003570882017148,
       "model_alias": "strong-model",
+      "n": 4,
       "rate": 0.5,
       "role": "critic"
     },
     {
       "category": "logic",
+      "ci_high": 0.8672020613444361,
+      "ci_low": 0.468664666737861,
       "model_alias": "strong-model",
+      "n": 17,
       "rate": 0.7058823529411765,
       "role": "deep-reviewer"
     },
     {
       "category": "security",
+      "ci_high": 0.8499642911798285,
+      "ci_low": 0.15003570882017148,
       "model_alias": "strong-model",
+      "n": 4,
       "rate": 0.5,
       "role": "deep-reviewer"
     }
@@ -41,20 +59,35 @@
   "mean_cost": [
     {
       "dollars": 0.0007071764705882353,
+      "dollars_p50": 0.000714,
+      "dollars_p95": 0.000996,
+      "latency_p50": 0.0,
+      "latency_p95": 0.0,
       "latency_s": 0.0,
       "model_alias": "cheap-model",
+      "n": 17,
       "role": "cheap-scanner"
     },
     {
       "dollars": 0.0019630588235294115,
+      "dollars_p50": 0.00188,
+      "dollars_p95": 0.003086,
+      "latency_p50": 0.0,
+      "latency_p95": 0.0,
       "latency_s": 0.0,
       "model_alias": "strong-model",
+      "n": 17,
       "role": "critic"
     },
     {
       "dollars": 0.001732,
+      "dollars_p50": 0.001932,
+      "dollars_p95": 0.002426,
+      "latency_p50": 0.0,
+      "latency_p95": 0.0,
       "latency_s": 0.0,
       "model_alias": "strong-model",
+      "n": 17,
       "role": "deep-reviewer"
     }
   ]

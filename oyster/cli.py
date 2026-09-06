@@ -163,8 +163,13 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
     table.add_column("model")
     table.add_column("category")
     table.add_column("catch rate", justify="right")
+    table.add_column("n", justify="right")
+    table.add_column("95% CI", justify="right")
     for (role, alias, category), rate in sorted(priors.catch_rate.items()):
-        table.add_row(role, alias, category, f"{rate:.2f}")
+        estimate = priors.quality.get((role, alias, category))
+        n = str(estimate.n) if estimate else "-"
+        ci = f"{estimate.ci_low:.2f}-{estimate.ci_high:.2f}" if estimate else "-"
+        table.add_row(role, alias, category, f"{rate:.2f}", n, ci)
     console.print(table)
     console.print(f"Wrote {args.priors_out}")
     return 0

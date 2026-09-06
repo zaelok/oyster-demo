@@ -131,3 +131,54 @@ def test_results_json_retains_every_path_result(corpus_case, bindings, tmp_path)
     assert [r["path_id"] for r in payload["results"]] == ["A", "B", "C"]
     assert payload["results"][2]["node_results"][2]["node_id"] == "c3"
     assert payload["reports"][0]["missed"] == ["case-01-b1", "case-01-b2"]
+
+
+def test_wilson_interval_and_percentile_helpers():
+    from oyster.evaluation import percentile, wilson_interval
+
+    low, high = wilson_interval(14, 17)
+    assert 0.58 < low < 0.60 and 0.94 < high < 0.95
+    assert wilson_interval(0, 0) == (0.0, 1.0)
+    assert wilson_interval(1, 1)[0] > 0.2 and wilson_interval(1, 1)[1] == 1.0
+    assert wilson_interval(0, 1)[0] == 0.0 and wilson_interval(0, 1)[1] < 0.8
+    values = [float(v) for v in range(1, 18)]
+    assert percentile(values, 0.50) == 9.0
+    assert percentile(values, 0.95) == 17.0
+    assert percentile([], 0.5) == 0.0
+
+
+def test_calibrate_records_evidence_and_percentiles(corpus_case, bindings):
+    provider = ScriptedProvider([finding_json("pricing.py", 7, 7)])
+    priors = calibrate([corpus_case], provider, bindings)
+    logic = priors.quality[("cheap-scanner", "cheap-model", "logic")]
+    assert (logic.rate, logic.n) == (1.0, 1)
+    assert logic.ci_low > 0.2 and logic.ci_high == 1.0
+    security = priors.quality[("cheap-scanner", "cheap-model", "security")]
+    assert (security.rate, security.n, security.ci_low) == (0.0, 1, 0.0)
+    profile = priors.cost[("cheap-scanner", "cheap-model")]
+    assert profile.n == 1
+    assert profile.latency_p50 == profile.latency_p95 == 0.5
+    assert profile.dollars_p95 == priors.mean_cost[("cheap-scanner", "cheap-model")].dollars
+
+
+def test_priors_json_round_trip_keeps_evidence():
+    from oyster.types import CostProfile, QualityEstimate
+
+    priors = Priors(
+        catch_rate={("cheap-scanner", "cheap-model", "logic"): 0.25},
+        mean_cost={("cheap-scanner", "cheap-model"): Cost(0.01, 1.5)},
+        corpus_size=4,
+        quality={("cheap-scanner", "cheap-model", "logic"): QualityEstimate(0.25, 4, 0.05, 0.7)},
+        cost={("cheap-scanner", "cheap-model"): CostProfile(0.01, 0.02, 1.0, 3.0, 4)},
+    )
+    text = priors_to_json(priors)
+    assert '"ci_low": 0.05' in text and '"latency_p95": 3.0' in text
+    assert priors_from_json(text) == priors
+    # A v1 file without evidence still loads, with empty evidence maps.
+    legacy = priors_from_json(
+        '{"corpus_size": 1, "catch_rate": [{"role": "r", "model_alias": "m", '
+        '"category": "logic", "rate": 0.5}], "mean_cost": [{"role": "r", '
+        '"model_alias": "m", "dollars": 0.1, "latency_s": 2.0}]}'
+    )
+    assert legacy.quality == {} and legacy.cost == {}
+    assert legacy.catch_rate[("r", "m", "logic")] == 0.5

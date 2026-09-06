@@ -1,0 +1,13 @@
+id: change-reviewer
+skill_sets: [code-quality]
+skills: [code-review/find-defects]
+objective:
+  weights: {logic: 1.0, security: 3.0, style: 0.2}
+  h_per_miss: 0            # the current engine; set to the owner's cost per missed bug to flip the objective
+  false_positive_cost: 0
+  budget_per_task: 1.00
+  latency_p95_s: 120
+  exploration_budget: 0.0
+policy:
+  human_nodes: [merge-decision]
+  autonomy: advisory

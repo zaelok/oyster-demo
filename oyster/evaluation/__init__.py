@@ -10,6 +10,7 @@ one of them, and results_to_json retains them all.
 """
 
 import json
+import math
 import statistics
 from collections import Counter, defaultdict
 from collections.abc import Sequence
@@ -23,6 +24,7 @@ from oyster.matching import match
 from oyster.types import (
     CorpusCase,
     Cost,
+    CostProfile,
     Hook,
     MatchReport,
     ModelBinding,
@@ -31,6 +33,7 @@ from oyster.types import (
     Path,
     PathResult,
     Priors,
+    QualityEstimate,
 )
 
 __all__ = [
@@ -38,10 +41,12 @@ __all__ = [
     "calibrate",
     "calibration_paths",
     "evaluate",
+    "percentile",
     "priors_from_json",
     "priors_to_json",
     "render_results",
     "results_to_json",
+    "wilson_interval",
 ]
 
 # Verbatim from the OYSTER architecture document (demo-design-doc.md), §3 "What the numbers
@@ -110,6 +115,11 @@ def calibrate(
                 strict[(*config, category_of[bug_id])] += 1
 
     catch_rate = {key: strict[key] / count for key, count in seeded.items() if count > 0}
+    quality = {
+        key: QualityEstimate(strict[key] / count, count, *wilson_interval(strict[key], count))
+        for key, count in seeded.items()
+        if count > 0
+    }
     mean_cost = {
         config: Cost(
             statistics.fmean(cost.dollars for cost in samples),
@@ -118,7 +128,47 @@ def calibrate(
         for config, samples in costs.items()
         if samples
     }
-    return Priors(catch_rate=catch_rate, mean_cost=mean_cost, corpus_size=len(cases))
+    cost_profile = {
+        config: CostProfile(
+            dollars_p50=percentile([c.dollars for c in samples], 0.50),
+            dollars_p95=percentile([c.dollars for c in samples], 0.95),
+            latency_p50=percentile([c.latency_s for c in samples], 0.50),
+            latency_p95=percentile([c.latency_s for c in samples], 0.95),
+            n=len(samples),
+        )
+        for config, samples in costs.items()
+        if samples
+    }
+    return Priors(
+        catch_rate=catch_rate,
+        mean_cost=mean_cost,
+        corpus_size=len(cases),
+        quality=quality,
+        cost=cost_profile,
+    )
+
+
+def wilson_interval(successes: int, trials: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson score interval for a binomial proportion; (0, 1) when there are no trials.
+    With 17 trials a rate of 0.82 spans roughly 0.59 to 0.94, which is the honest width."""
+    if trials <= 0:
+        return 0.0, 1.0
+    p = successes / trials
+    z2 = z * z
+    denominator = 1 + z2 / trials
+    center = (p + z2 / (2 * trials)) / denominator
+    half = z * math.sqrt(p * (1 - p) / trials + z2 / (4 * trials * trials)) / denominator
+    return max(0.0, center - half), min(1.0, center + half)
+
+
+def percentile(values: Sequence[float], q: float) -> float:
+    """Nearest-rank percentile, so p95 of 17 samples is the 17th value, not an interpolation
+    the sample cannot support."""
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    rank = max(1, math.ceil(q * len(ordered)))
+    return ordered[min(rank, len(ordered)) - 1]
 
 
 def evaluate(
@@ -270,37 +320,74 @@ def results_to_json(results: Sequence[PathResult], reports: Sequence[MatchReport
 
 
 def priors_to_json(priors: Priors) -> str:
+    """The v1 fields stay as they were; the v2 evidence (n, ci, percentiles) rides on the same
+    entries when present, so an older reader ignores it and a newer one uses it."""
+    catch_rate_entries: list[dict] = []
+    for (role, alias, category), rate in sorted(priors.catch_rate.items()):
+        entry: dict = {"role": role, "model_alias": alias, "category": category, "rate": rate}
+        estimate = priors.quality.get((role, alias, category))
+        if estimate is not None:
+            entry.update({"n": estimate.n, "ci_low": estimate.ci_low, "ci_high": estimate.ci_high})
+        catch_rate_entries.append(entry)
+    mean_cost_entries: list[dict] = []
+    for (role, alias), cost in sorted(priors.mean_cost.items()):
+        entry = {
+            "role": role,
+            "model_alias": alias,
+            "dollars": cost.dollars,
+            "latency_s": cost.latency_s,
+        }
+        profile = priors.cost.get((role, alias))
+        if profile is not None:
+            entry.update(
+                {
+                    "dollars_p50": profile.dollars_p50,
+                    "dollars_p95": profile.dollars_p95,
+                    "latency_p50": profile.latency_p50,
+                    "latency_p95": profile.latency_p95,
+                    "n": profile.n,
+                }
+            )
+        mean_cost_entries.append(entry)
     payload = {
         "corpus_size": priors.corpus_size,
-        "catch_rate": [
-            {"role": role, "model_alias": alias, "category": category, "rate": rate}
-            for (role, alias, category), rate in sorted(priors.catch_rate.items())
-        ],
-        "mean_cost": [
-            {
-                "role": role,
-                "model_alias": alias,
-                "dollars": cost.dollars,
-                "latency_s": cost.latency_s,
-            }
-            for (role, alias), cost in sorted(priors.mean_cost.items())
-        ],
+        "catch_rate": catch_rate_entries,
+        "mean_cost": mean_cost_entries,
     }
     return json.dumps(payload, indent=2, sort_keys=True) + "\n"
 
 
 def priors_from_json(text: str) -> Priors:
     data = json.loads(text)
-    catch_rate = {
-        (str(entry["role"]), str(entry["model_alias"]), str(entry["category"])): float(
-            entry["rate"]
-        )
-        for entry in data.get("catch_rate", [])
-    }
-    mean_cost = {
-        (str(entry["role"]), str(entry["model_alias"])): Cost(
-            float(entry["dollars"]), float(entry["latency_s"])
-        )
-        for entry in data.get("mean_cost", [])
-    }
-    return Priors(catch_rate=catch_rate, mean_cost=mean_cost, corpus_size=int(data["corpus_size"]))
+    catch_rate: dict[tuple[str, str, str], float] = {}
+    quality: dict[tuple[str, str, str], QualityEstimate] = {}
+    for entry in data.get("catch_rate", []):
+        key = (str(entry["role"]), str(entry["model_alias"]), str(entry["category"]))
+        catch_rate[key] = float(entry["rate"])
+        if "n" in entry:
+            quality[key] = QualityEstimate(
+                float(entry["rate"]),
+                int(entry["n"]),
+                float(entry["ci_low"]),
+                float(entry["ci_high"]),
+            )
+    mean_cost: dict[tuple[str, str], Cost] = {}
+    cost: dict[tuple[str, str], CostProfile] = {}
+    for entry in data.get("mean_cost", []):
+        key = (str(entry["role"]), str(entry["model_alias"]))
+        mean_cost[key] = Cost(float(entry["dollars"]), float(entry["latency_s"]))
+        if "dollars_p95" in entry:
+            cost[key] = CostProfile(
+                float(entry["dollars_p50"]),
+                float(entry["dollars_p95"]),
+                float(entry["latency_p50"]),
+                float(entry["latency_p95"]),
+                int(entry["n"]),
+            )
+    return Priors(
+        catch_rate=catch_rate,
+        mean_cost=mean_cost,
+        corpus_size=int(data["corpus_size"]),
+        quality=quality,
+        cost=cost,
+    )

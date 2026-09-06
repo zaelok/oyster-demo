@@ -47,9 +47,15 @@ def predict(
     tokens scale with the diff; in this slice priors are per node config only.
     """
     del case, bindings
-    node_costs = [
-        priors.mean_cost.get((node.role, node.model_alias), Cost.zero()) for node in path.nodes
-    ]
+    node_costs = []
+    for node in path.nodes:
+        key = (node.role, node.model_alias)
+        mean = priors.mean_cost.get(key, Cost.zero())
+        profile = priors.cost.get(key)
+        # v2: latency is an SLO, so predict it at p95 when the profile has one; dollars stay
+        # at the mean, which is what a budget over many tasks actually pays.
+        latency = profile.latency_p95 if profile is not None else mean.latency_s
+        node_costs.append(Cost(mean.dollars, latency))
     cost = path_cost(node_costs)
 
     per_category: list[float] = []

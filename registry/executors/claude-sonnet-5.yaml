@@ -1,0 +1,8 @@
+id: claude-sonnet-5@chat
+kind: model
+model: claude-sonnet-5
+settings: {effort: medium, thinking: default}
+harness: claude.ai-chat
+rates: {input_per_1m: 2.00, output_per_1m: 10.00, cache_discount: 0.90}
+cost_dimensions: [dollars, latency_s]
+token_counts: estimated

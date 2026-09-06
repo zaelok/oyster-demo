@@ -1,0 +1,9 @@
+id: code-review
+path: oyster/corpus/cases
+commit: cba004d1e03e51be3714943e7b4032e41b6193a4
+source_tier: reversed-fixes
+date_cutoff: 2025-09-01
+facet_tags: [language, repository, category]
+license_note: excerpts keep their original licenses, see oyster/corpus/cases/SOURCES.md
+size: {cases: 17, expected: 21}
+by_category: {logic: 17, security: 4, style: 0}

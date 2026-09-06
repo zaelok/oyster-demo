@@ -1,0 +1,19 @@
+id: code-review/find-defects
+level: derived
+contract:
+  input: unified-diff
+  output: finding[]
+scorer: {id: overlap-and-category, version: 1, oracle_tier: structural, impl: oyster.matching.match}
+task_descriptor:
+  declared: [language, change_type, diff_lines, repository]
+  derived: [risk_class]
+categories: [logic, security, style]
+corpus: {id: code-review, path: oyster/corpus/cases}
+replicates: 1
+leaves:
+  - {id: code-review/cheap-scan,  prompt: cheap_scanner, bias: recall}
+  - {id: code-review/deep-review, prompt: deep_reviewer, bias: precision}
+  - {id: code-review/critic,      prompt: critic,        bias: precision}
+flows: [A, B, C]
+profiles:
+  - results/conversation-haiku45-sonnet5/priors.json

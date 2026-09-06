@@ -118,3 +118,18 @@ def test_best_quality_wins_when_affordable(bindings):
     assert selection.path_id == "C"
     assert selection.predicted_quality == pytest.approx(1 - 0.5**3)
     assert selection.rejected == ()
+
+
+def test_latency_is_predicted_at_p95_when_a_profile_exists(bindings):
+    from oyster.types import CostProfile
+
+    with_profile = priors()
+    with_profile.cost[("cheap-scanner", "cheap-model")] = CostProfile(0.01, 0.02, 2.0, 150.0, 17)
+    quality, cost = predict(PATH_A, CASE, with_profile, bindings)
+    assert cost.dollars == 0.01, "dollars stay at the mean"
+    assert cost.latency_s == 150.0, "latency uses p95"
+    selection = select(
+        [PATH_A], CASE, with_profile, bindings, budget_dollars=1, latency_tolerance_s=100
+    )
+    assert selection.path_id is None
+    assert selection.rejected == (("A", "latency"),)

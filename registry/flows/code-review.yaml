@@ -1,0 +1,22 @@
+skill: code-review/find-defects
+transfer: last-node-wins
+flows:
+  - id: A
+    pattern: single
+    nodes: [{id: a1, leaf: code-review/cheap-scan, executor_alias: cheap-model}]
+    edges: []
+  - id: B
+    pattern: cascade
+    nodes:
+      - {id: b1, leaf: code-review/cheap-scan,  executor_alias: cheap-model}
+      - {id: b2, leaf: code-review/deep-review, executor_alias: strong-model}
+    edges: [{from: b1, to: b2, carries: finding[]}]
+  - id: C
+    pattern: critic-loop
+    k: 2
+    nodes:
+      - {id: c1, leaf: code-review/deep-review, executor_alias: strong-model}
+      - {id: c2, leaf: code-review/critic,      executor_alias: strong-model}
+      - {id: c3, leaf: code-review/deep-review, executor_alias: strong-model}
+    edges: [{from: c1, to: c2, carries: finding[]}, {from: c2, to: c3, carries: finding[]}]
+impl: oyster/graph/catalog.py
