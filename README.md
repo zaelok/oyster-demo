@@ -82,6 +82,10 @@ flowchart TB
   style INST fill:#f7f7f4,stroke:#9a9890,stroke-dasharray: 4 3
 ```
 
+Every part of this picture has neighbors: routing and cascades, compound-system optimizers,
+evaluation platforms, review-agent benchmarks, skill registries. What the vision adds, and what
+it borrows, is laid out in [`docs/RELATED-WORK.md`](docs/RELATED-WORK.md).
+
 Seven principles hold the picture together; the full statement is in
 [`docs/PLATFORM.md`](docs/PLATFORM.md) and the general model in
 [`docs/SKILL-FOREST.md`](docs/SKILL-FOREST.md):
@@ -314,6 +318,10 @@ path, then the Limitations section verbatim. `results.json` retains every `PathR
   clone, the three ways to make new numbers, adding an API vendor, comparing runs honestly.
 - [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md): a thirty-minute reading order through the
   code, with the rules that produce every number.
+- [`docs/RELATED-WORK.md`](docs/RELATED-WORK.md): what exists next to each part of the vision
+  (routing and cascades, compound-system optimizers, DSPy-style program optimizers, bandits,
+  evaluation platforms, review-agent benchmarks, bug corpora, CI triage, skill registries,
+  human skills taxonomies, delegation, judges, wellbeing) and what the vision adds.
 
 ## Repository layout
 
