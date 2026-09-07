@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 590,
+  "latency_s": 2.442,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 114,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"rslearn/train/tasks/per_pixel_regression.py\",\n      \"line_start\": 348,\n      \"line_end\": 349,\n      \"category\": \"logic\",\n      \"description\": \"Removing scale_factor division from predictions and labels may cause incorrect metric calculations if the model was trained with scaled targets.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1287,
+  "latency_s": 3.817,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 194,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/cloud-tasks/src/lib.rs\", \"line_start\": 975, \"line_end\": 975, \"category\": \"logic\", \"description\": \"The git_ref is now hardcoded to \\\"main\\\" instead of dynamically detecting the current or default branch via git_info::default_branch_name/current_branch_name. This breaks task creation for repositories whose default branch is not literally named \\\"main\\\" (e.g., \\\"master\\\" or a custom default branch), causing the created task to reference an incorrect or nonexistent branch.\", \"confidence\": 0.85}]}"
+}

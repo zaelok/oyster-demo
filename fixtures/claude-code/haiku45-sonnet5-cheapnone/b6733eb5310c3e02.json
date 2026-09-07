@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 894,
+  "latency_s": 4.315,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 241,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/python_docker/docker_tool.py\", \"line_start\": 81, \"line_end\": 81, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The change removes returning stderr when the subprocess exits with a non-zero return code, so only stdout is returned regardless of success or failure. This silently discards error output (tracebacks, syntax errors, exceptions) on failure, making it impossible for callers to diagnose why execution failed \\u2014 they'll just see empty or truncated output. The reviewer's finding is correct; additionally, the return code itself (exec_result.returncode) is also being discarded, so callers can't even detect that an error occurred programmatically.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 929,
+  "latency_s": 3.391,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 304,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/cookbook/cli/utils.py\",\n      \"line_start\": 119,\n      \"line_end\": 120,\n      \"category\": \"logic\",\n      \"description\": \"os.path.exists() and open() called with unexpanded tilde path; should use os.path.expanduser() to properly resolve home directory.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/cookbook/cli/utils.py\",\n      \"line_start\": 143,\n      \"line_end\": 144,\n      \"category\": \"logic\",\n      \"description\": \"os.path.exists() and open() called with unexpanded tilde path; should use os.path.expanduser() to properly resolve home directory.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/cookbook/cli/utils.py\",\n      \"line_start\": 394,\n      \"line_end\": 394,\n      \"category\": \"logic\",\n      \"description\": \"Removed rstrip('/') call may cause incorrect path handling if checkpoint_path has trailing slashes that should be normalized.\",\n      \"confidence\": 0.65\n    }\n  ]\n}\n```"
+}

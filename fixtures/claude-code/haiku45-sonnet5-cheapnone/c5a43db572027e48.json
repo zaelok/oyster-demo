@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1376,
+  "latency_s": 11.124,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 932,
+  "text": "{\"findings\": [{\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"description\": \"Naive substring-based Accept header matching breaks wildcard support: an Accept header of '*/*' or 'application/*' will not contain the literal mime string (e.g. 'application/json'), causing accepts() to incorrectly return false for clients using wildcard Accept headers, which are common and previously handled correctly by parseHeaderValue/ContentType.match.\", \"confidence\": 0.9}, {\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"description\": \"Substring matching does not respect q=0 quality values that explicitly exclude a media type (e.g. 'application/json;q=0'), so a client explicitly rejecting a type would still be treated as accepting it, unlike the previous implementation which checked range.quality <= 0.0.\", \"confidence\": 0.7}]}"
+}

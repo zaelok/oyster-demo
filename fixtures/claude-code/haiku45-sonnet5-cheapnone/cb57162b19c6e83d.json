@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 738,
+  "latency_s": 3.489,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 236,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SwiftDriver/Driver/Driver.swift\",\n      \"line_start\": 2521,\n      \"line_end\": 2527,\n      \"category\": \"logic\",\n      \"description\": \"Removal of cases for .emitSupportedArguments and .emitSupportedFeatures may cause unhandled output mode options to reach the fatalError, breaking existing functionality.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"Sources/SwiftDriver/Jobs/Planning.swift\",\n      \"line_start\": 731,\n      \"line_end\": 736,\n      \"category\": \"logic\",\n      \"description\": \"Deletion of emitSupportedCompilerFeaturesJob handling removes support for --emit-supported-arguments and --emit-supported-features flags without redirecting to alternative implementation.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

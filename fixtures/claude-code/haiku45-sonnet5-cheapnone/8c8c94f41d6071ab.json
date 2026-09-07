@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1738,
+  "latency_s": 4.404,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 264,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 51, \"category\": \"logic\", \"description\": \"The new `_numeric_form_type` only unwraps a single level of `ReadOnly[...]` and no longer handles `NotRequired`, `Required`, `Annotated`, or nested combinations thereof (e.g. `ReadOnly[NotRequired[int]]`). Fields with those qualifiers will fail to resolve to `int`/`float` and `get_origin(unwrapped)` will not match `Union`/`UnionType`, causing `_numeric_form_type` to return `None` for such annotations, so those form fields are parsed as strings instead of numbers.\", \"confidence\": 0.85}]}"
+}

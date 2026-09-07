@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 949,
+  "latency_s": 2.81,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 136,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"tpu_inference/core/sched/dp_scheduler.py\",\n      \"line_start\": 251,\n      \"line_end\": 256,\n      \"category\": \"logic\",\n      \"description\": \"Removal of shortfall adjustment logic for `num_in_flight_tokens` and `num_stale_output_tokens` may cause token accounting inconsistencies if actual sampled tokens differ from scheduled tokens.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 796,
+  "latency_s": 8.395,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 631,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\", \"line_start\": 4057, \"line_end\": 4063, \"category\": \"logic\", \"description\": \"The removed while-loop extended `parenthesizedExpr` through enclosing `OptionalChainingExprSyntax`/`ForceUnwrapExprSyntax` nodes that start at the same token as the parenthesized expression (e.g. `(foo)!` or `(foo)?.bar`). Removing this logic means such wrapping nodes are no longer treated as part of the same parenthesized expression, which will change how the pretty printer groups/breaks parentheses combined with force-unwrap or optional-chaining, potentially causing incorrect line breaks or extra/missing parentheses around such expressions.\", \"confidence\": 0.5}]}"
+}

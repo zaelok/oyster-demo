@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1297,
+  "latency_s": 20.233,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1982,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/chat_composer_history.rs\", \"line_start\": 62, \"line_end\": 69, \"category\": \"logic\", \"description\": \"The early-return for duplicate consecutive history entries now happens before history_cursor/last_history_text are reset, whereas previously they were always cleared on submission. As a result, when a user resubmits the same text as the most recent history entry (e.g., recalling a message via Up and resending it unchanged), the history navigation cursor and last_history_text are left stale instead of being reset. This can cause subsequent Up/Down history navigation to behave incorrectly (e.g., not properly re-navigating from the newest entry). This regression is also evidenced by the removal of the test `enqueueing_history_prompt_multiple_times_is_stable`, which previously verified that repeated identical submissions kept history navigation stable.\", \"confidence\": 0.75}]}"
+}

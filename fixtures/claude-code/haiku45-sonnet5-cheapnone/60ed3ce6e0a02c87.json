@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1033,
+  "latency_s": 6.463,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 443,
+  "text": "{\"findings\": [{\"file\": \"transformer_engine/common/gemm/cublaslt_gemm.cu\", \"line_start\": 747, \"line_end\": 750, \"category\": \"logic\", \"description\": \"Removing the CUBLASLT_MATMUL_PREF_REDUCTION_SCHEME_MASK preference (previously restricted to CUBLASLT_REDUCTION_SCHEME_COMPUTE_TYPE) allows cublasLt to select split-K algorithms with other reduction schemes (e.g., INPLACE or OUTPUT_TYPE atomic accumulation). This can produce incorrect or non-deterministic results if the output buffer/type does not support atomic accumulation, or reduce numerical accuracy compared to compute-type reduction.\", \"confidence\": 0.55}]}"
+}

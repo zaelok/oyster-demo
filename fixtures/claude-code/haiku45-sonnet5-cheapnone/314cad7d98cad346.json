@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 838,
+  "latency_s": 4.262,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 219,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 110, \"line_end\": 113, \"category\": \"logic\", \"description\": \"The removal of the 'enum' extraction and assignment means that JSON schema 'enum' constraints are silently dropped when converting to the strict schema. Any Pydantic model or JSON schema field using Literal/Enum types will lose its value constraints in the transformed schema, causing the strict schema to accept arbitrary string/number values instead of only the specified enum values, which can lead to invalid data passing validation or being sent to the model without the expected constraint.\", \"confidence\": 0.85}]}"
+}

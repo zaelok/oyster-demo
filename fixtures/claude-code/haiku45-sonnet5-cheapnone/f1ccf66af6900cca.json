@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1465,
+  "latency_s": 7.611,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 259,
+  "text": "{\"findings\": [{\"file\": \"transformer_engine/common/gemm/cublaslt_gemm.cu\", \"line_start\": 747, \"line_end\": 747, \"category\": \"logic\", \"description\": \"Removing the CUBLASLT_MATMUL_PREF_REDUCTION_SCHEME_MASK restriction allows cublasLt to select split-K algorithms with reduction schemes other than COMPUTE_TYPE (e.g., INPLACE atomic accumulation). If the output tensor type/buffer doesn't support atomic operations, this can produce incorrect results or race conditions; it may also introduce nondeterminism across runs since atomic-based split-K reductions are not deterministic, which could break reproducibility expectations for training.\", \"confidence\": 0.5}]}"
+}

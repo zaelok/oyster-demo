@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 584,
+  "latency_s": 2.692,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 135,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/olmo_core/config.py\",\n      \"line_start\": 276,\n      \"line_end\": 276,\n      \"category\": \"logic\",\n      \"description\": \"Removal of `new_dict.pop('type', None)` may cause 'type' field to be passed to decode() when it shouldn't be, potentially breaking deserialization if the target class doesn't expect this field.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

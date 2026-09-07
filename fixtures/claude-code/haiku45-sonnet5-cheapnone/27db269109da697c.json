@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1109,
+  "latency_s": 75.049,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 8542,
+  "text": "{\"findings\": [{\"file\": \"src/openai/_base_client.py\", \"line_start\": 762, \"line_end\": 777, \"category\": \"logic\", \"description\": \"The previous implementation guarded against a `retry-after`/`retry-after-ms` header value that parses to `math.inf` due to float overflow (e.g. \\\"1e400\\\") by capping the return value at `MAX_RETRY_AFTER_DELAY + 1`. The refactored code removes this guard, so such a header now causes the function to return `float('inf')` directly. If the caller does not independently bound the returned delay, this could result in an effectively infinite retry wait.\", \"confidence\": 0.35}]}"
+}

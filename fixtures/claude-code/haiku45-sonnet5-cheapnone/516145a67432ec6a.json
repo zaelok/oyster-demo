@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 733,
+  "latency_s": 9.714,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 862,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/result.py\", \"line_start\": 124, \"line_end\": 129, \"category\": \"security\", \"description\": \"The conditional check gating `instructions` on `self._voice_pipeline_config.trace_include_sensitive_data` was removed, so potentially sensitive TTS instructions are now always included in trace span data regardless of the user's sensitive-data tracing preference. This is inconsistent with the adjacent `input` field, which still respects the same flag, and effectively defeats the purpose of the `trace_include_sensitive_data` setting for this span type\u2014likely leaking sensitive instructions into traces/logs even when the user explicitly opted out.\", \"confidence\": 0.85}]}"
+}

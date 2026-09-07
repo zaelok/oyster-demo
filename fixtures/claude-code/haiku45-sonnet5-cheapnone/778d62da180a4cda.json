@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 721,
+  "latency_s": 21.014,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2076,
+  "text": "{\"findings\": [{\"file\": \"cupyx/scipy/special/_lambertw.py\", \"line_start\": 12, \"line_end\": 12, \"category\": \"logic\", \"description\": \"The ufunc type signature for the float32 branch was changed from \\\"Flf->F\\\" to \\\"Fif->f\\\". This changes the output dtype from complex64 (F) to float32 (f), which will silently discard the imaginary part of the Lambert W result for complex64 inputs with float32 precision (e.g., for branches k != 0 where the result is genuinely complex). Additionally, the branch index type was changed from 'l' (int64/long) to 'i' (int32), which may not match the expected long type used elsewhere (e.g. the 'D' signature still uses 'l'), causing inconsistent behavior/truncation for large branch indices between the double and single precision paths.\", \"confidence\": 0.75}]}"
+}

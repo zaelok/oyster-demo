@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 871,
+  "latency_s": 14.865,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1591,
+  "text": "{\"findings\": [{\"file\": \"pkg/nvcdi/lib-wsl.go\", \"line_start\": 32, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The special-case handling for the \\\"none\\\" device ID was removed from DeviceSpecGenerators without any replacement. Previously, passing \\\"none\\\" in ids would cause an empty device spec generator to be returned; now the ids parameter is ignored entirely and the full generator (l) is always returned regardless of input. Unless this special-casing was intentionally moved elsewhere (e.g., into a shared factory or caller), this is a behavioral regression that could cause \\\"none\\\" CDI device requests to generate real device specs instead of an empty/no-op spec.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 861,
+  "latency_s": 23.891,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2339,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 111, \"line_end\": 111, \"category\": \"logic\", \"description\": \"The lambda now closes over self._params instead of using the params argument supplied by set_messages_params. If set_messages_params is designed to pass an intermediate/updated params dict (e.g., for chaining multiple mutations or atomic updates) that differs from self._params at call time, this change will use stale or incorrect message history, potentially dropping or duplicating messages compared to the previous behavior which correctly used the passed-in params.\", \"confidence\": 0.55}, {\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 454, \"line_end\": 454, \"category\": \"logic\", \"description\": \"The new messages list is built by prepending the full, untrimmed self._params[\\\"messages\\\"] before the summary prompt, discarding the effect of the preceding messages.pop() trimming loop (which operated on a separate 'messages' variable that is now overwritten). This reintroduces all original messages into the compaction/summary request, potentially defeating the purpose of the trimming logic and causing oversized requests during compaction.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1495,
+  "latency_s": 11.81,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1094,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\", \"line_start\": 113, \"line_end\": 116, \"category\": \"logic\", \"description\": \"Removing the TrimEnd('/') means a path already ending in '.../realtime/' (trailing slash) will not match EndsWith(\\\"/realtime\\\") and will have 'realtime' appended again, producing '.../realtime/realtime'. The old normalization avoided this via TrimEnd before the check.\", \"confidence\": 0.7}, {\"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"EndsWith(\\\"/realtime\\\") without specifying StringComparison.Ordinal now uses culture-sensitive comparison (default overload is CurrentCulture), which is inappropriate for comparing a URI path segment and was previously done with Ordinal comparison intentionally.\", \"confidence\": 0.45}]}"
+}

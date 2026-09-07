@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1002,
+  "latency_s": 12.96,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 742,
+  "text": "{\"findings\": [{\"file\": \"cpp/include/raft/core/detail/copy.hpp\", \"line_start\": 306, \"line_end\": 312, \"category\": \"logic\", \"description\": \"The rewritten increment_indices logic replaces a constant-time division/modulo computation of cur_index with a while-loop that decrements 'increment' by index_strides[real_index] one step at a time until it drops below the stride or the extent is exhausted. While functionally equivalent to the prior division-based logic (same final cur_index and residual increment), this turns an O(1) per-dimension computation into O(extent) in the worst case. Since this device function runs per output element per dimension inside copy/broadcast kernels, this can cause substantial performance regressions for dimensions with large extents, effectively degrading multi-dimensional copy operations from near-linear indexing math to quadratic-like behavior in the extent size.\", \"confidence\": 0.65}]}"
+}

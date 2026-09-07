@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 634,
+  "latency_s": 2.825,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 132,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\",\n      \"line_start\": 100,\n      \"line_end\": 100,\n      \"category\": \"logic\",\n      \"description\": \"Removing `infer_schema_length=None` parameter may cause polars to infer schema from fewer rows, potentially missing columns or inferring incorrect types for sparse data.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

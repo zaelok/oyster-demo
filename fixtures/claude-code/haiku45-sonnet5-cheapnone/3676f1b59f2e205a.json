@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 878,
+  "latency_s": 7.573,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 602,
+  "text": "{\"findings\": [{\"file\": \"mcp/streamable.go\", \"line_start\": 2770, \"line_end\": 2770, \"category\": \"logic\", \"description\": \"The DELETE request now uses c.ctx instead of a fresh context with its own timeout. If Close() cancels c.ctx (or it's already canceled/nearing done as part of shutdown), the DELETE request will fail immediately or be canceled before completing, silently skipping session cleanup on the server. The removed closeDeleteTimeout also guaranteed the delete request wouldn't hang forever if the context had no deadline.\", \"confidence\": 0.7}]}"
+}

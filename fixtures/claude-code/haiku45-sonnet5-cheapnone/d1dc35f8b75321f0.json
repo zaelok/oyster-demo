@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 779,
+  "latency_s": 2.409,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 121,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl/internal/msgapi/outgoing.go\",\n      \"line_start\": 114,\n      \"line_end\": 114,\n      \"category\": \"style\",\n      \"description\": \"Malformed struct tag with mismatched quote: `msgpack:\\\"workingDir,omitempty'` should use closing double quote not single quote.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

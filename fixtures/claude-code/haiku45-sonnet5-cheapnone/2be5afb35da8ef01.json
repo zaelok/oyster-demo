@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1407,
+  "latency_s": 16.354,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1495,
+  "text": "{\"findings\": [{\"file\": \"src/mcp/server/fastmcp/resources/templates.py\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"re.match(f'^{pattern}$', uri) is not fully equivalent to re.fullmatch(pattern, uri): '$' in Python regex (without re.MULTILINE) matches at the end of the string or immediately before a trailing newline. A URI ending in '\\\\n' that should not match the template could incorrectly match, causing unintended resource template resolution.\", \"confidence\": 0.5}, {\"file\": \"src/mcp/shared/tool_name_validation.py\", \"line_start\": 80, \"line_end\": 80, \"category\": \"security\", \"description\": \"Replacing TOOL_NAME_REGEX.fullmatch(name) with TOOL_NAME_REGEX.match(name) removes the implicit full-string match requirement. Unless TOOL_NAME_REGEX itself contains explicit start/end anchors, this allows names with a valid prefix followed by invalid/disallowed characters (e.g. 'validname<script>') to pass validation, weakening the tool name sanitization check.\", \"confidence\": 0.7}]}"
+}

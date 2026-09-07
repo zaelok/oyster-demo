@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1565,
+  "latency_s": 5.324,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 407,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 288, \"line_end\": 288, \"category\": \"logic\", \"description\": \"The null check now tests renumber_map_ instead of edge_renumber_map_, but the function still dereferences edge_renumber_map_->view(). If renumber_map_ is non-null while edge_renumber_map_ is null, this causes a null pointer dereference; if renumber_map_ is null while edge_renumber_map_ is valid, the function incorrectly returns NULL instead of the valid view.\", \"confidence\": 0.9}, {\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 298, \"line_end\": 298, \"category\": \"logic\", \"description\": \"The null check now tests renumber_map_ instead of edge_renumber_map_offsets_, but the function still dereferences edge_renumber_map_offsets_->view(). This mismatch can cause a null pointer dereference (if renumber_map_ is set but edge_renumber_map_offsets_ is null) or an incorrect NULL return (if renumber_map_ is null but edge_renumber_map_offsets_ is valid).\", \"confidence\": 0.9}]}"
+}

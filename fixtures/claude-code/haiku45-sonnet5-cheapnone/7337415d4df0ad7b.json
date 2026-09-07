@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1074,
+  "latency_s": 5.525,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 345,
+  "text": "{\"findings\": [{\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"security\", \"description\": \"The model-supplied vector_store_id is now used directly to scope the search without verifying it belongs to all_vs_ids (the request's authorized vector store ids). This removes an authorization boundary check: if the tool-call args come from an untrusted or manipulated model response, a caller could cause the search to run against a vector_store_id outside the ones explicitly authorized for the request, potentially retrieving/leaking data from stores the request should not have access to.\", \"confidence\": 0.75}, {\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"logic\", \"description\": \"Removed the verbose_logger.warning call that flagged when the model picked a vector_store_id outside the request's declared vector_store_ids, reducing observability/debuggability for this previously-logged anomaly.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1282,
+  "latency_s": 4.868,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 314,
+  "text": "{\"findings\": [{\"file\": \"pkl/evaluator_options.go\", \"line_start\": 314, \"line_end\": 320, \"category\": \"logic\", \"description\": \"WorkingDir field was removed from the ExternalReader struct but the toMessage() method implementation is not shown in the diff. If it still references r.WorkingDir, this causes a compile error since msgapi.ExternalReader also had WorkingDir removed.\", \"confidence\": 0.4}, {\"file\": \"pkl/internal/msgapi/outgoing.go\", \"line_start\": 111, \"line_end\": 113, \"category\": \"style\", \"description\": \"Pre-existing malformed struct tag on WorkingDir used a single quote instead of a backtick/double-quote (msgpack:\\\"workingDir,omitempty'), which would have caused a struct tag parsing issue; removing the field also removes this latent bug, but it's worth noting the tag was already broken before removal.\", \"confidence\": 0.3}]}"
+}

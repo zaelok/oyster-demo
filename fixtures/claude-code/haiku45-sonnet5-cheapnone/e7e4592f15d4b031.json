@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1149,
+  "latency_s": 4.23,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 260,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\", \"line_start\": 99, \"line_end\": 106, \"category\": \"logic\", \"description\": \"The new code drops the fallback to `forward_fn.__globals__` and always uses the defining module's `__dict__` based on `module.__class__.__module__`. If the forward method is defined elsewhere (e.g., inherited from a mixin/base class in a different module, or a monkeypatched/dynamically assigned function), the namespace used to exec the AST-rewritten function may lack names (helper functions, imported symbols) that the original forward relied on via its true `__globals__`, causing NameError at runtime. This is a real behavior change, not just a simplification.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 624,
+  "latency_s": 3.028,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"whisper/model.py\",\n      \"line_start\": 123,\n      \"line_end\": 126,\n      \"category\": \"logic\",\n      \"description\": \"Removed batch expansion logic for k and v tensors when k.shape[0]==1 but q.shape[0]!=1; this may cause shape mismatch errors in scaled_dot_product_attention when batch sizes differ.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

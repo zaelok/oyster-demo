@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1045,
+  "latency_s": 4.607,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 246,
+  "text": "{\"findings\": [{\"file\": \"pkl/decode_struct.go\", \"line_start\": 55, \"line_end\": 58, \"category\": \"logic\", \"confidence\": 0.55, \"description\": \"Removing the interface-type fallback means an interface-typed field whose class name has no entry in d.schemas will now be routed to decodeTyped instead of decodeObjectGeneric. If decodeTyped requires a registered schema/type mapping to construct a concrete value for an interface target, this will likely fail (panic or error) for previously-supported unregistered interface types, since decodeTyped presumably needs a concrete reflect.Type to decode into and cannot itself decide to fall back to generic decoding without the caller's context of typ.Kind() == Interface.\"}]}"
+}

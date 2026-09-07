@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1097,
+  "latency_s": 5.013,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 307,
+  "text": "{\"findings\": [{\"file\": \"mcp/streamable.go\", \"line_start\": 2770, \"line_end\": 2770, \"category\": \"logic\", \"description\": \"The DELETE request now reuses c.ctx instead of a fresh context with its own timeout. Since this code runs inside Close(), c.ctx is likely already canceled (or about to be canceled) as part of the shutdown sequence, which would cause the DELETE request to fail immediately via ctx.Err() rather than actually being sent. Even if c.ctx is not canceled by Close() itself, removing the bounded timeout means the request can now hang indefinitely if the server doesn't respond, blocking Close() from returning promptly. The reviewer's finding is correct, but understates that the more likely and immediate failure mode is the DELETE never being attempted at all if c.ctx is already done at Close() time, silently skipping server-side session cleanup.\", \"confidence\": 0.75}]}"
+}

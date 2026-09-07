@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1239,
+  "latency_s": 5.296,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 260,
+  "text": "{\"findings\": [{\"file\": \"ecosystem-tests/cli.ts\", \"line_start\": 615, \"line_end\": 617, \"category\": \"logic\", \"description\": \"Replacing the custom string-based coerce validation with a plain `type: 'number'` removes enforcement that retry must be a non-negative safe integer. Yargs' built-in number parsing will accept negative values (e.g. --retry=-1) and fractional values (e.g. --retry=1.5) without throwing, whereas the previous coerce function explicitly rejected these. This could allow invalid retry counts to propagate into the retry-loop logic downstream, potentially causing unexpected behavior (e.g., skipping retries entirely with negative values, or ambiguous fractional retry counts).\", \"confidence\": 0.8}]}"
+}

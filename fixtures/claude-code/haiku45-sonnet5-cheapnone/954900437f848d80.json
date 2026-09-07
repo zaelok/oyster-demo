@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1053,
+  "latency_s": 4.475,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 260,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\", \"line_start\": 70, \"line_end\": 73, \"category\": \"logic\", \"description\": \"Removing 'self.context = context' here means this method no longer (re)sets self.context before creating and attaching a new upload. If this is the primary or only site that assigns self.context (e.g., not reliably set in handlerAdded before this code path runs, or context can change/be re-added), self.context may be stale or nil when later used (e.g., for error propagation or writes), causing crashes or misdirected operations. Without confirmation that self.context is unconditionally and correctly set elsewhere prior to any use, this is a plausible regression introduced by the diff.\", \"confidence\": 0.45}]}"
+}

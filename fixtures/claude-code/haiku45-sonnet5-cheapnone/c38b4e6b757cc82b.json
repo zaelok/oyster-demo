@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 712,
+  "latency_s": 2.694,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 136,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\",\n      \"line_start\": 120,\n      \"line_end\": 120,\n      \"category\": \"logic\",\n      \"description\": \"The simplified check `split.originalInput.count == 1` may not be equivalent to the original logic that verified all elements had the same `inputIndex`; this could miss cases where multiple arguments originate from different input sources.\",\n      \"confidence\": 0.72\n    }\n  ]\n}\n```"
+}

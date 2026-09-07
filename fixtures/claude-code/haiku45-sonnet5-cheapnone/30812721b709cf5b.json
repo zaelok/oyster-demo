@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 752,
+  "latency_s": 6.227,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 351,
+  "text": "{\"findings\": [{\"file\": \"pkl/decode_struct.go\", \"line_start\": 55, \"line_end\": 65, \"category\": \"logic\", \"description\": \"Removed fallback that decoded interface-typed fields generically when no matching schema exists. Now such interface types are routed to decodeTyped(name, typ), which likely requires a registered schema for `name`; if none exists this will error or panic instead of gracefully falling back to decodeObjectGeneric, breaking previously-working decoding of unregistered interface types.\", \"confidence\": 0.6}]}"
+}

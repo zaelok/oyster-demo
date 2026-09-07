@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 638,
+  "latency_s": 2.222,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_omni/diffusion/model_metadata.py\",\n      \"line_start\": 50,\n      \"line_end\": 57,\n      \"category\": \"logic\",\n      \"description\": \"Removed `attention_mask_free=True` from MiniMaxH3ModularPipeline without explanation; comment mentions sync with MiniMaxH3Pipeline but they now have different configurations.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

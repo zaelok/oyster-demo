@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 686,
+  "latency_s": 6.35,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 463,
+  "text": "{\"findings\": [{\"file\": \"src/shared/config.ts\", \"line_start\": 120, \"line_end\": 122, \"category\": \"logic\", \"description\": \"Changed behavior from merging platform-specific env vars with base env vars (spread merge) to a simple fallback (platformConfig.env || result.env). This means if a platform config defines its own env object, it will completely replace result.env instead of merging with it, silently dropping any base env vars not redefined in the platform-specific config. This could break MCP server configs that rely on inheriting common env vars while only overriding a subset per platform.\", \"confidence\": 0.75}]}"
+}

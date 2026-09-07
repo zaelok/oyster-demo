@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 583,
+  "latency_s": 2.57,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 124,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"packages/agents-openai/src/openaiResponsesModel.ts\",\n      \"line_start\": 3958,\n      \"line_end\": 3965,\n      \"category\": \"logic\",\n      \"description\": \"Removing span telemetry data assignment for terminalResponse without explanation; this may lose important tracing information when request.tracing is enabled.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 768,
+  "latency_s": 4.723,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 398,
+  "text": "{\"findings\": [{\"file\": \"python/CuTeDSL/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py\", \"line_start\": 2440, \"line_end\": 2448, \"category\": \"logic\", \"description\": \"Removal of the spec.TupleParam branch means find_env_stream no longer recurses into tuple parameters to locate an environment stream. If the stream parameter is nested inside a TupleParam, it will no longer be detected, causing the function to return None (and effectively skip stream detection) even though a stream exists within the tuple.\", \"confidence\": 0.75}]}"
+}

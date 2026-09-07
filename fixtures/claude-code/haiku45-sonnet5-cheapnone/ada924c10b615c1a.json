@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1162,
+  "latency_s": 3.95,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 198,
+  "text": "{\"findings\": [{\"file\": \"packages/bedrock-sdk/src/core/streaming.ts\", \"line_start\": 76, \"line_end\": 82, \"category\": \"logic\", \"description\": \"The removed check for parsed.type === 'error' inside 'chunk' events meant that error payloads sent as data within a 'chunk' SSE event (as opposed to a distinct 'error' SSE event) are no longer converted into thrown APIError instances; they are now yielded to consumers as regular data, potentially causing downstream code to misinterpret error responses as valid stream items.\", \"confidence\": 0.85}]}"
+}

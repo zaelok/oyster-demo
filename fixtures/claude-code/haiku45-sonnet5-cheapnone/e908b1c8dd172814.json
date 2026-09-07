@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1190,
+  "latency_s": 4.624,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 340,
+  "text": "{\"findings\": [{\"file\": \"src/agents/extensions/sandbox/cloudflare/sandbox.py\", \"line_start\": 898, \"line_end\": 899, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"chunk.decode(\\\"utf-8\\\") is applied directly to each raw byte chunk as it arrives from the network stream, before any buffering occurs. If a multi-byte UTF-8 character is split across a chunk boundary (which is common with arbitrary TCP/HTTP read sizes), this raises UnicodeDecodeError and crashes the streaming loop. The previous LineDecoder.decode accepted raw bytes and could in principle buffer partial byte sequences; now decoding happens eagerly per-chunk with no error handling (e.g. errors=\\\"replace\\\" or incremental codec), losing the ability to correctly reassemble split multi-byte characters. The reviewer's original finding is correct and the diff does not address it despite narrowing LineDecoder.decode's signature to str.\"}]}"
+}

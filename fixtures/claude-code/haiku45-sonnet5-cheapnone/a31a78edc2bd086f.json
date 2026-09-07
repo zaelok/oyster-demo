@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 890,
+  "latency_s": 4.25,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 258,
+  "text": "{\"findings\": [{\"file\": \"Sources/Services/ContainerAPIService/Client/Parser.swift\", \"line_start\": 433, \"line_end\": 436, \"category\": \"logic\", \"confidence\": 0.5, \"description\": \"Removing 'fs.source = \\\"tmpfs\\\"' leaves fs.source unset for tmpfs entries. Without visibility into how fs.source is used elsewhere (e.g., mount command construction, display, serialization to config), this could break functionality that expects a non-empty source value for tmpfs, or it could be an intentional cleanup if source is genuinely irrelevant/unused for tmpfs. The reviewer should verify actual downstream usage of fs.source for tmpfs-typed Filesystem objects before confirming this as a real defect.\"}]}"
+}

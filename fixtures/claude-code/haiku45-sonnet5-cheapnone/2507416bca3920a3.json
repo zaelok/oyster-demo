@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1137,
+  "latency_s": 11.82,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1032,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\", \"line_start\": 715, \"line_end\": 733, \"category\": \"logic\", \"description\": \"The catch block for IllegalCharacterException thrown by headers.add(name, value) now always reports 'Invalid header name', but headers.add() can throw this exception due to an invalid character in either the header name OR the header value. Renaming invalidHeaderNameOrValue to invalidHeaderName and changing the message text makes the error misleading when the actual problem is in the header value, not the name.\", \"confidence\": 0.6}, {\"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\", \"line_start\": 728, \"line_end\": 733, \"category\": \"style\", \"description\": \"The new message construction 'msg != null ? msg : name' drops the header name entirely from the exception message whenever cause.getMessage() is non-null, losing useful diagnostic context (which header name/line caused the failure) that was previously always included alongside the optional cause message.\", \"confidence\": 0.5}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 818,
+  "latency_s": 3.101,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 162,
+  "text": "{\"findings\": [{\"file\": \"src/shared/config.ts\", \"line_start\": 120, \"line_end\": 120, \"category\": \"logic\", \"description\": \"Changing from a merge ({...result.env, ...platformConfig.env}) to a full replace (platformConfig.env || result.env) means any base environment variables in result.env not present in platformConfig.env will be lost when platformConfig.env is defined, instead of being preserved alongside platform-specific overrides.\", \"confidence\": 0.85}]}"
+}

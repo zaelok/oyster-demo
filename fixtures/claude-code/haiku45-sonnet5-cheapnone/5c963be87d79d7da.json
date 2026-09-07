@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1173,
+  "latency_s": 3.613,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 230,
+  "text": "{\"findings\": [{\"file\": \"litellm/types/utils.py\", \"line_start\": 3123, \"line_end\": 3123, \"category\": \"logic\", \"description\": \"guardrail_cost_by_unit was removed from AUDIT_GUARDRAIL_FIELDS (the redaction-safe set) without visibility into whether it was added to the other classification set (e.g., a sensitive/excluded fields set) referenced by the new comment about test_every_guardrail_field_is_classified. If it wasn't moved to that other set and still exists as a field on the guardrail record, the classification test will fail, or the field will be silently dropped from redacted records as an unintended side effect.\", \"confidence\": 0.5}]}"
+}

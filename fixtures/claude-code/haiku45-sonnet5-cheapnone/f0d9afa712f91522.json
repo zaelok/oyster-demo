@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 612,
+  "latency_s": 2.571,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 131,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_ascend/device/device_op.py\",\n      \"line_start\": 798,\n      \"line_end\": 807,\n      \"category\": \"logic\",\n      \"description\": \"Removal of q_norm_without_weight fallback path eliminates A5-specific optimization path without clear fallback guarantee that triton_q_rms will be available on all platforms.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

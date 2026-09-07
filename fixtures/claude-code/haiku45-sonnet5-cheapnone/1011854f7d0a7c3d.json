@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1021,
+  "latency_s": 4.116,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 351,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/CryptoExtras/RSA/RSA.swift\",\n      \"line_start\": 511,\n      \"line_end\": 511,\n      \"category\": \"logic\",\n      \"description\": \"Changed minimum key size check from 1024 to 2048 bits; verify this doesn't break backward compatibility for existing code relying on 1024-bit keys.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"Sources/CryptoExtras/RSA/RSA.swift\",\n      \"line_start\": 707,\n      \"line_end\": 707,\n      \"category\": \"logic\",\n      \"description\": \"Hardcoded 42 bytes for OAEP padding replaces dynamic calculation based on hash function; assumes SHA-256 (32 bytes hash + 2*5 bytes overhead) but loses flexibility if digest changes.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"Sources/CryptoExtras/RSA/RSA.swift\",\n      \"line_start\": 678,\n      \"line_end\": 683,\n      \"description\": \"Removed hashBitLength property from Digest enum that was used in padding calculations; ensure all call sites now work correctly with the hardcoded value.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

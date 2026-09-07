@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 665,
+  "latency_s": 3.623,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 234,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/include/raft/core/detail/copy.hpp\",\n      \"line_start\": 306,\n      \"line_end\": 311,\n      \"category\": \"logic\",\n      \"description\": \"Loop condition `cur_index < md.extent(real_index) - 1` prevents reaching the last valid index, potentially losing data or leaving incomplete multi-dimensional index increments.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"cpp/include/raft/core/detail/copy.hpp\",\n      \"line_start\": 306,\n      \"line_end\": 311,\n      \"category\": \"logic\",\n      \"description\": \"Original code clamped to max_index (extent-1) to handle boundary; new while-loop may not properly handle the case where increment spans multiple dimension steps.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

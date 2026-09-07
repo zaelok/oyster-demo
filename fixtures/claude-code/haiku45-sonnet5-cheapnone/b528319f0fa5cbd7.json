@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1219,
+  "latency_s": 4.813,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 283,
+  "text": "{\"findings\": [{\"file\": \"src/internal/detect-platform.ts\", \"line_start\": 131, \"line_end\": 131, \"category\": \"logic\", \"description\": \"Changing the regex from /\\\\bEdg(?:e|A|iOS)?\\\\b.../ to /Edge.../ removes matching for 'Edg/' (Chromium Edge desktop UA token, which lacks the trailing 'e'), 'EdgA/' (Edge Android), and 'EdgiOS/' (Edge iOS). Only legacy EdgeHTML UAs containing the literal substring 'Edge' will still match; modern Chromium-based Edge (the vast majority of current Edge installs) will fail this pattern and fall through to the Chrome pattern later in browserPatterns, causing Edge to be misreported as Chrome.\", \"confidence\": 0.92}]}"
+}

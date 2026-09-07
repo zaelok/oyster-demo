@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1545,
+  "latency_s": 4.839,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 375,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 86, \"line_end\": 89, \"category\": \"logic\", \"description\": \"isinstance(block, dict) check removed before block['type'] access for user message content blocks. If a block is not a dict (e.g., a string, list, or None), block['type'] raises TypeError, which is not caught by the surrounding except KeyError handler, so the error propagates unhandled instead of being wrapped as MessageParseError.\", \"confidence\": 0.75}, {\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 126, \"line_end\": 129, \"category\": \"logic\", \"description\": \"Validation that data['message']['content'] is a list and that each block is a dict was removed for assistant messages. If content is not a list (e.g., a dict or string) or contains non-dict elements, iterating and accessing block['type'] can raise TypeError instead of KeyError, escaping the except KeyError handler and surfacing as an unhandled exception rather than MessageParseError.\", \"confidence\": 0.75}]}\n```"
+}

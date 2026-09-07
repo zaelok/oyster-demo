@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 949,
+  "latency_s": 11.196,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 968,
+  "text": "{\"findings\": [{\"file\": \"whisper/model.py\", \"line_start\": 121, \"line_end\": 124, \"category\": \"logic\", \"confidence\": 0.65, \"description\": \"The removed code manually broadcast k/v from batch size 1 to match q's batch size before calling scaled_dot_product_attention (relevant for cached cross-attention keys/values). While SDPA's default 'math' backend can broadcast batch dimensions via matmul semantics, the fused flash-attention and memory-efficient backends historically do not support batch-dimension broadcasting and require k/v batch size to exactly match q's. Removing the explicit expand can cause a runtime error or force a fallback to a slower backend when q.shape[0] != k.shape[0] (e.g., beam search with cached decoder cross-attention states), depending on the PyTorch version and backend selected.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 924,
+  "latency_s": 11.569,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1092,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/flash_fwd.py\", \"line_start\": 626, \"line_end\": 629, \"category\": \"logic\", \"description\": \"The `self.is_split_kv = False` initialization was removed from `__init__`. If `is_split_kv` is referenced elsewhere in the class (e.g., in `__call__` or `kernel`), this will now raise an AttributeError unless it is guaranteed to be set by another code path before use.\", \"confidence\": 0.55}, {\"file\": \"flash_attn/cute/flash_fwd.py\", \"line_start\": 793, \"line_end\": 836, \"category\": \"logic\", \"description\": \"The `mDynamicCausal` argument was removed from both the kernel launch call and the `kernel` method signature. If the kernel body (not shown in this diff) still references `mDynamicCausal`, this will cause a NameError; more generally this silently drops dynamic-causal-mask support that other code may still depend on.\", \"confidence\": 0.5}]}"
+}

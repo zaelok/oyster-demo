@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1455,
+  "latency_s": 14.58,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 260,
+  "text": "{\"findings\": [{\"file\": \"integration_tests/src/main/python/data_gen.py\", \"line_start\": 985, \"line_end\": 991, \"category\": \"logic\", \"description\": \"The replacement gen_value() only handles the case where data_type itself is DateType. The removed _normalize_pyspark_scalar recursively normalized DateType values nested inside ArrayType, StructType, and MapType. Now, generating scalar values for e.g. ArrayGen(DateType()), StructGen with a date field, or MapGen with date keys/values will leave nested date objects unconverted to ISO strings, which will then be mishandled by _mark_as_lit (which expects date literals as ISO strings) causing incorrect or failing literal generation for such nested date scalars.\", \"confidence\": 0.8}]}"
+}

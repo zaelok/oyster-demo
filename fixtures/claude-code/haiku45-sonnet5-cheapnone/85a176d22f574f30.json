@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1444,
+  "latency_s": 17.115,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1659,
+  "text": "{\"findings\": [{\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 86, \"line_end\": 89, \"category\": \"logic\", \"description\": \"Removed isinstance(block, dict) check before matching block['type'] for user message content blocks. The surrounding try/except in this parser typically catches only KeyError to convert failures into MessageParseError. If a block is not a dict (e.g., a string or None), block['type'] raises TypeError rather than KeyError, so the error will propagate unhandled instead of being wrapped in the intended MessageParseError, breaking the parser's error-handling contract for malformed API data.\", \"confidence\": 0.75}, {\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 126, \"line_end\": 129, \"category\": \"logic\", \"description\": \"Removed validation that data['message']['content'] is a list and that each block is a dict before iterating for assistant message parsing. If content is not a list (iterating a dict yields string keys) or contains non-dict elements, block['type'] will raise TypeError instead of KeyError, which is not caught by the existing except KeyError handler, so a generic TypeError escapes instead of the intended MessageParseError.\", \"confidence\": 0.75}]}"
+}

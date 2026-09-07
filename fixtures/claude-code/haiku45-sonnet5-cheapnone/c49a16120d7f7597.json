@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1297,
+  "latency_s": 4.252,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 247,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\", \"line_start\": 451, \"line_end\": 457, \"category\": \"logic\", \"description\": \"The special-case handling for empty/blank inputJson strings (returning JsonMissing.of()) was removed. Now, when a tool_use block has no input arguments (inputJson is empty string, which is valid per Anthropic's streaming API for zero-argument tools), JSON_MAPPER.readValue will throw a JSON parsing exception since empty string is not valid JSON, causing an AnthropicInvalidDataException to be thrown for a previously valid case.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 693,
+  "latency_s": 3.827,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 237,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"nemo/collections/asr/models/label_models.py\",\n      \"line_start\": 768,\n      \"line_end\": 770,\n      \"category\": \"logic\",\n      \"description\": \"The cosine similarity formula is incomplete; the denominator is missing the norm of Y and the formula appears malformed with unmatched parentheses.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"nemo/collections/asr/models/label_models.py\",\n      \"line_start\": 768,\n      \"line_end\": 770,\n      \"category\": \"logic\",\n      \"description\": \"Using `.squeeze()` without arguments will remove all dimensions of size 1, which may incorrectly reshape the tensor compared to the original `.squeeze(-1).squeeze(-1)` that only removes trailing dimensions.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

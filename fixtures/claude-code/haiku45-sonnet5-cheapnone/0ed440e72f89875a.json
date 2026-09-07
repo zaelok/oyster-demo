@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1059,
+  "latency_s": 8.868,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 670,
+  "text": "{\"findings\": [{\"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\", \"line_start\": 100, \"line_end\": 100, \"category\": \"logic\", \"description\": \"Removing infer_schema_length=None reverts polars to its default schema inference behavior (which only samples the first ~100 rows). If daily_batches contain more than 100 records with heterogeneous types (e.g. some fields None in early rows but populated with a different type later, or mixed int/float), this can cause incorrect type inference or a SchemaError/ComputeError during DataFrame construction that previously was avoided by scanning the full record set.\", \"confidence\": 0.55}, {\"file\": \"litellm/integrations/cloudzero/transform.py\", \"line_start\": 98, \"line_end\": 98, \"category\": \"logic\", \"description\": \"Removing infer_schema_length=None from pl.DataFrame(cbf_data) means only a subset of rows (default 100) is used to infer column types; if cbf_data has more rows with inconsistent types/None values beyond that sample, construction may raise a schema inference error or silently produce wrong dtypes, which is a functional regression from the prior explicit full-scan behavior.\", \"confidence\": 0.55}]}"
+}

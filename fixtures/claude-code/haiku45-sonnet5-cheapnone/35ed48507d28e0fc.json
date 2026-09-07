@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 877,
+  "latency_s": 34.295,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3502,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/asr/models/label_models.py\", \"line_start\": 768, \"line_end\": 770, \"category\": \"logic\", \"description\": \"The refactored cosine similarity computation replaces the explicit `.squeeze(-1).squeeze(-1)` calls with bare `.squeeze()`. Since matmul results have shape (B,1,1), a bare squeeze() will remove *all* singleton dimensions, including the batch dimension when batch_size == 1, collapsing the tensor to a 0-d scalar instead of a shape-(1,) tensor. This can break downstream code that expects a per-sample tensor (e.g., iterating, indexing, or thresholding per pair). The original code's dim-specific squeeze avoided this edge case. While the fix to the cosine-similarity formula itself (adding the missing ||Y||^2 term and sqrt) appears correct, the squeeze() simplification introduces a batch-size=1 edge-case regression.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 584,
+  "latency_s": 2.187,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 112,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/agents/voice/result.py\",\n      \"line_start\": 127,\n      \"line_end\": 127,\n      \"category\": \"security\",\n      \"description\": \"Instructions field now always included in trace output regardless of trace_include_sensitive_data setting, potentially exposing sensitive system prompts.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

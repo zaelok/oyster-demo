@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1214,
+  "latency_s": 5.491,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 391,
+  "text": "{\"findings\": [{\"file\": \"integration_tests/src/main/python/data_gen.py\", \"line_start\": 985, \"line_end\": 991, \"category\": \"logic\", \"description\": \"The replacement code only checks if data_type is a top-level DateType, losing the recursive handling of ArrayType, StructType, and MapType that the original _normalize_pyspark_scalar provided. If data_gen represents a nested type (e.g., ArrayType(DateType()) or StructType containing a DateType field), date values nested within will no longer be converted to ISO strings, causing incorrect scalar values to be generated for such nested date fields.\", \"confidence\": 0.75}]}"
+}

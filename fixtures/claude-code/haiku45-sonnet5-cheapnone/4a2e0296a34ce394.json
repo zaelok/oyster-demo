@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 582,
+  "latency_s": 1.305,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 126,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"open_instruct/dpo_utils.py\",\n      \"line_start\": 710,\n      \"line_end\": 710,\n      \"category\": \"logic\",\n      \"description\": \"Removed `.clamp(min=1)` guard allows division by zero when loss_mask.sum(-1) is 0, which can occur when all labels are -100.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

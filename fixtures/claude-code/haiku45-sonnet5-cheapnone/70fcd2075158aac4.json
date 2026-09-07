@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1559,
+  "latency_s": 6.467,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 350,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/cloud-tasks/src/lib.rs\", \"line_start\": 975, \"line_end\": 975, \"category\": \"logic\", \"description\": \"Replacing dynamic git branch detection with a hardcoded 'main' string means tasks created for repositories whose default/current branch is not literally named 'main' (e.g. 'master', 'develop', or a feature branch) will be submitted against the wrong git_ref, potentially causing the cloud backend to target an incorrect branch or fail task creation.\", \"confidence\": 0.75}, {\"file\": \"codex-rs/core/src/git_info.rs\", \"line_start\": 260, \"line_end\": 262, \"category\": \"style\", \"description\": \"Removed the public `default_branch_name` function that wrapped `get_default_branch`; since this diff also removes its only known caller in cloud-tasks/src/lib.rs, this looks intentional cleanup, but if any other crate or external consumer depended on this public API, removing it is a breaking change with no deprecation.\", \"confidence\": 0.4}]}"
+}

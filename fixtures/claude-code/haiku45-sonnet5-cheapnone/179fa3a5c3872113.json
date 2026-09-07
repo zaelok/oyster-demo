@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 921,
+  "latency_s": 3.378,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 218,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/litellm_core_utils/litellm_logging.py\",\n      \"line_start\": 5678,\n      \"line_end\": 5679,\n      \"category\": \"security\",\n      \"description\": \"Removed redaction of traceback and error_message in error logging, potentially exposing sensitive information like API keys, tokens, or internal paths\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"litellm/proxy/utils.py\",\n      \"line_start\": 2571,\n      \"line_end\": 2589,\n      \"category\": \"security\",\n      \"description\": \"Removed redaction of traceback_str before passing to callbacks, potentially exposing sensitive data to external callback handlers\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

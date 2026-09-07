@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 684,
+  "latency_s": 1.475,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 120,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\",\n      \"line_start\": 449,\n      \"line_end\": 451,\n      \"category\": \"logic\",\n      \"description\": \"Raw string literal with single hash may fail if the string contains the sequence \\\"#, breaking the escaping mechanism that was previously dynamic.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1174,
+  "latency_s": 11.88,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 991,
+  "text": "{\"findings\": [{\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"description\": \"The rewritten accepts() function replaces proper HTTP Accept header parsing (which handled multiple comma-separated media ranges, wildcards like '*/*' or 'application/*', and quality/q-values) with a naive substring check via String.contains(). This breaks several cases: (1) wildcard Accept values such as 'application/*' or '*/*' will no longer match a concrete mime type since the substring won't literally contain the full mime string; (2) an explicitly rejected media type with q=0 (e.g., 'application/json;q=0') will still incorrectly match because quality is not parsed at all; (3) substring matching can produce false positives for mime types that are prefixes/substrings of others. This is a functional regression from correct content-negotiation behavior to an unreliable heuristic.\", \"confidence\": 0.75}]}"
+}

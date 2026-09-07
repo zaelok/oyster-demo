@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1348,
+  "latency_s": 17.48,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1477,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/interface.py\", \"line_start\": 708, \"line_end\": 714, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The removed `elif use_dedicated_hd256_kernel: num_splits = 1` branch is not replaced with any equivalent safeguard. Since `use_dedicated_hd256_kernel` is now computed later (near line 758) only for the `use_2cta_instrs` calculation, the num_splits selection logic no longer forces num_splits=1 for this kernel variant. For arch 10/11 with head_dim==256 and head_dim_v==256, num_splits will now fall into the `elif num_splits < 1` branch and be set by `num_splits_heuristic`, which can return values >1 that the dedicated hd=256 kernel (with no SplitKV variant) cannot handle, risking incorrect results or a runtime failure.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1484,
+  "latency_s": 20.189,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1481,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/cuts/cuts.hpp\", \"line_start\": 668, \"line_end\": 669, \"category\": \"logic\", \"description\": \"clique_table parameter changed from `shared_ptr<...>&` to by-value `shared_ptr<...>` (moved into member). If any caller relied on the previous reference semantics \u2014 e.g., reassigning its own shared_ptr variable after constructing cut_generation_t and expecting the class's internal alias to pick up the new pointer \u2014 that aliasing behavior is now lost since the member stores its own copy captured at construction time.\", \"confidence\": 0.45}, {\"file\": \"cpp/src/cuts/cuts.hpp\", \"line_start\": 773, \"line_end\": 773, \"category\": \"logic\", \"description\": \"clique_table_ member changed from `shared_ptr<...>&` (aliasing the caller's shared_ptr) to an owned `shared_ptr<...>` value. This is generally a safer/more idiomatic pattern (avoids dangling reference if the caller's shared_ptr is a temporary or goes out of scope), and now allows a default nullptr, but it changes update-visibility semantics: mutations to the original caller-side shared_ptr after construction will no longer be reflected in clique_table_.\", \"confidence\": 0.35}]}"
+}

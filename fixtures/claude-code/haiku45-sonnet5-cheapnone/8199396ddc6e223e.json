@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 932,
+  "latency_s": 3.296,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 239,
+  "text": "{\"findings\": [{\"file\": \"base-action/src/parse-sdk-options.ts\", \"line_start\": 289, \"line_end\": 292, \"category\": \"security\", \"confidence\": 0.55, \"description\": \"Removed deletion of env.ALL_INPUTS before passing environment to the SDK/subprocess. If ALL_INPUTS aggregates workflow inputs (which may include secrets or sensitive parameters), it will now be exposed in the environment passed to the Claude SDK, potentially leaking sensitive data to the model, logs, or subprocess. Reviewer should verify whether ALL_INPUTS is guaranteed not to contain secrets elsewhere in the codebase before confirming this as a true positive.\"}]}"
+}

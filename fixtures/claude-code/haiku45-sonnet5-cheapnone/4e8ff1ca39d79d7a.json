@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 828,
+  "latency_s": 3.839,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 191,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/config.py\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"Removing the `not field.init` check causes as_dict() to now include fields with init=False (e.g., derived/internal fields set in __post_init__), which were previously excluded. This can expose internal state in serialized output and break round-tripping via from_dict if such fields aren't accepted as constructor args, or change existing serialization behavior/backwards compatibility for configs relying on the old exclusion.\", \"confidence\": 0.75}]}"
+}

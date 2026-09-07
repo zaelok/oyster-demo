@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1033,
+  "latency_s": 5.032,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 253,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/internal/type/file_input.rb\", \"line_start\": 58, \"line_end\": 58, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Narrowing the case pattern from `Pathname | StringIO | IO | OpenAI::FilePart` to just `StringIO` means Pathname, IO, and OpenAI::FilePart instances no longer match this branch and fall through to the `else` clause. The reviewer should also check what the `else` branch does with these values (e.g., whether it raises, re-coerces, or silently mishandles them), since this is a behavioral regression for any caller passing a Pathname, generic IO, or FilePart object for file uploads - a common and previously explicitly supported case.\"}]}"
+}

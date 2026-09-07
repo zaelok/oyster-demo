@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 910,
+  "latency_s": 21.088,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2266,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 328, \"line_end\": 329, \"category\": \"logic\", \"description\": \"The removal of the searchLines logic (which stripped a trailing empty string element caused by splitting file content ending in a newline) means that when eof matching is performed, 'lines' may include a spurious trailing empty-string element. This shifts endStart by one and can cause findContextCore to fail to locate the correct end-of-file context, breaking EOF-based diff application for files ending with a newline.\", \"confidence\": 0.55}, {\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 331, \"line_end\": 331, \"category\": \"logic\", \"description\": \"The fallback call now passes 'start' directly to findContextCore without clamping it to lines.length (previously Math.min(start, searchLines.length)). If 'start' exceeds lines.length, this could cause findContextCore to operate with an out-of-bounds starting index, potentially producing incorrect fuzz/newIndex results or unexpected behavior depending on findContextCore's bounds handling.\", \"confidence\": 0.4}]}"
+}

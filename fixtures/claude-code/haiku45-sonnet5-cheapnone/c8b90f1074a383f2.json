@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1018,
+  "latency_s": 5.278,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 282,
+  "text": "{\"findings\": [{\"file\": \"lib/ClangImporter/ImportDecl.cpp\", \"line_start\": 3414, \"line_end\": 3421, \"category\": \"logic\", \"description\": \"The removed code applied a DisfavoredOverloadAttr when the imported decl's key (used for a non-canonical/alternate declaration, e.g. from a typedef'd enum) differed from the canonical decl. This ensured that when multiple related decls map to the same constant, the non-canonical import is disfavored in overload resolution so the canonical one is preferred. Removing this unconditionally causes both the canonical and non-canonical imported constants to be treated as equally viable overloads, potentially causing ambiguous overload resolution errors or incorrect overload selection in Swift code that previously resolved unambiguously to the canonical constant.\", \"confidence\": 0.8}]}"
+}

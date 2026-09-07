@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1100,
+  "latency_s": 19.528,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2444,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/interface.py\", \"line_start\": 708, \"line_end\": 714, \"category\": \"logic\", \"description\": \"The special-case that forced num_splits=1 for the dedicated hd=256 kernel (arch 10/11, head_dim==256, head_dim_v==256) was removed. Since that kernel has no SplitKV variant, num_splits will now fall through to the `elif num_splits < 1` branch and be set via num_splits_heuristic, potentially producing num_splits > 1 for this kernel path, which it cannot support (previously guarded by the removed elif use_dedicated_hd256_kernel branch).\", \"confidence\": 0.85}]}"
+}

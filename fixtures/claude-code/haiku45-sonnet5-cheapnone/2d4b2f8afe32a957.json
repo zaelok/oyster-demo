@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 767,
+  "latency_s": 17.965,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1749,
+  "text": "{\"findings\": [{\"file\": \"whisper/model.py\", \"line_start\": 124, \"line_end\": 124, \"category\": \"logic\", \"description\": \"Removed the manual broadcast/expand of cached key/value tensors (k.shape[0]==1) to match the query batch size (q.shape[0]) before calling scaled_dot_product_attention. This expand was likely added to support scenarios like beam-search decoding where keys/values are cached with batch size 1 (e.g., cross-attention KV cache) but queries have batch size equal to the number of beams/hypotheses. While recent PyTorch versions of scaled_dot_product_attention support batch-dimension broadcasting for some backends (e.g., the math backend), not all backends (e.g., flash-attention or memory-efficient kernels) reliably broadcast mismatched batch dimensions, which can cause a runtime shape-mismatch error or silently incorrect attention results depending on the installed PyTorch version/backend. This is a potential regression for users running with older PyTorch versions or SDPA backends that don't support batch broadcasting.\", \"confidence\": 0.55}]}"
+}

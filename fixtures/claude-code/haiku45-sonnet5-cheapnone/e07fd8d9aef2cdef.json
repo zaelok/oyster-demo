@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 962,
+  "latency_s": 3.998,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 334,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+Keys.swift\",\n      \"line_start\": 242,\n      \"line_end\": 242,\n      \"category\": \"logic\",\n      \"description\": \"Condition inverted: returns false when elements ARE equal instead of when they are NOT equal, breaking equality comparison.\",\n      \"confidence\": 0.99\n    },\n    {\n      \"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+SubSequence.swift\",\n      \"line_start\": 303,\n      \"line_end\": 303,\n      \"category\": \"logic\",\n      \"description\": \"Condition inverted: returns false when elements ARE equal instead of when they are NOT equal, breaking equality comparison.\",\n      \"confidence\": 0.99\n    },\n    {\n      \"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+Values.swift\",\n      \"line_start\": 261,\n      \"line_end\": 261,\n      \"category\": \"logic\",\n      \"description\": \"Condition inverted: returns false when elements ARE equal instead of when they are NOT equal, breaking equality comparison.\",\n      \"confidence\": 0.99\n    }\n  ]\n}\n```"
+}

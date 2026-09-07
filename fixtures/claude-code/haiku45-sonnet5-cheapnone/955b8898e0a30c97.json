@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1312,
+  "latency_s": 16.178,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1379,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/cloud-tasks/src/lib.rs\", \"line_start\": 975, \"line_end\": 975, \"category\": \"logic\", \"description\": \"The dynamic git ref detection (checking default branch then current branch via codex_core::git_info) was removed and replaced with a hardcoded \\\"main\\\" string. This means task creation will always target the \\\"main\\\" branch regardless of the user's actual repository default or current branch, which is a functional regression for repos that use \\\"master\\\" or a feature branch as the working ref.\", \"confidence\": 0.65}]}"
+}

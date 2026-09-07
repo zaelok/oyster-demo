@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1268,
+  "latency_s": 3.497,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 186,
+  "text": "{\"findings\": [{\"file\": \"mcp/client.go\", \"line_start\": 337, \"line_end\": 346, \"category\": \"logic\", \"description\": \"Subscription to list-changed notifications is now based solely on local handler registration, without checking ServerCapabilities.Tools/Prompts/Resources.ListChanged. This removes protocol-compliant capability negotiation and could cause the client to send subscribe requests for notification types the server never declared support for, leading to errors or silently ignored subscriptions on non-compliant/strict servers.\", \"confidence\": 0.7}]}"
+}

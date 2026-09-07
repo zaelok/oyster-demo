@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1173,
+  "latency_s": 4.488,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 268,
+  "text": "```json\n{\"findings\": [{\"file\": \"ecosystem-tests/cli.ts\", \"line_start\": 614, \"line_end\": 617, \"category\": \"logic\", \"description\": \"Changing --retry from type 'string' with custom coerce validation to native yargs 'number' type removes enforcement of non-negative safe integer constraint. Yargs 'number' type will accept negative numbers, fractional values (e.g., 1.5), NaN-producing inputs, and unsafe integers without throwing an error, whereas the previous coerce function explicitly rejected these cases with a clear error message. This could allow invalid retry counts (e.g., -1, 2.5) to silently pass through and cause unexpected behavior downstream (e.g., negative retry loops or fractional retry counts).\", \"confidence\": 0.75}]}\n```"
+}

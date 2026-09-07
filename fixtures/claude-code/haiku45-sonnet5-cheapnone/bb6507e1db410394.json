@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1098,
+  "latency_s": 4.037,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 222,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\", \"line_start\": 118, \"line_end\": 118, \"category\": \"logic\", \"description\": \"The original code guarded the cast with 'if (bodyNode instanceof ImportNode importNode)', only adding entries for import members. The diff removes this check and unconditionally casts bodyNode to ImportNode, which will throw ClassCastException for any non-import member (e.g. regular property or method definitions) whose unwrapped body node is not an ImportNode. This breaks getImports() for any typed module containing non-import members.\", \"confidence\": 0.95}]}"
+}

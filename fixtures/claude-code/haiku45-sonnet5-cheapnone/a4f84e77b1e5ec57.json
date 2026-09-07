@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1355,
+  "latency_s": 4.949,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 363,
+  "text": "{\"findings\": [{\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"security\", \"description\": \"The check restricting vs_id_arg to values within all_vs_ids (the request's authorized vector_store_ids) was removed. Now any non-empty vector_store_id supplied by the model via tool-call arguments is used directly to select which vector store to search, bypassing the previous authorization boundary. If a model (potentially influenced by a prompt injection in retrieved documents or adversarial input) returns a vector_store_id not in the request's configured set, the emulated handler will query that arbitrary vector store instead of falling back to the authorized set.\", \"confidence\": 0.75}, {\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"logic\", \"description\": \"The removed warning log that flagged out-of-scope vector_store_id selections eliminates observability into this behavior, making it harder to detect misuse or model errors in production.\", \"confidence\": 0.35}]}"
+}

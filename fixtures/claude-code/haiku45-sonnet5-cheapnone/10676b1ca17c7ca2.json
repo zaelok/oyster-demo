@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 870,
+  "latency_s": 4.04,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 158,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/result.py\", \"line_start\": 127, \"line_end\": 127, \"category\": \"security\", \"description\": \"The instructions field is now unconditionally included in trace model_config, bypassing the trace_include_sensitive_data check that still guards the 'input' field just above. This leaks potentially sensitive system/voice instructions into trace output even when the user has explicitly opted out of sensitive data tracing.\", \"confidence\": 0.95}]}"
+}

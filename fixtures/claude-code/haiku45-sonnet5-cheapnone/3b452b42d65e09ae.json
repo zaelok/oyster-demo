@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1635,
+  "latency_s": 32.074,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3087,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/textarea.rs\", \"line_start\": 800, \"line_end\": 806, \"category\": \"logic\", \"description\": \"In the rewritten beginning_of_previous_word, the candidate index is computed as `i + 1` where `i` is the byte index of a whitespace char found via rfind. This assumes the whitespace character is exactly one byte (ASCII). For multi-byte whitespace characters such as U+202F (NARROW NO-BREAK SPACE, 3 bytes) or other Unicode spaces, `i + 1` lands in the middle of the character's UTF-8 encoding, producing a byte index that is not a char boundary. Using this candidate to slice `self.text` (e.g., in adjust_pos_out_of_elements or subsequent cursor operations) will panic at runtime. The original implementation used `idx + ch.len_utf8()` to correctly skip the full width of the whitespace character.\", \"confidence\": 0.85}, {\"file\": \"codex-rs/tui/src/bottom_pane/textarea.rs\", \"line_start\": 1262, \"line_end\": 1267, \"category\": \"style\", \"description\": \"The regression test `delete_backward_word_handles_narrow_no_break_space`, which specifically exercised the multi-byte whitespace (U+202F) edge case for word-boundary deletion, was deleted as part of this refactor. Since this test would have caught the byte-boundary bug introduced by the `i + 1` change, removing it hides a real regression instead of fixing or updating it.\", \"confidence\": 0.75}]}"
+}

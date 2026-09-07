@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1550,
+  "latency_s": 63.85,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 6822,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7362, \"line_end\": 7369, \"category\": \"logic\", \"description\": \"This reintroduces the exact NaN bug that the removed `_zero_out_band` helper was written to avoid (per its own docstring: 'x - band_part(x, lower, upper) evaluates to NaN wherever x holds +/-inf'). When `x` contains +/-inf values (e.g. attention score matrices with -inf masking, common inputs to triu), `mb.sub(x=x, y=y)` computes inf - inf = NaN for elements inside the zeroed band instead of correctly producing 0, corrupting the result.\", \"confidence\": 0.85}, {\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7394, \"line_end\": 7401, \"category\": \"logic\", \"description\": \"Same regression as in triu: replacing the NaN-safe select-based zeroing with `mb.sub(x=x, y=y)` reintroduces incorrect NaN results when x contains +/-inf values inside the band being zeroed out (inf - inf = NaN instead of 0), which the removed helper's docstring explicitly warned against.\", \"confidence\": 0.85}]}"
+}

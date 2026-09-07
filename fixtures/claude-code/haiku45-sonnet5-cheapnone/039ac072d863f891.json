@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 953,
+  "latency_s": 16.317,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1219,
+  "text": "{\"findings\": [{\"file\": \"src/mcp/shared/tool_name_validation.py\", \"line_start\": 80, \"line_end\": 80, \"category\": \"security\", \"description\": \"Changed re.fullmatch to re.match without anchoring the end of the string. re.match only requires the pattern to match a prefix of the string, so a tool name with a valid prefix followed by disallowed characters (e.g. 'validname<script>') will incorrectly pass validation instead of being flagged for invalid characters, since TOOL_NAME_REGEX presumably lacks an end-of-string anchor. This weakens tool name validation and could allow malicious or malformed names to slip through.\", \"confidence\": 0.75}, {\"file\": \"src/mcp/server/fastmcp/resources/templates.py\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"Replacing re.fullmatch(pattern, uri) with re.match(f'^{pattern}$', uri) is not exactly equivalent: in Python's re module, '$' matches at the end of the string or just before a trailing newline, whereas fullmatch requires the entire string (including any trailing newline) to match. This means a URI ending with '\\\\n' that shouldn't match the template could now incorrectly match, causing unintended template resolution.\", \"confidence\": 0.4}]}"
+}

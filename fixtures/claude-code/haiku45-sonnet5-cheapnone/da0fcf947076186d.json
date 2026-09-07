@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1100,
+  "latency_s": 3.863,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 224,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/IRGen/LoadableByAddress.cpp\",\n      \"line_start\": 2438,\n      \"line_end\": 2451,\n      \"category\": \"logic\",\n      \"description\": \"Assertion on line 2440 checks `srcType` as truthy but SILType is not a pointer type and this check may not catch invalid types as intended.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"lib/IRGen/LoadableByAddress.cpp\",\n      \"line_start\": 2451,\n      \"line_end\": 2451,\n      \"description\": \"After erasing instruction from parent block, subsequent iterations may access dangling pointers if storeInstsToMod contains aliasing instructions.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.5\n    }\n  ]\n}\n```"
+}

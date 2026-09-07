@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1298,
+  "latency_s": 6.891,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 586,
+  "text": "{\"findings\": [{\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 446, \"line_end\": 450, \"category\": \"security\", \"confidence\": 0.65, \"description\": \"hashQuery now uses fmt.Sprintf(\\\"%x\\\", query) which hex-encodes the raw query bytes instead of computing a one-way hash. This is trivially reversible (hex.DecodeString recovers the original text), so any downstream logging, caching, or metrics keyed by this 'hash' now exposes query content that was previously protected by SHA256.\"}, {\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 446, \"line_end\": 450, \"category\": \"logic\", \"confidence\": 0.7, \"description\": \"For queries >= 32 bytes, only the first 32 bytes are hex-encoded, so any two distinct queries sharing the same 32-byte prefix (e.g., a long shared preamble with different endings) collide and are treated as the same query key, breaking grouping/deduplication that previously relied on full-content SHA256 hashing.\"}]}"
+}

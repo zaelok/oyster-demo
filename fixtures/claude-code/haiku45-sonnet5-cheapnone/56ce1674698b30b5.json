@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1067,
+  "latency_s": 15.842,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1354,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/callbacks/speed_monitor.py\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"The A100 peak FLOPs/s base was changed from 624e12 to 312e12, while still being multiplied by dense_correction. If dense_correction is derived assuming the base value represents the sparse/peak spec (as suggested by other GPU branches like 4.5e15 * dense_correction), then halving the A100 base to the already-dense figure (312e12) before applying dense_correction again would double-correct and understate the true peak, artificially inflating computed MFU for A100 runs. Conversely, if dense_correction is only meant to scale relative to a common sparse baseline across GPU types, 312e12 may be the correct dense-mode base. Need to confirm dense_correction's semantics and whether it already accounts for sparsity to determine if this is a fix or a regression; this silently changes historical MFU/speed metrics for A100 training runs either way.\", \"confidence\": 0.45}]}"
+}

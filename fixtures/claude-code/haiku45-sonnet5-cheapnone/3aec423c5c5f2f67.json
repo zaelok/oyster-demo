@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 898,
+  "latency_s": 5.383,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 421,
+  "text": "{\"findings\": [{\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"security\", \"description\": \"The check restricting vs_id_arg to the request's all_vs_ids was removed; now any vector_store_id supplied by the model (untrusted, tool-call-derived input) is used directly to run vector searches, allowing queries against vector stores outside the ones authorized for this request.\", \"confidence\": 0.7}, {\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"logic\", \"description\": \"Removed warning log when the model picks a vector_store_id outside the request's set, silently changing behavior and losing diagnostic visibility into out-of-scope vector store selection.\", \"confidence\": 0.5}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 2693,
+  "latency_s": 64.685,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 6223,
+  "text": "{\"findings\": [{\"file\": \"cpp/bench/ann/src/common/benchmark.hpp\", \"line_start\": 373, \"line_end\": 373, \"category\": \"logic\", \"description\": \"std::thread::hardware_concurrency() returns unsigned int; dividing by benchmark_n_threads and then subtracting 1 is done in unsigned arithmetic before being assigned to the int variable num_recall_calculation_worker_threads. When hardware_concurrency()/benchmark_n_threads evaluates to 0, the subtraction underflows to UINT_MAX before narrowing to int, relying on implementation-defined (pre-C++20) two's-complement wraparound to produce -1 which is then clamped to 0. The previous code explicitly cast hardware_concurrency() to int before dividing, avoiding this fragile unsigned-underflow pattern.\", \"confidence\": 0.35}, {\"file\": \"cpp/bench/ann/src/common/benchmark.hpp\", \"line_start\": 378, \"line_end\": 404, \"category\": \"style\", \"description\": \"The recall calculation now spawns a fresh set of worker threads (with new vectors) for every batch of n_queries rows instead of once for the whole 'rows' range as before. For large rows/n_queries ratios this causes repeated thread creation/joining overhead per batch rather than a single parallel pass, which is a regression in efficiency versus the previous single-thread-pool implementation.\", \"confidence\": 0.3}]}"
+}

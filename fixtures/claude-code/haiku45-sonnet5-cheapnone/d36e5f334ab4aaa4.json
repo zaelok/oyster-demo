@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1258,
+  "latency_s": 6.975,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 304,
+  "text": "{\"findings\": [{\"file\": \"internal/vgpu/pciutil.go\", \"line_start\": 124, \"line_end\": 145, \"category\": \"security\", \"confidence\": 0.85, \"description\": \"Removal of explicit bounds checks before reading pos+PciCapabilityListID/Next/Length and before slicing d.Config[pos+PciCapabilityListID : pos+PciCapabilityListID+length] can cause an out-of-range panic if a malicious or corrupted device exposes a capability list where pos or length pushes the offset beyond len(d.Config). This is a real regression: the previous code explicitly bounded capHeaderEnd and capEnd against len(d.Config) and broke out safely, whereas the new code relies solely on GetByte's internal safety (unknown/not shown) and performs an unchecked slice operation, which is a classic OOB read/panic vector when parsing untrusted PCI config space.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 762,
+  "latency_s": 4.851,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 289,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/callbacks/speed_monitor.py\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"The A100 peak FLOPs/s value was changed from 624e12 to 312e12. The A100's published peak throughput is 312 TFLOPS for FP32/TF32 dense but 624 TFLOPS for BF16/FP16 with sparsity or ~312 TFLOPS dense BF16 depending on spec; this change halves the computed MFU baseline for A100 GPUs, which will double the reported MFU (utilization) for all A100 training runs unless this matches the intended dense_correction semantics. Verify this matches the actual precision/sparsity being measured, as it silently changes all previously reported speed/MFU metrics for A100.\", \"confidence\": 0.5}]}"
+}

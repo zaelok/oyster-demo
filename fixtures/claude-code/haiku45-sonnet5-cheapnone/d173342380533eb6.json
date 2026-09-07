@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1461,
+  "latency_s": 4.193,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 207,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/interface.py\", \"line_start\": 708, \"line_end\": 715, \"category\": \"logic\", \"description\": \"The early num_splits computation block no longer forces num_splits=1 for the dedicated hd=256 kernel (arch 10/11, head_dim==256, head_dim_v==256), since use_dedicated_hd256_kernel is now computed later. This causes num_splits to be set by num_splits_heuristic (potentially >1) for a kernel that has no SplitKV variant, which can lead to incorrect results or runtime failure.\", \"confidence\": 0.85}]}"
+}

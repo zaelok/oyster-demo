@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 864,
+  "latency_s": 8.369,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 691,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/_client.py\", \"line_start\": 513, \"line_end\": 522, \"category\": \"logic\", \"description\": \"Removal of explicit handling for HTTP 413 and 529 status codes causes these to fall through to less specific error types. A 413 (Request Entity Too Large) will no longer raise RequestTooLargeError and instead falls through to the generic APIStatusError (since 413 < 500). A 529 (Overloaded, used by some APIs including Anthropic's own overloaded signal) will no longer raise OverloadedError and instead be misclassified as a generic InternalServerError via the >=500 check. This changes the public exception contract and could break user code that catches these specific exception types, unless the exception classes and this dispatch logic were intentionally deprecated elsewhere in the change not shown in this diff.\", \"confidence\": 0.75}]}"
+}

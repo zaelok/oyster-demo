@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1313,
+  "latency_s": 13.995,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1219,
+  "text": "{\"findings\": [{\"file\": \"sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala\", \"line_start\": 1081, \"line_end\": 1082, \"category\": \"logic\", \"description\": \"dataType's valueContainsNull now uses valueContainsNull1 || valueContainsNull2 instead of function.nullable, diverging from Spark's actual MapZipWith semantics (MapType(keyType, function.dataType, function.nullable)). This mis-declares the output map's value nullability: e.g. if the lambda function can produce null (function.nullable = true) but both input maps have valueContainsNull = false, the result schema will incorrectly claim non-nullable values even though nulls can occur, which can cause downstream null-handling code (e.g. columnar vector null checks) to be skipped and produce incorrect results or crashes. Conversely if function.nullable is false but an input map has nullable values, the result is needlessly marked nullable.\", \"confidence\": 0.75}]}"
+}

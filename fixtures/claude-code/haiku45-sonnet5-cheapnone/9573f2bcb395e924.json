@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1236,
+  "latency_s": 3.398,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 164,
+  "text": "```json\n{\"findings\": [{\"file\": \"litellm/proxy/hooks/proxy_track_cost_callback.py\", \"line_start\": 272, \"line_end\": 274, \"category\": \"logic\", \"description\": \"Using 'is True' for cache_hit check will fail to zero out response_cost if cache_hit is a truthy non-bool value (e.g., string 'True' or 1) from some caching backend, leading to incorrect cost tracking on cache hits.\", \"confidence\": 0.25}]}\n```"
+}

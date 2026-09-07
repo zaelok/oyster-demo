@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1417,
+  "latency_s": 5.544,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 375,
+  "text": "{\"findings\": [{\"file\": \"litellm/litellm_core_utils/litellm_logging.py\", \"line_start\": 5678, \"line_end\": 5679, \"category\": \"security\", \"confidence\": 0.7, \"description\": \"Removing _redact_string() from traceback_info and error_message reintroduces exposure of potentially sensitive data (API keys, secrets, PII embedded in stack traces or provider error messages) into logs/telemetry/observability sinks. Unless redaction logic was proven redundant or replaced elsewhere, this is a regression that undoes a deliberate security control.\", \"confidence\": 0.7}, {\"file\": \"litellm/proxy/utils.py\", \"line_start\": 2586, \"line_end\": 2589, \"category\": \"security\", \"confidence\": 0.7, \"description\": \"Removing redaction of traceback_str before passing it to post_call_failure_hook callbacks reintroduces potential leakage of sensitive data (secrets, internal paths, credentials) to third-party/custom callback implementations that may log or forward this data externally. This undoes a prior security fix without evident justification in the diff.\", \"confidence\": 0.7}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 680,
+  "latency_s": 2.604,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 144,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/openai/internal/type/file_input.rb\",\n      \"line_start\": 64,\n      \"line_end\": 64,\n      \"category\": \"logic\",\n      \"description\": \"Pattern match narrowed from `Pathname | StringIO | IO | OpenAI::FilePart` to only `StringIO`, losing support for `Pathname`, `IO`, and `OpenAI::FilePart` types that were previously accepted.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

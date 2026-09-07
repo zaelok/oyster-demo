@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 996,
+  "latency_s": 16.019,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1531,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\", \"line_start\": 28, \"line_end\": 28, \"category\": \"logic\", \"description\": \"The try/catch around Convert.FromBase64String was removed, so a malformed base64 payload in the data URI will now throw an unhandled FormatException instead of causing TryParseDataUri to return false as its name and out-parameter pattern imply. This changes the method's contract from a safe 'try' pattern to one that can throw, potentially causing unhandled exceptions in callers that rely on the bool return value for validation.\", \"confidence\": 0.85}, {\"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\", \"line_start\": 42, \"line_end\": 42, \"category\": \"style\", \"description\": \"File is missing a trailing newline at end of file, which can cause diff noise and violates common style/lint conventions (e.g., EditorConfig insert_final_newline).\", \"confidence\": 0.5}]}"
+}

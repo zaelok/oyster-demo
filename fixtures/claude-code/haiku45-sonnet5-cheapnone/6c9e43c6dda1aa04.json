@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1497,
+  "latency_s": 5.109,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 389,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadChannel.swift\", \"line_start\": 80, \"line_end\": 81, \"category\": \"logic\", \"description\": \"try! will crash the process if parent.syncOptions!.getOption(ChannelOptions.autoRead) throws (e.g., a Channel whose SyncOptions implementation doesn't support autoRead), whereas previously try? silently defaulted to false. This turns a recoverable case into a hard crash for any Channel that provides syncOptions but doesn't support this specific option.\", \"confidence\": 0.6}, {\"file\": \"Package.swift\", \"line_start\": 326, \"line_end\": 326, \"category\": \"logic\", \"description\": \"Downgrading the swift-nio minimum version requirement from 2.94.0 to 2.81.0 could allow resolution against an older swift-nio version that lacks APIs or behavior (e.g., SyncOptions guarantees) relied upon by the HTTPResumableUploadChannel changes, potentially causing build failures or runtime issues if a consumer's dependency resolution picks an older compatible version.\", \"confidence\": 0.3}]}"
+}

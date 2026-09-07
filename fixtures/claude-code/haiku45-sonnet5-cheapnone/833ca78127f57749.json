@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 917,
+  "latency_s": 4.691,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 278,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\", \"line_start\": 118, \"line_end\": 118, \"category\": \"logic\", \"description\": \"The instanceof check for ImportNode was removed and replaced with a direct cast. If bodyNode is not an ImportNode (e.g., a regular property with a non-import expression), this will throw a ClassCastException instead of being skipped, breaking the imports map construction for modules with non-import properties.\", \"confidence\": 0.9}]}"
+}

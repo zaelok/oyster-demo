@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1546,
+  "latency_s": 4.719,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 263,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/cuts/cuts.hpp\", \"line_start\": 668, \"line_end\": 669, \"category\": \"logic\", \"description\": \"clique_table parameter now defaults to nullptr and is stored by value (std::move'd) into clique_table_, which is now a member shared_ptr instead of a reference. This changes semantics: previously any external reassignment of the caller's shared_ptr after construction would be reflected via reference; now cut_generation_t holds its own independent copy. Also, since a default of nullptr is now allowed, any code path in cuts.cpp that calls clique_table_->... without a null check will crash when the default-constructed (no clique table) overload is used. This is a latent bug only if such an unchecked call site exists.\", \"confidence\": 0.35}]}"
+}

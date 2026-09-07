@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 940,
+  "latency_s": 24.036,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2441,
+  "text": "{\"findings\": [{\"file\": \"scripts/train/convert_olmo_core_to_hf.py\", \"line_start\": 13, \"line_end\": 38, \"category\": \"logic\", \"description\": \"`torch.distributed.checkpoint.state_dict` (aliased as dcp_state_dict) does not expose a `load_state_dict` function in current PyTorch DCP APIs; that module provides `get_state_dict`/`set_state_dict`/`get_model_state_dict` etc., while `load_state_dict` lives in `torch.distributed.checkpoint` (or is deprecated there). Calling `dcp_state_dict.load_state_dict(...)` will raise an AttributeError at runtime instead of loading the checkpoint.\", \"confidence\": 0.55}, {\"file\": \"scripts/train/convert_olmo_core_to_hf.py\", \"line_start\": 12, \"line_end\": 12, \"category\": \"style\", \"description\": \"The newly added `import torch` is not used anywhere in the shown diff, which will trigger an unused-import lint warning if it is genuinely unused in the rest of the file.\", \"confidence\": 0.3}]}"
+}

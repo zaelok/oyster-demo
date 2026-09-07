@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1072,
+  "latency_s": 4.078,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 269,
+  "text": "{\"findings\": [{\"file\": \"src/internal/detect-platform.ts\", \"line_start\": 131, \"line_end\": 131, \"category\": \"logic\", \"description\": \"The new pattern /Edge(?:\\\\W+...)?/ requires the literal substring 'Edge' followed by a non-word character before the version number, but Chromium-based Edge UAs use 'Edg/' (no 'e', slash separator) and mobile Edge uses 'EdgA/' or 'EdgiOS/'. None of these contain 'Edge', so this regex will fail to match modern Edge browsers on desktop Chromium, Android, and iOS, causing them to be misidentified (likely matched as Chrome instead since Edg still contains 'Chrome' in older UAs, or falling through to no match).\", \"confidence\": 0.85}]}"
+}

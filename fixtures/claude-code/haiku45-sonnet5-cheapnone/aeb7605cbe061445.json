@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 721,
+  "latency_s": 8.791,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 351,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\", \"line_start\": 70, \"line_end\": 73, \"category\": \"logic\", \"description\": \"The removal of 'self.context = context' means the handler's stored context is no longer updated when a new upload is created. If self.context was previously nil or referred to a stale context, subsequent code (e.g., error handling, writes, or upload lifecycle callbacks) that relies on self.context will use an outdated or missing ChannelHandlerContext, potentially causing crashes or writes to a closed/incorrect channel.\", \"confidence\": 0.6}]}"
+}

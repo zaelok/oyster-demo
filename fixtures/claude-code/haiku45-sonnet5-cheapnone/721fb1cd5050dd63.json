@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 896,
+  "latency_s": 25.373,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2912,
+  "text": "{\"findings\": [{\"file\": \"dali/python/nvidia/dali/experimental/dynamic/_call_site.py\", \"line_start\": 35, \"line_end\": 35, \"category\": \"logic\", \"description\": \"The `weakref.finalize` cleanup that removed a code object's id from `_transparent_codes` when the code object was garbage-collected has been dropped. Now `id(func.__code__)` is added to the set with no removal mechanism. This causes (1) unbounded growth of `_transparent_codes` (memory leak) for short-lived functions/closures repeatedly decorated with `mark_transparent`, and (2) a correctness bug: after a code object is garbage collected, CPython may reuse its `id()` for a new, unrelated code object, which would then incorrectly be treated as 'transparent' by `resolve_callsite_frame`, causing wrong frames to be skipped during call-site resolution.\", \"confidence\": 0.85}]}"
+}

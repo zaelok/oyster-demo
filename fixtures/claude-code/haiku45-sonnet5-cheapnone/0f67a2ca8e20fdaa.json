@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 678,
+  "latency_s": 2.719,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 163,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/scripts/official/OLMo3/OLMo-3-1025-32B-long-context.py\",\n      \"line_start\": 113,\n      \"line_end\": 113,\n      \"category\": \"logic\",\n      \"description\": \"URL path changed from 'checkpoints/stego32-highlr-filter3/step656000/' to 'stego32-highlr-filter3/step656000/', removing the 'checkpoints/' directory level which may break the checkpoint loading path.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

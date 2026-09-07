@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 891,
+  "latency_s": 14.968,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1318,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\", \"line_start\": 449, \"line_end\": 451, \"category\": \"logic\", \"description\": \"The dynamic hash-count computation for raw string literals was replaced with a fixed single-hash delimiter (`#\\\"...\\\"#`). This is incorrect for strings that contain the substring `\\\"#` (i.e., a quote immediately followed by a hash) or other combinations that would prematurely terminate the raw string or misinterpret escape sequences like `\\\\#`. The original code computed the minimum number of `#` characters needed to safely delimit the string; removing that logic can generate invalid or semantically incorrect Swift source code when such strings appear in generated code (e.g., string literals containing `\\\"#`), causing compilation failures or silent corruption of the emitted string content.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 768,
+  "latency_s": 6.404,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 227,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_gaudi/attention/oot_mla.py\",\n      \"line_start\": 281,\n      \"line_end\": 281,\n      \"category\": \"style\",\n      \"description\": \"Unused parameter `allow_short_prefill_indexer_scoring_skip` removed from signature but may break callers expecting the parameter.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"vllm_gaudi/attention/oot_mla.py\",\n      \"line_start\": 317,\n      \"line_end\": 317,\n      \"category\": \"style\",\n      \"description\": \"Dead code: `self.fuse_qkv_rmsnorm = False` assignment removed but no corresponding initialization, may indicate incomplete refactoring.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1021,
+  "latency_s": 8.28,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 664,
+  "text": "{\"findings\": [{\"file\": \"src/vllm_router/services/request_service/request.py\", \"line_start\": 1245, \"line_end\": 1250, \"category\": \"logic\", \"description\": \"The refactor removes the special-cased calls for async routers (KvawareRouter, PrefixAwareRouter, SessionRouter, DisaggregatedPrefillOrchestratedRouter) and DisaggregatedPrefillRouter, which require an extra request-body argument and, for the async ones, an `await`. Calling `router.route_request(endpoints, engine_stats, request_stats, request)` on these router types will either raise a TypeError due to missing required argument, or (for async route_request) return an unawaited coroutine object as `chosen_url`, breaking multipart request proxying for those router configurations.\", \"confidence\": 0.85}]}"
+}

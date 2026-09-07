@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1974,
+  "latency_s": 35.919,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3501,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsable Types/ParsableArguments.swift\", \"line_start\": 319, \"line_end\": 321, \"category\": \"logic\", \"description\": \"The new guard filters out an entire nested ArgumentSetProvider's arguments (via `argumentSet(for:)`, not just for help formatting) based on the group's own declared `_visibility` versus the ancestor's required `visibility`. Since `ArgumentSet` is also used to build the parser's argument set for actual command-line parsing (not only help rendering), this changes behavior from 'lower the individual arguments' displayed help visibility while still accepting them on the command line' to 'exclude the whole nested group from parsing when its visibility is coarser than requested', making previously-hidden-but-parseable arguments completely unavailable to users.\", \"confidence\": 0.6}, {\"file\": \"Sources/ArgumentParser/Parsable Properties/OptionGroup.swift\", \"line_start\": 88, \"line_end\": 91, \"category\": \"logic\", \"description\": \"Removing the `arg.reducingHelpVisibility(to: visibility)` mapping means an OptionGroup's declared visibility no longer propagates down to reduce the individual visibility of each nested argument definition. Combined with the coarse all-or-nothing filter added in ParsableArguments.swift, per-argument visibility reduction is lost entirely, replaced by an all-or-nothing exclusion of the whole nested set, which is a behavioral regression from selective help-hiding to outright omission from the argument set.\", \"confidence\": 0.55}]}"
+}

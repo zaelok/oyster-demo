@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1158,
+  "latency_s": 4.803,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 401,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+Keys.swift\", \"line_start\": 242, \"line_end\": 242, \"category\": \"logic\", \"description\": \"Condition inverted: `if e1 == e2 { return false }` causes equality check to return false when elements are actually equal, breaking the `==` operator for Keys.\", \"confidence\": 0.97}, {\"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+SubSequence.swift\", \"line_start\": 303, \"line_end\": 303, \"category\": \"logic\", \"description\": \"Condition inverted: `if e1 == e2 { return false }` causes equality check to return false when elements are actually equal, breaking the `==` operator for SubSequence.\", \"confidence\": 0.97}, {\"file\": \"Sources/SortedCollections/SortedDictionary/SortedDictionary+Values.swift\", \"line_start\": 261, \"line_end\": 261, \"category\": \"logic\", \"description\": \"Condition inverted: `if e1 == e2 { return false }` causes equality check to return false when elements are actually equal, breaking the `==` operator for Values.\", \"confidence\": 0.97}]}"
+}

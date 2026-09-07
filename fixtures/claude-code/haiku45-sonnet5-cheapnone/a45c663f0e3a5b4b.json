@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1240,
+  "latency_s": 4.488,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 321,
+  "text": "{\"findings\": [{\"file\": \"cmd/config-manager/main.go\", \"line_start\": 408, \"line_end\": 408, \"category\": \"style\", \"description\": \"Changed from %w to %v breaks error chain, preventing callers from using errors.Is/errors.As (e.g. to detect os.IsNotExist or syscall.EINVAL) on the returned error.\", \"confidence\": 0.7}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 413, \"line_end\": 413, \"category\": \"style\", \"description\": \"Changed from %w to %v breaks error chain, preventing callers from using errors.Is/errors.As on the returned error.\", \"confidence\": 0.7}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 418, \"line_end\": 418, \"category\": \"style\", \"description\": \"Changed from %w to %v breaks error chain, preventing callers from using errors.Is/errors.As on the returned error.\", \"confidence\": 0.7}]}"
+}

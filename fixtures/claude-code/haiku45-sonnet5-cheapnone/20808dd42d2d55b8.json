@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 965,
+  "latency_s": 4.709,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 207,
+  "text": "{\"findings\": [{\"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\", \"line_start\": 100, \"line_end\": 100, \"category\": \"logic\", \"description\": \"Removing infer_schema_length=None reverts to polars' default of inferring schema from only the first 100 rows. If records within a daily batch have heterogeneous types or None values in the first 100 rows but different types/values later, this can cause incorrect type inference or ComputeError/SchemaError when building the DataFrame from a list of dicts, especially since usage records likely contain mixed numeric/null fields.\", \"confidence\": 0.7}]}"
+}

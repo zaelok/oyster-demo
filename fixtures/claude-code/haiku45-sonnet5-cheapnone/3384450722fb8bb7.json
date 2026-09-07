@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1016,
+  "latency_s": 14.083,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1213,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/helpers/structured_output/json_schema_converter.rb\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"The change from `.slice(:$ref)` to `.except(NO_REF)` alters behavior from keeping only the `$ref` key to keeping everything except the key(s) in NO_REF. If NO_REF is an array constant (a common pattern for such names), Hash#except requires splatting (`except(*NO_REF)`); passing the array directly treats it as a single non-matching key, so nothing is excluded and the full original hash is retained instead of the intended pared-down pointer object. Even if NO_REF is a single symbol, the semantic flip from slice to except should be verified against the intended pointer-object shape.\", \"confidence\": 0.5}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1194,
+  "latency_s": 45.359,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4645,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 328, \"line_end\": 329, \"category\": \"logic\", \"description\": \"The trailing-empty-line trim (searchLines) was removed, so endStart/endMatch now compute against the raw `lines` array. For typical file contents that end with a newline, split('\\\\n') produces a trailing empty string element; without stripping it, endStart = lines.length - context.length is off by one compared to before, shifting the EOF context search window by one line. This can cause EOF-anchored patch hunks to match at the wrong line index or fail to match a context that previously matched correctly, corrupting the location where the diff is applied for files ending in a newline (the common case).\", \"confidence\": 0.65}, {\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 331, \"line_end\": 331, \"category\": \"logic\", \"description\": \"The fallback search start position no longer clamps `start` to the (trimmed) lines length via Math.min(start, searchLines.length); it now passes `start` directly. If `start` is greater than lines.length (e.g., a hunk's expected position lies beyond the current file length), findContextCore will be invoked with an out-of-range start and, depending on its loop bounds, will simply return no match, whereas previously it would retry from the last valid index and could still find a fuzzy match near EOF. This regresses the fuzzy-fallback matching behavior for hunks near/at end-of-file, causing patches that used to apply (with fuzz) to now fail outright.\", \"confidence\": 0.55}]}"
+}

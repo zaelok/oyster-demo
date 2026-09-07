@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1037,
+  "latency_s": 5.924,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 196,
+  "text": "{\"findings\": [{\"file\": \"mcp/streamable.go\", \"line_start\": 2770, \"line_end\": 2770, \"category\": \"logic\", \"description\": \"The DELETE request during Close() now uses c.ctx directly without a bounded timeout. If c.ctx is long-lived (e.g., tied to the client's overall lifetime and not cancelled promptly) and the server is unresponsive or slow, the Close() call can block indefinitely instead of completing within a bounded time, since the previous 5s timeout enforced an upper bound regardless of ctx state.\", \"confidence\": 0.75}]}"
+}

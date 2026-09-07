@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1152,
+  "latency_s": 7.602,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 730,
+  "text": "{\"findings\": [{\"file\": \"tools/Polygraphy/polygraphy/config.py\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Operator precedence bug: `\\\"0\\\" != \\\"0\\\"` is evaluated first (always False) and used as the default argument to `.get()`, rather than the env var value being compared to \\\"0\\\". Result: os.environ.get(\\\"POLYGRAPHY_ASK_BEFORE_INSTALL\\\", False) is called instead. If the var is unset, ASK_BEFORE_INSTALL is False (same as before). But if the var is set to any string, including \\\"0\\\" (which is truthy in Python since it's a non-empty string), ASK_BEFORE_INSTALL becomes True \u2014 inverting the intended semantics where \\\"0\\\" should mean disabled. This silently breaks the documented ability to explicitly disable the prompt via POLYGRAPHY_ASK_BEFORE_INSTALL=0.\", \"confidence\": 0.92}]}"
+}

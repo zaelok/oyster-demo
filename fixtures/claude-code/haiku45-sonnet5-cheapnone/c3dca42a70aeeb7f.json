@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1089,
+  "input_tokens": 1575,
+  "latency_s": 47.789,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4733,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7362, \"line_end\": 7372, \"category\": \"logic\", \"description\": \"The removed `_zero_out_band` helper explicitly avoided `x - band_part(x, ...)` because it produces NaN wherever `x` contains +/-inf (the comment stated this directly), using a select-against-mask approach instead. The new triu implementation reverts to `mb.sub(x=x, y=y)` where `y = band_part(x, -1, diagonal-1)`, reintroducing the exact NaN-producing pattern the original code was designed to avoid. This is a functional regression for any triu() call on float tensors containing +/-inf (e.g., masking logic in transformer attention often uses -inf fill values before triu/tril), which will now propagate NaN instead of zero in the masked region.\", \"confidence\": 0.7}, {\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7394, \"line_end\": 7404, \"category\": \"logic\", \"description\": \"Same regression as in triu: tril's else-branch now computes `res = mb.sub(x=x, y=y)` with `y = band_part(x, -diagonal-1, -1)`, reintroducing the NaN-on-inf issue that the removed `_zero_out_band` helper was specifically written to avoid (per its own docstring). Any float input containing +/-inf will produce NaN in the zeroed-out band instead of 0.\", \"confidence\": 0.7}]}"
+}

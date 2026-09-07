@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1270,
+  "latency_s": 5.949,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 461,
+  "text": "{\"findings\": [{\"file\": \"src/lib/BetaMessageStream.ts\", \"line_start\": 118, \"line_end\": 121, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"Removing `this.#catchingPromiseCreated = true;` from `withResponse()` means calling this method no longer suppresses the internal unhandled-rejection safeguard tied to `#connectedPromise`/final error emission. Since `withResponse()` awaits `#connectedPromise` directly, a rejection here could now also trigger a separate unhandled rejection warning or duplicate error handling path that this flag was designed to prevent, even though the caller is properly awaiting/catching the result of `withResponse()`.\", \"line_start\": 118, \"line_end\": 121}, {\"file\": \"src/lib/MessageStream.ts\", \"line_start\": 112, \"line_end\": 115, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"Same issue as BetaMessageStream.ts: removing the `#catchingPromiseCreated = true` flag from `withResponse()` removes the signal used elsewhere (e.g., in `_connected`/`_emitFinal` error paths) to know a consumer has attached handling, potentially causing duplicate error emission or spurious unhandled rejection warnings when `#connectedPromise` rejects, despite the caller awaiting `withResponse()`.\"}]}"
+}

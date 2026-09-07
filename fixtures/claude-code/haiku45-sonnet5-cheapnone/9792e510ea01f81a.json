@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 796,
+  "latency_s": 5.011,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 386,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs\", \"line_start\": 59, \"line_end\": 59, \"category\": \"logic\", \"description\": \"The Write method implementation was replaced with 'throw new NotImplementedException()', removing the call to SerializeHyperparameterBeta(this, writer, options). This breaks JSON serialization for HyperparameterBetaFactor instances - any attempt to serialize this type via IJsonModel<HyperparameterBetaFactor>.Write will now throw at runtime instead of producing valid JSON output. This appears to be an unintentional regression (possibly leftover debug/stub code) rather than an intentional API change, since the Create (deserialize) counterpart is unaffected, creating an asymmetric read/write capability.\", \"confidence\": 0.95}]}"
+}

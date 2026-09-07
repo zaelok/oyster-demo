@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1152,
+  "latency_s": 3.455,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 217,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"tpu_inference/platforms/tpu_platform.py\",\n      \"line_start\": 39,\n      \"line_end\": 42,\n      \"category\": \"logic\",\n      \"description\": \"Subtracting in_use from total could result in negative values even with max() guard if in_use > total due to concurrent memory changes; consider additional bounds checking.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"tpu_inference/platforms/tpu_platform.py\",\n      \"line_start\": 39,\n      \"line_end\": 42,\n      \"category\": \"logic\",\n      \"description\": \"Missing error handling if jax.local_devices() returns empty list or memory_stats() throws an exception.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1245,
+  "latency_s": 12.627,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1080,
+  "text": "{\"findings\": [{\"file\": \"src/mcp/server/fastmcp/resources/templates.py\", \"line_start\": 89, \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"re.match(f'^{pattern}$', uri) is not exactly equivalent to re.fullmatch: without re.MULTILINE, '$' matches either at the end of the string or immediately before a trailing newline, whereas fullmatch requires the match to consume the entire string. So a uri ending in '\\\\n' that shouldn't match the template could incorrectly match, or partial matching edge cases could occur. This is a subtle regression, not just a style issue.\", \"confidence\": 0.5}, {\"file\": \"src/mcp/shared/tool_name_validation.py\", \"line_start\": 80, \"line_end\": 80, \"category\": \"security\", \"description\": \"If TOOL_NAME_REGEX is not anchored with ^ and $ (typical when originally intended to be used with fullmatch), switching to .match() only checks that the string starts with a valid pattern, allowing trailing invalid/malicious characters (e.g. path separators, control characters, injection payloads) to pass validation undetected, since match() does not require the whole name to conform.\", \"confidence\": 0.75}]}"
+}

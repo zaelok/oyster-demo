@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 832,
+  "latency_s": 3.547,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 255,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\",\n      \"line_start\": 100,\n      \"line_end\": 100,\n      \"category\": \"logic\",\n      \"description\": \"Removing `infer_schema_length=None` may cause polars to infer schema from only the first 100 rows by default, potentially missing columns or causing type mismatches in larger datasets.\",\n      \"confidence\": 0.72\n    },\n    {\n      \"file\": \"litellm/integrations/cloudzero/transform.py\",\n      \"line_start\": 98,\n      \"line_end\": 98,\n      \"category\": \"logic\",\n      \"description\": \"Removing `infer_schema_length=None` may cause polars to infer schema from only the first 100 rows by default, potentially missing columns or causing type mismatches in the CBF data.\",\n      \"confidence\": 0.72\n    }\n  ]\n}\n```"
+}

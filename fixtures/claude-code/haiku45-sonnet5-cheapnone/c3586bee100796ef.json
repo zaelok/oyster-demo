@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 980,
+  "latency_s": 4.673,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 268,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\", \"line_start\": 216, \"line_end\": 216, \"category\": \"logic\", \"description\": \"Using chained XOR ((anyOf != null).xor(type != null).xor(ref != null)) does not enforce 'exactly one of the three is non-null'. XOR chaining computes parity (true if an odd number of operands are true), so it incorrectly returns true when all three fields are present (all non-null), which should be invalid, and would incorrectly pass validation instead of failing. The original presentCount == 1 check was correct for 'exactly one'; the replacement breaks validation for the case where all three of anyOf, type, and ref are present.\", \"confidence\": 0.95}]}"
+}

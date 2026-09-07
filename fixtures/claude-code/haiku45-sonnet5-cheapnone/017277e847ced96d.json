@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1126,
+  "latency_s": 6.04,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 204,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/internal/type/file_input.rb\", \"line_start\": 58, \"line_end\": 58, \"category\": \"logic\", \"description\": \"The case pattern was narrowed from `Pathname | StringIO | IO | OpenAI::FilePart` to just `StringIO`, so Pathname, IO, and OpenAI::FilePart instances no longer match this branch and fall through to `else`, which likely does not increment exactness or properly handle these previously-supported file input types, causing a regression for callers passing Pathname/IO/FilePart objects.\", \"confidence\": 0.85}]}"
+}

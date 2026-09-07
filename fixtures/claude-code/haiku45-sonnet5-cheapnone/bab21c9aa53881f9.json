@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 787,
+  "latency_s": 5.525,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 349,
+  "text": "{\"findings\": [{\"file\": \"tools/Polygraphy/polygraphy/config.py\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The expression os.environ.get(\\\"POLYGRAPHY_ASK_BEFORE_INSTALL\\\", \\\"0\\\" != \\\"0\\\") evaluates the default value as bool(False) before calling .get(), which is nonsensical but not the real bug: since \\\"0\\\" != \\\"0\\\" is always False, this default is never actually used meaningfully, but more importantly the comparison is now performed on the literal string \\\"0\\\" instead of the retrieved environment variable value. This means ASK_BEFORE_INSTALL will always evaluate to bool(env_value_or_False), so if the env var is unset it becomes bool(False) = False (same as before), but if the env var is set to any non-empty string (including \\\"0\\\"), it becomes bool(that_string) = True regardless of its actual value, breaking the intended behavior of only enabling when the value is not '0'.\", \"confidence\": 0.9}]}"
+}

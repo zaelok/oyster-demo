@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 923,
+  "latency_s": 10.891,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 846,
+  "text": "{\"findings\": [{\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"security\", \"description\": \"The change removes validation that the model-supplied vector_store_id is restricted to the request's authorized vector_store_ids (all_vs_ids). Now any non-empty vs_id_arg is used directly to select which vector store to search, without checking membership in all_vs_ids. Since vs_id_arg originates from LLM-generated tool call arguments (potentially influenced by untrusted input/prompt injection), this could allow searching vector stores outside the ones authorized for the request, an access-control bypass. Also drops the warning log that previously flagged this condition for observability.\", \"confidence\": 0.75}]}"
+}

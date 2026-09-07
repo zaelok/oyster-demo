@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1226,
+  "latency_s": 4.118,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 236,
+  "text": "{\"findings\": [{\"file\": \"transformer_engine/common/gemm/cublaslt_gemm.cu\", \"line_start\": 747, \"line_end\": 750, \"category\": \"logic\", \"description\": \"Removing the CUBLASLT_MATMUL_PREF_REDUCTION_SCHEME_MASK preference allows cublasLtMatmulAlgoGetHeuristic to select algorithms using non-deterministic reduction schemes (e.g., CUBLASLT_REDUCTION_SCHEME_OUTPUT_TYPE with atomics), which can change numerical results run-to-run for split-K GEMMs and may affect reproducibility of training results.\", \"confidence\": 0.5}]}"
+}

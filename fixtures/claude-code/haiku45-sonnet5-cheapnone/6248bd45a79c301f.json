@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 934,
+  "latency_s": 3.797,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 165,
+  "text": "{\"findings\": [{\"file\": \"src/shared/config.ts\", \"line_start\": 120, \"line_end\": 120, \"category\": \"logic\", \"description\": \"Changed from a merge (spreading result.env and overriding with platformConfig.env keys) to a full replacement of env when platformConfig.env is defined. Any base env vars in result.env not present in platformConfig.env will be lost instead of preserved, breaking configs that rely on combining base and platform-specific env vars.\", \"confidence\": 0.85}]}"
+}

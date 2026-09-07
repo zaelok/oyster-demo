@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 667,
+  "latency_s": 2.675,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 128,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm/v1/worker/gpu/warmup.py\",\n      \"line_start\": 220,\n      \"line_end\": 234,\n      \"category\": \"logic\",\n      \"description\": \"Removal of adaptive_verification state management and wrapper function could cause state corruption if warmup_kernels is called while adaptive_verification is active, since the preservation logic was deleted.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

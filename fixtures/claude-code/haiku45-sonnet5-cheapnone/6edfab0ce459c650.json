@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1497,
+  "latency_s": 4.715,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 341,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/cloud-tasks/src/lib.rs\", \"line_start\": 975, \"line_end\": 975, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The git_ref is now hardcoded to \\\"main\\\" instead of dynamically detecting the current or default branch via git_info::default_branch_name/current_branch_name. This breaks task creation for repositories whose default branch is not literally named \\\"main\\\" (e.g., \\\"master\\\" or a custom default branch), causing the created task to reference an incorrect or nonexistent branch.\", \"confidence\": 0.85}, {\"file\": \"codex-rs/core/src/git_info.rs\", \"line_start\": 260, \"line_end\": 260, \"category\": \"logic\", \"confidence\": 0.5, \"description\": \"Removing the public default_branch_name function is a breaking API change; if any other crate or external consumer relied on this public function, it will fail to compile. The reviewer should verify no other callers exist before considering this safe.\", \"confidence\": 0.5}]}"
+}

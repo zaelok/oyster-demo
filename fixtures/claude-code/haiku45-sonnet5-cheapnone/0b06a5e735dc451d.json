@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1055,
+  "latency_s": 4.653,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 232,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\", \"line_start\": 449, \"line_end\": 449, \"category\": \"logic\", \"description\": \"Using a fixed single-hash raw string delimiter (#\\\"...\\\"#) will produce invalid Swift code if the string contains the sequence \\\"# (e.g. a string ending in a quote followed by '#'), since that would prematurely terminate the raw string literal. The previous implementation dynamically computed the number of hashes needed to avoid such collisions; this change removes that safety and can generate broken/uncompilable source code for certain input strings.\", \"confidence\": 0.85}]}"
+}

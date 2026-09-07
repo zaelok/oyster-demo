@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1608,
+  "latency_s": 5.01,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 292,
+  "text": "{\"findings\": [{\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The substring-based accepts() check does not properly parse the Accept header, so it mismatches on wildcards ('*/*', 'application/*') causing valid clients to be rejected, and can falsely match unrelated content types that happen to contain the mime string as a substring (e.g. 'application/json' matching inside 'application/jsonpatch+json' or a longer type/parameter string), and ignores q=0 exclusion semantics, potentially causing incorrect SSE-vs-JSON content negotiation decisions.\", \"line_start_hint\": 867}]}"
+}

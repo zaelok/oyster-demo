@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 865,
+  "latency_s": 3.574,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 205,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/result.py\", \"line_start\": 127, \"line_end\": 127, \"category\": \"security\", \"confidence\": 0.9, \"description\": \"The diff removes the conditional check on trace_include_sensitive_data for the 'instructions' field, causing it to always be included in trace model_config even when the user has opted out of sensitive data tracing (trace_include_sensitive_data=False). This is inconsistent with the 'input' field on the same span, which still respects trace_include_sensitive_data, and represents a regression that could leak potentially sensitive prompt/instruction data into traces.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1405,
+  "latency_s": 7.239,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 453,
+  "text": "{\"findings\": [{\"file\": \"src/mcp/server/fastmcp/resources/templates.py\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"re.match(f'^{pattern}$', uri) is not equivalent to re.fullmatch(pattern, uri) because '$' matches before a trailing newline (when re.MULTILINE is not set, '$' still matches just before a final '\\\\n'). A uri like 'foo/bar\\\\n' would incorrectly match a template for 'foo/bar', causing unintended parameter extraction/resource resolution.\", \"confidence\": 0.6}, {\"file\": \"src/mcp/shared/tool_name_validation.py\", \"line_start\": 80, \"line_end\": 80, \"category\": \"security\", \"description\": \"Changing TOOL_NAME_REGEX.fullmatch(name) to TOOL_NAME_REGEX.match(name) drops the end-of-string anchoring that fullmatch implicitly provides. If TOOL_NAME_REGEX is not itself anchored with '$' or '\\\\Z', a malicious/invalid tool name with a valid prefix followed by disallowed characters (e.g. path separators, script tags, or control chars) would pass validation, weakening the sanitization guarantee used elsewhere to prevent injection or parsing issues.\", \"confidence\": 0.65}]}"
+}

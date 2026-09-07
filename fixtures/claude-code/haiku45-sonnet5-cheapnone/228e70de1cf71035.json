@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 846,
+  "latency_s": 6.567,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 498,
+  "text": "{\"findings\": [{\"file\": \"pkg/nvcdi/lib-wsl.go\", \"line_start\": 30, \"line_end\": 32, \"category\": \"logic\", \"description\": \"The special-case handling for ids containing \\\"none\\\" (returning emptyDeviceSpecGenerator) was removed without replacement. If callers still rely on passing \\\"none\\\" to suppress device spec generation for WSL, this behavior is now silently dropped, causing normal device specs to be generated instead of an empty one.\", \"confidence\": 0.55}]}"
+}

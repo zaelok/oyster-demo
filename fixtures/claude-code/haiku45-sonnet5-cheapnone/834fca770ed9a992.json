@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1183,
+  "latency_s": 17.239,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1507,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadChannel.swift\", \"line_start\": 80, \"line_end\": 81, \"category\": \"logic\", \"description\": \"Changed from a graceful fallback (try? ... ?? false) to a force-unwrap (try!) when getting autoRead from the parent channel's sync options. If the parent Channel does not support ChannelOptions.autoRead or getOption throws for any reason, this will now crash the process instead of defaulting to false. The comment asserts channels are guaranteed to support sync options, but this is an implicit contract not enforced by the type system, and any parent Channel implementation that doesn't support this specific option (even if it implements NIOSynchronousChannelOptions generally) will cause a runtime crash rather than a recoverable error.\", \"confidence\": 0.55}, {\"file\": \"Package.swift\", \"line_start\": 326, \"line_end\": 326, \"category\": \"logic\", \"description\": \"The swift-nio dependency minimum version was downgraded from 2.94.0 to 2.81.0. Downgrading a minimum version constraint is unusual and risky: if any code in this package (including the HTTPResumableUploadChannel changes referencing syncOptions/ChannelOptions APIs) relies on APIs or behavior introduced between 2.81.0 and 2.94.0, this could cause compile failures or runtime issues when resolved against an older swift-nio version. This warrants verification that no functionality introduced after 2.81.0 is being used.\", \"confidence\": 0.35}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1547,
+  "latency_s": 3.685,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 204,
+  "text": "{\"findings\": [{\"file\": \"src/memory/index.ts\", \"line_start\": 77, \"line_end\": 100, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"This revert removes JSON.parse error handling and Zod schema validation. A malformed JSON line will now throw uncaught inside reduce, crashing the entire readGraph call instead of skipping the bad line. Also invalid/missing fields (e.g., entity without observations, or an item with an unrecognized type) are no longer validated or reported, potentially producing malformed entities/relations or silently dropping unknown-type records without any error/log.\"}]}"
+}

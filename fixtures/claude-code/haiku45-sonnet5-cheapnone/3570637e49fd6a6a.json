@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 888,
+  "latency_s": 2.584,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 136,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/router_strategy/adaptive_router/adaptive_router.py\",\n      \"line_start\": 147,\n      \"line_end\": 147,\n      \"category\": \"logic\",\n      \"description\": \"Removing the prior initialization means persisted state from DB completely overwrites cold-start priors without adding deltas, which changes the semantic meaning of stored alpha/beta values and could produce incorrect bandit behavior.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

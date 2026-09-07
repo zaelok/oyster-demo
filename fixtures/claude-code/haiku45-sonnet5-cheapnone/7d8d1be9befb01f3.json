@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1285,
+  "latency_s": 4.559,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 194,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/transformers/tracing/debug.py\", \"line_start\": 27, \"line_end\": 28, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Changing from argparse.BooleanOptionalAction to type=bool is a regression: type=bool casts any non-empty string (including 'False', 'no', '0') to True, so users can no longer reliably pass False on the command line, and the --no-trust_remote_code/--no-skip_weights style flags are lost. This breaks explicit disabling of these options via CLI.\"}]}"
+}

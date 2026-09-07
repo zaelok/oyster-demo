@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1053,
+  "latency_s": 3.677,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 199,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/asr/models/label_models.py\", \"line_start\": 768, \"line_end\": 771, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"Replacing .squeeze(-1).squeeze(-1) with .squeeze() collapses all singleton dimensions, including the batch dimension when batch_size == 1, turning a (1,) tensor into a 0-dim scalar. This can break downstream code that iterates over or indexes similarity_scores expecting a batch dimension (e.g., zip with file pairs or list construction of results).\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1104,
+  "latency_s": 19.866,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1857,
+  "text": "{\"findings\": [{\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 133, \"line_end\": 141, \"category\": \"logic\", \"description\": \"onnx.helper.float32_to_bfloat16 and float32_to_float8e4m3 are designed to operate on a single Python float (they use struct.pack/bit-manipulation on a scalar) and return a Python int, unlike the previous ml_dtypes.bfloat16/float8_e4m3fn callables which could be applied element-wise/vectorized over numpy arrays. If NumpyArrayConverter.__call__ passes a full numpy array to these converters (as it did with the ml_dtypes dtype constructors), this will raise a TypeError or produce incorrect results instead of the expected per-element uint16/uint8 array.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 772,
+  "latency_s": 12.259,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 108,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SortedCollections/BTree/_Node.Storage.swift\",\n      \"line_start\": 120,\n      \"line_end\": 120,\n      \"category\": \"style\",\n      \"description\": \"Trailing whitespace introduced after removing `@_fixed_layout` comment.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 721,
+  "latency_s": 11.236,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 933,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/helpers/structured_output/json_schema_converter.rb\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"Hash#except expects a list of keys (e.g. *keys), not a single array argument. If OpenAI::Helpers::StructuredOutput::JsonSchemaConverter::NO_REF is an array of multiple keys to exclude, calling `.except(NO_REF)` without splatting will treat the whole array as a single key to exclude, which will never match any actual hash key, so no keys will actually be removed\u2014changing behavior from the previous `.slice(:$ref)` (which kept only the $ref key) to instead keeping the entire original hash. This could produce incorrect/oversized schema pointer objects.\", \"confidence\": 0.55}]}"
+}

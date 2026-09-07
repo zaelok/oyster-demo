@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 745,
+  "latency_s": 12.149,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 723,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 2179, \"line_end\": 2186, \"category\": \"logic\", \"description\": \"The removed not_equal-to-zero promotion means non-boolean inputs (e.g., floats) are now cast directly to int32 for all/any reduction. Fractional values with absolute value < 1 (e.g., 0.5) truncate to 0 during the cast, incorrectly treating a truthy (nonzero) value as falsy, breaking correctness of torch.all/torch.any conversion for float tensors.\", \"confidence\": 0.75}]}"
+}

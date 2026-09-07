@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 897,
+  "latency_s": 21.127,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1923,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 180, \"line_end\": 180, \"category\": \"security\", \"description\": \"The conditional gating on `self._trace_include_sensitive_data` was removed for the 'prompt' field in `_start_turn`. Previously, the prompt (which may contain sensitive user-provided context/instructions) was only included in trace data when the user opted in via `trace_include_sensitive_data`. Now it is unconditionally included, causing potentially sensitive prompt content to always be captured in traces regardless of the user's privacy preference. This is a regression that leaks sensitive data into telemetry/tracing.\", \"confidence\": 0.85}, {\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 556, \"line_end\": 556, \"category\": \"security\", \"description\": \"Same issue as in `_start_turn`: the `trace_include_sensitive_data` check gating inclusion of `settings.prompt` in the `transcribe` method's `model_config` trace data was removed, so the prompt is now always included in traces even when the caller has not opted into sensitive data tracing. This is inconsistent with the surrounding fields (temperature, language) which don't need such gating, but prompt content is user-supplied and potentially sensitive, so unconditionally logging it violates the apparent privacy contract established elsewhere in the file.\", \"confidence\": 0.85}]}"
+}

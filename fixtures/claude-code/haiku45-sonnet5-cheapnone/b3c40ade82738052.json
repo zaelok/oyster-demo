@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 999,
+  "latency_s": 4.56,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 305,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\", \"line_start\": 135, \"line_end\": 135, \"category\": \"logic\", \"description\": \"pow(per_complete - 1, exponent) + 1 is mathematically different from the intended 1 - pow(1 - per_complete, exponent). Since per_complete ranges in [0,1], (per_complete - 1) is <= 0. When exponent is a non-integer float (common for smooth interpolation curves), Python's pow() on a negative base with fractional exponent returns a complex number, which will break downstream arithmetic (e.g., comparisons or float conversions) with a TypeError, or produce incorrect (complex) sparsity values instead of raising an error when exponent happens to be an integer type. This breaks the sparsity scheduling logic that previously computed a valid real-valued interpolation.\", \"confidence\": 0.92}]}"
+}

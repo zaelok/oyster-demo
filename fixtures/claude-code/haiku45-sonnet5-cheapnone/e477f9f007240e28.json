@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 936,
+  "latency_s": 7.089,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 541,
+  "text": "{\"findings\": [{\"file\": \"cmd/config-manager/main.go\", \"line_start\": 408, \"line_end\": 408, \"category\": \"logic\", \"description\": \"Changed error formatting verb from %w to %v when wrapping the symlink read error. This breaks error chain unwrapping (errors.Is/errors.As) for callers that may want to check for os.IsNotExist, syscall.EINVAL, or other wrapped error types further up the call stack.\", \"confidence\": 0.7}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 413, \"line_end\": 413, \"category\": \"logic\", \"description\": \"Changed %w to %v when wrapping the 'error removing existing config' error, losing the ability for callers to unwrap and inspect the underlying error (e.g., via errors.Is/As).\", \"confidence\": 0.65}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 418, \"line_end\": 418, \"category\": \"logic\", \"description\": \"Changed %w to %v when wrapping the 'error creating symlink' error, losing the ability for callers to unwrap and inspect the underlying error (e.g., via errors.Is/As).\", \"confidence\": 0.65}]}"
+}

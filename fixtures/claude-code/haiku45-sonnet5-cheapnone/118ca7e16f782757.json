@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1692,
+  "latency_s": 5.836,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 289,
+  "text": "{\"findings\": [{\"file\": \"tpu_inference/platforms/tpu_platform.py\", \"line_start\": 30, \"line_end\": 40, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"_jax_device_memory_info() has no exception handling around jax.local_devices()[0].memory_stats(). If memory_stats() is unimplemented for the backend (returns None is handled via `or {}`, but some backends may raise AttributeError/NotImplementedError instead of returning None), or if jax.local_devices() returns an empty list (IndexError), the exception propagates out of the except-block in _patched_get_memory_info uncaught, crashing the EngineCore \\u2014 the exact failure this patch aims to prevent. The prior implementation explicitly caught AttributeError and logged a warning before falling back to (0, 0); that safety net is now missing.\"}]}"
+}

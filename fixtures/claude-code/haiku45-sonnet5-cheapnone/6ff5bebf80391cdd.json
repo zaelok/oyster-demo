@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1508,
+  "latency_s": 5.264,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 320,
+  "text": "{\"findings\": [{\"file\": \"litellm/litellm_core_utils/litellm_logging.py\", \"line_start\": 5678, \"line_end\": 5679, \"category\": \"security\", \"description\": \"Removing _redact_string() calls on traceback_info and error_message reintroduces exposure of sensitive data (API keys, secrets, internal paths) in error objects that are logged/forwarded to observability sinks and callbacks, undoing a deliberate redaction control without a replacement.\", \"confidence\": 0.75}, {\"file\": \"litellm/proxy/utils.py\", \"line_start\": 2586, \"line_end\": 2589, \"category\": \"security\", \"description\": \"Removing the redacted_traceback_str computation and passing the raw traceback_str to post_call_failure_hook callbacks reintroduces leakage of sensitive data (credentials, internal file paths, secrets) to potentially third-party/custom callback implementations that may log or export this data externally.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 770,
+  "latency_s": 7.228,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 508,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\", \"line_start\": 216, \"line_end\": 216, \"category\": \"logic\", \"description\": \"Chained XOR is not equivalent to 'exactly one of three is true'. XOR chaining evaluates to true when the number of true operands is odd, so if all three (anyOf, type, ref) are non-null, the XOR chain evaluates to true and validation incorrectly passes, whereas the original presentCount == 1 check would correctly fail this case.\", \"confidence\": 0.9}]}"
+}

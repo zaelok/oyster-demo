@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 903,
+  "latency_s": 5.52,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 448,
+  "text": "{\"findings\": [{\"file\": \"mcp/streamable.go\", \"line_start\": 2767, \"line_end\": 2775, \"category\": \"logic\", \"description\": \"Removing the closeDeleteTimeout context wrapping means the DELETE request issued during Close() now uses c.ctx directly instead of a bounded-timeout context. If c.ctx has no deadline (e.g., it's the connection's long-lived context) and the server hangs or never responds, Close() will block indefinitely instead of timing out after 5 seconds, potentially causing callers to hang on cleanup/shutdown.\", \"confidence\": 0.7}]}"
+}

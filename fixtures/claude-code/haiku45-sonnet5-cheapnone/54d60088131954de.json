@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 993,
+  "latency_s": 10.733,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 566,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/request_options.rb\", \"line_start\": 40, \"line_end\": 40, \"category\": \"logic\", \"description\": \"The extra_query type was narrowed from HashOf[{union: String or ArrayOf[String]}, nil?: true] to HashOf[ArrayOf[String]]. This removes support for passing a plain String value per query key (previously allowed via ExtraQueryValue union) and also removes nil?: true, so passing nil for extra_query will now fail type validation. This breaks existing callers that pass string values or nil for extra_query, and contradicts the YARD doc comment above (still documents Hash{String=>Array<String>, String, nil}, nil).\", \"confidence\": 0.75}]}"
+}

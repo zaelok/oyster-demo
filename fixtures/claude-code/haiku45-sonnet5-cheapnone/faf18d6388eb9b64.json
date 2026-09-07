@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 982,
+  "latency_s": 4.475,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 277,
+  "text": "{\"findings\": [{\"file\": \"Sources/Services/ContainerAPIService/Client/Parser.swift\", \"line_start\": 436, \"line_end\": 436, \"category\": \"logic\", \"description\": \"Removing 'fs.source = \\\"tmpfs\\\"' leaves fs.source at its default/unset value for tmpfs filesystem entries. If fs.source is later used to construct mount commands, serialize config, or is expected to be non-empty/non-nil for tmpfs entries elsewhere in the codebase, this will produce incorrect or empty output for tmpfs mounts. Without seeing the Filesystem struct's default value for source and its downstream consumers, this cannot be fully confirmed, but it's a plausible regression since the removal changes observable behavior for tmpfs-typed entries specifically.\", \"confidence\": 0.45}]}"
+}

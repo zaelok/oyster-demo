@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 2102,
+  "latency_s": 13.478,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1283,
+  "text": "{\"findings\": [{\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 675, \"line_end\": 683, \"category\": \"logic\", \"description\": \"The removed `_launch_shared_experts_overlap` helper tolerated multiple upstream API shapes (falling back to `_shared_experts.maybe_forward_async` when `_maybe_sync_shared_experts_stream` was absent). The new code calls `self._maybe_sync_shared_experts_stream(shared_experts_input)` unconditionally with no existence check or fallback, so if this patch is loaded against a vllm version where `MoERunner` only exposes `maybe_forward_async` (or neither), calling it will raise AttributeError instead of degrading gracefully.\", \"confidence\": 0.5}]}"
+}

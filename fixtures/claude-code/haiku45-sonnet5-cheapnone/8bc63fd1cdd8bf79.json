@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 737,
+  "latency_s": 4.025,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 258,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\",\n      \"line_start\": 113,\n      \"line_end\": 116,\n      \"category\": \"logic\",\n      \"description\": \"Path concatenation logic is fragile; checking if path ends with '/' and conditionally prepending '/' may produce double slashes or incorrect paths if uriBuilder.Path is empty or has unexpected format.\",\n      \"confidence\": 0.72\n    },\n    {\n      \"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\",\n      \"line_start\": 113,\n      \"line_end\": 116,\n      \"category\": \"logic\",\n      \"description\": \"The condition only checks if the path ends with '/', but if uriBuilder.Path is just '/' and does not end with '/realtime', the result would be '//realtime' instead of '/realtime'.\",\n      \"confidence\": 0.65\n    }\n  ]\n}\n```"
+}

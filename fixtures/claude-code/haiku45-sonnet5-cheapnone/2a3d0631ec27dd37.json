@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 742,
+  "latency_s": 3.183,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 225,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/agents/extensions/sandbox/cloudflare/sandbox.py\",\n      \"line_start\": 225,\n      \"line_end\": 225,\n      \"category\": \"logic\",\n      \"description\": \"Type hint changed from `str | bytes` to `str`, but the method may receive bytes from `iter_any()` at line 898, risking runtime errors.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"src/agents/extensions/sandbox/cloudflare/sandbox.py\",\n      \"line_start\": 898,\n      \"line_end\": 899,\n      \"category\": \"logic\",\n      \"description\": \"Decoding chunk to UTF-8 string may fail if chunk contains invalid UTF-8 sequences; no error handling present.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

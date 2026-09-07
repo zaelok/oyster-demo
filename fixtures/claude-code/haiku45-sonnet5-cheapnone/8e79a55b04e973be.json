@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1148,
+  "latency_s": 45.151,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4160,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 8521, \"line_end\": 8528, \"category\": \"logic\", \"description\": \"The original code special-cased negative shifts (computing mod(-s, dim) rather than mod(s, dim)) before deriving start_idx, which strongly suggests mb.mod does not guarantee a floor-mod (non-negative) result when the dividend is negative (e.g., it may use truncation-toward-zero semantics like C's fmod, matching many MIL backend mod implementations). The refactor now calls mb.mod(x=s, y=dim) directly for negative s and computes start_idx = dim - mod(s, dim); if mb.mod returns a negative value for negative s (as the removed branch implies), start_idx will be computed incorrectly (e.g., larger than dim or negative), producing wrong index ranges in range_1d and thus incorrect roll results for negative shift values. This needs verification against the actual mb.mod op semantics, but the removed explicit sign-handling branch is evidence that this was needed for correctness.\", \"confidence\": 0.6}]}"
+}

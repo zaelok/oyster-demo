@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1148,
+  "latency_s": 4.694,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 279,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/internal/detect-platform.ts\", \"line_start\": 131, \"line_end\": 131, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Changing the regex from /\\\\bEdg(?:e|A|iOS)?\\\\b.../ to /Edge.../ removes matching for 'Edg/' (modern desktop Chromium Edge), 'EdgA/' (Edge Android), and 'EdgiOS/' (Edge iOS) user agent tokens. Only legacy EdgeHTML UAs containing the literal string 'Edge' will still match. This causes modern Edge browsers to be misdetected as Chrome, since their UA strings also contain 'Chrome' and the edge pattern is checked first but will no longer match, falling through to the chrome pattern.\"}]}\n```"
+}

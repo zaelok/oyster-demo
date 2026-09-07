@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1119,
+  "latency_s": 4.681,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 302,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 199, \"line_end\": 202, \"category\": \"logic\", \"description\": \"Removal of the api_key field/constructor parameter is a breaking API change: any existing code that instantiates YouComBackend(api_key=...) will now fail with a TypeError since the field no longer exists, forcing all callers to rely solely on the YDC_API_KEY environment variable.\", \"confidence\": 0.8}, {\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 201, \"line_end\": 202, \"category\": \"style\", \"description\": \"The simplified error message drops the actionable guidance ('Get one at https://you.com/platform'), reducing usability/debuggability for users encountering the missing-key error; this is a UX/documentation regression rather than a security issue.\", \"confidence\": 0.5}]}"
+}

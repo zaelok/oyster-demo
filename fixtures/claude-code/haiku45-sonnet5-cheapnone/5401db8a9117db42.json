@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 732,
+  "latency_s": 2.373,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 113,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl/evaluator_options.go\",\n      \"line_start\": 461,\n      \"line_end\": 461,\n      \"category\": \"logic\",\n      \"description\": \"Accessing opts.Http.Proxy.NoProxy before opts.Http.Proxy is initialized, causing potential nil pointer dereference.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

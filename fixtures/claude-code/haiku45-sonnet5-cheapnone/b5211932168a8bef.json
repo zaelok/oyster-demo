@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 868,
+  "latency_s": 3.968,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 220,
+  "text": "{\"findings\": [{\"file\": \"src/shared/config.ts\", \"line_start\": 120, \"line_end\": 122, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The change replaces a deep merge of env vars (base result.env merged with platformConfig.env overrides) with a full replacement (platformConfig.env || result.env). If platformConfig.env is defined but only contains a subset of keys (e.g., a platform-specific override), all other base env vars from result.env that aren't in platformConfig.env will be dropped entirely, rather than preserved alongside the override. This is a behavioral regression for any config relying on combining base and platform-specific env vars.\"}]}"
+}

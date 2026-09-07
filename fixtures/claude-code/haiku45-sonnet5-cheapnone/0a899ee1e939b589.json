@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 876,
+  "latency_s": 10.941,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1042,
+  "text": "{\"findings\": [{\"file\": \"src/lib/BetaMessageStream.ts\", \"line_start\": 118, \"line_end\": 121, \"category\": \"logic\", \"description\": \"Removing `this.#catchingPromiseCreated = true;` from `withResponse()` means that awaiting this method no longer marks the internal promise chain as having a consumer. If the underlying request/connection promise rejects and no other method (e.g. `done()`) has been called to set this flag, an unhandled promise rejection warning can be emitted even though the caller is actively awaiting `withResponse()`. This reverts protection against spurious unhandled rejection warnings.\", \"confidence\": 0.65}, {\"file\": \"src/lib/MessageStream.ts\", \"line_start\": 112, \"line_end\": 115, \"category\": \"logic\", \"description\": \"Same issue as in BetaMessageStream.ts: removing `this.#catchingPromiseCreated = true;` from `withResponse()` reintroduces the possibility of unhandled promise rejection warnings when only `withResponse()` is awaited and the connection promise later rejects, since the flag that suppresses this warning is no longer set here.\", \"confidence\": 0.65}]}"
+}

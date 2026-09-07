@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 948,
+  "latency_s": 17.224,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1763,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/core/src/unified_exec/mod.rs\", \"line_start\": 113, \"line_end\": 119, \"category\": \"logic\", \"description\": \"The refactor from an explicit match on RecvError to `while let Ok(chunk) = receiver.recv().await` changes behavior: previously, a `Lagged` error caused the loop to `continue` (skip missed messages but keep receiving), while `Closed` caused a clean `break`. Now, any `Err` (including `Lagged`) terminates the `while let` loop, meaning the output_task exits prematurely on the first broadcast lag instead of continuing to receive subsequent output. This silently stops buffering/notifying new output chunks after a lag, which is a functional regression, not just a style simplification.\", \"confidence\": 0.75}]}"
+}

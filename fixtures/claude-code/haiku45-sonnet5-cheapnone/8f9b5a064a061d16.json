@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 949,
+  "latency_s": 14.48,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1517,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\", \"line_start\": 113, \"line_end\": 116, \"category\": \"logic\", \"description\": \"Removed the TrimEnd('/') that stripped trailing slashes before checking/appending 'realtime'. If the path already ends with a trailing slash after 'realtime' (e.g. '.../realtime/'), EndsWith('/realtime') is false, and the code then appends 'realtime' again, producing '.../realtime/realtime' instead of the correctly normalized path the old code produced.\", \"confidence\": 0.65}, {\"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"EndsWith call no longer specifies StringComparison.Ordinal, switching to culture-sensitive string comparison for a URL path segment. This can produce incorrect matches under certain cultures/locales (e.g., case-folding or special character comparisons), unlike ordinal comparison used before.\", \"confidence\": 0.4}, {\"file\": \"OpenAI/src/Custom/Realtime/RealtimeClient.cs\", \"line_start\": 115, \"line_end\": 115, \"category\": \"logic\", \"description\": \"Direct indexing uriBuilder.Path[uriBuilder.Path.Length - 1] will throw an IndexOutOfRangeException if uriBuilder.Path is an empty string, which the previous TrimEnd-based approach did not risk.\", \"confidence\": 0.25}]}"
+}

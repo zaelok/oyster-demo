@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 990,
+  "latency_s": 95.205,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 9085,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/metal/source/context.c\", \"line_start\": 624, \"line_end\": 627, \"category\": \"logic\", \"description\": \"The context->num_kv_tokens assignment was moved out of the mismatch branch and is now executed unconditionally after every call to this code path, including when num_verified_tokens is 0 (e.g., num_tokens_to_verify == 0, meaning no draft tokens existed to compare). In that case the new code sets num_kv_tokens = context->num_tokens even though no forward pass/KV computation has actually occurred for tokens between the previous (possibly lower) num_kv_tokens and the current num_tokens, which can cause the engine to skip needed KV computation for those tokens later. In the mismatch (break) case the resulting value is mathematically equivalent to the old code, but in the full-match/no-candidate case behavior differs from before (old code left num_kv_tokens untouched, new code forces it to num_tokens), which is a real semantic change that can desynchronize the KV cache bookkeeping if num_kv_tokens was previously behind num_tokens for reasons unrelated to speculative verification.\", \"confidence\": 0.6}]}"
+}

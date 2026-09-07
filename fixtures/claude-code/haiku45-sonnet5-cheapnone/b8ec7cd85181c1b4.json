@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1329,
+  "latency_s": 4.32,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 217,
+  "text": "```json\n{\"findings\": [{\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 546, \"line_end\": 553, \"category\": \"logic\", \"description\": \"The refactor removes the default \\\"upload\\\" filename fallback for the else branch (non-FilePart, non-Pathname/IO values, and FilePart with nil filename). Previously all multipart parts got a filename= attribute in Content-Disposition; now these cases emit no filename= at all, which can cause some servers/APIs to reject or mishandle the part as non-file form data instead of a file attachment, changing behavior versus the prior implementation.\", \"confidence\": 0.6}]}\n```"
+}

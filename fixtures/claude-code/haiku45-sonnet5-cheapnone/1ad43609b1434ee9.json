@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1129,
+  "latency_s": 36.047,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3751,
+  "text": "{\"findings\": [{\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 133, \"line_end\": 140, \"category\": \"logic\", \"description\": \"The conversion functions were changed from ml_dtypes dtype objects (used previously via arr.astype(ml_dtypes.bfloat16)/arr.astype(ml_dtypes.float8_e4m3fn), which vectorize over the whole numpy array) to onnx.helper.float32_to_bfloat16 and onnx.helper.float32_to_float8e4m3, which are scalar conversion functions operating on a single Python float and returning an int. Since NumpyArrayConverter.__call__ receives a full numpy array (arr) and presumably calls self.func(arr) to cast the whole array, passing these scalar-only onnx.helper functions will likely fail (e.g. TypeError converting an array to a scalar) or silently misbehave unless NumpyArrayConverter was also rewritten to vectorize/iterate over elements, which is not shown in the diff.\", \"confidence\": 0.55}]}"
+}

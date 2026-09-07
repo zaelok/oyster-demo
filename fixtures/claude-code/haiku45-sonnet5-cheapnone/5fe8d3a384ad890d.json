@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1771,
+  "latency_s": 6.34,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 467,
+  "text": "{\"findings\": [{\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 511, \"line_end\": 511, \"category\": \"logic\", \"description\": \"The unsafePEMRepresentation initializer's minimum key size check was raised from 1024 to 2048 bits, which is inconsistent with its purpose as the 'unsafe' variant meant to allow smaller/legacy keys for compatibility. Existing callers relying on this to load 1024-2047 bit keys will now fail with CryptoKitError.incorrectParameterSize.\", \"confidence\": 0.4}, {\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 705, \"line_end\": 709, \"category\": \"logic\", \"description\": \"maximumEncryptSize hardcodes OAEP overhead as 42 bytes (2*20+2, correct only for SHA-1). Since Digest.hashBitLength was removed and the digest parameter is now ignored (pattern matched with .pkcs1_oaep without binding), the calculation no longer accounts for the actual hash function used. For SHA-256 OAEP (hashLen=32), correct overhead is 66 bytes, so this overestimates the safe plaintext size by 24 bytes, which can cause encryption failures or data corruption for callers using SHA-256-based OAEP padding.\", \"confidence\": 0.9}]}"
+}

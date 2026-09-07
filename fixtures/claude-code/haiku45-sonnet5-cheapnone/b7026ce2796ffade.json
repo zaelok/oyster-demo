@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1148,
+  "latency_s": 4.094,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 242,
+  "text": "{\"findings\": [{\"file\": \"mcp/client.go\", \"line_start\": 337, \"line_end\": 345, \"category\": \"logic\", \"description\": \"The removed nil-check and capability checks (caps.Tools.ListChanged, caps.Prompts.ListChanged, caps.Resources.ListChanged) mean the client now unconditionally subscribes to list-changed notifications whenever a handler is registered, regardless of whether the server actually advertises support for that capability. This can cause the client to send subscription requests for notifications the server doesn't support, potentially resulting in protocol errors or silently ignored subscriptions, and removes the ability to gracefully degrade when discRes.Capabilities is nil.\", \"confidence\": 0.85}]}"
+}

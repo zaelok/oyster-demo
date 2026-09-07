@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 917,
+  "latency_s": 8.328,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 241,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/helpers/structured_output/json_schema_converter.rb\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"The change replaces `slice(:$ref)` (which keeps only the `$ref` key) with `except(NO_REF)` (which removes whatever keys are in NO_REF and keeps everything else). Unless NO_REF is defined as all keys except `$ref`, this changes the resulting stored pointer object to include additional keys beyond `$ref`, altering the semantics of what gets pushed into `pointers` and potentially breaking recursive ref resolution or producing schemas with extraneous fields.\", \"confidence\": 0.8}]}"
+}

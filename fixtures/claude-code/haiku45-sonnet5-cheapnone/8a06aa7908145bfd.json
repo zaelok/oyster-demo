@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1022,
+  "latency_s": 4.557,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 256,
+  "text": "{\"findings\": [{\"file\": \"base-action/src/parse-sdk-options.ts\", \"line_start\": 289, \"line_end\": 292, \"category\": \"security\", \"description\": \"The deletion of env.ALL_INPUTS was removed, so this environment variable (which typically aggregates all GitHub Action workflow inputs, potentially including secrets or tokens passed as inputs) will now be forwarded to the Claude SDK subprocess environment. This could expose sensitive input values to the model or any logging/telemetry that captures the subprocess environment, whereas other sensitive variables like ACTIONS_ID_TOKEN_REQUEST_TOKEN are still explicitly deleted nearby, indicating this omission is likely unintentional.\", \"confidence\": 0.5}]}"
+}

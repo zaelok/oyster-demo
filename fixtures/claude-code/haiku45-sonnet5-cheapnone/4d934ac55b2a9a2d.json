@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 871,
+  "latency_s": 6.932,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 310,
+  "text": "{\"findings\": [{\"file\": \"src/agents/models/openai_responses.py\", \"line_start\": 710, \"line_end\": 715, \"category\": \"logic\", \"confidence\": 0.7, \"description\": \"The removed code set span_response.span_data.response and span_data.input when tracing.include_data() was true, which populated the response/input capture on the completed span. Deleting this means that even with data inclusion enabled, the span will no longer carry the full response/input payload, likely relying on some earlier or elsewhere-set data instead. Without seeing the full diff/context (e.g., whether this data is now set earlier in the stream loop or via a different mechanism), this appears to reduce trace completeness for consumers who depend on span_data.response/input for debugging or analytics. The reviewer's finding is plausible, but confirmation requires checking whether the response/input are now populated elsewhere (e.g., on each chunk or via the final response object) to avoid a false positive.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1978,
+  "latency_s": 7.885,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 337,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"open_instruct/ground_truth_utils.py\",\n      \"line_start\": 29,\n      \"line_end\": 29,\n      \"category\": \"logic\",\n      \"description\": \"Import name changed from PRICE_PER_MILLION_TOKENS to PRICE_PER_TOKEN but the actual price values need verification for correctness.\",\n      \"confidence\": 0.3\n    },\n    {\n      \"file\": \"open_instruct/ground_truth_utils.py\",\n      \"line_start\": 746,\n      \"line_end\": 748,\n      \"category\": \"logic\",\n      \"description\": \"Price calculation logic changed from dividing by 1_000_000 to direct multiplication; verify that PRICE_PER_TOKEN dictionary values are actually per-token not per-million-tokens.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"open_instruct/judge_utils.py\",\n      \"line_start\": 8,\n      \"line_end\": 26,\n      \"category\": \"logic\",\n      \"description\": \"All price values were divided by 1,000,000 (converted from per-million to per-token rates); verify these conversions are mathematically correct and match current API pricing.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

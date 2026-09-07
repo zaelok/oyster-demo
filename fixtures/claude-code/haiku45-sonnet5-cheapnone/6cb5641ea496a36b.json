@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 718,
+  "latency_s": 4.312,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 309,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\",\n      \"line_start\": 71,\n      \"line_end\": 72,\n      \"category\": \"logic\",\n      \"description\": \"TypeAnnotationSyntax constructor call is missing the colon token parameter, which may result in malformed syntax output.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\",\n      \"line_start\": 74,\n      \"line_end\": 76,\n      \"category\": \"logic\",\n      \"description\": \"TypeAnnotationSyntax constructor is missing the colon token parameter when constructing the default type placeholder.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\",\n      \"line_start\": 82,\n      \"line_end\": 83,\n      \"category\": \"style\",\n      \"description\": \"Removed line that cleared trailing trivia from pattern without clear justification; this may affect formatting of generated code.\",\n      \"confidence\": 0.65\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1152,
+  "latency_s": 5.731,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 413,
+  "text": "{\"findings\": [{\"file\": \"src/lib/BetaMessageStream.ts\", \"line_start\": 118, \"line_end\": 121, \"category\": \"logic\", \"description\": \"Removing `this.#catchingPromiseCreated = true;` before the await means that if an unhandled rejection check (e.g., in a finally block or error handler elsewhere in the class) relies on this flag to suppress duplicate/global error emission, an error thrown while awaiting `#connectedPromise` inside `withResponse` may now be treated as uncaught/unhandled, causing duplicate error events or unhandled promise rejection warnings.\", \"confidence\": 0.55}, {\"file\": \"src/lib/MessageStream.ts\", \"line_start\": 112, \"line_end\": 115, \"category\": \"logic\", \"description\": \"Same issue as in BetaMessageStream.ts: removing `this.#catchingPromiseCreated = true;` prior to awaiting `#connectedPromise` in `withResponse` could cause the stream's internal error-handling logic (which likely checks this flag to decide whether to swallow or emit an 'error' event) to misbehave, potentially resulting in an unhandled promise rejection when `#connectedPromise` rejects.\", \"confidence\": 0.55}]}"
+}

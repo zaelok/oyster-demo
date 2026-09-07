@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 926,
+  "latency_s": 14.587,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1429,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\", \"line_start\": 96, \"line_end\": 108, \"category\": \"logic\", \"description\": \"The refactor removes the fallback to `forward_fn.__globals__` and unconditionally uses `sys.modules[module.__class__.__module__].__dict__` as the namespace. This changes behavior for cases where `get_unwrapped_forward(module)` returns a function whose `__globals__` differ from the module that defines the class (e.g., a forward method inherited from a mixin defined in another module, a monkey-patched/dynamically assigned forward, or a bound method created via functools.wraps/partial in a different module). In such cases, names resolved via the original function's globals (module-level imports, constants) may no longer be found in the class-defining module's namespace, causing NameError when executing the rewritten AST. This is a real behavioral regression, not just a simplification.\", \"confidence\": 0.65}]}"
+}

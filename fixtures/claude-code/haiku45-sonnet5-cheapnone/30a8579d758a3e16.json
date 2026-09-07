@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1283,
+  "latency_s": 5.248,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 351,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 35, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"The change replaces a spec-compliant JSON-RPC error response (with matching id and METHOD_NOT_FOUND code) with a Mono.error(McpError), which loses the request id correlation and standard error code unless upstream error handling reconstructs an equivalent JSONRPCResponse with proper id/error code. This depends on whether a global error handler downstream (not shown in diff) converts McpError back into a proper JSON-RPC error response with the correct id and METHOD_NOT_FOUND code; if not, this is a regression breaking JSON-RPC protocol compliance for unknown methods. Reviewer should verify by checking how Mono.error(McpError) is handled upstream (e.g., in the transport or dispatcher layer) before confirming this as a real defect.\"}]}"
+}

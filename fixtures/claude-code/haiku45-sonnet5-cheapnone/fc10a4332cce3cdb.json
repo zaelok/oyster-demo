@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1039,
+  "input_tokens": 2058,
+  "latency_s": 6.383,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 531,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\", \"line_start\": 28, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Changing from Dictionary(_:uniquingKeysWith:) to Dictionary(uniqueKeysWithValues:) means duplicate declaration names now cause a fatal runtime crash instead of silently keeping the first occurrence. Combined with removal of the duplicate-name diagnostic check in translateSchemas.swift, this is a real regression: duplicate schema names that previously produced a clean diagnostic error now cause an unhandled fatalError crash in boxRecursiveTypes.\", \"confidence\": 0.75}, {\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\", \"line_start\": 64, \"line_end\": 77, \"category\": \"logic\", \"description\": \"Removal of emitDuplicateTypeNameDiagnostic eliminates the early, user-friendly diagnostic for schemas that map to duplicate generated Swift type names. This is a real behavior regression: instead of a clear compiler-emitted error, users now get either invalid generated Swift code with colliding declarations or a fatal crash via the uniqueKeysWithValues change in translateBoxedTypes.swift. The diff does not show any replacement diagnostic being added elsewhere, so this appears to be an unintended loss of error handling rather than a refactor.\", \"confidence\": 0.7}]}"
+}

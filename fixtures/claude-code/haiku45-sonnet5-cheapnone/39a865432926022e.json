@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 763,
+  "latency_s": 2.486,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 126,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\",\n      \"line_start\": 30,\n      \"line_end\": 30,\n      \"category\": \"logic\",\n      \"description\": \"Removed try-catch for Convert.FromBase64String FormatException without alternative error handling, causing method to throw instead of returning false on invalid base64.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

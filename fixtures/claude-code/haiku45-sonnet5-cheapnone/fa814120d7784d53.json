@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 888,
+  "latency_s": 3.916,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 277,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\",\n      \"line_start\": 718,\n      \"line_end\": 718,\n      \"category\": \"logic\",\n      \"description\": \"Error message changed from 'Invalid header name or value' to 'Invalid header name' but the exception is still thrown when headers.add() fails, which could indicate either name or value validation issues.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\",\n      \"line_start\": 728,\n      \"line_end\": 732,\n      \"description\": \"Method name changed from 'invalidHeaderNameOrValue' to 'invalidHeaderName' but the underlying exception source (IllegalCharacterException from headers.add) may originate from value validation, creating misleading error messages.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

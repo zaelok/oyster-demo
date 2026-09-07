@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1420,
+  "latency_s": 6.138,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 532,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/flash_fwd.py\", \"line_start\": 626, \"line_end\": 629, \"category\": \"logic\", \"description\": \"Removing 'self.is_split_kv = False' from __init__ could break behavior if this attribute is not guaranteed to be set by a base class before use in __call__ or kernel(). Without confirmation that a superclass __init__ sets this attribute, this risks an AttributeError or use of a stale/incorrect value if the class is instantiated independently.\", \"confidence\": 0.35}, {\"file\": \"flash_attn/cute/flash_fwd.py\", \"line_start\": 793, \"line_end\": 793, \"category\": \"logic\", \"description\": \"The 'mDynamicCausal' argument was removed from the launch call, but it's unclear if this tensor was required for correct causal masking behavior in split-kv or dynamic causal scenarios. If the kernel body still relies on dynamic causal boundaries computed from this tensor (e.g., for variable-length sequences), removing it without an equivalent replacement could silently disable dynamic causal masking.\", \"confidence\": 0.25}, {\"file\": \"flash_attn/cute/flash_fwd.py\", \"line_start\": 833, \"line_end\": 833, \"category\": \"logic\", \"description\": \"The kernel() signature no longer accepts 'mDynamicCausal', but if kernel() is called elsewhere (e.g., by a subclass or JIT-compiled variant not shown in this diff) with that parameter, this would cause a TypeError due to unexpected keyword/positional argument.\", \"confidence\": 0.2}]}"
+}

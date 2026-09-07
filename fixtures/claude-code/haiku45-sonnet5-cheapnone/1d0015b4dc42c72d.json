@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 851,
+  "latency_s": 7.472,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 611,
+  "text": "{\"findings\": [{\"file\": \"src/lib/BetaMessageStream.ts\", \"line_start\": 118, \"line_end\": 121, \"category\": \"logic\", \"description\": \"Removing `this.#catchingPromiseCreated = true;` means the stream no longer marks that a consumer has attached error handling via `withResponse()`. If the underlying connection promise rejects, internal logic that checks `#catchingPromiseCreated` to decide whether to also emit/throw an unhandled error (e.g., via `_emitFinal`/`_connected` error paths) will treat this call site as unguarded, potentially causing duplicate error emission or an unhandled promise rejection even though the caller is awaiting `withResponse()`.\", \"confidence\": 0.55}, {\"file\": \"src/lib/MessageStream.ts\", \"line_start\": 112, \"line_end\": 115, \"category\": \"logic\", \"description\": \"Same issue as in BetaMessageStream.ts: removing `this.#catchingPromiseCreated = true;` in `withResponse()` drops the signal that error handling has been attached, which can lead to unhandled promise rejections or duplicate error reporting when `#connectedPromise` rejects.\", \"confidence\": 0.55}]}"
+}

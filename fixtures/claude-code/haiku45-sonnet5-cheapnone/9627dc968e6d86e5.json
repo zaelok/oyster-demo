@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 833,
+  "latency_s": 3.371,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 218,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/openai/internal/transport/base_client.rb\",\n      \"line_start\": 417,\n      \"line_end\": 417,\n      \"category\": \"logic\",\n      \"description\": \"Replaced RequestBodyMerge.merge with Util.deep_merge without verifying they have identical behavior, especially for nested query parameters.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"lib/openai/internal/type/base_page.rb\",\n      \"line_start\": 62,\n      \"line_end\": 63,\n      \"category\": \"logic\",\n      \"description\": \"Same merge method replacement as base_client.rb; inconsistent method call pattern (multi-line chain) may obscure functional changes.\",\n      \"confidence\": 0.5\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 812,
+  "latency_s": 12.248,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1132,
+  "text": "{\"findings\": [{\"file\": \"tools/Polygraphy/polygraphy/config.py\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The refactored expression `os.environ.get(\\\"POLYGRAPHY_ASK_BEFORE_INSTALL\\\", \\\"0\\\" != \\\"0\\\")` incorrectly evaluates `\\\"0\\\" != \\\"0\\\"` (always False) as the *default* value passed to `.get()`, rather than comparing the retrieved environment variable to \\\"0\\\" as before. As a result: (1) if the env var is unset, `.get()` returns `False`, and `bool(False)` = False \u2014 same as original. (2) If the env var is explicitly set to \\\"0\\\" (intending to disable ask-before-install), `.get()` returns the string \\\"0\\\", and `bool(\\\"0\\\")` = True (non-empty string), flipping the flag to True \u2014 the opposite of the original behavior (`\\\"0\\\" != \\\"0\\\"` = False). This silently breaks the documented ability to disable the prompt via env var and changes semantics for other edge-case string values (e.g. empty string).\", \"confidence\": 0.9}]}"
+}

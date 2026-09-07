@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1597,
+  "latency_s": 5.006,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 258,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/chat_composer_history.rs\", \"line_start\": 62, \"line_end\": 69, \"category\": \"logic\", \"description\": \"When record_local_submission is called with text identical to the last history entry, the function now returns early before resetting history_cursor and last_history_text. This leaves stale navigation state (e.g., history_cursor pointing to a previous position) after resubmitting the same message, so subsequent Up/Down navigation may not start fresh from the newest entry as it did before the reordering. The removed test 'enqueueing_history_prompt_multiple_times_is_stable' directly exercised this repeated-submission scenario, confirming this is a regression rather than a false positive.\", \"confidence\": 0.75}]}"
+}

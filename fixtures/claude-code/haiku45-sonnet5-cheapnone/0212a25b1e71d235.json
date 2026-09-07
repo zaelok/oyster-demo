@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1264,
+  "latency_s": 14.017,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 825,
+  "text": "{\"findings\": [{\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 705, \"line_end\": 709, \"category\": \"logic\", \"description\": \"maximumEncryptSize now hardcodes the OAEP overhead as 42 bytes regardless of digest algorithm, ignoring the actual digest case. 42 = 2*20+2 is only correct for SHA-1 (hashLen=20 bytes). For SHA-256 (hashLen=32 bytes) the correct overhead is 2*32+2=66 bytes, so this now overestimates the maximum encryptable size by 24 bytes when using SHA-256 OAEP padding, which can cause encryption to fail or produce incorrect capacity calculations for callers.\", \"confidence\": 0.85}]}"
+}

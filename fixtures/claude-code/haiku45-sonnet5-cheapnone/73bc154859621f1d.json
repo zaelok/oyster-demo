@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 732,
+  "latency_s": 3.055,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 146,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/python_docker/docker_tool.py\", \"line_start\": 81, \"line_end\": 81, \"category\": \"logic\", \"description\": \"When the subprocess exits with a non-zero return code (e.g., script error or exception), stderr is no longer returned. This means execution errors become silent, returning only empty or partial stdout, hiding failure details from the caller.\", \"confidence\": 0.9}]}"
+}

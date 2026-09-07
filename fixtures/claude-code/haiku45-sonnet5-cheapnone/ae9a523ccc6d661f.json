@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 708,
+  "latency_s": 3.271,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 141,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/result.py\", \"line_start\": 127, \"line_end\": 127, \"category\": \"security\", \"description\": \"instructions is now always included in trace model_config regardless of trace_include_sensitive_data, causing potentially sensitive prompt/instruction data to be recorded in traces even when the user has opted out via trace_include_sensitive_data=False.\", \"confidence\": 0.9}]}"
+}

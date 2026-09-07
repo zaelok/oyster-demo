@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1165,
+  "latency_s": 4.32,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 195,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 72, \"line_end\": 80, \"category\": \"logic\", \"description\": \"The colon token now uses default trivia (no trailing space) and the pattern's trailing trivia is no longer stripped before appending typeAnnotation, so the generated code can render as 'let name :Type' or 'let name: Type' inconsistently depending on original pattern trivia, and missing a space after the colon in the default case ('let name:Type').\", \"confidence\": 0.6}]}"
+}

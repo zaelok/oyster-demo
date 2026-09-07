@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1095,
+  "latency_s": 3.578,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 174,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/transformers/tracing/debug.py\", \"line_start\": 27, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Using type=bool with argparse does not parse string values correctly; any non-empty string passed on the command line (including 'False') will be converted to True, breaking the ability to explicitly disable these flags via CLI (unlike the previous BooleanOptionalAction which supported --no-trust_remote_code style flags).\", \"confidence\": 0.9}]}"
+}

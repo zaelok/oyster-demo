@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 767,
+  "latency_s": 6.985,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 470,
+  "text": "{\"findings\": [{\"file\": \"src/openai/lib/_parsing/_embeddings.py\", \"line_start\": 22, \"line_end\": 30, \"category\": \"style\", \"description\": \"has_numpy() is now called once per string-encoded embedding instead of once per response, adding repeated overhead compared to the previous single upfront check; also removes the early-return fast path when no embeddings are base64-encoded strings.\", \"confidence\": 0.5}]}"
+}

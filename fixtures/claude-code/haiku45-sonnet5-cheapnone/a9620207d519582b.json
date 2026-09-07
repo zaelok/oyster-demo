@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 546,
+  "latency_s": 3.232,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 136,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts\",\n      \"line_start\": 319,\n      \"line_end\": 319,\n      \"category\": \"logic\",\n      \"description\": \"Removing `this.responseId = undefined` and `this.lastStore = undefined` from clearSession may leave stale state that could cause issues if the session is reused after clearing.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

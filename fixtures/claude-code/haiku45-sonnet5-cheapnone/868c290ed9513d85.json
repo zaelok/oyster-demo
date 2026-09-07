@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 612,
+  "latency_s": 2.613,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 128,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"tools/Polygraphy/polygraphy/config.py\",\n      \"line_start\": 34,\n      \"line_end\": 34,\n      \"category\": \"logic\",\n      \"description\": \"Operator precedence error: comparison `\\\"0\\\" != \\\"0\\\"` always evaluates to False, making ASK_BEFORE_INSTALL always False regardless of environment variable.\",\n      \"confidence\": 0.99\n    }\n  ]\n}\n```"
+}

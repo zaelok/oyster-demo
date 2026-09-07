@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1479,
+  "latency_s": 6.725,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 511,
+  "text": "{\"findings\": [{\"file\": \"modelopt/torch/export/plugins/mcore_qwen.py\", \"line_start\": 27, \"line_end\": 30, \"category\": \"style\", \"description\": \"SelfAttentionScaling import removed; if no longer used anywhere in file this is correct cleanup, but the earlier finding calling it 'unused import remains' is inverted - the import is correctly removed since core_attention mappings using it were also deleted. No actual defect here.\", \"confidence\": 0.3}, {\"file\": \"modelopt/torch/export/plugins/mcore_qwen.py\", \"line_start\": 65, \"line_end\": 65, \"category\": \"logic\", \"description\": \"Removal of 'core_attention': SelfAttentionScaling mapping for qwen3_causal_lm_export drops the q_scaling/attention scaling factor export logic. If the export/import round-trip or checkpoint conversion relied on this key to write attention scaling parameters (e.g., softmax scale) into the exported HF checkpoint, exported models may silently lose custom attention scaling, causing numerical mismatches versus the original model.\", \"confidence\": 0.55}, {\"file\": \"modelopt/torch/export/plugins/mcore_qwen.py\", \"line_start\": 102, \"line_end\": 102, \"category\": \"logic\", \"description\": \"Same removal of 'core_attention': SelfAttentionScaling mapping in the second export dict (likely qwen2 or another variant), causing the same potential loss of attention scaling parameter export for that model family.\", \"confidence\": 0.55}]}"
+}

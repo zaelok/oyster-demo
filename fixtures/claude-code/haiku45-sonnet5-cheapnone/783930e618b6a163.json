@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 978,
+  "latency_s": 17.975,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1533,
+  "text": "{\"findings\": [{\"file\": \"src/mcp/server/fastmcp/resources/templates.py\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"Replacing re.fullmatch(pattern, uri) with re.match(f'^{pattern}$', uri) is not equivalent. In Python regex (without MULTILINE), '$' matches at the end of the string OR immediately before a trailing newline, whereas fullmatch requires the match to consume the entire string exactly. This means a URI with a trailing newline (e.g., 'resource/123\\\\n') would now incorrectly match the template when it previously would not, potentially causing incorrect resource routing.\", \"confidence\": 0.6}, {\"file\": \"src/mcp/shared/tool_name_validation.py\", \"line_start\": 80, \"line_end\": 80, \"category\": \"security\", \"description\": \"Replacing TOOL_NAME_REGEX.fullmatch(name) with TOOL_NAME_REGEX.match(name) changes the semantics from full-string validation to prefix validation. Unless TOOL_NAME_REGEX itself already ends with an explicit '$' or '\\\\Z' anchor, this allows tool names with a valid prefix followed by arbitrary/invalid trailing characters (including injection-relevant characters) to pass validation, since match() only anchors at the start of the string. This is a security-relevant regression in input validation for tool names.\", \"confidence\": 0.8}]}"
+}

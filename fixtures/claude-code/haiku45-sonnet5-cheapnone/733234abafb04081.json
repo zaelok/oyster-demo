@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1273,
+  "latency_s": 4.413,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 261,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/core/src/unified_exec/mod.rs\", \"line_start\": 113, \"line_end\": 117, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The new `while let Ok(chunk) = receiver.recv().await` loop terminates on any Err variant, including `RecvError::Lagged`. The original code explicitly continued the loop on `Lagged` (a recoverable condition indicating the receiver missed some messages but the channel remains open) and only broke on `Closed`. Now, if the broadcast channel ever lags (e.g., due to a burst of output faster than the consumer can process), the output_task will exit permanently, causing all subsequent output chunks for that session to be silently dropped instead of just the lagged ones.\"}]}"
+}

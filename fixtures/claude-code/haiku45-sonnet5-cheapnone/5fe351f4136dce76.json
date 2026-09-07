@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1051,
+  "latency_s": 4.138,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 219,
+  "text": "```json\n{\"findings\": [{\"file\": \"lib/openai/helpers/structured_output/json_schema_converter.rb\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"If NO_REF is defined as an array constant (e.g., NO_REF = [:$ref]), calling `.except(NO_REF)` without splatting will treat the array itself as a single key to exclude, which won't match any actual key in the hash, resulting in the entire hash being retained instead of excluding the $ref-related keys. This would need `.except(*NO_REF)` to work correctly if NO_REF is an array.\", \"confidence\": 0.45}]}\n```"
+}

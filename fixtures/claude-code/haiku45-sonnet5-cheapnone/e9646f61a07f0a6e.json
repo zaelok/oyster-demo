@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1455,
+  "latency_s": 4.186,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 258,
+  "text": "{\"findings\": [{\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 133, \"line_end\": 141, \"category\": \"logic\", \"description\": \"onnx.helper.float32_to_bfloat16 and float32_to_float8e4m3 operate on scalar float values and return Python ints, not numpy arrays. If NumpyArrayConverter.__call__ applies the stored converter function directly to a numpy array (as it did with vectorized ml_dtypes dtype constructors), this will fail or misbehave for array inputs unless the call site now applies the function element-wise (e.g., via np.vectorize or a loop), which is not shown in this diff.\", \"confidence\": 0.55}]}"
+}

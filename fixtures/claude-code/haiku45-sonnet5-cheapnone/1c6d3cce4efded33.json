@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1110,
+  "latency_s": 4.092,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 221,
+  "text": "{\"findings\": [{\"file\": \"vllm_ascend/spec_decode/dspark_proposer.py\", \"line_start\": 413, \"line_end\": 415, \"category\": \"logic\", \"description\": \"Removing the eplb_heat_collection_status argument from the context manager call means dummy_run no longer forwards the runner's actual dynamic EPLB heat collection state during draft model dummy runs. If the context manager's default differs from the runner's current state when dynamic_eplb is enabled, heat statistics collected during dummy/profiling runs will be inconsistent with real forward passes, potentially skewing EPLB load-balancing decisions.\", \"confidence\": 0.5}]}"
+}

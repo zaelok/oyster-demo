@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 610,
+  "latency_s": 2.416,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 125,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SwiftLanguageService/CodeCompletionContext.swift\",\n      \"line_start\": 43,\n      \"line_end\": 46,\n      \"category\": \"logic\",\n      \"description\": \"Removed check for `token.trimmedRange.contains(absolutePosition)` may cause completion to trigger on tokens that don't actually contain the cursor position.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

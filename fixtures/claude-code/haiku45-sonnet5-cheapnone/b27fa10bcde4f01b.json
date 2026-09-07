@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 991,
+  "latency_s": 6.862,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 516,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/_client.py\", \"line_start\": 513, \"line_end\": 522, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The 413 status code branch was removed, so requests that are too large now fall through to generic APIStatusError instead of RequestTooLargeError, breaking callers that catch that specific exception type.\", \"line_start\": 513, \"line_end\": 522}, {\"file\": \"src/anthropic/_client.py\", \"line_start\": 513, \"line_end\": 522, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The reviewer missed that the 529 status code branch was also removed, so overloaded API responses now map to the generic InternalServerError instead of the specific OverloadedError, similarly breaking callers that catch OverloadedError specifically.\", \"line_start\": 513, \"line_end\": 522}]}"
+}

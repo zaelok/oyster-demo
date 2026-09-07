@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1146,
+  "latency_s": 3.394,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 160,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/remote_handle.cpp\", \"line_start\": 660, \"line_end\": 662, \"category\": \"logic\", \"description\": \"infer_endpoint_impl is called twice with identical arguments; the first call's result is discarded and redundantly recomputed via std::tie, doubling potentially expensive work (network/filesystem probing) with no functional benefit. The first call should be removed and the original structured binding used directly.\", \"confidence\": 0.9}]}"
+}

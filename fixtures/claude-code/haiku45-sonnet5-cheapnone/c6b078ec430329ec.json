@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1641,
+  "input_tokens": 2386,
+  "latency_s": 4.223,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 268,
+  "text": "{\"findings\": [{\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 675, \"line_end\": 683, \"category\": \"logic\", \"description\": \"The new code unconditionally calls self._maybe_sync_shared_experts_stream(shared_experts_input), removing the previous tolerance for multiple upstream API shapes. If loaded against a vllm version where MoERunner does not expose _maybe_sync_shared_experts_stream (e.g., only maybe_forward_async, per the older API), this will raise AttributeError instead of degrading gracefully as the removed helper did. This is a real regression in robustness against upstream API drift, which the commit message/comment explicitly acknowledges vllm has flip-flopped on multiple times.\", \"confidence\": 0.55}]}"
+}

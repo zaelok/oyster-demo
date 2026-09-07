@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 826,
+  "latency_s": 8.655,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 810,
+  "text": "{\"findings\": [{\"file\": \"Sources/CoreFoundation/CFDate.c\", \"line_start\": 171, \"line_end\": 175, \"category\": \"logic\", \"description\": \"__CFTSRRate is computed as res.tv_sec + (1000000000 * res.tv_nsec) instead of (res.tv_sec * 1e9 + res.tv_nsec). Since clock_getres typically returns tv_sec=0 and tv_nsec=1 (nanosecond resolution), this yields __CFTSRRate = 1e9, which coincidentally matches NSEC_PER_SEC, but for any other resolution (e.g., tv_nsec > 1 or tv_sec > 0) it produces a wildly incorrect value, breaking all time interval and date calculations. Additionally, using clock_getres (which returns the *resolution*, i.e., smallest measurable increment) to represent the *tick rate* used to convert monotonic timer ticks to seconds is conceptually wrong\u2014this rate should be a fixed constant (e.g., NSEC_PER_SEC) matching the units returned by the actual timer read function (e.g., clock_gettime), not the resolution value.\", \"confidence\": 0.85}]}"
+}

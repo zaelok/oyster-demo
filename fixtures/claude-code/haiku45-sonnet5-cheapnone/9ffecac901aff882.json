@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 896,
+  "latency_s": 3.162,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 166,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/python_docker/docker_tool.py\", \"line_start\": 81, \"line_end\": 81, \"category\": \"logic\", \"description\": \"The function now always returns stdout, discarding stderr entirely even when the subprocess fails (non-zero return code). This masks error information (e.g., Python tracebacks, syntax errors) from being surfaced to the caller, making failures silently return empty or partial output instead of an error message.\", \"confidence\": 0.95}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 919,
+  "latency_s": 3.127,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 231,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadChannel.swift\",\n      \"line_start\": 80,\n      \"line_end\": 81,\n      \"category\": \"logic\",\n      \"description\": \"Force-unwrapping `try!` on `parent.syncOptions` may crash if nil or getOption fails, whereas the original code safely defaulted to false.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"Package.swift\",\n      \"line_start\": 326,\n      \"line_end\": 326,\n      \"category\": \"logic\",\n      \"description\": \"Downgrading swift-nio dependency from 2.94.0 to 2.81.0 may introduce compatibility issues or missing bug fixes if the package relies on features from newer versions.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

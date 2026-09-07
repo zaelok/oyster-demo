@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 884,
+  "latency_s": 2.575,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 139,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/llmcompressor/transformers/tracing/debug.py\",\n      \"line_start\": 27,\n      \"line_end\": 28,\n      \"category\": \"logic\",\n      \"description\": \"Changing from argparse.BooleanOptionalAction to type=bool will break argument parsing; bool(str) always returns True for non-empty strings, so '--skip_weights false' would be treated as True.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1345,
+  "latency_s": 6.198,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 429,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\", \"line_start\": 718, \"line_end\": 718, \"category\": \"logic\", \"description\": \"The renamed method invalidHeaderName is now used for the exception thrown from headers.add(name, value) at this call site, but headers.add() can throw IllegalCharacterException due to an invalid value as well as an invalid name (unlike setHeaderValue paths that call invalidHeaderValue separately). Renaming the message to 'Invalid header name' loses information when the actual failure was due to an invalid value, misleading users/logs about the true cause of the exception.\", \"confidence\": 0.6}, {\"file\": \"servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\", \"line_start\": 730, \"line_end\": 733, \"category\": \"style\", \"description\": \"In invalidHeaderName, when cause.getMessage() is null the code falls back to printing 'name' instead of a null-safe cause description, but this loses the previously included header name context in the common (non-null message) case since the value is no longer part of the message at all, worsening diagnostics compared to the prior combined message.\", \"confidence\": 0.3}]}"
+}

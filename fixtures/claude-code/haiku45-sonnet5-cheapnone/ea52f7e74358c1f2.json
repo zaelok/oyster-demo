@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1137,
+  "latency_s": 4.287,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 253,
+  "text": "{\"findings\": [{\"file\": \"dali/python/nvidia/dali/experimental/dynamic/_call_site.py\", \"line_start\": 33, \"line_end\": 40, \"category\": \"logic\", \"description\": \"Removing weakref.finalize means ids of garbage-collected code objects are never purged from _transparent_codes. Since CPython can reuse a freed object's id() for a new, unrelated code object, this can cause an unrelated function to be incorrectly treated as transparent by resolve_callsite_frame, leading to wrong call-site resolution (e.g., in stack traces or debugging tools). It also causes unbounded memory growth of _transparent_codes over the program's lifetime, especially for dynamically created functions/decorators.\", \"confidence\": 0.75}]}"
+}

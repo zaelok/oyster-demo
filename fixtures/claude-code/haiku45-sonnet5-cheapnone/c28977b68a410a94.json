@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1282,
+  "latency_s": 13.432,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 847,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/interface.py\", \"line_start\": 710, \"line_end\": 762, \"category\": \"logic\", \"description\": \"The elif branch that forced num_splits=1 for the dedicated hd=256 kernel (which has no SplitKV variant) was removed. Since use_dedicated_hd256_kernel is now computed after the num_splits logic, when num_splits<1 the code falls through to num_splits_heuristic(...) even for the dedicated hd256 kernel, potentially producing num_splits>1 for a kernel that does not support split-KV, causing incorrect results or crashes.\", \"confidence\": 0.75}]}"
+}

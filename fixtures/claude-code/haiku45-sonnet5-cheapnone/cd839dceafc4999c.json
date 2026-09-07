@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1195,
+  "latency_s": 6.146,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 404,
+  "text": "{\"findings\": [{\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"security\", \"description\": \"The restriction limiting vs_id_arg to values within the request's all_vs_ids was removed. Previously, if the model-supplied vector_store_id was not in the authorized list, the code fell back to searching all_vs_ids; now any non-empty vs_id_arg supplied by the model (derived from untrusted tool-call arguments) is used directly, allowing the model to direct vector searches at vector stores outside the ones authorized/scoped for this request. This is a real authorization-boundary regression, not just a logging change.\", \"confidence\": 0.75}, {\"file\": \"litellm/responses/file_search/emulated_handler.py\", \"line_start\": 462, \"line_end\": 462, \"category\": \"logic\", \"description\": \"The warning log emitted when the model selects a vector_store_id outside the request's configured set was removed, reducing diagnostic visibility into out-of-scope vector store selection attempts. This is a secondary consequence of the same change and worth flagging separately since it affects observability/auditing even if the security behavior were intentional.\", \"confidence\": 0.4}]}"
+}

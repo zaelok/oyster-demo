@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1039,
+  "input_tokens": 1525,
+  "latency_s": 12.173,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1062,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\", \"line_start\": 28, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Changing from Dictionary(_:uniquingKeysWith:) to Dictionary(uniqueKeysWithValues:) will cause a runtime crash (fatal error) if two Declaration nodes have the same name, instead of silently keeping the first one as before. Combined with the removal of emitDuplicateTypeNameDiagnostic in translateSchemas.swift, there is no longer any earlier detection/graceful error reporting for duplicate schema-generated type names, so a user-facing duplicate-name scenario that previously produced a clear diagnostic error will now crash the generator with an unhandled precondition failure.\", \"confidence\": 0.85}, {\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\", \"line_start\": 64, \"line_end\": 64, \"category\": \"logic\", \"description\": \"Removal of the emitDuplicateTypeNameDiagnostic call (and its implementation) eliminates the only validation that produced a clear, actionable error message when multiple schemas map to the same generated Swift type name. Without it, duplicate names now propagate to boxRecursiveTypes where, per the companion change to nodeLookup construction, they will trigger a runtime crash rather than a diagnostic, significantly degrading the user experience for a previously-handled error case.\", \"confidence\": 0.8}]}"
+}

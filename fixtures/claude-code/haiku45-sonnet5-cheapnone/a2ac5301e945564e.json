@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1326,
+  "latency_s": 3.747,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 230,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 38, \"category\": \"logic\", \"description\": \"Replacing the completed JSONRPCResponse with Mono.error(McpError) drops the original request.id from the error signal. Unless the caller of handleRequest explicitly catches McpError and reconstructs a JSONRPCResponse using the original request's id, the client will receive an error response (or none) that cannot be correlated to its request via id, breaking JSON-RPC 2.0 correlation semantics.\", \"confidence\": 0.65}]}"
+}

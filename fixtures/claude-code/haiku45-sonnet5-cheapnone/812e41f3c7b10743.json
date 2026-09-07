@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 852,
+  "latency_s": 15.422,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1239,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/asr/models/label_models.py\", \"line_start\": 768, \"line_end\": 771, \"category\": \"logic\", \"description\": \"Using `.squeeze()` instead of `.squeeze(-1).squeeze(-1)` will also collapse the batch dimension when batch_size == 1 (all matmul results have shape (batch,1,1)), producing a scalar instead of a length-1 tensor and breaking downstream indexing/thresholding logic that expects a batch dimension.\", \"confidence\": 0.6}]}"
+}

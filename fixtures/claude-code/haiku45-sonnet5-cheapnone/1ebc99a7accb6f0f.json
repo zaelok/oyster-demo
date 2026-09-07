@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1344,
+  "latency_s": 5.024,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 350,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/common/data/lhotse/cutset.py\", \"line_start\": 1189, \"line_end\": 1193, \"category\": \"logic\", \"description\": \"Removed 'or cut.supervisions[0].context_speaker_similarity is None' guard. If has_custom('context_speaker_similarity') is True but the value is None (e.g., attribute set but not computed), 'None >= min_context_speaker_similarity' raises TypeError, causing filter_secs_fn to crash instead of treating the cut as passing the filter.\", \"confidence\": 0.7}, {\"file\": \"nemo/collections/common/data/lhotse/sampling.py\", \"line_start\": 366, \"line_end\": 370, \"category\": \"logic\", \"description\": \"Removed the None-check before comparing context_speaker_similarity. If has_custom returns True but the value is None, 'None >= self.min_context_speaker_similarity' raises TypeError, breaking the sampling filter callable instead of gracefully excluding/including the example.\", \"confidence\": 0.7}]}"
+}

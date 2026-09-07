@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1288,
+  "latency_s": 3.662,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 229,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/transformers/tracing/debug.py\", \"line_start\": 27, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Using type=bool with argparse means bool() is applied to the string argument, so any non-empty string (e.g. 'False', 'false', '0') evaluates to True. This breaks the ability to disable trust_remote_code or skip_weights via CLI, e.g. '--trust_remote_code False' will still set it to True, and passing no value would error since type=bool requires an argument unlike the previous BooleanOptionalAction which supported --flag/--no-flag with no value needed.\", \"confidence\": 0.95}]}"
+}

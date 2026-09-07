@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1260,
+  "latency_s": 9.696,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 789,
+  "text": "{\"findings\": [{\"file\": \"cmd/config-manager/main.go\", \"line_start\": 408, \"line_end\": 408, \"category\": \"logic\", \"description\": \"Changing %w to %v removes error wrapping; if updateSymlink's error is later inspected with errors.Is/errors.As (e.g., checking for os.IsNotExist or a specific sentinel), that inspection will silently fail since the underlying error is no longer accessible via unwrapping.\", \"confidence\": 0.85}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 413, \"line_end\": 413, \"category\": \"logic\", \"description\": \"Same issue: %v instead of %w discards the wrapped error chain, breaking errors.Is/As-based handling by callers of updateSymlink.\", \"confidence\": 0.8}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 418, \"line_end\": 418, \"category\": \"logic\", \"description\": \"Same issue: %v instead of %w discards the wrapped error chain for the symlink creation failure, breaking errors.Is/As-based handling by callers.\", \"confidence\": 0.8}]}"
+}

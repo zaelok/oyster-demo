@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1322,
+  "latency_s": 100.381,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 9584,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsable Properties/OptionGroup.swift\", \"line_start\": 88, \"line_end\": 91, \"category\": \"logic\", \"description\": \"Removing the `reducingHelpVisibility` cascade (and the corresphttps://onding `reduce(to:)` helper in ArgumentVisibility.swift) means that when an `OptionGroup` is declared with a reduced visibility (e.g. `.hidden` or `.private`), the individual `ArgumentDefinition`s it contains no longer have their own `help.visibility` downgraded to match. The new check added in ParsableArguments.swift (`parsed._visibility.isAtLeastAsVisible(as: visibility)`) only filters out an entire nested `ArgumentSetProvider` (i.e. whole option groups) at the point where argument sets are recursively assembled; it does not adjust the per-argument `help.visibility` of leaf `ArgumentDefinition`s that were previously cascaded down from their parent group's visibility. Any argument inside a hidden/private group that does not explicitly set its own reduced visibility will retain its `.default` visibility and can now leak into default `--help` output (or otherwise be treated as more visible than intended) wherever help/usage generation inspects each `ArgumentDefinition.help.visibility` directly instead of the owning group's visibility.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 902,
+  "latency_s": 5.332,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 434,
+  "text": "{\"findings\": [{\"file\": \"base-action/src/parse-sdk-options.ts\", \"line_start\": 289, \"line_end\": 293, \"category\": \"security\", \"description\": \"Removing `delete env.ALL_INPUTS;` causes the ALL_INPUTS environment variable (which typically aggregates all GitHub Action inputs, potentially including secrets/tokens) to be passed through to the spawned Claude process environment. Previously this was scrubbed like other GitHub Actions-specific variables (ACTIONS_ID_TOKEN_REQUEST_URL, etc.); leaving it in place risks leaking sensitive action inputs to the SDK subprocess or any logging/telemetry that captures env vars.\", \"confidence\": 0.55}]}"
+}

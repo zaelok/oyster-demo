@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1591,
+  "latency_s": 8.727,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 856,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 45, \"category\": \"logic\", \"description\": \"The new `_numeric_form_type` only unwraps a single `ReadOnly[...]` layer via `get_args(annotation)[0]`, whereas the removed `_unqualified` recursively stripped `Annotated`, `NotRequired`, `Required`, and `ReadOnly` qualifiers. Fields typed as `Annotated[int, ...]`, `NotRequired[int]`, `Required[int]`, or nested combinations (e.g. `NotRequired[ReadOnly[int]]`) will no longer be recognized as numeric, causing form values that should be parsed as int/float to remain strings.\", \"confidence\": 0.75}, {\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 45, \"category\": \"logic\", \"description\": \"`get_args(annotation)[0]` assumes get_args returns a non-empty tuple whenever get_origin(annotation) is ReadOnly; if that invariant is ever violated (e.g. malformed/edge-case typing construct), this raises an IndexError instead of degrading gracefully as the previous recursive implementation did.\", \"confidence\": 0.3}]}"
+}

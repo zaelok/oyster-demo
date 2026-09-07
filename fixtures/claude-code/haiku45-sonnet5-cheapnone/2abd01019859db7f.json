@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1323,
+  "latency_s": 7.649,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 345,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 288, \"line_end\": 288, \"category\": \"logic\", \"description\": \"Null check uses `internal_pointer->renumber_map_` instead of `internal_pointer->edge_renumber_map_`, which is the member actually dereferenced on the next line. If `edge_renumber_map_` is null but `renumber_map_` is not, this will dereference a null pointer causing a crash.\", \"confidence\": 0.95}, {\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 298, \"line_end\": 298, \"category\": \"logic\", \"description\": \"Null check uses `internal_pointer->renumber_map_` instead of `internal_pointer->edge_renumber_map_offsets_`, which is the member actually dereferenced on the next line. If `edge_renumber_map_offsets_` is null but `renumber_map_` is not, this will dereference a null pointer causing a crash.\", \"confidence\": 0.95}]}"
+}

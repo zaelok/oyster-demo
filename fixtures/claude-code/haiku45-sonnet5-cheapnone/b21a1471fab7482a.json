@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1026,
+  "latency_s": 3.495,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 171,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/internal/type/file_input.rb\", \"line_start\": 64, \"line_end\": 64, \"category\": \"logic\", \"description\": \"Pattern match narrowed from `Pathname | StringIO | IO | OpenAI::FilePart` to only `StringIO`, causing Pathname, IO, and OpenAI::FilePart values to fall through to the `else` branch instead of being passed through unchanged, breaking file upload support for those types.\", \"confidence\": 0.95}]}"
+}

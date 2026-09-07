@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 618,
+  "latency_s": 3.776,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 228,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/openai/lib/_parsing/_embeddings.py\",\n      \"line_start\": 24,\n      \"line_end\": 30,\n      \"category\": \"logic\",\n      \"description\": \"The loop continues to process all embeddings even after finding the first string embedding, but the removed early return optimization means numpy availability is now checked repeatedly instead of once.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"src/openai/lib/_parsing/_embeddings.py\",\n      \"line_start\": 27,\n      \"line_end\": 27,\n      \"category\": \"logic\",\n      \"description\": \"Removed caching of has_numpy() result means the function is called once per embedding instead of once per response, potentially causing inconsistent behavior if numpy availability changes mid-execution.\",\n      \"confidence\": 0.5\n    }\n  ]\n}\n```"
+}

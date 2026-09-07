@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 609,
+  "latency_s": 1.536,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 110,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"open_instruct/if_functions.py\",\n      \"line_start\": 234,\n      \"line_end\": 234,\n      \"category\": \"logic\",\n      \"description\": \"Regex pattern removes exclamation mark from sentence delimiter set, changing sentence splitting behavior and potentially breaking sentence counting logic.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 588,
+  "latency_s": 2.612,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 134,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh\",\n      \"line_start\": 228,\n      \"line_end\": 228,\n      \"category\": \"logic\",\n      \"description\": \"Removed curandSetStream() call may cause the random number generator to use the wrong CUDA stream, potentially leading to race conditions or out-of-order execution.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

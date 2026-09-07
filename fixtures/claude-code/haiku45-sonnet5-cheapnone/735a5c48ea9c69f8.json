@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 751,
+  "latency_s": 3.578,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 224,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SWBProjectModel/PIFGenerationModel.swift\",\n      \"line_start\": 1108,\n      \"line_end\": 1111,\n      \"category\": \"logic\",\n      \"description\": \"Removal of WASI platform variants (wasip1 and threads environments) from PIFGenerationModel may break backward compatibility or feature support.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"Sources/SwiftBuild/ProjectModel/BuildSettings.swift\",\n      \"line_start\": 300,\n      \"line_end\": 305,\n      \"category\": \"logic\",\n      \"description\": \"Asymmetric removal of WASI thread variants in BuildSettings while wasip1 is retained could cause inconsistent platform configuration across modules.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1216,
+  "latency_s": 3.8,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 227,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 83, \"line_end\": 96, \"category\": \"logic\", \"description\": \"The `$ref` early-return now happens before `$defs` is popped and processed. For a root schema shaped like `{\\\"$defs\\\": {...}, \\\"$ref\\\": \\\"#/$defs/Model\\\"}` (typical for pydantic models with recursive/self-referencing types), the function returns `{\\\"$ref\\\": ref}` immediately, discarding `$defs` entirely. This breaks resolution of the reference since the strict schema no longer contains the definitions the ref points to.\", \"confidence\": 0.8}]}"
+}

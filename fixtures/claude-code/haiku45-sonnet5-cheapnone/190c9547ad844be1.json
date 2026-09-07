@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1311,
+  "latency_s": 28.608,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2489,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/textarea.rs\", \"line_start\": 802, \"line_end\": 806, \"category\": \"logic\", \"description\": \"The rewritten beginning_of_previous_word() computes the word-start candidate as `i + 1` after finding the last whitespace byte index via rfind. This assumes the whitespace character is exactly 1 byte, but the previous implementation correctly used `idx + ch.len_utf8()` to account for multi-byte whitespace (e.g. U+202F NARROW NO-BREAK SPACE, U+00A0, etc., which are 2-3 bytes in UTF-8). For such characters, `i + 1` lands in the middle of the multi-byte sequence, which will either panic when used to slice the string (byte index not on a char boundary) or place the cursor at an invalid position. Notably, the test `delete_backward_word_handles_narrow_no_break_space`, which specifically exercised this scenario, was deleted in this same diff instead of being fixed, masking the regression.\", \"confidence\": 0.85}]}"
+}

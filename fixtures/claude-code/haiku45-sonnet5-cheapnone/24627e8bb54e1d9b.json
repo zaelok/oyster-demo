@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 997,
+  "latency_s": 41.501,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4252,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/trainer.py\", \"line_start\": 1251, \"line_end\": 1257, \"category\": \"logic\", \"description\": \"In the async callback, `fut.result()` is now only called when `cb is not None`. If `cb` is None (which is the common case for many bookkeeping ops that don't need a callback), the future's result/exception is never retrieved, so any exception raised by the background op is silently swallowed instead of being logged and stored in `self._error`. Previously `fut.result()` was called unconditionally, guaranteeing exceptions from `op` were surfaced.\", \"confidence\": 0.85}, {\"file\": \"src/olmo_core/train/trainer.py\", \"line_start\": 1263, \"line_end\": 1266, \"category\": \"logic\", \"description\": \"In the synchronous branch, `cb(result)` is now invoked outside the try/finally block of `wrapped_op`, so the soft_timeout runtime measurement no longer includes the time spent in `cb`, changing the semantics of the timeout warning for callbacks that take significant time.\", \"confidence\": 0.35}]}"
+}

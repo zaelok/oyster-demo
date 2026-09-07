@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1320,
+  "latency_s": 5.366,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 376,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/generate/generation_module/transformer/generation_module.py\", \"line_start\": 491, \"line_end\": 496, \"category\": \"logic\", \"description\": \"The new set_attention_backend only checks for a config attribute named 'attention', dropping the previous fallback to 'sequence_mixer' or treating the config itself as the mixer. Any transformer block config that stores its attention/mixer config under 'sequence_mixer' (or as the config object itself) will silently skip backend assignment, since there's no error raised for configs lacking 'attention'.\", \"confidence\": 0.6}, {\"file\": \"src/olmo_core/generate/generation_module/transformer/generation_module.py\", \"line_start\": 495, \"line_end\": 495, \"category\": \"logic\", \"description\": \"use_flash is unconditionally set to None whenever the attention config has a 'backend' attribute, regardless of whether use_flash was ever set to True/False by the user. This silently discards any explicit use_flash configuration without warning, which could mask user intent even though the comment claims it's just stripping a deprecated option.\", \"confidence\": 0.3}]}"
+}

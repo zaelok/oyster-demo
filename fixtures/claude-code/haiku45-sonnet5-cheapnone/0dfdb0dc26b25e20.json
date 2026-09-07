@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1270,
+  "latency_s": 5.403,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 327,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\", \"line_start\": 30, \"line_end\": 30, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Removing the try/catch around Convert.FromBase64String breaks the documented bool-returning TryParse contract of TryParseDataUri: malformed base64 in an otherwise well-formed data URI will now throw an unhandled FormatException instead of yielding a false return value. Any caller pattern-matching on the try-parse idiom (e.g., `if (!TryParseDataUri(...))`) will crash on invalid but URI-shaped input instead of gracefully handling it. The reviewer's finding is valid; additionally this could be a behavior-breaking change for existing callers who deliberately depend on graceful failure for corrupt/truncated base64 payloads (e.g., partially transmitted data URIs).\", \"line_start\": 30, \"line_end\": 30}]}"
+}

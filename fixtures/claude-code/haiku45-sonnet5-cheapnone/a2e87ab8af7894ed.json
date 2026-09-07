@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1294,
+  "latency_s": 41.06,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4352,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/copying/contiguous_split.cu\", \"line_start\": 1317, \"line_end\": 1318, \"category\": \"logic\", \"description\": \"The 64-bit-safe wide_split_key_functor (which used std::ptrdiff_t for buf_index) is removed, and the code now unconditionally uses split_key_functor, which takes/returns a 32-bit int for buf_index. For contiguous_split operations with a very large number of partitions * source buffers (num_partitions * num_src_bufs exceeding INT_MAX), the int-based key computation can overflow, producing incorrect grouping keys and thus incorrect per-partition buffer offsets/sizes.\", \"confidence\": 0.5}]}"
+}

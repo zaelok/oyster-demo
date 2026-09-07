@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 596,
+  "latency_s": 2.733,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 112,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/AsyncAlgorithms/AsyncShareSequence.swift\",\n      \"line_start\": 426,\n      \"line_end\": 426,\n      \"category\": \"logic\",\n      \"description\": \"Removed `limit > 0` check may allow zero or negative limits to proceed, changing iteration behavior.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

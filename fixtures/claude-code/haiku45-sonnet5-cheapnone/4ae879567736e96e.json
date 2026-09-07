@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 702,
+  "latency_s": 3.767,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 244,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/types/utils.py\",\n      \"line_start\": 3098,\n      \"line_end\": 3098,\n      \"category\": \"style\",\n      \"description\": \"Comment references a test `test_every_guardrail_field_is_classified` but no such test appears in the diff; verify this test actually exists and validates the field classification.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"litellm/types/utils.py\",\n      \"line_start\": 3123,\n      \"line_end\": 3123,\n      \"category\": \"logic\",\n      \"description\": \"Field `guardrail_cost_by_unit` removed from AUDIT_GUARDRAIL_FIELDS but the comment suggests it should cause the referenced test to fail if not classified; verify this removal is intentional and the test passes.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

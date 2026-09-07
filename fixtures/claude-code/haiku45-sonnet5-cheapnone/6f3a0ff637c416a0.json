@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 699,
+  "latency_s": 11.557,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1005,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\", \"line_start\": 135, \"line_end\": 135, \"category\": \"logic\", \"description\": \"The rewritten formula `pow(per_complete - 1, exponent) + 1` is only mathematically equivalent to the original `1 - pow(1 - per_complete, exponent)` when `exponent` is an odd integer. For even integer exponents, (per_complete-1)^exponent equals (1-per_complete)^exponent (same sign), making the result `1 + (1-per_complete)^exponent` instead of `1 - (1-per_complete)^exponent`, which is a completely different curve. Additionally, if `exponent` is a non-integer float, raising a negative base (per_complete-1, which is negative for per_complete<1) to a fractional power will raise a ValueError/return NaN in Python, whereas the original formula never applies pow to a negative base. This change can silently corrupt the sparsity schedule or crash depending on the exponent value used.\", \"confidence\": 0.85}]}"
+}

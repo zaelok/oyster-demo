@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1340,
+  "latency_s": 5.138,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 311,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\", \"line_start\": 122, \"line_end\": 122, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"The new check `split.originalInput.count == 1` uses the count of the entire original input array, not the count of currently remaining/unconsumed elements. The original logic checked whether all remaining elements in `split.elements` shared the same origin index (i.e., only one original argument's pieces remain unconsumed). If `originalInput` is fixed at parser construction and doesn't shrink as arguments are consumed, this changes behavior: for invocations with more than one original argument (e.g., `tool subcommand -h` or `tool --other -h`), `requireSoloArgument` checks will now always fail even when `-h` is truly the only remaining argument to process, breaking detection of built-in help/version flags in multi-argument invocations.\"}]}"
+}

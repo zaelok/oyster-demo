@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 922,
+  "latency_s": 10.903,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 902,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 72, \"line_end\": 80, \"category\": \"logic\", \"description\": \"The colon token no longer specifies a trailing space (`.colonToken(trailingTrivia: .space)` removed), and the pattern's trailing trivia is no longer stripped before combining. This can produce malformed spacing in the generated declaration, e.g. 'let name:Type' (missing space after colon) or double-spaced patterns, depending on the original pattern's trivia.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1447,
+  "latency_s": 6.159,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 503,
+  "text": "{\"findings\": [{\"file\": \"Sources/CoreFoundation/CFDate.c\", \"line_start\": 171, \"line_end\": 175, \"category\": \"logic\", \"description\": \"The formula res.tv_sec + (1000000000 * res.tv_nsec) is dimensionally incorrect (should be res.tv_sec * 1e9 + res.tv_nsec if converting resolution to nanoseconds). More critically, __CFTSRRate is meant to represent the number of timer ticks per second used to convert raw monotonic clock readings (typically nanoseconds from clock_gettime) into seconds; it must be the constant NSEC_PER_SEC, not the clock's reported resolution from clock_getres, which is unrelated to the tick units of the actual timestamp reads and can vary by platform/hardware, silently corrupting all CFAbsoluteTime/CFTimeInterval computations.\", \"confidence\": 0.93}, {\"file\": \"Sources/CoreFoundation/CFDate.c\", \"line_start\": 171, \"line_end\": 175, \"category\": \"logic\", \"description\": \"If clock_getres succeeds but returns tv_nsec == 0 and tv_sec == 0 (a degenerate/invalid resolution some platforms may report), __CFTSRRate becomes 0, causing a division by zero in __CF1_TSRRate = 1.0/__CFTSRRate and subsequent NaN/Inf propagation through all date/time calculations, with no validation against this case.\", \"confidence\": 0.55}]}"
+}

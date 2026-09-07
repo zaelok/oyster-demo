@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 965,
+  "latency_s": 3.371,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 221,
+  "text": "{\"findings\": [{\"file\": \"pkl/evaluator_options.go\", \"line_start\": 461, \"line_end\": 461, \"category\": \"logic\", \"description\": \"opts.Http.Proxy is a newly created nil pointer at this point (opts.Http.Proxy was just set to nil via opts.Http = &Http{} above), so opts.Http.Proxy.NoProxy dereferences a nil pointer causing a panic. This also drops the logic that copies NoProxy from evaluatorSettings.Http.Proxy.NoProxy when it is non-nil, breaking the intended behavior of propagating project NoProxy settings.\", \"confidence\": 0.95}]}"
+}

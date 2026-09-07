@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1359,
+  "latency_s": 4.4,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 278,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 35, \"category\": \"logic\", \"description\": \"Replacing the JSON-RPC error response with Mono.error(McpError) loses the request id correlation and the specific METHOD_NOT_FOUND error code (-32601) unless the caller explicitly catches McpError and reconstructs a JSONRPCResponse with the original request id and correct error code. If the upstream handler only does generic error mapping (e.g., wraps into INTERNAL_ERROR or loses the id), this breaks JSON-RPC spec compliance for unknown methods, and clients would receive a malformed or incorrect error response.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1274,
+  "latency_s": 51.003,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 4953,
+  "text": "{\"findings\": [{\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 546, \"line_end\": 554, \"category\": \"logic\", \"description\": \"The rewritten case statement drops the previous fallback that always set filename=\\\"upload\\\" for values that weren't a FilePart with a non-nil filename or a Pathname/IO. Now, values that fall through to the `else` branch (e.g., an Anthropic::FilePart whose filename is nil, or other IO-like objects such as StringIO that aren't `is_a?(IO)`) get no filename parameter at all in the Content-Disposition header, whereas before they always received a default filename. This silently changes multipart encoding for such values from a file part to a plain form field, which can break servers/parsers that rely on the filename parameter to detect file uploads.\", \"confidence\": 0.55}, {\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 539, \"line_end\": 539, \"category\": \"style\", \"description\": \"Removing the trailing semicolon from 'Content-Disposition: form-data;' is not a regression: the old code appended a second leading semicolon ('form-data;' + '; name=...') producing an invalid double-semicolon header, and unconditionally appended filename with only a leading space (no semicolon) instead of '; filename='. The new code correctly prefixes each optional parameter with '; ', producing a well-formed header. The earlier finding that this breaks multipart parsing appears to be incorrect.\", \"confidence\": 0.3}]}"
+}

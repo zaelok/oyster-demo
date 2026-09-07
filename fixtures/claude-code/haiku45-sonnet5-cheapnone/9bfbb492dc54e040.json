@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 987,
+  "latency_s": 6.163,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 393,
+  "text": "{\"findings\": [{\"file\": \"mcp/client.go\", \"line_start\": 337, \"line_end\": 346, \"category\": \"logic\", \"description\": \"The capability checks (caps.Tools.ListChanged, caps.Prompts.ListChanged, caps.Resources.ListChanged) were removed. Now the client will request list-changed notification subscriptions purely based on whether local handlers are set, ignoring whether the server actually advertised support for these notifications. This can cause the subscription request to fail or be rejected by servers that don't support list-changed notifications, breaking session setup for compliant servers that omit these capability flags.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1211,
+  "latency_s": 6.368,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 383,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/common/data/lhotse/cutset.py\", \"line_start\": 1189, \"line_end\": 1193, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"Removed None check before comparing context_speaker_similarity with >=. If has_custom returns True but the attribute value is None (e.g., not yet computed for that cut), 'None >= min_context_speaker_similarity' raises TypeError. The reviewer's finding is valid unless it's guaranteed elsewhere that this custom field is never None when set.\"}, {\"file\": \"nemo/collections/common/data/lhotse/sampling.py\", \"line_start\": 366, \"line_end\": 370, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"Same issue as in cutset.py: removed None check before comparison, risking TypeError if context_speaker_similarity is set but None. Reviewer likely missed confirming whether both call sites are consistent (both removed the same guard), suggesting this may be an intentional invariant change (e.g., upstream code now guarantees non-None values), which would need verification against where context_speaker_similarity is populated.\"}]}"
+}

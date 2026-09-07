@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1022,
+  "latency_s": 4.098,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 233,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/olmo_core/config.py\", \"line_start\": 273, \"line_end\": 276, \"category\": \"logic\", \"description\": \"Removing `new_dict.pop(\\\"type\\\", None)` leaves the discriminator key 'type' in new_dict before calling `decode(cls_o, new_dict)`. If the target dataclass `cls_o` does not define a 'type' field, this will raise a TypeError (unexpected keyword argument) during construction, breaking decoding of any tagged/polymorphic config class lacking an explicit 'type' attribute. This is a functional regression unless decode() elsewhere strips unknown keys.\", \"confidence\": 0.75}]}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 910,
+  "latency_s": 3.509,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 194,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/config.py\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"description\": \"Removing the 'not field.init' check causes as_dict() to include init=False fields (e.g., computed/derived fields set in __post_init__). If the resulting dict is later used to reconstruct the object via the constructor (e.g., from_dict(**as_dict())), it will raise TypeError for unexpected keyword arguments, breaking round-trip serialization for any dataclass using init=False fields.\", \"confidence\": 0.65}]}"
+}

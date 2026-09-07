@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1217,
+  "latency_s": 3.565,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 228,
+  "text": "{\"findings\": [{\"file\": \"mcp/client.go\", \"line_start\": 337, \"line_end\": 346, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"The removal of capability checks (caps.Tools.ListChanged, caps.Prompts.ListChanged, caps.Resources.ListChanged) means the client now subscribes to list-changed notifications based solely on whether local handlers are registered, without verifying the server actually declared support via ServerCapabilities. This could cause subscription requests to be sent to servers that don't support these notification types, potentially resulting in errors or silently ignored subscriptions, and represents a regression in protocol-compliant capability negotiation.\"}]}"
+}

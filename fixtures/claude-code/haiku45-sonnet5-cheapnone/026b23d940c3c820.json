@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1456,
+  "latency_s": 4.751,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 406,
+  "text": "```json\n{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadChannel.swift\", \"line_start\": 80, \"line_end\": 81, \"category\": \"logic\", \"description\": \"Changing from `try?` with a `false` fallback to `try!` will crash (fatal error) if `parent.syncOptions` is nil or if `getOption` throws, e.g. when the parent channel does not support `ChannelOptions.autoRead` via sync options. The comment claims only Channels implementing sync options are supported, but `parent.syncOptions!` is already force-unwrapped separately, so the added `try!` removes error handling for the `getOption` call itself, turning a previously recoverable case into a crash.\", \"confidence\": 0.85}, {\"file\": \"Package.swift\", \"line_start\": 326, \"line_end\": 326, \"category\": \"logic\", \"description\": \"Downgrading the swift-nio minimum version requirement from 2.94.0 to 2.81.0 may cause build failures or undefined behavior if the codebase (e.g., the new NIOResumableUpload module) relies on APIs, types, or behavior only available in swift-nio >= 2.94.0.\", \"confidence\": 0.5}]}\n```"
+}

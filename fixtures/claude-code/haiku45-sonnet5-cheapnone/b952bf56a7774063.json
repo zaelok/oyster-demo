@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1422,
+  "latency_s": 4.947,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 375,
+  "text": "{\"findings\": [{\"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\", \"line_start\": 100, \"line_end\": 100, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"Removing infer_schema_length=None reverts to Polars' default schema inference sample size (100 rows), which can cause schema inference errors or incorrect dtypes when 'records' has more rows than the sample with type variation (e.g., nulls followed by actual values, or int/float mixes) not represented in the first 100 rows.\", \"line_start\": 100, \"line_end\": 100}, {\"file\": \"litellm/integrations/cloudzero/transform.py\", \"line_start\": 98, \"line_end\": 98, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"Removing infer_schema_length=None reverts to Polars' default sampling for schema inference (100 rows), risking type inference errors or incorrect dtypes when cbf_data has more rows than the sample with inconsistent types (e.g., nulls in early rows followed by typed values later), potentially breaking or corrupting transformation output for larger datasets.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1641,
+  "input_tokens": 2423,
+  "latency_s": 8.11,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 451,
+  "text": "{\"findings\": [{\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 675, \"line_end\": 683, \"category\": \"logic\", \"description\": \"The diff removes the fallback shim that tolerated multiple upstream MoERunner API shapes and replaces it with a direct, unconditional call to self._maybe_sync_shared_experts_stream(shared_experts_input). If this code runs against an upstream vllm version where MoERunner only exposes maybe_forward_async (or neither method), this will raise AttributeError instead of degrading gracefully, causing a hard crash rather than falling back to synchronous execution.\", \"confidence\": 0.55}, {\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 693, \"line_end\": 700, \"category\": \"logic\", \"description\": \"The call to self._apply_quant_method no longer passes shared_experts_overlapping, relying on the assumption that this version of vllm's MoERunner decides overlap internally. If the installed vllm version still expects/requires this kwarg (e.g., an intermediate API state), the call will silently behave differently (always non-overlapping) or fail with a TypeError for unexpected/missing argument depending on the exact signature, since the removed helper no longer computes or returns this flag at all.\", \"confidence\": 0.3}]}"
+}

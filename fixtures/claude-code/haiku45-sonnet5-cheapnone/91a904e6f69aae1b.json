@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1304,
+  "latency_s": 4.82,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 293,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 180, \"line_end\": 180, \"category\": \"security\", \"description\": \"The 'prompt' field is now unconditionally included in trace span data, removing the gating on _trace_include_sensitive_data. This leaks potentially sensitive user-supplied prompt text into traces even when sensitive data tracing is disabled, inconsistent with other fields in the same span that still respect the flag.\", \"confidence\": 0.9}, {\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 556, \"line_end\": 556, \"category\": \"security\", \"description\": \"The 'prompt' field in model_config is always included regardless of the trace_include_sensitive_data parameter, exposing prompt content in traces even when the caller opted out of sensitive data collection.\", \"confidence\": 0.9}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1018,
+  "latency_s": 5.879,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 297,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 196, \"line_end\": 202, \"category\": \"logic\", \"description\": \"Removing the api_key field/constructor parameter removes a documented programmatic configuration path, forcing exclusive reliance on the YDC_API_KEY environment variable and breaking any existing callers (or chz-based configuration) that explicitly pass api_key to YouComBackend.\", \"confidence\": 0.6}, {\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 199, \"line_end\": 202, \"category\": \"style\", \"description\": \"The error message was simplified from a helpful one including a URL to obtain an API key ('Get one at https://you.com/platform') to a bare 'You.com API key not provided', reducing actionability for users encountering the error.\", \"confidence\": 0.5}]}"
+}

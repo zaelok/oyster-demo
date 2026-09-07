@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1437,
+  "latency_s": 7.876,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 660,
+  "text": "{\"findings\": [{\"file\": \"Sources/ContainerizationOCI/Platform.swift\", \"line_start\": 256, \"line_end\": 264, \"category\": \"logic\", \"description\": \"When both architectures are arm64 and variants normalize (nil vs 'v8'), the function returns true immediately without checking lhs.os == rhs.os. This makes platforms with different OS values (e.g. os: \\\"linux\\\" vs os: \\\"windows\\\", both arm64/v8) incorrectly compare as equal.\", \"confidence\": 0.95}]}"
+}

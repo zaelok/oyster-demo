@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 816,
+  "latency_s": 4.337,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 340,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/olmo_core/train/trainer.py\",\n      \"line_start\": 1217,\n      \"line_end\": 1219,\n      \"category\": \"logic\",\n      \"description\": \"Callback `cb` is now never invoked in the synchronous `wrapped_op` path when `soft_timeout` is set, breaking the callback contract.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/olmo_core/train/trainer.py\",\n      \"line_start\": 1254,\n      \"line_end\": 1256,\n      \"category\": \"logic\",\n      \"description\": \"In async path, callback is invoked with `fut.result()` which may raise an exception, but the exception is caught and only logged without re-raising to the caller.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"src/olmo_core/train/trainer.py\",\n      \"line_start\": 1265,\n      \"line_end\": 1267,\n      \"category\": \"logic\",\n      \"description\": \"Callback behavior differs between async and sync paths: sync path invokes callback synchronously, async path invokes it asynchronously in a background thread, creating potential race conditions with shared state.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

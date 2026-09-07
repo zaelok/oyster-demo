@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 892,
+  "latency_s": 13.707,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 239,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-openai/src/openaiResponsesModel.ts\", \"line_start\": 3958, \"line_end\": 3965, \"category\": \"logic\", \"description\": \"The removed block set span.spanData.response_id and span.spanData._response when a terminalResponse was received with tracing enabled. Without seeing surrounding context in the diff, it's unclear whether this assignment was moved elsewhere (e.g., consolidated into a shared code path) or genuinely removed, which would regress trace completeness for terminal responses. The reviewer should verify whether an equivalent assignment exists elsewhere in the function before confirming this as a real regression rather than a refactor.\", \"confidence\": 0.4}]}"
+}

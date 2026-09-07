@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1283,
+  "input_tokens": 2020,
+  "latency_s": 5.357,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 472,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\", \"line_start\": 461, \"line_end\": 464, \"category\": \"logic\", \"description\": \"The copy constructor Builder(OutlierDetectorConfig) no longer copies ewmaCancellationPenalty, ewmaErrorPenalty, concurrentRequestPenalty, and cancellationIsError from the source config. These fields silently reset to the Builder's class defaults instead of preserving the original config's values, breaking copy/derive semantics for callers who build a new config from an existing one (e.g., via OutlierDetectorConfig.Builder(existingConfig)).\", \"confidence\": 0.9}, {\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinLoadBalancerBuilder.java\", \"line_start\": 145, \"line_end\": 148, \"category\": \"style\", \"description\": \"The added Javadoc line 'background health checking. Use negative value to disable the health checking mechanism.' is inserted in the middle of the @param threshold description but appears disconnected from the parameter name declaration, resulting in malformed/awkward Javadoc formatting (the @param tag's description is split awkwardly and duplicates info already stated in the method description above).\", \"confidence\": 0.3}]}"
+}

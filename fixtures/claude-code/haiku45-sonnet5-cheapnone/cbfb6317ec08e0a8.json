@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 999,
+  "latency_s": 29.09,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2668,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/hooks/proxy_track_cost_callback.py\", \"line_start\": 272, \"line_end\": 274, \"category\": \"logic\", \"description\": \"Using 'is True' for the cache_hit check means any truthy but non-boolean value (e.g., string 'True', 1) for kwargs['cache_hit'] would not be treated as a cache hit, so response_cost would not be zeroed out even though it should be, leading to inconsistent cost tracking on cache hits.\", \"confidence\": 0.3}]}"
+}

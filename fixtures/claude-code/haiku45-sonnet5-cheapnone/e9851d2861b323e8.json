@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1251,
+  "latency_s": 4.182,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 253,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/request_options.rb\", \"line_start\": 40, \"line_end\": 40, \"category\": \"logic\", \"description\": \"The extra_query type was narrowed from HashOf[{union: String or ArrayOf[String]}, nil?: true] to HashOf[ArrayOf[String]]. This removes support for passing a plain String value per query key and removes nil?: true support (both for the hash itself and for values), contradicting the YARD doc above which still documents 'Hash{String=>Array<String>, String, nil}, nil'. This is a breaking change to accepted input types not reflected in the docs, and will cause validation/coercion failures for previously valid inputs like a String value or a nil value/hash.\", \"confidence\": 0.8}]}"
+}

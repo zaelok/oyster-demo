@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 715,
+  "latency_s": 3.39,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 127,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\",\n      \"line_start\": 118,\n      \"line_end\": 118,\n      \"category\": \"logic\",\n      \"description\": \"Unchecked cast to ImportNode could cause ClassCastException if bodyNode is not an ImportNode after unwrapping.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

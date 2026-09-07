@@ -1,0 +1,94 @@
+{
+  "catch_rate": [
+    {
+      "category": "logic",
+      "ci_high": 0.7157653529498106,
+      "ci_low": 0.6060912277578262,
+      "model_alias": "cheap-model",
+      "n": 282,
+      "rate": 0.6631205673758865,
+      "role": "cheap-scanner"
+    },
+    {
+      "category": "security",
+      "ci_high": 0.31754492553566527,
+      "ci_low": 0.06864319106627216,
+      "model_alias": "cheap-model",
+      "n": 32,
+      "rate": 0.15625,
+      "role": "cheap-scanner"
+    },
+    {
+      "category": "logic",
+      "ci_high": 0.3902687674588037,
+      "ci_low": 0.28087776964426314,
+      "model_alias": "strong-model",
+      "n": 282,
+      "rate": 0.3333333333333333,
+      "role": "critic"
+    },
+    {
+      "category": "security",
+      "ci_high": 0.2806864978482796,
+      "ci_low": 0.04970053844474301,
+      "model_alias": "strong-model",
+      "n": 32,
+      "rate": 0.125,
+      "role": "critic"
+    },
+    {
+      "category": "logic",
+      "ci_high": 0.6581970459189037,
+      "ci_low": 0.5447125375706934,
+      "model_alias": "strong-model",
+      "n": 282,
+      "rate": 0.6028368794326241,
+      "role": "deep-reviewer"
+    },
+    {
+      "category": "security",
+      "ci_high": 0.3530949575492244,
+      "ci_low": 0.08889423936162782,
+      "model_alias": "strong-model",
+      "n": 32,
+      "rate": 0.1875,
+      "role": "deep-reviewer"
+    }
+  ],
+  "corpus_size": 183,
+  "mean_cost": [
+    {
+      "dollars": 0.0017096775956284155,
+      "dollars_p50": 0.001459,
+      "dollars_p95": 0.00279,
+      "latency_p50": 2.825,
+      "latency_p95": 4.829,
+      "latency_s": 3.1872896174863388,
+      "model_alias": "cheap-model",
+      "n": 183,
+      "role": "cheap-scanner"
+    },
+    {
+      "dollars": 0.011083328961748634,
+      "dollars_p50": 0.006138,
+      "dollars_p95": 0.035921800000000004,
+      "latency_p50": 5.648,
+      "latency_p95": 31.195,
+      "latency_s": 10.821967213114755,
+      "model_alias": "strong-model",
+      "n": 183,
+      "role": "critic"
+    },
+    {
+      "dollars": 0.01326488524590164,
+      "dollars_p50": 0.007618,
+      "dollars_p95": 0.038234,
+      "latency_p50": 8.251,
+      "latency_p95": 38.283,
+      "latency_s": 13.202617486338799,
+      "model_alias": "strong-model",
+      "n": 183,
+      "role": "deep-reviewer"
+    }
+  ]
+}

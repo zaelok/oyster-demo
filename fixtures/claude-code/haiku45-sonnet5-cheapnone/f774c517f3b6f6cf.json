@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1099,
+  "latency_s": 7.928,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 330,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\", \"line_start\": 4057, \"line_end\": 4063, \"category\": \"logic\", \"confidence\": 0.5, \"description\": \"The removed while-loop extended parenthesizedExpr through enclosing OptionalChainingExprSyntax/ForceUnwrapExprSyntax nodes sharing the same starting token as the parenthesized expression (e.g., (foo)! or (foo)?.bar). Without this loop, such wrapping nodes are no longer treated as part of the same parenthesized expression when the caller processes the result, which could change how parentheses interact with force-unwrap/optional-chaining in pretty-printing (e.g., redundant-parens removal or grouping/breaking decisions). Since the diff context/caller behavior isn't shown, it's unclear if this is compensated elsewhere, but the removal is a plausible behavior change worth flagging.\"}]}"
+}

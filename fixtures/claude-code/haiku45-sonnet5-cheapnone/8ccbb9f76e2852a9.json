@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1089,
+  "input_tokens": 2029,
+  "latency_s": 4.189,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 354,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7362, \"line_end\": 7370, \"category\": \"logic\", \"description\": \"Reintroduces NaN bug: for triu with diagonal>0, res = x - band_part(x,-1,diagonal-1) computes inf - inf = NaN for elements inside the kept band when x contains +/-inf (e.g., masked attention score tensors), instead of returning the original finite value. The removed _zero_out_band helper avoided this via a value-independent select mask.\", \"confidence\": 0.85}, {\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 7394, \"line_end\": 7402, \"category\": \"logic\", \"description\": \"Same NaN regression as triu: for tril with diagonal<0, res = x - band_part(x,-diagonal-1,-1) yields inf - inf = NaN for elements in the retained band when x holds +/-inf values, instead of correctly preserving them.\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1179,
+  "latency_s": 4.925,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 323,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\", \"line_start\": 4057, \"line_end\": 4059, \"category\": \"logic\", \"description\": \"The removed while-loop previously extended parenthesizedExpr to include enclosing OptionalChainingExprSyntax/ForceUnwrapExprSyntax nodes that share the same starting token (e.g., (foo)! or (foo)?.bar). Without this extension, callers using this function to determine redundant-parentheses removal or grouping boundaries will treat the parenthesized expression as ending at the closing paren rather than including the trailing '!' or '?' chain, potentially causing incorrect parenthesis removal or incorrect line-breaking/grouping decisions for expressions like (foo)!.bar or (foo)?.baz where the paren wrapping is structurally tied to the unwrap/chain operator.\", \"confidence\": 0.55}]}"
+}

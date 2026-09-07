@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1115,
+  "latency_s": 4.487,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 275,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\", \"line_start\": 216, \"line_end\": 216, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Replacing presentCount == 1 with chained XOR (anyOf != null).xor(type != null).xor(ref != null) changes the semantics from 'exactly one is true' to 'odd number of true values'. If all three of anyOf, type, and ref are present (non-null), the XOR chain evaluates to true (true xor true xor true = true), incorrectly passing validation, whereas the original presentCount == 1 check would correctly fail (presentCount would be 3). This allows invalid schemas with all three mutually-exclusive keys set to pass validation.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1120,
+  "latency_s": 5.648,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 349,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/transformers/tracing/debug.py\", \"line_start\": 27, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Changed argparse action from BooleanOptionalAction to type=bool is a regression. With type=bool, argparse calls bool(str) on the provided argument, so any non-empty string (including 'False', 'false', '0') evaluates to True. This breaks the ability to explicitly set --trust_remote_code False or --skip_weights False from the command line, and also removes the --no-trust_remote_code/--no-skip_weights negation flags that BooleanOptionalAction provided.\", \"confidence\": 0.92}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 866,
+  "latency_s": 17.454,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1560,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\", \"line_start\": 135, \"line_end\": 135, \"category\": \"logic\", \"description\": \"The rewritten formula `pow(per_complete - 1, exponent) + 1` is only equivalent to the original `1 - pow(1 - per_complete, exponent)` when `exponent` is an odd integer. For even integer exponents it evaluates to `pow(1-per_complete, exponent) + 1`, which is always >= 1 and never decreases correctly toward the target sparsity as per_complete approaches 1 (it approaches 1 instead of the intended 1, but stays above 1 for per_complete in (0,1), overshooting the final sparsity target). For non-integer exponents, raising a negative base (`per_complete - 1 < 0`) to a fractional power via Python's `**` returns a complex number, which will corrupt downstream sparsity calculations or raise type errors when compared/used numerically.\", \"confidence\": 0.85}]}"
+}

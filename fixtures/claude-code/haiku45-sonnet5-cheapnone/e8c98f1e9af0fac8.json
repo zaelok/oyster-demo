@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1190,
+  "latency_s": 5.574,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 377,
+  "text": "{\"findings\": [{\"file\": \"Sources/NewCodable/CommonDecodableProtocols.swift\", \"line_start\": 468, \"line_end\": 468, \"category\": \"logic\", \"description\": \"The default implementation's generic constraint was narrowed from `V: DecodingStringVisitor & ~Copyable` with `borrowing V` to `V: DecodingStringVisitor` with a plain `V` parameter, dropping support for non-copyable visitor types and the borrowing convention. If the protocol requirement (declared elsewhere, not shown in this diff) still declares `decodeString` with `~Copyable` and `borrowing V`, this default implementation's signature no longer matches the requirement, meaning it will no longer satisfy/override the protocol default for non-copyable visitors (silently falling back to another default, if any, or causing conformers using non-copyable visitors to fail to compile). This is a real risk given the surrounding file consistently uses `~Escapable`/`~Copyable` and `borrowing` conventions elsewhere, suggesting an unintentional regression rather than an intentional API simplification.\", \"confidence\": 0.55}]}"
+}

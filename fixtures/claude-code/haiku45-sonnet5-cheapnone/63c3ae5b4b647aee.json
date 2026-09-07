@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1329,
+  "latency_s": 12.913,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1263,
+  "text": "{\"findings\": [{\"file\": \"scripts/train/convert_olmo_core_to_hf.py\", \"line_start\": 13, \"line_end\": 38, \"category\": \"logic\", \"description\": \"`torch.distributed.checkpoint.state_dict` (the imported `dcp_state_dict` module) only exposes functions like `get_state_dict`/`set_state_dict`/`get_model_state_dict`/`set_model_state_dict`; it does not define `load_state_dict`. The actual checkpoint-loading entry point is `torch.distributed.checkpoint.load` (in the parent `torch.distributed.checkpoint` module, sometimes aliased as `dcp.load` or the deprecated `dcp.load_state_dict`). Calling `dcp_state_dict.load_state_dict(...)` will raise an AttributeError at runtime, so the checkpoint will never actually be loaded into `model`.\", \"confidence\": 0.7}]}"
+}

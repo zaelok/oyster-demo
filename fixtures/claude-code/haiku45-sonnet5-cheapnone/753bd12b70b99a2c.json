@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 992,
+  "latency_s": 4.006,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 224,
+  "text": "{\"findings\": [{\"file\": \"OpenAI.Responses/src/Custom/ResponseContentPart.cs\", \"line_start\": 20, \"line_end\": 20, \"category\": \"logic\", \"description\": \"The setter assigns Kind.ToSerialString() instead of value.ToSerialString(). Since Kind reads from InternalType, this makes the setter a no-op that reassigns InternalType to its own current value, discarding the incoming 'value' parameter. Any code setting Kind (e.g. via object initializers or constructors) will fail to update InternalType, leaving it at its default/prior value, breaking serialization and type identification of the content part.\", \"confidence\": 0.97}]}"
+}

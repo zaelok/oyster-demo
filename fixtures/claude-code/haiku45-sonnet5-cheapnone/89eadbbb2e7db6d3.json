@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 556,
+  "latency_s": 2.771,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 122,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/olmo_core/config.py\",\n      \"line_start\": 112,\n      \"line_end\": 112,\n      \"category\": \"logic\",\n      \"description\": \"Removing the `not field.init` check means non-init fields will now be included in as_dict() output, which may expose internal state or break backwards compatibility.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

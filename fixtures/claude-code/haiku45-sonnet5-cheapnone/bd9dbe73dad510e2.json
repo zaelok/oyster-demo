@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 902,
+  "latency_s": 4.589,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 259,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\", \"line_start\": 73, \"line_end\": 73, \"category\": \"logic\", \"description\": \"The removal of `self.context = context` eliminates the only visible assignment to `self.context` in this diff. If `self.context` is used elsewhere in the handler (e.g., in read/write/error methods) to interact with the pipeline, and this was the primary place it was set (such as on new upload creation), later uses may operate on a stale or nil context, especially in scenarios where a previous upload just ended and a new one starts on a channel that may have changed context. Without seeing the full class, this could cause writes/reads to be misrouted or crash if context is nil.\", \"confidence\": 0.5}]}"
+}

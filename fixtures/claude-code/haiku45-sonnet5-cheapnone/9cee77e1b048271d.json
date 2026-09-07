@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1893,
+  "latency_s": 8.684,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 467,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/utils.py\", \"line_start\": 780, \"line_end\": 787, \"category\": \"logic\", \"description\": \"Replacing cute.arch.sub_packed_f32x2 with quack.activation.sub_packed_f32x2 without seeing its implementation risks a rounding-mode mismatch; the original code relies on specific rounding semantics ('rm' for add, implicit round-to-nearest for sub) to correctly split integer/fractional parts in ex2_emulation_2. If quack.activation.sub_packed_f32x2 does not preserve the same PTX rounding behavior as cute.arch's version, xy_rounded_back and xy_frac will be computed incorrectly, silently corrupting exp2 results.\", \"confidence\": 0.5}, {\"file\": \"flash_attn/cute/flash_bwd_sm100.py\", \"line_start\": 17, \"line_end\": 17, \"category\": \"logic\", \"description\": \"Swapping cute.arch.sub_packed_f32x2 for quack.activation.sub_packed_f32x2 in the dP softmax-correction computation changes which packed-subtract implementation is used; if quack.activation's version differs in rounding or lacks the same PTX-level guarantees, tdPrdP_cur values (used in backward pass gradient computation) could diverge numerically from the previous behavior.\", \"confidence\": 0.4}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1065,
+  "latency_s": 3.183,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 180,
+  "text": "{\"findings\": [{\"file\": \"src/agents/models/openai_responses.py\", \"line_start\": 710, \"line_end\": 713, \"category\": \"logic\", \"description\": \"The removal eliminates the only code that populated span_data.response and span_data.input on the completed span when tracing.include_data() is true. Without visibility into the rest of the streaming loop, if these fields are not set elsewhere before span export, tracing consumers relying on span_data.response/input for debugging will silently lose this data even with data inclusion enabled.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 759,
+  "latency_s": 6.722,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 462,
+  "text": "{\"findings\": [{\"file\": \"src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\", \"line_start\": 1089, \"line_end\": 1094, \"category\": \"logic\", \"description\": \"The removed code added the 'context-management-2025-06-27' beta header whenever the request body contained a 'context_management' key. Without context confirming that this feature has graduated out of beta or that the header is now added elsewhere, removing this logic could cause requests using context_management to be sent without the required beta header, resulting in API errors or the feature being silently ignored by the Anthropic API.\", \"confidence\": 0.5}]}"
+}

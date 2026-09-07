@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1196,
+  "latency_s": 5.771,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 282,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 37, \"category\": \"logic\", \"description\": \"Changing from returning a JSONRPCResponse with an error field to Mono.error() alters behavior: instead of producing a valid JSON-RPC error response for the client, this now propagates as a reactive error signal. Depending on how the caller (e.g., the transport layer) handles onError for handleRequest, this could result in a broken or missing response to the client (e.g., connection termination or a generic 500) rather than a proper JSON-RPC error response with the original request id, unless the transport explicitly catches McpError and converts it back into a JSONRPCResponse with matching id.\", \"confidence\": 0.9}]}"
+}

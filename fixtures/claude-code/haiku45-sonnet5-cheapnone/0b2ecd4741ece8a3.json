@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1546,
+  "latency_s": 6.346,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 480,
+  "text": "{\"findings\": [{\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 705, \"line_end\": 709, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"maximumEncryptSize hardcodes OAEP overhead as 42 bytes (correct only for SHA-1, hashLen=20: 2*20+2=42). For SHA-256 (hashLen=32), correct overhead is 2*32+2=66, so this overestimates capacity by 24 bytes for SHA-256 OAEP, potentially causing encryption failures for callers who rely on this value to size their plaintext.\", \"line_start\": 705, \"line_end\": 709}, {\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 511, \"line_end\": 511, \"category\": \"logic\", \"confidence\": 0.4, \"description\": \"The unsafePEMRepresentation initializer's minimum key size check was raised from 1024 to 2048 bits. This is a behavior-breaking change for an API explicitly named 'unsafe' to allow smaller/legacy keys; existing callers relying on it for keys between 1024-2047 bits will now fail unexpectedly. If intentional for security hardening this is fine, but it contradicts the purpose of the 'unsafe' variant and may not belong in this otherwise unrelated change (removal of hashBitLength).\", \"confidence\": 0.4}]}"
+}

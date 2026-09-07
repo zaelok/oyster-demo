@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1346,
+  "latency_s": 16.187,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1464,
+  "text": "{\"findings\": [{\"file\": \"Sources/ContainerizationOCI/Platform.swift\", \"line_start\": 257, \"line_end\": 265, \"category\": \"logic\", \"description\": \"The early-return branch for arm64 nil/\\\"v8\\\" variant equivalence checks only architecture and variant, but never verifies lhs.os == rhs.os. Thus two Platform values with the same arm64 architecture, compatible variant (nil vs \\\"v8\\\"), but different os (e.g. \\\"linux\\\" vs \\\"windows\\\") will incorrectly be considered equal. This also violates the Hashable contract since hash(into:) likely still hashes the raw os/variant fields, so two values deemed equal by this shortcut would produce different hash values (nil vs \\\"v8\\\" variant hash differently, and differing os hashes differently), breaking Set/Dictionary usage of Platform.\", \"confidence\": 0.9}]}"
+}

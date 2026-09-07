@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1490,
+  "latency_s": 24.758,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2354,
+  "text": "{\"findings\": [{\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"onnx.helper.float32_to_bfloat16 operates on a single scalar float (uses struct.pack/int.from_bytes internally) and returns a python int, not a vectorized numpy array converter like ml_dtypes.bfloat16 was. If NumpyArrayConverter.__call__ applies this function directly to a full numpy array (as it did with ml_dtypes.bfloat16(arr)), it will either raise a TypeError or silently pack the whole array's bytes into a single integer instead of converting element-wise, breaking bfloat16 tensor export.\", \"confidence\": 0.8}, {\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 139, \"line_end\": 139, \"category\": \"logic\", \"description\": \"onnx.helper.float32_to_float8e4m3 is a scalar conversion function (expects a single float and additional args like scale/saturate), not a numpy-array-vectorized dtype constructor like ml_dtypes.float8_e4m3fn. Passing a full numpy array to it via NumpyArrayConverter will fail or produce incorrect results instead of per-element FP8 conversion.\", \"confidence\": 0.8}]}"
+}

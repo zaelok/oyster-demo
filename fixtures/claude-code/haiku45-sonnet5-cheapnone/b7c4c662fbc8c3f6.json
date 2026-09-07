@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1100,
+  "latency_s": 4.989,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 270,
+  "text": "{\"findings\": [{\"file\": \"Sources/NewCodable/CommonDecodableProtocols.swift\", \"line_start\": 468, \"line_end\": 468, \"category\": \"logic\", \"description\": \"Removing the `& ~Copyable` constraint and `borrowing` qualifier changes the generic contract for `decodeString`. This default implementation must match the signature declared in the protocol/other conformances; if other implementations of `decodeString` (e.g., in concrete decoders) still declare `V: DecodingStringVisitor & ~Copyable` with a `borrowing` parameter, this override will no longer satisfy the protocol requirement, causing a compile error or silently creating an overload that is never called via the protocol's dynamic dispatch, breaking support for non-copyable visitor types.\", \"confidence\": 0.55}]}"
+}

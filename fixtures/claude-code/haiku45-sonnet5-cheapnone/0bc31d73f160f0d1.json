@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1449,
+  "latency_s": 6.535,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 518,
+  "text": "{\"findings\": [{\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"Removed check that each content block is a dict before accessing block[\\\"type\\\"]; if block is a string, int, list, or None, this raises TypeError or KeyError instead of a clear MessageParseError, and the exception type differs from what callers may expect (no longer wrapped consistently as MessageParseError with the raw data attached).\", \"confidence\": 0.8}, {\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 130, \"line_end\": 130, \"category\": \"logic\", \"description\": \"Removed dict-type check for assistant content blocks before match block[\\\"type\\\"]; malformed block (e.g. a string) will raise TypeError/KeyError instead of a descriptive MessageParseError, reducing error clarity and potentially crashing unhandled outside the try/except if the raised error type isn't caught by the enclosing except clause.\", \"confidence\": 0.8}, {\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 129, \"line_end\": 129, \"category\": \"logic\", \"description\": \"Removed validation that data[\\\"message\\\"][\\\"content\\\"] is a list before iterating; if content is a dict or other non-list iterable (or non-iterable like int), the for loop will either iterate unexpected keys or raise TypeError, losing the previous clear MessageParseError with contextual data.\", \"confidence\": 0.85}]}"
+}

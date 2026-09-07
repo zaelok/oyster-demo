@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 879,
+  "latency_s": 3.384,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 214,
+  "text": "{\"findings\": [{\"file\": \"lib/anthropic/credentials/workload_identity.rb\", \"line_start\": 161, \"line_end\": 161, \"category\": \"logic\", \"description\": \"Removing parentheses around `Integer | String` in a pattern match `in {access_token: String => token, expires_in: Integer | String => expires_in}` is valid Ruby find-pattern syntax since alternative patterns don't require parentheses when used as a value pattern in a hash pattern; this should still parse correctly in Ruby 2.7+/3.x, so the change is likely just a style/syntax simplification with no functional difference.\", \"confidence\": 0.3}]}"
+}

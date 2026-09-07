@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 911,
+  "latency_s": 4.498,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 333,
+  "text": "{\"findings\": [{\"file\": \"cmd/config-manager/main.go\", \"line_start\": 408, \"line_end\": 408, \"category\": \"style\", \"description\": \"Changing %w to %v removes error wrapping, preventing callers from using errors.Is/errors.As or unwrapping the underlying error (e.g., os.IsNotExist checks on the returned error will no longer work).\", \"confidence\": 0.9}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 413, \"line_end\": 413, \"category\": \"style\", \"description\": \"Changing %w to %v removes error wrapping, losing the ability to inspect the wrapped underlying error via errors.Is/As.\", \"confidence\": 0.85}, {\"file\": \"cmd/config-manager/main.go\", \"line_start\": 418, \"line_end\": 418, \"category\": \"style\", \"description\": \"Changing %w to %v removes error wrapping, losing the ability to inspect the wrapped underlying error via errors.Is/As.\", \"confidence\": 0.85}]}"
+}

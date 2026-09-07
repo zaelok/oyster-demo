@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 671,
+  "latency_s": 5.232,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 412,
+  "text": "{\"findings\": [{\"file\": \"Sources/Services/ContainerAPIService/Client/Parser.swift\", \"line_start\": 433, \"line_end\": 436, \"category\": \"logic\", \"description\": \"Removing 'fs.source = \\\"tmpfs\\\"' leaves fs.source unset (likely empty or nil) for tmpfs filesystem entries, which may break downstream code that relies on fs.source containing \\\"tmpfs\\\" (e.g., for mount commands, display, or serialization) since tmpfs mounts conventionally use \\\"tmpfs\\\" as both type and source.\", \"confidence\": 0.5}]}"
+}

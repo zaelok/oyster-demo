@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1302,
+  "latency_s": 7.092,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 485,
+  "text": "{\"findings\": [{\"file\": \"litellm/router_strategy/adaptive_router/adaptive_router.py\", \"line_start\": 142, \"line_end\": 142, \"category\": \"logic\", \"description\": \"The removed comment explicitly warned that a persisted row can be one-sided (e.g. beta=0) because it stores an accumulated delta, not a full posterior. The new code assigns row.alpha/row.beta directly into BanditCell without adding to the cold-start prior, so a zero-valued Beta parameter from the DB will be loaded verbatim and crash thompson_sample() on every subsequent draw for that (route_type, model) cell.\", \"confidence\": 0.85}]}"
+}

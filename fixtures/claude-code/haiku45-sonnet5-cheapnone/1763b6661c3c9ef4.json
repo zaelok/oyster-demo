@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1380,
+  "latency_s": 18.284,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1644,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/trainer.py\", \"line_start\": 1251, \"line_end\": 1257, \"category\": \"logic\", \"description\": \"When `cb` is None, `fut.result()` is never called inside the callback, so exceptions raised by the background op are never retrieved from the Future and are silently discarded instead of being logged and stored in `self._error`. This regresses the previous unconditional `fut.result()` call that guaranteed background exceptions were surfaced.\", \"confidence\": 0.9}, {\"file\": \"src/olmo_core/train/trainer.py\", \"line_start\": 1263, \"line_end\": 1266, \"category\": \"logic\", \"description\": \"In the synchronous path, `cb(result)` is now called after `wrapped_op` returns, outside the try/finally block that measures elapsed time against `soft_timeout`. This means time spent in `cb` no longer counts toward the soft-timeout warning, changing the semantics for callbacks with non-trivial execution time, and also means an exception raised by `cb` is no longer covered by the timeout-logging finally block.\", \"confidence\": 0.4}]}"
+}

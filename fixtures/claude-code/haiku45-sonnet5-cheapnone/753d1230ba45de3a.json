@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1238,
+  "latency_s": 4.002,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 234,
+  "text": "{\"findings\": [{\"file\": \"mcp/streamable.go\", \"line_start\": 2770, \"line_end\": 2770, \"category\": \"logic\", \"description\": \"The DELETE request now uses c.ctx directly without a timeout. If c.ctx is already canceled by the time Close() runs (a common pattern where Close cancels or is triggered by context cancellation), the DELETE request will fail immediately with ctx.Err(), silently skipping server-side session cleanup. Additionally, if c.ctx is still valid but the server is slow/unresponsive, Close() can now block indefinitely since the previous bounded timeout (closeDeleteTimeout) has been removed entirely.\", \"confidence\": 0.75}]}"
+}

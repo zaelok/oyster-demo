@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 654,
+  "latency_s": 2.667,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 140,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SwiftDriver/ExplicitModuleBuilds/ExplicitDependencyBuildPlanner.swift\",\n      \"line_start\": 357,\n      \"line_end\": 357,\n      \"category\": \"logic\",\n      \"description\": \"Changed from `useAbstractPath` parameter to `cas != nil` check, which may alter behavior if `useAbstractPath` and `cas` availability are not always synchronized.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

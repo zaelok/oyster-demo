@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 868,
+  "latency_s": 6.22,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 174,
+  "text": "```json\n{\"findings\": [{\"file\": \"Sources/Services/ContainerAPIService/Client/Parser.swift\", \"line_start\": 436, \"line_end\": 436, \"category\": \"logic\", \"description\": \"Removing `fs.source = \\\"tmpfs\\\"` leaves fs.source unset (likely nil or empty) for tmpfs filesystems, which may break downstream code (e.g., mount handling, serialization, or display) that expects source to be populated even for tmpfs entries.\", \"confidence\": 0.6}]}\n```"
+}

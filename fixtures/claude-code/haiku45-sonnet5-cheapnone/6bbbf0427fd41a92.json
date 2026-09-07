@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 926,
+  "latency_s": 3.554,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 202,
+  "text": "{\"findings\": [{\"file\": \"src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\", \"line_start\": 1089, \"line_end\": 1093, \"category\": \"logic\", \"description\": \"Removal of the context_management beta header check means requests containing context_management in RawBodyData will no longer include the 'context-management-2025-06-27' beta header, likely causing the API to reject or ignore the context_management parameter. No replacement logic is visible in the diff, suggesting this is an unintentional regression rather than an intentional feature removal.\", \"confidence\": 0.55}]}"
+}

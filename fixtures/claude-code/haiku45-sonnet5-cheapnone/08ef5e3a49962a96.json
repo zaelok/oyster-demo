@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1765,
+  "latency_s": 5.786,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 334,
+  "text": "{\"findings\": [{\"file\": \"tpu_inference/platforms/tpu_platform.py\", \"line_start\": 30, \"line_end\": 40, \"category\": \"logic\", \"description\": \"_jax_device_memory_info() calls jax.local_devices()[0].memory_stats() without any exception handling. If jax.local_devices() returns an empty list (no local devices visible), this raises IndexError; if the backend doesn't implement memory_stats() and raises instead of returning None (e.g. NotImplementedError on some backends), that also propagates uncaught. Since this function is only called from inside the except-block of _patched_get_memory_info (which only catches RuntimeError containing 'jax'), any new exception type here will propagate out of get_memory_info() and crash the caller (e.g. EngineCore), which is exactly the failure mode this patch was meant to prevent. The previous version had an explicit try/except AttributeError with a logged fallback to (0, 0); this safety net is now removed.\", \"confidence\": 0.65}]}"
+}

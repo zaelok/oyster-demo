@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1045,
+  "latency_s": 3.51,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 220,
+  "text": "{\"findings\": [{\"file\": \"rslearn/data_sources/aws_landsat.py\", \"line_start\": 213, \"line_end\": 213, \"category\": \"logic\", \"description\": \"Removing the filter that excluded LO08_/LO09_ (OLI-only, no thermal bands) items causes these products to now be yielded alongside full OLI-TIRS items. If downstream code (band selection/ingestion) assumes all Landsat 8/9 items expose thermal bands, this will cause missing-band errors or silently incomplete data for LO08_/LO09_ scenes unless downstream logic was updated to handle the reduced band set.\", \"confidence\": 0.6}]}"
+}

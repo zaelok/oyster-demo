@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 600,
+  "latency_s": 2.468,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 130,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_ascend/spec_decode/dspark_proposer.py\",\n      \"line_start\": 413,\n      \"line_end\": 418,\n      \"category\": \"logic\",\n      \"description\": \"Removal of eplb_heat_collection_status parameter without clear justification; if this parameter is required by the downstream function call, this will cause a runtime error.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 555,
+  "latency_s": 2.489,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\",\n      \"line_start\": 135,\n      \"line_end\": 135,\n      \"category\": \"logic\",\n      \"description\": \"Mathematical error: `pow(per_complete - 1, exponent)` produces negative values when per_complete is in [0, 1), resulting in incorrect sparsity scheduling behavior.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1145,
+  "latency_s": 14.641,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1349,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 111, \"line_end\": 111, \"category\": \"logic\", \"description\": \"The lambda ignores its own 'params' argument and reads self._params directly. If set_messages_params ever calls the callback with a transformed or snapshotted params object (rather than the live self._params), the appended messages will be based on stale/incorrect state, silently diverging from what set_messages_params expects to update.\", \"confidence\": 0.6}, {\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 454, \"line_end\": 454, \"category\": \"logic\", \"description\": \"The new messages list is built as [*self._params['messages'], summary_message, ...] using the original, uncompacted self._params['messages'] instead of the local 'messages' variable that had already been trimmed by the preceding pop loop. This re-inserts all originally uncompacted messages ahead of the summary, defeating the purpose of compaction and likely duplicating conversation history rather than replacing it with the summary.\", \"confidence\": 0.85}]}"
+}

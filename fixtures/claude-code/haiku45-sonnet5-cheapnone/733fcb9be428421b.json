@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 944,
+  "latency_s": 6.29,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 471,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/callbacks/speed_monitor.py\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"A100 dense FP16 Tensor Core peak throughput is actually 312 TFLOPS; 624 TFLOPS is the sparsity-accelerated figure. Since dense_correction is applied afterward, using 312e12 here is more consistent with the code's intent than the previous 624e12 value, so this change looks like a bug fix rather than a regression.\", \"confidence\": 0.3}]}"
+}

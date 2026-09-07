@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1230,
+  "latency_s": 4.186,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 313,
+  "text": "{\"findings\": [{\"file\": \"src/vllm_router/services/request_service/request.py\", \"line_start\": 1245, \"line_end\": 1250, \"category\": \"logic\", \"description\": \"The unified call to router.route_request now always omits the request body argument (previously an empty dict {}) for KvawareRouter, PrefixAwareRouter, SessionRouter, DisaggregatedPrefillOrchestratedRouter, and DisaggregatedPrefillRouter, and does not await the coroutine-returning route_request for async router types (KvawareRouter, PrefixAwareRouter, SessionRouter, DisaggregatedPrefillOrchestratedRouter). This will raise a TypeError for missing required positional argument for routers requiring the body param, and will return an un-awaited coroutine instead of a URL string for async routers, causing chosen_url to be invalid and breaking request proxying for multipart requests.\", \"confidence\": 0.9}]}"
+}

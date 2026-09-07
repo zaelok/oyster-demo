@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 892,
+  "latency_s": 6.139,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 481,
+  "text": "{\"findings\": [{\"file\": \"src/internal/detect-platform.ts\", \"line_start\": 131, \"line_end\": 131, \"category\": \"logic\", \"description\": \"The regex was changed from matching 'Edg', 'EdgA', 'EdgiOS' (with word boundary) to only matching 'Edge'. Modern Chromium-based Edge browsers use 'Edg/' (desktop), 'EdgA/' (Android), and 'EdgiOS/' (iOS) in their user agent strings, not 'Edge'. This change breaks detection of Edge on these platforms, causing it to fall through to Chrome detection (since Chromium Edge UA also contains 'Chrome').\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1068,
+  "latency_s": 6.585,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 499,
+  "text": "{\"findings\": [{\"file\": \"src/openai/lib/_parsing/_embeddings.py\", \"line_start\": 24, \"line_end\": 31, \"category\": \"style\", \"description\": \"has_numpy() is now called once per embedding item instead of once per response, adding repeated redundant function calls; this is a performance regression rather than a logic bug since has_numpy() is deterministic within a single call and won't change mid-loop.\", \"confidence\": 0.4}]}"
+}

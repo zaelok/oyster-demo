@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1174,
+  "latency_s": 5.075,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 258,
+  "text": "{\"findings\": [{\"file\": \"cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh\", \"line_start\": 228, \"line_end\": 228, \"category\": \"logic\", \"description\": \"Removing curandSetStream(randGen, stream) causes curandGenerate (and related curand calls) to execute on the default CUDA stream instead of the stream used by subsequent kernel launches in this function. Without an explicit synchronization, the alteration values produced by curand may not be visible/ready when later kernels on 'stream' consume them, leading to a race condition, particularly when the default stream is not the legacy synchronizing stream (e.g., per-thread default streams enabled) or when 'stream' is non-null and non-blocking.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1031,
+  "latency_s": 4.147,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 209,
+  "text": "{\"findings\": [{\"file\": \"vllm_ascend/spec_decode/dspark_proposer.py\", \"line_start\": 379, \"line_end\": 384, \"category\": \"logic\", \"description\": \"Removing the explicit eplb_heat_collection_status=False argument means the context manager will use its default value for this call site. If the default is not False, dummy/profile runs of the draft model may now participate in EPLB heat collection, potentially skewing expert load statistics gathered during profiling passes (which should be excluded from real load tracking). Confirming the actual default requires the context manager definition, which is not present in this diff.\", \"confidence\": 0.35}]}"
+}

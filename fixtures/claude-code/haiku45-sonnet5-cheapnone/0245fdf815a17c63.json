@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 947,
+  "latency_s": 18.903,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2016,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 72, \"line_end\": 72, \"category\": \"logic\", \"description\": \"The default `.colonToken()` used by `TypeAnnotationSyntax(type:)` has no trailing trivia, so the generated code will render as `name:Type` instead of `name: Type`, losing the space that was previously explicitly added via `colonToken(trailingTrivia: .space)`.\", \"confidence\": 0.65}, {\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 74, \"line_end\": 76, \"category\": \"logic\", \"description\": \"Same issue as above for the placeholder type branch: removing the explicit `colonToken(trailingTrivia: .space)` means the colon will have no trailing space before `<#Type#>`, producing malformed/unreadable generated code like `name:<#Type#>`.\", \"confidence\": 0.65}, {\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 79, \"line_end\": 82, \"category\": \"logic\", \"description\": \"Removing `.with(\\\\.pattern, binding.pattern.with(\\\\.trailingTrivia, []))` means the original pattern's trailing trivia (e.g. a space before the removed type annotation/initializer) is preserved. Combined with the new bare colon token lacking leading trivia, this could produce inconsistent spacing (e.g. double space or missing space) between the identifier and the colon in the emitted type annotation.\", \"confidence\": 0.55}]}"
+}

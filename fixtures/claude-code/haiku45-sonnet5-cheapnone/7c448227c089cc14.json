@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1092,
+  "latency_s": 4.935,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 180,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/core/src/unified_exec/mod.rs\", \"line_start\": 113, \"line_end\": 118, \"category\": \"logic\", \"description\": \"The while-let loop now terminates the task on any Err, treating Lagged the same as Closed. Previously Lagged errors were explicitly skipped to keep receiving; now the loop exits entirely on the first Lagged error, stopping output collection for the rest of the session even though the sender/session may still be alive and producing more chunks.\", \"confidence\": 0.85}]}"
+}

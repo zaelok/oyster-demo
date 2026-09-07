@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 572,
+  "latency_s": 2.258,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 89,
+  "text": "```json\n{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\", \"line_start\": 41, \"line_end\": 41, \"category\": \"logic\", \"description\": \"Removed filter that checked commandTree.path validity; unvalidated command types may now propagate through the commandStack.\", \"confidence\": 0.7}]}\n```"
+}

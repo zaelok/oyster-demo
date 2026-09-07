@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 589,
+  "latency_s": 2.414,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 129,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/BitCollections/BitSet/BitSet+SetAlgebra isEqualSet.swift\",\n      \"line_start\": 44,\n      \"line_end\": 44,\n      \"category\": \"logic\",\n      \"description\": \"Removing the empty-check may cause incorrect behavior when `other` is an empty range, since the method should return true if both sets are empty.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

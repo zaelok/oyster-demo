@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1095,
+  "latency_s": 5.27,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 429,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\", \"line_start\": 451, \"line_end\": 456, \"category\": \"logic\", \"description\": \"Removed the special-case handling that treated an empty/blank inputJson string as JsonMissing. Now, when inputJson is empty (e.g., a tool call with no parameters), JSON_MAPPER.readValue will fail to parse the empty string and throw an exception, which is caught and rethrown as AnthropicInvalidDataException instead of being treated as a missing/absent input as before.\", \"confidence\": 0.75}]}"
+}

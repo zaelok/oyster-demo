@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 730,
+  "latency_s": 3.264,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 214,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/agents/voice/models/openai_stt.py\",\n      \"line_start\": 180,\n      \"line_end\": 180,\n      \"category\": \"security\",\n      \"description\": \"Prompt is now always included in traces regardless of trace_include_sensitive_data setting, potentially exposing sensitive data.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/agents/voice/models/openai_stt.py\",\n      \"line_start\": 556,\n      \"line_end\": 556,\n      \"category\": \"security\",\n      \"description\": \"Prompt is now always included in model config traces regardless of trace_include_sensitive_data setting, potentially exposing sensitive data.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

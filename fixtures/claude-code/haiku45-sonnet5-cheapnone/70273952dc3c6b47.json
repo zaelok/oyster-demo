@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 880,
+  "latency_s": 3.737,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 205,
+  "text": "{\"findings\": [{\"file\": \"rslearn/data_sources/aws_landsat.py\", \"line_start\": 213, \"line_end\": 213, \"category\": \"logic\", \"description\": \"Removing the filter that excluded items with names starting with 'LO08_' or 'LO09_' will now yield those items (Landsat 8/9 OLI-only, no thermal bands, products lacking certain bands like TIRS). If downstream code assumes all bands are present (e.g., matches items to a band configuration expecting thermal bands), this can cause missing-band errors or silently incomplete data being ingested.\", \"confidence\": 0.55}]}"
+}

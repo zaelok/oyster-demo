@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 579,
+  "latency_s": 2.672,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 135,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/openai/helpers/structured_output/json_schema_converter.rb\",\n      \"line_start\": 112,\n      \"line_end\": 112,\n      \"category\": \"logic\",\n      \"description\": \"Changing from `slice(:$ref)` to `except(NO_REF)` reverses the filtering logic\u2014slice keeps only $ref while except removes it, potentially breaking schema generation.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

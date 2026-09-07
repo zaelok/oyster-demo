@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 901,
+  "latency_s": 4.826,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 247,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 110, \"line_end\": 113, \"category\": \"logic\", \"description\": \"Removing the enum pop/copy means 'enum' is no longer transferred to strict_schema and is left in json_schema. Since the function appears to process/pop known keys and likely raises or asserts on any remaining unrecognized keys in json_schema at the end (common pattern in these transform functions), this would cause an error for any schema using enum constraints, or silently drop enum validation if such a check doesn't exist. This is a real regression unless enum handling was intentionally moved elsewhere in the diff (not shown) or is no longer supported by design.\", \"confidence\": 0.75}]}"
+}

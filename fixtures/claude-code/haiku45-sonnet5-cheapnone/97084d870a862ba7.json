@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 966,
+  "latency_s": 4.414,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 250,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftLanguageService/CodeCompletionContext.swift\", \"line_start\": 43, \"line_end\": 46, \"category\": \"logic\", \"description\": \"The removed `token.trimmedRange.contains(absolutePosition)` check meant that `tree.token(at:)` could return the nearest token even when the position is not actually within that token (e.g., in whitespace between tokens or right at a token boundary). Without this containment check, `findEndOfIdentifier` may now return a bogus 'end of identifier' position for a token that doesn't actually span the cursor location, causing incorrect completion context/ranges when the cursor sits in whitespace adjacent to an identifier/keyword.\", \"confidence\": 0.8}]}"
+}

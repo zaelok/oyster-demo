@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1623,
+  "latency_s": 3.926,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 247,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/chat_composer_history.rs\", \"line_start\": 62, \"line_end\": 69, \"category\": \"logic\", \"description\": \"Reordering causes history_cursor and last_history_text to remain stale when the submitted text duplicates the last history entry, since the early return now skips the reset. This changes prior behavior (always resetting on submit) and could leave navigation state inconsistent after resubmitting the same message, e.g., Up/Down navigation may not restart from the newest entry as expected. The removed test enqueueing_history_prompt_multiple_times_is_stable suggests this exact scenario was previously covered and intentionally guarded against.\", \"confidence\": 0.7}]}"
+}

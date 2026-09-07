@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 802,
+  "latency_s": 35.511,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3300,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/metal/source/context.c\", \"line_start\": 621, \"line_end\": 626, \"category\": \"logic\", \"description\": \"The assignment of context->num_kv_tokens was moved outside the mismatch branch and is now unconditionally executed after the verification loop, using the already-incremented context->num_tokens. Previously, num_kv_tokens was only updated when a mismatch occurred (partial verification), leaving it untouched when all num_tokens_to_verify tokens matched. Now, even in the full-match case, num_kv_tokens is forced to equal the new context->num_tokens, which assumes the KV cache is valid for all appended tokens. If the full-match tokens were only compared by ID and not actually run through the model's forward pass to populate their KV cache entries, this change could cause the context to treat uncomputed KV entries as valid, leading to stale/incorrect attention state being used during generation.\", \"confidence\": 0.45}]}"
+}

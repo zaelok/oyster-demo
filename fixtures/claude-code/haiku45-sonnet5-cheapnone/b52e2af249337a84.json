@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1046,
+  "latency_s": 5.758,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 425,
+  "text": "{\"findings\": [{\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 444, \"line_end\": 449, \"category\": \"logic\", \"description\": \"hashQuery replaces a proper SHA-256 hash with fmt.Sprintf(\\\"%x\\\", query) or a truncated 32-byte prefix. This causes hash collisions for any queries sharing the same first 32 characters (or differing only after that point), which will incorrectly group/deduplicate distinct queries wherever hashQuery's output is used as a unique key (e.g., query tracking or caching).\", \"confidence\": 0.85}, {\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 446, \"line_end\": 446, \"category\": \"logic\", \"description\": \"fmt.Sprintf(\\\"%x\\\", query) hex-encodes the entire string when len(query) < 32, while the else branch only encodes the first 32 bytes of longer strings. This inconsistent behavior means the hash format/length differs depending on query length, and slicing query[:32] operates on bytes not runes, which can panic or produce corrupted output if the query contains multi-byte UTF-8 characters and the slice boundary falls in the middle of a rune.\", \"confidence\": 0.6}]}"
+}

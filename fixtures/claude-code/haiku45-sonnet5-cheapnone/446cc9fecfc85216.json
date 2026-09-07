@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1017,
+  "latency_s": 28.73,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2788,
+  "text": "{\"findings\": [{\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 540, \"line_end\": 553, \"category\": \"logic\", \"description\": \"The refactored case/in only sets a filename attribute for Anthropic::FilePart with a non-nil filename, or for Pathname/IO values. Previously, any value that reached the else branch (including a FilePart whose filename is nil) got a default filename of \\\"upload\\\". Now such FilePart instances (nil filename) fall through to the empty else branch and no filename= attribute is emitted at all, which can cause the multipart body to omit the filename for a genuine file upload, potentially breaking servers that require the filename attribute to treat the part as a file.\", \"confidence\": 0.5}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 555,
+  "latency_s": 2.524,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 125,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"OpenAI.Responses/src/Custom/ResponseContentPart.cs\",\n      \"line_start\": 20,\n      \"line_end\": 20,\n      \"category\": \"logic\",\n      \"description\": \"Property setter assigns `Kind.ToSerialString()` instead of `value.ToSerialString()`, causing infinite recursion or incorrect value assignment.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

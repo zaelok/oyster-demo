@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1073,
+  "latency_s": 2.963,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 153,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/remote_handle.cpp\", \"line_start\": 661, \"line_end\": 662, \"category\": \"logic\", \"description\": \"infer_endpoint_impl(url, get_default_allow_list(), false) is called twice with identical arguments; the first result is immediately discarded and overwritten by the second call via std::tie, making the first call redundant dead code that wastes computation without changing behavior.\", \"confidence\": 0.95}]}"
+}

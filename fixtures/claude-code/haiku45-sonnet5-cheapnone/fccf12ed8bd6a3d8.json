@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 674,
+  "latency_s": 12.12,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1129,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\", \"line_start\": 135, \"line_end\": 135, \"category\": \"logic\", \"description\": \"The new formula `pow(per_complete - 1, exponent) + 1` is not mathematically equivalent to the original `1 - pow(1 - per_complete, exponent)` unless exponent is an odd integer. Since `per_complete` is in [0, 1], `per_complete - 1` is in [-1, 0], a negative (or zero) base. Raising a negative float to a non-integer exponent in Python returns a complex number (or raises for math.pow), which will silently corrupt the sparsity schedule computation or cause a runtime type error when used in subsequent arithmetic/comparisons.\", \"confidence\": 0.85}]}"
+}

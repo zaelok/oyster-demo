@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 912,
+  "latency_s": 7.362,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 361,
+  "text": "{\"findings\": [{\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 528, \"line_end\": 528, \"category\": \"logic\", \"description\": \"Using `content.get('cache_control', {})` defaults to an empty dict instead of None when cache_control is absent, which differs from the pattern used elsewhere (e.g., `.get('thinking') or ''`) and may cause downstream code expecting None or absence of the key to behave incorrectly (e.g., an empty dict being treated as truthy/present cache_control settings).\", \"confidence\": 0.5}, {\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 535, \"line_end\": 535, \"category\": \"logic\", \"description\": \"Same issue as above for redacted_thinking_block: defaulting cache_control to an empty dict rather than None/absent may incorrectly signal that cache_control was explicitly set to an empty object, potentially altering downstream serialization or caching behavior.\", \"confidence\": 0.5}]}"
+}

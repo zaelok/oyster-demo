@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1125,
+  "latency_s": 10.823,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 997,
+  "text": "{\"findings\": [{\"file\": \"flash_attn/cute/interface.py\", \"line_start\": 758, \"line_end\": 764, \"category\": \"logic\", \"description\": \"The computation of use_dedicated_hd256_kernel was moved after the num_splits selection logic, and the 'elif use_dedicated_hd256_kernel: num_splits = 1' branch was dropped. Previously, for arch 10/11 with head_dim==256 and head_dim_v==256, num_splits was forced to 1 because the dedicated kernel has no SplitKV variant. Now that branch no longer exists, so when num_splits < 1, the generic num_splits_heuristic() will compute a value that may be > 1 even for this dedicated kernel path, potentially producing an unsupported/incorrect configuration (SplitKV requested for a kernel with no SplitKV variant).\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1020,
+  "latency_s": 4.654,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 284,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/_client.py\", \"line_start\": 513, \"line_end\": 521, \"category\": \"logic\", \"description\": \"Removing the explicit 413 and 529 status code branches causes these responses to fall through to the generic '>= 500' check or the final APIStatusError fallback. This means a 413 (Payload Too Large) will now be returned as a generic APIStatusError instead of RequestTooLargeError, and a 529 (Overloaded) will be caught by the 'status_code >= 500' branch and returned as InternalServerError instead of OverloadedError. Client code that catches these specific exception types (e.g. except RequestTooLargeError or except OverloadedError) to implement retry/backoff or payload-splitting logic will silently stop working, treating these as generic/internal errors instead.\", \"confidence\": 0.85}]}"
+}

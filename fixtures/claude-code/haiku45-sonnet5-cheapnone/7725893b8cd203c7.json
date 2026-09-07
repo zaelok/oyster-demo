@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1125,
+  "latency_s": 3.491,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 118,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_Node.Storage.swift\", \"line_start\": 121, \"line_end\": 121, \"category\": \"style\", \"description\": \"Trailing whitespace was introduced at the end of the class declaration line after removing the @_fixed_layout attribute comment.\", \"confidence\": 0.9}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1342,
+  "latency_s": 5.186,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 239,
+  "text": "{\"findings\": [{\"file\": \"src/openai/_base_client.py\", \"line_start\": 762, \"line_end\": 777, \"category\": \"logic\", \"confidence\": 0.5, \"description\": \"The refactor removes the explicit math.inf guard that previously capped an overflowing retry-after value (e.g. '1e400') at MAX_RETRY_AFTER_DELAY + 1. Now float('1e400') = inf is returned directly from the retry-after-ms or retry-after branch without any bounding, since the function returns immediately inside the try block rather than falling through to a shared cap check. If the caller (e.g. the retry-delay computation) doesn't separately clamp the value, this could cause an effectively infinite sleep.\"}]}"
+}

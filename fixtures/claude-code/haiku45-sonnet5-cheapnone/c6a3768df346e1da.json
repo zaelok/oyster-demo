@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 928,
+  "latency_s": 3.997,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 243,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 2179, \"line_end\": 2184, \"category\": \"logic\", \"description\": \"The removed code converted non-boolean tensors to boolean (via not_equal with 0) before casting to int32, ensuring 'all'/'any' semantics of 'nonzero counts as true'. After removal, x is cast directly from its original dtype (e.g., float or int) to int32. For float inputs with fractional values between -1 and 1 (exclusive of 0), truncation during int32 cast could produce 0 even though the original value was nonzero (truthy), causing incorrect 'all'/'any' results.\", \"confidence\": 0.8}]}"
+}

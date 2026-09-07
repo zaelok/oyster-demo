@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1704,
+  "latency_s": 11.836,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1085,
+  "text": "{\"findings\": [{\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 706, \"line_end\": 709, \"category\": \"logic\", \"description\": \"maximumEncryptSize now returns keySizeInBits/8 - 42 for all pkcs1_oaep cases, but 42 = 2*20+2 is only correct for SHA-1 OAEP overhead; for SHA-256 OAEP the correct overhead is 2*32+2=66, so the computed max size is too large for SHA-256, causing encryption failures/data truncation when using the maximum reported size with a SHA-256 digest.\", \"confidence\": 0.85}, {\"file\": \"Sources/CryptoExtras/RSA/RSA.swift\", \"line_start\": 511, \"line_end\": 511, \"category\": \"logic\", \"description\": \"Raising the minimum key size from 1024 to 2048 bits in the 'unsafe' PEM constructor changes accepted input and will now throw incorrectParameterSize for previously-valid 1024-2047 bit keys, potentially breaking callers who rely on this explicitly 'unsafe' path for legacy/compatibility key sizes.\", \"confidence\": 0.5}]}"
+}

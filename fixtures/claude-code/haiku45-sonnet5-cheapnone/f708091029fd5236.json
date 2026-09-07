@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 994,
+  "latency_s": 4.059,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 292,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\", \"line_start\": 216, \"line_end\": 216, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The change from presentCount == 1 to a chained XOR (a.xor(b).xor(c)) breaks the 'exactly one of three' semantics. XOR chaining computes parity (true if an odd number of operands are true), not 'exactly one is true'. When all three of anyOf, type, and ref are non-null, presentCount == 1 would correctly evaluate to false (failing validation), but the XOR chain evaluates to true (true xor true xor true = true), incorrectly passing validation when all three fields are present. This is a real behavioral regression allowing invalid schemas with all three keys set to pass validation.\"}]}"
+}

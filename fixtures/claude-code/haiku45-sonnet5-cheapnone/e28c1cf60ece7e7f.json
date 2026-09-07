@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 872,
+  "latency_s": 9.981,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 843,
+  "text": "{\"findings\": [{\"file\": \"litellm/types/utils.py\", \"line_start\": 3120, \"line_end\": 3123, \"category\": \"logic\", \"description\": \"Removing \\\"guardrail_cost_by_unit\\\" from AUDIT_GUARDRAIL_FIELDS without confirming it was also removed from the actual guardrail record schema or added to the other classification set risks breaking test_every_guardrail_field_is_classified, or causing this field to be silently dropped/unclassified in redacted audit records if it is still emitted elsewhere in the codebase.\", \"confidence\": 0.5}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1410,
+  "latency_s": 9.619,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 843,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 47, \"category\": \"logic\", \"description\": \"The replacement inline expression only unwraps a single ReadOnly qualifier and no longer handles Annotated, NotRequired, or Required annotations (whose imports were removed), nor does it recurse to unwrap stacked qualifiers (e.g. NotRequired[Annotated[int, ...]] or ReadOnly[NotRequired[int]]). This is a regression from the previous recursive _unqualified() helper and will cause numeric form fields typed with these TypedDict/typing qualifiers to be misclassified (candidates computed from the wrong, still-wrapped annotation), breaking numeric form parsing for such fields.\", \"confidence\": 0.75}]}"
+}

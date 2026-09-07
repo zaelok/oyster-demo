@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1401,
+  "latency_s": 4.377,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 208,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/openai/_base_client.py\", \"line_start\": 762, \"line_end\": 771, \"category\": \"logic\", \"description\": \"The math.inf overflow guard was removed. If retry-after-ms or retry-after contains a value that overflows to inf (e.g. '1e400') or the literal 'inf'/'infinity', float() will succeed and return math.inf directly, without capping at MAX_RETRY_AFTER_DELAY + 1 as before. This can result in an effectively infinite retry delay if the caller does not separately clamp the returned value.\", \"confidence\": 0.55}]}\n```"
+}

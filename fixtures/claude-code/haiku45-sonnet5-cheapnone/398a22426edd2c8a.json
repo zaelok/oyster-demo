@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1011,
+  "latency_s": 11.815,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 910,
+  "text": "{\"findings\": []}"
+}

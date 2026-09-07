@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 967,
+  "latency_s": 5.244,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 243,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 110, \"line_end\": 113, \"category\": \"logic\", \"description\": \"The removal of the enum pop/copy means 'enum' constraints are no longer transferred to strict_schema. If enum was previously required to enforce strict validation on the resulting JSON schema (e.g., for structured outputs), schemas using enum will silently lose that constraint in the output, allowing values outside the enum to validate. If the function also validates that all json_schema keys were consumed, this could raise an error instead; either way this is a functional regression unless enum support was intentionally dropped or handled elsewhere not shown in the diff.\", \"confidence\": 0.7}]}"
+}

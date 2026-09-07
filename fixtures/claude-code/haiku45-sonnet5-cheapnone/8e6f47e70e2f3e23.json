@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1206,
+  "latency_s": 9.252,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 632,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/cuts/cuts.hpp\", \"line_start\": 668, \"line_end\": 669, \"category\": \"logic\", \"description\": \"clique_table now defaults to nullptr, so clique_table_ can be a null shared_ptr when this constructor is called without an explicit clique table. If downstream methods in cut_generation_t dereference clique_table_ without a null check, this introduces a potential null pointer dereference that did not previously exist (the old reference parameter had no default and presumably was always passed a valid table).\", \"confidence\": 0.4}]}"
+}

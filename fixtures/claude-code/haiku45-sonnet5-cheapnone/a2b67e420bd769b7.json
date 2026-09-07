@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 705,
+  "latency_s": 5.71,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 408,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/config.py\", \"line_start\": 273, \"line_end\": 276, \"category\": \"logic\", \"description\": \"Removing `new_dict.pop(\\\"type\\\", None)` means the 'type' discriminator key (used to select cls_o) is now passed along into `decode(cls_o, new_dict)`. If the target dataclass `cls_o` does not have a 'type' field, this will likely raise a TypeError/unexpected keyword argument, or silently overwrite/duplicate a field if it does, breaking decoding of any polymorphic/tagged config.\", \"confidence\": 0.7}]}"
+}

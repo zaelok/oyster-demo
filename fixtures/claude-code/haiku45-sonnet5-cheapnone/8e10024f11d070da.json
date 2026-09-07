@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 993,
+  "latency_s": 4.219,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 303,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\", \"line_start\": 4057, \"line_end\": 4060, \"category\": \"logic\", \"description\": \"Removing the loop that walks up through OptionalChainingExprSyntax/ForceUnwrapExprSyntax parents means parenthesizedExpr no longer expands to include optional-chain or force-unwrap wrappers around the parenthesized expression. This can cause the function to treat a smaller subexpression as the 'parenthesized' expression, potentially leading to incorrect grouping/formatting decisions (e.g., mishandled line-breaking or redundant parentheses handling) for expressions like `(expr)?` or `(expr)!` chains, since callers relying on this helper to find the outermost parenthesized wrapper will now stop one level too early.\", \"confidence\": 0.6}]}"
+}

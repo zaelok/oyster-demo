@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 820,
+  "latency_s": 4.875,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 346,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/internal/type/file_input.rb\", \"line_start\": 58, \"line_end\": 58, \"category\": \"logic\", \"description\": \"The case pattern was narrowed from `Pathname | StringIO | IO | OpenAI::FilePart` to just `StringIO`. This causes Pathname, IO, and OpenAI::FilePart values to no longer be treated as already-valid values incrementing exactness; they will now fall through to the `else` branch, changing coercion behavior and likely breaking file upload handling for these types.\", \"confidence\": 0.85}]}"
+}

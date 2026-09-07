@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1342,
+  "latency_s": 3.252,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 218,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/transformers/tracing/debug.py\", \"line_start\": 27, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Using type=bool with argparse means any non-empty string argument (e.g. 'False', 'no', '0') evaluates to True in Python's bool() conversion, so users cannot disable these flags by passing a false-like value on the command line. This also removes the --no-trust_remote_code/--no-skip_weights negation syntax previously provided by BooleanOptionalAction, changing the CLI's public interface and breaking any scripts relying on it.\", \"confidence\": 0.9}]}"
+}

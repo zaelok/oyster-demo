@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 729,
+  "latency_s": 3.504,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 248,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"nemo/collections/common/data/lhotse/cutset.py\",\n      \"line_start\": 1189,\n      \"line_end\": 1193,\n      \"category\": \"logic\",\n      \"description\": \"Removing the null check for `context_speaker_similarity` may cause AttributeError if the custom field exists but is None; the condition should verify the value is not None before comparison.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"nemo/collections/common/data/lhotse/sampling.py\",\n      \"line_start\": 366,\n      \"line_end\": 370,\n      \"category\": \"logic\",\n      \"description\": \"Removing the null check for `context_speaker_similarity` may cause TypeError when comparing None >= self.min_context_speaker_similarity; the condition should verify the value is not None before comparison.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

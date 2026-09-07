@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 972,
+  "latency_s": 4.954,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 311,
+  "text": "{\"findings\": [{\"file\": \"tools/Polygraphy/polygraphy/config.py\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The expression `os.environ.get(\\\"POLYGRAPHY_ASK_BEFORE_INSTALL\\\", \\\"0\\\" != \\\"0\\\")` evaluates the default value `\\\"0\\\" != \\\"0\\\"` (which is `False`) at call time regardless of whether the env var is set, then wraps the result in `bool()`. This breaks the original intent: when the env var IS set, `bool()` is applied to the string value itself, so any non-empty string (including \\\"0\\\") evaluates to True, making ASK_BEFORE_INSTALL always True if the variable is set to any value, and always False if unset (ignoring the actual comparison to \\\"0\\\"). This is a regression from the original logic which correctly compared the env var string against \\\"0\\\".\", \"confidence\": 0.99}]}"
+}

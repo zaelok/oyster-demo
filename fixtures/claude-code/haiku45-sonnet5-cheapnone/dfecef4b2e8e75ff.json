@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1017,
+  "latency_s": 7.748,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 617,
+  "text": "{\"findings\": [{\"file\": \"Sources/AsyncAlgorithms/AsyncShareSequence.swift\", \"line_start\": 426, \"line_end\": 426, \"category\": \"logic\", \"confidence\": 0.55, \"description\": \"Removing the `limit > 0` guard changes behavior when `limit == 0`: previously this branch was skipped entirely, but now it's always entered. Since `buffer.count >= 0` is trivially true, the guard passes and the code proceeds into the continuation/lock path instead of bypassing it, adding an unnecessary suspension for the limit==0 case. Whether this is intentional depends on whether limit==0 is a meaningful/reachable configuration in AsyncShareSequence's buffering policy, which isn't verifiable without more context (e.g., BufferingPolicy definitions), but the control-flow change itself is real.\", \"line_start\": 426, \"line_end\": 426}]}"
+}

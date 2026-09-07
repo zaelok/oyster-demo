@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 888,
+  "latency_s": 3.828,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 257,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\",\n      \"line_start\": 831,\n      \"line_end\": 832,\n      \"category\": \"logic\",\n      \"description\": \"Removed parameters `bias_vl` and `image_sentinel_lo` from function signature but docstring still references vision routing bias arguments and their forwarding to FusedTopKBiasRouter.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\",\n      \"line_start\": 947,\n      \"line_end\": 948,\n      \"category\": \"logic\",\n      \"description\": \"Caller passes removed parameters `bias_vl` and `image_sentinel_lo` to FusedTopKBiasRouter constructor which may no longer accept them or may have different semantics.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

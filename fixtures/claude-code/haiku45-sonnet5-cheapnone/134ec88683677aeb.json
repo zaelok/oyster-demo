@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 995,
+  "latency_s": 10.363,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 951,
+  "text": "{\"findings\": [{\"file\": \"internal/vgpu/pciutil.go\", \"line_start\": 124, \"line_end\": 145, \"category\": \"security\", \"description\": \"The bounds checks that ensured 'pos' and the capability length stay within len(d.Config) before calling GetByte or slicing d.Config were removed. If a device provides a malformed or corrupted capability list (e.g., pos near the end of Config, or length extending beyond Config), GetByte and the slice expression d.Config[pos+PciCapabilityListID : pos+PciCapabilityListID+length] can panic with an index/slice out of range error, causing a crash (DoS) when parsing untrusted/attacker-influenced PCI config space data.\", \"confidence\": 0.8}]}"
+}

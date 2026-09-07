@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1661,
+  "latency_s": 4.661,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 312,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/cloud-tasks/src/lib.rs\", \"line_start\": 975, \"line_end\": 975, \"category\": \"logic\", \"description\": \"git_ref is now hardcoded to \\\"main\\\" instead of dynamically detecting the current or default branch. This breaks task creation for repositories whose default/current branch is not literally \\\"main\\\" (e.g., \\\"master\\\" or a feature branch), causing tasks to be created against the wrong branch.\", \"confidence\": 0.9}, {\"file\": \"codex-rs/core/src/git_info.rs\", \"line_start\": 260, \"line_end\": 260, \"category\": \"logic\", \"description\": \"Removing the public default_branch_name function is a breaking API change for any external callers relying on it, and it is also the root cause enabling the hardcoded \\\"main\\\" regression in cloud-tasks since that was the only caller shown using it for dynamic branch detection.\", \"confidence\": 0.55}]}"
+}

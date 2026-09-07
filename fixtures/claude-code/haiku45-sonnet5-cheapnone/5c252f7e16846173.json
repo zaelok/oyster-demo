@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 990,
+  "latency_s": 9.792,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 949,
+  "text": "{\"findings\": [{\"file\": \"pkl/evaluator_options.go\", \"line_start\": 461, \"line_end\": 461, \"category\": \"logic\", \"description\": \"opts.Http.Proxy is nil at this point (opts.Http was just initialized as &Http{} with Proxy unset), so referencing opts.Http.Proxy.NoProxy causes a nil pointer dereference panic. Additionally, the original logic that copied evaluatorSettings.Http.Proxy.NoProxy into opts.Http.Proxy.NoProxy has been removed, so the NoProxy setting from project evaluator settings is no longer applied at all \u2014 a functional regression.\", \"confidence\": 0.9}]}"
+}

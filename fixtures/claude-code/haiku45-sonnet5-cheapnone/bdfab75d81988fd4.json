@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 742,
+  "latency_s": 5.643,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 439,
+  "text": "{\"findings\": [{\"file\": \"whisper/model.py\", \"line_start\": 121, \"line_end\": 124, \"category\": \"logic\", \"description\": \"Removed the explicit expand of k/v when k has batch size 1 but q does not (e.g., cross-attention with cached keys/values). scaled_dot_product_attention does not implicitly broadcast mismatched batch dimensions in all PyTorch versions, so this can raise a runtime shape-mismatch error or silently produce incorrect attention results when q.shape[0] != k.shape[0].\", \"confidence\": 0.7}]}"
+}

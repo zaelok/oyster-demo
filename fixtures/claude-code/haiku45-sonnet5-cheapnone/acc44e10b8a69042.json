@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1026,
+  "latency_s": 4.003,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 216,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/python_docker/docker_tool.py\", \"line_start\": 81, \"line_end\": 81, \"category\": \"logic\", \"description\": \"The function now always returns exec_result.stdout.decode('utf-8') regardless of whether the subprocess succeeded or failed. On failure (non-zero return code), stderr content (tracebacks, syntax errors, exceptions) is discarded and never surfaced to the caller, and the return code is not checked or propagated. This silently hides execution errors, causing callers to interpret a failed run as producing empty/partial output rather than an error.\", \"confidence\": 0.9}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 886,
+  "latency_s": 10.864,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 911,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 111, \"line_end\": 111, \"category\": \"logic\", \"description\": \"append_messages now reads from self._params['messages'] instead of the params argument supplied to the set_messages_params callback. If set_messages_params applies any transformation to params before invoking the callback (e.g., a copy or intermediate state), using self._params directly bypasses that transformation and could reference stale or inconsistent state, especially if set_messages_params is called multiple times or asynchronously.\", \"confidence\": 0.55}, {\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 454, \"line_end\": 454, \"category\": \"logic\", \"description\": \"In _check_and_compact, prepending *self._params['messages'] to the messages list before appending the summary prompt appears to duplicate messages, since 'messages' was already derived from (and mutated via pop() on) the existing message history. This could result in the original conversation history being included twice in the compacted messages list.\", \"confidence\": 0.5}]}"
+}

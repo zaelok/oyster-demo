@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1462,
+  "latency_s": 6.02,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 406,
+  "text": "{\"findings\": [{\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The naive substring-based accepts() replaces proper Accept header parsing. It fails to handle wildcards ('*/*', 'type/*'), incorrectly matches unrelated types via substring (e.g. 'application/jsonp' contains 'application/json', or a charset/boundary parameter string coincidentally containing the mime string), and ignores q=0 exclusion semantics. This is a real regression in correctness of content negotiation used to decide whether to respond with SSE vs JSON, potentially causing wrong response format or incorrectly rejecting/accepting valid requests. The reviewer's finding is accurate; additionally note it also would fail to reject Accept headers that don't include the mime at all but include a superstring making it falsely permissive, and the reverse case where legitimate wildcard headers are rejected causing functional breakage of clients relying on '*/*' Accept headers, which is common.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1178,
+  "latency_s": 3.4,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 191,
+  "text": "{\"findings\": [{\"file\": \"pkg/nvcdi/lib-wsl.go\", \"line_start\": 30, \"line_end\": 32, \"category\": \"logic\", \"description\": \"Removing the \\\"none\\\" check means passing \\\"none\\\" in ids no longer short-circuits to an empty device spec generator for WSL, diverging from other lib implementations (e.g., lib-nvml.go) that likely retain this behavior. If callers rely on \\\"none\\\" to disable device spec generation on WSL, this is a regression causing normal generation to proceed instead.\", \"confidence\": 0.55}]}"
+}

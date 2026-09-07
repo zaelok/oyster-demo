@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 817,
+  "latency_s": 2.475,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 115,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"ecosystem-tests/cli.ts\",\n      \"line_start\": 614,\n      \"line_end\": 617,\n      \"category\": \"logic\",\n      \"description\": \"Removed integer validation logic when changing from custom coerce function to native number type; the type system alone won't enforce non-negative safe integers at runtime.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

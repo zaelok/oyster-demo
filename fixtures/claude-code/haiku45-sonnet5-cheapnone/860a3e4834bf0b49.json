@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1149,
+  "latency_s": 8.843,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 712,
+  "text": "{\"findings\": [{\"file\": \"kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\", \"line_start\": 867, \"line_end\": 868, \"category\": \"logic\", \"description\": \"The new accepts() implementation replaced proper Accept header parsing (media type matching, wildcards like */* or application/*, and q=0 exclusion) with a naive lowercase substring check. This breaks correct negotiation: it will incorrectly reject wildcard Accept headers (e.g. 'Accept: */*' will not contain 'application/json'), incorrectly accept mismatched types where one is a substring of another (e.g. 'application/jsonp' would match 'application/json'), and ignores quality value q=0 which should explicitly exclude a media type.\", \"confidence\": 0.85}]}"
+}

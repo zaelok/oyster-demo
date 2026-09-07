@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 782,
+  "latency_s": 2.714,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 128,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"transformer_engine/common/gemm/cublaslt_gemm.cu\",\n      \"line_start\": 750,\n      \"line_end\": 753,\n      \"category\": \"logic\",\n      \"description\": \"Removal of reduction scheme mask configuration may alter cuBLASLt's behavior for reduction operations in matrix multiplication, potentially causing performance regressions or numerical differences.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

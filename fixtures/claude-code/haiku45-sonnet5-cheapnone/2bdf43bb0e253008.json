@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1191,
+  "latency_s": 15.227,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 310,
+  "text": "{\"findings\": [{\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 196, \"line_end\": 202, \"category\": \"logic\", \"description\": \"Removing the api_key chz field eliminates a supported configuration path for constructing YouComBackend programmatically (e.g., via chz config files or explicit instantiation with api_key=...). Any existing code or config that sets api_key on YouComBackend will now fail with an unexpected field error, forcing all callers to rely solely on the YDC_API_KEY environment variable.\", \"confidence\": 0.6}, {\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 199, \"line_end\": 202, \"category\": \"style\", \"description\": \"The error message lost the actionable guidance ('Get one at https://you.com/platform') for resolving the missing API key, making it harder for users to know how to fix the error.\", \"confidence\": 0.5}]}"
+}

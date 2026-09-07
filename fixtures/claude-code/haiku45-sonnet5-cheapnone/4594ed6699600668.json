@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 676,
+  "latency_s": 4.704,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 290,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts\", \"line_start\": 316, \"line_end\": 318, \"category\": \"logic\", \"description\": \"Removing the reset of this.responseId and this.lastStore in clearSession() leaves stale state after clearing the underlying session. Subsequent calls may reuse a stale responseId or lastStore reference from before the clear, causing incorrect behavior (e.g., resuming from an old response or store that no longer corresponds to the cleared session).\", \"confidence\": 0.75}]}"
+}

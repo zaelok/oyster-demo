@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 900,
+  "latency_s": 3.672,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 244,
+  "text": "{\"findings\": [{\"file\": \"OpenAI.Responses/src/Custom/ResponseContentPart.cs\", \"line_start\": 20, \"line_end\": 20, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The setter assigns Kind.ToSerialString() instead of value.ToSerialString(). Since Kind is a computed property derived from InternalType, this reads back the current InternalType value and reassigns it to itself, making the setter a no-op that discards the incoming 'value' parameter entirely. Any code calling this setter to change Kind (e.g., during object construction/initialization) will silently fail to update InternalType, leaving it at its prior/default value. This is a genuine functional regression, not a false positive.\"}]}"
+}

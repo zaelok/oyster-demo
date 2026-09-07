@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1108,
+  "latency_s": 3.668,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 235,
+  "text": "{\"findings\": [{\"file\": \"lib/ClangImporter/ImportDecl.cpp\", \"line_start\": 3414, \"line_end\": 3420, \"category\": \"logic\", \"confidence\": 0.55, \"description\": \"Removal of the DisfavoredOverloadAttr application when key.first != decl->getCanonicalDecl() eliminates the mechanism that disambiguates overloads for enum constants imported under multiple non-canonical decl paths. Without this attribute, Swift's overload resolution may now see multiple equally-ranked candidates for the same enum constant imported via different canonical decls, potentially causing ambiguous reference errors in generated Swift interfaces that previously resolved cleanly.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1374,
+  "latency_s": 4.829,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 420,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"rslearn/models/olmoearth_pretrain/model.py\",\n      \"line_start\": 291,\n      \"line_end\": 293,\n      \"category\": \"logic\",\n      \"description\": \"Assumes context.metadatas[0] exists without bounds checking; will raise IndexError if metadatas is empty.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"rslearn/models/olmoearth_pretrain/model.py\",\n      \"line_start\": 291,\n      \"line_end\": 293,\n      \"category\": \"logic\",\n      \"description\": \"Assumes crop_bounds has at least 4 elements; no validation that tuple/list has expected length before indexing.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"rslearn/models/olmoearth_pretrain/model_period_timestamps.py\",\n      \"line_start\": 265,\n      \"line_end\": 267,\n      \"category\": \"logic\",\n      \"description\": \"Assumes context.metadatas[0] exists without bounds checking; will raise IndexError if metadatas is empty.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"rslearn/models/olmoearth_pretrain/model_period_timestamps.py\",\n      \"line_start\": 265,\n      \"line_end\": 267,\n      \"category\": \"logic\",\n      \"description\": \"Assumes crop_bounds has at least 4 elements; no validation that tuple/list has expected length before indexing.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

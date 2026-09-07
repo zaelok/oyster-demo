@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1140,
+  "latency_s": 5.217,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 309,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 180, \"line_end\": 180, \"category\": \"security\", \"description\": \"The 'prompt' field in transcription_session_config trace is now always set to transcription_config.get('prompt') regardless of self._trace_include_sensitive_data, causing potentially sensitive user-provided prompt text to be recorded in traces even when the user has opted out of sensitive data tracing.\", \"confidence\": 0.95}, {\"file\": \"src/agents/voice/models/openai_stt.py\", \"line_start\": 556, \"line_end\": 556, \"category\": \"security\", \"description\": \"The 'prompt' field in the transcribe() span's model_config is now always set to settings.prompt regardless of the trace_include_sensitive_data parameter, exposing potentially sensitive prompt content in traces when sensitive data tracing is disabled.\", \"confidence\": 0.95}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1182,
+  "latency_s": 5.252,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 378,
+  "text": "{\"findings\": [{\"file\": \"tools/Polygraphy/polygraphy/config.py\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Operator precedence error: `os.environ.get(\\\"POLYGRAPHY_ASK_BEFORE_INSTALL\\\", \\\"0\\\" != \\\"0\\\")` evaluates the default argument as `\\\"0\\\" != \\\"0\\\"` which is always `False`, instead of comparing the retrieved env var value to \\\"0\\\". This means: if the env var is unset, `.get()` returns `False`, and `bool(False)` is `False` (matches original intended default). But if the env var is set to any non-empty string, including \\\"0\\\", `.get()` returns that string (a non-empty string is truthy), so `ASK_BEFORE_INSTALL` becomes `True` regardless of the actual value. This breaks the documented behavior of explicitly disabling the prompt via `POLYGRAPHY_ASK_BEFORE_INSTALL=0`, and also breaks explicit enabling with other falsy-looking values since any set string now yields True.\", \"confidence\": 0.95}]}"
+}

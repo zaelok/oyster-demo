@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1000,
+  "latency_s": 10.04,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 862,
+  "text": "{\"findings\": [{\"file\": \"packages/bedrock-sdk/src/core/streaming.ts\", \"line_start\": 76, \"line_end\": 82, \"category\": \"logic\", \"description\": \"The check that inspected parsed chunk data for `type === 'error'` and threw an APIError was removed. Now JSON.parse(sse.data) is yielded directly without inspecting the parsed content, so error payloads delivered via 'chunk' events (as opposed to a dedicated 'error' event) will be silently passed to consumers as regular stream items instead of raising an exception. This changes error-handling behavior and could mask real API errors from callers relying on exceptions.\", \"confidence\": 0.75}, {\"file\": \"packages/bedrock-sdk/src/core/streaming.ts\", \"line_start\": 66, \"line_end\": 66, \"category\": \"style\", \"description\": \"With the removal of the APIError-throwing branch, the `APIError` import (and possibly `response` reference used to build headers) may now be unused in this file, which would trigger lint/type errors or dead code.\", \"confidence\": 0.4}]}"
+}

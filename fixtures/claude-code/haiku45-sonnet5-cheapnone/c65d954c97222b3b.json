@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 779,
+  "latency_s": 6.194,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 398,
+  "text": "{\"findings\": [{\"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\", \"line_start\": 100, \"line_end\": 100, \"category\": \"logic\", \"description\": \"Removing infer_schema_length=None reverts to polars' default schema inference (samples only the first ~100 rows). If a daily batch has more records than that with type variation appearing later (e.g., a None followed by a string, or int then float), pl.DataFrame() may raise a schema inference/type mismatch error or silently produce wrong column dtypes, whereas previously the full dataset was scanned to infer schema.\", \"confidence\": 0.6}]}"
+}

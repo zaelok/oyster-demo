@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 881,
+  "latency_s": 5.175,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 377,
+  "text": "{\"findings\": [{\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 447, \"line_end\": 450, \"category\": \"logic\", \"description\": \"hashQuery now uses fmt.Sprintf(\\\"%x\\\", query) which hex-encodes the string byte-by-byte, not a hash - this is fine functionally but loses collision resistance of SHA256, meaning distinct long queries sharing the same first 32 bytes will now collide and be treated as the same query for tracking/grouping purposes, whereas previously the full query was hashed.\", \"confidence\": 0.75}, {\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 446, \"line_end\": 450, \"category\": \"security\", \"description\": \"Replacing a cryptographic SHA256 hash with a truncated raw hex encoding of the query content exposes the first 32 characters of the query in plaintext (hex-encoded) wherever this hash/key is logged, stored, or used as a cache key, potentially leaking sensitive user query data that was previously obscured by a one-way hash.\", \"confidence\": 0.6}]}"
+}

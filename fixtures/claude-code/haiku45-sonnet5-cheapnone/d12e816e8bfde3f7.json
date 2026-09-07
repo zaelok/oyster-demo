@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1075,
+  "latency_s": 3.389,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 202,
+  "text": "{\"findings\": [{\"file\": \"mcp/server.go\", \"line_start\": 1038, \"line_end\": 1048, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"The nil check for `res` was removed before calling handleMultiRoundTripResult(req.Session, s.opts.Logger, res) and before accessing res.resultType. If the read handler returns a nil ReadResourceResult, this causes a nil pointer dereference in handleMultiRoundTripResult or when accessing res.resultType, since the nil check was moved to after these accesses and only applies to the res.Contents check that follows.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1334,
+  "latency_s": 5.483,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 317,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\", \"line_start\": 451, \"line_end\": 456, \"category\": \"logic\", \"confidence\": 0.8, \"description\": \"The removed branch treated blank/empty inputJson as JsonMissing.of(), representing tool calls with no input parameters (a common case for zero-argument tools). Without this check, an empty string passed to JSON_MAPPER.readValue will throw a parse exception (e.g., 'No content to map due to end-of-input'), which is now caught and rethrown as AnthropicInvalidDataException. This turns a previously valid, common scenario (tool call with no arguments) into a hard failure. The reviewer's finding is correct; additionally, this likely breaks accumulation for any tool defined with an empty parameters schema, which is a realistic and frequent case, not just an edge case.\"}]}"
+}

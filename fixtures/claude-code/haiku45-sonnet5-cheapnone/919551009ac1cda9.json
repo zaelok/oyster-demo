@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 946,
+  "latency_s": 4.356,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 281,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs\", \"line_start\": 59, \"line_end\": 59, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The Write method now unconditionally throws NotImplementedException instead of calling SerializeHyperparameterBeta(this, writer, options). This breaks JSON serialization for HyperparameterBetaFactor entirely, causing any code path that serializes this type (e.g., fine-tuning job creation requests) to throw at runtime instead of producing valid JSON. This appears to be an accidental/incomplete edit (e.g., a stub left in during refactoring) rather than an intentional behavior change, since no replacement serialization logic is provided and no other part of the diff compensates for the removed functionality.\"}]}"
+}

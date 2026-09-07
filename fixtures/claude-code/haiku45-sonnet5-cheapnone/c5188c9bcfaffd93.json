@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 737,
+  "latency_s": 4.564,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 198,
+  "text": "{\"findings\": [{\"file\": \"cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh\", \"line_start\": 228, \"line_end\": 228, \"category\": \"logic\", \"description\": \"Removing curandSetStream causes the curand generator to use the default stream instead of the provided 'stream'. Subsequent operations that depend on generated random values (via curandGenerate calls on 'stream') may race with or execute out of order relative to other stream-ordered operations, leading to incorrect results or use of uninitialized memory when stream is non-default.\", \"confidence\": 0.8}]}"
+}

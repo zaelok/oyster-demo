@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1345,
+  "latency_s": 3.74,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 273,
+  "text": "{\"findings\": [{\"file\": \"litellm/router_strategy/adaptive_router/adaptive_router.py\", \"line_start\": 142, \"line_end\": 142, \"category\": \"logic\", \"description\": \"Directly assigning row.alpha/row.beta as BanditCell values reintroduces the exact bug the removed docstring warned about: a persisted row can be one-sided (e.g. alpha=0 or beta=0), and BanditCell with a zero Beta shape parameter will crash thompson_sample() on every subsequent draw for that cell. The previous code added the row's delta to a freshly computed cold-start prior specifically to avoid zero-valued parameters. The new code also drops the per-model prefs-based prior entirely, changing behavior for rows that legitimately started from a non-default prior.\", \"confidence\": 0.85}]}"
+}

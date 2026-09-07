@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1158,
+  "latency_s": 5.563,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 319,
+  "text": "{\"findings\": [{\"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadChannel.swift\", \"line_start\": 80, \"line_end\": 81, \"category\": \"logic\", \"description\": \"Changing try? to try! removes graceful fallback: if parent.syncOptions is nil or getOption(autoRead) throws (e.g., for a Channel implementation that doesn't support this option), this will now crash the process instead of defaulting to false as before.\", \"confidence\": 0.75}]}"
+}

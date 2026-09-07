@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 661,
+  "latency_s": 3.558,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 236,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/CoreFoundation/CFDate.c\",\n      \"line_start\": 173,\n      \"line_end\": 173,\n      \"category\": \"logic\",\n      \"description\": \"Incorrect calculation: `res.tv_sec + (1000000000 * res.tv_nsec)` should be `res.tv_sec * 1000000000 + res.tv_nsec` to convert timespec to nanoseconds correctly.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"Sources/CoreFoundation/CFDate.c\",\n      \"line_start\": 171,\n      \"line_end\": 171,\n      \"description\": \"HALT macro is called on error but its behavior (crash vs return) is unclear and may cause ungraceful failure.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.65\n    }\n  ]\n}\n```"
+}

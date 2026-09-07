@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 928,
+  "latency_s": 4.898,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 232,
+  "text": "{\"findings\": [{\"file\": \"src/openai/lib/_parsing/_embeddings.py\", \"line_start\": 22, \"line_end\": 30, \"category\": \"style\", \"description\": \"has_numpy() is now invoked inside the loop for every string-encoded embedding rather than once upfront, adding redundant function call overhead per item; the previous early-return fast path (skipping iteration entirely when no embeddings are base64 strings) is also removed, causing the loop to always execute and check isinstance on every element even when unnecessary. This is a minor performance regression, not a correctness bug, and depends on how expensive has_numpy() is (likely cached/cheap), so severity is low.\", \"confidence\": 0.4}]}"
+}

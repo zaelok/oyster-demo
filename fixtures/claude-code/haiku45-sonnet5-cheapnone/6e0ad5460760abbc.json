@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1744,
+  "latency_s": 5.163,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 413,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\", \"line_start\": 461, \"line_end\": 464, \"category\": \"logic\", \"description\": \"The copy constructor Builder(OutlierDetectorConfig) no longer copies ewmaCancellationPenalty, ewmaErrorPenalty, concurrentRequestPenalty, and cancellationIsError from the passed-in config. Any Builder created from an existing OutlierDetectorConfig will silently reset these four fields to their class defaults instead of preserving the original config's values, breaking the expected copy/derive semantics.\", \"confidence\": 0.9}]}"
+}

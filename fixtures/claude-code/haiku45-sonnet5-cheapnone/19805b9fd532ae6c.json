@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1169,
+  "latency_s": 5.404,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 302,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/train/callbacks/speed_monitor.py\", \"line_start\": 113, \"line_end\": 113, \"category\": \"logic\", \"description\": \"A100 spec sheet lists 624e12 FLOP/s as the dense (non-sparsity) FP16/BF16 tensor performance and 1248e12 as the sparse figure - NVIDIA's number is already 'dense'. Changing the base to 312e12 (which is roughly the FP32 TF32 non-tensor or half of the dense tensor figure) while still multiplying by dense_correction will understate the true peak FLOPs/s for A100 by roughly 2x, causing computed MFU (device_peak_flops_per_second is used as a denominator elsewhere) to be inflated by ~2x for A100 training runs, silently breaking previously-correct utilization metrics.\", \"confidence\": 0.5}]}"
+}

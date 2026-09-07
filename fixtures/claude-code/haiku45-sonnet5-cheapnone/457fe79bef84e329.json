@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1511,
+  "latency_s": 5.559,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 438,
+  "text": "{\"findings\": [{\"file\": \"src/memory/index.ts\", \"line_start\": 79, \"line_end\": 79, \"category\": \"logic\", \"description\": \"JSON.parse(line) is no longer wrapped in try/catch; a single malformed line in the memory file will throw and crash the entire loadGraph call instead of being skipped, whereas the previous code tolerated malformed lines.\", \"confidence\": 0.92}, {\"file\": \"src/memory/index.ts\", \"line_start\": 80, \"line_end\": 91, \"category\": \"logic\", \"description\": \"Removed EntitySchema/RelationSchema validation means entities/relations are pushed onto the graph without verifying required fields (name, entityType, observations, from, to, relationType) exist or have correct types; malformed or partial records (e.g. missing observations array) will be silently accepted and can cause downstream errors (e.g. calling .push on undefined observations) when later manipulated.\", \"confidence\": 0.88}, {\"file\": \"src/memory/index.ts\", \"line_start\": 79, \"line_end\": 79, \"category\": \"logic\", \"description\": \"No check that parsed item is a non-null object before accessing item.type, so a line containing a valid JSON primitive (e.g. \\\"null\\\", \\\"123\\\") will throw when accessing item.type instead of being skipped as before.\", \"confidence\": 0.6}]}"
+}

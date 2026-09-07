@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 796,
+  "latency_s": 10.964,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 951,
+  "text": "{\"findings\": [{\"file\": \"cpp/include/raft/core/detail/copy.hpp\", \"line_start\": 306, \"line_end\": 312, \"category\": \"logic\", \"description\": \"Replaced O(1) division-based computation of cur_index with an O(extent) while-loop that repeatedly subtracts index_strides[real_index]. For large extents (common in multi-dimensional copy indexing kernels), this turns what was a constant-time per-index computation into a linear scan, causing significant performance regression in this device function that is called per element per dimension.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 674,
+  "latency_s": 3.147,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 157,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/Dialect/TritonGPU/Transforms/RemoveLayoutConversions.cpp\",\n      \"line_start\": 302,\n      \"line_end\": 302,\n      \"category\": \"logic\",\n      \"description\": \"Adding scf::WhileOp to the isa check without verifying that WhileOp has getResult() with the same semantics as ForOp/IfOp, which could cause out-of-bounds access if WhileOp has fewer results.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

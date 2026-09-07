@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 966,
+  "latency_s": 2.89,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 170,
+  "text": "{\"findings\": [{\"file\": \"src/agents/voice/result.py\", \"line_start\": 127, \"line_end\": 127, \"category\": \"security\", \"description\": \"The 'instructions' field is now always included in the trace model_config regardless of trace_include_sensitive_data, unlike the 'input' field on the same span which still respects this flag. This causes TTS instructions (which may contain sensitive prompt data) to leak into traces even when the user has explicitly disabled sensitive data tracing.\", \"confidence\": 0.9}]}"
+}

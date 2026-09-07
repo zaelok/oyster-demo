@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1035,
+  "latency_s": 4.696,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 279,
+  "text": "{\"findings\": [{\"file\": \"pkg/nvcdi/lib-wsl.go\", \"line_start\": 30, \"line_end\": 32, \"category\": \"logic\", \"description\": \"The removal of the \\\"none\\\" special-case means WSL's DeviceSpecGenerators no longer short-circuits when \\\"none\\\" is passed in ids, unlike other lib implementations (e.g., lib-nvml.go likely retains this check). This changes behavior for callers passing \\\"none\\\" to suppress device spec generation, causing normal generation to proceed instead of returning an empty generator. This is a real regression unless WSL never expects \\\"none\\\" to be passed, which the reviewer should verify by checking how DeviceSpecGenerators is invoked elsewhere and whether \\\"none\\\" is a valid/expected input for WSL specifically.\", \"confidence\": 0.6}]}"
+}

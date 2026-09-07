@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 681,
+  "latency_s": 3.718,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 235,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/olmo_core/generate/generation_module/transformer/generation_module.py\",\n      \"line_start\": 491,\n      \"line_end\": 495,\n      \"category\": \"logic\",\n      \"description\": \"The refactored logic now only checks for 'attention' attribute and ignores 'sequence_mixer', losing support for attention backends on sequence_mixer components.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"src/olmo_core/generate/generation_module/transformer/generation_module.py\",\n      \"line_start\": 495,\n      \"line_end\": 495,\n      \"category\": \"logic\",\n      \"description\": \"Setting 'use_flash' to None may not properly strip deprecated option if it's a required parameter or used elsewhere without None-checks.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

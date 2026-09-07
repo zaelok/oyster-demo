@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1100,
+  "latency_s": 8.646,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 539,
+  "text": "{\"findings\": [{\"file\": \"litellm/litellm_core_utils/litellm_logging.py\", \"line_start\": 5678, \"line_end\": 5679, \"category\": \"security\", \"description\": \"Removed _redact_string() calls on traceback_info and error_message. If _redact_string was masking sensitive data (e.g., API keys, secrets, PII) that can appear in exception tracebacks or messages, this now exposes that sensitive information in logs/telemetry.\", \"confidence\": 0.7}, {\"file\": \"litellm/proxy/utils.py\", \"line_start\": 2586, \"line_end\": 2589, \"category\": \"security\", \"description\": \"Removed redaction of traceback_str before passing it to failure-hook callbacks. This reintroduces potential leakage of secrets or sensitive data contained in tracebacks to external callbacks/loggers that were previously protected by _redact_string.\", \"confidence\": 0.7}]}"
+}

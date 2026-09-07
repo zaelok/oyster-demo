@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 882,
+  "latency_s": 4.534,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 266,
+  "text": "{\"findings\": [{\"file\": \"OpenAI.Responses/src/Custom/ResponseContentPart.cs\", \"line_start\": 20, \"line_end\": 20, \"category\": \"logic\", \"description\": \"The setter now assigns `Kind.ToSerialString()` instead of `value.ToSerialString()`. Since `Kind` is a computed property that reads from `InternalType`, this causes the setter to recompute `Kind` from the current (old) `InternalType` value before it's changed, effectively making the setter a no-op that reassigns the existing value back to itself instead of the intended `value`. This means calling the setter never actually updates `InternalType` to reflect the new `Kind` being set, breaking any code that relies on setting `Kind` to change the underlying serialized type.\", \"confidence\": 0.97}]}"
+}

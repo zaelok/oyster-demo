@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1208,
+  "latency_s": 8.998,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 700,
+  "text": "{\"findings\": [{\"file\": \"src/agents/extensions/sandbox/cloudflare/sandbox.py\", \"line_start\": 898, \"line_end\": 899, \"category\": \"logic\", \"description\": \"chunk.decode('utf-8') is called on each raw byte chunk from iter_any() independently. Since network chunk boundaries can split a multi-byte UTF-8 character, this will raise UnicodeDecodeError mid-stream even though the overall byte stream is valid UTF-8. Previously the LineDecoder accepted raw bytes and could buffer partial multi-byte sequences internally (or the encode/decode round-trip in decode() masked this); now decoding happens before any buffering, so split characters are not handled.\", \"confidence\": 0.75}, {\"file\": \"src/agents/extensions/sandbox/cloudflare/sandbox.py\", \"line_start\": 225, \"line_end\": 225, \"category\": \"style\", \"description\": \"Narrowing the decode() signature from `str | bytes` to `str` removes a previously supported input type; if `decode` is used elsewhere as a public/utility method expecting to accept bytes directly, this is a breaking API change even though the current call site was updated to pre-decode.\", \"confidence\": 0.4}]}"
+}

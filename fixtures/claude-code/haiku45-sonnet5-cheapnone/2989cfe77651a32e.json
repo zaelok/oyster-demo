@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1125,
+  "latency_s": 7.926,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 589,
+  "text": "{\"findings\": [{\"file\": \"litellm/litellm_core_utils/litellm_logging.py\", \"line_start\": 5678, \"line_end\": 5679, \"category\": \"security\", \"description\": \"Redaction via _redact_string() was removed for traceback and error_message fields passed into error information used for logging/observability. Tracebacks and error messages frequently contain sensitive data (API keys, secrets, PII) that _redact_string presumably scrubs. Removing this exposes sensitive information to logs, callbacks, or downstream consumers.\", \"confidence\": 0.75}, {\"file\": \"litellm/proxy/utils.py\", \"line_start\": 2586, \"line_end\": 2586, \"category\": \"security\", \"description\": \"Redaction via _redact_string() was removed before passing traceback_str to failure-hook callbacks. This reintroduces risk of leaking sensitive information (e.g., API keys embedded in exception messages/tracebacks) to callback handlers/loggers that may persist or forward this data externally.\", \"confidence\": 0.75}]}"
+}

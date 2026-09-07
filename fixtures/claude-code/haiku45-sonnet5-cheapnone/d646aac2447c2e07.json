@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1074,
+  "latency_s": 3.504,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 223,
+  "text": "{\"findings\": [{\"file\": \"src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\", \"line_start\": 1089, \"line_end\": 1094, \"category\": \"logic\", \"description\": \"Removing this block eliminates automatic addition of the 'context-management-2025-06-27' beta header when 'context_management' is present in RawBodyData. Without evidence that this logic was relocated elsewhere or that the API no longer requires this beta header (e.g., feature reached GA), requests using context_management will be sent without the required beta header, likely causing them to be rejected or processed incorrectly by the API.\", \"confidence\": 0.6}]}"
+}

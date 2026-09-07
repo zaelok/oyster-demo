@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 949,
+  "latency_s": 4.768,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 240,
+  "text": "{\"findings\": [{\"file\": \"pkl/decode_struct.go\", \"line_start\": 55, \"line_end\": 65, \"category\": \"logic\", \"confidence\": 0.55, \"description\": \"The removed branch previously allowed interface-typed fields without a registered schema to fall back to decodeObjectGeneric. Now they go directly to decodeTyped(name, typ), which likely requires a schema entry for `name`. Without seeing decodeTyped's implementation, it's unclear whether it internally handles the missing-schema case (e.g., by returning an error, or by itself falling back to generic decoding), so the actual behavioral impact is uncertain, but this is a plausible regression for previously-working unregistered interface-typed fields.\"}]}"
+}

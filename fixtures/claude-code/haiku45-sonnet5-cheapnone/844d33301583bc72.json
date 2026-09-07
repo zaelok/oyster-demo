@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1306,
+  "latency_s": 6.711,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 380,
+  "text": "{\"findings\": [{\"file\": \"scripts/train/convert_olmo_core_to_hf.py\", \"line_start\": 37, \"line_end\": 37, \"category\": \"logic\", \"description\": \"`torch.distributed.checkpoint.state_dict` module does not provide a `load_state_dict` function (it only has `get_state_dict`, `set_state_dict`, `get_model_state_dict`, `set_model_state_dict`). The correct API for loading a checkpoint from a checkpoint_id is `torch.distributed.checkpoint.load` (module `torch.distributed.checkpoint`, not `torch.distributed.checkpoint.state_dict`). This call will raise an AttributeError, so the checkpoint will never be loaded into `model`.\", \"confidence\": 0.85}, {\"file\": \"scripts/train/convert_olmo_core_to_hf.py\", \"line_start\": 12, \"line_end\": 12, \"category\": \"style\", \"description\": \"Unused import `torch` added; only `torch.distributed.checkpoint.state_dict` is used, and it's imported separately, so the plain `torch` import is dead code.\", \"confidence\": 0.4}]}"
+}

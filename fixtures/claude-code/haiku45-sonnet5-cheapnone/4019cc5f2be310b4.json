@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1641,
+  "input_tokens": 2437,
+  "latency_s": 15.79,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1576,
+  "text": "{\"findings\": [{\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 683, \"line_end\": 683, \"category\": \"logic\", \"description\": \"The removed `_launch_shared_experts_overlap` helper defensively checked (via getattr) for either `_maybe_sync_shared_experts_stream` or `_shared_experts.maybe_forward_async` to tolerate different upstream vLLM API versions (as documented in the deleted comment about PRs #51838/#52024/#52033). The replacement calls `self._maybe_sync_shared_experts_stream(...)` directly and unconditionally, so if this code runs against an upstream vLLM version where that method doesn't exist on the runner (e.g. the intermediate API from #51838), it will raise AttributeError instead of gracefully falling back to a no-op.\", \"confidence\": 0.6}, {\"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\", \"line_start\": 695, \"line_end\": 701, \"category\": \"logic\", \"description\": \"Removing `extra_quant_kwargs` and no longer passing `shared_experts_overlapping` to `_apply_quant_method` is internally consistent with the new direct call to `_maybe_sync_shared_experts_stream`, but it hardcodes an assumption that upstream's `_apply_quant_method` never accepts that kwarg. If vllm-gaudi must support a version where `_apply_quant_method` still requires `shared_experts_overlapping` (matching the `maybe_forward_async` path), this call will silently lose overlap information rather than erroring, potentially causing correctness/perf issues that are hard to detect.\", \"confidence\": 0.3}]}"
+}

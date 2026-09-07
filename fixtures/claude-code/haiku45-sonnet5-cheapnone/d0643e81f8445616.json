@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 859,
+  "latency_s": 3.13,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 176,
+  "text": "{\"findings\": [{\"file\": \"src/agents/models/openai_responses.py\", \"line_start\": 710, \"line_end\": 715, \"category\": \"logic\", \"description\": \"The removed code was responsible for populating span_response.span_data.response and .input when tracing.include_data() is true, for the completed response event. Deleting this means completed response spans will no longer include response/input payload data even when detailed tracing is explicitly enabled, degrading observability/debugging without a clear replacement mechanism shown in the diff.\", \"confidence\": 0.7}]}"
+}

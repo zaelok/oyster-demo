@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 955,
+  "latency_s": 7.155,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 555,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 35, \"category\": \"logic\", \"description\": \"Previously, an unknown method returned a proper JSON-RPC error response (with id and METHOD_NOT_FOUND code) as per the JSON-RPC spec, allowing clients to correlate the error with their request. Now it throws via Mono.error(McpError), which changes semantics: the request id is lost, the standard JSON-RPC error code (METHOD_NOT_FOUND) is no longer set, and depending on how downstream error handling works, this may result in a different response shape (e.g., a generic transport-level error or a different JSON-RPC error code), breaking JSON-RPC protocol compliance and client expectations for graceful method-not-found handling.\", \"confidence\": 0.6}]}"
+}

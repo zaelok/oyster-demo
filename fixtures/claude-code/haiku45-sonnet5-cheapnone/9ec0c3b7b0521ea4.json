@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1152,
+  "latency_s": 3.756,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 185,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\", \"line_start\": 118, \"line_end\": 118, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The instanceof check that filtered members to only ImportNode bodies was removed and replaced with an unconditional cast to ImportNode. Any typed module member whose body is not an import (e.g. a regular property or expression) will now throw a ClassCastException when getImports() is called, instead of being silently skipped as before.\"}]}"
+}

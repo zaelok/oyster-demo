@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 628,
+  "latency_s": 2.562,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 105,
+  "text": "```json\n{\"findings\": [{\"file\": \"Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\", \"line_start\": 4057, \"line_end\": 4065, \"category\": \"logic\", \"description\": \"Removal of unwrap logic that traverses optional chaining and force unwrap parent nodes may cause incorrect formatting of parenthesized expressions in chained contexts.\", \"confidence\": 0.7}]}\n```"
+}

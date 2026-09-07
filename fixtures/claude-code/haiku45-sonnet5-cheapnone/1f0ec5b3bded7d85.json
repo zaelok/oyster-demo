@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1370,
+  "latency_s": 5.391,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 307,
+  "text": "{\"findings\": [{\"file\": \"litellm/litellm_core_utils/litellm_logging.py\", \"line_start\": 5678, \"line_end\": 5679, \"category\": \"security\", \"confidence\": 0.9, \"description\": \"traceback_info and error_message are now stored unredacted in the error information object, which may expose secrets (API keys, tokens, internal paths) that were previously masked by _redact_string, since this data can flow to logs, callbacks, or client-facing error responses.\", \"file_end\": 5679}, {\"file\": \"litellm/proxy/utils.py\", \"line_start\": 2586, \"line_end\": 2589, \"category\": \"security\", \"confidence\": 0.85, \"description\": \"traceback_str is passed unredacted to async_post_call_failure_hook callbacks, removing prior protection against leaking sensitive data (e.g., credentials embedded in stack traces) to third-party or custom callback implementations.\", \"file_end\": 2589}]}"
+}

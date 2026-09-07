@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1652,
+  "latency_s": 4.189,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 269,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\",\n      \"line_start\": 683,\n      \"line_end\": 683,\n      \"category\": \"logic\",\n      \"description\": \"Call to `_maybe_sync_shared_experts_stream` may fail if the method doesn't exist on the runner object, unlike the removed `_launch_shared_experts_overlap` which had defensive getattr checks.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"vllm_gaudi/ops/hpu_fused_moe.py\",\n      \"line_start\": 695,\n      \"line_end\": 701,\n      \"description\": \"The `extra_quant_kwargs` dictionary was removed but `_apply_quant_method` call signature unchanged; verify upstream API no longer expects `shared_experts_overlapping` parameter.\",\n      \"line_end\": 701,\n      \"category\": \"logic\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

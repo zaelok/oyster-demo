@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1216,
+  "latency_s": 5.273,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 222,
+  "text": "{\"findings\": [{\"file\": \"Sources/SWBProjectModel/PIFGenerationModel.swift\", \"line_start\": 1108, \"line_end\": 1111, \"category\": \"logic\", \"confidence\": 0.65, \"description\": \"PIFGenerationModel.swift removes the 'wasip1' platform entry entirely along with the two 'threads' environment variants, while the parallel change in BuildSettings.swift only removes the 'threads' environment entries and retains 'wasip1'. This inconsistency means wasip1-specific build settings will be emitted in one code path but not the other, likely an unintended discrepancy between the two otherwise-mirrored implementations.\"}]}"
+}

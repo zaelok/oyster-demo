@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1145,
+  "latency_s": 2.915,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 190,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 72, \"line_end\": 80, \"category\": \"logic\", \"description\": \"Removing `.colonToken(trailingTrivia: .space)` and no longer stripping the pattern's trailing trivia before appending the type annotation can produce malformed spacing in the generated declaration, such as 'let name:Type' (missing space after colon) or inconsistent spacing depending on the original pattern's trivia.\", \"confidence\": 0.6}]}"
+}

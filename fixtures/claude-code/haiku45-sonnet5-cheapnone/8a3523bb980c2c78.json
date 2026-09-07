@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1152,
+  "latency_s": 4.992,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 286,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\", \"line_start\": 30, \"line_end\": 30, \"category\": \"logic\", \"description\": \"Removing the try-catch around Convert.FromBase64String means TryParseDataUri will now throw a FormatException for malformed base64 data instead of returning false as its 'Try' naming convention and previous behavior implied, potentially causing unhandled exceptions in callers that rely on the boolean return value for validation.\", \"confidence\": 0.95}, {\"file\": \"OpenAI/src/Utility/DataEncodingHelpers.cs\", \"line_start\": 42, \"line_end\": 42, \"category\": \"style\", \"description\": \"Missing newline at end of file, which can cause issues with some tools/linters and is inconsistent with common style conventions.\", \"confidence\": 0.6}]}"
+}

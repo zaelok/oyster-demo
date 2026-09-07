@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1042,
+  "latency_s": 12.869,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1237,
+  "text": "{\"findings\": [{\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 288, \"line_end\": 291, \"category\": \"logic\", \"description\": \"cugraph_sample_result_get_edge_renumber_map now null-checks internal_pointer->renumber_map_ instead of internal_pointer->edge_renumber_map_ before dereferencing edge_renumber_map_->view(). If edge_renumber_map_ is null while renumber_map_ is not, this will dereference a null pointer instead of returning NULL.\", \"confidence\": 0.85}, {\"file\": \"cpp/src/c_api/sampling_result.cpp\", \"line_start\": 297, \"line_end\": 300, \"category\": \"logic\", \"description\": \"cugraph_sample_result_get_edge_renumber_map_offsets now null-checks internal_pointer->renumber_map_ instead of internal_pointer->edge_renumber_map_offsets_ before dereferencing edge_renumber_map_offsets_->view(). If edge_renumber_map_offsets_ is null while renumber_map_ is not, this will dereference a null pointer instead of returning NULL.\", \"confidence\": 0.85}]}"
+}

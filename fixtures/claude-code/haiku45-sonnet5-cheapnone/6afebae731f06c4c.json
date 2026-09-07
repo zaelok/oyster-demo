@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 973,
+  "latency_s": 3.89,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 211,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 2179, \"line_end\": 2186, \"category\": \"logic\", \"confidence\": 0.8, \"description\": \"Removing the not_equal-to-zero promotion before casting to int32 breaks correctness for non-boolean, non-integer inputs. Any fractional value with absolute value < 1 (e.g., 0.5) truncates to 0 during the int32 cast, causing a nonzero (truthy) float to be treated as zero (falsy) in torch.all/torch.any, which changes reduction results for float tensors.\"}]}"
+}

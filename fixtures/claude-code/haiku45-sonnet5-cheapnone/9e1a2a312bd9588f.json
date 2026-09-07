@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1290,
+  "latency_s": 3.986,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 300,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\",\n      \"line_start\": 461,\n      \"line_end\": 467,\n      \"category\": \"logic\",\n      \"description\": \"Copy constructor removes initialization of ewmaCancellationPenalty, ewmaErrorPenalty, concurrentRequestPenalty, and cancellationIsError fields, which will be left uninitialized or null instead of copied from the source config.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinLoadBalancerBuilder.java\",\n      \"line_start\": 148,\n      \"line_end\": 151,\n      \"category\": \"style\",\n      \"description\": \"Javadoc @param comment is malformed with misplaced text; 'background health checking. Use negative value to disable the health checking mechanism.' appears after the parameter name instead of being part of the description.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

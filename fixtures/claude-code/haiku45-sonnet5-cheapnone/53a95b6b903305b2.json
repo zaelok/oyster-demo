@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 857,
+  "latency_s": 3.482,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 255,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cmd/nvidia-cdi-hook/disable-device-node-modification/params_linux.go\",\n      \"line_start\": 35,\n      \"line_end\": 35,\n      \"category\": \"logic\",\n      \"description\": \"String concatenation without path separator: '/run/nvidia-ctk-hook' + uuid will produce '/run/nvidia-ctk-hookuuid-value' instead of '/run/nvidia-ctk-hook/uuid-value'\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"internal/ldconfig/ldconfig_linux.go\",\n      \"line_start\": 194,\n      \"line_end\": 194,\n      \"category\": \"logic\",\n      \"description\": \"Inconsistent path separator handling: new code adds '/' but the [1:] slice on line 195 assumes no trailing slash, may cause double slashes or incorrect path\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

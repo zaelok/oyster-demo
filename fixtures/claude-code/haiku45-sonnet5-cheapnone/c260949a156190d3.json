@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1100,
+  "latency_s": 3.368,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 225,
+  "text": "```json\n{\"findings\": [{\"file\": \"Sources/AsyncAlgorithms/AsyncShareSequence.swift\", \"line_start\": 426, \"line_end\": 426, \"category\": \"logic\", \"description\": \"Removing the `limit > 0` guard means when `limit == 0` the code now enters the continuation/lock path instead of bypassing it (since `buffer.count >= 0` is trivially true). If limit==0 represents an unbuffered/unlimited-blocking policy, this could change behavior from immediate pass-through to always waiting on the lock/continuation, introducing unnecessary suspension or altering semantics for that configuration.\", \"confidence\": 0.5}]}\n```"
+}

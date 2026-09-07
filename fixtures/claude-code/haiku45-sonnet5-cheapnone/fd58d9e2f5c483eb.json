@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1257,
+  "latency_s": 5.877,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 424,
+  "text": "{\"findings\": [{\"file\": \"Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\", \"line_start\": 140, \"line_end\": 140, \"category\": \"logic\", \"description\": \"unsignedAttrs is being decoded with context-specific tag [0] instead of [1] as defined in RFC 5652 (SignerInfo ::= SEQUENCE { ..., signedAttrs [0], ..., unsignedAttrs [1] }). This will cause the DER parser to either fail to find unsignedAttrs (since it's actually tagged [1] in valid CMS data) or incorrectly conflict/collide with signedAttrs parsing, breaking interoperability with standard-compliant CMS messages.\", \"confidence\": 0.9}, {\"file\": \"Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\", \"line_start\": 195, \"line_end\": 195, \"category\": \"logic\", \"description\": \"Same tag mismatch as the DER path: BER decoding of unsignedAttrs now uses [0] instead of the correct [1] tag per RFC 5652, which will cause failures or misparsing of unsignedAttrs in BER-encoded CMS signer info structures.\", \"confidence\": 0.9}]}"
+}

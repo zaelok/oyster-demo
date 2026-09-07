@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 731,
+  "latency_s": 3.163,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 264,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\",\n      \"line_start\": 140,\n      \"line_end\": 140,\n      \"category\": \"logic\",\n      \"description\": \"Tag number changed from 1 to 0 for unsignedAttrs context-specific identifier; verify this matches CMS specification (RFC 5652 uses [1] for unsignedAttrs).\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\",\n      \"line_start\": 195,\n      \"line_end\": 195,\n      \"category\": \"logic\",\n      \"description\": \"Tag number changed from 1 to 0 for unsignedAttrs context-specific identifier in BER path; inconsistency between DER and BER decoding if both need [1].\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

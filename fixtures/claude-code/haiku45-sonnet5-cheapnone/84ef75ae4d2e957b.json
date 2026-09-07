@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1609,
+  "latency_s": 5.339,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 415,
+  "text": "{\"findings\": [{\"file\": \"src/memory/index.ts\", \"line_start\": 79, \"line_end\": 79, \"category\": \"logic\", \"description\": \"JSON.parse(line) is called without a try/catch, so a single malformed line in the memory file will throw and crash the entire readGraph call (and any caller), instead of skipping the bad line as the previous version did.\", \"confidence\": 0.9}, {\"file\": \"src/memory/index.ts\", \"line_start\": 80, \"line_end\": 90, \"category\": \"logic\", \"description\": \"Entity/relation fields are copied directly from parsed JSON without schema validation (EntitySchema/RelationSchema removed). Missing or malformed fields (e.g., observations undefined, name missing) will be silently accepted into the graph, potentially causing downstream errors when these fields are used (e.g., .includes() on undefined observations).\", \"confidence\": 0.85}, {\"file\": \"src/memory/index.ts\", \"line_start\": 80, \"line_end\": 90, \"category\": \"logic\", \"description\": \"Lines with an item.type other than 'entity' or 'relation' are now silently ignored with no logging, unlike the previous implementation which reported skipped/invalid lines, making data loss harder to diagnose.\", \"confidence\": 0.6}]}"
+}

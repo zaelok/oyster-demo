@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 621,
+  "latency_s": 2.964,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 123,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"nemo/collections/audio/losses/maxine/losses_combined.py\",\n      \"line_start\": 189,\n      \"line_end\": 190,\n      \"category\": \"logic\",\n      \"description\": \"Variables swapped: primary_audio assigned from estimate and predicted_audio from target, but semantics suggest it should be the opposite based on naming.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

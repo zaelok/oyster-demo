@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 942,
+  "latency_s": 3.499,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 191,
+  "text": "{\"findings\": [{\"file\": \"OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs\", \"line_start\": 59, \"line_end\": 59, \"category\": \"logic\", \"description\": \"The Write method now throws NotImplementedException instead of calling SerializeHyperparameterBeta, so any serialization attempt (e.g., via JSON serialization of a request containing this type) will throw at runtime instead of producing valid JSON output, breaking the fine-tuning hyperparameter beta feature entirely.\", \"confidence\": 0.97}]}"
+}

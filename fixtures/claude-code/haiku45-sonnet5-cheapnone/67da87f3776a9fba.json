@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1286,
+  "latency_s": 16.201,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1490,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 111, \"line_end\": 111, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"The lambda passed to set_messages_params now ignores the params argument it receives and instead closes over self._params, reading it at call time via a closure. This breaks the intended functional-update contract of set_messages_params (where the callback should transform whatever params state it is given) and can produce incorrect results if set_messages_params applies multiple updates in sequence or is called with a transformed/intermediate params object different from self._params.\", \"line_start_check\": true}, {\"file\": \"src/anthropic/lib/tools/_beta_runner.py\", \"line_start\": 454, \"line_end\": 454, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"The new messages list is rebuilt starting from the full, untrimmed self._params[\\\"messages\\\"] rather than the locally trimmed 'messages' variable that had entries popped off it just above. This discards the trimming logic's effect and reintroduces the complete original message history into the compaction/summary request, likely causing oversized requests and defeating the purpose of the pop loop.\"}]}"
+}

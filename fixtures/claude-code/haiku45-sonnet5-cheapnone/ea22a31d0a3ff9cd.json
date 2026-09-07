@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 740,
+  "latency_s": 2.626,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 127,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/responses/file_search/emulated_handler.py\",\n      \"line_start\": 462,\n      \"line_end\": 462,\n      \"category\": \"logic\",\n      \"description\": \"Removed validation check that vs_id_arg is in all_vs_ids; now allows model to specify arbitrary vector_store_id without verification against request scope.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

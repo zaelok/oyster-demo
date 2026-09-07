@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1151,
+  "latency_s": 3.047,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 150,
+  "text": "{\"findings\": [{\"file\": \"cpp/include/raft/core/detail/copy.hpp\", \"line_start\": 306, \"line_end\": 313, \"category\": \"logic\", \"description\": \"The while-loop replaces the previous O(1) division-based computation with an O(extent) iterative subtraction, causing severe performance regression for dimensions with large extents since this runs per output element per dimension inside copy/broadcast kernels.\", \"confidence\": 0.7}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 822,
+  "latency_s": 19.307,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1758,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 8521, \"line_end\": 8528, \"category\": \"logic\", \"description\": \"The refactor removes the explicit negative-shift branch (which previously computed mod(-s, dim) directly) and instead computes mod(s, dim) unconditionally for possibly-negative s, then subtracts from dim. This is only equivalent to the original if mb.mod implements floor/Python-style modulo (non-negative result for positive divisor) for negative inputs. If mb.mod instead follows truncation (C-style) semantics and returns a negative value for negative s, start_idx = dim - mod(s, dim) would be incorrect (greater than dim), producing wrong roll indices for negative shift amounts.\", \"confidence\": 0.45}, {\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 8524, \"line_end\": 8524, \"category\": \"style\", \"description\": \"The int() casts applied to shift values in the original code (int(-s), int(s)) were removed; if s is not already a native Python int (e.g., a numpy integer or float from tensor extraction), passing it directly to mb.mod may raise a type error or produce unexpected floating-point behavior in the built op.\", \"confidence\": 0.25}]}"
+}

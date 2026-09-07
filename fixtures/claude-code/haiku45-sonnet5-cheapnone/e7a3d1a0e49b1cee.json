@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 708,
+  "latency_s": 3.573,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 223,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/semantic-router/pkg/selection/router_dc.go\",\n      \"line_start\": 444,\n      \"line_end\": 449,\n      \"category\": \"logic\",\n      \"description\": \"hashQuery implementation is not a proper hash function and will return identical values for different queries that share the same first 32 characters.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"src/semantic-router/pkg/selection/router_dc.go\",\n      \"line_start\": 444,\n      \"line_end\": 449,\n      \"category\": \"logic\",\n      \"description\": \"The format string %x will interpret the query string bytes directly rather than computing a hash, breaking the intended collision-resistant properties of the original SHA256-based implementation.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

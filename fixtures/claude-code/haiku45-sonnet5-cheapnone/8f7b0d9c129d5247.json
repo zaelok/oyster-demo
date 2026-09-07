@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 641,
+  "latency_s": 2.631,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 131,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/olmo_core/train/callbacks/speed_monitor.py\",\n      \"line_start\": 113,\n      \"line_end\": 113,\n      \"category\": \"logic\",\n      \"description\": \"Peak FLOPS for A100 changed from 624e12 to 312e12 (50% reduction); verify this is intentional and not a regression in performance calculation.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

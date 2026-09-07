@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 929,
+  "latency_s": 11.404,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 909,
+  "text": "{\"findings\": [{\"file\": \"whisper/model.py\", \"line_start\": 121, \"line_end\": 124, \"category\": \"logic\", \"description\": \"Removed the manual expand of k/v when k.shape[0]==1 and q.shape[0]!=1 (e.g., cross-attention with cached single-batch key/value reused across a larger query batch during beam search). torch.nn.functional.scaled_dot_product_attention does not reliably broadcast batch dimensions across all backends (especially the flash/mem-efficient kernels), so passing k/v with batch size 1 against a q with batch size >1 can raise a runtime shape-mismatch error or silently select a slower math backend depending on PyTorch version.\", \"confidence\": 0.75}]}"
+}

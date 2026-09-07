@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1077,
+  "latency_s": 6.076,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 240,
+  "text": "{\"findings\": [{\"file\": \"whisper/model.py\", \"line_start\": 121, \"line_end\": 124, \"category\": \"logic\", \"description\": \"Removing the manual broadcast of k/v from batch size 1 to q's batch size can break scaled_dot_product_attention when q.shape[0] != k.shape[0] (e.g., cached cross-attention keys during beam search). While PyTorch's SDPA math backend allows broadcasting, flash-attention and memory-efficient backends require matching batch dimensions and will raise a runtime error or silently fail to broadcast depending on PyTorch version, causing incorrect behavior or crashes during beam-search decoding with cached cross-attention.\", \"confidence\": 0.6}]}"
+}

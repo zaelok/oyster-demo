@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1060,
+  "latency_s": 4.228,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 213,
+  "text": "{\"findings\": [{\"file\": \"litellm/integrations/cloudzero/cz_stream_api.py\", \"line_start\": 100, \"line_end\": 100, \"category\": \"logic\", \"description\": \"Removing infer_schema_length=None reverts pl.DataFrame() to default schema inference (samples only first 100 rows). If a daily batch of records has more than 100 rows with type variation appearing later (e.g., a None/null value followed by a string, or int then float), this can raise a schema inference error or silently coerce/misinfer column dtypes, whereas previously the full batch was scanned to guarantee consistent types.\", \"confidence\": 0.6}]}"
+}

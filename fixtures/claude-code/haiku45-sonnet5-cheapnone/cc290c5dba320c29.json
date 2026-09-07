@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1024,
+  "latency_s": 11.517,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 971,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/hooks/proxy_track_cost_callback.py\", \"line_start\": 272, \"line_end\": 275, \"category\": \"logic\", \"description\": \"The check `kwargs.get(\\\"cache_hit\\\", False) is True` uses a strict identity comparison against the boolean True. In litellm, `cache_hit` can sometimes be represented as a string (e.g., \\\"True\\\"/\\\"False\\\") rather than a native bool depending on the cache backend/serialization path, which would cause this check to silently fail and response_cost would not be zeroed out for cache hits. A safer check would be `bool(kwargs.get(\\\"cache_hit\\\", False))` or explicit string/bool handling.\", \"confidence\": 0.4}]}"
+}

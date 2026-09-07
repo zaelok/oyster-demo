@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 866,
+  "latency_s": 9.662,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 583,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\", \"line_start\": 447, \"line_end\": 452, \"category\": \"logic\", \"description\": \"The dynamic hash-count computation was replaced with a fixed single '#' delimiter for raw string literals. If the string contains the sequence '\\\"#' or '\\\\#', a single-hash raw literal will terminate prematurely or misinterpret escapes, producing incorrect or non-compiling generated Swift code. The original loop existed specifically to avoid this collision by increasing hash count until unambiguous.\", \"confidence\": 0.85}]}"
+}

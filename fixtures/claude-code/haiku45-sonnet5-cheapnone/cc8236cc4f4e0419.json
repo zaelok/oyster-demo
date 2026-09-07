@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1665,
+  "latency_s": 6.494,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 559,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 51, \"category\": \"logic\", \"description\": \"The recursive `_unqualified` helper that stripped Annotated/NotRequired/Required/ReadOnly qualifiers (including nested combinations) was replaced with a single non-recursive check that only unwraps one level of `ReadOnly`. TypedDict fields annotated as `NotRequired[int]`, `Required[int]`, `Annotated[int, ...]`, or nested forms like `ReadOnly[NotRequired[int]]` will no longer resolve to `int`/`float`, causing `_numeric_form_type` to return `None` and those form fields to be parsed as strings instead of numeric types. This is a genuine behavioral regression, not just a style simplification.\", \"confidence\": 0.8}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1360,
+  "latency_s": 4.194,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 229,
+  "text": "{\"findings\": [{\"file\": \"integration_tests/src/main/python/data_gen.py\", \"line_start\": 985, \"line_end\": 990, \"category\": \"logic\", \"description\": \"The new gen_value only converts top-level DateType values via _date_to_iso_string, but does not recurse into ArrayType, StructType, or MapType data_type as the removed _normalize_pyspark_scalar did. If data_type is e.g. ArrayType(DateType()) or StructType with a date field, generated date values nested inside lists/tuples/dicts will no longer be converted to ISO strings, breaking downstream comparisons that expect string-formatted dates for literal generation.\", \"confidence\": 0.9}]}"
+}

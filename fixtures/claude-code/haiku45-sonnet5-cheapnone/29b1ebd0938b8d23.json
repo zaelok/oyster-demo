@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1093,
+  "latency_s": 4.617,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 248,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\", \"line_start\": 104, \"line_end\": 105, \"category\": \"logic\", \"description\": \"The code now unconditionally uses sys.modules[module.__class__.__module__].__dict__ instead of forward_fn.__globals__. If the forward method is defined in a different module than module.__class__ (e.g., inherited from a mixin/base class defined elsewhere, or a monkey-patched/dynamically assigned function), the namespace will be missing symbols (imports, helper functions, constants) that forward_fn actually references via its __globals__, causing NameError when the AST-rewritten code executes.\", \"confidence\": 0.8}]}\n```"
+}

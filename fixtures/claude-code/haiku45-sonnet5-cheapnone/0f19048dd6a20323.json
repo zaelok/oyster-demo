@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 942,
+  "latency_s": 11.375,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 965,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\", \"line_start\": 118, \"line_end\": 118, \"category\": \"logic\", \"description\": \"The original code used `if (bodyNode instanceof ImportNode importNode)` to only add entries to the builder when the body is actually an import node, silently skipping other member types. The diff replaces this with an unconditional cast `((ImportNode) bodyNode)`, which will throw a ClassCastException whenever a module member's body node is not an ImportNode (e.g., any regular property or method). This will cause getImports() to crash for modules containing non-import members, which is virtually every real Pkl module.\", \"confidence\": 0.9}]}"
+}

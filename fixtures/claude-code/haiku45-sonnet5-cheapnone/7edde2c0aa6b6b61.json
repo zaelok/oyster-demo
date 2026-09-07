@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1080,
+  "latency_s": 8.062,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 229,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/audio/losses/maxine/losses_combined.py\", \"line_start\": 189, \"line_end\": 190, \"category\": \"logic\", \"description\": \"The variable names primary_audio and predicted_audio are now swapped relative to their content: primary_audio is assigned from 'estimate' and predicted_audio from 'target'. This is misleading naming and, if any downstream code in this function relies on the names to distinguish reference vs. predicted signals (e.g., for asymmetric loss terms or logging), the loss will be computed with reversed semantics, silently corrupting the loss value or gradients without seeing a clear error.\", \"confidence\": 0.55}]}"
+}

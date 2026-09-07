@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1077,
+  "latency_s": 3.502,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 259,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\",\n      \"line_start\": 45,\n      \"line_end\": 45,\n      \"category\": \"logic\",\n      \"description\": \"Simplified `_numeric_form_type` logic assumes `get_args(annotation)` always returns a tuple with at least one element when `get_origin(annotation) is ReadOnly`, risking IndexError if this assumption is violated.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\",\n      \"line_start\": 45,\n      \"line_end\": 45,\n      \"category\": \"logic\",\n      \"description\": \"Removal of `_unqualified()` function eliminates recursive unwrapping of nested qualifiers (Annotated, NotRequired, Required); this may cause type analysis to fail for complex annotations.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

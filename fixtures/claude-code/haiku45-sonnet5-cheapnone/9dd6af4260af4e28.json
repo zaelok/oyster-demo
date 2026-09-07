@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 585,
+  "latency_s": 2.681,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 129,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"rslearn/data_sources/aws_landsat.py\",\n      \"line_start\": 213,\n      \"line_end\": 213,\n      \"category\": \"logic\",\n      \"description\": \"Removed filter that excluded LO08_ and LO09_ items; verify this change doesn't reintroduce unwanted Landsat Collection 2 Level 0 products.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

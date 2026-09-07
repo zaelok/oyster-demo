@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1124,
+  "latency_s": 15.41,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1215,
+  "text": "{\"findings\": [{\"file\": \"litellm/router_strategy/adaptive_router/adaptive_router.py\", \"line_start\": 139, \"line_end\": 145, \"category\": \"logic\", \"description\": \"The new code directly overwrites the in-memory BanditCell with the raw DB row values (alpha=row.alpha, beta=row.beta) instead of adding them as a delta to the cold-start prior. The removed docstring explicitly warned that a persisted row can be one-sided (e.g., alpha=0 or beta=0) since it represents an accumulated delta, not a full posterior. Assigning it directly can now create a BanditCell with alpha=0 or beta=0, which will crash thompson_sample() on every subsequent draw for that (route_type, model) cell. This is a real regression reintroducing the exact bug the removed code was designed to avoid.\", \"confidence\": 0.75}]}"
+}

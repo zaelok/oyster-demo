@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 598,
+  "latency_s": 2.419,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 105,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl/decode_struct.go\",\n      \"line_start\": 55,\n      \"line_end\": 61,\n      \"category\": \"logic\",\n      \"description\": \"Removal of interface type handling may cause runtime failures when decoding interface-typed fields without corresponding schema definitions.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

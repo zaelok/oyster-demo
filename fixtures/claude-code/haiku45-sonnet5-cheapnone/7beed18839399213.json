@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 867,
+  "latency_s": 3.02,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 193,
+  "text": "{\"findings\": [{\"file\": \"src/olmo_core/config.py\", \"line_start\": 112, \"line_end\": 112, \"category\": \"logic\", \"confidence\": 0.65, \"description\": \"Removing the 'not field.init' exclusion means fields with init=False (e.g., computed/derived fields) are now included in as_dict() output. If from_dict/from_config or any code that reconstructs the object via the constructor passes all dict keys as kwargs, this will raise TypeError for unexpected keyword arguments, breaking round-trip serialization for dataclasses that use init=False fields.\"}]}"
+}

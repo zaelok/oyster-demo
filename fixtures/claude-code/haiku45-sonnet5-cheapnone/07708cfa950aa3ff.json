@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 625,
+  "latency_s": 2.513,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 122,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"buildSrc/src/main/kotlin/com/openai/gradle/CoreCompilationDependencies.kt\",\n      \"line_start\": 31,\n      \"line_end\": 31,\n      \"category\": \"logic\",\n      \"description\": \"Removal of kotlin-reflect dependency may break reflection-based functionality that depends on it at runtime.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

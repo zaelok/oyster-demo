@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 901,
+  "latency_s": 19.969,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1733,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\", \"line_start\": 99, \"line_end\": 106, \"category\": \"logic\", \"description\": \"The code no longer uses the actual `__globals__` of the unwrapped forward function to build the execution namespace; it now unconditionally uses `sys.modules[module.__class__.__module__].__dict__`. If the module's forward implementation is inherited or patched from a different module (common with dynamically wrapped/monkeypatched forward methods), the resulting namespace can be missing names that the forward function's source actually depends on, causing a NameError when the autowrapped function executes.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1483,
+  "latency_s": 6.27,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 246,
+  "text": "{\"findings\": [{\"file\": \"tpu_inference/core/sched/dp_scheduler.py\", \"line_start\": 228, \"line_end\": 253, \"category\": \"logic\", \"description\": \"Removing the shortfall computation and subsequent adjustment of request.num_in_flight_tokens and request.num_stale_output_tokens means that when num_sampled < original scheduled tokens (e.g., due to early stopping or partial generation during continue-decode multi-step execution), these per-request counters are no longer decremented to reflect actual tokens produced. This leaves them overcounted relative to reality, which can corrupt token budget accounting and stale-token tracking used by the scheduler for subsequent scheduling decisions.\", \"confidence\": 0.65}]}"
+}

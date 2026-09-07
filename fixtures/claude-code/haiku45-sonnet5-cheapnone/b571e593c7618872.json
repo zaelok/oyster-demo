@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1423,
+  "latency_s": 5.243,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 298,
+  "text": "{\"findings\": [{\"file\": \"tools/onnx-graphsurgeon/onnx_graphsurgeon/exporters/onnx_exporter.py\", \"line_start\": 133, \"line_end\": 141, \"category\": \"logic\", \"confidence\": 0.6, \"description\": \"onnx.helper.float32_to_bfloat16 and float32_to_float8e4m3 are scalar-oriented functions (documented to accept a single float and return an int), not vectorized numpy ufuncs like the previous ml_dtypes dtype constructors. If NumpyArrayConverter.__call__ invokes the conversion function directly on a full numpy array (rather than using np.vectorize or an element-wise loop), this will likely raise a TypeError or fail to produce the expected element-wise uint16/uint8 array output, since the diff does not show any wrapping with np.vectorize or similar to handle array inputs.\"}]}"
+}

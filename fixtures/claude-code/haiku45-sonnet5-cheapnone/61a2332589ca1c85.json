@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1272,
+  "latency_s": 4.835,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 277,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 38, \"category\": \"logic\", \"description\": \"Switching from returning a completed JSONRPCResponse with an error payload to Mono.error(McpError) changes error propagation semantics: the request id is no longer attached to the error signal, so unless an upstream operator catches this error and reconstructs a JSONRPCResponse with the original request.id, the client will not receive a spec-compliant JSON-RPC error response correlated to its request. This depends on whether the caller of handleRequest wraps/handles McpError and re-associates the id; if it does not, this is a real regression in JSON-RPC compliance.\", \"confidence\": 0.7}]}"
+}

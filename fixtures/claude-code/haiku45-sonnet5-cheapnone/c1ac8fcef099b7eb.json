@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 906,
+  "latency_s": 18.564,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1582,
+  "text": "{\"findings\": [{\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 21, \"line_end\": 30, \"category\": \"logic\", \"description\": \"The replacement 'hash' function is not a real hash: it hex-encodes the raw string bytes (truncated to first 32 bytes for longer strings) rather than computing a digest. This means output length varies with input length, provides much weaker collision resistance than SHA-256, and two different long queries sharing the same first 32 bytes will collide. If hashQuery's output is used for deduplication/grouping/caching, this significantly increases false-positive collisions and is not a valid substitute for a cryptographic or even non-cryptographic hash.\", \"confidence\": 0.75}, {\"file\": \"src/semantic-router/pkg/selection/router_dc.go\", \"line_start\": 21, \"line_end\": 30, \"category\": \"security\", \"description\": \"Because hex encoding is reversible, the new 'hash' fully or partially exposes the original query text (entire query if <32 bytes, first 32 bytes otherwise) to anything that reads the hashed value (logs, cache keys, metrics, etc.). This is a regression from SHA-256, which is one-way, and could leak potentially sensitive user query content if the hash output is persisted or exposed in ways that assumed one-way hashing for privacy.\", \"confidence\": 0.6}]}"
+}

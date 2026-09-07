@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1039,
+  "input_tokens": 2084,
+  "latency_s": 7.859,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 509,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\", \"line_start\": 28, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Dictionary(uniqueKeysWithValues:) traps at runtime if two declarations share the same name, whereas the previous uniquingKeysWith closure gracefully kept the first occurrence. Combined with the removal of the duplicate-name diagnostic in translateSchemas.swift, any OpenAPI document producing duplicate generated type names (e.g., via naming collisions after sanitization) will now cause an unhandled fatalError crash in boxRecursiveTypes instead of a clean error or silent dedup.\", \"confidence\": 0.8}, {\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\", \"line_start\": 64, \"line_end\": 67, \"category\": \"logic\", \"description\": \"Removing emitDuplicateTypeNameDiagnostic eliminates the only user-facing check that caught duplicate generated Swift type names from '#/components/schemas' before declarations are further processed. Without a replacement diagnostic, users lose the actionable error message suggesting 'defensive' naming or nameOverrides, and will instead encounter either invalid duplicate Swift declarations in generated code or the runtime crash introduced by the uniqueKeysWithValues change.\", \"confidence\": 0.75}]}"
+}

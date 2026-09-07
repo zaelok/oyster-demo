@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 579,
+  "latency_s": 2.684,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 127,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\",\n      \"line_start\": 73,\n      \"line_end\": 73,\n      \"category\": \"logic\",\n      \"description\": \"Removing `self.context = context` assignment means the context is never stored; verify this wasn't needed for later use in upload handlers or error paths.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

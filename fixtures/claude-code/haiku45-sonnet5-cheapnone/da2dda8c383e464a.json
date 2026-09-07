@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 742,
+  "latency_s": 3.172,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 233,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\",\n      \"line_start\": 530,\n      \"line_end\": 530,\n      \"category\": \"logic\",\n      \"description\": \"cache_control field added to ChatCompletionThinkingBlock but no validation that cache_control dict structure matches expected schema.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\",\n      \"line_start\": 538,\n      \"line_end\": 538,\n      \"category\": \"logic\",\n      \"description\": \"cache_control field added to ChatCompletionRedactedThinkingBlock but no validation that cache_control dict structure matches expected schema.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

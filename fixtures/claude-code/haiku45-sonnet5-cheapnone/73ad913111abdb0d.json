@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1127,
+  "latency_s": 5.809,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 446,
+  "text": "{\"findings\": [{\"file\": \"modelopt/torch/export/plugins/mcore_qwen.py\", \"line_start\": 65, \"line_end\": 68, \"category\": \"logic\", \"description\": \"Removal of the 'core_attention': SelfAttentionScaling(...) mapping (and its import) drops the self-attention scaling factor export/import for Qwen3-style models, which may cause exported checkpoints to lose or mis-set attention scaling parameters compared to the original model.\", \"confidence\": 0.5}, {\"file\": \"modelopt/torch/export/plugins/mcore_qwen.py\", \"line_start\": 102, \"line_end\": 105, \"category\": \"logic\", \"description\": \"Same removal of 'core_attention': SelfAttentionScaling(...) mapping in the second causal LM mapping table, potentially causing loss of attention scaling handling for this model variant during export/import.\", \"confidence\": 0.5}]}"
+}

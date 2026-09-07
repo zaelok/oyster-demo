@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 667,
+  "latency_s": 5.613,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 423,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 110, \"line_end\": 116, \"category\": \"logic\", \"description\": \"Removed handling of the 'enum' keyword: it is no longer popped from json_schema nor copied into strict_schema. This means any schema using enum constraints will lose the enum values during strict-schema transformation, and the leftover 'enum' key remains in json_schema which may cause it to be treated as an unrecognized/unexpected field in subsequent processing (e.g. raising an error or being silently dropped), breaking validation for enum-typed properties.\", \"confidence\": 0.8}]}"
+}

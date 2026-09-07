@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 700,
+  "latency_s": 7.526,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 155,
+  "text": "{\"findings\": [{\"file\": \"open_instruct/dpo_utils.py\", \"line_start\": 710, \"line_end\": 710, \"category\": \"logic\", \"description\": \"Removing .clamp(min=1) reintroduces division by zero when loss_mask.sum(-1) is 0 for a sequence (e.g., all labels masked as -100), producing NaN/Inf in the averaged log prob instead of safely defaulting to 0.\", \"confidence\": 0.85}]}"
+}

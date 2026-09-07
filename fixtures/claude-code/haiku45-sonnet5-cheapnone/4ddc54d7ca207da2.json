@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 781,
+  "latency_s": 5.698,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 420,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftLanguageService/CodeCompletionContext.swift\", \"line_start\": 43, \"line_end\": 44, \"category\": \"logic\", \"description\": \"Removed the check that the position actually falls within the token's trimmed range (`token.trimmedRange.contains(absolutePosition)`). Now any identifier/keyword token returned by `tree.token(at:)` is accepted even if the cursor position lies in the token's leading/trailing trivia (e.g., whitespace before/after the identifier) rather than within the identifier itself. This can cause `findEndOfIdentifier` to incorrectly report an end-of-identifier position when the cursor is not actually inside an identifier, leading to wrong completion range calculations.\", \"confidence\": 0.75}]}"
+}

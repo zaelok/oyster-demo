@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 960,
+  "latency_s": 4.024,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 272,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/modifiers/pruning/helpers.py\", \"line_start\": 135, \"line_end\": 135, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"pow(per_complete - 1, exponent) + 1 is not equivalent to 1 - pow(1 - per_complete, exponent) for non-integer or even exponents. Since per_complete in [0,1] makes (per_complete - 1) negative or zero, raising a negative base to a fractional exponent (exponent is typically a float like 1.0-3.0 used for interpolation curves) yields a complex number in Python (via pow with float exponent) or a ValueError/domain error depending on type, breaking the sparsity schedule computation. This is a functional regression introduced by the change, not a false positive.\"}]}"
+}

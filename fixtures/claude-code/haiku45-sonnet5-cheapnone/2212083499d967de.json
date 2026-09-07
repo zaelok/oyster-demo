@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 702,
+  "latency_s": 5.9,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 367,
+  "text": "{\"findings\": [{\"file\": \"src/agents/models/openai_responses.py\", \"line_start\": 710, \"line_end\": 715, \"category\": \"logic\", \"description\": \"Removed the assignment of span_response.span_data.response and span_data.input when tracing.include_data() is true. This means the completed span will no longer record the actual response and input payloads even when data inclusion is enabled, breaking trace completeness for consumers relying on this data.\", \"confidence\": 0.7}]}"
+}

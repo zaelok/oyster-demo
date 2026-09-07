@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 851,
+  "latency_s": 16.265,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1530,
+  "text": "{\"findings\": [{\"file\": \"Sources/CoreFoundation/CFDate.c\", \"line_start\": 171, \"line_end\": 176, \"category\": \"logic\", \"description\": \"The new code replaces the constant __CFTSRRate = NSEC_PER_SEC with a value derived from clock_getres(CLOCK_MONOTONIC, ...). This conflates the clock's *resolution* (granularity) with the *tick rate* used to convert TSR units to seconds. clock_getres typically returns a resolution such as 1 ns or (on some systems) coarser values like 1 ms; using it as the rate can produce wildly incorrect date/time conversions. Additionally, the arithmetic `res.tv_sec + (1000000000 * res.tv_nsec)` is wrong even if resolution were an appropriate proxy \u2014 it should be `res.tv_sec * 1e9 + res.tv_nsec` to properly convert to nanoseconds. As written, if tv_sec is nonzero or resolution differs from 1ns, __CFTSRRate will be computed incorrectly, breaking CFAbsoluteTimeGetCurrent() and other date computations on Linux/BSD/WASI.\", \"confidence\": 0.85}, {\"file\": \"Sources/CoreFoundation/CFDate.c\", \"line_start\": 171, \"line_end\": 174, \"category\": \"logic\", \"description\": \"Calling HALT if clock_getres fails introduces a new hard-crash failure mode during framework initialization that did not exist before (previously a compile-time constant was used unconditionally). This could cause process aborts on platforms/sandboxes where clock_getres is restricted or unsupported (e.g., some WASI environments), regressing reliability for a value that used to be a simple constant assignment.\", \"confidence\": 0.6}]}"
+}

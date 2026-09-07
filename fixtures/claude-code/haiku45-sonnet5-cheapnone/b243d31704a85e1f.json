@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 770,
+  "latency_s": 19.825,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1828,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 2181, \"line_end\": 2182, \"category\": \"logic\", \"description\": \"The removed code converted non-bool tensors to a bool mask via not_equal(x, 0) before casting to int32 for the 'all'/'any' reduction ops. Without this step, the new code directly casts the raw tensor to int32, which truncates non-integer values instead of applying nonzero-truthiness semantics matching torch.all/torch.any. For example, a float tensor containing 0.5 would previously be treated as truthy (cast to 1) but will now be truncated to 0, silently changing the semantics of all()/any() for float inputs with fractional values between -1 and 1 (exclusive of 0). This is a functional regression, not just a style simplification.\", \"confidence\": 0.75}]}"
+}

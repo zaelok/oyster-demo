@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1449,
+  "latency_s": 8.336,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 366,
+  "text": "{\"findings\": [{\"file\": \"Sources/ContainerizationOCI/Platform.swift\", \"line_start\": 261, \"line_end\": 269, \"category\": \"logic\", \"description\": \"The arm64 short-circuit branch only checks architecture and variant equivalence (nil vs \\\"v8\\\") but does not verify lhs.os == rhs.os, so two Platform values with arm64 architecture and compatible variants but different os (e.g. linux vs windows) are incorrectly considered equal.\", \"confidence\": 0.9}, {\"file\": \"Sources/ContainerizationOCI/Platform.swift\", \"line_start\": 261, \"line_end\": 269, \"category\": \"logic\", \"description\": \"This equality shortcut breaks the Hashable contract: hash(into:) presumably hashes os, architecture, and variant as stored (raw nil vs \\\"v8\\\"), so two Platform values deemed equal via the nil/\\\"v8\\\" variant shortcut will produce different hash values, causing incorrect behavior in Set/Dictionary (e.g., duplicate entries or failed lookups).\", \"confidence\": 0.75}]}"
+}

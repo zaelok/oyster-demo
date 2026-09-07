@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 975,
+  "latency_s": 2.97,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 157,
+  "text": "{\"findings\": [{\"file\": \"packages/bedrock-sdk/src/core/streaming.ts\", \"line_start\": 76, \"line_end\": 82, \"category\": \"logic\", \"description\": \"The removal of the check that detects parsed.type === 'error' and throws an APIError means error events sent as 'chunk' SSE events are now silently yielded as regular data instead of being raised as errors, changing error-handling behavior for consumers of the stream.\", \"confidence\": 0.8}]}"
+}

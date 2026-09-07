@@ -1,0 +1,46 @@
+$ C:\src\oyster-demo\.venv\Scripts\python.exe -m oyster.cli calibrate --provider claude-code --yes --record fixtures/claude-code/haiku45-sonnet5-cheapnone --workers 4 --corpus oyster/corpus/cases-auto --priors-out results\cli-auto\haiku45-sonnet5-cheapnone\priors.json
+About to make up to 549 calls through the Claude Code CLI on your subscription 
+(no API billing; counts against subscription usage limits). Dollar figures in 
+the table are API list prices for the tokens used.
+Recording completions as mock fixtures under 
+fixtures/claude-code/haiku45-sonnet5-cheapnone
+550 call(s) made and recorded, 0 replayed from existing fixtures under 
+fixtures\claude-code\haiku45-sonnet5-cheapnone
+                     Calibrated priors over 183 cases                     
+┌───────────────┬──────────────┬──────────┬────────────┬─────┬───────────┐
+│ role          │ model        │ category │ catch rate │   n │    95% CI │
+├───────────────┼──────────────┼──────────┼────────────┼─────┼───────────┤
+│ cheap-scanner │ cheap-model  │ logic    │       0.66 │ 282 │ 0.61-0.72 │
+│ cheap-scanner │ cheap-model  │ security │       0.16 │  32 │ 0.07-0.32 │
+│ critic        │ strong-model │ logic    │       0.33 │ 282 │ 0.28-0.39 │
+│ critic        │ strong-model │ security │       0.12 │  32 │ 0.05-0.28 │
+│ deep-reviewer │ strong-model │ logic    │       0.60 │ 282 │ 0.54-0.66 │
+│ deep-reviewer │ strong-model │ security │       0.19 │  32 │ 0.09-0.35 │
+└───────────────┴──────────────┴──────────┴────────────┴─────┴───────────┘
+Wrote results\cli-auto\haiku45-sonnet5-cheapnone\priors.json
+[exit 0]
+
+$ C:\src\oyster-demo\.venv\Scripts\python.exe -m oyster.cli eval --provider claude-code --yes --record fixtures/claude-code/haiku45-sonnet5-cheapnone --workers 4 --corpus oyster/corpus/cases-auto --out results\cli-auto\haiku45-sonnet5-cheapnone\results.md --json-out results\cli-auto\haiku45-sonnet5-cheapnone\results.json
+About to make up to 1098 calls through the Claude Code CLI on your subscription
+(no API billing; counts against subscription usage limits). Dollar figures in 
+the table are API list prices for the tokens used.
+Recording completions as mock fixtures under 
+fixtures/claude-code/haiku45-sonnet5-cheapnone
+519 call(s) made and recorded, 581 replayed from existing fixtures under 
+fixtures\claude-code\haiku45-sonnet5-cheapnone
+           OYSTER eval over 183 cases (claude-code)            
+┌──────┬─────────┬────────┬───────┬────────┬─────────┬────────┐
+│ path │ $ total │ strict │ loose │ seeded │   $/bug │ halted │
+├──────┼─────────┼────────┼───────┼────────┼─────────┼────────┤
+│ A    │ $0.3129 │    192 │   235 │    314 │ $0.0016 │      0 │
+│ B    │ $2.6304 │    184 │   223 │    314 │ $0.0143 │      0 │
+│ C    │ $5.4959 │    177 │   206 │    314 │ $0.0311 │      0 │
+└──────┴─────────┴────────┴───────┴────────┴─────────┴────────┘
+Wrote results\cli-auto\haiku45-sonnet5-cheapnone\results.md and 
+results\cli-auto\haiku45-sonnet5-cheapnone\results.json
+[exit 0]
+
+$ C:\src\oyster-demo\.venv\Scripts\python.exe -m oyster.cli select --priors results\cli-auto\haiku45-sonnet5-cheapnone\priors.json --budget 1.0 --latency 120.0
+Selected path C: predicted quality 0.44, predicted cost $0.0376 / 107.76s
+[exit 0]
+

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 833,
+  "latency_s": 25.633,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2584,
+  "text": "{\"findings\": [{\"file\": \"gantry/launch.py\", \"line_start\": 321, \"line_end\": 321, \"description\": \"Removing the `not hostnames` guard means the 'storage:weka' tag is now added even when hostnames are specified. Combined with the removal of the hostname/tags conflict check below, this can silently produce a launch request with both hostnames and additional selection constraints (the weka tag), which previously was explicitly disallowed.\", \"category\": \"logic\", \"confidence\": 0.6}, {\"file\": \"gantry/launch.py\", \"line_start\": 339, \"line_end\": 342, \"description\": \"The validation that raised ConfigurationError when hostnames were combined with clusters/gpu_types/tags has been removed. This allows building cluster-selection constraints (e.g., via clusters, gpu_types, or the auto-added 'storage:weka' tag) at the same time hostnames are set, which can result in conflicting or ambiguous placement constraints being sent to the scheduler instead of failing fast with a clear error.\", \"category\": \"logic\", \"confidence\": 0.65}]}"
+}

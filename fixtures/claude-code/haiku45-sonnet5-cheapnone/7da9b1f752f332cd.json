@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1500,
+  "latency_s": 31.192,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2781,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\", \"line_start\": 28, \"line_end\": 28, \"category\": \"logic\", \"description\": \"Switching from `Dictionary(_:uniquingKeysWith:)` to `Dictionary(uniqueKeysWithValues:)` means that if two declaration nodes produce the same `name` key, this now triggers a fatal runtime crash instead of gracefully keeping the first occurrence. Given that the corresponding duplicate-name diagnostic check in translateSchemas.swift was removed in this same change, duplicate schema names are no longer caught earlier and can now reach this line, causing an unhandled crash instead of a clean error/diagnostic.\", \"confidence\": 0.7}, {\"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\", \"line_start\": 64, \"line_end\": 77, \"category\": \"logic\", \"description\": \"The call to `emitDuplicateTypeNameDiagnostic(in: decls)` and its implementation were removed entirely. This eliminates the early, user-friendly error reporting for schemas that map to duplicate generated Swift type names. Instead of failing with a clear diagnostic message, duplicate names will now either produce invalid generated Swift code with colliding type declarations, or (combined with the uniqueKeysWithValues change in translateBoxedTypes.swift) cause an unhandled runtime crash in boxRecursiveTypes.\", \"confidence\": 0.65}]}"
+}

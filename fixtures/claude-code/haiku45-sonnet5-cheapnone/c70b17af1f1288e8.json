@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 871,
+  "latency_s": 7.105,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 530,
+  "text": "{\"findings\": [{\"file\": \"dali/python/nvidia/dali/experimental/dynamic/_call_site.py\", \"line_start\": 33, \"line_end\": 40, \"category\": \"logic\", \"description\": \"The weakref.finalize cleanup that removed a code object's id from _transparent_codes when it was garbage-collected has been removed. Now ids are added to the set but never removed. Since CPython can reuse the id() of a garbage-collected object for a new, unrelated object, a later unrelated code object could receive the same id and be incorrectly treated as 'transparent' by resolve_callsite_frame, causing wrong call-site resolution. This also causes unbounded growth of _transparent_codes over the program's lifetime.\", \"confidence\": 0.7}]}"
+}

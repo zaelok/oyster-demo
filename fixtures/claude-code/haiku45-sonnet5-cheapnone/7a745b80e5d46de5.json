@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1318,
+  "latency_s": 3.782,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 241,
+  "text": "{\"findings\": [{\"file\": \"ecosystem-tests/cli.ts\", \"line_start\": 615, \"line_end\": 617, \"category\": \"logic\", \"description\": \"Switching --retry to type: 'number' with default: 0 (numeric) removes the prior validation that rejected negative, fractional, or non-integer values (e.g. --retry=-1 or --retry=1.5 would previously throw 'must be a non-negative safe integer'). Now such values pass through silently, which can lead to incorrect retry-loop behavior (e.g., NaN from invalid input, negative retry counts treated as falsy/zero, or fractional counts misused in loop bounds) downstream where retry count is consumed.\", \"confidence\": 0.85}]}"
+}

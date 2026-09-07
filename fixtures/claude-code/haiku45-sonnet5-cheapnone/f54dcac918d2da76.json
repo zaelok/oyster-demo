@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 746,
+  "latency_s": 3.279,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 229,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"packages/agents-core/src/utils/applyDiff.ts\",\n      \"line_start\": 328,\n      \"line_end\": 329,\n      \"category\": \"logic\",\n      \"description\": \"Removed special handling for trailing empty line in lines array; may cause off-by-one errors when matching context at EOF with different line ending formats.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"packages/agents-core/src/utils/applyDiff.ts\",\n      \"line_start\": 330,\n      \"line_end\": 330,\n      \"category\": \"logic\",\n      \"description\": \"Changed fallback search start position from Math.min(start, searchLines.length) to just start, which could exceed array bounds if start >= lines.length.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

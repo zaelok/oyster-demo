@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1431,
+  "latency_s": 12.085,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 828,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\", \"line_start\": 542, \"line_end\": 544, \"category\": \"logic\", \"description\": \"Changing the empty-input case from JsonObject.of(emptyMap()) to JsonMissing.of() contradicts the adjacent comment stating the API guarantees tool_use.input is always an object. Downstream consumers (e.g. code deserializing tool input as a JSON object) may now receive a missing/absent field instead of an empty object, breaking assumptions about the field's presence/type.\", \"confidence\": 0.6}, {\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/MessageAccumulator.kt\", \"line_start\": 471, \"line_end\": 472, \"category\": \"logic\", \"description\": \"Same behavioral regression as in BetaMessageAccumulator: replacing JsonObject.of(emptyMap()) with JsonMissing.of() for empty tool input strings means the accumulated ToolUseBlock.input will be missing rather than an empty JSON object, contradicting the documented API guarantee and potentially breaking code that expects an object type for input.\", \"confidence\": 0.6}]}"
+}

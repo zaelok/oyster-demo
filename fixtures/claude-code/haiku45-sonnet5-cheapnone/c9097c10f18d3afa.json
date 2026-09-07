@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1156,
+  "latency_s": 8.288,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 606,
+  "text": "{\"findings\": [{\"file\": \"tpu_inference/core/sched/dp_scheduler.py\", \"line_start\": 228, \"line_end\": 253, \"category\": \"logic\", \"description\": \"The removal of the shortfall-tracking logic (computing 'shortfalls' and afterward decrementing request.num_in_flight_tokens/num_stale_output_tokens) means that when num_sampled < original scheduled tokens during continue-decode multi-step execution, num_in_flight_tokens and num_stale_output_tokens are no longer corrected. This leaves these counters overcounted relative to actual sampled tokens, which can cause incorrect scheduling decisions (e.g., requests appearing to have more in-flight/stale tokens than they actually do), potentially leading to premature blocking or miscounted token budgets in the scheduler.\", \"confidence\": 0.75}]}"
+}

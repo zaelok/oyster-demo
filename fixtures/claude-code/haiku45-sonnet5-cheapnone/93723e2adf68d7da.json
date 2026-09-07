@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1489,
+  "latency_s": 4.655,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 310,
+  "text": "{\"findings\": [{\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 528, \"line_end\": 528, \"category\": \"logic\", \"description\": \"content.get('cache_control', {}) sets an empty dict when cache_control is absent, instead of omitting the key or using None as done elsewhere. This can cause downstream serialization to emit an unintended empty cache_control object in the request payload when the source thinking block had no cache_control.\", \"confidence\": 0.5}, {\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 535, \"line_end\": 535, \"category\": \"logic\", \"description\": \"Same defaulting issue for redacted_thinking_block: cache_control defaults to {} rather than being omitted/None, risking an empty cache_control object being forwarded when none was originally present.\", \"confidence\": 0.5}]}"
+}

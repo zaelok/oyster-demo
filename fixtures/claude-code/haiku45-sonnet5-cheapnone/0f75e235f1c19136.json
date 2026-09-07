@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1278,
+  "latency_s": 10.977,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 817,
+  "text": "{\"findings\": [{\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 540, \"line_end\": 553, \"category\": \"logic\", \"description\": \"Refactor drops the default \\\"upload\\\" filename fallback. Previously every part got a filename attribute (Pathname/IO basename, FilePart's filename, or \\\"upload\\\" for everything else). Now only FilePart-with-non-nil-filename and Pathname/IO get a filename; a FilePart whose filename is nil (a genuine file upload) or any other value type falls into the empty else and emits no filename= at all. For actual file uploads (FilePart with nil filename) this can cause servers to no longer treat the part as a file attachment, which is a functional regression versus prior behavior.\", \"confidence\": 0.55}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1352,
+  "latency_s": 5.059,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 316,
+  "text": "{\"findings\": [{\"file\": \"src/memory/index.ts\", \"line_start\": 77, \"line_end\": 100, \"category\": \"logic\", \"description\": \"This revert removes JSON.parse error handling and Zod schema validation. If any line is malformed JSON, JSON.parse will throw uncaught, crashing the whole readGraph call instead of skipping the bad line. Also invalid/missing fields (e.g., entity without observations) are no longer validated, potentially producing malformed entities/relations in the graph.\", \"confidence\": 0.9}, {\"file\": \"src/memory/index.ts\", \"line_start\": 77, \"line_end\": 100, \"category\": \"logic\", \"description\": \"Type safety regression: 'item' is implicitly 'any' (no unknown/type guard), so item.type, item.name, etc. are accessed without validation, allowing corrupted or unexpected data structures to silently propagate into the KnowledgeGraph.\", \"confidence\": 0.7}]}"
+}

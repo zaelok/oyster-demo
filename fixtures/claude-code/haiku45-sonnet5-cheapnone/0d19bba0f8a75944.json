@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 812,
+  "latency_s": 6.286,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 498,
+  "text": "{\"findings\": [{\"file\": \"buildSrc/src/main/kotlin/com/openai/gradle/CoreCompilationDependencies.kt\", \"line_start\": 31, \"line_end\": 31, \"category\": \"logic\", \"description\": \"Removal of the 'org.jetbrains.kotlin:kotlin-reflect' dependency from publishedImplementationDependencies may break functionality that relies on Kotlin reflection at runtime (e.g., Jackson Kotlin module often requires kotlin-reflect for full support of data classes, nullable types, and default parameter values). If any published code path uses reflection-based Jackson serialization or other kotlin-reflect features, this will fail at runtime for consumers of the published artifact.\", \"confidence\": 0.5}]}"
+}

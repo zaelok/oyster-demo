@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 761,
+  "latency_s": 7.688,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 538,
+  "text": "{\"findings\": [{\"file\": \"Sources/AsyncAlgorithms/AsyncShareSequence.swift\", \"line_start\": 426, \"line_end\": 426, \"category\": \"logic\", \"description\": \"The condition changed from `if let limit, limit > 0` to `if let limit`, so when `limit == 0` this branch is now entered instead of being skipped. Since `state.buffer.count >= limit` (i.e., `>= 0`) is trivially always true, this changes control flow for the zero-limit case: it now takes an unnecessary continuation/lock round-trip on every iterate() call instead of bypassing this logic as before, altering the intended behavior for the limit == 0 configuration.\", \"confidence\": 0.6}]}"
+}

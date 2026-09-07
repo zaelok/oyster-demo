@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1189,
+  "latency_s": 6.385,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 463,
+  "text": "{\"findings\": [{\"file\": \"integration_tests/src/main/python/data_gen.py\", \"line_start\": 985, \"line_end\": 991, \"category\": \"logic\", \"description\": \"The removed _normalize_pyspark_scalar function handled recursive normalization of dates nested inside ArrayType, StructType, and MapType scalars. The replacement only checks if the top-level data_type is DateType, so date values nested inside arrays, structs, or maps will no longer be converted to ISO string format, breaking scalar generation for complex types containing dates.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 904,
+  "latency_s": 3.652,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 224,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/openai/_base_client.py\",\n      \"line_start\": 764,\n      \"line_end\": 767,\n      \"category\": \"logic\",\n      \"description\": \"Missing None-check before float() conversion on retry_ms_header; will raise TypeError if header is None instead of continuing to next header.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/openai/_base_client.py\",\n      \"line_start\": 773,\n      \"line_end\": 776,\n      \"description\": \"retry_header variable used without null-check; if both retry-after-ms and retry-after are missing, retry_header will be None and parsedate_tz() will be called with None.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

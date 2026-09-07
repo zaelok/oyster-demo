@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1235,
+  "latency_s": 35.11,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3331,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\", \"line_start\": 116, \"line_end\": 120, \"category\": \"logic\", \"confidence\": 0.7, \"description\": \"The refactor replaces a check based on whether all *remaining* (unconsumed) SplitArguments elements share the same origin input index with a check on `split.originalInput.count == 1`. If `originalInput` reflects the full original command-line argument list (unaffected by prior consumption/removal of already-parsed arguments), this new guard requires the entire invocation to have had exactly one argument, rather than checking that only one argument remains at this point in parsing. This would break detection of built-in flags like `-h`/`--help`/`--version` in cases such as `tool subcommand -h` or `tool --other -h` where earlier arguments were already consumed before this check runs, since `originalInput.count` would be >1 even though only the help flag remains unconsumed. The reviewer should confirm the exact semantics of `SplitArguments.originalInput` (whether it tracks the original full list or the subset of currently-live elements) to verify this regression, but the naming strongly suggests it reflects the unmodified original input.\"}]}"
+}

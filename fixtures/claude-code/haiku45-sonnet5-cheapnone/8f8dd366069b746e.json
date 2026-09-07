@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1157,
+  "latency_s": 4.698,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 199,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/request_options.rb\", \"line_start\": 40, \"line_end\": 40, \"category\": \"logic\", \"description\": \"extra_query type changed from a union allowing String or Array<String> values (with nullable hash) to strictly HashOf[ArrayOf[String]], removing support for plain String values and the nil? option. Existing code passing a Hash with String values (e.g. {\\\"key\\\" => \\\"value\\\"}) for extra_query will now fail type coercion/validation, and passing nil for extra_query is no longer explicitly supported.\", \"confidence\": 0.75}]}"
+}

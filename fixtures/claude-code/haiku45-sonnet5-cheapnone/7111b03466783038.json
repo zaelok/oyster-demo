@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 872,
+  "latency_s": 2.877,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 163,
+  "text": "{\"findings\": [{\"file\": \"open_instruct/dpo_utils.py\", \"line_start\": 710, \"line_end\": 710, \"category\": \"logic\", \"description\": \"Removing .clamp(min=1) causes division by zero (loss_mask.sum(-1) == 0) whenever a sequence has no unmasked label tokens (all labels are -100), producing NaN/inf in the returned log-prob average and potentially corrupting downstream loss/gradients.\", \"confidence\": 0.95}]}"
+}

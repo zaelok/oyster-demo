@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1116,
+  "latency_s": 4.084,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 290,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/memory/index.ts\",\n      \"line_start\": 77,\n      \"line_end\": 95,\n      \"category\": \"logic\",\n      \"description\": \"Removed error handling for malformed JSON and schema validation; now silently ignores parse errors and invalid records instead of logging warnings.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"src/memory/index.ts\",\n      \"line_start\": 77,\n      \"line_end\": 95,\n      \"category\": \"logic\",\n      \"description\": \"Missing null/undefined checks for item properties (item.name, item.from, etc.) before accessing them in object construction.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"src/memory/index.ts\",\n      \"line_start\": 77,\n      \"line_end\": 95,\n      \"category\": \"logic\",\n      \"description\": \"Removed Zod schema validation (EntitySchema, RelationSchema) allowing malformed entity/relation objects to enter the knowledge graph.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

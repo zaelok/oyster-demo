@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1118,
+  "latency_s": 3.646,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 243,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\",\n      \"line_start\": 28,\n      \"line_end\": 28,\n      \"category\": \"logic\",\n      \"description\": \"Changed from `uniquingKeysWith: { first, _ in first }` to `uniqueKeysWithValues:` which will crash if duplicate keys exist, whereas the original silently kept the first value.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\",\n      \"line_start\": 67,\n      \"line_end\": 95,\n      \"category\": \"logic\",\n      \"description\": \"Removed duplicate type name diagnostic check without apparent replacement, silencing validation errors that previously caught schema naming conflicts.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

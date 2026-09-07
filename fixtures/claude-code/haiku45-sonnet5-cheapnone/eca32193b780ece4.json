@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 777,
+  "latency_s": 19.958,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1744,
+  "text": "{\"findings\": [{\"file\": \"pkl/decode_struct.go\", \"line_start\": 55, \"line_end\": 59, \"category\": \"logic\", \"description\": \"The removed branch previously fell back to decodeObjectGeneric for interface-typed destinations that had no matching schema (d.schemas[name]). After this change, such interface types now go straight to decodeTyped, which appears designed for concrete schema-backed types. This likely breaks decoding of unregistered/dynamic interface types (e.g., plain `interface{}` or interfaces not tied to a pkl schema), causing errors or panics where generic decoding used to succeed. The reviewer should verify decodeTyped's behavior when called with an interface Kind and no schema entry, and whether this case is now handled elsewhere (e.g., inside decodeTyped) or is an unintended regression.\", \"confidence\": 0.55}]}"
+}

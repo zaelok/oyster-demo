@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1025,
+  "latency_s": 5.451,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 409,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/vllm_router/services/request_service/request.py\",\n      \"line_start\": 418,\n      \"line_end\": 418,\n      \"category\": \"security\",\n      \"description\": \"Removed JSON validation that catches malformed/recursive JSON; now will crash on invalid input instead of returning 400 error.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"src/vllm_router/services/request_service/request.py\",\n      \"line_start\": 418,\n      \"line_end\": 418,\n      \"category\": \"logic\",\n      \"description\": \"Removed type check for non-dict JSON objects; will cause downstream errors if request body is a JSON array or primitive.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"src/vllm_router/services/request_service/request.py\",\n      \"line_start\": 1124,\n      \"line_end\": 1124,\n      \"category\": \"logic\",\n      \"description\": \"Removed request_id initialization but it was used in error response headers; responses will now fail or be inconsistent.\",\n      \"confidence\": 0.92\n    },\n    {\n      \"file\": \"src/vllm_router/services/request_service/request.py\",\n      \"line_start\": 1145,\n      \"line_end\": 1147,\n      \"description\": \"Removed error handler for TypeError/ValueError in transcription endpoint, silencing validation errors.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

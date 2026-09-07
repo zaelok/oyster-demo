@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1224,
+  "input_tokens": 1710,
+  "latency_s": 32.995,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 3541,
+  "text": "{\"findings\": [{\"file\": \"include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp\", \"line_start\": 282, \"line_end\": 283, \"category\": \"logic\", \"description\": \"The static_assert enforcing that TileShape_K must be a multiple of the metadata atom K extent (size<2>(TileShape{}) % size<1>(SmemLayoutAtomE{}) == 0) was dropped entirely during the reordering of static_asserts (only the rank and M/N-divisibility asserts were kept/moved). This removes a compile-time safety check that prevented invalid TileShape/SmemLayoutAtomE K-dimension combinations, which could now silently compile into incorrect tile_to_shape layouts or out-of-bounds metadata tensor access at runtime.\", \"confidence\": 0.75}]}"
+}

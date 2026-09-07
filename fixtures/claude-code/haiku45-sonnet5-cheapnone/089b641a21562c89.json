@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1208,
+  "latency_s": 7.688,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 835,
+  "text": "{\"findings\": [{\"file\": \"open_instruct/model_utils.py\", \"line_start\": 68, \"line_end\": 69, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"importlib.util.find_spec('flash_attn.cute') internally imports the parent package 'flash_attn' via __import__; if flash_attn is not installed at all, this raises ModuleNotFoundError instead of returning None, so detect_attn_implementation() will crash instead of gracefully falling back to flash_3/torch backends. Should wrap in try/except or check for the top-level package first.\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 718,
+  "latency_s": 2.967,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\",\n      \"line_start\": 104,\n      \"line_end\": 105,\n      \"category\": \"logic\",\n      \"description\": \"Removed fallback to forward_fn.__globals__; now always uses defining_module.__dict__ which may not contain all necessary imports/symbols that the original forward function had in its closure.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

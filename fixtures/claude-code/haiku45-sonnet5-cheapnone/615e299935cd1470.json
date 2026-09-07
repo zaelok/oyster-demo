@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 845,
+  "latency_s": 9.019,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 764,
+  "text": "{\"findings\": [{\"file\": \"lib/openai/internal/type/file_input.rb\", \"line_start\": 50, \"line_end\": 53, \"category\": \"logic\", \"description\": \"The pattern match was narrowed from `Pathname | StringIO | IO | OpenAI::FilePart` to just `StringIO`. This removes support for Pathname, IO, and OpenAI::FilePart inputs, which will now fall through to the `else` branch and likely be rejected or mis-coerced. This looks like an unintended regression that breaks file upload coercion for previously supported types.\", \"confidence\": 0.75}]}"
+}

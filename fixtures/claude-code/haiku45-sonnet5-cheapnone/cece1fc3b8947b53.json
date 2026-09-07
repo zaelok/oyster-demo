@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 996,
+  "latency_s": 7.779,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 525,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 38, \"category\": \"logic\", \"description\": \"The method-not-found case now returns Mono.error(McpError) instead of a completed JSONRPCResponse containing the error. This drops the original request.id from the JSON-RPC error response, breaking JSON-RPC spec compliance where clients match errors to requests by id, and it changes the reactive signal from onNext (value) to onError, which will be handled differently by downstream operators (e.g., onErrorResume, error logging, or transport-level error handling) than a normal JSONRPCResponse would be.\", \"confidence\": 0.75}]}"
+}

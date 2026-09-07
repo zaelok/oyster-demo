@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1465,
+  "latency_s": 4.392,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 243,
+  "text": "{\"findings\": [{\"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\", \"line_start\": 451, \"line_end\": 457, \"category\": \"logic\", \"description\": \"Removing the blank-string check means a tool_use block with no input arguments (empty inputJson string, common for zero-parameter tools) will now fail JSON_MAPPER.readValue with a parse error ('No content to map due to end-of-input'), which is caught and rethrown as AnthropicInvalidDataException. This converts a previously valid accumulation scenario into a hard failure, breaking streaming accumulation for any tool call that has no arguments.\", \"confidence\": 0.85}]}"
+}

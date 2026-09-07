@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1701,
+  "latency_s": 5.251,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 448,
+  "text": "{\"findings\": [{\"file\": \"src/vllm_router/services/request_service/request.py\", \"line_start\": 418, \"line_end\": 418, \"category\": \"logic\", \"description\": \"Removed try/except around json.loads and the isinstance(dict) check. Malformed JSON or non-object JSON bodies (e.g., a JSON array or string) will now raise an unhandled JSONDecodeError/RecursionError or pass through as non-dict, causing an unhandled exception/500 error or later attribute errors (e.g., .get() calls) instead of a graceful 400 response.\", \"confidence\": 0.85}, {\"file\": \"src/vllm_router/services/request_service/request.py\", \"line_start\": 1124, \"line_end\": 1141, \"category\": \"logic\", \"description\": \"Removed the except (TypeError, ValueError) handler for invalid multipart/form-data requests. Malformed multipart bodies will now raise an unhandled exception instead of returning a 400 JSONResponse, likely resulting in a 500 error.\", \"confidence\": 0.8}, {\"file\": \"src/vllm_router/services/request_service/request.py\", \"line_start\": 1138, \"line_end\": 1141, \"category\": \"style\", \"description\": \"request_id is no longer computed/attached to the error response headers for the KeyError case, losing request tracing correlation for this error path.\", \"confidence\": 0.5}]}"
+}

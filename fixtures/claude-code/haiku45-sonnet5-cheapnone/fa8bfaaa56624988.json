@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 971,
+  "latency_s": 10.516,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1035,
+  "text": "{\"findings\": [{\"file\": \"clients/web/src/hooks/useProgressToasts.ts\", \"line_start\": 89, \"line_end\": 89, \"category\": \"logic\", \"description\": \"If `liveToastIds` is a snapshot copy of `progressToastIdsRef.current` (rather than the same reference), calling `.clear()` on it only empties the local copy and leaves `progressToastIdsRef.current` populated with stale toast ids, unlike the previous `= new Set()` reassignment which guaranteed the ref was reset. This would let stale ids leak into the next session, causing duplicate-id re-show issues the comment says this code is meant to avoid.\", \"confidence\": 0.55}, {\"file\": \"clients/web/src/hooks/useTaskToasts.ts\", \"line_start\": 225, \"line_end\": 225, \"category\": \"logic\", \"description\": \"Same pattern as useProgressToasts.ts: replacing `taskToastIdsRef.current = new Set()` with `liveToastIds.clear()` only resets the ref if `liveToastIds` is the exact same Set object as `taskToastIdsRef.current`. If it is a snapshot/copy taken before hiding toasts, the ref itself is never cleared, so stale task toast ids persist across client swaps.\", \"confidence\": 0.55}]}"
+}

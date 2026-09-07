@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1018,
+  "latency_s": 4.111,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 214,
+  "text": "{\"findings\": [{\"file\": \"pkg/nvcdi/lib-wsl.go\", \"line_start\": 30, \"line_end\": 32, \"category\": \"logic\", \"description\": \"The special-case handling for the 'none' device id has been removed from wsllib.DeviceSpecGenerators. Previously, passing 'none' returned an emptyDeviceSpecGenerator, avoiding generation of actual device specs. Now it always returns 'l' (the wsllib itself), so callers requesting 'none' will get real WSL device spec generation behavior instead of an empty/no-op generator, changing behavior for that case.\", \"confidence\": 0.75}]}"
+}

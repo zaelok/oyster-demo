@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 551,
+  "latency_s": 2.626,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 110,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/shared/config.ts\",\n      \"line_start\": 120,\n      \"line_end\": 120,\n      \"category\": \"logic\",\n      \"description\": \"Environment variables from platformConfig are no longer merged with existing result.env; they now completely replace it, which could lose base configuration.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 930,
+  "latency_s": 30.068,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2601,
+  "text": "{\"findings\": [{\"file\": \"Sources/AsyncAlgorithms/AsyncShareSequence.swift\", \"line_start\": 426, \"line_end\": 426, \"category\": \"logic\", \"description\": \"Removing the `limit > 0` guard means `iterate()` now enters the buffered-wait branch even when `limit == 0` (or negative). Since `state.buffer.count >= limit` is trivially true for limit <= 0, the function still resumes immediately, but it now always goes through an async `withUnsafeContinuation` suspension point instead of bypassing it as before. This introduces an unnecessary suspension for degenerate limit values and changes the synchronous/asynchronous timing of `iterate()`, which can affect cancellation ordering or callers that assumed a fast synchronous path when limit was 0.\", \"confidence\": 0.55}]}"
+}

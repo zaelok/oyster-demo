@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 720,
+  "latency_s": 12.575,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1125,
+  "text": "{\"findings\": [{\"file\": \"OpenAI.Responses/src/Custom/ResponseContentPart.cs\", \"line_start\": 20, \"line_end\": 20, \"category\": \"logic\", \"description\": \"The setter for Kind was changed from `InternalType = value.ToSerialString();` to `InternalType = Kind.ToSerialString();`. This uses the property's own getter (Kind) instead of the incoming `value` parameter, meaning any attempt to set a new Kind is discarded and InternalType is just reassigned based on its current state. This effectively breaks the setter, making it a no-op with respect to the intended new value, which will cause incorrect serialization behavior wherever this setter is used (e.g., constructors or deserialization paths that rely on setting Kind to change InternalType).\", \"confidence\": 0.95}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 908,
+  "latency_s": 7.356,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 647,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/common/data/lhotse/cutset.py\", \"line_start\": 1189, \"line_end\": 1193, \"category\": \"logic\", \"description\": \"Removed check for context_speaker_similarity being None. If a cut has the custom attribute set but its value is None (e.g., not yet computed), the comparison 'None >= min_context_speaker_similarity' will raise a TypeError at runtime.\", \"confidence\": 0.8}, {\"file\": \"nemo/collections/common/data/lhotse/sampling.py\", \"line_start\": 366, \"line_end\": 370, \"category\": \"logic\", \"description\": \"Removed check for context_speaker_similarity being None before comparing with >=. If has_custom is True but the value is None, 'None >= self.min_context_speaker_similarity' will raise a TypeError.\", \"confidence\": 0.8}]}"
+}

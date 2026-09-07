@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1385,
+  "latency_s": 7.56,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 624,
+  "text": "{\"findings\": [{\"file\": \"litellm/proxy/common_utils/http_parsing_utils.py\", \"line_start\": 45, \"line_end\": 51, \"category\": \"logic\", \"description\": \"The recursive `_unqualified` helper (which stripped Annotated, NotRequired, Required, and ReadOnly qualifiers) was replaced with a single inline check that only unwraps a single level of `ReadOnly`. Fields annotated with `NotRequired[int]`, `Required[int]`, `Annotated[int, ...]`, or nested combinations like `ReadOnly[NotRequired[int]]` will no longer be recognized as numeric types, so `_numeric_form_type` will return None for them and form fields typed this way will not be parsed as int/float.\", \"confidence\": 0.75}]}"
+}

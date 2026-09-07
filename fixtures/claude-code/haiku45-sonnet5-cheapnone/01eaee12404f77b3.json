@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1070,
+  "latency_s": 8.263,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 697,
+  "text": "{\"findings\": [{\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 86, \"line_end\": 89, \"category\": \"logic\", \"description\": \"Removed isinstance(block, dict) check before accessing block['type'] for user message content blocks. If content contains a non-dict item (e.g., string or None), this will now raise an unhandled TypeError/KeyError instead of the intended MessageParseError, potentially escaping the try/except that expects MessageParseError-style handling.\", \"confidence\": 0.75}, {\"file\": \"src/claude_agent_sdk/_internal/message_parser.py\", \"line_start\": 126, \"line_end\": 129, \"category\": \"logic\", \"description\": \"Removed validation that data['message']['content'] is a list and that each block is a dict before assistant content parsing. If content is not a list (e.g., a dict or string) or contains non-dict elements, iterating and calling block['type'] will raise a generic TypeError instead of the intended MessageParseError, changing error semantics for malformed API responses.\", \"confidence\": 0.75}]}"
+}

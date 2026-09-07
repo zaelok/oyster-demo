@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1067,
+  "latency_s": 5.441,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 231,
+  "text": "{\"findings\": [{\"file\": \"lib/ClangImporter/ImportDecl.cpp\", \"line_start\": 3417, \"line_end\": 3417, \"category\": \"logic\", \"description\": \"Removed logic that added a DisfavoredOverloadAttr when the import key's canonical decl differs from decl. This attribute suppressed overload-resolution ambiguity between the canonical imported enum-constant decl and non-canonical redeclarations (e.g., decls from separate but related canonical declarations). Deleting it can reintroduce ambiguous references in Swift when the same enum constant is imported via multiple canonical decls, since both will now be equally preferred overloads.\", \"confidence\": 0.55}]}"
+}

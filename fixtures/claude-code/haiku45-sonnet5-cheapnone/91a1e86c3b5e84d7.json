@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 982,
+  "latency_s": 4.35,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 329,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/ArgumentParser/Parsable Types/ParsableArguments.swift\",\n      \"line_start\": 319,\n      \"line_end\": 320,\n      \"category\": \"logic\",\n      \"description\": \"New visibility check returns nil when visibility is insufficient, but this silently drops arguments instead of handling the error explicitly.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"Sources/ArgumentParser/Parsable Properties/OptionGroup.swift\",\n      \"line_start\": 88,\n      \"line_end\": 91,\n      \"category\": \"logic\",\n      \"description\": \"Removal of visibility reduction in OptionGroup combined with new check in ParsableArguments may cause visibility enforcement to be inconsistent between grouped and non-grouped arguments.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"Sources/ArgumentParser/Parsable Properties/ArgumentVisibility.swift\",\n      \"line_start\": 60,\n      \"line_end\": 75,\n      \"category\": \"style\",\n      \"description\": \"Removal of `reduce()` method and `reducingHelpVisibility()` extension method that are no longer called, but callers should be verified for complete migration.\",\n      \"confidence\": 0.5\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1320,
+  "latency_s": 16.751,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1525,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 328, \"line_end\": 330, \"category\": \"logic\", \"description\": \"Removing the trailing-empty-string stripping (searchLines) means that when file content ends with a newline, lines.length includes an extra empty element not present in the context array. This offsets endStart by one, so findContextCore searches the wrong window and can fail to match end-of-file context that would have matched correctly before this change.\", \"confidence\": 0.6}, {\"file\": \"packages/agents-core/src/utils/applyDiff.ts\", \"line_start\": 331, \"line_end\": 331, \"category\": \"logic\", \"description\": \"The fallback call now passes 'start' unclamped instead of Math.min(start, searchLines.length). If findContextCore does not internally guard against a start index beyond lines.length, this could produce incorrect or out-of-range matching behavior in the fallback path; low confidence since findContextCore's bounds handling is unknown.\", \"confidence\": 0.3}]}"
+}

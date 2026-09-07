@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1214,
+  "latency_s": 3.901,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 246,
+  "text": "{\"findings\": [{\"file\": \"src/llmcompressor/pipelines/sequential/ast_helpers.py\", \"line_start\": 99, \"line_end\": 103, \"category\": \"logic\", \"description\": \"The refactor removes the fallback to `forward_fn.__globals__` and unconditionally uses `sys.modules[module.__class__.__module__].__dict__`. If `forward` is inherited from a superclass defined in a different module, or is a bound/dynamically-assigned function whose `__globals__` differ from the module of `module.__class__`, the namespace used to exec the rewritten AST will be missing names (helper functions, imports) that the original forward relied on, causing NameError at runtime that did not occur before.\", \"confidence\": 0.6}]}"
+}

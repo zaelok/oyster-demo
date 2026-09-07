@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1323,
+  "latency_s": 14.162,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1163,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 71, \"line_end\": 72, \"category\": \"logic\", \"description\": \"TypeAnnotationSyntax() now uses the default colon token which has no trailing space, so the generated code will render as 'name:Type' instead of 'name: Type'. This doesn't break compilation but produces incorrectly formatted output from the refactoring tool.\", \"confidence\": 0.7}, {\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 74, \"line_end\": 76, \"category\": \"logic\", \"description\": \"Same issue as above for the placeholder '<#Type#>' TypeAnnotationSyntax: missing custom colon token causes no space after the colon in generated output.\", \"confidence\": 0.7}, {\"file\": \"Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\", \"line_start\": 82, \"line_end\": 82, \"category\": \"style\", \"description\": \"Removing the trailing-trivia reset on the pattern before attaching the new type annotation means any trailing trivia previously present on the pattern (e.g., a space before '=') is preserved, which combined with the colon token no longer having leading/trailing spacing can produce inconsistent spacing such as 'name :Type' in the generated declaration.\", \"confidence\": 0.55}]}"
+}

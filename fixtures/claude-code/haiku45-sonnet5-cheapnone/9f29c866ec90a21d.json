@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1133,
+  "latency_s": 3.41,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 214,
+  "text": "{\"findings\": [{\"file\": \"pkl/evaluator_options.go\", \"line_start\": 461, \"line_end\": 461, \"category\": \"logic\", \"description\": \"opts.Http.Proxy is nil at this point (opts.Http was just created as &Http{} with Proxy unset), so opts.Http.Proxy.NoProxy dereferences a nil pointer, causing a panic. This also drops the intended logic of copying evaluatorSettings.Http.Proxy.NoProxy into opts.Http.Proxy.NoProxy, so the NoProxy setting from evaluatorSettings is never applied.\", \"confidence\": 0.97}]}"
+}

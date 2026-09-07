@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 760,
+  "latency_s": 6.63,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 225,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/mcp/server/fastmcp/resources/templates.py\",\n      \"line_start\": 89,\n      \"line_end\": 89,\n      \"category\": \"logic\",\n      \"description\": \"Changing from fullmatch to match with anchors is functionally equivalent but less clear; fullmatch is the intended method for complete string matching.\",\n      \"confidence\": 0.3\n    },\n    {\n      \"file\": \"src/mcp/shared/tool_name_validation.py\",\n      \"line_start\": 80,\n      \"line_end\": 80,\n      \"category\": \"logic\",\n      \"description\": \"Changing from fullmatch to match breaks validation logic if TOOL_NAME_REGEX lacks anchors, allowing partial matches instead of requiring complete match.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

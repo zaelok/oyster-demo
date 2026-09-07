@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1188,
+  "latency_s": 6.513,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 218,
+  "text": "{\"findings\": [{\"file\": \"Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\", \"line_start\": 448, \"line_end\": 452, \"category\": \"logic\", \"description\": \"Fixed single '#' delimiter is unsafe: if the string contains the sequence '\\\"#' (a quote followed by a hash), the raw literal #\\\"...\\\"# will terminate early at that inner occurrence, truncating the literal and generating incorrect/non-compiling Swift code. The removed loop dynamically escalated the hash count specifically to avoid this collision; this logic is now missing.\", \"confidence\": 0.9}]}"
+}

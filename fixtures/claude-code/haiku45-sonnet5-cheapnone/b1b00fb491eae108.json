@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1357,
+  "latency_s": 4.412,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 279,
+  "text": "```json\n{\"findings\": [{\"file\": \"tpu_inference/core/sched/dp_scheduler.py\", \"line_start\": 246, \"line_end\": 249, \"category\": \"logic\", \"description\": \"When num_sampled < original num_scheduled_tokens (a shortfall occurs), the code still overwrites num_scheduled_tokens[req_id] with num_sampled but no longer decrements request.num_in_flight_tokens or request.num_stale_output_tokens by the shortfall. This leaves those counters overstated relative to actual tokens produced, causing incorrect in-flight/stale token accounting for subsequent scheduling decisions (e.g., premature blocking or incorrect stale-token detection) whenever a continue-decode multi-step execution produces fewer sampled tokens than scheduled.\", \"confidence\": 0.75}]}\n```"
+}

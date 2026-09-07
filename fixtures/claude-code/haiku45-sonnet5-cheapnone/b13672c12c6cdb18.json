@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 886,
+  "latency_s": 27.383,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2332,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\", \"line_start\": 116, \"line_end\": 120, \"category\": \"logic\", \"description\": \"The `requireSoloArgument` check was changed from verifying that all remaining SplitArguments elements originate from the same input token (i.e., the flag is the only thing left unconsumed) to checking `split.originalInput.count == 1`, which reflects the size of the *original* full input array rather than the current (possibly already-partially-consumed) split. This changes behavior for cases where other arguments were already parsed/consumed before this check runs (e.g. `mytool --other -h`): previously the loop would detect that only `-h` remains and treat it as solo, but now `originalInput.count` is 2, so the guard returns early and the built-in flag is not recognized as solo, potentially causing `-h`/`--help`/`--version` detection to be skipped in valid solo-remaining scenarios.\", \"confidence\": 0.65}]}"
+}

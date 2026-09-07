@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 841,
+  "latency_s": 2.874,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 166,
+  "text": "```json\n{\"findings\": [{\"file\": \"gpt_oss/tools/simple_browser/backend.py\", \"line_start\": 196, \"line_end\": 202, \"category\": \"logic\", \"description\": \"Removing the api_key field and constructor parameter eliminates the ability to programmatically configure the You.com API key, forcing reliance solely on the YDC_API_KEY environment variable. This breaks backward compatibility for any callers who previously passed api_key explicitly.\", \"confidence\": 0.7}]}\n```"
+}

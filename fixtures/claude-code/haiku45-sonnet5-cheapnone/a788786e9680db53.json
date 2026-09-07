@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1055,
+  "latency_s": 5.337,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 351,
+  "text": "{\"findings\": [{\"file\": \"src/anthropic/lib/_parse/_transform.py\", \"line_start\": 83, \"line_end\": 86, \"category\": \"logic\", \"description\": \"Moving the $ref check before $defs processing means that when a schema has both $ref and $defs at the top level, the function returns early after popping $ref, without ever transforming or including $defs in strict_schema. Since $defs are typically defined alongside a top-level $ref (e.g., JSON schemas from Pydantic with $ref pointing into $defs), the definitions are dropped entirely from the output, breaking any strict-mode schema that relies on referenced definitions.\", \"confidence\": 0.85}]}"
+}

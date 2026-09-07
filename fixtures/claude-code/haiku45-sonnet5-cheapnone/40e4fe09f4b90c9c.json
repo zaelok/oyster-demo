@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1214,
+  "latency_s": 7.017,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 254,
+  "text": "{\"findings\": [{\"file\": \"vllm/v1/worker/gpu/warmup.py\", \"line_start\": 220, \"line_end\": 223, \"category\": \"logic\", \"description\": \"The removal of the temporary disabling of model_runner.adaptive_verification (previously set to None during warmup and restored afterward via try/finally) means warmup_kernels now runs with adaptive_verification active. If adaptive_verification alters control flow, tensor shapes, or requires real request/draft-token state not present during warmup, this can cause warmup to fail, skip warming the non-adaptive-verification code path (leading to first-request latency spikes or recompilation), or cause CUDA graph capture to record shapes/paths inconsistent with normal inference.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1210,
+  "latency_s": 13.021,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1110,
+  "text": "{\"findings\": [{\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 530, \"line_end\": 530, \"category\": \"logic\", \"description\": \"Defaulting cache_control to an empty dict via content.get(\\\"cache_control\\\", {}) means every thinking block, even those without an original cache_control, will carry cache_control={} instead of omitting the field or using None. Downstream code that checks `if cache_control:` (falsy check) works, but code that checks `is not None` or serializes the field will emit an invalid/empty cache_control object to the Anthropic API, unlike the sibling tool_call path which routes through _add_cache_control_if_applicable() (presumably with model-specific validation) rather than blindly copying the field.\", \"confidence\": 0.55}, {\"file\": \"litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\", \"line_start\": 538, \"line_end\": 538, \"category\": \"logic\", \"description\": \"Same issue as the thinking block: redacted_thinking_block unconditionally sets cache_control to content.get(\\\"cache_control\\\", {}), producing an empty dict rather than omitting the key when no cache_control was present, and bypassing the _add_cache_control_if_applicable helper used elsewhere for tool_calls, so no model-compatibility check is applied before attaching cache_control.\", \"confidence\": 0.55}]}"
+}

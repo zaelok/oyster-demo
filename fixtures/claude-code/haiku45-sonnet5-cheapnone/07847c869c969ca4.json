@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1086,
+  "latency_s": 26.336,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1845,
+  "text": "{\"findings\": [{\"file\": \"Sources/ArgumentParser/Parsing/CommandParser.swift\", \"line_start\": 120, \"line_end\": 120, \"category\": \"logic\", \"description\": \"The replacement check `split.originalInput.count == 1` uses the count of all original command-line arguments passed to the parser, not the count of arguments still remaining/unconsumed in `split`. The removed loop instead verified that every *remaining* element in `split.elements` shared the same `inputIndex`, i.e., that only one original argument was left to examine (even if other arguments had already been consumed/stripped for subcommand or option parsing). With the new check, e.g. `command subcommand --help` would have `originalInput.count == 2`, so the solo-argument check now fails even though `--help` is the only element left in `split` after `subcommand` was consumed; this causes `--help`/`--version` to no longer be recognized as a solo built-in flag in nested/subcommand invocations, changing which error (missing-argument vs. help) is surfaced to the user.\", \"confidence\": 0.72}]}"
+}

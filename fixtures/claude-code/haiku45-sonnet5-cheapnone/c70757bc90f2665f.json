@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1052,
+  "latency_s": 6.071,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 152,
+  "text": "{\"findings\": [{\"file\": \"src/openai/lib/_parsing/_embeddings.py\", \"line_start\": 22, \"line_end\": 30, \"category\": \"style\", \"description\": \"has_numpy() is called on every iteration of the loop instead of once before the loop, adding redundant overhead for responses with many string-encoded embeddings; behavior is unchanged but this is a minor performance regression compared to the previous single-check approach.\", \"confidence\": 0.4}]}"
+}

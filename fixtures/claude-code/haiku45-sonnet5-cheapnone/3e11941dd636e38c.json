@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 963,
+  "latency_s": 11.795,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 826,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftDriver/Driver/Driver.swift\", \"line_start\": 2521, \"line_end\": 2524, \"category\": \"logic\", \"description\": \"Removing the case for `.emitSupportedArguments, .emitSupportedFeatures` from this switch means these output-mode options will fall through to the `default: fatalError(...)` branch (assuming they are still valid enum cases elsewhere), causing a crash when a user passes `-emit-supported-arguments` or `-emit-supported-features` instead of producing the expected `jsonCompilerFeatures` output.\", \"confidence\": 0.75}, {\"file\": \"Sources/SwiftDriver/Jobs/Planning.swift\", \"line_start\": 728, \"line_end\": 735, \"category\": \"logic\", \"description\": \"Removing the special-case job creation for `.emitSupportedArguments`/`.emitSupportedFeatures` eliminates the code path that actually builds and returns the supported-compiler-features job. Combined with the removal of the corresponding case in Driver.swift's output-type switch, this breaks the `-emit-supported-arguments`/`-emit-supported-features` driver functionality entirely, since no job will be created for these flags and the flow will hit the fatalError default elsewhere.\", \"confidence\": 0.75}]}"
+}

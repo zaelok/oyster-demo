@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1723,
+  "latency_s": 5.548,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 427,
+  "text": "{\"findings\": [{\"file\": \"codex-rs/tui/src/bottom_pane/textarea.rs\", \"line_start\": 802, \"line_end\": 808, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"beginning_of_previous_word() computes candidate as `i + 1` after rfind of a whitespace char, assuming it is 1 byte in UTF-8. Multi-byte whitespace (e.g. U+202F, U+00A0) will cause `i + 1` to land mid-character, producing an invalid byte index that will panic on subsequent string slicing/indexing (e.g., in adjust_pos_out_of_elements or self.text[..candidate]). The prior implementation correctly used `idx + ch.len_utf8()`.\"}, {\"file\": \"codex-rs/tui/src/bottom_pane/textarea.rs\", \"line_start\": 1265, \"line_end\": 1271, \"category\": \"style\", \"description\": \"The regression test delete_backward_word_handles_narrow_no_break_space, which specifically covered the multi-byte whitespace boundary case now broken by the `i + 1` regression, was deleted along with its #[test] attribute rather than fixed. This removes CI coverage for the exact bug reintroduced in this diff.\", \"confidence\": 0.85}]}"
+}

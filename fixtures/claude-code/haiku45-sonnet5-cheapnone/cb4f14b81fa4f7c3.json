@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1093,
+  "latency_s": 3.603,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 249,
+  "text": "{\"findings\": [{\"file\": \"Sources/SwiftLanguageService/CodeCompletionContext.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Removing the `token.trimmedRange.contains(absolutePosition)` check means the function now treats any position for which `tree.token(at:)` returns an identifier/keyword token as being inside that identifier, even if the position lies in trivia (whitespace/newlines) before or after the token rather than within its actual text range. This can cause `findEndOfIdentifier` to return an incorrect identifier end position when the cursor is positioned in whitespace adjacent to an identifier, leading to wrong code completion replacement ranges.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1283,
+  "input_tokens": 2138,
+  "latency_s": 6.503,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 572,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\", \"line_start\": 461, \"line_end\": 467, \"category\": \"logic\", \"description\": \"Copy constructor no longer copies ewmaCancellationPenalty, ewmaErrorPenalty, concurrentRequestPenalty, and cancellationIsError from the source outlierDetectorConfig, so a Builder created from an existing config will silently reset these fields to their default values instead of preserving the original configuration.\", \"confidence\": 0.95}, {\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinLoadBalancerBuilder.java\", \"line_start\": 145, \"line_end\": 151, \"category\": \"style\", \"description\": \"Javadoc @param tag is malformed: the description text 'background health checking. Use negative value to disable the health checking mechanism.' is placed on its own line without repeating '@param threshold', making it render as a continuation attached incorrectly and duplicating the negative-value note already present above in the method doc.\", \"confidence\": 0.8}, {\"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/LoadBalancerBuilder.java\", \"line_start\": 88, \"line_end\": 91, \"category\": \"style\", \"description\": \"Added @param tag documents a parameter named 'outlierDetectorConfig' but this cannot be confirmed to match the actual method signature parameter name from the visible diff context; if the parameter name differs, this will produce a javadoc/param mismatch warning.\", \"confidence\": 0.3}]}"
+}

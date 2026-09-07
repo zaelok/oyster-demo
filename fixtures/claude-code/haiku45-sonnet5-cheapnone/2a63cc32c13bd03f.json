@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 890,
+  "latency_s": 3.918,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 193,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-openai/src/openaiResponsesModel.ts\", \"line_start\": 3958, \"line_end\": 3962, \"category\": \"logic\", \"description\": \"The removed code set span.spanData.response_id and span.spanData._response using terminalResponse when request.tracing === true. Without this, if tracing is enabled and the response comes through the terminalResponse branch (as opposed to another branch that may still set these fields), the trace span will lack response_id and the full response payload, degrading observability/tracing data for this code path.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1158,
+  "latency_s": 4.299,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 268,
+  "text": "{\"findings\": [{\"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\", \"line_start\": 35, \"line_end\": 35, \"category\": \"logic\", \"description\": \"Replacing the returned JSON-RPC error response with a Mono.error(McpError) changes the method-not-found handling from a valid protocol response into a stream error. Downstream Mono error handling will now need to catch McpError and convert it back into a JSONRPCResponse with the correct request id and METHOD_NOT_FOUND code, otherwise the client either receives no response, a generic error without the original request id, or the reactive chain terminates unexpectedly instead of completing normally with an error payload as required by JSON-RPC.\", \"confidence\": 0.8}]}"
+}

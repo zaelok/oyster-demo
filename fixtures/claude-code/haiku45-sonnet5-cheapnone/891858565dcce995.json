@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1048,
+  "latency_s": 5.76,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 240,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts\", \"line_start\": 316, \"line_end\": 318, \"category\": \"logic\", \"description\": \"clearSession() removes the reset of this.responseId and this.lastStore, so after clearing the session these fields retain their previous values while sessionItems and compactionCandidateItems are emptied. If subsequent request-building logic uses responseId/lastStore to chain off a prior response (e.g., passing previous_response_id to the API), it will reference a response tied to conversation history that has now been cleared, causing the API to either error out or incorrectly resume from stale context instead of starting fresh.\", \"confidence\": 0.65}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1240,
+  "latency_s": 8.974,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 568,
+  "text": "{\"findings\": [{\"file\": \"Sources/Containerization/LinuxPod.swift\", \"line_start\": 410, \"line_end\": 413, \"category\": \"logic\", \"description\": \"The block that creates /run/virtiofs and issues the virtiofs mount(s) inside the guest (per-tag or single aggregate mount) has been removed entirely with no replacement visible in the diff. If no equivalent mounting logic exists elsewhere, containers relying on virtiofs mounts (vm.mounts with type 'virtiofs') will no longer have their host directories mounted in the guest before the subsequent file-mount context setup runs, causing those mounts to be missing or failing at container start.\", \"confidence\": 0.5}]}"
+}

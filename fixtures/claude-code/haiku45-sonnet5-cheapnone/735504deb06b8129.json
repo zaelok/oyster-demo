@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 714,
+  "latency_s": 4.949,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 317,
+  "text": "{\"findings\": [{\"file\": \"packages/agents-openai/src/openaiResponsesModel.ts\", \"line_start\": 3958, \"line_end\": 3965, \"category\": \"logic\", \"description\": \"The removed block previously set span.spanData.response_id and span.spanData._response when a terminalResponse was received and tracing was enabled. Removing this means tracing spans will no longer record the response id/data for terminal responses, breaking trace completeness for this code path.\", \"confidence\": 0.6}]}"
+}

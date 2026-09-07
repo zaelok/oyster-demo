@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1259,
+  "latency_s": 2.794,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 168,
+  "text": "{\"findings\": [{\"file\": \"packages/bedrock-sdk/src/core/streaming.ts\", \"line_start\": 76, \"line_end\": 82, \"category\": \"logic\", \"description\": \"Removing the check for parsed.type === 'error' within 'chunk' events means error payloads sent as chunk data are now yielded to consumers as normal data instead of being thrown as an APIError, changing error-handling behavior for stream consumers that rely on errors being thrown during iteration.\", \"confidence\": 0.8}]}"
+}

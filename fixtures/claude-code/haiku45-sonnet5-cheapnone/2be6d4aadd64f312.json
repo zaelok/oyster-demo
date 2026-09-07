@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 933,
+  "latency_s": 21.542,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2161,
+  "text": "{\"findings\": [{\"file\": \"nemo/collections/common/data/lhotse/cutset.py\", \"line_start\": 1190, \"line_end\": 1193, \"category\": \"logic\", \"description\": \"Removed the `context_speaker_similarity is None` short-circuit check. If a supervision has the custom attribute `context_speaker_similarity` set but its value is `None`, the remaining condition `cut.supervisions[0].context_speaker_similarity >= min_context_speaker_similarity` will raise a TypeError from comparing `None` with a float, whereas previously such cuts were correctly treated as passing the filter. This is a functional regression, not just a style cleanup.\", \"confidence\": 0.75}, {\"file\": \"nemo/collections/common/data/lhotse/sampling.py\", \"line_start\": 367, \"line_end\": 372, \"category\": \"logic\", \"description\": \"Removed the `context_speaker_similarity is not None` guard from the condition. If `has_custom('context_speaker_similarity')` is True but the value is `None`, the code now falls into the `if` branch and executes `None >= self.min_context_speaker_similarity`, raising a TypeError instead of falling through to the previous safe default behavior.\", \"confidence\": 0.75}]}"
+}
