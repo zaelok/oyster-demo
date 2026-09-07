@@ -101,7 +101,7 @@ it makes them explicit and shows what each weighting selects.
 | categories | logic, security, style |
 | cost | tokens at list rates; latency |
 | corpus | 17 reversed bug-fix PRs from public repositories, 21 seeded bugs |
-| result | A 15/21 at $0.0008 per bug, B 16/21 at $0.0028, C 14/21 at $0.0070; selector picked C |
+| result | run 1 (chat, 21 bugs): A 15, B 16, C 14; run 4 (CLI, 314 bugs): A 192 at $0.0016 per bug, B 184 at $0.0143, C 177 at $0.0311; the selector picked C every time (see `CONCLUSIONS.md`) |
 
 ### 3.2 Bug fixing (next instance, ground truth already in hand)
 

@@ -15,8 +15,9 @@ instance (pull-request review), and the shapes the other parts must fit.
 
 The claim under test in the first instance: an orchestrator operating on a uniform graph
 representation can select, under an explicit cost budget, a review strategy whose measured
-bugs-caught-per-dollar beats any fixed single strategy, and can show its work. The first run
-is below, including the place where the optimizer was wrong.
+bugs-caught-per-dollar beats any fixed single strategy, and can show its work. Four measured
+runs are below, including the places where the optimizer was wrong, and
+[`docs/CONCLUSIONS.md`](docs/CONCLUSIONS.md) says what they add up to.
 
 ## The north star
 
@@ -117,7 +118,7 @@ flowchart LR
   C --> M
   M["Matcher<br/>strict and loose · one finding per bug · false positives"] --> T["results.md and results.json<br/>$ · caught · $ per bug · per-case provenance"]
   CAL["Calibration<br/>each skill alone → priors with n and CI"] --> S["Selector<br/>independence prior · reject by latency and budget · argmax"]
-  S -. "predicted C best, measured B best" .-> T
+  S -. "chose C in 4 runs of 4, best in 1" .-> T
 ```
 
 - **Engine**: graph validation, cost vector, executor with hooks and cached context, selector
@@ -136,6 +137,30 @@ flowchart LR
   auto tier (183 cases from 146 public repositories, labels unreviewed) is built by
   `tools/build_corpus.py` and evaluated separately.
 - **Tests**: 164, all offline.
+
+## Conclusions after four runs
+
+One model pair (Haiku 4.5 as cheap-model, Sonnet 5 as strong-model), three executor
+settings, two corpus tiers, four runs, every completion retained. The synthesis, with the
+cross-run table, the calibrated priors and the threats to validity, is
+[`docs/CONCLUSIONS.md`](docs/CONCLUSIONS.md). In short:
+
+1. **Spending more did not catch more.** The cheap single pass was never beaten by a margin
+   the sample can distinguish, and on 314 bugs it caught the most at an eighth and a
+   seventeenth of the other paths' cost.
+2. **Security bugs are the shared hole**: 16 to 25 percent caught by every path in every run,
+   against 61 to 100 for the rest. That is a routing problem (a different executor for that
+   facet), not a longer-flow problem.
+3. **An executor is model + settings + harness.** The CLI's default thinking made Haiku forty
+   times more expensive and worse. Numbers without the settings in the header are not
+   comparable.
+4. **The independence prior over-predicts multi-node flows.** The selector chose C in four
+   runs of four; C was best in one. Critics re-judge rather than detect, and last-node-wins
+   drops upstream catches. Measured flow priors are the specified fix.
+5. **Label noise is measurable**: about 14 percent on the auto tier's categories; absence bugs
+   and newer PRs are harder, the latter consistent with training-data contamination.
+6. **Run-to-run variance is large and unmodelled**: the same 21 bugs gave the cheap pass 15,
+   13 and 18 catches across runs. Replicates are the next thing the reviewed tier needs.
 
 ## Results: first run (chat window, estimated tokens)
 
@@ -399,6 +424,8 @@ path, then the Limitations section verbatim. `results.json` retains every `PathR
 
 ## Documents
 
+- [`docs/CONCLUSIONS.md`](docs/CONCLUSIONS.md): what four runs support, what they do not,
+  what would change them, and the next runs in cost order.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): what and why, for the first instance. The
   graph model, the selection objective, the evaluation method and the non-goals.
 - [`docs/BUILD-SPEC.md`](docs/BUILD-SPEC.md): how. Frozen contracts, per-module acceptance
