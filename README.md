@@ -20,7 +20,7 @@ token counts as the API reported them:
 | B · cheap → strong cascade (Haiku → Sonnet) | $2.63 | 184 / 314 | $0.0143 |
 | C · reviewer → critic → reviewer (Sonnet) | $5.50 | 177 / 314 | $0.0311 |
 
-Spending 8× and 17× more caught fewer bugs. The selector, reasoning from per-skill priors
+Spending 8× and 17× more did not catch more bugs: 192, 184 and 177, with overlapping 95% intervals on the rates and no overlap on the costs. The selector, reasoning from per-skill priors
 under an independence assumption, predicted C would win, in this run and the three before it;
 it won once. Security bugs were the hole every strategy shared: 16 to 25 percent caught,
 against 61 to 100 for the rest. Every completion is a retained fixture, so the table replays
