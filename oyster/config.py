@@ -13,6 +13,12 @@ class Settings(BaseSettings):
     # `claude setup-token` output; lets --provider claude-code run from any shell or
     # session without the variable being exported there. Never committed (.env is ignored).
     claude_code_oauth_token: str = ""
+    # Thinking effort per model for --provider claude-code: "" leaves the CLI's default
+    # (adaptive thinking, which on review prompts runs to thousands of tokens), "none"
+    # disables thinking (MAX_THINKING_TOKENS=0), low|medium|high|xhigh|max map to --effort.
+    # The API provider ignores these; the results header records them.
+    cheap_effort: str = ""
+    strong_effort: str = ""
     cheap_model_id: str = "claude-haiku-4-5-20251001"
     strong_model_id: str = "claude-sonnet-4-5"
     cheap_rate_in: float = 1.00  # dollars per 1M tokens, VERIFY before real runs

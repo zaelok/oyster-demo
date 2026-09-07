@@ -178,3 +178,25 @@ def test_token_from_settings_reaches_the_cli_and_enables_bare_mode(tmp_path, mon
     provider.complete("claude-haiku-4-5", "", "user", "diff")
     assert runner.calls[0]["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-t"
     assert "--bare" not in runner.calls[0]["args"]
+
+
+def test_effort_none_disables_thinking_and_levels_go_to_the_flag(tmp_path, monkeypatch):
+    monkeypatch.delenv("MAX_THINKING_TOKENS", raising=False)
+    runner = FakeRunner([_result(), _result(), _result()])
+    provider = ClaudeCodeProvider(
+        "claude",
+        cwd=tmp_path,
+        runner=runner,
+        sleep=lambda s: None,
+        effort={"claude-haiku-4-5": "none", "claude-sonnet-5": "medium", "claude-opus-5": ""},
+    )
+    provider.complete("claude-haiku-4-5", "", "u", "d")
+    provider.complete("claude-sonnet-5", "", "u", "d")
+    provider.complete("claude-opus-5", "", "u", "d")
+    haiku, sonnet, opus = runner.calls
+    assert haiku["env"]["MAX_THINKING_TOKENS"] == "0" and "--effort" not in haiku["args"]
+    assert sonnet["args"][sonnet["args"].index("--effort") + 1] == "medium"
+    assert "MAX_THINKING_TOKENS" not in sonnet["env"]
+    assert "--effort" not in opus["args"] and "MAX_THINKING_TOKENS" not in opus["env"]
+    with pytest.raises(ValueError, match="effort for"):
+        ClaudeCodeProvider("claude", cwd=tmp_path, runner=runner, effort={"m": "turbo"})

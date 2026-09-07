@@ -208,3 +208,13 @@ def test_widened_draft_still_validates():
     )
     bc.widen_absence(draft["seeded"], ["deletion-only"], draft["diff"])
     assert load_case_dict(draft, "case-x-1").seeded[0].line_end == 14
+
+
+def test_run_matrix_config_key_encodes_non_default_effort():
+    from tools.run_matrix import config_key
+
+    assert config_key("haiku45-sonnet5", "", "") == "haiku45-sonnet5"
+    assert config_key("haiku45-sonnet5", "none", "") == "haiku45-sonnet5-cheapnone"
+    assert (
+        config_key("haiku45-sonnet5", "none", "medium") == "haiku45-sonnet5-cheapnone-strongmedium"
+    )

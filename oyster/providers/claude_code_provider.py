@@ -44,6 +44,7 @@ KEPT_ENV = ("CLAUDE_CODE_OAUTH_TOKEN",)
 # from the desktop app would route the run through the app's proxy instead of the token.
 STRIPPED_ENV_EXACT = ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_BASE_URL")
 TOKEN_ENV = "CLAUDE_CODE_OAUTH_TOKEN"
+EFFORT_LEVELS = ("none", "low", "medium", "high", "xhigh", "max")
 LOGIN_HINT = (
     " (the CLI is not authenticated: run `claude auth login` once, or `claude setup-token` "
     "and export CLAUDE_CODE_OAUTH_TOKEN in the shell that runs OYSTER)"
@@ -91,8 +92,17 @@ class ClaudeCodeProvider:
         sleep: Callable[[float], None] = time.sleep,
         extra_args: tuple[str, ...] = (),
         oauth_token: str | None = None,
+        effort: dict[str, str] | None = None,
     ):
         self.cli = cli or find_cli()
+        # model_id -> effort. "none" disables thinking through MAX_THINKING_TOKENS=0; the
+        # other levels go to --effort; an absent entry leaves the CLI's default.
+        self.effort = {model: level for model, level in (effort or {}).items() if level}
+        for model, level in self.effort.items():
+            if level not in EFFORT_LEVELS:
+                raise ValueError(
+                    f"effort for {model} must be one of {EFFORT_LEVELS}, got {level!r}"
+                )
         # A token from settings (.env) or the environment; either way the CLI gets it in
         # CLAUDE_CODE_OAUTH_TOKEN. Without one, the CLI's stored login is used.
         self.oauth_token = oauth_token or None
@@ -162,6 +172,12 @@ class ClaudeCodeProvider:
             "--no-session-persistence",
             *self.extra_args,
         ]
+        env = _clean_env(self._token())
+        level = self.effort.get(model_id, "")
+        if level == "none":
+            env["MAX_THINKING_TOKENS"] = "0"
+        elif level:
+            args += ["--effort", level]
         last_error = ""
         for attempt in range(MAX_ATTEMPTS):
             start = time.perf_counter()
@@ -172,7 +188,7 @@ class ClaudeCodeProvider:
                 encoding="utf-8",
                 errors="replace",
                 cwd=str(self.cwd),
-                env=_clean_env(self._token()),
+                env=env,
             )
             wall_s = time.perf_counter() - start
             data = _parse_result(completed.stdout)

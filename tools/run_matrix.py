@@ -45,10 +45,26 @@ CONFIGS: dict[str, tuple[ModelSpec, ModelSpec]] = {
 }
 
 
-def env_for(cheap: ModelSpec, strong: ModelSpec) -> dict[str, str]:
+def config_key(name: str, cheap_effort: str, strong_effort: str) -> str:
+    """Output directory and fixture directory name: the model pair plus any non-default
+    effort, so two runs of the same pair under different thinking settings never share a
+    fixture or a results file."""
+    suffix = ""
+    if cheap_effort:
+        suffix += f"-cheap{cheap_effort}"
+    if strong_effort:
+        suffix += f"-strong{strong_effort}"
+    return name + suffix
+
+
+def env_for(
+    cheap: ModelSpec, strong: ModelSpec, cheap_effort: str = "", strong_effort: str = ""
+) -> dict[str, str]:
     env = dict(os.environ)
     env.update(
         {
+            "OYSTER_CHEAP_EFFORT": cheap_effort,
+            "OYSTER_STRONG_EFFORT": strong_effort,
             "OYSTER_CHEAP_MODEL_ID": cheap.model_id,
             "OYSTER_CHEAP_RATE_IN": str(cheap.rate_in),
             "OYSTER_CHEAP_RATE_OUT": str(cheap.rate_out),
@@ -72,19 +88,22 @@ def run_config(
     budget: float,
     latency: float,
     workers: int = 1,
+    cheap_effort: str = "",
+    strong_effort: str = "",
 ) -> int:
     cheap, strong = CONFIGS[name]
-    out = out_root / name
+    key = config_key(name, cheap_effort, strong_effort)
+    out = out_root / key
     out.mkdir(parents=True, exist_ok=True)
-    env = env_for(cheap, strong)
-    # Fixtures per provider: a rerun of the same command replays what was already answered
-    # and only makes the missing calls, so an interrupted run resumes.
+    env = env_for(cheap, strong, cheap_effort, strong_effort)
+    # Fixtures per provider and configuration: a rerun of the same command replays what was
+    # already answered and only makes the missing calls, so an interrupted run resumes.
     common = [
         "--provider",
         provider,
         "--yes",
         "--record",
-        f"fixtures/{provider}",
+        f"fixtures/{provider}/{key}",
         "--workers",
         str(workers),
     ]
@@ -217,6 +236,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--latency", type=float, default=120.0)
     parser.add_argument("--summary-only", action="store_true")
     parser.add_argument("--workers", type=int, default=1, help="concurrent cases per path")
+    parser.add_argument(
+        "--cheap-effort",
+        default="",
+        help="claude-code only: none | low | medium | high | xhigh | max (default: CLI default)",
+    )
+    parser.add_argument("--strong-effort", default="", help="claude-code only: as above")
     args = parser.parse_args(argv)
 
     out_root = Path(args.out)
@@ -229,9 +254,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     if not args.summary_only:
         for name in args.only:
             status |= run_config(
-                name, args.provider, out_root, corpus, args.budget, args.latency, args.workers
+                name,
+                args.provider,
+                out_root,
+                corpus,
+                args.budget,
+                args.latency,
+                args.workers,
+                args.cheap_effort,
+                args.strong_effort,
             )
-    summary = summarize(out_root, args.only)
+    keys = [config_key(name, args.cheap_effort, args.strong_effort) for name in args.only]
+    summary = summarize(out_root, keys)
     out_root.mkdir(parents=True, exist_ok=True)
     (out_root / "summary.md").write_text(summary, encoding="utf-8")
     print(summary)

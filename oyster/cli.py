@@ -105,7 +105,11 @@ def _make_provider(
                 console.print("Aborted.")
                 sys.exit(1)
         provider: ModelProvider = ClaudeCodeProvider(
-            oauth_token=settings.claude_code_oauth_token or None
+            oauth_token=settings.claude_code_oauth_token or None,
+            effort={
+                settings.cheap_model_id: settings.cheap_effort,
+                settings.strong_model_id: settings.strong_effort,
+            },
         )
         if args.record:
             provider = RecordingProvider(provider, FsPath(args.record))
@@ -149,6 +153,20 @@ def _load_corpus(corpus_dirs: Sequence[FsPath]) -> tuple[CorpusCase, ...]:
             "oyster/corpus/cases/README.md. Continuing with an empty corpus."
         )
     return cases
+
+
+def _default_label(provider: str) -> str:
+    """What the results header says about the run when --label is not given: for the CLI
+    route, the effort per model, because the CLI's default is adaptive thinking and a table
+    without that line is not comparable to one from a chat window with thinking off."""
+    if provider != "claude-code":
+        return provider
+    cheap = settings.cheap_effort or "default"
+    strong = settings.strong_effort or "default"
+    return (
+        f"claude-code: {settings.cheap_model_id} effort={cheap}, "
+        f"{settings.strong_model_id} effort={strong}; API-reported tokens"
+    )
 
 
 def _report_recording(provider: ModelProvider) -> None:
@@ -212,7 +230,7 @@ def cmd_eval(args: argparse.Namespace) -> int:
         reports,
         BINDINGS,
         corpus_size=len(cases),
-        provider_name=args.label or args.provider,
+        provider_name=args.label or _default_label(args.provider),
         corpus_commit=_corpus_commit(_corpus_dirs(args)),
     )
     FsPath(args.out).write_text(markdown, encoding="utf-8")

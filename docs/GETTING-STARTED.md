@@ -101,6 +101,17 @@ current SDK before relying on them:
 
 Any OpenAI-compatible endpoint (self-hosted, gateway, third-party) fits the OpenAI row.
 
+## 3a0. The CLI thinks by default
+
+Through the Claude Code CLI every model runs with the CLI's own defaults, and the default is
+adaptive thinking: on the review prompts Claude Haiku 4.5 produced a median of about 4,900
+output tokens per call (max 20,000) and 46 s median latency, forty times the cost of the same
+model with thinking off in a chat window. That is a different executor, not the same one
+measured twice. `OYSTER_CHEAP_EFFORT` and `OYSTER_STRONG_EFFORT` (or `--cheap-effort` /
+`--strong-effort` in `tools/run_matrix.py`) pin it: `none` disables thinking, `low` to `max`
+set the CLI's effort level, empty keeps the default. The results header records the setting,
+and `run_matrix` keeps separate fixtures and results per setting.
+
 ## 3a. Long runs: resume and workers
 
 Every API or CLI run records each completion as a fixture (`--record`, default
