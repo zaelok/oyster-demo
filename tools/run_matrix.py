@@ -55,6 +55,10 @@ def env_for(cheap: ModelSpec, strong: ModelSpec) -> dict[str, str]:
             "OYSTER_STRONG_MODEL_ID": strong.model_id,
             "OYSTER_STRONG_RATE_IN": str(strong.rate_in),
             "OYSTER_STRONG_RATE_OUT": str(strong.rate_out),
+            # The child's stdout/stderr go to run.log; keep them UTF-8 on Windows, where a
+            # redirected Python stream otherwise uses the ANSI code page.
+            "PYTHONUTF8": "1",
+            "PYTHONIOENCODING": "utf-8",
         }
     )
     return env
@@ -187,7 +191,7 @@ def summarize(out_root: Path, names: Sequence[str]) -> str:
         log = out_root / name / "run.log"
         if not log.exists():
             continue
-        text = log.read_text(encoding="utf-8")
+        text = log.read_text(encoding="utf-8", errors="replace")
         marker = "oyster.cli select"
         if marker in text:
             tail = text[text.rfind(marker) :].splitlines()[1:]

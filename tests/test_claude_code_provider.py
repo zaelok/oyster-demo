@@ -74,8 +74,9 @@ def test_maps_cli_json_to_completion(tmp_path, monkeypatch):
     assert call["input"] == "user body"
     assert call["system"] == "THE DIFF\n\ninstructions"
     assert call["cwd"] == str(tmp_path)
-    for flag in ("-p", "--output-format", "--tools", "--max-turns", "--bare"):
+    for flag in ("-p", "--output-format", "--tools", "--max-turns"):
         assert flag in call["args"]
+    assert "--bare" not in call["args"]  # no token in the environment: stored login must be read
     assert call["args"][call["args"].index("--model") + 1] == "claude-haiku-4-5"
     assert "CLAUDECODE" not in call["env"]
     assert "CLAUDE_CODE_SESSION_ID" not in call["env"]
@@ -140,3 +141,25 @@ def test_clean_env_keeps_the_oauth_token_and_drops_the_desktop_app_variables(mon
     assert env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-x"
     assert "CLAUDE_CODE_ENTRYPOINT" not in env
     assert "CLAUDECODE" not in env
+
+
+def test_bare_mode_only_with_a_token_and_api_keys_never_reach_the_cli(tmp_path, monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-api03-x")
+    monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
+    runner = FakeRunner([_result(), _result()])
+    provider = _provider(runner, tmp_path)
+    provider.complete("claude-haiku-4-5", "", "user", "diff")
+    assert "--bare" not in runner.calls[0]["args"]
+    assert "ANTHROPIC_API_KEY" not in runner.calls[0]["env"]
+    monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "sk-ant-oat01-x")
+    provider.complete("claude-haiku-4-5", "", "user", "diff")
+    assert "--bare" in runner.calls[1]["args"]
+    assert runner.calls[1]["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-x"
+
+
+def test_not_logged_in_error_carries_the_login_hint(tmp_path):
+    runner = FakeRunner(
+        [json.dumps({"type": "result", "is_error": True, "result": "Not logged in"})]
+    )
+    with pytest.raises(RuntimeError, match="claude auth login"):
+        _provider(runner, tmp_path).complete("claude-haiku-4-5", "", "user", "diff")
