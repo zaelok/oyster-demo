@@ -99,6 +99,36 @@ diffs, reports strict, loose and false positives as separate columns per flow wi
 prices each flow; BugBot's eight randomized passes is an ensemble pattern OYSTER could price as
 a flow.
 
+**Closest prior claims to the four-run result** (checked 2026-09-07; no post or paper with the
+same setup and the same set of conclusions was found):
+
+- *Bigger Isn't Always Better: A Comparative Evaluation of LLMs for Automated Code Review*
+  (arXiv 2606.15689) finds Haiku beating Sonnet on recall in review (0.293 against 0.248, F1
+  0.365 against 0.343) at 3.2 times lower cost. Same direction as OYSTER's scanner-alone
+  against reviewer-alone priors (0.66 against 0.60 on logic bugs); a single-model comparison,
+  no flows, no selector.
+- *More Rounds, More Noise: Why Multi-Turn Review Fails to Improve Cross-Context Verification*
+  (arXiv 2603.16244): single-pass review reached F1 0.376 on 150 injected errors while
+  multi-turn variants fell to 0.303, because reviewers fabricate findings once real errors are
+  exhausted. Same direction as OYSTER's critic loop; different mechanism named (noise from
+  re-review rather than last-node-wins drift), and no cost column.
+- Qodo's 400-PR Haiku 4.5 against Sonnet 4 benchmark (judge-scored quality, thinking with a
+  4,096-token budget) found thinking improved both models. OYSTER measured the opposite for
+  recall on seeded bugs under the CLI's adaptive thinking (13 against 18 of 21), which spent
+  a median 4,900 tokens per call; the two are not the same executor, which is the point of
+  the finding.
+- Greptile's benchmark builds its corpus the way OYSTER's does, by tracing a merged fix back
+  to the change that introduced the bug and reintroducing it as a fresh PR; Qodo injects bugs
+  into merged PRs instead. Neither publishes a two-tier corpus with measured label noise.
+- *A Theoretical Framework for the Security of Multi-stage LLM Output Filtering Pipelines*
+  (Springer 2026) shows independence-based estimates are systematically wrong under natural
+  dependence between stages, which is the selector's failure stated in general.
+
+What is not found elsewhere is the combination: the owner's corpus, priced flows with an
+explicit transfer rule, a selector whose independence prior is measured against the flows it
+ranked, the security facet as the shared hole across flows and runs, and the executor recorded
+as model plus settings plus harness because the harness alone moved cost forty times.
+
 ## 7. Bug corpora and ground truth
 
 SWE-bench (2,294 instances from 12 Python repositories) and SWE-bench Verified, whose instances
@@ -273,3 +303,10 @@ Wellbeing and guidance: [positive higher education strategies (Frontiers 2025)](
 [CDI wellbeing research](https://www.thecdi.net/resources/research-directory/challenge-wellbeing),
 [longitudinal PERMA in Singapore schools](https://internationaljournalofwellbeing.org/index.php/ijow/article/download/5319/1305/19113),
 [mobile career counseling app study](https://link.springer.com/article/10.1007/s44202-025-00468-8).
+Closest prior claims: [Bigger Isn't Always Better 2606.15689](https://arxiv.org/abs/2606.15689),
+[More Rounds, More Noise 2603.16244](https://arxiv.org/abs/2603.16244),
+[Qodo thinking-vs-thinking on 400 PRs](https://www.qodo.ai/blog/thinking-vs-thinking-benchmarking-claude-haiku-4-5-and-sonnet-4-5-on-400-real-prs/),
+[Greptile benchmark method](https://www.greptile.com/benchmarks),
+[Qodo benchmark method](https://www.qodo.ai/blog/how-we-built-a-real-world-benchmark-for-ai-code-review/),
+[multi-stage filtering pipelines, independence](https://link.springer.com/chapter/10.1007/978-3-032-32578-5_5),
+[Cross-Model LLM Code Review 2607.21656](https://arxiv.org/html/2607.21656v1).
