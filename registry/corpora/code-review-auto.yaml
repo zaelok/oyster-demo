@@ -13,4 +13,4 @@ by_kind: {added: 202, deletion-only: 112}
 by_language: {python: 85, swift: 27, go: 12, typescript: 11, cpp: 10, ruby: 7, c: 6, kotlin: 5, java: 5, csharp: 5, rust: 5, cuda: 4, scala: 1}
 by_org: {apple: 40, openai: 30, allenai: 20, anthropics: 15, mcp: 10, cuda: 39, litellm: 9, vllm: 20}
 funnel: {search_hits: 8971, title_filtered: 2355, accepted: 183, report: oyster/corpus/cases-auto/BUILD-REPORT.md}
-evaluated_by: []                        # no profile yet; run with --corpus oyster/corpus/cases-auto
+evaluated_by: [results/cli-auto/haiku45-sonnet5-cheapnone/priors.json]   # Haiku 4.5 thinking off + Sonnet 5, CLI

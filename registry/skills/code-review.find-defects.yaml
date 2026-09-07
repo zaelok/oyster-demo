@@ -17,4 +17,7 @@ leaves:
   - {id: code-review/critic,      prompt: critic,        bias: precision}
 flows: [A, B, C]
 profiles:
-  - results/conversation-haiku45-sonnet5/priors.json
+  - results/conversation-haiku45-sonnet5/priors.json          # chat executors, estimated tokens
+  - results/cli/haiku45-sonnet5/priors.json                    # CLI executors at their default (thinking on)
+  - results/cli/haiku45-sonnet5-cheapnone/priors.json          # CLI, Haiku thinking off
+  - results/cli-auto/haiku45-sonnet5-cheapnone/priors.json     # same executors, auto tier (review: none)

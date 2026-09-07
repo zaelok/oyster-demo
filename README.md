@@ -217,6 +217,43 @@ What changed and what did not:
   scaffolding, so billed input roughly doubles, and `chars // 4` undercounts. Relative order
   between paths held.
 
+## Results: third run (the auto tier: 183 cases, 314 bugs)
+
+Same configuration as the second row above (Haiku 4.5 thinking off, Sonnet 5 at the CLI
+default, API-reported tokens), over the unreviewed tier. Full table with per-case detail:
+[`results/cli-auto/summary.md`](results/cli-auto/summary.md).
+
+| path | $ total | strict caught | strict rate, 95% CI | loose caught | $/bug (strict) | false positives |
+|---|---|---|---|---|---|---|
+| A single cheap pass | $0.31 | 192 / 314 | 0.56 to 0.66 | 235 | $0.0016 | 16 |
+| B cascade cheap → strong | $2.63 | 184 / 314 | 0.53 to 0.64 | 223 | $0.0143 | 25 |
+| C reviewer → critic → reviewer | $5.50 | 177 / 314 | 0.51 to 0.62 | 206 | $0.0311 | 21 |
+
+- **The first run's verdict holds at fifteen times the sample.** The cheap pass caught the
+  most, for an eighth of the cascade's cost and a seventeenth of the critic loop's. The three
+  strict rates overlap at 95%, so quality cannot rank the paths; the costs are not in doubt.
+  The selector predicted C again (0.44) and C measured worst again. The second run's C-wins
+  was the small sample, not the mechanism.
+- **Security is the hole, for every path.** Bugs whose PR text carried security vocabulary:
+  16 to 19 percent caught (n=32), against 61 to 66 for the rest (n=282). Third run in a row.
+- **Absence bugs are harder than wrong-line bugs.** Where the fix only added code, so the
+  seeded range is the neighbouring lines, 50 to 52 percent; where it replaced lines, 60 to
+  66. Part of that is the anchor's arbitrariness, a label question rather than a model one.
+- **The keyword labels are about 14 percent noisy.** 43 of A's loose catches sat on the right
+  lines with a category other than the one the PR text suggested. That is the price of a tier
+  nobody reviewed, measured rather than assumed.
+- **Newer PRs are harder.** Bugs from PRs merged in August and September 2026: 57 percent
+  caught (n=194, 0.50 to 0.64); earlier ones: 68 (n=120, 0.59 to 0.75). Training-data
+  contamination is the obvious hypothesis and the reason corpora carry a date cutoff; a shift
+  in the repository mix is the other. This data cannot separate them.
+- By language, Go was lowest (33 to 42 percent, n=24), Swift and Python highest (60 to 71);
+  by repository group, LiteLLM lowest (35 to 41, n=17). Small facets; read them as directions.
+
+About 1,070 CLI calls on a subscription, 45 minutes with four workers, no halts, no parse
+failures. In the human-cost view there is no `h` at which the cascade beats the cheap pass on
+this tier, because it costs more and catches fewer; the lever is the security hole, not the
+path.
+
 ## Quickstart
 
 Requires [`uv`](https://docs.astral.sh/uv/). Python 3.12 is installed by `uv` automatically.
@@ -482,11 +519,12 @@ ability.
 
 ## Status
 
-- Engine, first instance, first measured run, scenario plugin with a second instance as the
-  genericity test, registry with the first entry, platform and instance designs: done.
-- Not yet done: a run with API-reported token counts (`--provider claude-code` after
-  `claude setup-token`, or `--provider anthropic` with a key), the other model pairs in
-  `tools/run_matrix.py`, the auto tier (183 cases, not yet evaluated on any model), style bugs
+- Engine, first instance, three measured runs (a chat window with estimated tokens; the
+  Claude Code CLI with API-reported tokens on the reviewed tier under two executor settings
+  and on the auto tier), scenario plugin with a second instance as the genericity test,
+  registry with the first entry, platform and instance designs: done.
+- Not yet done: the other model pairs in `tools/run_matrix.py` (Sonnet 5 + Opus 5, Haiku 4.5
+  + Fable 5.1) on either tier, the CLI-default-thinking setting on the auto tier, style bugs
   in the corpus, a human baseline on the same diffs, and the build/CI instance's phase 0.
 
 ## License
