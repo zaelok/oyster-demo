@@ -67,12 +67,23 @@ def run_config(
     corpus: Sequence[str],
     budget: float,
     latency: float,
+    workers: int = 1,
 ) -> int:
     cheap, strong = CONFIGS[name]
     out = out_root / name
     out.mkdir(parents=True, exist_ok=True)
     env = env_for(cheap, strong)
-    common = ["--provider", provider, "--yes"]
+    # Fixtures per provider: a rerun of the same command replays what was already answered
+    # and only makes the missing calls, so an interrupted run resumes.
+    common = [
+        "--provider",
+        provider,
+        "--yes",
+        "--record",
+        f"fixtures/{provider}",
+        "--workers",
+        str(workers),
+    ]
     for directory in corpus:
         common += ["--corpus", directory]
     steps = [
@@ -201,6 +212,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--budget", type=float, default=1.00)
     parser.add_argument("--latency", type=float, default=120.0)
     parser.add_argument("--summary-only", action="store_true")
+    parser.add_argument("--workers", type=int, default=1, help="concurrent cases per path")
     args = parser.parse_args(argv)
 
     out_root = Path(args.out)
@@ -212,7 +224,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     status = 0
     if not args.summary_only:
         for name in args.only:
-            status |= run_config(name, args.provider, out_root, corpus, args.budget, args.latency)
+            status |= run_config(
+                name, args.provider, out_root, corpus, args.budget, args.latency, args.workers
+            )
     summary = summarize(out_root, args.only)
     out_root.mkdir(parents=True, exist_ok=True)
     (out_root / "summary.md").write_text(summary, encoding="utf-8")

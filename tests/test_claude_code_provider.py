@@ -128,3 +128,15 @@ def test_parse_result_tolerates_leading_noise():
     assert _parse_result(noisy)["result"] == "ok"
     assert _parse_result("") is None
     assert _parse_result("not json at all") is None
+
+
+def test_clean_env_keeps_the_oauth_token_and_drops_the_desktop_app_variables(monkeypatch):
+    from oyster.providers.claude_code_provider import _clean_env
+
+    monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "sk-ant-oat01-x")
+    monkeypatch.setenv("CLAUDE_CODE_ENTRYPOINT", "desktop")
+    monkeypatch.setenv("CLAUDECODE", "1")
+    env = _clean_env()
+    assert env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-x"
+    assert "CLAUDE_CODE_ENTRYPOINT" not in env
+    assert "CLAUDECODE" not in env

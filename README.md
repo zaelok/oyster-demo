@@ -135,7 +135,7 @@ flowchart LR
 - **Corpus**: two tiers. The reviewed tier (17 cases) is behind every committed number; the
   auto tier (183 cases from 146 public repositories, labels unreviewed) is built by
   `tools/build_corpus.py` and evaluated separately.
-- **Tests**: 156, all offline.
+- **Tests**: 159, all offline.
 
 ## Results: first run
 
@@ -266,6 +266,10 @@ pair. What differs from an API run, stated in the label: token counts are `chars
 estimates because a chat UI reports none, latency is not measured, and a batched message puts
 several requests in one context behind a transport wrapper; the per-request text is the exact
 template rendering, so `--batch-size 1` gives one prompt per chat with no wrapper.
+
+Both paid routes record every completion as a fixture and replay an existing fixture rather
+than re-sending the request, so an interrupted run resumes by re-issuing the same command;
+`--workers 4` runs cases concurrently. See `docs/GETTING-STARTED.md` §3a.
 
 ## Building the corpus from bug-fix PRs
 

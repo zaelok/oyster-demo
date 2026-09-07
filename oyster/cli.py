@@ -149,6 +149,15 @@ def _load_corpus(corpus_dirs: Sequence[FsPath]) -> tuple[CorpusCase, ...]:
     return cases
 
 
+def _report_recording(provider: ModelProvider) -> None:
+    if isinstance(provider, RecordingProvider):
+        console.print(
+            f"{len(provider.recorded)} call(s) made and recorded, "
+            f"{len(provider.replayed)} replayed from existing fixtures under "
+            f"{provider.fixtures_dir}"
+        )
+
+
 def _load_priors(path: str | None) -> Priors | None:
     if not path:
         return None
@@ -162,7 +171,8 @@ def _load_priors(path: str | None) -> Priors | None:
 def cmd_calibrate(args: argparse.Namespace) -> int:
     cases = _load_corpus(_corpus_dirs(args))
     provider = _make_provider(args, cases, calibration_paths(CATALOG))
-    priors = calibrate(cases, provider, BINDINGS, CATALOG)
+    priors = calibrate(cases, provider, BINDINGS, CATALOG, workers=args.workers)
+    _report_recording(provider)
     FsPath(args.priors_out).write_text(priors_to_json(priors), encoding="utf-8")
 
     table = Table(title=f"Calibrated priors over {priors.corpus_size} cases")
@@ -193,7 +203,8 @@ def cmd_eval(args: argparse.Namespace) -> int:
         priors = _load_priors(args.priors)
         hooks.append(BudgetHook(Cost(args.budget, args.latency), priors))
 
-    results, reports = evaluate(CATALOG, cases, provider, BINDINGS, hooks)
+    results, reports = evaluate(CATALOG, cases, provider, BINDINGS, hooks, workers=args.workers)
+    _report_recording(provider)
     markdown = render_results(
         results,
         reports,
@@ -339,6 +350,12 @@ def build_parser() -> argparse.ArgumentParser:
         )
         p.add_argument("--no-record", dest="record", action="store_const", const=None)
         p.add_argument("--yes", action="store_true", help="skip the paid-run confirmation")
+        p.add_argument(
+            "--workers",
+            type=int,
+            default=1,
+            help="cases run concurrently per path (I/O bound providers only; default 1)",
+        )
 
     cal = sub.add_parser("calibrate", help="measure per-node priors and write priors.json")
     add_provider_args(cal)

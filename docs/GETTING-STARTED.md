@@ -99,6 +99,20 @@ current SDK before relying on them:
 
 Any OpenAI-compatible endpoint (self-hosted, gateway, third-party) fits the OpenAI row.
 
+## 3a. Long runs: resume and workers
+
+Every API or CLI run records each completion as a fixture (`--record`, default
+`fixtures/mock`; `tools/run_matrix.py` uses `fixtures/<provider>`). A request whose fixture
+already exists is replayed, not re-sent, so an interrupted run resumes by re-issuing the same
+command, and prompts shared between calibrate and eval are paid for once. The run's summary
+line says how many calls were made and how many replayed.
+
+`--workers N` runs the cases of each path on N threads. Provider calls are I/O bound (an HTTP
+request or a CLI process), so four workers cut wall time by roughly four; results and their
+order do not depend on it. Start with 4 on a subscription and lower it if the CLI reports
+usage limits; the provider retries transient limits three times with backoff before failing,
+and a failed run resumes from its fixtures.
+
 ## 3b. Two corpus tiers
 
 `oyster/corpus/cases/` is the reviewed tier: 17 cases a person signed off on, the ground

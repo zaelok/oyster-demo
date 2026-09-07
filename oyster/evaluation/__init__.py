@@ -14,6 +14,7 @@ import math
 import statistics
 from collections import Counter, defaultdict
 from collections.abc import Sequence
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
 from datetime import UTC, datetime
 from typing import Any
@@ -95,11 +96,13 @@ def calibrate(
     bindings: dict[str, ModelBinding],
     paths: Sequence[Path] = CATALOG,
     scenario: Scenario | None = None,
+    workers: int = 1,
 ) -> Priors:
     """catch_rate[(role, alias, category)] = strict catches of that category / expected labels
     of that category, over every case, each node config run alone. Categories with no expected
     labels get no entry rather than a fabricated zero. mean_cost is the mean Cost per config.
-    `scenario` defaults to code review."""
+    `scenario` defaults to code review. `workers` > 1 runs cases concurrently; the counts are
+    accumulated in case order afterwards, so the result does not depend on it."""
     scenario = scenario or CODE_REVIEW
     strict: Counter[tuple[str, str, str]] = Counter()
     seeded: Counter[tuple[str, str, str]] = Counter()
@@ -108,8 +111,8 @@ def calibrate(
     for single in calibration_paths(paths):
         node = single.nodes[0]
         config = (node.role, node.model_alias)
-        for case in cases:
-            result = run_path(single, case, provider, bindings, scenario=scenario)
+        results = _run_all(single, cases, provider, bindings, (), scenario, workers)
+        for case, result in zip(cases, results, strict=True):
             report = scenario.score(result.findings, case, single.id)
             costs[config].append(result.cost)
             expected = scenario.expected(case)
@@ -176,6 +179,30 @@ def percentile(values: Sequence[float], q: float) -> float:
     return ordered[min(rank, len(ordered)) - 1]
 
 
+def _run_all(
+    path: Path,
+    cases: Sequence[Any],
+    provider: ModelProvider,
+    bindings: dict[str, ModelBinding],
+    hooks: Sequence[Hook],
+    scenario: Scenario,
+    workers: int,
+) -> list[PathResult]:
+    """run_path over every case, in case order, on `workers` threads. Calls to a provider are
+    I/O bound (an HTTP request or a CLI process), which is where the wall time goes; each
+    case's nodes still run in path order inside its own run_path."""
+    if workers <= 1:
+        return [
+            run_path(path, case, provider, bindings, hooks, scenario=scenario) for case in cases
+        ]
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = [
+            pool.submit(run_path, path, case, provider, bindings, hooks, scenario=scenario)
+            for case in cases
+        ]
+        return [future.result() for future in futures]
+
+
 def evaluate(
     paths: Sequence[Path],
     cases: Sequence[Any],
@@ -183,15 +210,18 @@ def evaluate(
     bindings: dict[str, ModelBinding],
     hooks: Sequence[Hook] = (),
     scenario: Scenario | None = None,
+    workers: int = 1,
 ) -> tuple[tuple[PathResult, ...], tuple[MatchReport, ...]]:
     """One PathResult and one MatchReport per (path, case), paths outer, cases inner.
-    `scenario` defaults to code review."""
+    `scenario` defaults to code review; `workers` > 1 runs the cases of each path
+    concurrently, output order unchanged."""
     scenario = scenario or CODE_REVIEW
     results: list[PathResult] = []
     reports: list[MatchReport] = []
     for path in paths:
-        for case in cases:
-            result = run_path(path, case, provider, bindings, hooks, scenario=scenario)
+        for case, result in zip(
+            cases, _run_all(path, cases, provider, bindings, hooks, scenario, workers), strict=True
+        ):
             results.append(result)
             reports.append(scenario.score(result.findings, case, path.id))
     return tuple(results), tuple(reports)

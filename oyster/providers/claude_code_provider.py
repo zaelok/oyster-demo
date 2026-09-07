@@ -32,7 +32,10 @@ DEFAULT_CLI_CANDIDATES = (
     r"C:\Users\{user}\AppData\Roaming\Claude\claude-code\2.1.260\claude.exe",
 )
 # Environment the desktop app sets on its child sessions; a nested CLI must not inherit it.
+# The one CLAUDE_CODE_* variable that must survive is the subscription token from
+# `claude setup-token`, or the CLI would report "Not logged in" inside the run.
 STRIPPED_ENV_PREFIXES = ("CLAUDECODE", "CLAUDE_CODE_", "CLAUDE_PID", "CLAUDE_EFFORT")
+KEPT_ENV = ("CLAUDE_CODE_OAUTH_TOKEN",)
 MAX_ATTEMPTS = 3
 BACKOFF_S = (5.0, 15.0, 45.0)
 TRANSIENT_MARKERS = ("rate limit", "overloaded", "529", "usage limit", "try again")
@@ -56,7 +59,9 @@ def _which(name: str) -> str | None:
 
 def _clean_env() -> dict[str, str]:
     return {
-        key: value for key, value in os.environ.items() if not key.startswith(STRIPPED_ENV_PREFIXES)
+        key: value
+        for key, value in os.environ.items()
+        if key in KEPT_ENV or not key.startswith(STRIPPED_ENV_PREFIXES)
     }
 
 

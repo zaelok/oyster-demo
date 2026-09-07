@@ -182,3 +182,28 @@ def test_priors_json_round_trip_keeps_evidence():
     )
     assert legacy.quality == {} and legacy.cost == {}
     assert legacy.catch_rate[("r", "m", "logic")] == 0.5
+
+
+def test_workers_do_not_change_results_or_order(bindings):
+    """Concurrency is a wall-clock optimisation only: the mock provider answers the same way
+    on any thread and the outputs are collected in (path, case) order."""
+    from pathlib import Path
+
+    from oyster.corpus import load_cases
+    from oyster.evaluation import calibrate, evaluate
+    from oyster.graph.catalog import CATALOG
+    from oyster.providers import MockProvider
+    from tests.conftest import CORPUS_DIR, FIXTURES
+
+    cases = load_cases(CORPUS_DIR) + load_cases(Path("oyster/corpus/cases"))
+    provider = MockProvider(FIXTURES / "mock")
+    serial = evaluate(CATALOG, cases, provider, bindings)
+    threaded = evaluate(CATALOG, cases, provider, bindings, workers=4)
+    assert [r.path_id + r.case_id for r in serial[0]] == [
+        r.path_id + r.case_id for r in threaded[0]
+    ]
+    assert serial[1] == threaded[1]
+    assert (
+        calibrate(cases, provider, bindings, workers=3).catch_rate
+        == calibrate(cases, provider, bindings).catch_rate
+    )

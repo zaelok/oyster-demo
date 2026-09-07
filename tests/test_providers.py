@@ -174,3 +174,26 @@ def test_does_not_retry_on_400():
         _provider(client, sleeps).complete("claude-x", "", "u", None)
     assert len(client.requests) == 1
     assert sleeps == []
+
+
+def test_recording_provider_replays_an_existing_fixture_instead_of_calling(tmp_path):
+    from oyster.types import Completion
+
+    class Inner:
+        calls = 0
+
+        def complete(self, model_id, system, user, cached_prefix=None):
+            self.calls += 1
+            return Completion('{"findings": []}', 10, 0, 5, 0.1, model_id)
+
+    inner = Inner()
+    recorder = RecordingProvider(inner, tmp_path)
+    first = recorder.complete("m", "", "u", "d")
+    second = recorder.complete("m", "", "u", "d")
+    assert inner.calls == 1
+    assert first == second
+    assert recorder.recorded == [fixture_key("m", "", "u", "d")]
+    assert recorder.replayed == [fixture_key("m", "", "u", "d")]
+    fresh = RecordingProvider(inner, tmp_path, replay=False)
+    fresh.complete("m", "", "u", "d")
+    assert inner.calls == 2
