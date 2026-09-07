@@ -53,7 +53,9 @@ results header honest.
 ### Subscription routes
 
 See the README section "Running on a subscription instead of an API key". The CLI route needs
-a one-time `claude auth login` (or `claude setup-token` with the token exported as CLAUDE_CODE_OAUTH_TOKEN in the shell that runs OYSTER); the conversation route needs nothing but a chat window.
+a one-time `claude setup-token` with the token in `.env` as
+`OYSTER_CLAUDE_CODE_OAUTH_TOKEN` (or exported as `CLAUDE_CODE_OAUTH_TOKEN`, or a stored
+`claude auth login`); the conversation route needs nothing but a chat window.
 
 ## 3. Adding another API vendor
 

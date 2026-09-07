@@ -68,13 +68,16 @@ def _which(name: str) -> str | None:
     return shutil.which(name)
 
 
-def _clean_env() -> dict[str, str]:
-    return {
+def _clean_env(oauth_token: str | None = None) -> dict[str, str]:
+    env = {
         key: value
         for key, value in os.environ.items()
         if key in KEPT_ENV
         or (not key.startswith(STRIPPED_ENV_PREFIXES) and key not in STRIPPED_ENV_EXACT)
     }
+    if oauth_token:
+        env[TOKEN_ENV] = oauth_token
+    return env
 
 
 class ClaudeCodeProvider:
@@ -86,8 +89,13 @@ class ClaudeCodeProvider:
         runner: Callable[..., subprocess.CompletedProcess] = subprocess.run,
         sleep: Callable[[float], None] = time.sleep,
         extra_args: tuple[str, ...] = (),
+        oauth_token: str | None = None,
     ):
         self.cli = cli or find_cli()
+        # A token from settings (.env) or the environment; either way the CLI gets it in
+        # CLAUDE_CODE_OAUTH_TOKEN and runs in --bare mode. Without one, the stored login is
+        # read, which --bare would skip.
+        self.oauth_token = oauth_token or None
         self.cwd = Path(cwd) if cwd else Path(tempfile.mkdtemp(prefix="oyster-claude-code-"))
         self._runner = runner
         self._sleep = sleep
@@ -132,6 +140,9 @@ class ClaudeCodeProvider:
             model_id=_model_used(data, model_id),
         )
 
+    def _token(self) -> str | None:
+        return self.oauth_token or os.environ.get(TOKEN_ENV) or None
+
     def _call_with_retry(
         self, model_id: str, user: str, system_file: str
     ) -> tuple[dict[str, Any], float]:
@@ -149,7 +160,7 @@ class ClaudeCodeProvider:
             "--max-turns",
             "1",
             "--no-session-persistence",
-            *(("--bare",) if os.environ.get(TOKEN_ENV) else ()),
+            *(("--bare",) if self._token() else ()),
             *self.extra_args,
         ]
         last_error = ""
@@ -162,7 +173,7 @@ class ClaudeCodeProvider:
                 encoding="utf-8",
                 errors="replace",
                 cwd=str(self.cwd),
-                env=_clean_env(),
+                env=_clean_env(self._token()),
             )
             wall_s = time.perf_counter() - start
             data = _parse_result(completed.stdout)

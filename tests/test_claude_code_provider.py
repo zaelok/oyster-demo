@@ -163,3 +163,14 @@ def test_not_logged_in_error_carries_the_login_hint(tmp_path):
     )
     with pytest.raises(RuntimeError, match="claude auth login"):
         _provider(runner, tmp_path).complete("claude-haiku-4-5", "", "user", "diff")
+
+
+def test_token_from_settings_reaches_the_cli_and_enables_bare_mode(tmp_path, monkeypatch):
+    monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
+    runner = FakeRunner([_result()])
+    provider = ClaudeCodeProvider(
+        "claude", cwd=tmp_path, runner=runner, sleep=lambda s: None, oauth_token="sk-ant-oat01-t"
+    )
+    provider.complete("claude-haiku-4-5", "", "user", "diff")
+    assert runner.calls[0]["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-t"
+    assert "--bare" in runner.calls[0]["args"]

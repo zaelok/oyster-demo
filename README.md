@@ -135,7 +135,7 @@ flowchart LR
 - **Corpus**: two tiers. The reviewed tier (17 cases) is behind every committed number; the
   auto tier (183 cases from 146 public repositories, labels unreviewed) is built by
   `tools/build_corpus.py` and evaluated separately.
-- **Tests**: 161, all offline.
+- **Tests**: 162, all offline.
 
 ## Results: first run
 

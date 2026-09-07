@@ -104,7 +104,9 @@ def _make_provider(
             if answer.strip().lower() not in {"y", "yes"}:
                 console.print("Aborted.")
                 sys.exit(1)
-        provider: ModelProvider = ClaudeCodeProvider()
+        provider: ModelProvider = ClaudeCodeProvider(
+            oauth_token=settings.claude_code_oauth_token or None
+        )
         if args.record:
             provider = RecordingProvider(provider, FsPath(args.record))
             console.print(f"Recording completions as mock fixtures under {args.record}")
