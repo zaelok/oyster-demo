@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 785,
+  "latency_s": 7.231,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 456,
+  "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"The diff removes the None-check before calling round() on eval_metric_result.score. If score can be None (as the removed code explicitly handled), this will now raise a TypeError. The reviewer should verify whether eval_metric_result.score can ever be None in practice; if so, this is a regression that will crash instead of gracefully outputting None.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 838,
+  "latency_s": 6.308,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 412,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"The @Nullable annotation was removed from the `object` field, and toString() was changed from String.valueOf(object()) to object().toString(). If a Literal is ever constructed with a null object (annotations don't enforce non-null at runtime, and callers elsewhere may still pass null literals, e.g. for representing 'null' constants), this will now throw a NullPointerException instead of safely producing the string \\\"null\\\".\", \"confidence\": 0.7}]}"
+}

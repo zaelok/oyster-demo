@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 824,
+  "latency_s": 13.684,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1379,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"The change replaces the safe `addWithOverflowProtection(available, 1)` call with a raw `available + 1` addition. If `available` (an int returned from InputStream.available()) is ever `Integer.MAX_VALUE`, this will overflow to `Integer.MIN_VALUE`, causing `min(...)` to select a negative value and `new byte[...]` to throw a NegativeArraySizeException or otherwise produce an incorrect buffer size. While extremely unlikely in practice, this removes a previously existing safety guard against integer overflow without justification, silently reintroducing an edge-case bug that the original code explicitly protected against.\", \"confidence\": 0.55}]}"
+}

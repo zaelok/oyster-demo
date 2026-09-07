@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 718,
+  "latency_s": 109.66,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 11479,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 5657,\n      \"line_end\": 5659,\n      \"category\": \"logic\",\n      \"description\": \"Removal of minimum(result, high-1) clamp may allow out-of-range values if mb.cast truncates toward zero instead of flooring for negative upper bounds (e.g., -0.5 \u2192 0 instead of -1)\",\n      \"confidence\": 0.68\n    }\n  ]\n}\n```"
+}

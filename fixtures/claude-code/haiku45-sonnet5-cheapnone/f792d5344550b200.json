@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1124,
+  "latency_s": 3.97,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 327,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative). Long.toString(Long.MIN_VALUE, radix) already includes a '-' prefix, so prepending another '-' yields a double-negative malformed string instead of the correct representation for self == Long.MIN_VALUE.\", \"confidence\": 0.9}, {\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 2, \"line_end\": 2, \"category\": \"style\", \"description\": \"Copyright notice uses a mojibake character '\u6f0f' instead of the intended '\u00a9' symbol, likely due to an encoding issue when the header was added.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1095,
+  "latency_s": 6.21,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 209,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The beta shape validation now checks self.gamma.shape instead of self.beta.shape against normalized_shape. This means an incompatible beta shape will not be detected (false negative if gamma is compatible but beta isn't), and if self.beta is not None but self.gamma is None, this will raise AttributeError ('NoneType' has no attribute 'shape') instead of validating beta properly.\"}]}"
+}

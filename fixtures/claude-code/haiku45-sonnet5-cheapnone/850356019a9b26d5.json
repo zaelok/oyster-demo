@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 877,
+  "latency_s": 4.418,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 252,
+  "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching from toString() to toASCIIString() changes serialization output for URIs containing non-ASCII characters or Unicode in the fragment/query (percent-encoding them), which breaks round-trip compatibility with existing serialized JSON and with the URI TypeAdapterFactory's read() method that uses 'new URI(str)' (a URI constructed from an ASCII-encoded string may not equal the original URI object, e.g. if a URI was created via multi-arg URI constructors with non-ASCII characters).\", \"confidence\": 0.55}]}"
+}

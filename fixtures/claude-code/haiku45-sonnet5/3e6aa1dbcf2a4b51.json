@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1106,
+  "latency_s": 3.48,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 262,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"confidence\": 0.8, \"description\": \"windowLog and hashRateLog are unsigned (U32), so when windowLog <= hashRateLog, 'windowLog - hashRateLog' underflows to a very large unsigned value. BOUNDED(min, x, max) clamps this huge value to ZSTD_HASHLOG_MAX, whereas the original code explicitly set hashLog to ZSTD_HASHLOG_MIN in that case. This changes the resulting default hashLog from MIN to MAX for small windowLog relative to hashRateLog, which is a behavioral regression, not merely a redundant check removal.\"}]}"
+}

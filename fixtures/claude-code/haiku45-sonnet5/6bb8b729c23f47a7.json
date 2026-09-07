@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1067,
+  "latency_s": 3.973,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 191,
+  "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"The None-check guarding round(eval_metric_result.score, 2) was removed. If score is None (e.g., for metrics with eval_status like NOT_EVALUATED or SKIPPED where scoring didn't occur), this will now raise TypeError: type NoneType doesn't define __round__, crashing eval data extraction instead of producing a None score as before.\", \"confidence\": 0.85}]}"
+}

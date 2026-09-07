@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 824,
+  "latency_s": 7.422,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 493,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"The change replaces addWithOverflowProtection(available, 1) with a plain available + 1 addition. If 'available' is Integer.MAX_VALUE (or very close to it), this addition will overflow to a negative value, which would then be passed to Math.min and could result in a negative or incorrect array size, potentially causing a NegativeArraySizeException or corrupted buffer sizing. The original overflow-protected helper was likely added intentionally to guard against this edge case (e.g., when InputStream.available() returns a very large value). Removing it reintroduces an integer overflow bug.\", \"confidence\": 0.75}]}"
+}

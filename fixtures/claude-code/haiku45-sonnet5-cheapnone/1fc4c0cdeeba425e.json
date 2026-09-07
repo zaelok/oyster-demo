@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 537,
+  "latency_s": 2.513,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 130,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/Services/ContainerAPIService/Client/Parser.swift\",\n      \"line_start\": 436,\n      \"line_end\": 436,\n      \"category\": \"logic\",\n      \"description\": \"Removing `fs.source = \\\"tmpfs\\\"` assignment may cause tmpfs filesystems to have uninitialized or incorrect source field, breaking downstream logic that depends on source being set.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

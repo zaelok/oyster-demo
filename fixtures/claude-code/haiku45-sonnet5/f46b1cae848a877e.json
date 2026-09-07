@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1113,
+  "latency_s": 3.19,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 178,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1392, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts 'client_secret' and no longer redacts 'access_token' or 'token' query parameters. Any URL containing these OAuth/API tokens (e.g., surfaced in error messages, logs, or RedirectionError) will now leak the credential in plaintext, a regression from the prior behavior that redacted all three sensitive params.\", \"confidence\": 0.9}]}"
+}

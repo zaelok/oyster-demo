@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1118,
+  "latency_s": 4.32,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 228,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removing @Nullable from Literal.object and replacing String.valueOf(object()) with object().toString() will throw a NullPointerException if a Literal is constructed with a null value (e.g. representing the Java `null` literal), which String.valueOf previously handled safely by returning the string \\\"null\\\". Unless all callers are verified to never construct Literal with null, this is a behavioral regression that can crash toString() calls.\", \"confidence\": 0.7}]}"
+}

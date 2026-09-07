@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1057,
+  "latency_s": 3.38,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 223,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"codex-rs/cloud-tasks/src/lib.rs\",\n      \"line_start\": 975,\n      \"line_end\": 975,\n      \"category\": \"logic\",\n      \"description\": \"Hardcoded 'main' branch replaces dynamic branch detection logic that could fail silently if this is not the actual default branch.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"codex-rs/core/src/git_info.rs\",\n      \"line_start\": 263,\n      \"line_end\": 265,\n      \"category\": \"style\",\n      \"description\": \"Removed public function `default_branch_name` that wraps `get_default_branch`; check if this function is used elsewhere in codebase.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

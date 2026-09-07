@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 660,
+  "latency_s": 2.732,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 132,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cuda_pathfinder/cuda/pathfinder/_binaries/supported_nvidia_binaries.py\",\n      \"line_start\": 17,\n      \"line_end\": 17,\n      \"category\": \"logic\",\n      \"description\": \"cuobjdump tuple reduced from 2 elements to 1; verify this doesn't break fallback path resolution logic that may depend on multiple candidates.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

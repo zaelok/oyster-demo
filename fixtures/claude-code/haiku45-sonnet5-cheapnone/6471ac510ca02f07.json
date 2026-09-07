@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1275,
+  "latency_s": 4.733,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 386,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 7362,\n      \"line_end\": 7371,\n      \"category\": \"logic\",\n      \"description\": \"The triu function casts bool inputs to int32 and subtracts band_part results, but this logic doesn't correctly zero out the upper triangle for bool tensors since x - band_part(x) is semantically different from selecting zeros.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 7394,\n      \"line_end\": 7403,\n      \"category\": \"logic\",\n      \"description\": \"Same issue in tril: casting bool to int32, performing subtraction, then casting back doesn't preserve the original semantics of zeroing out the lower triangle for boolean tensors.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 7365,\n      \"line_end\": 7372,\n      \"category\": \"style\",\n      \"description\": \"Removed _zero_out_band helper function but its logic (using select instead of subtract for safety with inf values) is not replicated in the new triu implementation, potentially reintroducing the NaN issue with infinite values.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

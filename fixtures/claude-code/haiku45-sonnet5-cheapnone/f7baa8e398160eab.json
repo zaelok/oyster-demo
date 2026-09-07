@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1061,
+  "input_tokens": 1063,
+  "latency_s": 6.118,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 458,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"The diff removes the error-handling branch that freed the allocated pthread_mutex_t on pthread_mutex_init failure. Now if pthread_mutex_init fails, the allocated memory is leaked since *mutex is left pointing to allocated-but-uninitialized memory and the caller has no way to know to free it (and destroy will call pthread_mutex_destroy on an uninitialized mutex).\", \"confidence\": 0.85}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"description\": \"Similarly, the diff removes the cleanup on pthread_cond_init failure, causing a memory leak of the allocated pthread_cond_t and leaving *cond pointing to uninitialized memory on error, which could later be passed to pthread_cond_destroy.\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 594,
+  "latency_s": 2.684,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 134,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"metadata_request.go\",\n      \"line_start\": 34,\n      \"line_end\": 34,\n      \"category\": \"logic\",\n      \"description\": \"Version comparison condition appears to be a copy-paste error: checks V2_4_0_0 instead of V2_3_0_0, making this branch unreachable after the previous V2_4_0_0 check.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

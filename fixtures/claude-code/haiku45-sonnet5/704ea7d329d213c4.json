@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 856,
+  "latency_s": 9.181,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 744,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5660, \"category\": \"logic\", \"description\": \"The removed code clamped the cast random uniform value to at most high-1. mb.random_uniform's upper bound handling can, due to floating-point rounding, produce a value equal to (or very close to) 'high' that truncates to 'high' after cast to int32, which is out of the valid torch.randint range [low, high). Removing the min-clamp reintroduces the possibility of returning 'high' as a result, violating the exclusive upper bound semantics of torch.randint.\", \"confidence\": 0.55}]}"
+}

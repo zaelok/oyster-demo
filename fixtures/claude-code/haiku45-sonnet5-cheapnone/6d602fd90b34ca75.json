@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 762,
+  "latency_s": 3.362,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 219,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"flash_attn/cute/flash_fwd.py\",\n      \"line_start\": 629,\n      \"line_end\": 629,\n      \"category\": \"style\",\n      \"description\": \"Removal of `self.is_split_kv = False` initialization may cause AttributeError if this attribute is referenced elsewhere without being set.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"flash_attn/cute/flash_fwd.py\",\n      \"line_start\": 796,\n      \"line_end\": 796,\n      \"category\": \"logic\",\n      \"description\": \"Removal of `mDynamicCausal` parameter from kernel call but parameter still exists in kernel definition, causing signature mismatch.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

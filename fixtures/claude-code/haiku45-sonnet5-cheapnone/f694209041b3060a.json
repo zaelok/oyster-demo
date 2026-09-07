@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 684,
+  "latency_s": 6.738,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 257,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\",\n      \"line_start\": 193,\n      \"line_end\": 193,\n      \"category\": \"logic\",\n      \"description\": \"Removing @Nullable annotation without null-checking the object parameter could cause NullPointerException when object is null.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\",\n      \"line_start\": 201,\n      \"line_end\": 201,\n      \"category\": \"logic\",\n      \"description\": \"Calling object().toString() instead of String.valueOf() will throw NullPointerException if object is null, whereas String.valueOf() returns \\\"null\\\".\",\n      \"confidence\": 0.90\n    }\n  ]\n}\n```"
+}

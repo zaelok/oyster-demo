@@ -1,0 +1,8 @@
+id: claude-sonnet-5@claude-code
+kind: model
+model: claude-sonnet-5
+settings: {effort: default, thinking: adaptive}   # CLI default; on review prompts a median ~300 output tokens per call
+harness: claude-code-cli-2.1.260
+rates: {input_per_1m: 2.00, output_per_1m: 10.00, cache_discount: 0.90}
+cost_dimensions: [dollars, latency_s]
+token_counts: api-reported

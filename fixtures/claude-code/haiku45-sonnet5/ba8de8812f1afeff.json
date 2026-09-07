@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1022,
+  "latency_s": 18.581,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1256,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 892, \"line_end\": 894, \"category\": \"security\", \"confidence\": 0.75, \"description\": \"The added fast-path (`if !strings.Contains(urlStr, \\\"..\\\") { return nil }`) operates on the raw, still-encoded URL string, before url.Parse decodes percent-escaped characters. Since url.Parse decodes '%2e%2e' (or mixed-case equivalents) into the literal '..' path segment, an attacker can encode the traversal sequence to skip this pre-check while still producing a path-traversal segment once parsed. This reintroduces a bypass for the exact class of attack the function is meant to prevent, effectively short-circuiting the more thorough parsing/segment-check logic that follows.\", \"line_start\": 892, \"line_end\": 894}]}"
+}

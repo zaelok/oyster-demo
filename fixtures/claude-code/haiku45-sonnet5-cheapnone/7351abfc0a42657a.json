@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 799,
+  "latency_s": 4.969,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 392,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Replacing addWithOverflowProtection(available, 1) with plain available + 1 reintroduces integer overflow risk: if available == Integer.MAX_VALUE, available + 1 wraps to Integer.MIN_VALUE, causing min(...) to select a negative value and 'new byte[negative]' to throw NegativeArraySizeException.\", \"confidence\": 0.7}]}"
+}

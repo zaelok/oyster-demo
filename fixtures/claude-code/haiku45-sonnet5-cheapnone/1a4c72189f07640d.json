@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1273,
+  "latency_s": 4.407,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 276,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"If pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, causing a memory leak on error path (regression from removed error handling). Caller must be checked to ensure ZSTD_pthread_mutex_destroy is not called on failure, otherwise this leak persists.\", \"line_reasoning\": \"\"}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"If pthread_cond_init fails, the previously malloc'd *cond is no longer freed, causing a memory leak on error path (regression from removed error handling).\"}]}"
+}

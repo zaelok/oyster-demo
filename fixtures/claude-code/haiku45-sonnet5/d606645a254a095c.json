@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 842,
+  "latency_s": 7.751,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 750,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"Removed the special-case check for windowLog <= hashRateLog. Since these fields are unsigned, 'params->windowLog - params->hashRateLog' underflows when windowLog <= hashRateLog, producing a huge value that BOUNDED() then clamps to ZSTD_HASHLOG_MAX instead of the previously intended ZSTD_HASHLOG_MIN. This inverts the expected behavior and can produce an incorrect (too large) default hashLog for long distance matching when windowLog is small relative to hashRateLog.\", \"confidence\": 0.75}]}"
+}

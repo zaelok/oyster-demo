@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1032,
+  "latency_s": 5.233,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 301,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"description\": \"Removing addWithOverflowProtection(available, 1) in favor of plain available + 1 reintroduces integer overflow risk: if available == Integer.MAX_VALUE, the addition wraps to Integer.MIN_VALUE, making min(...) return a negative value and causing 'new byte[...]' to throw NegativeArraySizeException instead of gracefully capping at readChunkSize. Since available is derived from InputStream.available() which is technically bounded by array/stream size in practice but not guaranteed by the API contract, this regression removes a defensive safeguard for a theoretically reachable edge case.\", \"confidence\": 0.7}]}"
+}

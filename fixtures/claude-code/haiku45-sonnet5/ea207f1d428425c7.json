@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 735,
+  "latency_s": 7.815,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 675,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The condition was changed from `version.IsAtLeast(V2_3_0_0)` to `version.IsAtLeast(V2_4_0_0)`, duplicating the condition of the preceding `else if` branch. Since the first branch already checks `version.IsAtLeast(V2_4_0_0)`, this new branch becomes unreachable dead code \u2014 any version >= V2_4_0_0 will always match the earlier branch (setting Version=9) and never reach this one (which sets Version=8). This effectively breaks version negotiation for Kafka versions in the V2_3_0_0 to V2_4_0_0 range, as they will fall through to the next `else if` (V2_1_0_0) instead of getting Version=8.\", \"confidence\": 0.9}]}"
+}

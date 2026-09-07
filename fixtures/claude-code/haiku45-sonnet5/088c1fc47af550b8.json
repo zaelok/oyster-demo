@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 863,
+  "latency_s": 14.03,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1405,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 200, \"line_end\": 200, \"category\": \"logic\", \"description\": \"Changing toString() from the null-safe String.valueOf(object()) to object().toString() introduces a potential NullPointerException if object() is ever null. The removal of @Nullable on the record component is only a documentation/annotation change and does not enforce non-null at compile time or runtime, so any existing caller that constructs a Literal with a null object (e.g., representing a literal null constant) will now throw an NPE in toString() where it previously produced the string \\\"null\\\".\", \"confidence\": 0.75}]}"
+}

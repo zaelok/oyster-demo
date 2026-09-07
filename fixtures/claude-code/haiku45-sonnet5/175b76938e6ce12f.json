@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 600,
+  "latency_s": 18.813,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 1973,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\",\n      \"line_start\": 135,\n      \"line_end\": 135,\n      \"category\": \"logic\",\n      \"description\": \"Mask changed from 0xffff to 0xfff loses upper 4 bits; getUnsignedShort should preserve all 16 bits of the short value.\",\n      \"confidence\": 0.98\n    }\n  ]\n}\n```"
+}

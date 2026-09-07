@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1137,
+  "latency_s": 5.919,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 417,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changing max to min inverts the intended semantics: this now caps node capacity at 16 (or lower for large Key types) instead of guaranteeing a minimum capacity of 16 elements per node. For large Key types, capacityInBytes/stride could be less than 16, but more importantly, for small Key types where capacityInBytes/stride > 16, the capacity is now artificially limited to 16 instead of using the larger computed value, changing B-tree branching factor and performance characteristics, and potentially violating documented invariants elsewhere that assume at least 16-element capacity.\", \"confidence\": 0.9}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same max-to-min inversion as above applied to the second capacity calculation (2000 bytes budget): capacity is now capped at 16 instead of guaranteed at least 16, altering node sizing logic and potentially breaking B-tree balancing assumptions for value capacity.\", \"confidence\": 0.9}]}"
+}

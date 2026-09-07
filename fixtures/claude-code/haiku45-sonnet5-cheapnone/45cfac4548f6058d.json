@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1266,
+  "latency_s": 3.145,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 193,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"If pthread_mutex_init fails, the previously allocated *mutex is not freed, causing a memory leak on error path.\", \"confidence\": 0.95}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"description\": \"If pthread_cond_init fails, the previously allocated *cond is not freed, causing a memory leak on error path.\", \"confidence\": 0.95}]}"
+}

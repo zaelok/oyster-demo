@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 680,
+  "latency_s": 9.575,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 733,
+  "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching from URI.toString() to URI.toASCIIString() changes the serialized representation of URIs containing non-ASCII characters (percent-encoding them). This may break round-trip compatibility with existing serialized JSON data or with other consumers expecting the original toString() form, and could produce a URI string that, when parsed back via new URI(...), is not equal to the original URI object.\", \"confidence\": 0.4}]}"
+}

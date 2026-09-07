@@ -1,0 +1,8 @@
+id: claude-haiku-4-5@claude-code-nothink
+kind: model
+model: claude-haiku-4-5
+settings: {effort: none, thinking: off}           # OYSTER_CHEAP_EFFORT=none -> MAX_THINKING_TOKENS=0; matches the chat executor's setting
+harness: claude-code-cli-2.1.260
+rates: {input_per_1m: 1.00, output_per_1m: 5.00, cache_discount: 0.90}
+cost_dimensions: [dollars, latency_s]
+token_counts: api-reported

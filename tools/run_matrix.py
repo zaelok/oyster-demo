@@ -57,6 +57,14 @@ def config_key(name: str, cheap_effort: str, strong_effort: str) -> str:
     return name + suffix
 
 
+def base_name(key: str) -> str:
+    """The model-pair name behind a config key, effort suffixes stripped."""
+    for marker in ("-cheap", "-strong"):
+        if marker in key:
+            key = key.split(marker, 1)[0]
+    return key
+
+
 def env_for(
     cheap: ModelSpec, strong: ModelSpec, cheap_effort: str = "", strong_effort: str = ""
 ) -> dict[str, str]:
@@ -196,7 +204,7 @@ def summarize(out_root: Path, names: Sequence[str]) -> str:
         if not results_json.exists():
             lines.append(f"| {name} | | | (no results) | | | | | | | | |")
             continue
-        cheap, strong = CONFIGS[name]
+        cheap, strong = CONFIGS[base_name(name)]
         for path_id, row in _per_path(results_json).items():
             per_bug = "n/a" if row["strict"] == 0 else f"${row['dollars'] / row['strict']:.4f}"
             p50 = f"{statistics.median(row['latencies']):.1f}s" if row["latencies"] else "n/a"
@@ -265,6 +273,14 @@ def main(argv: Sequence[str] | None = None) -> int:
                 args.strong_effort,
             )
     keys = [config_key(name, args.cheap_effort, args.strong_effort) for name in args.only]
+    if args.summary_only:
+        # Summarize every configuration that has results under out_root, whatever effort
+        # settings produced them, so one summary compares them side by side.
+        keys = [
+            p.name
+            for p in sorted(out_root.iterdir())
+            if (p / "results.json").exists() and base_name(p.name) in CONFIGS
+        ]
     summary = summarize(out_root, keys)
     out_root.mkdir(parents=True, exist_ok=True)
     (out_root / "summary.md").write_text(summary, encoding="utf-8")

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1049,
+  "latency_s": 4.319,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 361,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative). Long.toString(Long.MIN_VALUE, radix) then produces a string already prefixed with '-', so the added \\\"-\\\" prefix results in a doubled minus sign (e.g., '--8000000000000000') for self == Long.MIN_VALUE, unlike the original correct single-negative output.\", \"confidence\": 0.95}, {\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 2, \"line_end\": 2, \"category\": \"style\", \"description\": \"Copyright notice contains a mojibake character '\u6f0f' instead of the intended '\\u00a9' (copyright symbol), likely due to incorrect file encoding when the header was added.\", \"confidence\": 0.6}]}"
+}

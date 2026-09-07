@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1096,
+  "latency_s": 13.521,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1211,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 890, \"line_end\": 892, \"category\": \"security\", \"description\": \"The fast-path `strings.Contains(urlStr, \\\"..\\\")` check operates on the raw, still percent-encoded URL string before it is parsed. `url.Parse` decodes percent-escapes into `u.Path` (e.g. \\\"%2e%2e\\\" becomes \\\"..\\\"), so a request whose raw string contains \\\"%2e%2e\\\" (or other encodings that decode to \\\"..\\\") will not match this literal-substring check and will short-circuit with `return nil`, completely skipping the subsequent parse-and-segment-check logic that would have caught it. This reintroduces a path-traversal bypass for encoded traversal sequences.\", \"confidence\": 0.75}]}"
+}

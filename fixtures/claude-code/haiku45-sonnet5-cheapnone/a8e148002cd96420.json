@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 570,
+  "latency_s": 2.399,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 122,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"base-action/src/parse-sdk-options.ts\",\n      \"line_start\": 292,\n      \"line_end\": 293,\n      \"category\": \"logic\",\n      \"description\": \"Removal of `delete env.ALL_INPUTS;` may unintentionally expose environment variable to downstream code that previously didn't have access to it.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

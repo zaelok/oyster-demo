@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 770,
+  "latency_s": 2.714,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 131,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"packages/bedrock-sdk/src/core/streaming.ts\",\n      \"line_start\": 77,\n      \"line_end\": 82,\n      \"category\": \"logic\",\n      \"description\": \"Removed error type checking that previously caught parsed errors with type='error'; now only raw SSE 'error' events are handled, allowing error objects in data chunks to pass through undetected.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

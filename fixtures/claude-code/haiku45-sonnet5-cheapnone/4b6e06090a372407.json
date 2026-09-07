@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 688,
+  "latency_s": 3.103,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 144,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 5657,\n      \"line_end\": 5657,\n      \"category\": \"logic\",\n      \"description\": \"Removing the minimum clamping operation changes behavior: casting random_uniform(0, high) directly to int32 can produce values up to high, but torch.randint expects [low, high) range where high is exclusive.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

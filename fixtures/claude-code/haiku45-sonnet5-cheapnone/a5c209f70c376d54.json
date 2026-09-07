@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 561,
+  "latency_s": 2.31,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 119,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gpt_oss/metal/source/context.c\",\n      \"line_start\": 527,\n      \"line_end\": 528,\n      \"category\": \"logic\",\n      \"description\": \"Removed gptoss_metal_command_buffer_release() call without explanation may cause resource leak if command_buffer is not released elsewhere.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

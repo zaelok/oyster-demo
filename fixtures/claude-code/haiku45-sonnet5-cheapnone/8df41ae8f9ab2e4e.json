@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 737,
+  "latency_s": 2.612,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 118,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"codex-rs/core/src/unified_exec/mod.rs\",\n      \"line_start\": 113,\n      \"line_end\": 119,\n      \"category\": \"logic\",\n      \"description\": \"Lagged broadcast errors are now silently dropped instead of retried, which could lose output chunks if the receiver falls behind.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1311,
+  "latency_s": 4.6,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 321,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"api/nvidia/v1/clusterpolicy_types.go\",\n      \"line_start\": 2090,\n      \"line_end\": 2098,\n      \"category\": \"logic\",\n      \"description\": \"Removal of nil pointer validation may cause panic if spec is nil at runtime.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"api/nvidia/v1/clusterpolicy_types.go\",\n      \"line_start\": 2130,\n      \"line_end\": 2132,\n      \"category\": \"logic\",\n      \"description\": \"Variable 'v' is assigned in switch case but reassigned as 'config' immediately; inconsistent pattern versus other cases that use the assigned variable.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"cmd/gpuop-cfg/validate/clusterpolicy/images.go\",\n      \"line_start\": 109,\n      \"line_end\": 120,\n      \"category\": \"logic\",\n      \"description\": \"Removed nil check for spec.GPUDirectStorage but ImagePath(nil) was previously guarded; now ImagePath will be called unconditionally with potentially nil spec.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

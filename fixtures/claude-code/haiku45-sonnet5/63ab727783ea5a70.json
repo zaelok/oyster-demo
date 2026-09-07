@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 912,
+  "latency_s": 5.525,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 446,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1396, \"category\": \"security\", \"description\": \"sanitizeURL was changed to only redact the 'client_secret' query parameter, removing redaction of 'access_token' and 'token'. This reintroduces a credential-leak risk: OAuth access tokens or API tokens passed as URL query parameters will now be included verbatim in error messages (e.g., RedirectionError, ErrorResponse) that embed sanitized URLs, potentially exposing them in logs or user-facing output.\", \"confidence\": 0.9}]}"
+}

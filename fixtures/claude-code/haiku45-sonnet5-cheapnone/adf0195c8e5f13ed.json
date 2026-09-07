@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 822,
+  "latency_s": 3.475,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 247,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/src/c_api/sampling_result.cpp\",\n      \"line_start\": 288,\n      \"line_end\": 288,\n      \"category\": \"logic\",\n      \"description\": \"Line 288 checks `internal_pointer->renumber_map_` but should check `internal_pointer->edge_renumber_map_` to match the member being accessed on line 290.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"cpp/src/c_api/sampling_result.cpp\",\n      \"line_start\": 298,\n      \"line_end\": 298,\n      \"category\": \"logic\",\n      \"description\": \"Line 298 checks `internal_pointer->renumber_map_` but should check `internal_pointer->edge_renumber_map_offsets_` to match the member being accessed on line 300.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

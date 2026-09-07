@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 732,
+  "latency_s": 3.181,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 192,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"github/github.go\",\n      \"line_start\": 1392,\n      \"line_end\": 1395,\n      \"category\": \"security\",\n      \"description\": \"Removal of sensitive parameter redaction for 'access_token' and 'token' parameters leaves these secrets exposed in URLs.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"github/github.go\",\n      \"line_start\": 1385,\n      \"line_end\": 1386,\n      \"category\": \"style\",\n      \"description\": \"Comment text appears incomplete/malformed with line break before 'exposed to the user'.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

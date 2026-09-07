@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 610,
+  "latency_s": 2.566,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 116,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gpt_oss/tools/python_docker/docker_tool.py\",\n      \"line_start\": 81,\n      \"line_end\": 81,\n      \"category\": \"logic\",\n      \"description\": \"Stderr output is discarded when subprocess returns non-zero exit code, masking error information needed for debugging.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 700,
+  "latency_s": 45.76,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 6996,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/compress/zstd_ldm.c\",\n      \"line_start\": 155,\n      \"line_end\": 155,\n      \"category\": \"logic\",\n      \"description\": \"Removing guard on windowLog <= hashRateLog may cause unsigned integer underflow, resulting in BOUNDED clamping to HASHLOG_MAX instead of HASHLOG_MIN.\",\n      \"confidence\": 0.78\n    }\n  ]\n}\n```"
+}

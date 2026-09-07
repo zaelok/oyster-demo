@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 815,
+  "latency_s": 2.634,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 122,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"internal/vgpu/pciutil.go\",\n      \"line_start\": 140,\n      \"line_end\": 140,\n      \"category\": \"logic\",\n      \"description\": \"Removed bounds check before slicing d.Config; if pos+PciCapabilityListID+length exceeds len(d.Config), this will panic.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

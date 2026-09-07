@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1293,
+  "latency_s": 4.929,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 293,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"include/cute/numeric/arithmetic_tuple.hpp\",\n      \"line_start\": 372,\n      \"line_end\": 372,\n      \"category\": \"logic\",\n      \"description\": \"Simplified conditional may have different semantics: bool_constant<((Ns == Ms) && ...)>{} creates a type-level boolean that might not short-circuit the same way as the original if-constexpr chain, and operator&& on bool_constant may not behave identically to logical AND with a runtime value comparison.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp\",\n      \"line_start\": 279,\n      \"line_end\": 282,\n      \"description\": \"Moving static_assert checks after dependent type definitions (SmemLayoutAtomE, TensorEAtomM, TensorEAtomK) may cause different compilation behavior if those types are used in the assertions; original placement before line 268 suggests the checks were intentionally early.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

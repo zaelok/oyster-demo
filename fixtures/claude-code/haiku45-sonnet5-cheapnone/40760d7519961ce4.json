@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 562,
+  "latency_s": 2.643,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 139,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\",\n      \"line_start\": 733,\n      \"line_end\": 733,\n      \"category\": \"logic\",\n      \"description\": \"Changing from toString() to toASCIIString() for URI serialization may alter behavior for URIs with non-ASCII characters, potentially breaking existing serialized data or client expectations.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

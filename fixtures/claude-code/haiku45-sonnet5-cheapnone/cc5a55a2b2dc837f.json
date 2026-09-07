@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 882,
+  "latency_s": 3.89,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 253,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/ContainerizationOCI/Platform.swift\",\n      \"line_start\": 253,\n      \"line_end\": 270,\n      \"category\": \"logic\",\n      \"description\": \"The arm64 variant comparison logic is broken: it returns true when one variant is nil and the other is 'v8', but this skips the subsequent osEqual and archEqual checks, incorrectly treating different OS/arch platforms as equal.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"Sources/ContainerizationOCI/Platform.swift\",\n      \"line_start\": 256,\n      \"line_end\": 263,\n      \"category\": \"logic\",\n      \"description\": \"Early return at line 263 means the final equality checks (osEqual, archEqual, variantEqual) are never reached when arm64 variant normalization occurs, breaking platform comparison for different OS or architecture combinations.\",\n      \"confidence\": 0.92\n    }\n  ]\n}\n```"
+}

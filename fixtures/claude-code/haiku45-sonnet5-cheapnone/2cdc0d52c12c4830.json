@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 916,
+  "latency_s": 3.344,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 166,
+  "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"The None-check guard for eval_metric_result.score was removed. If score is None (e.g., metric computation failed or is inapplicable), round(None, 2) raises TypeError: type NoneType doesn't define __round__ method, causing this to crash instead of safely serializing None as before.\"}]}"
+}

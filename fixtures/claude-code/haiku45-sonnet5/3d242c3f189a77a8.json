@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1294,
+  "latency_s": 4.44,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 271,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 148, \"category\": \"logic\", \"description\": \"If pthread_mutex_init fails, the allocated *mutex is not freed and the non-null pointer is left dangling/uninitialized, causing a memory leak and a potential invalid pointer being used later (e.g., in ZSTD_pthread_mutex_destroy) since callers may not check the return value.\", \"confidence\": 0.95}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 169, \"category\": \"logic\", \"description\": \"If pthread_cond_init fails, the allocated *cond is not freed, causing a memory leak and leaving a non-null but uninitialized pointer that could be misused later.\", \"confidence\": 0.95}]}"
+}

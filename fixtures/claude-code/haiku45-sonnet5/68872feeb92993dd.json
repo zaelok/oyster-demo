@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1052,
+  "latency_s": 3.89,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 222,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"The @Nullable annotation was removed from the record component 'object', but nothing in the diff guarantees callers no longer pass null. If any construction site of Literal still passes null (e.g., representing a null constant expression), toString() will now throw NullPointerException where previously String.valueOf() safely returned \\\"null\\\". This is a behavioral regression unless all call sites were also verified/updated to never pass null.\", \"confidence\": 0.7}]}"
+}

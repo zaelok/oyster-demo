@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1187,
+  "latency_s": 4.373,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 234,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removing @Nullable from the Literal record's `object` field and changing toString() to call object().toString() directly means that if a Literal is ever constructed with a null object (e.g., representing the source-level `null` constant), toString() will throw a NullPointerException instead of previously returning the string \\\"null\\\" via String.valueOf(). This is a behavioral regression unless it can be confirmed that no call site ever passes null to Literal's constructor.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1251,
+  "latency_s": 4.739,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 342,
+  "text": "```json\n{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 143, \"line_end\": 148, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"If pthread_mutex_init fails, the allocated *mutex memory is no longer freed before returning the error, causing a memory leak on the error path. The reviewer correctly identified this; the diff removed the cleanup-on-failure logic without replacing it, and callers of ZSTD_pthread_mutex_init that check the return code will not call ZSTD_pthread_mutex_destroy, so the leaked allocation is never reclaimed.\", \"confidence\": 0.9}, {\"file\": \"lib/common/threading.c\", \"line_start\": 164, \"line_end\": 168, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"If pthread_cond_init fails, the allocated *cond memory is no longer freed before returning the error, causing a memory leak on the error path, mirroring the mutex init issue.\", \"confidence\": 0.9}]}\n```"
+}

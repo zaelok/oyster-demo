@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 1036,
+  "input_tokens": 1038,
+  "latency_s": 3.107,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 219,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"If pthread_mutex_init fails, the previously malloc'd *mutex is no longer freed, causing a memory leak on error path (regression from removed error handling).\", \"confidence\": 0.9}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"description\": \"If pthread_cond_init fails, the previously malloc'd *cond is no longer freed, causing a memory leak on error path (regression from removed error handling).\", \"confidence\": 0.9}]}"
+}

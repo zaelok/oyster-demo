@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 757,
+  "latency_s": 2.473,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 110,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"mcp/client.go\",\n      \"line_start\": 337,\n      \"line_end\": 345,\n      \"category\": \"logic\",\n      \"description\": \"Removed null checks for capabilities before accessing nested fields; handlers will now subscribe even if server doesn't advertise support for list change notifications.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

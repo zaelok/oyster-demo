@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 695,
+  "latency_s": 187.759,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 20701,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\",\n      \"line_start\": 194,\n      \"line_end\": 194,\n      \"category\": \"logic\",\n      \"description\": \"Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE (still negative); Long.toString() will then include a minus sign, causing double negation (e.g., '---8000000000000000') instead of the original behavior which correctly handled negatives.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

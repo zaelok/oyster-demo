@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 992,
+  "latency_s": 2.656,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 122,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"integration_tests/src/main/python/data_gen.py\",\n      \"line_start\": 988,\n      \"line_end\": 990,\n      \"category\": \"logic\",\n      \"description\": \"Simplified DateType normalization may not handle nested DateType fields in ArrayType, StructType, or MapType correctly as the removed function did.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

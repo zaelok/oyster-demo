@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 690,
+  "latency_s": 15.353,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 1895,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SortedCollections/BTree/_BTree.swift\",\n      \"line_start\": 34,\n      \"line_end\": 34,\n      \"category\": \"logic\",\n      \"description\": \"Changed max to min inverts semantics: now caps capacity at 16 instead of ensuring minimum of 16, potentially violating B-Tree invariants when Key size is large.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"Sources/SortedCollections/BTree/_BTree.swift\",\n      \"line_start\": 46,\n      \"line_end\": 46,\n      \"category\": \"logic\",\n      \"description\": \"Changed max to min inverts semantics: now caps capacity at 16 instead of ensuring minimum of 16, potentially violating B-Tree invariants when Key size is large.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

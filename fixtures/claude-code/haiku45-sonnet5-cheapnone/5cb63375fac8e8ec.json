@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1122,
+  "latency_s": 3.704,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 261,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\",\n      \"line_start\": 544,\n      \"line_end\": 544,\n      \"category\": \"logic\",\n      \"description\": \"Changing empty string input from JsonObject.of(emptyMap()) to JsonMissing.of() may break existing code expecting an empty object instead of a missing field.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/helpers/MessageAccumulator.kt\",\n      \"line_start\": 472,\n      \"line_end\": 472,\n      \"category\": \"logic\",\n      \"description\": \"Changing empty string input from JsonObject.of(emptyMap()) to JsonMissing.of() may break existing code expecting an empty object instead of a missing field.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

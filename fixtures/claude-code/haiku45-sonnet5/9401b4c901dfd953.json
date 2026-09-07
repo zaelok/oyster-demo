@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 831,
+  "latency_s": 7.281,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 558,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5658, \"category\": \"logic\", \"description\": \"The clamping logic (cast high to int32, subtract 1, and take minimum) was removed. torch.randint's upper bound `high` is exclusive, but mb.random_uniform can return a value equal to or very close to `high` due to floating-point rounding; after cast to int32 this can yield exactly `high`, producing an out-of-range result. The previous min-clamp guarded against this edge case; its removal reintroduces the possibility of returning `high` instead of `high-1`.\", \"confidence\": 0.6}]}"
+}

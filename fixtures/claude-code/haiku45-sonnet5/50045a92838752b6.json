@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 695,
+  "latency_s": 7.164,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 724,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\",\n      \"line_start\": 294,\n      \"line_end\": 294,\n      \"category\": \"logic\",\n      \"description\": \"Beta shape validation checks self.gamma.shape instead of self.beta.shape, causing the check to validate gamma twice and skip beta validation.\",\n      \"confidence\": 0.99\n    }\n  ]\n}\n```"
+}

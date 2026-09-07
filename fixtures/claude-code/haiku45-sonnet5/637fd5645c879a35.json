@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 665,
+  "latency_s": 56.886,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 7141,
+  "text": "```json\n{\"findings\": []}\n```"
+}

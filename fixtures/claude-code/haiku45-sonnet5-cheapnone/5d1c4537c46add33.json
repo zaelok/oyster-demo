@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 578,
+  "latency_s": 3.053,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 160,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cupyx/scipy/special/_lambertw.py\",\n      \"line_start\": 12,\n      \"line_end\": 12,\n      \"category\": \"logic\",\n      \"description\": \"Type signature changed from 'Flf->F' to 'Fif->f'; second argument type changed from 'l' (long) to 'i' (int) and return type changed from 'F' (float32) to 'f' (float32), which may affect precision or break API compatibility.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

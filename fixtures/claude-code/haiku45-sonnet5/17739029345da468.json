@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1150,
+  "latency_s": 4.634,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 256,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5658, \"category\": \"logic\", \"description\": \"mb.random_uniform generates values in [low, high) using float32 precision internally; casting to int32 via truncation is generally safe since high is exclusive, but the removed clamp also protected against edge cases where high itself is a large integer not exactly representable in float32 (e.g., high > 2^24), causing random_uniform to potentially round up to exactly 'high' due to floating point rounding, which after truncation yields 'high' itself, violating torch.randint's exclusive upper bound. This regression reintroduces out-of-range results for large 'high' values.\", \"confidence\": 0.6}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 856,
+  "latency_s": 13.664,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1230,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5660, \"category\": \"logic\", \"description\": \"The diff removes the clamping logic (cast high to int32, subtract 1, and take minimum) that previously ensured the randint result stays within [low, high). mb.random_uniform can, due to floating-point rounding, produce a value equal to `high` (the exclusive upper bound), which after casting to int32 would yield `high` itself \u2014 an out-of-range value for torch.randint semantics. Removing the clamp reintroduces this edge-case bug (likely the reason the clamp was added in the first place).\", \"confidence\": 0.75}]}"
+}

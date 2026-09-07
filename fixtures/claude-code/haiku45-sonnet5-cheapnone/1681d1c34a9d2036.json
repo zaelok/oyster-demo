@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 697,
+  "latency_s": 2.803,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 120,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"mcp/server.go\",\n      \"line_start\": 1038,\n      \"line_end\": 1045,\n      \"category\": \"logic\",\n      \"description\": \"Moved null check for `res` after calling `handleMultiRoundTripResult(res)` which could dereference a nil pointer if res is nil.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

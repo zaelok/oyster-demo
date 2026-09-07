@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 685,
+  "latency_s": 1.953,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 231,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/lib/BetaMessageStream.ts\",\n      \"line_start\": 121,\n      \"line_end\": 121,\n      \"category\": \"logic\",\n      \"description\": \"Removed `this.#catchingPromiseCreated = true;` assignment before awaiting `#connectedPromise` may cause race condition or incorrect state tracking for promise error handling.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"src/lib/MessageStream.ts\",\n      \"line_start\": 115,\n      \"line_end\": 115,\n      \"category\": \"logic\",\n      \"description\": \"Removed `this.#catchingPromiseCreated = true;` assignment before awaiting `#connectedPromise` may cause race condition or incorrect state tracking for promise error handling.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

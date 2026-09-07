@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 689,
+  "latency_s": 3.979,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 234,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask 0xfff (12 bits) is incorrect for extracting an unsigned short (16 bits) from a short value. This truncates the upper 4 bits of the value, causing getUnsignedShort to return incorrect results for any short value where bits 12-15 are set (e.g., values >= 4096 when the sign bit isn't set, or negative shorts representing unsigned values >= 32768). Should be 0xffff.\", \"confidence\": 0.98}]}"
+}

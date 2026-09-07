@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 2202,
+  "latency_s": 5.043,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 348,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/bench/ann/src/common/benchmark.hpp\",\n      \"line_start\": 375,\n      \"line_end\": 377,\n      \"category\": \"logic\",\n      \"description\": \"local_match_count and local_total_count vectors are initialized with size num_recall_calculation_worker_threads + 1 but elements are never initialized to 0, leading to undefined values when accumulated.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"cpp/bench/ann/src/common/benchmark.hpp\",\n      \"line_start\": 385,\n      \"line_end\": 387,\n      \"category\": \"logic\",\n      \"description\": \"The loop condition checks i < end but i_out_idx calculation may exceed rows; the rows boundary check happens after accessing neighbors_host which could be out of bounds.\",\n      \"confidence\": 0.75\n    },\n    {\n      \"file\": \"cpp/bench/ann/src/common/benchmark.hpp\",\n      \"line_start\": 366,\n      \"line_end\": 370,\n      \"category\": \"logic\",\n      \"description\": \"The new loop structure with out_offset and batch_offset no longer resets batch_offset correctly when it wraps around query_set_size across multiple batches, potentially causing query mapping errors.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

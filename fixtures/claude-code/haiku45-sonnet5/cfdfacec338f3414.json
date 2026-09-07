@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 762,
+  "latency_s": 49.467,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 5334,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"github/github.go\",\n      \"line_start\": 1392,\n      \"line_end\": 1395,\n      \"category\": \"security\",\n      \"description\": \"Refactored code now only redacts 'client_secret' parameter; previously redacted 'client_secret', 'access_token', and 'token', removing protection for sensitive auth tokens.\",\n      \"confidence\": 0.92\n    }\n  ]\n}\n```"
+}

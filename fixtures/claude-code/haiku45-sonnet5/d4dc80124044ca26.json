@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 925,
+  "latency_s": 3.703,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 130,
+  "text": "{\"findings\": [{\"file\": \"src/google/adk/optimization/local_eval_sampler.py\", \"line_start\": 292, \"line_end\": 292, \"category\": \"logic\", \"description\": \"The null check for eval_metric_result.score was removed; round(None, 2) raises TypeError if score can be None, causing this function to crash instead of gracefully outputting None.\", \"confidence\": 0.9}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1137,
+  "latency_s": 7.539,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 413,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Using Swift.min(16, capacityInBytes / MemoryLayout<Key>.stride) caps node capacity at 16 regardless of key size, and for large Key types (stride > 8) forces capacity below 16 instead of guaranteeing a minimum of 16 as originally intended with max(). This can produce degenerate B-tree nodes with very low capacity (e.g., capacity of 1-2 for large keys), causing excessive tree depth and severe performance degradation.\", \"confidence\": 0.95}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same min/max inversion bug for leaf node capacity: Swift.min(16, capacityInBytes / MemoryLayout<Key>.stride) can yield a capacity far below the intended minimum of 16 for large Key types, or an unnecessarily small capacity even when more elements would fit within capacityInBytes, degrading B-tree performance.\", \"confidence\": 0.95}]}"
+}

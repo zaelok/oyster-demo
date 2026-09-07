@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1046,
+  "latency_s": 4.417,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 245,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The condition was changed from version.IsAtLeast(V2_3_0_0) to version.IsAtLeast(V2_4_0_0), duplicating the check on line 32. This makes the Version=8 branch unreachable: any version >= V2_4_0_0 is caught by the first branch (Version=9 or higher), so versions in [V2_3_0_0, V2_4_0_0) now incorrectly fall through to the V2_1_0_0 branch, setting Version=7 instead of 8. This is a regression that should be reverted to V2_3_0_0.\"}]}"
+}

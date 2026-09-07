@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 707,
+  "latency_s": 2.544,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/anthropic/_client.py\",\n      \"line_start\": 513,\n      \"line_end\": 525,\n      \"category\": \"logic\",\n      \"description\": \"Removal of 413 (RequestTooLargeError) and 529 (OverloadedError) status code handlers may silently mask these errors as generic APIStatusError, losing important error type information for clients.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

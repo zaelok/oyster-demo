@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1200,
+  "latency_s": 4.262,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 326,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"On io.ReadFull failure reading lengthBytes, the function now returns bytesRead (0) instead of the actual number of bytes read in this call (n, which could be 1-3 on a partial read). Callers that use the returned count to track stream position (e.g., to know how many bytes to skip/resync) will get an undercounted value on partial reads.\", \"confidence\": 0.7}, {\"file\": \"request.go\", \"line_start\": 107, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On io.ReadFull failure reading encodedReq, the function returns bytesRead (just the 4-byte header count) instead of bytesRead + n, dropping any partial bytes actually read into encodedReq before the error. This undercounts total bytes consumed on partial-read errors, which matters if the caller uses this count to resync the stream position.\", \"confidence\": 0.65}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 746,
+  "latency_s": 2.634,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 141,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\",\n      \"line_start\": 35,\n      \"line_end\": 35,\n      \"category\": \"logic\",\n      \"description\": \"Changed from returning a proper JSON-RPC error response to throwing an exception, which may break protocol compliance if callers expect a JSONRPCResponse object.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

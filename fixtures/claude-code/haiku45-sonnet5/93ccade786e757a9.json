@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 887,
+  "latency_s": 2.833,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 145,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1390, \"category\": \"security\", \"description\": \"This change narrows redaction to only 'client_secret', removing 'access_token' and 'token' from sanitization. URLs containing access_token or token query parameters will no longer be redacted, potentially leaking sensitive credentials in logs or error messages exposed to users.\", \"confidence\": 0.9}]}"
+}

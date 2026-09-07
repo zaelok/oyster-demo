@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1063,
+  "latency_s": 3.554,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 217,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/src/copying/contiguous_split.cu\",\n      \"line_start\": 1318,\n      \"line_end\": 1320,\n      \"category\": \"logic\",\n      \"description\": \"Variable `keys` is assigned twice on consecutive lines, first assignment is overwritten and dead code.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"cpp/src/io/parquet/reader_impl_preprocess_utils.cuh\",\n      \"line_start\": 479,\n      \"line_end\": 479,\n      \"category\": \"style\",\n      \"description\": \"Conflicting function signatures with both `std::ptrdiff_t` and `size_type` parameters suggest incomplete merge or refactoring.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

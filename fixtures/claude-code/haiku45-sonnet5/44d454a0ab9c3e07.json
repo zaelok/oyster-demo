@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1273,
+  "latency_s": 6.43,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 488,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"confidence\": 0.92, \"description\": \"Changing max(16, ...) to min(16, ...) inverts the intended semantics: instead of guaranteeing a minimum node capacity of 16, this now caps capacity at 16, so for small Key types where capacityInBytes/stride > 16 the capacity is wrongly reduced to 16, and for large Key types where the computed value is < 16 (e.g., stride > 8, giving < 16), capacity could drop below the minimum needed for a functioning B-tree node, potentially breaking invariants (e.g., minimum degree requirements) elsewhere in the implementation.\", \"line\": 34}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"confidence\": 0.92, \"description\": \"Same inversion bug as the other capacity calculation: min(16, ...) replaces max(16, ...), removing the guaranteed lower bound on node capacity (2000/stride) and instead capping it at 16, which can significantly degrade performance for small Key types and potentially produce too-small leaf capacities for large Key types, likely violating B-tree structural invariants (e.g., minimum number of children) assumed elsewhere in the codebase such as split/merge logic.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 705,
+  "latency_s": 2.54,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 112,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"mcp/streamable.go\",\n      \"line_start\": 2770,\n      \"line_end\": 2770,\n      \"category\": \"logic\",\n      \"description\": \"DELETE request now uses c.ctx without timeout, which could hang indefinitely if the server is unresponsive during connection close.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

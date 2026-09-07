@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1028,
+  "latency_s": 11.336,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 905,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5656, \"line_start\": 5656, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"The clamp against high-1 was removed, so the direct cast of the uniform float sample to int32 can yield a value equal to `high` when random_uniform returns a value that rounds/truncates up to high due to floating-point behavior (e.g., mb.cast rounding rather than truncating, or high being exactly representable and hit by the sampler). torch.randint(low, high) is defined as exclusive of `high`, so this can produce out-of-range results violating the expected semantics.\", \"confidence\": 0.8}]}"
+}

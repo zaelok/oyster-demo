@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 781,
+  "latency_s": 18.641,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1986,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 892, \"line_end\": 894, \"category\": \"security\", \"description\": \"The new fast-path check uses strings.Contains(urlStr, \\\"..\\\") on the raw, still percent-encoded URL string before parsing. A path segment encoded as \\\"%2e%2e\\\" (or mixed-case variants) does not contain the literal substring \\\"..\\\", so this check returns nil and skips url.Parse/segment inspection entirely, even though url.Parse would decode it to a literal \\\"..\\\" path segment. This allows an attacker to bypass the path-traversal protection by percent-encoding the dots.\", \"confidence\": 0.7}]}"
+}

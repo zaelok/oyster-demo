@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1157,
+  "latency_s": 3.703,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 257,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"windowLog and hashRateLog are unsigned integers; when windowLog <= hashRateLog, the subtraction 'params->windowLog - params->hashRateLog' underflows to a huge unsigned value. BOUNDED() then clamps this to ZSTD_HASHLOG_MAX instead of ZSTD_HASHLOG_MIN as the original special-case guarded against. This regresses the default hashLog computation for small windowLog relative to hashRateLog, causing excessive memory usage for the LDM hash table where a minimal hash log was previously chosen.\", \"confidence\": 0.85}]}"
+}

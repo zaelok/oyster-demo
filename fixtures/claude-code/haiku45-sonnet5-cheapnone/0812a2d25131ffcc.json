@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 2393,
+  "latency_s": 5.295,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 360,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass.h\",\n      \"line_start\": 131,\n      \"line_end\": 132,\n      \"category\": \"logic\",\n      \"description\": \"Removed conditional clamping of blocks_per_slice for compute capabilities 8, 11, 12; this may cause kernel launch failures if blocks_per_slice exceeds maximum grid dimensions on these architectures.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh\",\n      \"line_start\": 175,\n      \"line_end\": 213,\n      \"category\": \"style\",\n      \"description\": \"Removed dead code block that processes extra hardware dimensions beyond the primary loop.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh\",\n      \"line_start\": 310,\n      \"line_end\": 346,\n      \"category\": \"logic\",\n      \"description\": \"Removed computation block that writes dx output gradients; the gradient computation is performed but results are never stored to memory.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

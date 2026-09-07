@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 702,
+  "latency_s": 3.498,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 224,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/anthropic/lib/tools/_beta_runner.py\",\n      \"line_start\": 111,\n      \"line_end\": 111,\n      \"category\": \"logic\",\n      \"description\": \"Direct reference to self._params['messages'] bypasses the lambda parameter 'params', potentially using stale state if _params is modified concurrently.\",\n      \"confidence\": 0.75\n    },\n    {\n      \"file\": \"src/anthropic/lib/tools/_beta_runner.py\",\n      \"line_start\": 454,\n      \"line_end\": 454,\n      \"category\": \"logic\",\n      \"description\": \"Prepending self._params['messages'] to the compaction summary may include uncompacted messages that should be removed according to the compaction logic above.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1408,
+  "latency_s": 3.535,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 251,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 143, \"line_end\": 148, \"category\": \"logic\", \"description\": \"On pthread_mutex_init failure, the allocated *mutex is no longer freed, causing a memory leak since the returned non-zero code signals failure and callers typically won't call ZSTD_pthread_mutex_destroy on a mutex they believe failed to initialize.\", \"confidence\": 0.9}, {\"file\": \"lib/common/threading.c\", \"line_start\": 164, \"line_end\": 168, \"category\": \"logic\", \"description\": \"On pthread_cond_init failure, the allocated *cond is no longer freed, causing a memory leak, mirroring the mutex init issue.\", \"confidence\": 0.9}]}"
+}

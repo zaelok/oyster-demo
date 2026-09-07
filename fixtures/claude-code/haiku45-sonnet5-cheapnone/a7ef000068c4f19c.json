@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 711,
+  "latency_s": 2.723,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 133,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/src/remote_handle.cpp\",\n      \"line_start\": 661,\n      \"line_end\": 662,\n      \"category\": \"logic\",\n      \"description\": \"Line 661 assigns the result of infer_endpoint_impl to [endpoint, _], then line 662 immediately overwrites endpoint with the same function call result using std::tie, making line 661 dead code.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

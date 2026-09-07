@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1048,
+  "latency_s": 4.483,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 305,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 63, \"line_end\": 63, \"category\": \"security\", \"description\": \"The byteCount computed via multipliedReportingOverflow (intLen * MemoryLayout<T>.size) was removed and replaced with just intLen passed to rangeInBuffer. This changes the semantics of the size check: rangeInBuffer now validates only 'intLen' bytes are in range, not 'intLen * MemoryLayout<T>.size' bytes, which is the actual number of bytes the vector of type T will occupy. For T larger than 1 byte (e.g., Int32, Int64, structs), this undercounts the required buffer size, allowing verification to pass for buffers that are too small to actually contain the vector data, leading to out-of-bounds reads when the vector is later accessed.\", \"confidence\": 0.9}]}"
+}

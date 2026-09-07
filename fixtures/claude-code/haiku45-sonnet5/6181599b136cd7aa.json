@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1033,
+  "latency_s": 14.272,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1419,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"params->windowLog and params->hashRateLog are unsigned (U32) in zstd. Removing the guard for windowLog <= hashRateLog means that when hashRateLog >= windowLog, the subtraction 'windowLog - hashRateLog' underflows to a very large unsigned value. BOUNDED() then clamps this to ZSTD_HASHLOG_MAX instead of the originally intended ZSTD_HASHLOG_MIN, causing an incorrectly large hashLog to be selected for small windowLog / large hashRateLog configurations.\", \"confidence\": 0.85}]}"
+}

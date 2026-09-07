@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 714,
+  "latency_s": 14.528,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 1573,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\",\n      \"line_start\": 193,\n      \"line_end\": 201,\n      \"category\": \"logic\",\n      \"description\": \"Removing @Nullable annotation while simultaneously changing from String.valueOf() (null-safe) to object().toString() (throws NPE on null) creates a null handling risk if null is still passed at runtime.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

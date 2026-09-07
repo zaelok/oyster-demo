@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1063,
+  "latency_s": 21.235,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2103,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 143, \"line_end\": 149, \"category\": \"logic\", \"description\": \"The refactored ZSTD_pthread_mutex_init no longer frees the allocated *mutex when pthread_mutex_init() fails. This reintroduces a memory leak, and worse, leaves *mutex pointing to allocated-but-uninitialized memory. If the caller later calls ZSTD_pthread_mutex_destroy() on this handle (a common pattern even after init failure, or via cleanup on error paths), it will invoke pthread_mutex_destroy() on an uninitialized/failed mutex, which is undefined behavior. The removed cleanup logic (ZSTD_free(*mutex) on failure) was necessary and should be restored.\", \"confidence\": 0.85}, {\"file\": \"lib/common/threading.c\", \"line_start\": 164, \"line_end\": 170, \"category\": \"logic\", \"description\": \"Same issue as ZSTD_pthread_mutex_init: ZSTD_pthread_cond_init no longer frees the allocated *cond when pthread_cond_init() fails, causing a memory leak and leaving a dangling/uninitialized cond pointer that could later be passed to pthread_cond_destroy(), resulting in undefined behavior.\", \"confidence\": 0.85}]}"
+}

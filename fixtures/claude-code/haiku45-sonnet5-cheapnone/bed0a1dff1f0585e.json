@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 989,
+  "latency_s": 3.462,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 207,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cpp/src/cuts/cuts.hpp\",\n      \"line_start\": 668,\n      \"line_end\": 669,\n      \"category\": \"logic\",\n      \"description\": \"Parameter changed from reference to value and then moved in initializer list; original reference parameter binding is lost, potentially breaking external reference semantics.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"cpp/src/cuts/cuts.hpp\",\n      \"line_start\": 773,\n      \"line_end\": 773,\n      \"category\": \"logic\",\n      \"description\": \"Member variable changed from reference to value; code accessing clique_table_ may now have different lifetime semantics and shallow/deep copy behavior.\",\n      \"confidence\": 0.80\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 672,
+  "latency_s": 28.75,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 2867,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\",\n      \"line_start\": 205,\n      \"line_end\": 205,\n      \"category\": \"logic\",\n      \"description\": \"Removing `addWithOverflowProtection(available, 1)` and replacing with direct addition `available + 1` introduces integer overflow vulnerability: if available is Integer.MAX_VALUE, the addition wraps to Integer.MIN_VALUE, causing NegativeArraySizeException when creating byte array.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

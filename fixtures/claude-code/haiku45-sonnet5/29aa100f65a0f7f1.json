@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1022,
+  "latency_s": 3.792,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 223,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"confidence\": 0.98, \"description\": \"Mask changed from 0xffff to 0xfff, which only keeps the lower 12 bits instead of 16. This breaks getUnsignedShort for any short value where bits 12-15 are set (i.e., magnitude >= 4096 or negative values from bit 15 being set), causing incorrect results such as returning values mod 4096 instead of the correct unsigned short (0-65535).\"}]}"
+}

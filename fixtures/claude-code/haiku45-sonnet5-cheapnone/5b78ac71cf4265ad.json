@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1385,
+  "latency_s": 23.899,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 442,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Swift.max(16, capacityInBytes / MemoryLayout<Key>.stride) was changed to Swift.min(16, ...), inverting the intended floor into a ceiling. For Key types where capacityInBytes/stride < 16 (e.g., large Key structs), the node capacity now falls below the minimum required for B-tree invariants (minimum children per node), which can break tree balancing logic or assertions elsewhere that assume capacity >= 16. For small Key types, capacity is now capped at 16 instead of scaling up, degrading performance.\", \"confidence\": 0.9}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same min/max inversion for internal node capacity: Swift.max(16, ...) changed to Swift.min(16, ...). This can cause internal node capacity to drop below 16 for large Key types, potentially violating the B-tree's structural invariants (minimum branching factor), and unnecessarily caps capacity at 16 for small Key types, reducing performance.\", \"confidence\": 0.9}]}"
+}

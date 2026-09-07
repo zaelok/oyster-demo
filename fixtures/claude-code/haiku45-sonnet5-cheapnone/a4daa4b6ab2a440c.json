@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1355,
+  "latency_s": 5.014,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 365,
+  "text": "{\"findings\": [{\"file\": \"lib/common/threading.c\", \"line_start\": 146, \"line_end\": 146, \"category\": \"logic\", \"description\": \"If pthread_mutex_init fails, the malloc'd *mutex pointer is not freed and not reset to NULL, causing a memory leak; additionally *mutex still holds a non-null but uninitialized pointer, which could cause later code (e.g., ZSTD_pthread_mutex_destroy) to call pthread_mutex_destroy on an uninitialized mutex object if callers don't check the return code before invoking destroy.\", \"confidence\": 0.85}, {\"file\": \"lib/common/threading.c\", \"line_start\": 167, \"line_end\": 167, \"category\": \"logic\", \"description\": \"If pthread_cond_init fails, the malloc'd *cond pointer is not freed and not reset to NULL, causing a memory leak and leaving *cond pointing to an uninitialized pthread_cond_t, which risks undefined behavior if ZSTD_pthread_cond_destroy is later called without checking the init return value.\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1228,
+  "latency_s": 3.904,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 312,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"confidence\": 0.75, \"description\": \"On io.ReadFull failure for lengthBytes, the code returns bytesRead (0) instead of the actual partial byte count n read during this call. Since n could be 1-3 on a partial read/EOF, callers relying on the returned count to track stream position will get an inaccurate (undercounted) value.\", \"line_end_orig\": 96}, {\"file\": \"request.go\", \"line_start\": 107, \"line_end\": 108, \"category\": \"logic\", \"confidence\": 0.7, \"description\": \"On io.ReadFull failure for encodedReq, the code returns bytesRead (only the 4-byte header count) instead of bytesRead + n, dropping any partial bytes read into encodedReq before the error. This undercounts total bytes consumed on partial-read errors.\", \"line_end_orig\": 108}]}"
+}

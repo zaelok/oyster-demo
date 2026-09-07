@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 706,
+  "latency_s": 3.309,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 224,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gpt_oss/tools/simple_browser/backend.py\",\n      \"line_start\": 199,\n      \"line_end\": 202,\n      \"category\": \"logic\",\n      \"description\": \"Removal of api_key parameter means callers cannot override the API key, forcing hard dependency on YDC_API_KEY environment variable with no fallback.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"gpt_oss/tools/simple_browser/backend.py\",\n      \"line_start\": 199,\n      \"line_end\": 202,\n      \"category\": \"security\",\n      \"description\": \"Simplifying error message removes useful guidance URL (https://you.com/platform) for users who need to obtain an API key.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

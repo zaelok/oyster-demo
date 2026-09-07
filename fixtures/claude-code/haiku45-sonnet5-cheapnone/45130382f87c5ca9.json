@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1047,
+  "latency_s": 3.787,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 221,
+  "text": "{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Switching to toASCIIString() percent-encodes non-ASCII characters in the URI (e.g., in path, query, fragment), changing the serialized JSON output for any URI containing Unicode characters. This is a backward-incompatible change: previously stored/serialized JSON produced by older Gson versions would differ from new output, potentially breaking equality checks, caching keys, or external consumers expecting the old toString() format.\", \"confidence\": 0.5}]}"
+}

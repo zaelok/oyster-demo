@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 632,
+  "latency_s": 2.889,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 146,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"python/CuTeDSL/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py\",\n      \"line_start\": 2440,\n      \"line_end\": 2446,\n      \"category\": \"logic\",\n      \"description\": \"Removal of TupleParam handling in find_env_stream may cause recursive parameter searches to fail, potentially returning None when a stream exists in nested tuples.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

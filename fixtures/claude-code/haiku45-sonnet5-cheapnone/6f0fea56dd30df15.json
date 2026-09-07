@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1172,
+  "latency_s": 6.185,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 226,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 890, \"line_end\": 892, \"category\": \"security\", \"description\": \"The fast-path check `if !strings.Contains(urlStr, \\\"..\\\") { return nil }` operates on the raw, unescaped URL string before url.Parse decodes percent-encoded sequences. A URL containing an encoded traversal segment such as \\\"%2e%2e\\\" or \\\"%2E%2E\\\" contains no literal \\\"..\\\" substring, so this short-circuit returns nil immediately and skips the parsing/segment-check logic entirely, allowing percent-encoded path traversal to bypass the guard.\", \"confidence\": 0.85}]}"
+}

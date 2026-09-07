@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 673,
+  "latency_s": 3.317,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 206,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gantry/launch.py\",\n      \"line_start\": 321,\n      \"line_end\": 321,\n      \"category\": \"logic\",\n      \"description\": \"Condition now allows weka_buckets without hostnames and without 'storage:weka' tag requirement, which may bypass intended tag validation logic.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"gantry/launch.py\",\n      \"line_start\": 342,\n      \"line_end\": 346,\n      \"description\": \"Removed hostnames validation allows hostnames to be used with cluster/gpu_types/tags constraints, which previous code explicitly forbade.\",\n      \"category\": \"logic\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

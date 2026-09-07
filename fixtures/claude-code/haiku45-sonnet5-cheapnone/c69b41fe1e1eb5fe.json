@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 601,
+  "latency_s": 2.388,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 110,
+  "text": "```json\n{\"findings\": [{\"file\": \"src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\", \"line_start\": 1089, \"line_end\": 1095, \"category\": \"logic\", \"description\": \"Removed context_management header check without corresponding logic change elsewhere; verify this feature is intentionally being removed or if the header was moved to a different location.\", \"confidence\": 0.6}]}\n```"
+}

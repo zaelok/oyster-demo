@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 651,
+  "latency_s": 2.512,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 134,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"gpt_oss/metal/source/context.c\",\n      \"line_start\": 624,\n      \"line_end\": 626,\n      \"category\": \"logic\",\n      \"description\": \"Moving `context->num_kv_tokens = context->num_tokens` outside the loop means it gets set even when no tokens are verified, potentially causing desynchronization between verified tokens and KV cache state.\",\n      \"confidence\": 0.75\n    }\n  ]\n}\n```"
+}

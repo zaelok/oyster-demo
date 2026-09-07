@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1189,
+  "latency_s": 4.318,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 275,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 59, \"line_end\": 65, \"category\": \"security\", \"description\": \"rangeInBuffer is now called with intLen (element count) instead of intLen * MemoryLayout<T>.size (byte size), causing verification to under-check the buffer range for any T larger than 1 byte. A malicious or malformed buffer with a large intLen but insufficient trailing bytes for T-sized elements will pass verification, leading to out-of-bounds reads when the vector is later accessed. Additionally, removing the overflow check without any replacement means a crafted len close to Int.max combined with a large sizeof(T) could still cause issues elsewhere if byte size were computed later without an overflow guard.\", \"confidence\": 0.9}]}"
+}

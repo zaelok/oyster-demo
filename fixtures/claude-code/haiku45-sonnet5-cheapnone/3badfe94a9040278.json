@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1154,
+  "latency_s": 5.541,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 336,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Removing @Nullable from the record component changes the public contract of Literal to disallow null, but the constructor performs no validation, so a null object can still be stored (e.g., via existing callers constructing Literal(null) for literal null constants). This silently violates the new non-null contract without enforcement.\", \"confidence\": 0.6}, {\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 201, \"line_end\": 201, \"category\": \"logic\", \"description\": \"toString() now calls object().toString() directly instead of String.valueOf(object()); if object is null (e.g., representing a constant null literal), this throws NullPointerException instead of producing the string \\\"null\\\".\", \"confidence\": 0.9}]}"
+}

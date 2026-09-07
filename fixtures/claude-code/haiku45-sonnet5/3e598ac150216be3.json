@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1048,
+  "latency_s": 3.598,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 173,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1390, \"category\": \"security\", \"description\": \"The diff removes 'access_token' and 'token' from the list of sensitive query parameters that get redacted, leaving only 'client_secret' sanitized. URLs containing access_token or token parameters (e.g., in error messages or logged request URLs) will now leak these credentials in plaintext, which is a regression in security posture compared to the previous behavior.\", \"confidence\": 0.9}]}"
+}

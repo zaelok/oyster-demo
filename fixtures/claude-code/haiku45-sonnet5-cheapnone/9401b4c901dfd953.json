@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 831,
+  "latency_s": 13.878,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 827,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5658, \"category\": \"logic\", \"description\": \"The removed clipping (min with high-1) allowed for the fact that mb.random_uniform can return a value equal to `high` due to floating-point rounding in the underlying uniform generator, which after cast to int32 could equal `high` itself. torch.randint's semantics require the sampled integer to be strictly less than `high` (i.e., in [low, high)). Removing the clamp reintroduces the possibility of returning `high`, producing an out-of-range value that violates torch.randint semantics.\", \"confidence\": 0.6}]}"
+}

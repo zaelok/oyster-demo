@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 714,
+  "latency_s": 6.003,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 467,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The bitmask was changed from 0xffff to 0xfff, which only preserves 12 bits instead of the full 16 bits needed to represent an unsigned short. This causes getUnsignedShort() to return incorrect values for any short whose upper 4 bits (bits 12-15) are set, truncating the result. The correct mask for converting a signed short to its unsigned int representation is 0xffff.\", \"confidence\": 0.98}]}"
+}

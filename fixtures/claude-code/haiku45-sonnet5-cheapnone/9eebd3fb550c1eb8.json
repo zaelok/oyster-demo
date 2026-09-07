@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1120,
+  "latency_s": 4.65,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 333,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"On a partial read failure, io.ReadFull's returned byte count n (0 to 3 bytes read of the 4-byte length header) is discarded and bytesRead (still 0 at this point) is returned instead. Callers relying on the returned byte count to know how many bytes were consumed from the stream before the error will get an inaccurate count when a partial read occurs.\", \"confidence\": 0.6}, {\"file\": \"request.go\", \"line_start\": 107, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On a partial read failure while reading encodedReq, the actual number of bytes read (n, up to length-1) is discarded and only bytesRead (the 4 bytes from the length header) is returned. This undercounts bytes actually consumed from the reader before the error, which could matter if the caller uses this value to reposition or resume reading from the underlying stream.\", \"confidence\": 0.6}]}"
+}

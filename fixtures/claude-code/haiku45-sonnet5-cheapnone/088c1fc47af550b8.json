@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 863,
+  "latency_s": 56.563,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1166,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"The @Nullable annotation was removed from Literal's `object` field and toString() now calls object().toString() directly instead of using String.valueOf(object()). If any caller constructs a Literal to represent a null constant (e.g., the Java literal `null`), this will now throw a NullPointerException instead of safely producing the string \\\"null\\\". Unless all call sites constructing Literal instances are verified to never pass null, this change introduces a potential NPE regression. The reviewer should verify all construction sites of ConstantExpression.Literal to confirm null is truly never a valid value before removing the nullability marker and null-safe toString handling.\", \"confidence\": 0.55}]}"
+}

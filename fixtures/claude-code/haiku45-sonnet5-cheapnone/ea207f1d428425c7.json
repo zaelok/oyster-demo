@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 735,
+  "latency_s": 5.942,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 435,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"The condition was changed from `version.IsAtLeast(V2_3_0_0)` to `version.IsAtLeast(V2_4_0_0)`, duplicating the condition in the preceding `else if` branch (line 32). This makes the branch assigning Version 8 unreachable dead code, since any version satisfying V2_4_0_0 would already have matched the earlier branch. Versions >= V2_3_0_0 but < V2_4_0_0 will now incorrectly fall through to the next lower version check (V2_1_0_0), resulting in an incorrect (lower) Version being set for MetadataRequest instead of 8.\", \"confidence\": 0.92}]}"
+}

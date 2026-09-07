@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 890,
+  "latency_s": 3.862,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 204,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask 0xfff (12 bits) incorrectly truncates the unsigned short value, discarding the top 4 bits (bits 12-15). This causes getUnsignedShort to return incorrect values for any short where those bits are set, e.g. getShort returning 0x8000 would yield 0x000 instead of 0x8000.\", \"confidence\": 0.99}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1038,
+  "latency_s": 20.586,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1732,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5657, \"line_end\": 5657, \"category\": \"logic\", \"description\": \"The removed clamp (min with high-1) ensured the sampled integer stays within the half-open range [low, high). Since mb.cast to int32 truncates toward zero rather than flooring, for negative or mixed-sign ranges (e.g. low=-5, high=-1) a sampled value like -1.9 truncates to -1, which equals `high` and is out of the intended exclusive upper bound. Also, floating-point rounding in random_uniform can produce a value equal to `high` even for positive ranges, which after cast yields an out-of-range integer. Removing the clamp reintroduces these boundary violations.\", \"confidence\": 0.75}]}"
+}

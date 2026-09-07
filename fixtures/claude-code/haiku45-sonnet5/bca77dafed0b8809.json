@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 860,
+  "latency_s": 6.265,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 525,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"The beta shape validation was changed to check `self.gamma.shape` instead of `self.beta.shape`. This means beta's shape is never actually validated (gamma's shape is checked twice), and if `gamma` is None while `beta` is provided, this will raise an AttributeError on `NoneType.shape` instead of properly validating/erroring on the beta shape mismatch.\", \"confidence\": 0.97}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 665,
+  "latency_s": 2.493,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 127,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\",\n      \"line_start\": 193,\n      \"line_end\": 193,\n      \"category\": \"logic\",\n      \"description\": \"Integer overflow risk: Math.abs(self) can overflow when self is Long.MIN_VALUE, causing incorrect radix conversion.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 670,
+  "latency_s": 2.901,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 119,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/compress/zstd_ldm.c\",\n      \"line_start\": 155,\n      \"line_end\": 155,\n      \"category\": \"logic\",\n      \"description\": \"Removed conditional check that prevented underflow when params->windowLog <= params->hashRateLog; BOUNDED may not protect against negative intermediate values.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

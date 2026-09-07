@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 827,
+  "latency_s": 3.977,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 339,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changed Swift.max(16, ...) to Swift.min(16, ...) causes node capacity to be capped at 16 instead of having a minimum of 16. For small Key types where capacityInBytes/stride exceeds 16, this reduces node capacity, potentially degrading B-tree performance and diverging from intended sizing logic.\", \"confidence\": 0.85}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same bug as above: Swift.max(16, ...) changed to Swift.min(16, ...), which caps the internal node capacity at 16 rather than enforcing a minimum of 16, altering B-tree branching factor and likely degrading performance for small Key sizes.\", \"confidence\": 0.85}]}"
+}

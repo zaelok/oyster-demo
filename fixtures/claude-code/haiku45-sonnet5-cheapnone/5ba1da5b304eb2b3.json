@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1070,
+  "latency_s": 4.188,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 200,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1394, \"category\": \"security\", \"description\": \"The diff removes 'access_token' and 'token' from the sensitiveParams list, restricting redaction to only 'client_secret'. This reintroduces a credential leak: URLs containing access_token or token query parameters (common in OAuth flows) will no longer be redacted before being exposed via error messages/logs, potentially leaking live session tokens (arguably more sensitive than client_secret since they can be used directly for authenticated requests).\", \"confidence\": 0.9}]}"
+}

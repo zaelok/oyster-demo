@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1020,
+  "latency_s": 3.106,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 186,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"description\": \"The beta shape validation incorrectly checks self.gamma.shape instead of self.beta.shape. This means an incompatible beta shape will not be detected (as long as gamma is compatible or None causes AttributeError), and the error message reporting self.beta.shape will be misleading since the actual check used gamma's shape.\", \"confidence\": 0.95}]}"
+}

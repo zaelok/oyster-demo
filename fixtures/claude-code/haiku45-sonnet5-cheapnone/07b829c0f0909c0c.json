@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1140,
+  "latency_s": 3.924,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 168,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1394, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts 'client_secret' and no longer redacts 'access_token' or 'token' query parameters. URLs (e.g., from RedirectionError or other error paths) containing OAuth access tokens or bearer tokens as query params will be exposed unredacted in logs/error messages, leaking live credentials.\", \"confidence\": 0.9}]}"
+}

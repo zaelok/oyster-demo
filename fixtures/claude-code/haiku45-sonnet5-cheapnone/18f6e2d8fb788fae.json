@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 584,
+  "latency_s": 2.643,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 118,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"lib/anthropic/credentials/workload_identity.rb\",\n      \"line_start\": 161,\n      \"line_end\": 161,\n      \"category\": \"logic\",\n      \"description\": \"Pattern syntax change removes parentheses around union type in case pattern; verify this is valid Ruby 3.0+ syntax for pattern matching.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

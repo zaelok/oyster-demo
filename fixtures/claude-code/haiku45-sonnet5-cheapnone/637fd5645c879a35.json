@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 635,
+  "latency_s": 2.684,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 128,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"github/github.go\",\n      \"line_start\": 892,\n      \"line_end\": 894,\n      \"category\": \"logic\",\n      \"description\": \"Early return on strings.Contains check bypasses the actual path traversal validation logic in url.Parse; an attacker could craft URLs with \\\"..\\\" in the query string or fragment that pass this check but might still be vulnerable.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 616,
+  "latency_s": 2.675,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 150,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\",\n      \"line_start\": 216,\n      \"line_end\": 216,\n      \"category\": \"logic\",\n      \"description\": \"XOR operator with three operands does not enforce exactly-one constraint; (A XOR B XOR C) is true when 1 or 3 operands are true, failing the 'exactly one' requirement.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

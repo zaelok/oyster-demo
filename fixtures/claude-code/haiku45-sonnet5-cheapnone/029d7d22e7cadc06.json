@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 686,
+  "latency_s": 2.964,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 152,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 8524,\n      \"line_end\": 8525,\n      \"category\": \"logic\",\n      \"description\": \"The refactored logic unconditionally subtracts the modulo result from dim, but the original code branched on sign: negative shifts used mod directly as start_idx, while positive shifts used dim - mod(s, dim), changing the semantics for negative shifts.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

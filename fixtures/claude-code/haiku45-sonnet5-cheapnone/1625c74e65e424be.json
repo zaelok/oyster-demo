@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1035,
+  "latency_s": 16.49,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1223,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 890, \"line_end\": 892, \"category\": \"security\", \"description\": \"The new short-circuit `if !strings.Contains(urlStr, \\\"..\\\") { return nil }` runs on the raw, non-decoded URL string before url.Parse is invoked. Because url.Parse (and the URL parsing/unescaping machinery) will decode percent-encoded sequences such as %2e%2e or mixed-case %2E%2e into literal \\\"..\\\" in u.Path, an attacker can craft a URL containing no literal \\\"..\\\" substring (e.g. using percent-encoding) that still resolves to a path-traversal segment after parsing. The fast path returns nil before that decoding/check ever happens, silently disabling the traversal protection for any percent-encoded variant of \\\"..\\\". This effectively reintroduces the path traversal vulnerability the original check-after-parse logic was meant to prevent, and the reviewer's description is accurate.\", \"confidence\": 0.85}]}"
+}

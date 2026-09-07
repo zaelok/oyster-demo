@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1015,
+  "latency_s": 18.139,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1905,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 155, \"line_end\": 155, \"category\": \"logic\", \"description\": \"windowLog and hashRateLog are unsigned (U32) in ldmParams_t. When windowLog <= hashRateLog, 'params->windowLog - params->hashRateLog' underflows to a very large unsigned value. Passed through BOUNDED(ZSTD_HASHLOG_MIN, val, ZSTD_HASHLOG_MAX), this huge value exceeds hi and gets clamped to ZSTD_HASHLOG_MAX, whereas the original code explicitly set hashLog to ZSTD_HASHLOG_MIN in that case. This silently flips the resulting hashLog from the minimum to the maximum, causing much higher memory usage / different LDM hash table sizing than intended whenever windowLog <= hashRateLog.\", \"confidence\": 0.85}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 655,
+  "latency_s": 2.578,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 136,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"libcudacxx/include/cuda/__device/physical_device.h\",\n      \"line_start\": 151,\n      \"line_end\": 152,\n      \"category\": \"logic\",\n      \"description\": \"The cast of `__domain_count` from `size_t` to `unsigned int` in the original code was removed without verification that the value fits in the smaller type, potentially causing silent truncation.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

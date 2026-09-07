@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 839,
+  "latency_s": 3.631,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 332,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/guidellm/data/deserializers/trace_common.py\",\n      \"line_start\": 319,\n      \"line_end\": 321,\n      \"category\": \"logic\",\n      \"description\": \"Function _raise_if_nonetype_found no longer uses the features parameter but still iterates over dataset.column_names, which may include columns that were previously filtered out.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"src/guidellm/data/deserializers/trace_common.py\",\n      \"line_start\": 326,\n      \"line_end\": 329,\n      \"category\": \"logic\",\n      \"description\": \"Removed .select_columns() call means dataset.cast() will now attempt to cast all columns including conversation_id_column which was previously excluded from validation.\",\n      \"confidence\": 0.75\n    },\n    {\n      \"file\": \"src/guidellm/data/deserializers/trace_common.py\",\n      \"line_start\": 326,\n      \"line_end\": 329,\n      \"category\": \"logic\",\n      \"description\": \"Catching TypeError was removed but dataset.cast() can raise TypeError for type mismatches, reducing error coverage.\",\n      \"confidence\": 0.65\n    }\n  ]\n}\n```"
+}

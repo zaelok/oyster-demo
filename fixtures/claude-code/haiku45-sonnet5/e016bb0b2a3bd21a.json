@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 882,
+  "latency_s": 22.488,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 2485,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"On error reading the 4-byte length prefix, the function now always returns bytesRead (which is 0 at this point) instead of n, the actual number of bytes io.ReadFull read before failing (0-4). This discards potentially useful partial-read information that callers might rely on for accurate byte accounting (e.g., resuming reads, detecting partial writes, or logging). This is a real regression from the previous behavior.\", \"confidence\": 0.7}, {\"file\": \"request.go\", \"line_start\": 107, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On error reading encodedReq, the function now returns bytesRead alone instead of bytesRead + n, where n was the partial number of bytes actually read into encodedReq before the error. This means the reported byte count is now always short by the partial amount read (up to length-1 bytes), understating how much of the stream was actually consumed. Any caller using this count to track stream position or for retry/resync logic will get incorrect results.\", \"confidence\": 0.75}]}"
+}

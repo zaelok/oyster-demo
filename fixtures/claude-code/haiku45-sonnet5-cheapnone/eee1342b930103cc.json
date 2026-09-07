@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1123,
+  "latency_s": 3.96,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 258,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1392, \"line_end\": 1395, \"category\": \"security\", \"description\": \"sanitizeURL now only redacts 'client_secret' and no longer redacts 'access_token' or 'token' query parameters, so these secrets will be exposed in error messages/logs when a request URL containing them is sanitized.\", \"confidence\": 0.95}, {\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1385, \"category\": \"style\", \"description\": \"The comment '// sanitizeURL redacts the client_secret parameter from the URL which may be' is truncated/malformed, awkwardly wrapping onto the next line before 'exposed to the user.' without proper sentence structure.\", \"confidence\": 0.6}]}"
+}

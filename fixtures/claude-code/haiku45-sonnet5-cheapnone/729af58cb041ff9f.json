@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1083,
+  "latency_s": 4.583,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 257,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/frontend/torch/ops.py\", \"line_start\": 5654, \"line_end\": 5658, \"category\": \"logic\", \"confidence\": 0.7, \"description\": \"Removing the clamp (minimum with high-1) reintroduces the possibility that random_uniform, which is generally documented as sampling from [low, high) but can hit or round to the upper bound due to floating-point behavior, produces a value that casts to int32 equal to high, violating torch.randint's [low, high) contract. The original clamp was likely added specifically to guard against this edge case, and its removal is a regression rather than a simplification, unless it can be proven mb.random_uniform never returns exactly `high` after truncation for all supported dtypes/backends.\"}]}"
+}

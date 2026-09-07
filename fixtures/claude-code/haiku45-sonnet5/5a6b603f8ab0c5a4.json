@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1112,
+  "latency_s": 9.189,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 885,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"For self == Long.MIN_VALUE, Math.abs(self) overflows back to Long.MIN_VALUE (still negative) because there is no positive long representation of it. Long.toString(Math.abs(self), radix) then already returns a string prefixed with '-', and the added '-' concatenation produces a malformed double-negative string (e.g. '--1000000000000000000000000000000000000000000000000000000000000') instead of the correct radix representation of Long.MIN_VALUE that the original Long.toString(self, radix) call produced correctly.\", \"confidence\": 0.9}]}"
+}

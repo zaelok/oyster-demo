@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 635,
+  "latency_s": 1.404,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 116,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/google/adk/optimization/local_eval_sampler.py\",\n      \"line_start\": 292,\n      \"line_end\": 292,\n      \"category\": \"logic\",\n      \"description\": \"Removed null check for eval_metric_result.score before rounding, will crash if score is None.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

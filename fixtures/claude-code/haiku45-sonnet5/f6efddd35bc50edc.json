@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 676,
+  "latency_s": 32.945,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 3115,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\",\n      \"line_start\": 200,\n      \"line_end\": 200,\n      \"category\": \"logic\",\n      \"description\": \"Operator precedence change: `(int) counter % hostsSize` casts counter to int before modulo, which can cause overflow to negative values for large counters; original `(int) (counter % hostsSize)` performed modulo on the full long value first.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 781,
+  "latency_s": 15.391,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1299,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 890, \"line_end\": 892, \"category\": \"security\", \"description\": \"The added fast-path checks for the literal substring \\\"..\\\" in the raw urlStr before falling back to full parsing. This bypasses the traversal check for percent-encoded sequences like \\\"%2e%2e\\\" (or mixed-case \\\"%2E%2e\\\") that url.Parse decodes into \\\"..\\\" path segments. Since the raw string doesn't contain literal \\\"..\\\", the function now returns nil (allowed) without ever parsing/decoding the path, reintroducing a path traversal bypass that the original decode-then-check logic was designed to prevent.\", \"confidence\": 0.75}]}"
+}

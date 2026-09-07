@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 548,
+  "latency_s": 2.541,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 97,
+  "text": "```json\n{\"findings\": [{\"file\": \"lib/anthropic/internal/util.rb\", \"line_start\": 569, \"line_end\": 569, \"category\": \"logic\", \"description\": \"Boundary size increased from 30 to 60 bytes without clear justification; verify this doesn't break multipart encoding compatibility or introduce unexpected behavior in upstream services.\", \"confidence\": 0.4}]}\n```"
+}

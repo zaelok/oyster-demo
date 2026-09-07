@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 699,
+  "latency_s": 2.512,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 126,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"dali/python/nvidia/dali/experimental/dynamic/_call_site.py\",\n      \"line_start\": 35,\n      \"line_end\": 35,\n      \"category\": \"logic\",\n      \"description\": \"Removing weakref.finalize() means code objects will remain in _transparent_codes indefinitely, causing a memory leak for dynamically created functions.\",\n      \"confidence\": 0.92\n    }\n  ]\n}\n```"
+}

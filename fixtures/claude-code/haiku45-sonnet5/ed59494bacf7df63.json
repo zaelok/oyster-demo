@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1080,
+  "latency_s": 8.071,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 645,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removing @Nullable from the `object` field and changing toString() from String.valueOf(object()) to object().toString() changes behavior for null literals: previously a null-valued Literal safely stringified to \\\"null\\\", now it will throw NullPointerException. Since @Nullable removal is only a documentation/annotation change and not enforced at runtime, any existing or future caller constructing a Literal with a null object (e.g., representing the constant `null` in source) would cause an NPE. The reviewer should verify all call sites of Literal construction to confirm null is genuinely never passed before relying on this change; otherwise this is a latent regression.\", \"confidence\": 0.65}]}"
+}

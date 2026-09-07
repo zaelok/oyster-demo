@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 965,
+  "latency_s": 4.278,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 283,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The condition was changed from `version.IsAtLeast(V2_3_0_0)` to `version.IsAtLeast(V2_4_0_0)`, duplicating the earlier check on line 32. This makes the V2_3_0_0 branch (Version 8) unreachable, since any version >= V2_4_0_0 is already caught by the first branch, and versions between V2_3_0_0 and V2_4_0_0 will now incorrectly fall through to the V2_1_0_0 branch, setting Version 7 instead of 8. This appears to be an unintended regression (likely a copy-paste error) rather than an intentional change, and should be reverted to V2_3_0_0.\"}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1220,
+  "latency_s": 7.817,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 316,
+  "text": "{\"findings\": [{\"file\": \"request.go\", \"line_start\": 95, \"line_end\": 96, \"category\": \"logic\", \"description\": \"On io.ReadFull error reading lengthBytes, the function now returns bytesRead (0) instead of the actual number of bytes read (n), which io.ReadFull reports even on partial-read errors like io.ErrUnexpectedEOF. Callers relying on the returned byte count to resync or advance the stream position will get incorrect (zero) accounting.\", \"confidence\": 0.75}, {\"file\": \"request.go\", \"line_start\": 107, \"line_end\": 108, \"category\": \"logic\", \"description\": \"On io.ReadFull error reading encodedReq, the function now returns bytesRead (only the 4 length-prefix bytes) instead of bytesRead + n, discarding the count of partially read payload bytes. This changes error-path byte accounting and could break callers relying on it to resync the stream.\", \"confidence\": 0.75}]}"
+}

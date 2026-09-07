@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 816,
+  "latency_s": 9.082,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 925,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(self) overflows for Long.MIN_VALUE (returns Long.MIN_VALUE itself, still negative). For self == Long.MIN_VALUE, Long.toString(Math.abs(self), radix) still yields a negative string, and prepending \\\"-\\\" produces a doubly-negative, malformed result (e.g. \\\"--9223372036854775808\\\") instead of the correct radix representation.\", \"confidence\": 0.85}]}"
+}

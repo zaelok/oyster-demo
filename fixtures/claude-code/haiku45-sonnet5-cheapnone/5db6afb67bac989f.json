@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 660,
+  "latency_s": 3.319,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 235,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"Sources/SortedCollections/BTree/_BTree.swift\",\n      \"line_start\": 34,\n      \"line_end\": 34,\n      \"category\": \"logic\",\n      \"description\": \"Changed from `max` to `min` which inverts the capacity calculation logic; this likely reduces the B-tree node capacity to an undersized value, potentially breaking performance.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"Sources/SortedCollections/BTree/_BTree.swift\",\n      \"line_start\": 46,\n      \"line_end\": 46,\n      \"category\": \"logic\",\n      \"description\": \"Changed from `max` to `min` which inverts the capacity calculation logic; this likely reduces the B-tree internal node capacity to an undersized value, potentially breaking performance.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

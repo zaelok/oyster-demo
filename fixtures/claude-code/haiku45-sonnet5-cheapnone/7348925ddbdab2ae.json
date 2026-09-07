@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 689,
+  "latency_s": 2.765,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 131,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\",\n      \"line_start\": 60,\n      \"line_end\": 60,\n      \"category\": \"logic\",\n      \"description\": \"Changed from multiplying byteCount (intLen * MemoryLayout<T>.size) to just intLen; this removes overflow checking and may pass incorrect size to rangeInBuffer validation.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

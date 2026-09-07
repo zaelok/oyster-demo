@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 752,
+  "latency_s": 3.744,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 284,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"cmd/config-manager/main.go\",\n      \"line_start\": 408,\n      \"line_end\": 408,\n      \"category\": \"style\",\n      \"description\": \"Changed from %w (error wrapping) to %v (error formatting), losing error chain context for debugging.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"cmd/config-manager/main.go\",\n      \"line_start\": 413,\n      \"line_end\": 413,\n      \"category\": \"style\",\n      \"description\": \"Changed from %w (error wrapping) to %v (error formatting), losing error chain context for debugging.\",\n      \"confidence\": 0.7\n    },\n    {\n      \"file\": \"cmd/config-manager/main.go\",\n      \"line_start\": 418,\n      \"line_end\": 418,\n      \"category\": \"style\",\n      \"description\": \"Changed from %w (error wrapping) to %v (error formatting), losing error chain context for debugging.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1072,
+  "latency_s": 12.543,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 731,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 63, \"line_end\": 63, \"category\": \"security\", \"description\": \"The size argument passed to rangeInBuffer was changed from the computed byte count (intLen * MemoryLayout<T>.size) to the raw element count intLen. For any T with size > 1 byte, this under-verifies the buffer range (only checking that 'intLen' bytes, not 'intLen * sizeof(T)' bytes, fit in the buffer), allowing out-of-bounds vector reads on malicious/untrusted buffers. Additionally, the overflow check on the multiplication (intLen * MemoryLayout<T>.size) was removed entirely rather than being reintroduced elsewhere, so even if the byte-count calculation were restored, integer overflow protection for large intLen values would still be missing.\", \"confidence\": 0.95}]}"
+}

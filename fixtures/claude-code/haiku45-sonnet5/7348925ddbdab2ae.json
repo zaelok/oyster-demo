@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 719,
+  "latency_s": 53.292,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 5630,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\",\n      \"line_start\": 59,\n      \"line_end\": 60,\n      \"category\": \"logic\",\n      \"description\": \"Removed overflow check for intLen * MemoryLayout<T>.size multiplication and changed rangeInBuffer parameter from byteCount.partialValue to intLen, causing buffer validation to undercount for non-unit-sized elements.\",\n      \"confidence\": 0.9\n    }\n  ]\n}\n```"
+}

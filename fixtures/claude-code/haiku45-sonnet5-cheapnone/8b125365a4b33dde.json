@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1014,
+  "latency_s": 3.501,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 207,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"confidence\": 0.97, \"description\": \"The beta shape check now compares self.gamma.shape against normalized_shape instead of self.beta.shape, so an incompatible beta shape will not be caught. Additionally, if self.beta is not None but self.gamma is None, accessing self.gamma.shape will raise an AttributeError instead of properly validating beta. This is a clear copy-paste bug from the gamma check above.\"}]}"
+}

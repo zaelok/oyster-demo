@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 912,
+  "latency_s": 5.986,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 411,
+  "text": "{\"findings\": [{\"file\": \"github/github.go\", \"line_start\": 1385, \"line_end\": 1396, \"category\": \"security\", \"description\": \"The refactored sanitizeURL now only redacts the 'client_secret' query parameter, dropping the previous redaction of 'access_token' and 'token'. This is a security regression: URLs containing OAuth access tokens or generic 'token' parameters (e.g., in RedirectionError or logged request URLs) will no longer be sanitized, potentially leaking sensitive credentials in error messages, logs, or stack traces.\", \"confidence\": 0.9}]}"
+}

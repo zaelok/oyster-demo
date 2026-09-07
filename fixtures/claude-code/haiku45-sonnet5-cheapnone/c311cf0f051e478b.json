@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 614,
+  "latency_s": 2.647,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 128,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"coremltools/converters/mil/frontend/torch/ops.py\",\n      \"line_start\": 2179,\n      \"line_end\": 2186,\n      \"category\": \"logic\",\n      \"description\": \"Removal of dtype check and bool conversion before casting to int32 may cause incorrect behavior for non-boolean inputs to 'all'/'any' operations.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1062,
+  "latency_s": 4.179,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 237,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 63, \"line_end\": 63, \"category\": \"logic\", \"description\": \"The overflow check for intLen * MemoryLayout<T>.size was removed and rangeInBuffer is now called with the raw element count (intLen) instead of the byte count. For types where MemoryLayout<T>.size > 1, this undercounts the actual buffer range needed, allowing rangeInBuffer to pass even when the true byte range (intLen * size) exceeds the buffer capacity, leading to out-of-bounds reads when the array/vector data is later accessed by byte offset.\", \"confidence\": 0.92}]}"
+}

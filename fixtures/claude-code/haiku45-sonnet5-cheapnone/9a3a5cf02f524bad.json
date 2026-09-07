@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 749,
+  "latency_s": 3.665,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 258,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"libcudacxx/include/cuda/std/__bit/byteswap.h\",\n      \"line_start\": 210,\n      \"line_end\": 216,\n      \"category\": \"logic\",\n      \"description\": \"Removed consteval guard and NV_IS_HOST target check; now builtin will be called unconditionally on all targets including device code where it may not be available.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"libcudacxx/include/cuda/std/__bit/byteswap.h\",\n      \"line_start\": 211,\n      \"line_end\": 211,\n      \"category\": \"logic\",\n      \"description\": \"Removed fallback to __byteswap_impl when _CCCL_BUILTIN_BSWAPG is available but not callable; this may cause linker errors if builtin is missing at link time.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

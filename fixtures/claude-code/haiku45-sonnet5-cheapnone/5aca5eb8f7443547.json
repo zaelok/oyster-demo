@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1064,
+  "latency_s": 3.529,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 249,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\", \"line_start\": 205, \"line_end\": 205, \"category\": \"logic\", \"confidence\": 0.55, \"description\": \"Replacing addWithOverflowProtection(available, 1) with plain available + 1 reintroduces integer overflow risk if available == Integer.MAX_VALUE, causing a negative value passed to min() and resulting in a NegativeArraySizeException when allocating the buffer. This is an edge case since InputStream.available() rarely returns Integer.MAX_VALUE, but the removal of the overflow guard is an unjustified regression in robustness.\"}]}"
+}

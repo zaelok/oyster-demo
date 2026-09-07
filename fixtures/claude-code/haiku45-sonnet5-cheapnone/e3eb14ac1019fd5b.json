@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 774,
+  "latency_s": 2.734,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 142,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\",\n      \"line_start\": 34,\n      \"line_end\": 36,\n      \"category\": \"logic\",\n      \"description\": \"Error is returned as Mono.error() instead of JSONRPCResponse, changing the behavior from returning an error response to propagating an exception up the stack.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

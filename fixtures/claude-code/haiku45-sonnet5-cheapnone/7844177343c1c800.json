@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 878,
+  "latency_s": 14.475,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1113,
+  "text": "{\"findings\": [{\"file\": \"swift/Sources/FlatBuffers/Verifiable.swift\", \"line_start\": 56, \"line_end\": 64, \"category\": \"security\", \"description\": \"The overflow-checked byte-count computation (intLen * MemoryLayout<T>.size) was removed and replaced with using the raw element count (intLen) directly as the size passed to rangeInBuffer. This changes the semantics of the bounds check: rangeInBuffer now verifies that `intLen` bytes fit in the buffer rather than `intLen * MemoryLayout<T>.size` bytes, which is incorrect for any type T larger than 1 byte (e.g., Int32, Int64, structs). This under-verifies the actual required space for scalar vectors, potentially allowing verification to succeed for buffers that do not actually contain enough bytes for all elements, leading to out-of-bounds reads when the vector is later accessed. Additionally, removing the overflow check on the multiplication (even if it's reinstated) means a large `len` combined with a large element size could overflow silently elsewhere if this pattern is reused throughout the codebase.\", \"confidence\": 0.75}]}"
+}

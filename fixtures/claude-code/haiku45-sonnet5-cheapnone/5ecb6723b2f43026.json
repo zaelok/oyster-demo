@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 642,
+  "latency_s": 2.77,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 150,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-concurrent-api/src/main/java/io/servicetalk/concurrent/api/FromInputStreamPublisher.java\",\n      \"line_start\": 205,\n      \"line_end\": 205,\n      \"category\": \"logic\",\n      \"description\": \"Removed overflow protection function `addWithOverflowProtection()` and replaced with simple addition `available + 1`, which may silently overflow if `available` is near Integer.MAX_VALUE.\",\n      \"confidence\": 0.85\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 816,
+  "latency_s": 5.505,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 417,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 193, \"line_end\": 193, \"category\": \"logic\", \"description\": \"Math.abs(self) overflows for self == Long.MIN_VALUE, returning Long.MIN_VALUE itself (still negative). Long.toString then produces a string already starting with '-', and the code prepends another '-', yielding an incorrect double-negative result for the smallest long value.\", \"confidence\": 0.75}]}"
+}

@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 646,
+  "latency_s": 3.108,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 279,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\",\n      \"line_start\": 200,\n      \"line_end\": 200,\n      \"category\": \"logic\",\n      \"description\": \"Operator precedence issue: `(int) counter % hostsSize` casts only `counter` to int before modulo, should be `((int) counter) % hostsSize` or `(int) (counter % hostsSize)` depending on intent.\",\n      \"confidence\": 0.85\n    },\n    {\n      \"file\": \"servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinSelector.java\",\n      \"line_start\": 202,\n      \"line_end\": 203,\n      \"category\": \"style\",\n      \"description\": \"Incomplete comment: line 202 mentions weights case but line 203 comment text appears truncated or malformed.\",\n      \"confidence\": 0.6\n    }\n  ]\n}\n```"
+}

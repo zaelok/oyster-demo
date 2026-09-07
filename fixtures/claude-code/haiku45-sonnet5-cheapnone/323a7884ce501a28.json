@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 689,
+  "latency_s": 3.331,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 179,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"Mask changed from 0xffff to 0xfff, which incorrectly truncates the unsigned short to 12 bits instead of 16 bits, producing wrong values for getUnsignedShort when the upper 4 bits of the 16-bit value are set.\", \"confidence\": 0.98}]}"
+}

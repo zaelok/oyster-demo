@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 885,
+  "latency_s": 3.567,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 179,
+  "text": "{\"findings\": [{\"file\": \"metadata_request.go\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"This else-if branch checks version.IsAtLeast(V2_4_0_0), which is identical to the condition on line 33 that is already handled above. As a result, this branch is unreachable and Version 8 will never be set; the condition should be V2_3_0_0 to correctly assign Version 8 for versions in [V2_3_0_0, V2_4_0_0).\", \"confidence\": 0.95}]}"
+}

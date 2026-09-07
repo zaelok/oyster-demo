@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 841,
+  "latency_s": 13.804,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1252,
+  "text": "{\"findings\": [{\"file\": \"pkl-core/src/main/java/org/pkl/core/stdlib/base/IntNodes.java\", \"line_start\": 195, \"line_end\": 195, \"category\": \"logic\", \"description\": \"The fix for negative number handling in toRadixString does not account for Long.MIN_VALUE. Math.abs(Long.MIN_VALUE) overflows and returns Long.MIN_VALUE unchanged (still negative) due to two's complement representation. This causes Long.toString(Math.abs(self), radix) to already produce a negative-prefixed string, and prepending another '-' results in a doubly-negated, incorrect output (e.g., '--1000000000000000000' in base 2) instead of the correct radix string for Long.MIN_VALUE.\", \"confidence\": 0.85}]}"
+}

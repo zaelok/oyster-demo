@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 773,
+  "latency_s": 3.472,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 239,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"clients/web/src/hooks/useProgressToasts.ts\",\n      \"line_start\": 89,\n      \"line_end\": 89,\n      \"category\": \"logic\",\n      \"description\": \"Clearing `liveToastIds` instead of `progressToastIdsRef.current` may not match the intended ref-based tracking pattern used elsewhere in the codebase.\",\n      \"confidence\": 0.6\n    },\n    {\n      \"file\": \"clients/web/src/hooks/useTaskToasts.ts\",\n      \"line_start\": 225,\n      \"line_end\": 225,\n      \"category\": \"logic\",\n      \"description\": \"Clearing `liveToastIds` instead of `taskToastIdsRef.current` breaks consistency with the ref-based state management pattern and risks losing reference to active toasts.\",\n      \"confidence\": 0.7\n    }\n  ]\n}\n```"
+}

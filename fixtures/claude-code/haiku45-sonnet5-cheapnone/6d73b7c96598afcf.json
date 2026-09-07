@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 852,
+  "latency_s": 17.777,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 1702,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"description\": \"Changed Swift.max to Swift.min changes the semantics of computing internal node capacity: the original code guaranteed a capacity of at least 16 while allowing larger capacities when capacityInBytes/stride exceeds 16. Using min(16, ...) now caps the capacity at 16 (or lower if capacityInBytes/stride < 16), silently defeating the intent of computing capacity from a byte budget for larger structures and potentially degrading B-tree performance or violating invariants that expect a minimum node size when Key is large.\", \"confidence\": 0.75}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"description\": \"Same max->min regression as above for the leaf capacity calculation (capacityInBytes = 2000): the swap from Swift.max(16, ...) to Swift.min(16, ...) caps leaf node capacity at 16 rather than guaranteeing a minimum of 16 while allowing higher capacities for small Key sizes, undermining the sizing strategy of the B-tree.\", \"confidence\": 0.75}]}"
+}

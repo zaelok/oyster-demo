@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 872,
+  "latency_s": 4.206,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 313,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"src/claude_agent_sdk/_internal/message_parser.py\",\n      \"line_start\": 89,\n      \"line_end\": 89,\n      \"category\": \"logic\",\n      \"description\": \"Removed type validation for content blocks; accessing block[\\\"type\\\"] without prior dict check could raise KeyError if block is malformed.\",\n      \"confidence\": 0.8\n    },\n    {\n      \"file\": \"src/claude_agent_sdk/_internal/message_parser.py\",\n      \"line_start\": 131,\n      \"line_end\": 131,\n      \"category\": \"logic\",\n      \"description\": \"Removed validation that assistant content is a list; will raise TypeError if data[\\\"message\\\"][\\\"content\\\"] is not iterable.\",\n      \"confidence\": 0.9\n    },\n    {\n      \"file\": \"src/claude_agent_sdk/_internal/message_parser.py\",\n      \"line_start\": 130,\n      \"line_end\": 131,\n      \"category\": \"logic\",\n      \"description\": \"Removed type validation for content blocks in assistant message; match statement will fail if block is not a dict.\",\n      \"confidence\": 0.8\n    }\n  ]\n}\n```"
+}

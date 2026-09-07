@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 838,
+  "latency_s": 5.211,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 361,
+  "text": "{\"findings\": [{\"file\": \"core/src/main/java/com/google/errorprone/bugpatterns/threadsafety/ConstantExpressions.java\", \"line_start\": 193, \"line_end\": 201, \"category\": \"logic\", \"description\": \"Removing @Nullable from the Literal record's `object` field and replacing String.valueOf(object()) with object().toString() introduces a NullPointerException risk if a null literal is ever constructed (e.g., for the literal `null` in Java source). The @Nullable annotation was likely there because Literal can represent the null literal; removing it and calling toString() directly will throw NPE instead of safely returning \\\"null\\\".\", \"confidence\": 0.75}]}"
+}

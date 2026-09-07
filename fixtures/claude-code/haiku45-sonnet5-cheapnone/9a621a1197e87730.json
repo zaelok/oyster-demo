@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 903,
+  "latency_s": 5.548,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 319,
+  "text": "```json\n{\"findings\": [{\"file\": \"gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java\", \"line_start\": 733, \"line_end\": 733, \"category\": \"logic\", \"description\": \"Changing URI serialization from toString() to toASCIIString() alters output for URIs containing non-ASCII or Unicode characters, percent-encoding them. This breaks backward compatibility for existing serialized JSON and could cause round-trip mismatches (new URI(asciiString) may not equal original URI, e.g. differing in host normalization or encoding of query/fragment). Reviewer's concern is valid; additionally this is a behavioral change that should be documented/tested, and it only affects write path while read path (URI.create) still parses ASCII/percent-encoded forms consistently, so actual round-trip breakage risk is lower than implied but the compatibility/behavior-change concern remains legitimate.\", \"confidence\": 0.5}]}\n```"
+}

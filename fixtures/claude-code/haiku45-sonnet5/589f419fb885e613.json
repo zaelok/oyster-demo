@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 939,
+  "latency_s": 5.122,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 280,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"confidence\": 0.98, \"description\": \"The mask 0xfff (12 bits, equivalent to 4095) is incorrect for extracting an unsigned 16-bit short value. The correct mask should be 0xffff (16 bits) to properly convert a signed short to its unsigned int representation. With 0xfff, any short value with bits 12-15 set will be truncated, producing incorrect results for values >= 4096 (both positive shorts in range 4096-32767 and negative shorts representing unsigned values 32768-65535). This is a regression introduced by the diff changing 0xffff to 0xfff.\"}]}"
+}

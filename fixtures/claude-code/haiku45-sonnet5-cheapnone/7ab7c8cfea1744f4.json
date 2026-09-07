@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 779,
+  "latency_s": 3.824,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 261,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala\",\n      \"line_start\": 1074,\n      \"line_end\": 1074,\n      \"category\": \"logic\",\n      \"description\": \"Extracting valueContainsNull from MapType but only using it for the result type, not validating that the extracted value types are compatible with the function's output type.\",\n      \"confidence\": 0.4\n    },\n    {\n      \"file\": \"sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala\",\n      \"line_start\": 1081,\n      \"line_end\": 1082,\n      \"category\": \"logic\",\n      \"description\": \"The valueContainsNull flag is computed as an OR of both input maps' flags, but there's no validation that function.dataType's nullability is compatible with this constraint.\",\n      \"confidence\": 0.3\n    }\n  ]\n}\n```"
+}

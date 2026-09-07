@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 973,
+  "latency_s": 3.66,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 261,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"description\": \"The mask 0xfff (12 bits) incorrectly truncates the short value to 12 bits instead of the correct 16-bit mask 0xffff needed to convert a signed short to its unsigned int representation. Any short value with bit 12, 13, 14, or 15 set (e.g., values >= 0x1000 or negative shorts) will produce an incorrect result, e.g., getShort returning (short)0x8000 (-32768) would yield 0x000 instead of the correct unsigned value 32768.\", \"confidence\": 0.98}]}"
+}

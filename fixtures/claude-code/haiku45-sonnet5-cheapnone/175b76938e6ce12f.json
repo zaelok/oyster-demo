@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 570,
+  "latency_s": 2.761,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 142,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\",\n      \"line_start\": 134,\n      \"line_end\": 134,\n      \"category\": \"logic\",\n      \"description\": \"Bitwise AND mask changed from 0xffff to 0xfff, which truncates to 12 bits instead of 16 bits for unsigned short conversion.\",\n      \"confidence\": 0.99\n    }\n  ]\n}\n```"
+}

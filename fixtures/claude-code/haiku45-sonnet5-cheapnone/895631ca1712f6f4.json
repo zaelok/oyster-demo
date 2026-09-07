@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1182,
+  "latency_s": 6.306,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 515,
+  "text": "{\"findings\": [{\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 34, \"line_end\": 34, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Swift.max(16, capacityInBytes / stride) was changed to Swift.min(16, ...), inverting the intended semantics. The original ensures node capacity is at least 16 (a floor), while min() caps it at 16 (a ceiling). For small Key types where capacityInBytes/stride is large (e.g., >16), capacity is now clamped down to 16 instead of allowed to grow, and for large Key types where the division yields less than 16, capacity could shrink below the intended minimum of 16, potentially breaking B-tree invariants that assume a minimum node capacity (e.g., minimum children count for internal nodes).\", \"confidence\": 0.9}, {\"file\": \"Sources/SortedCollections/BTree/_BTree.swift\", \"line_start\": 46, \"line_end\": 46, \"category\": \"logic\", \"confidence\": 0.9, \"description\": \"Same inversion bug as the leaf capacity: max(16, ...) became min(16, ...), which caps internal node capacity at 16 rather than guaranteeing a minimum of 16. If capacityInBytes/stride is less than 16 for large Key types, internal capacity could fall below the B-tree's required minimum branching factor, potentially violating structural invariants (e.g., minimum number of children per internal node) and causing incorrect behavior or crashes, not just a performance regression.\"}]}"
+}

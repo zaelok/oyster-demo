@@ -218,3 +218,11 @@ def test_run_matrix_config_key_encodes_non_default_effort():
     assert (
         config_key("haiku45-sonnet5", "none", "medium") == "haiku45-sonnet5-cheapnone-strongmedium"
     )
+
+
+def test_run_matrix_base_name_strips_effort_suffixes():
+    from tools.run_matrix import base_name
+
+    assert base_name("haiku45-sonnet5") == "haiku45-sonnet5"
+    assert base_name("haiku45-sonnet5-cheapnone") == "haiku45-sonnet5"
+    assert base_name("sonnet5-opus5-strongmedium") == "sonnet5-opus5"

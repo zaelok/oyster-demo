@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1010,
+  "latency_s": 3.669,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 214,
+  "text": "{\"findings\": [{\"file\": \"coremltools/converters/mil/mil/ops/defs/iOS15/normalization.py\", \"line_start\": 294, \"line_end\": 294, \"category\": \"logic\", \"confidence\": 0.95, \"description\": \"The beta validation condition checks self.gamma.shape instead of self.beta.shape, so an incompatible beta shape will not be caught (it will pass if gamma happens to be compatible, or incorrectly fail if gamma is incompatible even when beta is fine). The error message still references self.beta.shape, making it misleading if triggered. This is a copy-paste bug that should reference self.beta.shape.\"}]}"
+}

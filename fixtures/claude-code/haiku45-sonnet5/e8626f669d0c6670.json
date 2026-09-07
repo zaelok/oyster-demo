@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 888,
+  "latency_s": 3.846,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 241,
+  "text": "{\"findings\": [{\"file\": \"servicetalk-buffer-api/src/main/java/io/servicetalk/buffer/api/AbstractBuffer.java\", \"line_start\": 134, \"line_end\": 134, \"category\": \"logic\", \"confidence\": 0.98, \"description\": \"Mask changed from 0xffff to 0xfff (12 bits) instead of preserving all 16 bits of the short. This truncates the upper 4 bits of the low byte's contribution, causing getUnsignedShort to return incorrect values for any short whose value is >= 0x1000 (4096) when interpreted as unsigned, e.g. getShort returning 0x2345 would incorrectly yield 0x345 instead of 0x2345.\"}]}"
+}

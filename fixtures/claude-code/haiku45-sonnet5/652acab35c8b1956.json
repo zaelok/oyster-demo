@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 742,
+  "latency_s": 61.01,
+  "model_id": "claude-haiku-4-5",
+  "output_tokens": 9534,
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"file\": \"request.go\",\n      \"line_start\": 95,\n      \"line_end\": 96,\n      \"category\": \"logic\",\n      \"description\": \"Return value changed from 'n' to 'bytesRead' on io.ReadFull error; loses count of bytes actually read when first read fails.\",\n      \"confidence\": 0.95\n    },\n    {\n      \"file\": \"request.go\",\n      \"line_start\": 107,\n      \"line_end\": 108,\n      \"category\": \"logic\",\n      \"description\": \"Return value changed from 'bytesRead + n' to 'bytesRead' on io.ReadFull error; discards partial read count from second call.\",\n      \"confidence\": 0.95\n    }\n  ]\n}\n```"
+}

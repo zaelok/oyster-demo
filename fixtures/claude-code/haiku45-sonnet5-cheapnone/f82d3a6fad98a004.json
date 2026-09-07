@@ -1,0 +1,8 @@
+{
+  "cached_input_tokens": 0,
+  "input_tokens": 1129,
+  "latency_s": 5.506,
+  "model_id": "claude-sonnet-5",
+  "output_tokens": 293,
+  "text": "{\"findings\": [{\"file\": \"lib/compress/zstd_ldm.c\", \"line_start\": 152, \"line_end\": 156, \"category\": \"logic\", \"confidence\": 0.85, \"description\": \"windowLog and hashRateLog are unsigned (U32), so when windowLog <= hashRateLog the expression 'params->windowLog - params->hashRateLog' underflows to a very large value. BOUNDED(MIN, x, MAX) is presumably defined as MIN(MAX(x, MIN_BOUND), MAX_BOUND) or similar clamp, so the huge underflowed value would clamp to ZSTD_HASHLOG_MAX rather than the previously explicit ZSTD_HASHLOG_MIN, silently changing behavior for small windowLog relative to hashRateLog and potentially causing an oversized hash table allocation relative to the window size.\"}]}"
+}
