@@ -81,6 +81,19 @@ def collect(results_root: Path, corpus_dirs: Sequence[Path]) -> dict:
             }
         )
     cases = [asdict(case) for case in load_corpora([Path(d) for d in corpus_dirs])]
+    # Provenance the frozen CorpusCase does not carry: the source PR and the tier, read from
+    # the raw files so every case row can link to the PR it was reversed from.
+    extra: dict[str, dict] = {}
+    for directory in corpus_dirs:
+        for path in Path(directory).glob("case-*.json"):
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            extra[str(raw.get("id", path.stem))] = {
+                "source": dict(raw.get("source") or {}),
+                "tier": str((raw.get("meta") or {}).get("tier", "reviewed")),
+                "language": str((raw.get("meta") or {}).get("language", "")),
+            }
+    for case in cases:
+        case.update(extra.get(case["id"], {"source": {}, "tier": "reviewed", "language": ""}))
     paths = [asdict(path) for path in CATALOG]
     return {
         "built": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
