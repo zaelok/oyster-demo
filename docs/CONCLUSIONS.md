@@ -16,7 +16,7 @@ style category.
 | 1 | claude.ai chat: Haiku thinking off, Sonnet medium | estimated (`chars // 4`) | reviewed, 17 cases / 21 bugs | 15 · $0.012 | 16 · $0.045 | 14 · $0.098 | C | B |
 | 2 | Claude Code CLI defaults: Haiku adaptive thinking, Sonnet default | API-reported | reviewed | 13 · $0.513 | 18 · $0.641 | 18 · $0.325 | C | B = C |
 | 3 | CLI: Haiku thinking off (`OYSTER_CHEAP_EFFORT=none`), Sonnet default | API-reported | reviewed | 18 · $0.025 | 18 · $0.141 | 20 · $0.302 | C | C |
-| 4 | as run 3 | API-reported | auto, 183 cases / 314 bugs | 192 · $0.313 | 184 · $2.630 | 177 · $5.496 | C | A |
+| 4 | as run 3 | API-reported | auto, 183 cases / 314 bugs from 89 repositories | 192 · $0.313 | 184 · $2.630 | 177 · $5.496 | C | A |
 
 Cells are strict catches · dollars at API list rates. Runs 1 to 3 score the same 21 bugs.
 Sources: [`results/conversation-haiku45-sonnet5/`](../results/conversation-haiku45-sonnet5/),
@@ -42,11 +42,12 @@ points wide. That difference is the reason the auto tier exists.
 
 ## What the runs support
 
-1. **Spending more did not catch more.** In no run was the cheap single pass beaten by a
-   margin the sample can distinguish, and on the 314-bug tier it caught the most: 192 against
-   184 and 177, at an eighth of the cascade's cost and a seventeenth of the critic loop's
-   ($0.0016, $0.0143 and $0.0311 per bug caught). Run 3's C-wins (20 to 18 on 21 bugs) was
-   inside the noise that run 4 then resolved.
+1. **Spending more did not catch more.** On the 314-bug tier the cheap single pass caught the
+   most: 192 against 184 and 177, at an eighth of the cascade's cost and a seventeenth of the
+   critic loop's ($0.0016, $0.0143 and $0.0311 per bug caught), with overlapping intervals on
+   the rates and none on the costs. On the 21-bug tier it trailed once, in run 2, by five bugs
+   (13 against 18), in the setting where it was made to think; with thinking off (run 3) it
+   caught 18 and C's 20 was inside the noise that run 4 then resolved.
 
 2. **Security bugs are the shared hole.** Every path in every run caught 16 to 25 percent of
    bugs whose PR text carried security vocabulary, against 61 to 100 percent of the rest. A
@@ -57,8 +58,9 @@ points wide. That difference is the reason the auto tier exists.
    quality number per model.
 
 3. **An executor is a model plus its settings plus its harness.** At the CLI's default, Haiku
-   4.5 spent a median 4,900 output tokens per call thinking, took 46 seconds, cost forty times
-   the same model with thinking off, and caught fewer bugs (13 against 18). A registry entry
+   4.5 spent a median 4,900 output tokens per call thinking, took 46 seconds, cost twenty
+   times the same model with thinking off ($0.51 against $0.025 for the same 17 calls), and
+   caught fewer bugs (13 against 18). A registry entry
    that names only the model is not an executor, and a results table whose header does not
    name the settings is not comparable to anything.
 
@@ -71,9 +73,10 @@ points wide. That difference is the reason the auto tier exists.
    without measuring. The remedy is already specified (SKILL-FOREST §2): a flow that has been
    run gets its own measured prior and the formula is used only for flows never run.
 
-5. **Label quality can be measured, and the auto tier's is about 14 percent noisy on
-   category.** 43 of A's 235 loose catches on run 4 sat on the seeded lines with a different
-   category from the keyword rule's. Two more facets of the labels show through: bugs the
+5. **Label quality can be measured.** 43 of A's 235 loose catches on run 4 (18 percent) sat
+   on the seeded lines with a different category from the keyword rule's. Some of that
+   disagreement is the model's, so 18 percent is an upper bound on the auto tier's category
+   noise, not a point estimate. Two more facets of the labels show through: bugs the
    fix corrected by adding code (the seeded range is the neighbouring lines) were caught 50 to
    52 percent against 60 to 66 for bugs on replaced lines; and bugs from PRs merged in
    August and September 2026 were caught 57 percent against 68 for earlier ones. Training-data

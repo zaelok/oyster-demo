@@ -10,7 +10,7 @@ number came from, including the ones where it was wrong.
 ![tests](https://img.shields.io/badge/tests-165%20offline-brightgreen)
 
 **The result so far.** Three code-review strategies over the same 314 seeded bugs, reversed
-from 183 merged bug-fix PRs in 146 public repositories (Apple, OpenAI, AI2, Anthropic, MCP,
+from 183 merged bug-fix PRs in 89 public repositories (146 searched: Apple, OpenAI, AI2, Anthropic, MCP,
 NVIDIA and the CUDA ecosystem, vLLM, LiteLLM), run with Claude Haiku 4.5 and Claude Sonnet 5,
 token counts as the API reported them:
 
@@ -164,7 +164,7 @@ flowchart LR
   selection explorer and per-case provenance; the `pages` workflow publishes it once the
   repository is public.
 - **Corpus**: two tiers. The reviewed tier (17 cases, 21 bugs) was labelled by hand; the
-  auto tier (183 cases, 314 bugs, from 146 public repositories) was built by
+  auto tier (183 cases, 314 bugs, from 89 of 146 searched public repositories) was built by
   `tools/build_corpus.py` with unreviewed labels. They are run and reported separately.
 - **Tests**: 165, all offline.
 
@@ -175,20 +175,21 @@ settings, two corpus tiers, four runs, every completion retained. The synthesis,
 cross-run table, the calibrated priors and the threats to validity, is
 [`docs/CONCLUSIONS.md`](docs/CONCLUSIONS.md). In short:
 
-1. **Spending more did not catch more.** The cheap single pass was never beaten by a margin
-   the sample can distinguish, and on 314 bugs it caught the most at an eighth and a
-   seventeenth of the other paths' cost.
+1. **Spending more did not catch more.** On 314 bugs the cheap single pass caught the most, at
+   an eighth and a seventeenth of the other paths' cost. On the 21-bug tier it trailed once,
+   by five, in the run where it was made to think; the same pass with thinking off caught 18.
 2. **Security bugs are the shared hole**: 16 to 25 percent caught by every path in every run,
    against 61 to 100 for the rest. That is a routing problem (a different executor for that
    facet), not a longer-flow problem.
-3. **An executor is model + settings + harness.** The CLI's default thinking made Haiku forty
-   times more expensive and worse. Numbers without the settings in the header are not
-   comparable.
+3. **An executor is model + settings + harness.** The CLI's default thinking made Haiku
+   twenty times more expensive and worse than the same model with thinking off. Numbers
+   without the settings in the header are not comparable.
 4. **The independence prior over-predicts multi-node flows.** The selector chose C in four
    runs of four; C was best in one. Critics re-judge rather than detect, and last-node-wins
    drops upstream catches. Measured flow priors are the specified fix.
-5. **Label noise is measurable**: about 14 percent on the auto tier's categories; absence bugs
-   and newer PRs are harder, the latter consistent with training-data contamination.
+5. **Label noise is measurable**: 18 percent of the cheap pass's catches on the auto tier
+   disagreed with the keyword category, an upper bound on the label's category noise; absence
+   bugs and newer PRs are harder, the latter consistent with training-data contamination.
 6. **Run-to-run variance is large and unmodelled**: the same 21 bugs gave the cheap pass 15,
    13 and 18 catches across runs. Replicates are the next thing the reviewed tier needs.
 
@@ -257,8 +258,9 @@ offline.
 What changed and what did not:
 
 - **The harness is part of the executor.** At the CLI's default, Haiku 4.5 spent a median
-  4,900 output tokens per call (max 20,701) thinking, took 46 s median (max 188 s), cost forty
-  times the chat run, and caught fewer bugs than with thinking off (13 versus 18). This is why
+  4,900 output tokens per call (max 20,701) thinking, took 46 s median (max 188 s), cost twenty
+  times the same model with thinking off (forty times the chat run's estimate), and caught
+  fewer bugs (13 versus 18). This is why
   a registry executor carries settings and harness, and why a results header without them is
   not comparable to anything.
 - **The ranking is not stable.** In the chat run C was worst; here C was best (20 of 21 with
@@ -294,9 +296,10 @@ default, API-reported tokens), over the unreviewed tier. Full table with per-cas
 - **Absence bugs are harder than wrong-line bugs.** Where the fix only added code, so the
   seeded range is the neighbouring lines, 50 to 52 percent; where it replaced lines, 60 to
   66. Part of that is the anchor's arbitrariness, a label question rather than a model one.
-- **The keyword labels are about 14 percent noisy.** 43 of A's loose catches sat on the right
-  lines with a category other than the one the PR text suggested. That is the price of a tier
-  nobody reviewed, measured rather than assumed.
+- **The keyword labels are noisy, and the noise has a number.** 43 of A's 235 loose catches
+  (18 percent) sat on the right lines with a category other than the keyword rule's. Some of
+  that is the model's category, most of it is the rule's, so it is an upper bound on category
+  label noise: the price of a tier nobody reviewed, measured rather than assumed.
 - **Newer PRs are harder.** Bugs from PRs merged in August and September 2026: 57 percent
   caught (n=194, 0.50 to 0.64); earlier ones: 68 (n=120, 0.59 to 0.75). Training-data
   contamination is the obvious hypothesis and the reason corpora carry a date cutoff; a shift
