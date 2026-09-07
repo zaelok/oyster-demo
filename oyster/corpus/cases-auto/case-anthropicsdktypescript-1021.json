@@ -1,0 +1,54 @@
+{
+  "id": "case-anthropicsdktypescript-1021",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-typescript/pull/1021",
+    "repo": "anthropics/anthropic-sdk-typescript",
+    "number": 1021
+  },
+  "diff": "--- a/packages/bedrock-sdk/src/core/streaming.ts\n+++ b/packages/bedrock-sdk/src/core/streaming.ts\n@@ -63,6 +63,7 @@ export class Stream<Item> extends CoreStream<Item> {\n       }\n     }\n \n+    // Note: this function is copied entirely from the core SDK\n     async function* iterator(): AsyncIterator<Item, any, undefined> {\n       if (consumed) {\n         throw new Error('Cannot iterate over a consumed stream, use `.tee()` to split the stream.');\n@@ -73,18 +73,13 @@ export class Stream<Item> extends CoreStream<Item> {\n       try {\n         for await (const sse of iterMessages()) {\n           if (sse.event === 'chunk') {\n-            let parsed;\n             try {\n-              parsed = JSON.parse(sse.data);\n+              yield JSON.parse(sse.data);\n             } catch (e) {\n               logger.error(`Could not parse message into JSON:`, sse.data);\n               logger.error(`From chunk:`, sse.raw);\n               throw e;\n             }\n-            if (parsed && typeof parsed === 'object' && parsed.type === 'error') {\n-              throw new APIError(undefined, parsed, undefined, response.headers, parsed.error?.type);\n-            }\n-            yield parsed;\n           }\n \n           if (sse.event === 'error') {\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdktypescript-1021-b1",
+      "file": "packages/bedrock-sdk/src/core/streaming.ts",
+      "line_start": 75,
+      "line_end": 77,
+      "category": "logic",
+      "description": "fix(bedrock): throw APIError for error events delivered in chunk frames [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdktypescript-1021-b2",
+      "file": "packages/bedrock-sdk/src/core/streaming.ts",
+      "line_start": 77,
+      "line_end": 77,
+      "category": "logic",
+      "description": "fix(bedrock): throw APIError for error events delivered in chunk frames [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdktypescript-1021-b3",
+      "file": "packages/bedrock-sdk/src/core/streaming.ts",
+      "line_start": 82,
+      "line_end": 84,
+      "category": "logic",
+      "description": "fix(bedrock): throw APIError for error events delivered in chunk frames [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-typescript",
+    "number": 1021,
+    "merged_at": "2026-04-30T19:08:05Z",
+    "merge_commit": "3ae887b89bde1721c75dc9c9812cb9ac191ffc92",
+    "title": "fix(bedrock): throw APIError for error events delivered in chunk frames",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-olmocore-601",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/601",
+    "repo": "allenai/OLMo-core",
+    "number": 601
+  },
+  "diff": "--- a/src/olmo_core/train/trainer.py\n+++ b/src/olmo_core/train/trainer.py\n@@ -1214,10 +1214,7 @@ def wrapped_op(*args, **kwargs):\n             start_time = time.perf_counter()\n             assert soft_timeout is not None  # for mypy\n             try:\n-                result = op(*args, **kwargs)\n-                if cb is not None:\n-                    cb(result)\n-                return result\n+                return op(*args, **kwargs)\n             finally:\n                 if (runtime := int(time.perf_counter() - start_time)) > soft_timeout:\n                     log.warning(\n@@ -1258,7 +1251,8 @@ def wrapped_op(*args, **kwargs):\n \n             def callback(fut: Future[T]):\n                 try:\n-                    fut.result()  # re-raise any exception from the op or cb\n+                    if cb is not None:\n+                        cb(fut.result())  # type: ignore[misc]\n                 except BaseException as e:\n                     log.exception(e)\n                     self._error = e\n@@ -1269,7 +1263,9 @@ def callback(fut: Future[T]):\n \n             future.add_done_callback(callback)\n         else:\n-            wrapped_op(*args, **kwargs)\n+            result = wrapped_op(*args, **kwargs)\n+            if cb is not None:\n+                cb(result)\n \n     def _join_bookkeeping_ops(self, timeout: Optional[float] = None):\n         \"\"\"\n",
+  "seeded": [
+    {
+      "id": "case-olmocore-601-b1",
+      "file": "src/olmo_core/train/trainer.py",
+      "line_start": 1217,
+      "line_end": 1217,
+      "category": "logic",
+      "description": "port over @dirkgr's fix for async callbacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-olmocore-601-b2",
+      "file": "src/olmo_core/train/trainer.py",
+      "line_start": 1254,
+      "line_end": 1255,
+      "category": "logic",
+      "description": "port over @dirkgr's fix for async callbacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-olmocore-601-b3",
+      "file": "src/olmo_core/train/trainer.py",
+      "line_start": 1266,
+      "line_end": 1268,
+      "category": "logic",
+      "description": "port over @dirkgr's fix for async callbacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 601,
+    "merged_at": "2026-02-10T23:40:14Z",
+    "merge_commit": "3af842521375a373266673dda262debe0748a462",
+    "title": "port over @dirkgr's fix for async callbacks",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

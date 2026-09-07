@@ -1,0 +1,45 @@
+{
+  "id": "case-vllmgaudi-1782",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-gaudi/pull/1782",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1782
+  },
+  "diff": "--- a/vllm_gaudi/attention/oot_mla.py\n+++ b/vllm_gaudi/attention/oot_mla.py\n@@ -278,7 +278,6 @@ def __init__(\n         # accept-and-ignore the kwarg to keep the constructor signature in sync\n         # with the base MultiHeadLatentAttentionWrapper / deepseek_v2 call site.\n         allow_short_prefill_indexer_scoring_skip: bool = False,\n-        fuse_qkv_rmsnorm: bool = False,\n     ) -> None:\n         # Skip MultiHeadLatentAttentionWrapper.__init__() because it creates\n         # MLAAttention \u2192 FlashAttnPrefillBackend which crashes on HPU.\n@@ -319,7 +314,6 @@ def __init__(\n         # dense MLA and the indexer must never be invoked (its kernels and the\n         # DeepseekV32IndexerBackend are CUDA-only).\n         self.skip_topk = skip_topk or self.is_sparse\n-        self.fuse_qkv_rmsnorm = False\n         # vllm#45964 (DCP query replication) added `self.dcp_q_replicate`, which\n         # the base MultiHeadLatentAttentionWrapper.forward (inherited here, since\n         # we do not override forward) reads and forwards to mla_attn. Because we\n",
+  "seeded": [
+    {
+      "id": "case-vllmgaudi-1782-b1",
+      "file": "vllm_gaudi/attention/oot_mla.py",
+      "line_start": 280,
+      "line_end": 282,
+      "category": "logic",
+      "description": "set fuse_qkv_rmsnorm on HPU MLA wrapper [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-vllmgaudi-1782-b2",
+      "file": "vllm_gaudi/attention/oot_mla.py",
+      "line_start": 316,
+      "line_end": 318,
+      "category": "logic",
+      "description": "set fuse_qkv_rmsnorm on HPU MLA wrapper [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1782,
+    "merged_at": "2026-09-05T13:19:10Z",
+    "merge_commit": "72eb4fcbb3387bf05201ad4b37f87c6ccbe877d5",
+    "title": "[FIX_FOR_VLLM_CUSTOM=8f816a3f665489d7f0d222115d4f72ebab01076b] set fuse_qkv_rmsnorm on HPU MLA wrapper",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

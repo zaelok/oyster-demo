@@ -1,0 +1,36 @@
+{
+  "id": "case-olmocore-596",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/596",
+    "repo": "allenai/OLMo-core",
+    "number": 596
+  },
+  "diff": "--- a/src/olmo_core/config.py\n+++ b/src/olmo_core/config.py\n@@ -109,7 +109,7 @@ def as_dict(\n \n         def iter_fields(d) -> Generator[Tuple[str, Any], None, None]:\n             for field in dataclasses.fields(d):\n-                if field.name in exclude_set or not field.init:\n+                if field.name in exclude_set:\n                     continue\n                 value = getattr(d, field.name)\n                 if exclude_none and value is None:\n",
+  "seeded": [
+    {
+      "id": "case-olmocore-596-b1",
+      "file": "src/olmo_core/config.py",
+      "line_start": 112,
+      "line_end": 112,
+      "category": "logic",
+      "description": "config encoding/merging with non-init fields [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 596,
+    "merged_at": "2026-02-05T00:23:29Z",
+    "merge_commit": "a6221e1f0565b161adf46000fc471aa9a522883f",
+    "title": "Fix config encoding/merging with non-init fields",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-flashattention-2787",
+  "source": {
+    "pr": "https://github.com/Dao-AILab/flash-attention/pull/2787",
+    "repo": "Dao-AILab/flash-attention",
+    "number": 2787
+  },
+  "diff": "--- a/flash_attn/cute/flash_bwd_sm100.py\n+++ b/flash_attn/cute/flash_bwd_sm100.py\n@@ -14,6 +14,7 @@\n import cutlass.utils.blackwell_helpers as sm100_utils_basic\n from cutlass.pipeline import PipelineAsync\n \n+import quack.activation\n from quack import layout_utils\n from flash_attn.cute import utils\n from flash_attn.cute.cute_dsl_utils import assume_tensor_aligned\n@@ -3267,7 +3268,7 @@ def compute_loop(\n                                 utils.shuffle_sync(tSrdPsum, offset=2 * v + 1),\n                             )\n                         tdPrdP_cur[2 * v], tdPrdP_cur[2 * v + 1] = (\n-                            cute.arch.sub_packed_f32x2(\n+                            quack.activation.sub_packed_f32x2(\n                                 (tdPrdP_cur[2 * v], tdPrdP_cur[2 * v + 1]), dPsum_pair\n                             )\n                         )\n--- a/flash_attn/cute/utils.py\n+++ b/flash_attn/cute/utils.py\n@@ -17,6 +17,8 @@\n from cutlass.cute.runtime import from_dlpack\n \n \n+import quack.activation\n+\n _MIXER_ATTRS = (\"__vec_size__\",)\n \n \n@@ -778,10 +780,10 @@ def ex2_emulation_2(\n     xy_rounded = cute.arch.add_packed_f32x2(xy_clamped, (fp32_round_int, fp32_round_int), rnd=\"rm\")\n     # The integer floor of x & y are now in the last 8 bits of xy_rounded\n     # We want the next 2 ops to round to nearest even. The rounding mode is important.\n-    xy_rounded_back = cute.arch.sub_packed_f32x2(\n+    xy_rounded_back = quack.activation.sub_packed_f32x2(\n         xy_rounded, (fp32_round_int, fp32_round_int)\n     )\n-    xy_frac = cute.arch.sub_packed_f32x2(xy_clamped, xy_rounded_back)\n+    xy_frac = quack.activation.sub_packed_f32x2(xy_clamped, xy_rounded_back)\n     xy_frac_ex2 = evaluate_polynomial_2(*xy_frac, POLY_EX2[poly_degree], loc=loc, ip=ip)\n     x_out = combine_int_frac_ex2(xy_rounded[0], xy_frac_ex2[0], loc=loc, ip=ip)\n     y_out = combine_int_frac_ex2(xy_rounded[1], xy_frac_ex2[1], loc=loc, ip=ip)\n",
+  "seeded": [
+    {
+      "id": "case-flashattention-2787-b1",
+      "file": "flash_attn/cute/flash_bwd_sm100.py",
+      "line_start": 3271,
+      "line_end": 3271,
+      "category": "logic",
+      "description": "removed Quack packed subtraction API [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-2787-b2",
+      "file": "flash_attn/cute/utils.py",
+      "line_start": 783,
+      "line_end": 783,
+      "category": "logic",
+      "description": "removed Quack packed subtraction API [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-2787-b3",
+      "file": "flash_attn/cute/utils.py",
+      "line_start": 786,
+      "line_end": 786,
+      "category": "logic",
+      "description": "removed Quack packed subtraction API [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "Dao-AILab/flash-attention",
+    "number": 2787,
+    "merged_at": "2026-08-11T18:37:46Z",
+    "merge_commit": "145b1010051dbfd4bdc41a0ae55d495b08d7a458",
+    "title": "Fix removed Quack packed subtraction API",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

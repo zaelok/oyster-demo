@@ -1,0 +1,36 @@
+{
+  "id": "case-cccl-11103",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cccl/pull/11103",
+    "repo": "NVIDIA/cccl",
+    "number": 11103
+  },
+  "diff": "--- a/libcudacxx/include/cuda/__device/physical_device.h\n+++ b/libcudacxx/include/cuda/__device/physical_device.h\n@@ -148,8 +148,8 @@ class __physical_device\n     const auto __groups = ::cuda::std::make_unique<::CUdevResource[]>(__domain_count);\n \n     // We don't care about the returned remainder so ignore it\n-    static_cast<void>(::cuda::__driver::__devSmResourceSplit(\n-      __groups.get(), static_cast<unsigned int>(__domain_count), __full_resource, __params.get()));\n+    static_cast<void>(\n+      ::cuda::__driver::__devSmResourceSplit(__groups.get(), __domain_count, __full_resource, __params.get()));\n \n     // Neither `__logical_device` nor `__logical_device_ref` is default constructible, so both\n     // arrays must be constructed element by element in raw storage.\n",
+  "seeded": [
+    {
+      "id": "case-cccl-11103-b1",
+      "file": "libcudacxx/include/cuda/__device/physical_device.h",
+      "line_start": 151,
+      "line_end": 152,
+      "category": "logic",
+      "description": "MSVC26 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cccl",
+    "number": 11103,
+    "merged_at": "2026-09-02T07:35:08Z",
+    "merge_commit": "549a29316d3a69bfaa3230c0f8ec34fa224ecd65",
+    "title": "Fix MSVC26",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

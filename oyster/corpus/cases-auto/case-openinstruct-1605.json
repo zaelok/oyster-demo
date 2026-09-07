@@ -1,0 +1,36 @@
+{
+  "id": "case-openinstruct-1605",
+  "source": {
+    "pr": "https://github.com/allenai/open-instruct/pull/1605",
+    "repo": "allenai/open-instruct",
+    "number": 1605
+  },
+  "diff": "--- a/open_instruct/math_utils.py\n+++ b/open_instruct/math_utils.py\n@@ -197,7 +197,6 @@ def is_equiv(x1: str, x2: str) -> bool:\n                 return sympy.simplify(diff) == 0\n             except ValueError:\n                 eval_logger.debug(f\"Had some trouble simplifying when comparing {x1} and {x2}\")\n-                return False\n     except TimeoutError:\n         eval_logger.debug(f\"Timed out comparing {x1} and {x2}\")\n         return False\n",
+  "seeded": [
+    {
+      "id": "case-openinstruct-1605-b1",
+      "file": "open_instruct/math_utils.py",
+      "line_start": 199,
+      "line_end": 201,
+      "category": "logic",
+      "description": "is_equiv returning None instead of False on ValueError [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/open-instruct",
+    "number": 1605,
+    "merged_at": "2026-04-14T17:37:59Z",
+    "merge_commit": "494ec40628fd13674a84b262353c8be96039d44d",
+    "title": "Fix is_equiv returning None instead of False on ValueError",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

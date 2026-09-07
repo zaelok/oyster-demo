@@ -1,0 +1,45 @@
+{
+  "id": "case-openaipython-3799",
+  "source": {
+    "pr": "https://github.com/openai/openai-python/pull/3799",
+    "repo": "openai/openai-python",
+    "number": 3799
+  },
+  "diff": "--- a/src/openai/_base_client.py\n+++ b/src/openai/_base_client.py\n@@ -759,20 +759,24 @@ def _parse_retry_after_header(self, response_headers: Optional[httpx2.Headers] =\n         if response_headers is None:\n             return None\n \n-        for header, divisor in ((\"retry-after-ms\", 1000), (\"retry-after\", 1)):\n-            value = response_headers.get(header)\n-            if value is None:\n-                continue\n-            try:\n-                delay = float(value)\n-            except ValueError:\n-                continue\n-            if delay == math.inf and value.strip().lower() not in (\"inf\", \"+inf\", \"infinity\", \"+infinity\"):\n-                return MAX_RETRY_AFTER_DELAY + 1\n-            return delay / divisor\n+        # First, try the non-standard `retry-after-ms` header for milliseconds,\n+        # which is more precise than integer-seconds `retry-after`\n+        try:\n+            retry_ms_header = response_headers.get(\"retry-after-ms\", None)\n+            return float(retry_ms_header) / 1000\n+        except (TypeError, ValueError):\n+            pass\n+\n+        # Next, try parsing `retry-after` header as seconds (allowing nonstandard floats).\n+        retry_header = response_headers.get(\"retry-after\")\n+        try:\n+            # note: the spec indicates that this should only ever be an integer\n+            # but if someone sends a float there's no reason for us to not respect it\n+            return float(retry_header)\n+        except (TypeError, ValueError):\n+            pass\n \n         # Last, try parsing `retry-after` as a date.\n-        retry_header = response_headers.get(\"retry-after\")\n         try:\n             retry_date_tuple = email.utils.parsedate_tz(retry_header)\n             if retry_date_tuple is None:\n",
+  "seeded": [
+    {
+      "id": "case-openaipython-3799-b1",
+      "file": "src/openai/_base_client.py",
+      "line_start": 762,
+      "line_end": 777,
+      "category": "logic",
+      "description": "refuse overflowing server retry delays \u2014 SDK-235 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaipython-3799-b2",
+      "file": "src/openai/_base_client.py",
+      "line_start": 779,
+      "line_end": 781,
+      "category": "logic",
+      "description": "refuse overflowing server retry delays \u2014 SDK-235 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-python",
+    "number": 3799,
+    "merged_at": "2026-09-04T18:36:50Z",
+    "merge_commit": "88b4d4341af38e84784221d73c175f2088fa6b85",
+    "title": "fix: refuse overflowing server retry delays \u2014 SDK-235",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftopenapigenerator-898",
+  "source": {
+    "pr": "https://github.com/apple/swift-openapi-generator/pull/898",
+    "repo": "apple/swift-openapi-generator",
+    "number": 898
+  },
+  "diff": "--- a/Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\n+++ b/Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift\n@@ -446,13 +446,9 @@ struct TextBasedRenderer: RendererProtocol {\n         func write(_ string: String) { writer.writeLine(string) }\n         switch literal {\n         case let .string(string):\n+            // Use a raw literal if the string contains a quote/backslash.\n             if string.contains(\"\\\"\") || string.contains(\"\\\\\") {\n-                var hashCount = 1\n-                while string.contains(\"\\\"\" + String(repeating: \"#\", count: hashCount))\n-                    || string.contains(\"\\\\\" + String(repeating: \"#\", count: hashCount))\n-                { hashCount += 1 }\n-                let hashes = String(repeating: \"#\", count: hashCount)\n-                write(\"\\(hashes)\\\"\\(string)\\\"\\(hashes)\")\n+                write(\"#\\\"\\(string)\\\"#\")\n             } else {\n                 write(\"\\\"\\(string)\\\"\")\n             }\n",
+  "seeded": [
+    {
+      "id": "case-swiftopenapigenerator-898-b1",
+      "file": "Sources/_OpenAPIGeneratorCore/Renderer/TextBasedRenderer.swift",
+      "line_start": 451,
+      "line_end": 451,
+      "category": "logic",
+      "description": "extended string delimiter selection in `renderLiteral` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-openapi-generator",
+    "number": 898,
+    "merged_at": "2026-04-24T16:43:44Z",
+    "merge_commit": "83e8301d6d62c423f8e11d6fcb0c8276d4dbb032",
+    "title": "Fix extended string delimiter selection in `renderLiteral`",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

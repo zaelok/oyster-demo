@@ -1,0 +1,36 @@
+{
+  "id": "case-cccl-11176",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cccl/pull/11176",
+    "repo": "NVIDIA/cccl",
+    "number": 11176
+  },
+  "diff": "--- a/libcudacxx/include/cuda/std/__bit/byteswap.h\n+++ b/libcudacxx/include/cuda/std/__bit/byteswap.h\n@@ -208,11 +208,10 @@ _CCCL_REQUIRES(is_integral_v<_Integer>)\n   if constexpr (sizeof(_Integer) > 1)\n   {\n #if defined(_CCCL_BUILTIN_BSWAPG)\n-    _CCCL_IF_NOT_CONSTEVAL_DEFAULT\n-    {\n-      NV_IF_TARGET(NV_IS_HOST, ({ return static_cast<_Integer>(_CCCL_BUILTIN_BSWAPG(__val)); }))\n-    }\n+    return static_cast<_Integer>(_CCCL_BUILTIN_BSWAPG(__val));\n+#else // ^^^ _CCCL_BUILTIN_BSWAPG ^^^ / vvv !_CCCL_BUILTIN_BSWAPG vvv\n     return static_cast<_Integer>(::cuda::std::__byteswap_impl(::cuda::std::__to_unsigned_like(__val)));\n+#endif // !_CCCL_BUILTIN_BSWAPG\n   }\n   else\n   {\n",
+  "seeded": [
+    {
+      "id": "case-cccl-11176-b1",
+      "file": "libcudacxx/include/cuda/std/__bit/byteswap.h",
+      "line_start": 211,
+      "line_end": 212,
+      "category": "logic",
+      "description": "`__builtin_bswapg` not being supported by nvcc [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cccl",
+    "number": 11176,
+    "merged_at": "2026-09-03T09:04:36Z",
+    "merge_commit": "eb10ab3de76b933a8c922df42bfb65cba083988f",
+    "title": "[libcu++] Fix `__builtin_bswapg` not being supported by nvcc",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-llmcompressor-3079",
+  "source": {
+    "pr": "https://github.com/vllm-project/llm-compressor/pull/3079",
+    "repo": "vllm-project/llm-compressor",
+    "number": 3079
+  },
+  "diff": "--- a/src/llmcompressor/pipelines/sequential/ast_helpers.py\n+++ b/src/llmcompressor/pipelines/sequential/ast_helpers.py\n@@ -96,17 +96,13 @@ def autowrap_forward(module: torch.nn.Module, ignore: list[str]):\n         )\n \n     # get source code of module forward\n-    forward_fn = get_unwrapped_forward(module)\n-    source = inspect.getsource(forward_fn)\n+    source = inspect.getsource(get_unwrapped_forward(module))\n     source = textwrap.dedent(source)\n     tree = ast.parse(source)\n \n     # construct namespace for our new code\n-    namespace = getattr(forward_fn, \"__globals__\", None)\n-    if namespace is None:\n-        defining_module = sys.modules[module.__class__.__module__]\n-        namespace = defining_module.__dict__\n-    namespace = namespace.copy()\n+    defining_module = sys.modules[module.__class__.__module__]\n+    namespace = defining_module.__dict__.copy()\n     namespace.update({\"torch.fx.wrap\": torch.fx.wrap})\n     namespace.update({\"self\": module})\n \n",
+  "seeded": [
+    {
+      "id": "case-llmcompressor-3079-b1",
+      "file": "src/llmcompressor/pipelines/sequential/ast_helpers.py",
+      "line_start": 99,
+      "line_end": 99,
+      "category": "logic",
+      "description": "use forward globals when autowrapping [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-llmcompressor-3079-b2",
+      "file": "src/llmcompressor/pipelines/sequential/ast_helpers.py",
+      "line_start": 104,
+      "line_end": 105,
+      "category": "logic",
+      "description": "use forward globals when autowrapping [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/llm-compressor",
+    "number": 3079,
+    "merged_at": "2026-08-23T15:01:29Z",
+    "merge_commit": "74d53bf566166569e48db14fceac07171f6caddc",
+    "title": "fix: use forward globals when autowrapping",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

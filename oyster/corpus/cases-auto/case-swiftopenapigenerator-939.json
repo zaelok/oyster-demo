@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftopenapigenerator-939",
+  "source": {
+    "pr": "https://github.com/apple/swift-openapi-generator/pull/939",
+    "repo": "apple/swift-openapi-generator",
+    "number": 939
+  },
+  "diff": "--- a/Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\n+++ b/Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift\n@@ -25,7 +25,7 @@ extension TypesFileTranslator {\n     func boxRecursiveTypes(_ decls: [Declaration]) throws -> [Declaration] {\n \n         let nodes = decls.compactMap(DeclarationRecursionDetector.Node.init)\n-        let nodeLookup = Dictionary(nodes.map { ($0.name, $0) }, uniquingKeysWith: { first, _ in first })\n+        let nodeLookup = Dictionary(uniqueKeysWithValues: nodes.map { ($0.name, $0) })\n         let container = DeclarationRecursionDetector.Container(lookupMap: nodeLookup)\n \n         let boxedNames = try RecursionDetector.computeBoxedTypes(rootNodes: nodes, container: container)\n--- a/Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\n+++ b/Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift\n@@ -64,7 +64,6 @@ extension TypesFileTranslator {\n                 isMultipartContent: multipartSchemaNames.contains(key)\n             )\n         }\n-        try emitDuplicateTypeNameDiagnostic(in: decls)\n         let declsWithBoxingApplied = try boxRecursiveTypes(decls)\n         let componentsSchemasEnum = Declaration.commentable(\n             JSONSchema.sectionComment(),\n@@ -76,23 +75,4 @@ extension TypesFileTranslator {\n         )\n         return componentsSchemasEnum\n     }\n-\n-    private func emitDuplicateTypeNameDiagnostic(in declarations: [Declaration]) throws {\n-        var observedNames: Set<String> = []\n-        var duplicateNames: Set<String> = []\n-        for name in declarations.compactMap(\\.name) where !observedNames.insert(name).inserted {\n-            duplicateNames.insert(name)\n-        }\n-        guard !duplicateNames.isEmpty else { return }\n-\n-        let nameList = duplicateNames.sorted().map { \"'\\($0)'\" }.joined(separator: \", \")\n-        try diagnostics.emit(\n-            .error(\n-                message: \"Multiple schemas in '#/components/schemas' map to the same generated Swift type names \"\n-                    + \"\\(nameList), which is not supported. Use the 'defensive' naming strategy or add \"\n-                    + \"'nameOverrides' entries so every schema generates a unique name.\",\n-                context: [\"names\": nameList]\n-            )\n-        )\n-    }\n }\n",
+  "seeded": [
+    {
+      "id": "case-swiftopenapigenerator-939-b1",
+      "file": "Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateBoxedTypes.swift",
+      "line_start": 28,
+      "line_end": 28,
+      "category": "logic",
+      "description": "Emit a clear error instead of crashing on duplicate generated schema names [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftopenapigenerator-939-b2",
+      "file": "Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift",
+      "line_start": 66,
+      "line_end": 68,
+      "category": "logic",
+      "description": "Emit a clear error instead of crashing on duplicate generated schema names [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftopenapigenerator-939-b3",
+      "file": "Sources/_OpenAPIGeneratorCore/Translator/TypesTranslator/translateSchemas.swift",
+      "line_start": 77,
+      "line_end": 78,
+      "category": "logic",
+      "description": "Emit a clear error instead of crashing on duplicate generated schema names [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-openapi-generator",
+    "number": 939,
+    "merged_at": "2026-08-20T16:34:36Z",
+    "merge_commit": "7f0ec74d60e0d29e839e43958ea473b6e9f9371c",
+    "title": "Emit a clear error instead of crashing on duplicate generated schema names",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

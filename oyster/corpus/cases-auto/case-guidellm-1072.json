@@ -1,0 +1,54 @@
+{
+  "id": "case-guidellm-1072",
+  "source": {
+    "pr": "https://github.com/vllm-project/guidellm/pull/1072",
+    "repo": "vllm-project/guidellm",
+    "number": 1072
+  },
+  "diff": "--- a/src/guidellm/data/deserializers/trace_common.py\n+++ b/src/guidellm/data/deserializers/trace_common.py\n@@ -316,16 +316,16 @@ def _validate_row(row: dict, config: TraceDataArgs) -> None:\n         )\n \n \n-def _raise_if_nonetype_found(dataset: Dataset, features: Features) -> None:\n-    for col in features:\n+def _raise_if_nonetype_found(dataset: Dataset) -> None:\n+    for col in dataset.column_names:\n         if dataset.data[col].null_count != 0:\n             raise DataNotSupportedError(f\"Missing column values in {col}\")\n \n \n def _raise_if_incorrect_types(dataset: Dataset, features: Features) -> None:\n     try:\n-        dataset.select_columns(list(features)).cast(features)\n-    except (TypeError, ValueError) as e:\n+        dataset.cast(features)\n+    except ValueError as e:\n         raise DataNotSupportedError(str(e)) from e\n \n \n@@ -343,7 +343,7 @@ def _validate_dataset(config: TraceDataArgs, trace_format: TraceFormatBase) -> N\n             raise DataNotSupportedError(\"Trace conversation is empty\")\n         if config.conversation_id_column in features:\n             features.pop(config.conversation_id_column)\n-        _raise_if_nonetype_found(conv, features)\n+        _raise_if_nonetype_found(conv)\n         _raise_if_incorrect_types(conv, features)\n         for row in conv:\n             _validate_row(row, config)\n",
+  "seeded": [
+    {
+      "id": "case-guidellm-1072-b1",
+      "file": "src/guidellm/data/deserializers/trace_common.py",
+      "line_start": 319,
+      "line_end": 320,
+      "category": "logic",
+      "description": "validate only the required columns in trace files [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-guidellm-1072-b2",
+      "file": "src/guidellm/data/deserializers/trace_common.py",
+      "line_start": 327,
+      "line_end": 328,
+      "category": "logic",
+      "description": "validate only the required columns in trace files [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-guidellm-1072-b3",
+      "file": "src/guidellm/data/deserializers/trace_common.py",
+      "line_start": 346,
+      "line_end": 346,
+      "category": "logic",
+      "description": "validate only the required columns in trace files [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/guidellm",
+    "number": 1072,
+    "merged_at": "2026-09-01T20:51:01Z",
+    "merge_commit": "0e4971513c70fbeacc97b9f3bcb4beba7bb73c89",
+    "title": "fix: validate only the required columns in trace files",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

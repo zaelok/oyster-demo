@@ -1,0 +1,54 @@
+{
+  "id": "case-rslearn-605",
+  "source": {
+    "pr": "https://github.com/allenai/rslearn/pull/605",
+    "repo": "allenai/rslearn",
+    "number": 605
+  },
+  "diff": "--- a/rslearn/models/olmoearth_pretrain/model.py\n+++ b/rslearn/models/olmoearth_pretrain/model.py\n@@ -286,21 +286,11 @@ def _prepare_modality_inputs_legacy(\n                 assert isinstance(raster_img, RasterImage)\n                 max_timesteps = max(max_timesteps, raster_img.image.shape[1])\n \n-        height: int | None = None\n-        width: int | None = None\n-        for input_dict in context.inputs:\n-            for modality in present_modalities:\n-                if modality in input_dict:\n-                    height = input_dict[modality].image.shape[-2]\n-                    width = input_dict[modality].image.shape[-1]\n-                    break\n-            if height is not None:\n-                break\n-\n-        if height is None or width is None:\n-            raise ValueError(\n-                \"Could not determine spatial dimensions from any input tensor\"\n-            )\n+        # Determine height/width from first sample.\n+        # All samples must have the same size.\n+        crop_bounds = context.metadatas[0].crop_bounds\n+        width = crop_bounds[2] - crop_bounds[0]\n+        height = crop_bounds[3] - crop_bounds[1]\n \n         # Process each modality.\n         kwargs = {}\n@@ -504,21 +491,11 @@ class SampleTimestamps:\n             for sample_timestamps in all_sample_timestamps\n         )\n \n-        height: int | None = None\n-        width: int | None = None\n-        for input_dict in context.inputs:\n-            for modality in present_modalities:\n-                if modality in input_dict:\n-                    height = input_dict[modality].image.shape[-2]\n-                    width = input_dict[modality].image.shape[-1]\n-                    break\n-            if height is not None:\n-                break\n-\n-        if height is None or width is None:\n-            raise ValueError(\n-                \"Could not determine spatial dimensions from any input tensor\"\n-            )\n+        # Determine height/width from first sample.\n+        # All samples must have the same size.\n+        crop_bounds = context.metadatas[0].crop_bounds\n+        width = crop_bounds[2] - crop_bounds[0]\n+        height = crop_bounds[3] - crop_bounds[1]\n \n         # Process each modality\n         kwargs = {}\n--- a/rslearn/models/olmoearth_pretrain/model_period_timestamps.py\n+++ b/rslearn/models/olmoearth_pretrain/model_period_timestamps.py\n@@ -262,21 +262,9 @@ def _prepare_modality_inputs(\n \n         max_timesteps = max(len(p) for p in periods_per_sample)\n \n-        height: int | None = None\n-        width: int | None = None\n-        for input_dict in context.inputs:\n-            for modality in present_modalities:\n-                if modality in input_dict:\n-                    height = input_dict[modality].image.shape[-2]\n-                    width = input_dict[modality].image.shape[-1]\n-                    break\n-            if height is not None:\n-                break\n-\n-        if height is None or width is None:\n-            raise ValueError(\n-                \"Could not determine spatial dimensions from any input tensor\"\n-            )\n+        crop_bounds = context.metadatas[0].crop_bounds\n+        width = crop_bounds[2] - crop_bounds[0]\n+        height = crop_bounds[3] - crop_bounds[1]\n \n         kwargs: dict[str, torch.Tensor] = {}\n         for modality in present_modalities:\n",
+  "seeded": [
+    {
+      "id": "case-rslearn-605-b1",
+      "file": "rslearn/models/olmoearth_pretrain/model.py",
+      "line_start": 289,
+      "line_end": 293,
+      "category": "logic",
+      "description": "shape mismatch with Pad transform [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-rslearn-605-b2",
+      "file": "rslearn/models/olmoearth_pretrain/model.py",
+      "line_start": 494,
+      "line_end": 498,
+      "category": "logic",
+      "description": "shape mismatch with Pad transform [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-rslearn-605-b3",
+      "file": "rslearn/models/olmoearth_pretrain/model_period_timestamps.py",
+      "line_start": 265,
+      "line_end": 267,
+      "category": "logic",
+      "description": "shape mismatch with Pad transform [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/rslearn",
+    "number": 605,
+    "merged_at": "2026-04-13T20:59:03Z",
+    "merge_commit": "29f2c0a210371dcbc9f33f92bc09af693b76fd92",
+    "title": "Fix shape mismatch with Pad transform",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-cutlass-3464",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cutlass/pull/3464",
+    "repo": "NVIDIA/cutlass",
+    "number": 3464
+  },
+  "diff": "--- a/python/CuTeDSL/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py\n+++ b/python/CuTeDSL/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py\n@@ -2440,10 +2440,6 @@ def find_env_stream(self, params: list[spec.Param]) -> Optional[ir.Value]:\n                     op_bundle_sizes=[],\n                     op_bundle_operands=[],\n                 )\n-            elif isinstance(param, spec.TupleParam):\n-                stream = self.find_env_stream(param.params)\n-                if stream is not None:\n-                    return stream\n         return None\n \n     def get_expected_num_args(self, params: list[spec.Param]) -> int:\n",
+  "seeded": [
+    {
+      "id": "case-cutlass-3464-b1",
+      "file": "python/CuTeDSL/cutlass/base_dsl/tvm_ffi_builder/tvm_ffi_builder.py",
+      "line_start": 2442,
+      "line_end": 2444,
+      "category": "logic",
+      "description": "fix(tvm-ffi): env stream detection for tuple parameters [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cutlass",
+    "number": 3464,
+    "merged_at": "2026-08-20T01:21:40Z",
+    "merge_commit": "a2b29f847b10c68099afeec1f3f56f6ca963903e",
+    "title": "fix(tvm-ffi): env stream detection for tuple parameters",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

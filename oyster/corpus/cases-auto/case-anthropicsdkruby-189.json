@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkruby-189",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-ruby/pull/189",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 189
+  },
+  "diff": "--- a/lib/anthropic/credentials/workload_identity.rb\n+++ b/lib/anthropic/credentials/workload_identity.rb\n@@ -158,7 +158,7 @@ def perform_exchange(jwt)\n         data = JSON.parse(response.body, symbolize_names: true)\n         token, expires_in =\n           case data\n-          in {access_token: String => token, expires_in: (Integer | String) => expires_in}\n+          in {access_token: String => token, expires_in: Integer | String => expires_in}\n             [token, expires_in.to_i]\n           in {access_token: String => token}\n             [token, 3600]\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkruby-189-b1",
+      "file": "lib/anthropic/credentials/workload_identity.rb",
+      "line_start": 161,
+      "line_end": 161,
+      "category": "logic",
+      "description": "handle syntax updates for ruby 4's PRISM parser [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 189,
+    "merged_at": "2026-05-11T18:36:04Z",
+    "merge_commit": "772dd65733bfd2869f846b6a9734776ed87ee7d6",
+    "title": "fix: handle syntax updates for ruby 4's PRISM parser",
+    "language": "ruby",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-openairuby-662",
+  "source": {
+    "pr": "https://github.com/openai/openai-ruby/pull/662",
+    "repo": "openai/openai-ruby",
+    "number": 662
+  },
+  "diff": "--- a/lib/openai/internal/type/file_input.rb\n+++ b/lib/openai/internal/type/file_input.rb\n@@ -41,6 +41,7 @@ def self.==(other) = other.is_a?(Class) && other <= OpenAI::Internal::Type::File\n         class << self\n           # @api private\n           #\n+          # @param value [StringIO, String, Object]\n           #\n           # @param state [Hash{Symbol=>Object}] .\n           #\n@@ -55,13 +55,14 @@ class << self\n           #\n           #   @option state [Integer] :branched\n           #\n+          # @return [StringIO, Object]\n           def coerce(value, state:)\n             exactness = state.fetch(:exactness)\n             case value\n             in String\n               exactness[:yes] += 1\n               StringIO.new(value)\n-            in Pathname | StringIO | IO | OpenAI::FilePart\n+            in StringIO\n               exactness[:yes] += 1\n               value\n             else\n",
+  "seeded": [
+    {
+      "id": "case-openairuby-662-b1",
+      "file": "lib/openai/internal/type/file_input.rb",
+      "line_start": 65,
+      "line_end": 65,
+      "category": "logic",
+      "description": "preserve documented file inputs on readback [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-ruby",
+    "number": 662,
+    "merged_at": "2026-09-06T18:47:50Z",
+    "merge_commit": "016971345676ade41c57fcee11b60f3adcefe652",
+    "title": "fix: preserve documented file inputs on readback",
+    "language": "ruby",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-gptoss-163",
+  "source": {
+    "pr": "https://github.com/openai/gpt-oss/pull/163",
+    "repo": "openai/gpt-oss",
+    "number": 163
+  },
+  "diff": "--- a/gpt_oss/metal/source/context.c\n+++ b/gpt_oss/metal/source/context.c\n@@ -618,12 +618,12 @@ enum gptoss_status GPTOSS_ABI gptoss_context_append_tokens(\n             size_t num_verified_tokens = 0;\n             for (; num_verified_tokens < num_tokens_to_verify; num_verified_tokens++) {\n                 if (input_tokens[context->num_tokens + num_verified_tokens] != tokens[num_verified_tokens]) {\n-                    context->num_kv_tokens = context->num_tokens + num_verified_tokens;\n                     break;\n                 }\n             }\n \n             context->num_tokens += num_verified_tokens;\n+            context->num_kv_tokens = context->num_tokens;\n             tokens += num_verified_tokens;\n             num_tokens -= num_verified_tokens;\n         } else {\n",
+  "seeded": [
+    {
+      "id": "case-gptoss-163-b1",
+      "file": "gpt_oss/metal/source/context.c",
+      "line_start": 620,
+      "line_end": 622,
+      "category": "logic",
+      "description": "Metal: fix KV-cache invalidation after reset+append [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gptoss-163-b2",
+      "file": "gpt_oss/metal/source/context.c",
+      "line_start": 626,
+      "line_end": 626,
+      "category": "logic",
+      "description": "Metal: fix KV-cache invalidation after reset+append [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/gpt-oss",
+    "number": 163,
+    "merged_at": "2025-09-02T16:43:56Z",
+    "merge_commit": "38df14a605d27bb0e4fc473266e3c2094e66a42b",
+    "title": "Metal: fix KV-cache invalidation after reset+append",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

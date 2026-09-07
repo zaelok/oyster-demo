@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftsyntax-3326",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-syntax/pull/3326",
+    "repo": "swiftlang/swift-syntax",
+    "number": 3326
+  },
+  "diff": "--- a/Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\n+++ b/Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift\n@@ -69,20 +69,15 @@ public struct ConvertStoredPropertyToComputed: SyntaxRefactoringProvider {\n     if let existingType = binding.typeAnnotation {\n       typeAnnotation = existingType\n     } else if let providedType = context.type {\n-      typeAnnotation = TypeAnnotationSyntax(\n-        colon: .colonToken(trailingTrivia: .space),\n-        type: providedType\n-      )\n+      typeAnnotation = TypeAnnotationSyntax(type: providedType)\n     } else {\n       typeAnnotation = TypeAnnotationSyntax(\n-        colon: .colonToken(trailingTrivia: .space),\n         type: TypeSyntax(stringLiteral: \"<#Type#>\")\n       )\n     }\n \n     let newBinding =\n       binding\n-      .with(\\.pattern, binding.pattern.with(\\.trailingTrivia, []))\n       .with(\\.initializer, nil)\n       .with(\\.typeAnnotation, typeAnnotation)\n       .with(\n",
+  "seeded": [
+    {
+      "id": "case-swiftsyntax-3326-b1",
+      "file": "Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift",
+      "line_start": 72,
+      "line_end": 72,
+      "category": "logic",
+      "description": "whitespace in convertStoredPropertyToComputed [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftsyntax-3326-b2",
+      "file": "Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift",
+      "line_start": 74,
+      "line_end": 76,
+      "category": "logic",
+      "description": "whitespace in convertStoredPropertyToComputed [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftsyntax-3326-b3",
+      "file": "Sources/SwiftRefactor/ConvertStoredPropertyToComputed.swift",
+      "line_start": 80,
+      "line_end": 82,
+      "category": "logic",
+      "description": "whitespace in convertStoredPropertyToComputed [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-syntax",
+    "number": 3326,
+    "merged_at": "2026-05-08T12:35:13Z",
+    "merge_commit": "ac8f50bf4bd0d0a333c5abcb07a7544b431ecc66",
+    "title": "Fix whitespace in convertStoredPropertyToComputed ",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

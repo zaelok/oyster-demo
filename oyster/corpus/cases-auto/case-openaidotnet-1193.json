@@ -1,0 +1,36 @@
+{
+  "id": "case-openaidotnet-1193",
+  "source": {
+    "pr": "https://github.com/openai/openai-dotnet/pull/1193",
+    "repo": "openai/openai-dotnet",
+    "number": 1193
+  },
+  "diff": "--- a/OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs\n+++ b/OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs\n@@ -56,7 +56,7 @@ public HyperparameterBetaFactor(int beta)\n \n     void IJsonModel<HyperparameterBetaFactor>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)\n     {\n-        SerializeHyperparameterBeta(this, writer, options);\n+        throw new NotImplementedException();\n     }\n \n     HyperparameterBetaFactor IJsonModel<HyperparameterBetaFactor>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)\n",
+  "seeded": [
+    {
+      "id": "case-openaidotnet-1193-b1",
+      "file": "OpenAI/src/Custom/FineTuning/HyperparameterBetaFactor.cs",
+      "line_start": 59,
+      "line_end": 59,
+      "category": "logic",
+      "description": "NotImplementedException when serializing HyperparameterBetaFactor [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-dotnet",
+    "number": 1193,
+    "merged_at": "2026-06-16T17:56:41Z",
+    "merge_commit": "b8e0861c954698811c0f75ddac44994f5f93b41a",
+    "title": "Fix NotImplementedException when serializing HyperparameterBetaFactor",
+    "language": "csharp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

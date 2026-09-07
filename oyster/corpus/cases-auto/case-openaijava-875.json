@@ -1,0 +1,36 @@
+{
+  "id": "case-openaijava-875",
+  "source": {
+    "pr": "https://github.com/openai/openai-java/pull/875",
+    "repo": "openai/openai-java",
+    "number": 875
+  },
+  "diff": "--- a/buildSrc/src/main/kotlin/com/openai/gradle/CoreCompilationDependencies.kt\n+++ b/buildSrc/src/main/kotlin/com/openai/gradle/CoreCompilationDependencies.kt\n@@ -28,7 +28,6 @@ object CoreCompilationDependencies {\n \n     val publishedImplementationDependencies =\n         listOf(\n-            \"org.jetbrains.kotlin:kotlin-reflect:1.8.20\",\n             \"com.fasterxml.jackson.core:jackson-annotations:$JACKSON_PUBLISHED_VERSION\",\n             \"com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$JACKSON_PUBLISHED_VERSION\",\n             \"com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$JACKSON_PUBLISHED_VERSION\",\n",
+  "seeded": [
+    {
+      "id": "case-openaijava-875-b1",
+      "file": "buildSrc/src/main/kotlin/com/openai/gradle/CoreCompilationDependencies.kt",
+      "line_start": 30,
+      "line_end": 32,
+      "category": "logic",
+      "description": "prevent concurrent JSON deserialization failures [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-java",
+    "number": 875,
+    "merged_at": "2026-08-18T16:03:25Z",
+    "merge_commit": "e0afe55d49dfe040167c14d91f56a167f3215132",
+    "title": "fix: prevent concurrent JSON deserialization failures",
+    "language": "kotlin",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

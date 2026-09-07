@@ -1,0 +1,36 @@
+{
+  "id": "case-olmocore-600",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/600",
+    "repo": "allenai/OLMo-core",
+    "number": 600
+  },
+  "diff": "--- a/src/olmo_core/config.py\n+++ b/src/olmo_core/config.py\n@@ -273,8 +273,6 @@ def decode_data(d: Any, prefix: str) -> Any:\n                     if (ignore_fields := getattr(cls_o, \"_IGNORE_FIELDS\", None)) is not None:\n                         new_dict = {k: v for k, v in new_dict.items() if k not in ignore_fields}\n \n-                    new_dict.pop(\"type\", None)\n-\n                     try:\n                         return decode(cls_o, new_dict)  # type: ignore[arg-type]\n                     except Exception as e:\n",
+  "seeded": [
+    {
+      "id": "case-olmocore-600-b1",
+      "file": "src/olmo_core/config.py",
+      "line_start": 275,
+      "line_end": 277,
+      "category": "logic",
+      "description": "config decode when _CLASS_ resolves a Registrable subclass [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 600,
+    "merged_at": "2026-02-08T01:56:57Z",
+    "merge_commit": "4cddabb5d2165adec669bca0a7a2692fbbc6c641",
+    "title": "Fix config decode when _CLASS_ resolves a Registrable subclass",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

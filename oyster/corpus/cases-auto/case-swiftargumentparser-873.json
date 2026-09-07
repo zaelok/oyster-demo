@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftargumentparser-873",
+  "source": {
+    "pr": "https://github.com/apple/swift-argument-parser/pull/873",
+    "repo": "apple/swift-argument-parser",
+    "number": 873
+  },
+  "diff": "--- a/Sources/ArgumentParser/Parsing/CommandParser.swift\n+++ b/Sources/ArgumentParser/Parsing/CommandParser.swift\n@@ -38,10 +38,7 @@ struct CommandParser {\n   }\n \n   var commandStack: [ParsableCommand.Type] {\n-    let result =\n-      decodedArguments\n-      .compactMap { $0.commandType }\n-      .filter { !commandTree.path(to: $0).isEmpty }\n+    let result = decodedArguments.compactMap { $0.commandType }\n     if currentNode.element == result.last {\n       return result\n     } else {\n",
+  "seeded": [
+    {
+      "id": "case-swiftargumentparser-873-b1",
+      "file": "Sources/ArgumentParser/Parsing/CommandParser.swift",
+      "line_start": 41,
+      "line_end": 41,
+      "category": "logic",
+      "description": "OptionGroup type names appearing in help usage string [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-argument-parser",
+    "number": 873,
+    "merged_at": "2026-03-19T15:00:11Z",
+    "merge_commit": "650976fa15e98b6eac6b685aeb2db857eb23cc7f",
+    "title": "Fix OptionGroup type names appearing in help usage string",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

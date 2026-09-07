@@ -1,0 +1,36 @@
+{
+  "id": "case-pklgo-228",
+  "source": {
+    "pr": "https://github.com/apple/pkl-go/pull/228",
+    "repo": "apple/pkl-go",
+    "number": 228
+  },
+  "diff": "--- a/pkl/evaluator_options.go\n+++ b/pkl/evaluator_options.go\n@@ -1,4 +1,5 @@\n //===----------------------------------------------------------------------===//\n+// Copyright \u00a9 2024-2025 Apple Inc. and the Pkl project authors. All rights reserved.\n //\n // Licensed under the Apache License, Version 2.0 (the \"License\");\n // you may not use this file except in compliance with the License.\n@@ -458,10 +458,7 @@ var WithProjectEvaluatorSettings = func(project *Project) func(opts *EvaluatorOp\n \t\tif evaluatorSettings.Http != nil {\n \t\t\topts.Http = &Http{}\n \t\t\tif evaluatorSettings.Http.Proxy != nil {\n-\t\t\t\topts.Http.Proxy = &Proxy{}\n-\t\t\t\tif evaluatorSettings.Http.Proxy.NoProxy != nil {\n-\t\t\t\t\topts.Http.Proxy.NoProxy = *evaluatorSettings.Http.Proxy.NoProxy\n-\t\t\t\t}\n+\t\t\t\topts.Http.Proxy = &Proxy{NoProxy: opts.Http.Proxy.NoProxy}\n \t\t\t\tif evaluatorSettings.Http.Proxy.Address != nil {\n \t\t\t\t\topts.Http.Proxy.Address = *evaluatorSettings.Http.Proxy.Address\n \t\t\t\t}\n",
+  "seeded": [
+    {
+      "id": "case-pklgo-228-b1",
+      "file": "pkl/evaluator_options.go",
+      "line_start": 461,
+      "line_end": 461,
+      "category": "logic",
+      "description": "correct proxy noProxy assignment in evaluator options [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/pkl-go",
+    "number": 228,
+    "merged_at": "2026-06-26T20:30:02Z",
+    "merge_commit": "6563c2af238f6600f19d0edd61026be6a3997556",
+    "title": "fix: correct proxy noProxy assignment in evaluator options",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

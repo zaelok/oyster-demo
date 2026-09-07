@@ -1,0 +1,54 @@
+{
+  "id": "case-flashattention-178",
+  "source": {
+    "pr": "https://github.com/vllm-project/flash-attention/pull/178",
+    "repo": "vllm-project/flash-attention",
+    "number": 178
+  },
+  "diff": "--- a/flash_attn/cute/flash_fwd.py\n+++ b/flash_attn/cute/flash_fwd.py\n@@ -626,7 +626,6 @@ def __init__(self, *args, **kwargs):\n         assert self.output_quant_key is None, (\n             f\"Fused quant output not implemented for {type(self).__name__}\"\n         )\n-        self.is_split_kv = False\n \n     def _get_smem_layout_atom(self):\n         sQ_layout_atom = sm80_utils.get_smem_layout_atom(self.dtype, self.tile_hdim)\n@@ -794,7 +793,6 @@ def __call__(\n             aux_data,\n             fastdiv_mods,\n             output_scale,\n-            mDynamicCausal,\n         ).launch(\n             grid=grid_dim,\n             block=[self.num_threads, 1, 1],\n@@ -835,7 +833,6 @@ def kernel(\n         aux_data: AuxData = AuxData(),\n         fastdiv_mods=None,\n         output_scale: Optional[cute.Tensor] = None,\n-        mDynamicCausal: Optional[cute.Tensor] = None,\n     ):\n         # Thread index, block index\n         tidx, _, _ = cute.arch.thread_idx()\n",
+  "seeded": [
+    {
+      "id": "case-flashattention-178-b1",
+      "file": "flash_attn/cute/flash_fwd.py",
+      "line_start": 628,
+      "line_end": 630,
+      "category": "logic",
+      "description": "fix(cute): pass mDynamicCausal to kernel and init is_split_kv in SM80/SM120 FA4 forward [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-178-b2",
+      "file": "flash_attn/cute/flash_fwd.py",
+      "line_start": 795,
+      "line_end": 797,
+      "category": "logic",
+      "description": "fix(cute): pass mDynamicCausal to kernel and init is_split_kv in SM80/SM120 FA4 forward [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-178-b3",
+      "file": "flash_attn/cute/flash_fwd.py",
+      "line_start": 835,
+      "line_end": 837,
+      "category": "logic",
+      "description": "fix(cute): pass mDynamicCausal to kernel and init is_split_kv in SM80/SM120 FA4 forward [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/flash-attention",
+    "number": 178,
+    "merged_at": "2026-08-12T19:42:53Z",
+    "merge_commit": "7484d4751a4569fb30e5c0604581f1b02ae3df71",
+    "title": "fix(cute): pass mDynamicCausal to kernel and init is_split_kv in SM80/SM120 FA4 forward",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

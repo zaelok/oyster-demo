@@ -1,0 +1,45 @@
+{
+  "id": "case-inspector-2267",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/inspector/pull/2267",
+    "repo": "modelcontextprotocol/inspector",
+    "number": 2267
+  },
+  "diff": "--- a/clients/web/src/hooks/useProgressToasts.ts\n+++ b/clients/web/src/hooks/useProgressToasts.ts\n@@ -86,8 +86,8 @@ export function useProgressToasts(\n       // \"Tool progress\" toast from lingering into the next session, and avoids\n       // a race where the lingering toast's `onClose` would later delete an id\n       // from the *new* session's set and trigger a duplicate-id re-show.\n       liveToastIds.forEach((id) => notifications.hide(id));\n-      progressToastIdsRef.current = new Set();\n+      liveToastIds.clear();\n     };\n   }, [inspectorClient]);\n }\n--- a/clients/web/src/hooks/useTaskToasts.ts\n+++ b/clients/web/src/hooks/useTaskToasts.ts\n@@ -220,8 +220,9 @@ export function useTaskToasts(\n       inspectorClient.removeEventListener(\"taskCancelled\", onTaskCancelled);\n       // Hide any still-visible task toasts on client swap so they don't linger\n       // into the next session, then drop the bookkeeping (mirrors the progress-\n+      // toast teardown).\n       liveToastIds.forEach((id) => notifications.hide(id));\n-      taskToastIdsRef.current = new Set();\n+      liveToastIds.clear();\n     };\n   }, [inspectorClient]);\n \n",
+  "seeded": [
+    {
+      "id": "case-inspector-2267-b1",
+      "file": "clients/web/src/hooks/useProgressToasts.ts",
+      "line_start": 90,
+      "line_end": 90,
+      "category": "logic",
+      "description": "swap the toast ref Set on teardown instead of clearing it [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-inspector-2267-b2",
+      "file": "clients/web/src/hooks/useTaskToasts.ts",
+      "line_start": 225,
+      "line_end": 225,
+      "category": "logic",
+      "description": "swap the toast ref Set on teardown instead of clearing it [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/inspector",
+    "number": 2267,
+    "merged_at": "2026-09-06T16:00:08Z",
+    "merge_commit": "6d93a33a4067bc6eeed98d6dc0ef623d37aba31b",
+    "title": "fix: swap the toast ref Set on teardown instead of clearing it",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

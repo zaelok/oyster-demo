@@ -1,0 +1,45 @@
+{
+  "id": "case-speech-16146",
+  "source": {
+    "pr": "https://github.com/NVIDIA-NeMo/Speech/pull/16146",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16146
+  },
+  "diff": "--- a/nemo/collections/common/data/lhotse/cutset.py\n+++ b/nemo/collections/common/data/lhotse/cutset.py\n@@ -1189,7 +1189,6 @@ def filter_secs_fn(cut: Cut) -> bool:\n         return (\n             len(cut.supervisions) == 0\n             or not cut.supervisions[0].has_custom(\"context_speaker_similarity\")\n-            or cut.supervisions[0].context_speaker_similarity is None\n             or cut.supervisions[0].context_speaker_similarity >= min_context_speaker_similarity\n         )\n \n--- a/nemo/collections/common/data/lhotse/sampling.py\n+++ b/nemo/collections/common/data/lhotse/sampling.py\n@@ -366,7 +366,6 @@ def __call__(self, example) -> bool:\n             isinstance(example, MonoCut)\n             and len(example.supervisions) > 0\n             and example.supervisions[0].has_custom(\"context_speaker_similarity\")\n-            and example.supervisions[0].context_speaker_similarity is not None\n         ):\n             return example.supervisions[0].context_speaker_similarity >= self.min_context_speaker_similarity\n         else:\n",
+  "seeded": [
+    {
+      "id": "case-speech-16146-b1",
+      "file": "nemo/collections/common/data/lhotse/cutset.py",
+      "line_start": 1191,
+      "line_end": 1193,
+      "category": "logic",
+      "description": "allow null context similarity in cuts [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-speech-16146-b2",
+      "file": "nemo/collections/common/data/lhotse/sampling.py",
+      "line_start": 368,
+      "line_end": 370,
+      "category": "logic",
+      "description": "allow null context similarity in cuts [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16146,
+    "merged_at": "2026-08-26T20:47:14Z",
+    "merge_commit": "5b7b76f62141ae975a9094798a1dcd8a5ec718df",
+    "title": "allow null context similarity in cuts",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

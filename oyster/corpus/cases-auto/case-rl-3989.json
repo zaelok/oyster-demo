@@ -1,0 +1,36 @@
+{
+  "id": "case-rl-3989",
+  "source": {
+    "pr": "https://github.com/NVIDIA-NeMo/RL/pull/3989",
+    "repo": "NVIDIA-NeMo/RL",
+    "number": 3989
+  },
+  "diff": "--- a/nemo_rl/data/multimodal_utils.py\n+++ b/nemo_rl/data/multimodal_utils.py\n@@ -63,7 +63,6 @@\n     {\n         \"NemotronNanoVLV2Processor\",\n         \"NemotronH_Nano_Omni_Reasoning_V3Processor\",\n-        \"NemotronH_Omni_Reasoning_V3Processor\",\n     }\n )\n \n",
+  "seeded": [
+    {
+      "id": "case-rl-3989-b1",
+      "file": "nemo_rl/data/multimodal_utils.py",
+      "line_start": 65,
+      "line_end": 67,
+      "category": "logic",
+      "description": "fix(vlm): recognize Super Omni placeholder processor [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA-NeMo/RL",
+    "number": 3989,
+    "merged_at": "2026-09-04T06:23:10Z",
+    "merge_commit": "3d4db49b9918d88bafe4b23f8c472069368dfaca",
+    "title": "fix(vlm): recognize Super Omni placeholder processor",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

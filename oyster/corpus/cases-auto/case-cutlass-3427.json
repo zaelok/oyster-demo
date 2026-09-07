@@ -1,0 +1,54 @@
+{
+  "id": "case-cutlass-3427",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cutlass/pull/3427",
+    "repo": "NVIDIA/cutlass",
+    "number": 3427
+  },
+  "diff": "--- a/include/cute/numeric/arithmetic_tuple.hpp\n+++ b/include/cute/numeric/arithmetic_tuple.hpp\n@@ -369,11 +369,7 @@ CUTE_HOST_DEVICE constexpr\n auto\n operator==(ScaledBasis<T,Ns...> const& t, ScaledBasis<U,Ms...> const& u) {\n   if constexpr (sizeof...(Ns) == sizeof...(Ms)) {\n-    if constexpr (((Ns == Ms) && ...)) {\n-      return bool_constant<true>{} && t.value() == u.value();\n-    } else {\n-      return false_type{};\n-    }\n+    return bool_constant<((Ns == Ms) && ...)>{} && t.value() == u.value();\n   } else {\n     return false_type{};\n   }\n--- a/include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp\n+++ b/include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp\n@@ -268,12 +268,6 @@ struct CollectiveMma<\n   using SmemLayoutAtomE  = ComposedLayout<Swizzle<0,4,3>,\n                                           smem_sparse_ptr_flag_bits<TensorEMmaSparsity, sizeof_bits_v<ElementE>>,\n                                           SmemLayoutAtomE_>;\n-\n-  static_assert(rank(SmemLayoutAtomE{}) == 2, \"SmemLayoutAtom must be rank 2 (M/N, K)\");\n-  static_assert((size<0>(TileShape{}) % size<0>(SmemLayoutAtomE{})) == 0, \"SmemLayoutAtomE must evenly divide tile shape.\");\n-  static_assert((size<2>(TileShape{}) % size<1>(SmemLayoutAtomE{})) == 0,\n-                \"TileShape_K must be a multiple of the metadata atom K extent (256 for nvf4 and mxf4, 128 for mxf8f6f4).\");\n-\n   using SmemLayoutE = decltype(tile_to_shape(\n                   SmemLayoutAtomE{},\n                   make_shape(shape<0>(TileShape{}), shape<2>(TileShape{}), Int<DispatchPolicy::StagesE>{}),\n@@ -285,6 +279,9 @@ struct CollectiveMma<\n   using TensorEAtomK = typename SparseConfig::TensorEAtomK;\n   static constexpr bool IsELoadPred = not (TensorEAtomM{} == size<0>(TileShape{}) && TensorEAtomK{} == size<2>(TileShape{}));\n \n+  static_assert(rank(SmemLayoutAtomE{}) == 2, \"SmemLayoutAtom must be rank 2 (M/N, K)\");\n+  static_assert((size<0>(TileShape{}) % size<0>(SmemLayoutAtomE{})) == 0, \"SmemLayoutAtomE must evenly divide tile shape.\");\n+\n   // Set the bytes transferred in this TMA transaction\n   static constexpr uint32_t TmaTransactionBytesMK = static_cast<uint32_t>(\n     cutlass::bits_to_bytes(cosize(take<0,2>(SmemLayoutA{})) * cute::sizeof_bits_v<ElementAMma>) +\n",
+  "seeded": [
+    {
+      "id": "case-cutlass-3427-b1",
+      "file": "include/cute/numeric/arithmetic_tuple.hpp",
+      "line_start": 372,
+      "line_end": 372,
+      "category": "logic",
+      "description": "ScaledBasis equality for mismatched bases, add SM120 sparse metadata K assert [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cutlass-3427-b2",
+      "file": "include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp",
+      "line_start": 270,
+      "line_end": 272,
+      "category": "logic",
+      "description": "ScaledBasis equality for mismatched bases, add SM120 sparse metadata K assert [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cutlass-3427-b3",
+      "file": "include/cutlass/gemm/collective/sm120_blockscaled_sparse_mma_tma.hpp",
+      "line_start": 282,
+      "line_end": 284,
+      "category": "logic",
+      "description": "ScaledBasis equality for mismatched bases, add SM120 sparse metadata K assert [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cutlass",
+    "number": 3427,
+    "merged_at": "2026-08-06T02:00:50Z",
+    "merge_commit": "976d0521f0d3f48b2c20466cd0d150b90f1aac36",
+    "title": "Fix ScaledBasis equality for mismatched bases, add SM120 sparse metadata K assert",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

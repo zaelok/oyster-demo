@@ -1,0 +1,37 @@
+{
+  "id": "case-claudecodeaction-1692",
+  "source": {
+    "pr": "https://github.com/anthropics/claude-code-action/pull/1692",
+    "repo": "anthropics/claude-code-action",
+    "number": 1692
+  },
+  "diff": "--- a/base-action/src/parse-sdk-options.ts\n+++ b/base-action/src/parse-sdk-options.ts\n@@ -289,8 +289,6 @@ export function parseSdkOptions(options: ClaudeOptions): ParsedSdkOptions {\n   delete env.ACTIONS_ID_TOKEN_REQUEST_URL;\n   delete env.ACTIONS_ID_TOKEN_REQUEST_TOKEN;\n \n-  delete env.ALL_INPUTS;\n-\n   // Build system prompt option - default to claude_code preset\n   let systemPrompt: SdkOptions[\"systemPrompt\"];\n   if (options.systemPrompt) {\n",
+  "seeded": [
+    {
+      "id": "case-claudecodeaction-1692-b1",
+      "file": "base-action/src/parse-sdk-options.ts",
+      "line_start": 291,
+      "line_end": 293,
+      "category": "security",
+      "description": "strip unused ALL_INPUTS environment variable from Claude subprocess env [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/claude-code-action",
+    "number": 1692,
+    "merged_at": "2026-08-19T00:23:39Z",
+    "merge_commit": "0a80d21df70c4ad2af73b28e4aad2ed725e2eb75",
+    "title": "fix: strip unused ALL_INPUTS environment variable from Claude subprocess env",
+    "language": "typescript",
+    "category_reasons": [
+      "security",
+      "privilege"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

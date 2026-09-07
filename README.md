@@ -132,7 +132,10 @@ flowchart LR
 - **Results page**: `tools/build_site.py` writes a single-file page with the table, a
   selection explorer and per-case provenance; the `pages` workflow publishes it once the
   repository is public.
-- **Tests**: 141, all offline.
+- **Corpus**: two tiers. The reviewed tier (17 cases) is behind every committed number; the
+  auto tier (183 cases from 146 public repositories, labels unreviewed) is built by
+  `tools/build_corpus.py` and evaluated separately.
+- **Tests**: 156, all offline.
 
 ## Results: first run
 
@@ -283,6 +286,26 @@ diffs with `--files`, and move the file into `oyster/corpus/cases/` yourself. Th
 cases and their sources are listed in
 [`oyster/corpus/cases/SOURCES.md`](oyster/corpus/cases/SOURCES.md).
 
+### The auto tier: 183 more cases, labels unreviewed
+
+`tools/build_corpus.py` runs the same reversal without a person in the loop. It searches 146
+public repositories (Apple and swiftlang, OpenAI, AI2, Anthropic, the Model Context Protocol
+organisation, NVIDIA and the CUDA ecosystem, LiteLLM, vLLM) for merged PRs since September
+2025 whose titles read like fixes; drops chores, bots, and anything over four files or 150
+changed lines; reverses each candidate; and keeps only drafts that pass mechanical gates
+(validator, source files only, at most three files, six hunks and 120 diff lines, one to three
+change blocks, no leaked fix vocabulary). Filling round-robin across organisations and
+repositories from 8,971 search hits gave
+[`oyster/corpus/cases-auto/`](oyster/corpus/cases-auto/): 183 cases, 314 seeded bugs, 13
+languages, 19 labelled security by keyword. Nobody reviewed those labels. The tier's
+[README](oyster/corpus/cases-auto/README.md) says what is real (the diff, the seeded range,
+the provenance) and what is a guess (the category, the description, whether the bug is
+findable from the diff alone); the funnel is in
+[`BUILD-REPORT.md`](oyster/corpus/cases-auto/BUILD-REPORT.md) and every PR considered is in
+`candidates.jsonl`. `--corpus` is repeatable, the tiers are evaluated separately, and their
+numbers are never merged. The auto tier has not been run yet: at six calls per case it is
+about 1,100 requests, a job for `--provider claude-code` rather than a chat window.
+
 ## Reading `results.md`
 
 ```
@@ -336,7 +359,7 @@ oyster/
   cost/               pricing formula, path cost, token estimator
   providers/          mock (fixture replay), anthropic, claude-code (subscription), recording
   conversation/       prompt packs and reply ingestion: any chat window as a provider
-  corpus/             loader and validator; cases/ are the 17 reversed public PRs
+  corpus/             loader and validator; cases/ the 17 reviewed PRs, cases-auto/ 183 unreviewed
   matching/           finding-to-seeded-bug matcher
   executor/           runs a path: hooks, cached diff, upstream outputs, JSON repair
   selector/           predict and select under budget and latency tolerance
@@ -421,8 +444,8 @@ ability.
   genericity test, registry with the first entry, platform and instance designs: done.
 - Not yet done: a run with API-reported token counts (`--provider claude-code` after
   `claude setup-token`, or `--provider anthropic` with a key), the other model pairs in
-  `tools/run_matrix.py`, style bugs in the corpus, a human baseline on the same diffs, and the
-  build/CI instance's phase 0.
+  `tools/run_matrix.py`, the auto tier (183 cases, not yet evaluated on any model), style bugs
+  in the corpus, a human baseline on the same diffs, and the build/CI instance's phase 0.
 
 ## License
 

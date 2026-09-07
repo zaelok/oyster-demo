@@ -1,0 +1,54 @@
+{
+  "id": "case-claudeagentsdkpython-1058",
+  "source": {
+    "pr": "https://github.com/anthropics/claude-agent-sdk-python/pull/1058",
+    "repo": "anthropics/claude-agent-sdk-python",
+    "number": 1058
+  },
+  "diff": "--- a/src/claude_agent_sdk/_internal/message_parser.py\n+++ b/src/claude_agent_sdk/_internal/message_parser.py\n@@ -86,12 +86,6 @@ def parse_message(data: dict[str, Any]) -> Message | None:\n                 if isinstance(data[\"message\"][\"content\"], list):\n                     user_content_blocks: list[ContentBlock] = []\n                     for block in data[\"message\"][\"content\"]:\n-                        if not isinstance(block, dict):\n-                            raise MessageParseError(\n-                                f\"Invalid content block (expected dict, got \"\n-                                f\"{type(block).__name__})\",\n-                                data,\n-                            )\n                         match block[\"type\"]:\n                             case \"text\":\n                                 user_content_blocks.append(\n@@ -132,21 +126,8 @@ def parse_message(data: dict[str, Any]) -> Message | None:\n \n         case \"assistant\":\n             try:\n-                raw_content = data[\"message\"][\"content\"]\n-                if not isinstance(raw_content, list):\n-                    raise MessageParseError(\n-                        f\"Invalid assistant content (expected list, got \"\n-                        f\"{type(raw_content).__name__})\",\n-                        data,\n-                    )\n                 content_blocks: list[ContentBlock] = []\n-                for block in raw_content:\n-                    if not isinstance(block, dict):\n-                        raise MessageParseError(\n-                            f\"Invalid content block (expected dict, got \"\n-                            f\"{type(block).__name__})\",\n-                            data,\n-                        )\n+                for block in data[\"message\"][\"content\"]:\n                     match block[\"type\"]:\n                         case \"text\":\n                             content_blocks.append(TextBlock(text=block[\"text\"]))\n",
+  "seeded": [
+    {
+      "id": "case-claudeagentsdkpython-1058-b1",
+      "file": "src/claude_agent_sdk/_internal/message_parser.py",
+      "line_start": 88,
+      "line_end": 90,
+      "category": "logic",
+      "description": "uncaught TypeError on string or non-dict message content [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-claudeagentsdkpython-1058-b2",
+      "file": "src/claude_agent_sdk/_internal/message_parser.py",
+      "line_start": 128,
+      "line_end": 130,
+      "category": "logic",
+      "description": "uncaught TypeError on string or non-dict message content [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-claudeagentsdkpython-1058-b3",
+      "file": "src/claude_agent_sdk/_internal/message_parser.py",
+      "line_start": 130,
+      "line_end": 130,
+      "category": "logic",
+      "description": "uncaught TypeError on string or non-dict message content [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/claude-agent-sdk-python",
+    "number": 1058,
+    "merged_at": "2026-06-26T02:27:45Z",
+    "merge_commit": "d47b18071e11574882aa2b27e9ccbaf6c31ce970",
+    "title": "Fix uncaught TypeError on string or non-dict message content",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

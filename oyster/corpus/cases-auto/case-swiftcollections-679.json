@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftcollections-679",
+  "source": {
+    "pr": "https://github.com/apple/swift-collections/pull/679",
+    "repo": "apple/swift-collections",
+    "number": 679
+  },
+  "diff": "--- a/Sources/HashTreeCollections/HashNode/_HashNode+Storage.swift\n+++ b/Sources/HashTreeCollections/HashNode/_HashNode+Storage.swift\n@@ -37,7 +37,6 @@ extension _HashNode {\n   /// Instances of this class hold (tail-allocated) storage for individual\n   /// nodes in a hash tree.\n   @usableFromInline\n-  @_fixed_layout // Not really! This module isn't ABI stable.\n   internal final class Storage: _RawHashStorage {\n     @usableFromInline\n     internal typealias Element = (key: Key, value: Value)\n--- a/Sources/SortedCollections/BTree/_Node.Storage.swift\n+++ b/Sources/SortedCollections/BTree/_Node.Storage.swift\n@@ -117,8 +117,7 @@ extension _Node {\n   /// does not exist, ``_Node.dummyValue`` can be used to obtain a valid value within the type system\n   /// that can be passed to APIs.\n   @usableFromInline\n-  @_fixed_layout // Not really! This module isn't ABI stable.\n-  internal class Storage: ManagedBuffer<_Node.Header, Key> {\n+  internal class Storage: ManagedBuffer<_Node.Header, Key> {    \n     /// Allows **read-only** access to the underlying data behind the node.\n     ///\n     /// - Parameter body: A closure with a handle which allows interacting with the node\n",
+  "seeded": [
+    {
+      "id": "case-swiftcollections-679-b1",
+      "file": "Sources/HashTreeCollections/HashNode/_HashNode+Storage.swift",
+      "line_start": 39,
+      "line_end": 41,
+      "category": "logic",
+      "description": "@inlinable deinit incompatibility with library evolution (HashTree/Sorted storage) [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcollections-679-b2",
+      "file": "Sources/SortedCollections/BTree/_Node.Storage.swift",
+      "line_start": 120,
+      "line_end": 120,
+      "category": "logic",
+      "description": "@inlinable deinit incompatibility with library evolution (HashTree/Sorted storage) [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-collections",
+    "number": 679,
+    "merged_at": "2026-07-07T21:41:14Z",
+    "merge_commit": "337e1411ef4a913fa1cff67e1d1c69aa919e3dd2",
+    "title": "Fix @inlinable deinit incompatibility with library evolution (HashTree/Sorted storage)",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

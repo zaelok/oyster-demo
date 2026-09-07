@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdkruby-126",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-ruby/pull/126",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 126
+  },
+  "diff": "--- a/lib/anthropic/internal/util.rb\n+++ b/lib/anthropic/internal/util.rb\n@@ -537,24 +537,23 @@ class << self\n         # @param closing [Array<Proc>]\n         private def write_multipart_chunk(y, boundary:, key:, val:, closing:)\n           y << \"--#{boundary}\\r\\n\"\n-          y << \"Content-Disposition: form-data;\"\n+          y << \"Content-Disposition: form-data\"\n \n           unless key.nil?\n             name = ERB::Util.url_encode(key.to_s)\n             y << \"; name=\\\"#{name}\\\"\"\n           end\n \n-          filename =\n-            case val\n-            in Anthropic::FilePart unless val.filename.nil?\n-              ERB::Util.url_encode(val.filename)\n-            in Pathname | IO\n-              ERB::Util.url_encode(::File.basename(val.to_path))\n-            else\n-              \"upload\"\n-            end\n-\n-          y << \" filename=\\\"#{filename}\\\"\\r\\n\"\n+          case val\n+          in Anthropic::FilePart unless val.filename.nil?\n+            filename = ERB::Util.url_encode(val.filename)\n+            y << \"; filename=\\\"#{filename}\\\"\"\n+          in Pathname | IO\n+            filename = ERB::Util.url_encode(::File.basename(val.to_path))\n+            y << \"; filename=\\\"#{filename}\\\"\"\n+          else\n+          end\n+          y << \"\\r\\n\"\n \n           write_multipart_content(y, val: val, closing: closing)\n         end\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkruby-126-b1",
+      "file": "lib/anthropic/internal/util.rb",
+      "line_start": 540,
+      "line_end": 540,
+      "category": "logic",
+      "description": "always send filename in content-disposition headers [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdkruby-126-b2",
+      "file": "lib/anthropic/internal/util.rb",
+      "line_start": 547,
+      "line_end": 556,
+      "category": "logic",
+      "description": "always send filename in content-disposition headers [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 126,
+    "merged_at": "2025-09-29T14:51:39Z",
+    "merge_commit": "0e665f34f0d736a400e0ab8b82cad7ccaf0845b1",
+    "title": "fix: always send filename in content-disposition headers",
+    "language": "ruby",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

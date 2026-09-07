@@ -9,6 +9,7 @@ task_descriptor:
   derived: [risk_class]
 categories: [logic, security, style]
 corpus: {id: code-review, path: oyster/corpus/cases}
+corpus_tiers: [code-review, code-review-auto]   # evaluated separately, never merged
 replicates: 1
 leaves:
   - {id: code-review/cheap-scan,  prompt: cheap_scanner, bias: recall}

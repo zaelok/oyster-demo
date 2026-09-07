@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkruby-124",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-ruby/pull/124",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 124
+  },
+  "diff": "--- a/lib/anthropic/internal/util.rb\n+++ b/lib/anthropic/internal/util.rb\n@@ -566,7 +566,7 @@ class << self\n         #\n         # @return [Array(String, Enumerable<String>)]\n         private def encode_multipart_streaming(body)\n-          boundary = SecureRandom.urlsafe_base64(30)\n+          boundary = SecureRandom.urlsafe_base64(60)\n \n           closing = []\n           strio = writable_enum do |y|\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkruby-124-b1",
+      "file": "lib/anthropic/internal/util.rb",
+      "line_start": 569,
+      "line_end": 569,
+      "category": "logic",
+      "description": "unnecessarily long multipart boundary length [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-ruby",
+    "number": 124,
+    "merged_at": "2025-09-04T22:28:46Z",
+    "merge_commit": "69aa4c8c918b3d401933efaba6440164c6eb6962",
+    "title": "fix: unnecessarily long multipart boundary length",
+    "language": "ruby",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

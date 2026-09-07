@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftbuild-1650",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-build/pull/1650",
+    "repo": "swiftlang/swift-build",
+    "number": 1650
+  },
+  "diff": "--- a/Sources/SWBProjectModel/PIFGenerationModel.swift\n+++ b/Sources/SWBProjectModel/PIFGenerationModel.swift\n@@ -1108,9 +1108,6 @@ public extension Array where Element == PIF.BuildSettings.Platform {\n \n             case .wasi:\n                 result.append(.init(platform: \"wasi\"))\n-                result.append(.init(platform: \"wasip1\"))\n-                result.append(.init(platform: \"wasi\", environment: \"threads\"))\n-                result.append(.init(platform: \"wasip1\", environment: \"threads\"))\n \n             case .openbsd:\n                 result.append(.init(platform: \"openbsd\"))\n--- a/Sources/SwiftBuild/ProjectModel/BuildSettings.swift\n+++ b/Sources/SwiftBuild/ProjectModel/BuildSettings.swift\n@@ -300,8 +300,6 @@ public extension ProjectModel.BuildSettings.Platform {\n         case .wasi:\n             result.append(.init(platform: \"wasi\"))\n             result.append(.init(platform: \"wasip1\"))\n-            result.append(.init(platform: \"wasi\", environment: \"threads\"))\n-            result.append(.init(platform: \"wasip1\", environment: \"threads\"))\n \n         case .openbsd:\n             result.append(.init(platform: \"openbsd\"))\n",
+  "seeded": [
+    {
+      "id": "case-swiftbuild-1650-b1",
+      "file": "Sources/SWBProjectModel/PIFGenerationModel.swift",
+      "line_start": 1110,
+      "line_end": 1112,
+      "category": "logic",
+      "description": "6.4: Fix `.when(platforms: [.wasi])` to match `wasm32-unknown-wasip1-threads` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftbuild-1650-b2",
+      "file": "Sources/SwiftBuild/ProjectModel/BuildSettings.swift",
+      "line_start": 302,
+      "line_end": 304,
+      "category": "logic",
+      "description": "6.4: Fix `.when(platforms: [.wasi])` to match `wasm32-unknown-wasip1-threads` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-build",
+    "number": 1650,
+    "merged_at": "2026-08-18T18:05:04Z",
+    "merge_commit": "807b9cd2dc7a447cafe9a6612df47f95313f2877",
+    "title": "6.4: Fix `.when(platforms: [.wasi])` to match `wasm32-unknown-wasip1-threads`",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

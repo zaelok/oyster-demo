@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftcollections-659",
+  "source": {
+    "pr": "https://github.com/apple/swift-collections/pull/659",
+    "repo": "apple/swift-collections",
+    "number": 659
+  },
+  "diff": "--- a/Sources/InternalCollectionsUtilities/UnsafeBufferPointer+Extras.swift\n+++ b/Sources/InternalCollectionsUtilities/UnsafeBufferPointer+Extras.swift\n@@ -146,7 +146,7 @@ extension UnsafeBufferPointer where Element: ~Copyable {\n     guard cut > 0 else { return .init(start: nil, count: 0) }\n     let oldStart = baseAddress.unsafelyUnwrapped\n     self = Self(start: oldStart + cut, count: count - cut)\n-    return Self(start: oldStart, count: cut)\n+    return Self(start: baseAddress, count: cut)\n   }\n \n   @_alwaysEmitIntoClient\n@@ -154,9 +154,7 @@ extension UnsafeBufferPointer where Element: ~Copyable {\n     precondition(maxLength >= 0, \"Cannot have a suffix of negative length\")\n     let cut = Swift.min(maxLength, count)\n     guard cut > 0 else { return .init(start: nil, count: 0) }\n-    let oldStart = baseAddress.unsafelyUnwrapped\n-    let newCount = count &- cut\n-    self = .init(start: oldStart, count: newCount)\n-    return Self(start: oldStart + newCount, count: cut)\n+    self = .init(start: baseAddress, count: count &- cut)\n+    return Self(start: baseAddress.unsafelyUnwrapped + (count &- cut), count: cut)\n   }\n }\n--- a/Sources/InternalCollectionsUtilities/UnsafeMutableBufferPointer+Extras.swift\n+++ b/Sources/InternalCollectionsUtilities/UnsafeMutableBufferPointer+Extras.swift\n@@ -167,10 +167,8 @@ extension UnsafeMutableBufferPointer where Element: ~Copyable {\n     precondition(maxLength >= 0, \"Cannot have a suffix of negative length\")\n     let cut = Swift.min(maxLength, count)\n     guard cut > 0 else { return .init(start: nil, count: 0) }\n-    let oldStart = baseAddress.unsafelyUnwrapped\n-    let newCount = count &- cut\n-    self = .init(start: oldStart, count: newCount)\n-    return Self(start: oldStart + newCount, count: cut)\n+    self = .init(start: baseAddress, count: count &- cut)\n+    return Self(start: baseAddress.unsafelyUnwrapped + (count &- cut), count: cut)\n   }\n }\n \n",
+  "seeded": [
+    {
+      "id": "case-swiftcollections-659-b1",
+      "file": "Sources/InternalCollectionsUtilities/UnsafeBufferPointer+Extras.swift",
+      "line_start": 149,
+      "line_end": 149,
+      "category": "logic",
+      "description": "_trim returning the wrong buffer region [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcollections-659-b2",
+      "file": "Sources/InternalCollectionsUtilities/UnsafeBufferPointer+Extras.swift",
+      "line_start": 157,
+      "line_end": 158,
+      "category": "logic",
+      "description": "_trim returning the wrong buffer region [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcollections-659-b3",
+      "file": "Sources/InternalCollectionsUtilities/UnsafeMutableBufferPointer+Extras.swift",
+      "line_start": 170,
+      "line_end": 171,
+      "category": "logic",
+      "description": "_trim returning the wrong buffer region [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-collections",
+    "number": 659,
+    "merged_at": "2026-05-27T00:00:11Z",
+    "merge_commit": "cef97270511a04677b2df269fd82242cf0136b78",
+    "title": "[InternalCollectionsUtilities] Fix _trim returning the wrong buffer region",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

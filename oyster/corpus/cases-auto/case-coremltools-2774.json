@@ -1,0 +1,45 @@
+{
+  "id": "case-coremltools-2774",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2774",
+    "repo": "apple/coremltools",
+    "number": 2774
+  },
+  "diff": "--- a/coremltools/converters/mil/frontend/torch/ops.py\n+++ b/coremltools/converters/mil/frontend/torch/ops.py\n@@ -781,12 +781,8 @@ def narrow(context, node):\n     end = list(x.shape)\n     end[dim.val] = start.val + length.val\n \n-    end_mask = [False] * len(x.shape)\n-    if start.val < 0 and end[dim.val] == 0:\n-        end_mask[dim.val] = True\n-\n     context.add(\n-        mb.slice_by_index(x=x, begin=begin, end=end, end_mask=end_mask, name=node.name)\n+        mb.slice_by_index(x=x, begin=begin, end=end, name=node.name)\n     )\n \n \n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2774-b1",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 783,
+      "line_end": 785,
+      "category": "logic",
+      "description": "torch.narrow with a negative start [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-coremltools-2774-b2",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 785,
+      "line_end": 785,
+      "category": "logic",
+      "description": "torch.narrow with a negative start [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/coremltools",
+    "number": 2774,
+    "merged_at": "2026-08-06T19:24:57Z",
+    "merge_commit": "ddf39c670afc32d55d8501ada644c861125bd05e",
+    "title": "Fix torch.narrow with a negative start",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

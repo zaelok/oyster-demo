@@ -1,0 +1,36 @@
+{
+  "id": "case-containerization-794",
+  "source": {
+    "pr": "https://github.com/apple/containerization/pull/794",
+    "repo": "apple/containerization",
+    "number": 794
+  },
+  "diff": "--- a/Sources/Containerization/LinuxPod.swift\n+++ b/Sources/Containerization/LinuxPod.swift\n@@ -410,43 +410,6 @@ extension LinuxPod {\n                             additionalMounts: fileMountContext.transformedMounts\n                         )\n \n-                        let newVirtiofsTags = (vm.mounts[id] ?? [])\n-                            .filter { $0.type == \"virtiofs\" }\n-                            .map { $0.source }\n-                        if !newVirtiofsTags.isEmpty {\n-                            let alreadyMounted = Set(\n-                                vm.mounts\n-                                    .filter { $0.key != id }\n-                                    .values.flatMap { $0 }\n-                                    .filter { $0.type == \"virtiofs\" }\n-                                    .map { $0.source }\n-                            )\n-                            try await agent.mkdir(path: \"/run/virtiofs\", all: true, perms: 0o755)\n-                            if vm.virtiofsLayout == .perTag {\n-                                var seen: Set<String> = []\n-                                for tag in newVirtiofsTags\n-                                where !alreadyMounted.contains(tag) && seen.insert(tag).inserted {\n-                                    let dest = \"/run/virtiofs/\\(tag)\"\n-                                    try await agent.mkdir(path: dest, all: true, perms: 0o755)\n-                                    try await agent.mount(\n-                                        ContainerizationOCI.Mount(\n-                                            type: \"virtiofs\",\n-                                            source: tag,\n-                                            destination: dest,\n-                                            options: []\n-                                        ))\n-                                }\n-                            } else if alreadyMounted.isEmpty {\n-                                try await agent.mount(\n-                                    ContainerizationOCI.Mount(\n-                                        type: \"virtiofs\",\n-                                        source: \"virtiofs\",\n-                                        destination: \"/run/virtiofs\",\n-                                        options: []\n-                                    ))\n-                            }\n-                        }\n-\n                         if fileMountContext.hasFileMounts {\n                             let containerMounts = vm.mounts[id] ?? []\n                             try await updatedFileMountContext.mountHoldingDirectories(\n",
+  "seeded": [
+    {
+      "id": "case-containerization-794-b1",
+      "file": "Sources/Containerization/LinuxPod.swift",
+      "line_start": 412,
+      "line_end": 414,
+      "category": "logic",
+      "description": "hotplug mounting of virtiofs [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/containerization",
+    "number": 794,
+    "merged_at": "2026-07-07T22:09:38Z",
+    "merge_commit": "1d5641ff962456df021283505eaa6a701d828192",
+    "title": "fix hotplug mounting of virtiofs",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

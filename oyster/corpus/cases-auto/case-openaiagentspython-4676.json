@@ -1,0 +1,38 @@
+{
+  "id": "case-openaiagentspython-4676",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-python/pull/4676",
+    "repo": "openai/openai-agents-python",
+    "number": 4676
+  },
+  "diff": "--- a/src/agents/voice/result.py\n+++ b/src/agents/voice/result.py\n@@ -124,11 +124,7 @@ async def _stream_audio(\n             input=text if self._voice_pipeline_config.trace_include_sensitive_data else \"\",\n             model_config={\n                 \"voice\": self.tts_settings.voice,\n-                \"instructions\": (\n-                    self.instructions\n-                    if self._voice_pipeline_config.trace_include_sensitive_data\n-                    else None\n-                ),\n+                \"instructions\": self.instructions,\n                 \"speed\": self.tts_settings.speed,\n             },\n             output_format=\"pcm\",\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentspython-4676-b1",
+      "file": "src/agents/voice/result.py",
+      "line_start": 127,
+      "line_end": 127,
+      "category": "security",
+      "description": "fix(voice): redact TTS instructions from speech spans [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-python",
+    "number": 4676,
+    "merged_at": "2026-08-27T23:18:55Z",
+    "merge_commit": "09814320a13843196489de7e6be21d30d1e29ec4",
+    "title": "fix(voice): redact TTS instructions from speech spans",
+    "language": "python",
+    "category_reasons": [
+      "secret",
+      "redact",
+      "sensitive"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

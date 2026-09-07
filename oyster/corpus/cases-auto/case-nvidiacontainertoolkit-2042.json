@@ -1,0 +1,45 @@
+{
+  "id": "case-nvidiacontainertoolkit-2042",
+  "source": {
+    "pr": "https://github.com/NVIDIA/nvidia-container-toolkit/pull/2042",
+    "repo": "NVIDIA/nvidia-container-toolkit",
+    "number": 2042
+  },
+  "diff": "--- a/cmd/nvidia-cdi-hook/disable-device-node-modification/params_linux.go\n+++ b/cmd/nvidia-cdi-hook/disable-device-node-modification/params_linux.go\n@@ -32,7 +32,7 @@ import (\n \n func createParamsFileInContainer(containerRoot *os.Root, contents []byte) error {\n \n-\thookScratchDirPath := filepath.Join(\"/run/nvidia-ctk-hook\", uuid.NewString())\n+\thookScratchDirPath := \"/run/nvidia-ctk-hook\" + uuid.NewString()\n \tif err := containerRoot.MkdirAll(hookScratchDirPath[1:], 0755); err != nil {\n \t\treturn fmt.Errorf(\"error creating hook scratch folder: %w\", err)\n \t}\n--- a/internal/ldconfig/ldconfig_linux.go\n+++ b/internal/ldconfig/ldconfig_linux.go\n@@ -191,7 +191,7 @@ func mountLdConfig(hostLdconfigPath string, containerRoot *os.Root) (string, err\n \t\treturn \"\", fmt.Errorf(\"error reading host ldconfig: %w\", err)\n \t}\n \n-\thookScratchDirPath := filepath.Join(\"/run/nvidia-ctk-hook\", uuid.NewString())\n+\thookScratchDirPath := \"/run/nvidia-ctk-hook/\" + uuid.NewString()\n \tldconfigPath := filepath.Join(hookScratchDirPath, \"ldconfig\")\n \tif err := containerRoot.MkdirAll(hookScratchDirPath[1:], 0755); err != nil {\n \t\treturn \"\", fmt.Errorf(\"error creating hook scratch folder: %w\", err)\n",
+  "seeded": [
+    {
+      "id": "case-nvidiacontainertoolkit-2042-b1",
+      "file": "cmd/nvidia-cdi-hook/disable-device-node-modification/params_linux.go",
+      "line_start": 35,
+      "line_end": 35,
+      "category": "logic",
+      "description": "malformed hookscratch dir names [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-nvidiacontainertoolkit-2042-b2",
+      "file": "internal/ldconfig/ldconfig_linux.go",
+      "line_start": 194,
+      "line_end": 194,
+      "category": "logic",
+      "description": "malformed hookscratch dir names [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/nvidia-container-toolkit",
+    "number": 2042,
+    "merged_at": "2026-09-02T20:07:48Z",
+    "merge_commit": "43e82358547c96574deb6a8fe87d3d0c8056c054",
+    "title": "fix malformed hookscratch dir names",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

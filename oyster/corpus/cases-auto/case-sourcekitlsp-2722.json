@@ -1,0 +1,45 @@
+{
+  "id": "case-sourcekitlsp-2722",
+  "source": {
+    "pr": "https://github.com/swiftlang/sourcekit-lsp/pull/2722",
+    "repo": "swiftlang/sourcekit-lsp",
+    "number": 2722
+  },
+  "diff": "--- a/Sources/SwiftLanguageService/CodeCompletionContext.swift\n+++ b/Sources/SwiftLanguageService/CodeCompletionContext.swift\n@@ -40,10 +40,9 @@ private func findEndOfIdentifier(\n   snapshot: DocumentSnapshot,\n   tree: SourceFileSyntax\n ) -> Position? {\n-  let absolutePosition = snapshot.absolutePosition(of: position)\n-  let token = tree.token(at: absolutePosition)\n+  let token = tree.token(at: snapshot.absolutePosition(of: position))\n \n-  guard let token, token.isIdentifierOrKeyword, token.trimmedRange.contains(absolutePosition) else {\n+  guard let token, token.isIdentifierOrKeyword else {\n     return nil\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-sourcekitlsp-2722-b1",
+      "file": "Sources/SwiftLanguageService/CodeCompletionContext.swift",
+      "line_start": 43,
+      "line_end": 43,
+      "category": "logic",
+      "description": "completion replacement range extending into the next token [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-sourcekitlsp-2722-b2",
+      "file": "Sources/SwiftLanguageService/CodeCompletionContext.swift",
+      "line_start": 45,
+      "line_end": 45,
+      "category": "logic",
+      "description": "completion replacement range extending into the next token [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/sourcekit-lsp",
+    "number": 2722,
+    "merged_at": "2026-07-16T08:06:11Z",
+    "merge_commit": "d1a7a1b2bee6a173a19198387a94a217d398a613",
+    "title": "Fix completion replacement range extending into the next token",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

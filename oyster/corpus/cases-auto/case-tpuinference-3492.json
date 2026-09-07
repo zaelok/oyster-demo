@@ -1,0 +1,54 @@
+{
+  "id": "case-tpuinference-3492",
+  "source": {
+    "pr": "https://github.com/vllm-project/tpu-inference/pull/3492",
+    "repo": "vllm-project/tpu-inference",
+    "number": 3492
+  },
+  "diff": "--- a/tpu_inference/core/sched/dp_scheduler.py\n+++ b/tpu_inference/core/sched/dp_scheduler.py\n@@ -228,8 +228,6 @@ def _send_result(result):\n                     model_runner_output = data\n                     scheduler_output = _cached_scheduler_outputs.popleft()\n \n-                    shortfalls: Dict[str, int] = {}\n-\n                     if model_runner_output.sampled_token_ids:\n                         # Synchronize the locally cached `num_scheduled_tokens` with the actual\n                         # count of generated tokens from the continue-decode multi-step execution.\n@@ -246,27 +243,11 @@ def _send_result(result):\n                                 num_sampled = len(model_runner_output.\n                                                   sampled_token_ids[req_idx])\n                                 if num_sampled > 0:\n-                                    original = (scheduler_output.\n-                                                num_scheduled_tokens[req_id])\n-                                    if original != num_sampled:\n-                                        shortfalls[req_id] = (original -\n-                                                              num_sampled)\n                                     scheduler_output.num_scheduled_tokens[\n                                         req_id] = num_sampled\n \n                     result = scheduler.update_from_output(\n                         scheduler_output, model_runner_output)\n-\n-                    for req_id, shortfall in shortfalls.items():\n-                        request = scheduler.requests.get(req_id)\n-                        if request is None:\n-                            continue  # finished and dropped during the update\n-                        request.num_in_flight_tokens = max(\n-                            0, request.num_in_flight_tokens - shortfall)\n-                        if request.num_stale_output_tokens > 0:\n-                            request.num_stale_output_tokens = max(\n-                                0, request.num_stale_output_tokens - shortfall)\n-\n                     _send_result(result)\n \n                 case SchedulerCommand.GET_GRAMMAR_BITMASK:\n",
+  "seeded": [
+    {
+      "id": "case-tpuinference-3492-b1",
+      "file": "tpu_inference/core/sched/dp_scheduler.py",
+      "line_start": 230,
+      "line_end": 232,
+      "category": "logic",
+      "description": "\"Should not schedule a request that does nothing!\" in DPScheduler [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-tpuinference-3492-b2",
+      "file": "tpu_inference/core/sched/dp_scheduler.py",
+      "line_start": 245,
+      "line_end": 247,
+      "category": "logic",
+      "description": "\"Should not schedule a request that does nothing!\" in DPScheduler [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-tpuinference-3492-b3",
+      "file": "tpu_inference/core/sched/dp_scheduler.py",
+      "line_start": 250,
+      "line_end": 252,
+      "category": "logic",
+      "description": "\"Should not schedule a request that does nothing!\" in DPScheduler [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/tpu-inference",
+    "number": 3492,
+    "merged_at": "2026-09-04T16:31:40Z",
+    "merge_commit": "ee75764721c916129a9fd2c5b6929c1760c3d9d5",
+    "title": "[Core][DP] Fix \"Should not schedule a request that does nothing!\" in DPScheduler",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

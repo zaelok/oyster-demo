@@ -1,0 +1,36 @@
+{
+  "id": "case-pklgo-232",
+  "source": {
+    "pr": "https://github.com/apple/pkl-go/pull/232",
+    "repo": "apple/pkl-go",
+    "number": 232
+  },
+  "diff": "--- a/pkl/decode_struct.go\n+++ b/pkl/decode_struct.go\n@@ -55,11 +55,6 @@ func (d *decoder) decodeObject(typ reflect.Type) (*reflect.Value, error) {\n \tif moduleUri == \"pkl:base\" && name == \"Dynamic\" || typ.AssignableTo(objectType) {\n \t\treturn d.decodeObjectGeneric(moduleUri, name)\n \t}\n-\tif typ.Kind() == reflect.Interface {\n-\t\tif _, hasSchema := d.schemas[name]; !hasSchema {\n-\t\t\treturn d.decodeObjectGeneric(moduleUri, name)\n-\t\t}\n-\t}\n \treturn d.decodeTyped(name, typ)\n }\n \n",
+  "seeded": [
+    {
+      "id": "case-pklgo-232-b1",
+      "file": "pkl/decode_struct.go",
+      "line_start": 57,
+      "line_end": 59,
+      "category": "security",
+      "description": "decode typed class instances into interface{} as Object [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/pkl-go",
+    "number": 232,
+    "merged_at": "2026-04-21T19:53:45Z",
+    "merge_commit": "306ee5080fc3c4ed88e3930898b3c99cbda6b396",
+    "title": "fix: decode typed class instances into interface{} as Object",
+    "language": "go",
+    "category_reasons": [
+      "authoriz"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

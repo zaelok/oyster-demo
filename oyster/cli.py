@@ -1,7 +1,7 @@
 """Command line entry point.
 
-    python -m oyster.cli calibrate --provider {mock,anthropic} [--corpus DIR]
-    python -m oyster.cli eval      --provider {mock,anthropic} [--corpus DIR] [--out results.md]
+    python -m oyster.cli calibrate --provider {mock,anthropic} [--corpus DIR ...]
+    python -m oyster.cli eval      --provider {mock,anthropic} [--corpus DIR ...] [--out results.md]
     python -m oyster.cli select    --budget 1.00 --latency 120 [--priors priors.json]
 
 The mock provider is the default and spends nothing. The anthropic provider requires
@@ -23,7 +23,7 @@ from rich.table import Table
 
 from oyster.config import BINDINGS, settings
 from oyster.conversation import collect_pending, ingest, write_pack
-from oyster.corpus import load_cases
+from oyster.corpus import load_corpora
 from oyster.cost import estimate_tokens
 from oyster.evaluation import (
     calibrate,
@@ -54,10 +54,16 @@ ASSUMED_OUTPUT_TOKENS_PER_CALL = 1000
 console = Console()
 
 
-def _corpus_commit(corpus_dir: FsPath) -> str:
+def _corpus_dirs(args: argparse.Namespace) -> list[FsPath]:
+    """--corpus may be repeated to evaluate several tiers as one corpus; the default is the
+    reviewed tier alone, so the committed table replays unchanged."""
+    return [FsPath(directory) for directory in (args.corpus or [settings.corpus_dir])]
+
+
+def _corpus_commit(corpus_dirs: Sequence[FsPath]) -> str:
     try:
         completed = subprocess.run(
-            ["git", "log", "-1", "--format=%H", "--", str(corpus_dir)],
+            ["git", "log", "-1", "--format=%H", "--", *[str(d) for d in corpus_dirs]],
             capture_output=True,
             text=True,
             check=True,
@@ -132,11 +138,12 @@ def _make_provider(
     return provider
 
 
-def _load_corpus(corpus_dir: str) -> tuple[CorpusCase, ...]:
-    cases = load_cases(FsPath(corpus_dir))
+def _load_corpus(corpus_dirs: Sequence[FsPath]) -> tuple[CorpusCase, ...]:
+    cases = load_corpora(corpus_dirs)
     if not cases:
         console.print(
-            f"[yellow]No cases in {corpus_dir}. The corpus is human authored; see "
+            f"[yellow]No cases in {', '.join(map(str, corpus_dirs))}. The corpus is human "
+            "authored; see "
             "oyster/corpus/cases/README.md. Continuing with an empty corpus."
         )
     return cases
@@ -153,7 +160,7 @@ def _load_priors(path: str | None) -> Priors | None:
 
 
 def cmd_calibrate(args: argparse.Namespace) -> int:
-    cases = _load_corpus(args.corpus)
+    cases = _load_corpus(_corpus_dirs(args))
     provider = _make_provider(args, cases, calibration_paths(CATALOG))
     priors = calibrate(cases, provider, BINDINGS, CATALOG)
     FsPath(args.priors_out).write_text(priors_to_json(priors), encoding="utf-8")
@@ -176,7 +183,7 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
 
 
 def cmd_eval(args: argparse.Namespace) -> int:
-    cases = _load_corpus(args.corpus)
+    cases = _load_corpus(_corpus_dirs(args))
     for path in CATALOG:
         validate_path(path, set(BINDINGS))
     provider = _make_provider(args, cases, CATALOG)
@@ -193,7 +200,7 @@ def cmd_eval(args: argparse.Namespace) -> int:
         BINDINGS,
         corpus_size=len(cases),
         provider_name=args.label or args.provider,
-        corpus_commit=_corpus_commit(FsPath(args.corpus)),
+        corpus_commit=_corpus_commit(_corpus_dirs(args)),
     )
     FsPath(args.out).write_text(markdown, encoding="utf-8")
     FsPath(args.json_out).write_text(results_to_json(results, reports), encoding="utf-8")
@@ -219,7 +226,7 @@ def cmd_eval(args: argparse.Namespace) -> int:
 
 
 def cmd_pack(args: argparse.Namespace) -> int:
-    cases = _load_corpus(args.corpus)
+    cases = _load_corpus(_corpus_dirs(args))
     fixtures = FsPath(args.fixtures)
     pending = collect_pending(cases, fixtures, BINDINGS, CATALOG)
     if not pending:
@@ -291,7 +298,7 @@ def cmd_select(args: argparse.Namespace) -> int:
         return 2
     case = CorpusCase(id="<none>", diff="", seeded=())
     if args.corpus and args.case:
-        case = next(c for c in load_cases(FsPath(args.corpus)) if c.id == args.case)
+        case = next(c for c in load_corpora(_corpus_dirs(args)) if c.id == args.case)
 
     selection = select(CATALOG, case, priors, BINDINGS, args.budget, args.latency)
     if selection.path_id is None:
@@ -318,7 +325,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     def add_provider_args(p: argparse.ArgumentParser) -> None:
         p.add_argument("--provider", choices=["mock", "anthropic", "claude-code"], default="mock")
-        p.add_argument("--corpus", default=settings.corpus_dir)
+        p.add_argument(
+            "--corpus",
+            action="append",
+            default=None,
+            help=f"case directory; repeatable (default {settings.corpus_dir})",
+        )
         p.add_argument("--fixtures", default=DEFAULT_FIXTURES, help="mock fixture dir")
         p.add_argument(
             "--record",
@@ -346,7 +358,7 @@ def build_parser() -> argparse.ArgumentParser:
     pack = sub.add_parser(
         "pack", help="conversation mode: write the next round of prompts to paste into a chat"
     )
-    pack.add_argument("--corpus", default=settings.corpus_dir)
+    pack.add_argument("--corpus", action="append", default=None, help="repeatable")
     pack.add_argument("--fixtures", default="fixtures/conversation")
     pack.add_argument("--out", default="packs")
     pack.add_argument("--batch-size", type=int, default=20, help="requests per chat message")
@@ -364,7 +376,7 @@ def build_parser() -> argparse.ArgumentParser:
     sel.add_argument("--budget", type=float, default=settings.budget_dollars)
     sel.add_argument("--latency", type=float, default=settings.latency_tolerance_s)
     sel.add_argument("--priors", default=settings.priors_path)
-    sel.add_argument("--corpus", default=None)
+    sel.add_argument("--corpus", action="append", default=None, help="repeatable")
     sel.add_argument("--case", default=None)
     sel.set_defaults(func=cmd_select)
     return parser

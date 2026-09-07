@@ -1,0 +1,36 @@
+{
+  "id": "case-openinstruct-1612",
+  "source": {
+    "pr": "https://github.com/allenai/open-instruct/pull/1612",
+    "repo": "allenai/open-instruct",
+    "number": 1612
+  },
+  "diff": "--- a/open_instruct/if_functions.py\n+++ b/open_instruct/if_functions.py\n@@ -231,7 +231,7 @@ def verify_sentence_constraint(text: str, N: int, quantifier: str) -> bool:\n         bool: True if the text contains the expected number of sentences, False otherwise\n     \"\"\"\n     # Split the text into sentences\n-    sentences = re.split(r\"(?<!\\w\\.\\w.)(?<![A-Z][a-z]\\.)(?<=\\.|\\?|!)\\s\", text)\n+    sentences = re.split(r\"(?<!\\w\\.\\w.)(?<![A-Z][a-z]\\.)(?<=\\.|\\?)\\s\", text)\n \n     # Count the number of sentences\n     actual_count = len(sentences)\n",
+  "seeded": [
+    {
+      "id": "case-openinstruct-1612-b1",
+      "file": "open_instruct/if_functions.py",
+      "line_start": 234,
+      "line_end": 234,
+      "category": "logic",
+      "description": "verify_sentence_constraint missing ! as a sentence terminator [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/open-instruct",
+    "number": 1612,
+    "merged_at": "2026-04-17T02:36:05Z",
+    "merge_commit": "3d761d084ebd22f9521ea8885f2146262cb44f1c",
+    "title": "Fix verify_sentence_constraint missing ! as a sentence terminator",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

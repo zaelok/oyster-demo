@@ -1,0 +1,36 @@
+{
+  "id": "case-llmcompressor-3096",
+  "source": {
+    "pr": "https://github.com/vllm-project/llm-compressor/pull/3096",
+    "repo": "vllm-project/llm-compressor",
+    "number": 3096
+  },
+  "diff": "--- a/src/llmcompressor/modifiers/pruning/helpers.py\n+++ b/src/llmcompressor/modifiers/pruning/helpers.py\n@@ -132,7 +132,7 @@ def _schedule(event: Event, state: State) -> float:\n             settings.end - settings.start\n         )\n \n-        scaled_complete = 1 - pow(1 - per_complete, exponent)\n+        scaled_complete = pow(per_complete - 1, exponent) + 1\n \n         return (\n             settings.init_sparsity\n",
+  "seeded": [
+    {
+      "id": "case-llmcompressor-3096-b1",
+      "file": "src/llmcompressor/modifiers/pruning/helpers.py",
+      "line_start": 135,
+      "line_end": 135,
+      "category": "logic",
+      "description": "polynomial_decay pruning scheduler for even exponents [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/llm-compressor",
+    "number": 3096,
+    "merged_at": "2026-08-28T00:07:58Z",
+    "merge_commit": "6b4875403562c322f3cfb6c9085d64b823ae100b",
+    "title": "[Bugfix] Fix polynomial_decay pruning scheduler for even exponents",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

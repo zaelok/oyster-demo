@@ -1,0 +1,36 @@
+{
+  "id": "case-rslearn-646",
+  "source": {
+    "pr": "https://github.com/allenai/rslearn/pull/646",
+    "repo": "allenai/rslearn",
+    "number": 646
+  },
+  "diff": "--- a/rslearn/data_sources/aws_landsat.py\n+++ b/rslearn/data_sources/aws_landsat.py\n@@ -210,9 +210,7 @@ def _read_products(\n                         for item_dict in json.load(f)\n                     ]\n \n-            yield from (\n-                item for item in items if not item.name.startswith((\"LO08_\", \"LO09_\"))\n-            )\n+            yield from items\n \n     def _get_wrs2_polygons(self) -> list[tuple[shapely.Geometry, str, str]]:\n         \"\"\"Get polygons for each (path, row) in the WRS2 grid.\n",
+  "seeded": [
+    {
+      "id": "case-rslearn-646-b1",
+      "file": "rslearn/data_sources/aws_landsat.py",
+      "line_start": 213,
+      "line_end": 213,
+      "category": "logic",
+      "description": "Filter out OLI-only scenes from LandsatOliTirs data source [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/rslearn",
+    "number": 646,
+    "merged_at": "2026-05-11T16:34:36Z",
+    "merge_commit": "c9629a67dda7c28fb33f64961ed16bf41182eec5",
+    "title": "[Bugfix] Filter out OLI-only scenes from LandsatOliTirs data source",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-gosdk-1221",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/go-sdk/pull/1221",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1221
+  },
+  "diff": "--- a/mcp/client.go\n+++ b/mcp/client.go\n@@ -334,17 +334,13 @@ func (c *Client) Connect(ctx context.Context, t Transport, opts *ClientSessionOp\n \t\t\t\tsubscribeParams := &SubscriptionsListenParams{\n \t\t\t\t\tNotifications: &NotificationSubscriptions{},\n \t\t\t\t}\n-\t\t\t\tcaps := discRes.Capabilities\n-\t\t\t\tif caps == nil {\n-\t\t\t\t\tcaps = &ServerCapabilities{}\n-\t\t\t\t}\n-\t\t\t\tif c.opts.ToolListChangedHandler != nil && caps.Tools != nil && caps.Tools.ListChanged {\n+\t\t\t\tif c.opts.ToolListChangedHandler != nil {\n \t\t\t\t\tsubscribeParams.Notifications.ToolsListChanged = true\n \t\t\t\t}\n-\t\t\t\tif c.opts.PromptListChangedHandler != nil && caps.Prompts != nil && caps.Prompts.ListChanged {\n+\t\t\t\tif c.opts.PromptListChangedHandler != nil {\n \t\t\t\t\tsubscribeParams.Notifications.PromptsListChanged = true\n \t\t\t\t}\n-\t\t\t\tif c.opts.ResourceListChangedHandler != nil && caps.Resources != nil && caps.Resources.ListChanged {\n+\t\t\t\tif c.opts.ResourceListChangedHandler != nil {\n \t\t\t\t\tsubscribeParams.Notifications.ResourcesListChanged = true\n \t\t\t\t}\n \t\t\t\tif subscribeParams.Notifications.ToolsListChanged ||\n",
+  "seeded": [
+    {
+      "id": "case-gosdk-1221-b1",
+      "file": "mcp/client.go",
+      "line_start": 337,
+      "line_end": 337,
+      "category": "logic",
+      "description": "only subscribe when server advertises capability [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gosdk-1221-b2",
+      "file": "mcp/client.go",
+      "line_start": 340,
+      "line_end": 340,
+      "category": "logic",
+      "description": "only subscribe when server advertises capability [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gosdk-1221-b3",
+      "file": "mcp/client.go",
+      "line_start": 343,
+      "line_end": 343,
+      "category": "logic",
+      "description": "only subscribe when server advertises capability [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1221,
+    "merged_at": "2026-09-01T12:43:23Z",
+    "merge_commit": "8227246472e3cd0bb58b2fcf3cccb6d88ad9f68b",
+    "title": "fix: only subscribe when server advertises capability",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

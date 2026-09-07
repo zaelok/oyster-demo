@@ -1,0 +1,36 @@
+{
+  "id": "case-containerization-856",
+  "source": {
+    "pr": "https://github.com/apple/containerization/pull/856",
+    "repo": "apple/containerization",
+    "number": 856
+  },
+  "diff": "--- a/Sources/ContainerizationEXT4/EXT4+Formatter.swift\n+++ b/Sources/ContainerizationEXT4/EXT4+Formatter.swift\n@@ -936,6 +936,7 @@ extension EXT4 {\n             if let config = journalConfig {\n                 compatFeatures |= CompatFeature.hasJournal.rawValue\n                 superblock.journalInum = EXT4.JournalInode\n+                superblock.journalUUID = filesystemUUID\n                 superblock.journalBlocks = journalInodeBlockBackup()\n                 superblock.journalBackupType = 1  // s_jnl_backup_type: 1 = s_jnl_blocks[] holds a valid inode backup\n                 if let mode = config.defaultMode {\n",
+  "seeded": [
+    {
+      "id": "case-containerization-856-b1",
+      "file": "Sources/ContainerizationEXT4/EXT4+Formatter.swift",
+      "line_start": 939,
+      "line_end": 939,
+      "category": "logic",
+      "description": "efsck searching for external journal [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/containerization",
+    "number": 856,
+    "merged_at": "2026-08-27T18:30:02Z",
+    "merge_commit": "db615caf603830198cb408cedc7d7cc099069715",
+    "title": "fix: efsck searching for external journal",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

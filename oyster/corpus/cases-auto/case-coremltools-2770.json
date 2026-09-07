@@ -1,0 +1,36 @@
+{
+  "id": "case-coremltools-2770",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2770",
+    "repo": "apple/coremltools",
+    "number": 2770
+  },
+  "diff": "--- a/coremltools/converters/mil/frontend/torch/ops.py\n+++ b/coremltools/converters/mil/frontend/torch/ops.py\n@@ -2179,9 +2179,6 @@ def _translate_torch_args(dim, keepdim) -> Tuple[Var]:\n \n     node_kind = node.kind.split(\".\")[0]\n     if node_kind in (\"all\", \"any\"):\n-        if not types.is_bool(x.dtype):\n-            x, zero = promote_input_dtypes([x, mb.const(val=0)])\n-            x = mb.not_equal(x=x, y=zero)\n         x = mb.cast(x=x, dtype=\"int32\")\n         kwargs[\"x\"] = x\n         if node_kind == \"all\":\n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2770-b1",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 2181,
+      "line_end": 2183,
+      "category": "logic",
+      "description": "torch.all/torch.any for non-boolean input [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/coremltools",
+    "number": 2770,
+    "merged_at": "2026-08-25T21:49:39Z",
+    "merge_commit": "a79ff8043c53184ac3008e86128b7002c3dc11fb",
+    "title": "Fix torch.all/torch.any for non-boolean input",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

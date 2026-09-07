@@ -1,0 +1,54 @@
+{
+  "id": "case-modeloptimizer-2332",
+  "source": {
+    "pr": "https://github.com/NVIDIA/Model-Optimizer/pull/2332",
+    "repo": "NVIDIA/Model-Optimizer",
+    "number": 2332
+  },
+  "diff": "--- a/modelopt/torch/export/plugins/mcore_qwen.py\n+++ b/modelopt/torch/export/plugins/mcore_qwen.py\n@@ -27,7 +27,6 @@\n     NameRemapping,\n     QKVMerging,\n     QKVSlicing,\n-    SelfAttentionScaling,\n )\n \n qwen3_causal_lm_import: dict[str, CustomModuleMapping] = {\n@@ -65,7 +64,6 @@\n     \"fused_input_layernorm\": NameRemapping(\"model.layers.{}.input_layernorm.weight\"),\n     \"linear_qkv\": QKVSlicing(\"model.layers.{}.self_attn.\"),\n     \"linear_proj\": NameRemapping(\"model.layers.{}.self_attn.o_proj.\"),\n-    \"core_attention\": SelfAttentionScaling(\"model.layers.{}.self_attn.\"),\n     \"q_layernorm\": NameRemapping(\"model.layers.{}.self_attn.q_norm.\"),\n     \"k_layernorm\": NameRemapping(\"model.layers.{}.self_attn.k_norm.\"),\n     # MLP\n@@ -105,7 +102,6 @@\n     \"fused_input_layernorm\": NameRemapping(\"model.layers.{}.input_layernorm.weight\"),\n     \"linear_qkv\": QKVSlicing(\"model.layers.{}.self_attn.\"),\n     \"linear_proj\": NameRemapping(\"model.layers.{}.self_attn.o_proj.\"),\n-    \"core_attention\": SelfAttentionScaling(\"model.layers.{}.self_attn.\"),\n     # MLP\n     \"pre_mlp_layernorm\": NameRemapping(\"model.layers.{}.post_attention_layernorm.\"),\n     \"fused_pre_mlp_layernorm\": NameRemapping(\"model.layers.{}.post_attention_layernorm.weight\"),\n",
+  "seeded": [
+    {
+      "id": "case-modeloptimizer-2332-b1",
+      "file": "modelopt/torch/export/plugins/mcore_qwen.py",
+      "line_start": 29,
+      "line_end": 31,
+      "category": "logic",
+      "description": "KV-cache scales dropped on Qwen Megatron-Core HF export [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-modeloptimizer-2332-b2",
+      "file": "modelopt/torch/export/plugins/mcore_qwen.py",
+      "line_start": 66,
+      "line_end": 68,
+      "category": "logic",
+      "description": "KV-cache scales dropped on Qwen Megatron-Core HF export [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-modeloptimizer-2332-b3",
+      "file": "modelopt/torch/export/plugins/mcore_qwen.py",
+      "line_start": 104,
+      "line_end": 106,
+      "category": "logic",
+      "description": "KV-cache scales dropped on Qwen Megatron-Core HF export [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/Model-Optimizer",
+    "number": 2332,
+    "merged_at": "2026-09-04T12:27:55Z",
+    "merge_commit": "f13a7962aa4a7c35b9648e0d2ddf9ff2a8ada41e",
+    "title": "Fix KV-cache scales dropped on Qwen Megatron-Core HF export",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

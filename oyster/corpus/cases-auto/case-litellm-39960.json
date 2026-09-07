@@ -1,0 +1,45 @@
+{
+  "id": "case-litellm-39960",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39960",
+    "repo": "BerriAI/litellm",
+    "number": 39960
+  },
+  "diff": "--- a/litellm/proxy/hooks/proxy_track_cost_callback.py\n+++ b/litellm/proxy/hooks/proxy_track_cost_callback.py\n@@ -254,7 +254,7 @@ async def _PROXY_track_cost_callback(\n             key_alias: Final = cast(str | None, metadata.get(\"user_api_key_alias\", None))\n             end_user_max_budget: Final = metadata.get(\"user_api_end_user_max_budget\", None)\n             sl_object: Final[StandardLoggingPayload | None] = kwargs.get(\"standard_logging_object\", None)\n-            response_cost: Final = (\n+            response_cost = (\n                 sl_object.get(\"response_cost\", None) if sl_object is not None else kwargs.get(\"response_cost\", None)\n             )\n             tags: Final = _get_request_tags_for_cost_tracking(\n@@ -269,6 +269,10 @@ async def _PROXY_track_cost_callback(\n \n             if response_cost is not None:\n                 user_api_key: Final = metadata.get(\"user_api_key\", None)\n+                if kwargs.get(\"cache_hit\", False) is True:\n+                    response_cost = 0.0\n+                    verbose_proxy_logger.debug(\"Cache Hit: response_cost %s, for user_id %s\", response_cost, user_id)\n+\n                 verbose_proxy_logger.debug(\n                     \"user_api_key %s, user_id %s, team_id %s, end_user_id %s\",\n                     user_api_key,\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39960-b1",
+      "file": "litellm/proxy/hooks/proxy_track_cost_callback.py",
+      "line_start": 257,
+      "line_end": 257,
+      "category": "security",
+      "description": "fix(proxy): keep guardrail cost in spend on cache hits [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39960-b2",
+      "file": "litellm/proxy/hooks/proxy_track_cost_callback.py",
+      "line_start": 272,
+      "line_end": 275,
+      "category": "security",
+      "description": "fix(proxy): keep guardrail cost in spend on cache hits [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39960,
+    "merged_at": "2026-09-05T22:53:34Z",
+    "merge_commit": "a0c9095cfcfaace158d5309b04c89784c8efb704",
+    "title": "fix(proxy): keep guardrail cost in spend on cache hits",
+    "language": "python",
+    "category_reasons": [
+      "api_key"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

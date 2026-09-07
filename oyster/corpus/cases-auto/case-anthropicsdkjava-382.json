@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdkjava-382",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-java/pull/382",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 382
+  },
+  "diff": "--- a/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\n+++ b/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\n@@ -1,5 +1,6 @@\n package com.anthropic.helpers\n \n+import com.anthropic.core.JsonMissing\n import com.anthropic.core.JsonObject\n import com.anthropic.core.jsonMapper\n import com.anthropic.errors.AnthropicInvalidDataException\n@@ -538,8 +539,9 @@ class BetaMessageAccumulator private constructor() {\n                         // Anthropic Streaming Messages API: \"the final `tool_use.input`\n                         // is always an _object_.\" However, if a tool function has no\n                         // arguments, the concatenated `inputJson` can be an empty\n+                        // string. In that case, interpret it as a missing field.\n                         val parsedInput =\n-                            if (inputJson.trim() == \"\") JsonObject.of(emptyMap())\n+                            if (inputJson.trim() == \"\") JsonMissing.of()\n                             else\n                                 try {\n                                     JSON_MAPPER.readValue(inputJson, JsonObject::class.java)\n--- a/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/MessageAccumulator.kt\n+++ b/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/MessageAccumulator.kt\n@@ -1,5 +1,6 @@\n package com.anthropic.helpers\n \n+import com.anthropic.core.JsonMissing\n import com.anthropic.core.JsonObject\n import com.anthropic.core.jsonMapper\n import com.anthropic.errors.AnthropicInvalidDataException\n@@ -468,7 +469,7 @@ class MessageAccumulator private constructor() {\n                             )\n \n                         val parsedInput =\n-                            if (inputJson.trim() == \"\") JsonObject.of(emptyMap())\n+                            if (inputJson.trim() == \"\") JsonMissing.of()\n                             else JSON_MAPPER.readValue(inputJson, JsonObject::class.java)\n \n                         messageContent[index] =\n@@ -482,6 +483,8 @@ class MessageAccumulator private constructor() {\n                                             // `tool_use.input` is always an _object_.\"\n                                             // However, if a tool function has no arguments, the\n                                             // concatenated `inputJson` can be an\n+                                            // empty string. In that case, interpret it as a missing\n+                                            // field.\n                                             .input(parsedInput)\n                                             .build()\n                                     )\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkjava-382-b1",
+      "file": "anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt",
+      "line_start": 544,
+      "line_end": 544,
+      "category": "logic",
+      "description": "fix(messages): accumulate an empty tool_use input as {} rather than missing [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdkjava-382-b2",
+      "file": "anthropic-java-core/src/main/kotlin/com/anthropic/helpers/MessageAccumulator.kt",
+      "line_start": 472,
+      "line_end": 472,
+      "category": "logic",
+      "description": "fix(messages): accumulate an empty tool_use input as {} rather than missing [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 382,
+    "merged_at": "2026-08-11T16:18:13Z",
+    "merge_commit": "68c8ae16fa7f8fdc1473129e66942584f09c0967",
+    "title": "fix(messages): accumulate an empty tool_use input as {} rather than missing",
+    "language": "kotlin",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

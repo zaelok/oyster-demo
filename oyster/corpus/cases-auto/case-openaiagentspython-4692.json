@@ -1,0 +1,37 @@
+{
+  "id": "case-openaiagentspython-4692",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-python/pull/4692",
+    "repo": "openai/openai-agents-python",
+    "number": 4692
+  },
+  "diff": "--- a/src/agents/models/openai_responses.py\n+++ b/src/agents/models/openai_responses.py\n@@ -710,9 +710,6 @@ async def stream_response(\n                                 # Record before yielding the terminal event because consumers may\n                                 # close the generator immediately after receiving it.\n                                 span_response.span_data.usage = model_usage_to_span_usage(usage)\n-                            if tracing.include_data():\n-                                span_response.span_data.response = chunk.response\n-                                span_response.span_data.input = input\n                         elif chunk_type in {\n                             \"response.failed\",\n                             \"response.incomplete\",\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentspython-4692-b1",
+      "file": "src/agents/models/openai_responses.py",
+      "line_start": 712,
+      "line_end": 714,
+      "category": "security",
+      "description": "fix(core): fix streamed response span losing response/input when consumer stops at completed event [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-python",
+    "number": 4692,
+    "merged_at": "2026-08-27T22:08:36Z",
+    "merge_commit": "1ce2739c8cd59882f411ac79423ef6ec5952d62b",
+    "title": "fix(core): fix streamed response span losing response/input when consumer stops at completed event",
+    "language": "python",
+    "category_reasons": [
+      "redact",
+      "sensitive"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -10,7 +10,15 @@ from pathlib import Path
 
 from oyster.types import CATEGORIES, CorpusCase, SeededBug
 
-__all__ = ["load_case_file", "load_cases", "parse_diff", "validate_case", "validate_corpus"]
+__all__ = [
+    "load_case_dict",
+    "load_case_file",
+    "load_cases",
+    "load_corpora",
+    "parse_diff",
+    "validate_case",
+    "validate_corpus",
+]
 
 _HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@")
 
@@ -147,6 +155,17 @@ def _from_raw(raw: object, source: Path) -> CorpusCase:
     return CorpusCase(id=case_id, diff=str(diff), seeded=tuple(seeded))
 
 
+def load_case_dict(raw: object, name: str) -> CorpusCase:
+    """Build and validate one case from an already-parsed JSON object. `name` plays the
+    filename stem: rule 1 first half, the id must equal it. Tools that draft cases validate
+    through here before anything is written."""
+    case = _from_raw(raw, Path(name))
+    if case.id != name:
+        raise ValueError(f"case {case.id!r}: field 'id' does not match filename stem {name!r}")
+    validate_case(case)
+    return case
+
+
 def load_case_file(path: Path) -> CorpusCase:
     """Parse and validate one case file. Rule 1 first half: id matches the filename stem."""
     path = Path(path)
@@ -154,11 +173,7 @@ def load_case_file(path: Path) -> CorpusCase:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         raise ValueError(f"case {path.stem!r}: file is not valid JSON ({exc})") from exc
-    case = _from_raw(raw, path)
-    if case.id != path.stem:
-        raise ValueError(f"case {case.id!r}: field 'id' does not match filename stem {path.stem!r}")
-    validate_case(case)
-    return case
+    return load_case_dict(raw, path.stem)
 
 
 def load_cases(corpus_dir: Path) -> tuple[CorpusCase, ...]:
@@ -167,4 +182,14 @@ def load_cases(corpus_dir: Path) -> tuple[CorpusCase, ...]:
     corpus_dir = Path(corpus_dir)
     cases = tuple(load_case_file(path) for path in sorted(corpus_dir.glob("*.json")))
     validate_corpus(cases)
+    return tuple(sorted(cases, key=lambda case: case.id))
+
+
+def load_corpora(corpus_dirs: list[Path] | tuple[Path, ...]) -> tuple[CorpusCase, ...]:
+    """Load several case directories as one corpus: the union of their cases, validated
+    together so an id cannot appear in two tiers. Sorted by id like load_cases."""
+    cases: list[CorpusCase] = []
+    for corpus_dir in corpus_dirs:
+        cases.extend(load_cases(Path(corpus_dir)))
+    validate_corpus(tuple(cases))
     return tuple(sorted(cases, key=lambda case: case.id))

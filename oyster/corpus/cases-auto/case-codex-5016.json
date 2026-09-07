@@ -1,0 +1,45 @@
+{
+  "id": "case-codex-5016",
+  "source": {
+    "pr": "https://github.com/openai/codex/pull/5016",
+    "repo": "openai/codex",
+    "number": 5016
+  },
+  "diff": "--- a/codex-rs/tui/src/bottom_pane/textarea.rs\n+++ b/codex-rs/tui/src/bottom_pane/textarea.rs\n@@ -799,22 +799,16 @@ impl TextArea {\n     }\n \n     pub(crate) fn beginning_of_previous_word(&self) -> usize {\n-        let prefix = &self.text[..self.cursor_pos];\n-        let Some((first_non_ws_idx, _)) = prefix\n-            .char_indices()\n-            .rev()\n-            .find(|&(_, ch)| !ch.is_whitespace())\n-        else {\n-            return 0;\n-        };\n-        let before = &prefix[..first_non_ws_idx];\n-        let candidate = before\n-            .char_indices()\n-            .rev()\n-            .find(|&(_, ch)| ch.is_whitespace())\n-            .map(|(idx, ch)| idx + ch.len_utf8())\n-            .unwrap_or(0);\n-        self.adjust_pos_out_of_elements(candidate, true)\n+        if let Some(first_non_ws) = self.text[..self.cursor_pos].rfind(|c: char| !c.is_whitespace())\n+        {\n+            let candidate = self.text[..first_non_ws]\n+                .rfind(|c: char| c.is_whitespace())\n+                .map(|i| i + 1)\n+                .unwrap_or(0);\n+            self.adjust_pos_out_of_elements(candidate, true)\n+        } else {\n+            0\n+        }\n     }\n \n     pub(crate) fn end_of_next_word(&self) -> usize {\n@@ -1268,14 +1262,6 @@ mod tests {\n         assert_eq!(t.cursor(), 6);\n     }\n \n-    fn delete_backward_word_handles_narrow_no_break_space() {\n-        let mut t = ta_with(\"32\\u{202F}AM\");\n-        t.set_cursor(t.text().len());\n-        t.input(KeyEvent::new(KeyCode::Backspace, KeyModifiers::ALT));\n-        pretty_assertions::assert_eq!(t.text(), \"32\\u{202F}\");\n-        pretty_assertions::assert_eq!(t.cursor(), t.text().len());\n-    }\n-\n     #[test]\n     fn delete_forward_word_with_without_alt_modifier() {\n         let mut t = ta_with(\"hello world\");\n",
+  "seeded": [
+    {
+      "id": "case-codex-5016-b1",
+      "file": "codex-rs/tui/src/bottom_pane/textarea.rs",
+      "line_start": 802,
+      "line_end": 811,
+      "category": "logic",
+      "description": "tui: fix crash when alt+bksp past unicode nbsp [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-codex-5016-b2",
+      "file": "codex-rs/tui/src/bottom_pane/textarea.rs",
+      "line_start": 1264,
+      "line_end": 1266,
+      "category": "logic",
+      "description": "tui: fix crash when alt+bksp past unicode nbsp [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/codex",
+    "number": 5016,
+    "merged_at": "2025-10-09T22:07:04Z",
+    "merge_commit": "ddcaf3dccd7a817b6307bff61a4604c4dff27621",
+    "title": "tui: fix crash when alt+bksp past unicode nbsp",
+    "language": "rust",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

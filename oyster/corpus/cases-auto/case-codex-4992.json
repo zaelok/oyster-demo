@@ -1,0 +1,36 @@
+{
+  "id": "case-codex-4992",
+  "source": {
+    "pr": "https://github.com/openai/codex/pull/4992",
+    "repo": "openai/codex",
+    "number": 4992
+  },
+  "diff": "--- a/codex-rs/core/src/unified_exec/mod.rs\n+++ b/codex-rs/core/src/unified_exec/mod.rs\n@@ -110,19 +110,11 @@ impl ManagedUnifiedExecSession {\n         let buffer_clone = Arc::clone(&output_buffer);\n         let notify_clone = Arc::clone(&output_notify);\n         let output_task = tokio::spawn(async move {\n-            loop {\n-                match receiver.recv().await {\n-                    Ok(chunk) => {\n-                        let mut guard = buffer_clone.lock().await;\n-                        guard.push_chunk(chunk);\n-                        drop(guard);\n-                        notify_clone.notify_waiters();\n-                    }\n-                    Err(tokio::sync::broadcast::error::RecvError::Lagged(_)) => {\n-                        continue;\n-                    }\n-                    Err(tokio::sync::broadcast::error::RecvError::Closed) => break,\n-                }\n+            while let Ok(chunk) = receiver.recv().await {\n+                let mut guard = buffer_clone.lock().await;\n+                guard.push_chunk(chunk);\n+                drop(guard);\n+                notify_clone.notify_waiters();\n             }\n         });\n \n",
+  "seeded": [
+    {
+      "id": "case-codex-4992-b1",
+      "file": "codex-rs/core/src/unified_exec/mod.rs",
+      "line_start": 113,
+      "line_end": 117,
+      "category": "logic",
+      "description": "lagged output in unified_exec buffer [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/codex",
+    "number": 4992,
+    "merged_at": "2025-10-09T16:06:08Z",
+    "merge_commit": "3ddd4d47d07425da48ba5373d8bac14cca45f625",
+    "title": "fix: lagged output in unified_exec buffer",
+    "language": "rust",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

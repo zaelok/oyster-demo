@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftargumentparser-838",
+  "source": {
+    "pr": "https://github.com/apple/swift-argument-parser/pull/838",
+    "repo": "apple/swift-argument-parser",
+    "number": 838
+  },
+  "diff": "--- a/Sources/ArgumentParser/Parsable Properties/ArgumentVisibility.swift\n+++ b/Sources/ArgumentParser/Parsable Properties/ArgumentVisibility.swift\n@@ -57,27 +57,4 @@ extension ArgumentVisibility {\n   internal func isAtLeastAsVisible(as other: Self) -> Bool {\n     self.base._comparableLevel >= other.base._comparableLevel\n   }\n-\n-  internal mutating func reduce(to: ArgumentVisibility) {\n-    switch to.base {\n-    case .default:\n-      break  // No effect\n-    case .hidden:\n-      if case .default = self.base {\n-        self.base = .hidden\n-      }\n-    case .private:\n-      self.base = .private\n-    }\n-  }\n-}\n-\n-extension ArgumentDefinition {\n-  internal func reducingHelpVisibility(to visibility: ArgumentVisibility)\n-    -> Self\n-  {\n-    var result = self\n-    result.help.visibility.reduce(to: visibility)\n-    return result\n-  }\n }\n--- a/Sources/ArgumentParser/Parsable Properties/OptionGroup.swift\n+++ b/Sources/ArgumentParser/Parsable Properties/OptionGroup.swift\n@@ -88,9 +88,6 @@ public struct OptionGroup<Value: ParsableArguments>: Decodable, ParsedWrapper {\n             $0.help.parentTitle = title\n           }\n         }\n-        args.content = args.content.map { arg in\n-          arg.reducingHelpVisibility(to: visibility)\n-        }\n         return args\n       })\n     self._visibility = visibility\n--- a/Sources/ArgumentParser/Parsable Types/ParsableArguments.swift\n+++ b/Sources/ArgumentParser/Parsable Types/ParsableArguments.swift\n@@ -316,6 +316,9 @@ extension ArgumentSet {\n         guard let codingKey = child.label else { return nil }\n \n         if let parsed = child.value as? ArgumentSetProvider {\n+          guard parsed._visibility.isAtLeastAsVisible(as: visibility)\n+          else { return nil }\n+\n           let key = InputKey(name: codingKey, parent: parent)\n           return parsed.argumentSet(for: key)\n         } else {\n",
+  "seeded": [
+    {
+      "id": "case-swiftargumentparser-838-b1",
+      "file": "Sources/ArgumentParser/Parsable Properties/ArgumentVisibility.swift",
+      "line_start": 59,
+      "line_end": 60,
+      "category": "logic",
+      "description": "handling of visibility with nested OptionGroups [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftargumentparser-838-b2",
+      "file": "Sources/ArgumentParser/Parsable Properties/OptionGroup.swift",
+      "line_start": 90,
+      "line_end": 92,
+      "category": "logic",
+      "description": "handling of visibility with nested OptionGroups [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftargumentparser-838-b3",
+      "file": "Sources/ArgumentParser/Parsable Types/ParsableArguments.swift",
+      "line_start": 319,
+      "line_end": 321,
+      "category": "logic",
+      "description": "handling of visibility with nested OptionGroups [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-argument-parser",
+    "number": 838,
+    "merged_at": "2025-12-18T18:36:01Z",
+    "merge_commit": "d56133d94a81f2c863d05a3fabf7a30ac7efb198",
+    "title": "Fix handling of visibility with nested OptionGroups.",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

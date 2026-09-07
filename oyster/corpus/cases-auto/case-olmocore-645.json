@@ -1,0 +1,36 @@
+{
+  "id": "case-olmocore-645",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/645",
+    "repo": "allenai/OLMo-core",
+    "number": 645
+  },
+  "diff": "--- a/src/olmo_core/generate/generation_module/transformer/generation_module.py\n+++ b/src/olmo_core/generate/generation_module/transformer/generation_module.py\n@@ -488,11 +488,11 @@ def from_checkpoint(\n             attention_backend.assert_supported()\n \n             def set_attention_backend(c):\n-                mixer = getattr(c, \"sequence_mixer\", None) or getattr(c, \"attention\", None)\n-                if mixer is None and hasattr(c, \"backend\"):\n-                    mixer = c\n-                if mixer is not None and hasattr(mixer, \"backend\"):\n-                    setattr(mixer, \"backend\", attention_backend)\n+                if hasattr(c, \"attention\"):\n+                    attention = getattr(c, \"attention\")\n+                    if hasattr(attention, \"backend\"):\n+                        setattr(attention, \"backend\", attention_backend)\n+                        setattr(attention, \"use_flash\", None)  # strip out deprecated option\n \n             transformer_config.apply(set_attention_backend)\n \n",
+  "seeded": [
+    {
+      "id": "case-olmocore-645-b1",
+      "file": "src/olmo_core/generate/generation_module/transformer/generation_module.py",
+      "line_start": 491,
+      "line_end": 495,
+      "category": "logic",
+      "description": "attn backend forcing for TransformerGenerationModule [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 645,
+    "merged_at": "2026-03-25T17:30:26Z",
+    "merge_commit": "3ff9b6e69d8986ec6ce3c99e8eedd0d5cefe6c67",
+    "title": "fix attn backend forcing for TransformerGenerationModule",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

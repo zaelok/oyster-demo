@@ -1,0 +1,45 @@
+{
+  "id": "case-cugraph-5632",
+  "source": {
+    "pr": "https://github.com/rapidsai/cugraph/pull/5632",
+    "repo": "rapidsai/cugraph",
+    "number": 5632
+  },
+  "diff": "--- a/cpp/src/c_api/sampling_result.cpp\n+++ b/cpp/src/c_api/sampling_result.cpp\n@@ -285,7 +285,7 @@ extern \"C\" cugraph_type_erased_device_array_view_t* cugraph_sample_result_get_ed\n   const cugraph_sample_result_t* result)\n {\n   auto internal_pointer = reinterpret_cast<cugraph::c_api::cugraph_sample_result_t const*>(result);\n-  return internal_pointer->edge_renumber_map_ == nullptr\n+  return internal_pointer->renumber_map_ == nullptr\n            ? NULL\n            : reinterpret_cast<cugraph_type_erased_device_array_view_t*>(\n                internal_pointer->edge_renumber_map_->view());\n@@ -295,7 +295,7 @@ extern \"C\" cugraph_type_erased_device_array_view_t*\n cugraph_sample_result_get_edge_renumber_map_offsets(const cugraph_sample_result_t* result)\n {\n   auto internal_pointer = reinterpret_cast<cugraph::c_api::cugraph_sample_result_t const*>(result);\n-  return internal_pointer->edge_renumber_map_offsets_ == nullptr\n+  return internal_pointer->renumber_map_ == nullptr\n            ? NULL\n            : reinterpret_cast<cugraph_type_erased_device_array_view_t*>(\n                internal_pointer->edge_renumber_map_offsets_->view());\n",
+  "seeded": [
+    {
+      "id": "case-cugraph-5632-b1",
+      "file": "cpp/src/c_api/sampling_result.cpp",
+      "line_start": 288,
+      "line_end": 288,
+      "category": "logic",
+      "description": "Segfault Caused by Incorrect Dereferencing of Renumber Map [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cugraph-5632-b2",
+      "file": "cpp/src/c_api/sampling_result.cpp",
+      "line_start": 298,
+      "line_end": 298,
+      "category": "logic",
+      "description": "Segfault Caused by Incorrect Dereferencing of Renumber Map [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "rapidsai/cugraph",
+    "number": 5632,
+    "merged_at": "2026-08-19T21:59:35Z",
+    "merge_commit": "528ddde979df2243bf51c116d89a0ecdf85a39ee",
+    "title": "[BUG] Fix Segfault Caused by Incorrect Dereferencing of Renumber Map",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

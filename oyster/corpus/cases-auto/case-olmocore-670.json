@@ -1,0 +1,36 @@
+{
+  "id": "case-olmocore-670",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/670",
+    "repo": "allenai/OLMo-core",
+    "number": 670
+  },
+  "diff": "--- a/src/scripts/official/OLMo3/OLMo-3-1025-32B-long-context.py\n+++ b/src/scripts/official/OLMo3/OLMo-3-1025-32B-long-context.py\n@@ -110,7 +110,7 @@ def build_config(opts: argparse.Namespace, overrides: List[str]) -> ExperimentCo\n         TrainerConfig(\n             save_folder=opts.save_folder,\n             save_overwrite=True,\n-            load_path=\"https://storage.googleapis.com/ai2-llm/checkpoints/stego32-highlr-filter3/step656000/\",\n+            load_path=\"https://storage.googleapis.com/ai2-llm/stego32-highlr-filter3/step656000/\",\n             # \"gs://ai2-llm/checkpoints/stego32-midtraining-runs-merged-step23842-resharded16\",\n             load_strategy=LoadStrategy.always,\n             load_trainer_state=False,\n",
+  "seeded": [
+    {
+      "id": "case-olmocore-670-b1",
+      "file": "src/scripts/official/OLMo3/OLMo-3-1025-32B-long-context.py",
+      "line_start": 113,
+      "line_end": 113,
+      "category": "logic",
+      "description": "broken path in 32B LC [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 670,
+    "merged_at": "2026-05-06T22:51:01Z",
+    "merge_commit": "362231828574024a0ad83f9c6ec5ce033ad86d4e",
+    "title": "Fix broken path in 32B LC",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

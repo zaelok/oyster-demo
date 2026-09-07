@@ -1,0 +1,45 @@
+{
+  "id": "case-k8sdeviceplugin-1928",
+  "source": {
+    "pr": "https://github.com/NVIDIA/k8s-device-plugin/pull/1928",
+    "repo": "NVIDIA/k8s-device-plugin",
+    "number": 1928
+  },
+  "diff": "--- a/internal/vgpu/pciutil.go\n+++ b/internal/vgpu/pciutil.go\n@@ -124,11 +124,6 @@ func (d *PCIDevice) GetVendorSpecificCapability() ([]byte, error) {\n \tvar visited [256]byte\n \tpos := GetByte(d.Config, PciCapabilityList)\n \tfor pos != 0 {\n-\t\tcapHeaderEnd := int(pos) + int(PciCapabilityLength) + 1\n-\t\tif capHeaderEnd > len(d.Config) {\n-\t\t\tbreak\n-\t\t}\n-\n \t\tid := GetByte(d.Config, pos+PciCapabilityListID)\n \t\tnext := GetByte(d.Config, pos+PciCapabilityListNext)\n \t\tlength := GetByte(d.Config, pos+PciCapabilityLength)\n@@ -142,11 +137,7 @@ func (d *PCIDevice) GetVendorSpecificCapability() ([]byte, error) {\n \t\t\tbreak\n \t\t}\n \t\tif id == PciCapabilityVendorSpecificID {\n-\t\t\tcapEnd := int(pos) + int(PciCapabilityListID) + int(length)\n-\t\t\tif capEnd > len(d.Config) {\n-\t\t\t\tbreak\n-\t\t\t}\n-\t\t\tcapability := d.Config[pos+PciCapabilityListID : capEnd]\n+\t\t\tcapability := d.Config[pos+PciCapabilityListID : pos+PciCapabilityListID+length]\n \t\t\treturn capability, nil\n \t\t}\n \n",
+  "seeded": [
+    {
+      "id": "case-k8sdeviceplugin-1928-b1",
+      "file": "internal/vgpu/pciutil.go",
+      "line_start": 126,
+      "line_end": 128,
+      "category": "logic",
+      "description": "guard GFD PCI vendor capability parsing against bad lengths [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-k8sdeviceplugin-1928-b2",
+      "file": "internal/vgpu/pciutil.go",
+      "line_start": 140,
+      "line_end": 140,
+      "category": "logic",
+      "description": "guard GFD PCI vendor capability parsing against bad lengths [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/k8s-device-plugin",
+    "number": 1928,
+    "merged_at": "2026-08-26T21:16:01Z",
+    "merge_commit": "d75aac2a65e366afd31285dc2c6011ef0b9fa39f",
+    "title": "fix: guard GFD PCI vendor capability parsing against bad lengths",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

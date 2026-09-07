@@ -61,13 +61,20 @@ def env_for(cheap: ModelSpec, strong: ModelSpec) -> dict[str, str]:
 
 
 def run_config(
-    name: str, provider: str, out_root: Path, corpus: str, budget: float, latency: float
+    name: str,
+    provider: str,
+    out_root: Path,
+    corpus: Sequence[str],
+    budget: float,
+    latency: float,
 ) -> int:
     cheap, strong = CONFIGS[name]
     out = out_root / name
     out.mkdir(parents=True, exist_ok=True)
     env = env_for(cheap, strong)
-    common = ["--provider", provider, "--corpus", corpus, "--yes"]
+    common = ["--provider", provider, "--yes"]
+    for directory in corpus:
+        common += ["--corpus", directory]
     steps = [
         ["calibrate", *common, "--priors-out", str(out / "priors.json")],
         [
@@ -185,13 +192,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     parser.add_argument("--only", nargs="*", default=list(CONFIGS), help="config names")
     parser.add_argument("--out", default="results")
-    parser.add_argument("--corpus", default="oyster/corpus/cases")
+    parser.add_argument(
+        "--corpus",
+        action="append",
+        default=None,
+        help="case directory; repeatable (default oyster/corpus/cases)",
+    )
     parser.add_argument("--budget", type=float, default=1.00)
     parser.add_argument("--latency", type=float, default=120.0)
     parser.add_argument("--summary-only", action="store_true")
     args = parser.parse_args(argv)
 
     out_root = Path(args.out)
+    corpus = args.corpus or ["oyster/corpus/cases"]
     unknown = [name for name in args.only if name not in CONFIGS]
     if unknown:
         print(f"unknown config(s): {unknown}; choose from {list(CONFIGS)}", file=sys.stderr)
@@ -199,9 +212,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     status = 0
     if not args.summary_only:
         for name in args.only:
-            status |= run_config(
-                name, args.provider, out_root, args.corpus, args.budget, args.latency
-            )
+            status |= run_config(name, args.provider, out_root, corpus, args.budget, args.latency)
     summary = summarize(out_root, args.only)
     out_root.mkdir(parents=True, exist_ok=True)
     (out_root / "summary.md").write_text(summary, encoding="utf-8")

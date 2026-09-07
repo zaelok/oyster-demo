@@ -1,0 +1,45 @@
+{
+  "id": "case-openaiagentsjs-1769",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-js/pull/1769",
+    "repo": "openai/openai-agents-js",
+    "number": 1769
+  },
+  "diff": "--- a/packages/agents-core/src/utils/applyDiff.ts\n+++ b/packages/agents-core/src/utils/applyDiff.ts\n@@ -325,18 +325,10 @@ function findContext(\n   eof: boolean,\n ): { newIndex: number; fuzz: number } {\n   if (eof) {\n-    const searchLines =\n-      lines.length > 1 && lines[lines.length - 1] === ''\n-        ? lines.slice(0, -1)\n-        : lines;\n-    const endStart = Math.max(0, searchLines.length - context.length);\n-    const endMatch = findContextCore(searchLines, context, endStart);\n+    const endStart = Math.max(0, lines.length - context.length);\n+    const endMatch = findContextCore(lines, context, endStart);\n     if (endMatch.newIndex !== -1) return endMatch;\n-    const fallback = findContextCore(\n-      searchLines,\n-      context,\n-      Math.min(start, searchLines.length),\n-    );\n+    const fallback = findContextCore(lines, context, start);\n     return { newIndex: fallback.newIndex, fuzz: fallback.fuzz + 10000 };\n   }\n   return findContextCore(lines, context, start);\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentsjs-1769-b1",
+      "file": "packages/agents-core/src/utils/applyDiff.ts",
+      "line_start": 328,
+      "line_end": 329,
+      "category": "logic",
+      "description": "fix(core): honor EOF hunks for newline-terminated files [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaiagentsjs-1769-b2",
+      "file": "packages/agents-core/src/utils/applyDiff.ts",
+      "line_start": 331,
+      "line_end": 331,
+      "category": "logic",
+      "description": "fix(core): honor EOF hunks for newline-terminated files [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-js",
+    "number": 1769,
+    "merged_at": "2026-08-28T09:32:35Z",
+    "merge_commit": "8e862b3380a577df1315bef17f351c1b58c2938b",
+    "title": "fix(core): honor EOF hunks for newline-terminated files",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

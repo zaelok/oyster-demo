@@ -1,0 +1,36 @@
+{
+  "id": "case-vllmomni-7162",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-omni/pull/7162",
+    "repo": "vllm-project/vllm-omni",
+    "number": 7162
+  },
+  "diff": "--- a/vllm_omni/diffusion/model_metadata.py\n+++ b/vllm_omni/diffusion/model_metadata.py\n@@ -48,12 +48,12 @@ class DiffusionModelMetadata:\n         attention_mask_free=True,\n     ),\n     # The modular alias is served by MiniMaxH3Pipeline and has the same\n+    # Ref2VA request contract. Keep admission limits in sync with it.\n     \"MiniMaxH3ModularPipeline\": DiffusionModelMetadata(\n         supports_multimodal_inputs=True,\n         max_multimodal_image_inputs=9,\n         supports_mixed_reference_inputs=True,\n         final_output_type=\"video\",\n-        attention_mask_free=True,\n     ),\n     \"Magi2Pipeline\": DiffusionModelMetadata(\n         supports_multimodal_inputs=True,\n",
+  "seeded": [
+    {
+      "id": "case-vllmomni-7162-b1",
+      "file": "vllm_omni/diffusion/model_metadata.py",
+      "line_start": 56,
+      "line_end": 58,
+      "category": "logic",
+      "description": "Restore the TRTLLM attention default for the MiniMax-H3 modular alias [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-omni",
+    "number": 7162,
+    "merged_at": "2026-09-06T23:21:22Z",
+    "merge_commit": "eeee25791327d94bd5ea5460f5df7c1f7198d4e8",
+    "title": "[Bugfix][Diffusion] Restore the TRTLLM attention default for the MiniMax-H3 modular alias",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-dali-6458",
+  "source": {
+    "pr": "https://github.com/NVIDIA/DALI/pull/6458",
+    "repo": "NVIDIA/DALI",
+    "number": 6458
+  },
+  "diff": "--- a/dali/python/nvidia/dali/experimental/dynamic/_call_site.py\n+++ b/dali/python/nvidia/dali/experimental/dynamic/_call_site.py\n@@ -14,7 +14,6 @@\n \n import sys\n import types\n-import weakref\n from typing import TypeAlias\n \n from ._nvtx import NVTXRange\n@@ -33,11 +32,7 @@ def mark_transparent(func: types.FunctionType) -> types.FunctionType:\n     Transparent frames are skipped by :func:`resolve_callsite_frame`.\n     Follows ``__wrapped__`` decorator chains.\n     \"\"\"\n-    code = func.__code__\n-    code_id = id(code)\n-    if code_id not in _transparent_codes:\n-        _transparent_codes.add(code_id)\n-        weakref.finalize(code, _transparent_codes.discard, code_id)\n+    _transparent_codes.add(id(func.__code__))\n     wrapped = getattr(func, \"__wrapped__\", None)\n     if wrapped is not None:\n         mark_transparent(wrapped)\n",
+  "seeded": [
+    {
+      "id": "case-dali-6458-b1",
+      "file": "dali/python/nvidia/dali/experimental/dynamic/_call_site.py",
+      "line_start": 35,
+      "line_end": 35,
+      "category": "logic",
+      "description": "Prevent stale code ids in the transparent functions registry [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/DALI",
+    "number": 6458,
+    "merged_at": "2026-08-26T08:01:55Z",
+    "merge_commit": "e1c67d88596626916f9ccdf2728eabf9f11e94aa",
+    "title": "Prevent stale code ids in the transparent functions registry",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

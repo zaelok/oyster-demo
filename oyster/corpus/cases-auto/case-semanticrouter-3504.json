@@ -1,0 +1,36 @@
+{
+  "id": "case-semanticrouter-3504",
+  "source": {
+    "pr": "https://github.com/vllm-project/semantic-router/pull/3504",
+    "repo": "vllm-project/semantic-router",
+    "number": 3504
+  },
+  "diff": "--- a/src/semantic-router/pkg/selection/router_dc.go\n+++ b/src/semantic-router/pkg/selection/router_dc.go\n@@ -18,8 +18,6 @@ package selection\n \n import (\n \t\"context\"\n-\t\"crypto/sha256\"\n-\t\"encoding/hex\"\n \t\"fmt\"\n \t\"math\"\n \t\"strings\"\n@@ -441,9 +439,13 @@ func (r *RouterDCSelector) applySoftmax(scores map[string]float64) map[string]fl\n \treturn result\n }\n \n+// hashQuery creates a simple hash for query tracking\n func (r *RouterDCSelector) hashQuery(query string) string {\n-\tsum := sha256.Sum256([]byte(query))\n-\treturn hex.EncodeToString(sum[:])\n+\t// Simple hash for query grouping (could use more sophisticated methods)\n+\tif len(query) < 32 {\n+\t\treturn fmt.Sprintf(\"%x\", query)\n+\t}\n+\treturn fmt.Sprintf(\"%x\", query[:32])\n }\n \n // defaultSelection returns the first configured candidate when embedding-based\n",
+  "seeded": [
+    {
+      "id": "case-semanticrouter-3504-b1",
+      "file": "src/semantic-router/pkg/selection/router_dc.go",
+      "line_start": 444,
+      "line_end": 448,
+      "category": "logic",
+      "description": "Key RouterDC affinity on a SHA-256 digest of the full query instead of its 32-byte prefix [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/semantic-router",
+    "number": 3504,
+    "merged_at": "2026-09-05T09:58:53Z",
+    "merge_commit": "a09d317f1bae2471d8be3195ca5892de2077d3b9",
+    "title": "[Bug] Key RouterDC affinity on a SHA-256 digest of the full query instead of its 32-byte prefix",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

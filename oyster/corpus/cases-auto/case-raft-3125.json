@@ -1,0 +1,36 @@
+{
+  "id": "case-raft-3125",
+  "source": {
+    "pr": "https://github.com/NVIDIA/raft/pull/3125",
+    "repo": "NVIDIA/raft",
+    "number": 3125
+  },
+  "diff": "--- a/cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh\n+++ b/cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh\n@@ -225,7 +225,6 @@ void MST_solver<vertex_t, edge_t, weight_t, alteration_t>::alteration()\n   // Random number generator\n   curandGenerator_t randGen;\n   curandCreateGenerator(&randGen, CURAND_RNG_PSEUDO_DEFAULT);\n-  curandSetStream(randGen, stream);\n   curandSetPseudoRandomGeneratorSeed(randGen, 1234567);\n \n   // Initialize rand values\n",
+  "seeded": [
+    {
+      "id": "case-raft-3125-b1",
+      "file": "cpp/include/raft/sparse/solver/detail/mst_solver_inl.cuh",
+      "line_start": 227,
+      "line_end": 229,
+      "category": "logic",
+      "description": "curand stream ordering in MST alteration [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/raft",
+    "number": 3125,
+    "merged_at": "2026-08-26T18:59:38Z",
+    "merge_commit": "06cb6935a5ea81d42f47b490dcdb639fd4596a3b",
+    "title": "Fix curand stream ordering in MST alteration",
+    "language": "cuda",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

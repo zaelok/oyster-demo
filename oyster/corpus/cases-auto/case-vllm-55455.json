@@ -1,0 +1,36 @@
+{
+  "id": "case-vllm-55455",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm/pull/55455",
+    "repo": "vllm-project/vllm",
+    "number": 55455
+  },
+  "diff": "--- a/vllm/v1/worker/gpu/warmup.py\n+++ b/vllm/v1/worker/gpu/warmup.py\n@@ -220,19 +220,6 @@ def warmup_kernels(\n     We must call the provided worker's execute_model for pipeline parallel\n     coordination.\n     \"\"\"\n-    adaptive_verification = model_runner.adaptive_verification\n-    model_runner.adaptive_verification = None\n-    try:\n-        _warmup_kernels(model_runner, worker_execute_model, worker_sample_tokens)\n-    finally:\n-        model_runner.adaptive_verification = adaptive_verification\n-\n-\n-def _warmup_kernels(\n-    model_runner: GPUModelRunner,\n-    worker_execute_model: Callable[[SchedulerOutput], Any],\n-    worker_sample_tokens: Callable[[GrammarOutput | None], Any],\n-) -> None:\n     if model_runner.vllm_config.is_mm_encoder_only:\n         return\n \n",
+  "seeded": [
+    {
+      "id": "case-vllm-55455-b1",
+      "file": "vllm/v1/worker/gpu/warmup.py",
+      "line_start": 222,
+      "line_end": 224,
+      "category": "logic",
+      "description": "Defer adaptive verification until after kernel warmup [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm",
+    "number": 55455,
+    "merged_at": "2026-09-06T18:31:41Z",
+    "merge_commit": "6865e67f0be02d53694517f6f71d7fb96492792d",
+    "title": "[Bugfix] Defer adaptive verification until after kernel warmup",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

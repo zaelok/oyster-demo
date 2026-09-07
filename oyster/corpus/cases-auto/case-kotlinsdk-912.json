@@ -1,0 +1,36 @@
+{
+  "id": "case-kotlinsdk-912",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/kotlin-sdk/pull/912",
+    "repo": "modelcontextprotocol/kotlin-sdk",
+    "number": 912
+  },
+  "diff": "--- a/kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\n+++ b/kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt\n@@ -1,11 +1,9 @@\n package io.modelcontextprotocol.kotlin.sdk.server\n \n-import io.ktor.http.BadContentTypeFormatException\n import io.ktor.http.ContentType\n import io.ktor.http.HttpHeaders\n import io.ktor.http.HttpMethod\n import io.ktor.http.HttpStatusCode\n-import io.ktor.http.parseHeaderValue\n import io.ktor.server.application.ApplicationCall\n import io.ktor.server.request.contentType\n import io.ktor.server.request.header\n@@ -866,17 +864,8 @@ public class StreamableHttpServerTransport(private val configuration: Configurat\n         }\n     }\n \n-    private fun String?.accepts(mime: ContentType): Boolean {\n-        if (this == null) return true\n-        return parseHeaderValue(this).any { range ->\n-            if (range.quality <= 0.0) return@any false\n-            try {\n-                mime.match(ContentType.parse(range.value))\n-            } catch (_: BadContentTypeFormatException) {\n-                false\n-            }\n-        }\n-    }\n+    private fun String?.accepts(mime: ContentType): Boolean =\n+        this?.lowercase()?.contains(mime.toString().lowercase()) == true\n \n     private suspend fun emitOnStream(streamId: String, session: ServerSSESession?, message: JSONRPCMessage) {\n         val eventId = configuration.eventStore?.storeEvent(streamId, message)\n",
+  "seeded": [
+    {
+      "id": "case-kotlinsdk-912-b1",
+      "file": "kotlin-sdk-server/src/commonMain/kotlin/io/modelcontextprotocol/kotlin/sdk/server/StreamableHttpServerTransport.kt",
+      "line_start": 867,
+      "line_end": 868,
+      "category": "logic",
+      "description": "fix(server): match Accept header as media ranges [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/kotlin-sdk",
+    "number": 912,
+    "merged_at": "2026-07-28T12:51:21Z",
+    "merge_commit": "24c3cd3a6943556d7cd6c9024fd7860ff7b2dd13",
+    "title": "fix(server): match Accept header as media ranges",
+    "language": "kotlin",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

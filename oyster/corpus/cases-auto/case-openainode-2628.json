@@ -1,0 +1,36 @@
+{
+  "id": "case-openainode-2628",
+  "source": {
+    "pr": "https://github.com/openai/openai-node/pull/2628",
+    "repo": "openai/openai-node",
+    "number": 2628
+  },
+  "diff": "--- a/src/internal/detect-platform.ts\n+++ b/src/internal/detect-platform.ts\n@@ -128,7 +128,7 @@ function getBrowserInfo(): BrowserInfo | null {\n \n   // NOTE: The order matters here!\n   const browserPatterns = [\n-    { key: 'edge' as const, pattern: /\\bEdg(?:e|A|iOS)?\\b(?:\\W+(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?/ },\n+    { key: 'edge' as const, pattern: /Edge(?:\\W+(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?/ },\n     { key: 'ie' as const, pattern: /MSIE(?:\\W+(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?/ },\n     { key: 'ie' as const, pattern: /Trident(?:.*rv\\:(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?/ },\n     { key: 'chrome' as const, pattern: /Chrome(?:\\W+(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?/ },\n",
+  "seeded": [
+    {
+      "id": "case-openainode-2628-b1",
+      "file": "src/internal/detect-platform.ts",
+      "line_start": 131,
+      "line_end": 131,
+      "category": "security",
+      "description": "identify modern Edge browser runtime headers [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-node",
+    "number": 2628,
+    "merged_at": "2026-09-05T05:06:33Z",
+    "merge_commit": "9cdf6f0028f7ec2d9ddab2d67196ec11eb9e068a",
+    "title": "fix: identify modern Edge browser runtime headers",
+    "language": "typescript",
+    "category_reasons": [
+      "credential"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-litellm-39780",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39780",
+    "repo": "BerriAI/litellm",
+    "number": 39780
+  },
+  "diff": "--- a/litellm/proxy/common_utils/http_parsing_utils.py\n+++ b/litellm/proxy/common_utils/http_parsing_utils.py\n@@ -2,11 +2,11 @@\n import re\n from collections.abc import Collection, Mapping\n from types import MappingProxyType, UnionType\n-from typing import Annotated, Any, Final, Union, get_args, get_origin\n+from typing import Any, Final, Union, get_args, get_origin\n \n import orjson\n from fastapi import Request, UploadFile, status\n-from typing_extensions import NotRequired, ReadOnly, Required\n+from typing_extensions import ReadOnly\n \n from litellm._logging import verbose_proxy_logger\n from litellm.constants import MAX_REQUEST_BODY_SIZE_TO_REPAIR_MB\n@@ -18,8 +18,6 @@\n \n _FORM_CONTENT_TYPES: Final[frozenset[str]] = frozenset({\"application/x-www-form-urlencoded\", \"multipart/form-data\"})\n \n-_ANNOTATION_QUALIFIERS: Final[frozenset[object]] = frozenset({Annotated, NotRequired, ReadOnly, Required})\n-\n \n def _normalize_media_type(content_type: str) -> str:\n     \"\"\"Return the bare media type per RFC 7231: strip params, trim, lowercase.\"\"\"\n@@ -44,17 +42,9 @@ def _is_json_content_type(content_type: str) -> bool:\n     return _normalize_media_type(content_type) == \"application/json\"\n \n \n-def _unqualified(annotation: object) -> object:\n-    \"\"\"Which qualifiers ``get_type_hints`` already stripped varies by interpreter version, so peel them all.\"\"\"\n-    if get_origin(annotation) not in _ANNOTATION_QUALIFIERS:\n-        return annotation\n-    qualified: Final[tuple[object, ...]] = get_args(annotation)\n-    return _unqualified(qualified[0])\n-\n-\n def _numeric_form_type(annotation: object) -> type[int] | type[float] | None:\n     \"\"\"The scalar to parse an ``int``/``float``-typed field as, else ``None``.\"\"\"\n-    unwrapped: Final = _unqualified(annotation)\n+    unwrapped: Final = get_args(annotation)[0] if get_origin(annotation) is ReadOnly else annotation\n     candidates: Final = (\n         tuple(arg for arg in get_args(unwrapped) if arg is not type(None))\n         if get_origin(unwrapped) in (Union, UnionType)\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39780-b1",
+      "file": "litellm/proxy/common_utils/http_parsing_utils.py",
+      "line_start": 20,
+      "line_end": 22,
+      "category": "logic",
+      "description": "fix(proxy): strip every TypedDict qualifier before numeric form-field detection [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39780-b2",
+      "file": "litellm/proxy/common_utils/http_parsing_utils.py",
+      "line_start": 44,
+      "line_end": 46,
+      "category": "logic",
+      "description": "fix(proxy): strip every TypedDict qualifier before numeric form-field detection [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39780-b3",
+      "file": "litellm/proxy/common_utils/http_parsing_utils.py",
+      "line_start": 47,
+      "line_end": 47,
+      "category": "logic",
+      "description": "fix(proxy): strip every TypedDict qualifier before numeric form-field detection [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39780,
+    "merged_at": "2026-09-05T01:36:54Z",
+    "merge_commit": "77e27b18662572517ce93577391ed0453e8b701e",
+    "title": "fix(proxy): strip every TypedDict qualifier before numeric form-field detection",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-openinstruct-1716",
+  "source": {
+    "pr": "https://github.com/allenai/open-instruct/pull/1716",
+    "repo": "allenai/open-instruct",
+    "number": 1716
+  },
+  "diff": "--- a/open_instruct/model_utils.py\n+++ b/open_instruct/model_utils.py\n@@ -16,6 +16,7 @@\n \n import asyncio\n import functools\n+import importlib.util\n import itertools\n import pathlib\n import tempfile\n@@ -64,6 +65,10 @@ def detect_hf_attn_implementation() -> str:\n     return olmo_core_attn_to_hf(detect_attn_implementation())\n \n \n+def _is_flash_attn_4_available() -> bool:\n+    return importlib.util.find_spec(\"flash_attn.cute\") is not None\n+\n+\n @functools.lru_cache(maxsize=1)\n def _gpu_compute_major() -> int | None:\n     \"\"\"Return the CUDA compute capability major version (e.g. 9=Hopper, 10=Blackwell).\"\"\"\n@@ -77,7 +82,7 @@ def _gpu_compute_major() -> int | None:\n def detect_attn_implementation() -> AttentionBackendName:\n     if not torch.cuda.is_available():\n         result = AttentionBackendName.torch\n-    elif transformers.utils.is_flash_attn_4_available() and _gpu_compute_major() >= 10:\n+    elif _is_flash_attn_4_available() and _gpu_compute_major() >= 10:\n         result = AttentionBackendName.flash_4\n     elif transformers.utils.is_flash_attn_3_available() and _gpu_compute_major() >= 9:\n         result = AttentionBackendName.flash_3\n",
+  "seeded": [
+    {
+      "id": "case-openinstruct-1716-b1",
+      "file": "open_instruct/model_utils.py",
+      "line_start": 68,
+      "line_end": 71,
+      "category": "logic",
+      "description": "`detect_attn_implementation` for `flash-attn-2` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openinstruct-1716-b2",
+      "file": "open_instruct/model_utils.py",
+      "line_start": 85,
+      "line_end": 85,
+      "category": "logic",
+      "description": "`detect_attn_implementation` for `flash-attn-2` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/open-instruct",
+    "number": 1716,
+    "merged_at": "2026-06-10T14:26:06Z",
+    "merge_commit": "eb9c5ff245800bba5d6fa1b2480f6cb5d7bbab1a",
+    "title": "Fix `detect_attn_implementation` for `flash-attn-2`",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

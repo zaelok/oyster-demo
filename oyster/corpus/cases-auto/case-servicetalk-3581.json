@@ -1,0 +1,54 @@
+{
+  "id": "case-servicetalk-3581",
+  "source": {
+    "pr": "https://github.com/apple/servicetalk/pull/3581",
+    "repo": "apple/servicetalk",
+    "number": 3581
+  },
+  "diff": "--- a/servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\n+++ b/servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java\n@@ -715,7 +715,7 @@ private void parseHeaderLine(final HttpHeaders headers, final ByteBuf buffer, fi\n         try {\n             headers.add(name, value);\n         } catch (IllegalCharacterException cause) {\n-            throw invalidHeaderNameOrValue(name, parsingLine, cause);\n+            throw invalidHeaderName(name, parsingLine, cause);\n         }\n         // Consume the header line bytes from the buffer.\n         consumeCRLF(buffer, lfIndex);\n@@ -725,11 +725,11 @@ private static DecoderException newDecoderExceptionAtLine(final String message,\n         return new DecoderException(message + (parsingLine - 1));\n     }\n \n-    private static DecoderException invalidHeaderNameOrValue(final CharSequence name, final int parsingLine,\n-                                                             final IllegalCharacterException cause) {\n+    private static DecoderException invalidHeaderName(final CharSequence name, final int parsingLine,\n+                                                      final IllegalCharacterException cause) {\n         final String msg = cause.getMessage();\n-        throw new StacklessDecoderException(\"Invalid header name or value for '\" + name + \"' in line \" +\n-                (parsingLine - 1) + (msg != null ? \": \" + msg : \"\"), cause);\n+        throw new StacklessDecoderException(\n+                \"Invalid header name in line \" + (parsingLine - 1) + \": \" + (msg != null ? msg : name), cause);\n     }\n \n     private static DecoderException invalidHeaderValue(final CharSequence name, final int parsingLine,\n",
+  "seeded": [
+    {
+      "id": "case-servicetalk-3581-b1",
+      "file": "servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java",
+      "line_start": 718,
+      "line_end": 718,
+      "category": "logic",
+      "description": "Improve exception message for decoded header line [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-servicetalk-3581-b2",
+      "file": "servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java",
+      "line_start": 728,
+      "line_end": 729,
+      "category": "logic",
+      "description": "Improve exception message for decoded header line [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-servicetalk-3581-b3",
+      "file": "servicetalk-http-netty/src/main/java/io/servicetalk/http/netty/HttpObjectDecoder.java",
+      "line_start": 731,
+      "line_end": 732,
+      "category": "logic",
+      "description": "Improve exception message for decoded header line [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/servicetalk",
+    "number": 3581,
+    "merged_at": "2026-07-22T01:31:17Z",
+    "merge_commit": "b50e7624db9b8823a1f4e5c999df7aaac0acce18",
+    "title": "Improve exception message for decoded header line",
+    "language": "java",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

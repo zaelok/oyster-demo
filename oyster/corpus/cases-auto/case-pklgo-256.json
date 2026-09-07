@@ -1,0 +1,54 @@
+{
+  "id": "case-pklgo-256",
+  "source": {
+    "pr": "https://github.com/apple/pkl-go/pull/256",
+    "repo": "apple/pkl-go",
+    "number": 256
+  },
+  "diff": "--- a/pkl/evaluator_options.go\n+++ b/pkl/evaluator_options.go\n@@ -313,11 +313,8 @@ func (p *Proxy) toMessage() *msgapi.Proxy {\n }\n \n type ExternalReader struct {\n \tExecutable string\n-\n-\tArguments []string\n-\n-\tWorkingDir string\n+\tArguments  []string\n }\n \n func (r *ExternalReader) toMessage() *msgapi.ExternalReader {\n--- a/pkl/internal/msgapi/outgoing.go\n+++ b/pkl/internal/msgapi/outgoing.go\n@@ -111,7 +111,6 @@ type Proxy struct {\n type ExternalReader struct {\n \tExecutable string   `msgpack:\"executable\"`\n \tArguments  []string `msgpack:\"arguments,omitempty\"`\n-\tWorkingDir string   `msgpack:\"workingDir,omitempty'`\n }\n \n type Checksums struct {\n--- a/pkl/project.go\n+++ b/pkl/project.go\n@@ -99,7 +99,6 @@ type ProjectEvaluatorSettingsProxy struct {\n type ProjectEvaluatorSettingExternalReader struct {\n \tExecutable string   `pkl:\"executable\"`\n \tArguments  []string `pkl:\"arguments\"`\n-\tWorkingDir string   `pkl:\"workingDir\"`\n }\n \n func (project *Project) Dependencies() *ProjectDependencies {\n",
+  "seeded": [
+    {
+      "id": "case-pklgo-256-b1",
+      "file": "pkl/evaluator_options.go",
+      "line_start": 317,
+      "line_end": 317,
+      "category": "logic",
+      "description": "support for Pkl 0.32+ external reader property workingDir [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-pklgo-256-b2",
+      "file": "pkl/internal/msgapi/outgoing.go",
+      "line_start": 113,
+      "line_end": 115,
+      "category": "logic",
+      "description": "support for Pkl 0.32+ external reader property workingDir [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-pklgo-256-b3",
+      "file": "pkl/project.go",
+      "line_start": 101,
+      "line_end": 103,
+      "category": "logic",
+      "description": "support for Pkl 0.32+ external reader property workingDir [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/pkl-go",
+    "number": 256,
+    "merged_at": "2026-07-13T18:06:55Z",
+    "merge_commit": "d5119da5dce83ad97dea529b1a15f097eb9b3b23",
+    "title": "fix: support for Pkl 0.32+ external reader property workingDir",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

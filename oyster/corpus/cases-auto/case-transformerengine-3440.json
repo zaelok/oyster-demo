@@ -1,0 +1,36 @@
+{
+  "id": "case-transformerengine-3440",
+  "source": {
+    "pr": "https://github.com/NVIDIA/TransformerEngine/pull/3440",
+    "repo": "NVIDIA/TransformerEngine",
+    "number": 3440
+  },
+  "diff": "--- a/transformer_engine/common/gemm/cublaslt_gemm.cu\n+++ b/transformer_engine/common/gemm/cublaslt_gemm.cu\n@@ -747,10 +747,6 @@ void cublas_gemm(const Tensor *inputA, const Tensor *inputB, Tensor *outputD,\n   NVTE_CHECK_CUBLAS(cublasLtMatmulPreferenceCreate(&preference));\n   NVTE_CHECK_CUBLAS(cublasLtMatmulPreferenceSetAttribute(\n       preference, CUBLASLT_MATMUL_PREF_MAX_WORKSPACE_BYTES, &workspaceSize, sizeof(workspaceSize)));\n-  const uint32_t reduction_scheme_mask = CUBLASLT_REDUCTION_SCHEME_COMPUTE_TYPE;\n-  NVTE_CHECK_CUBLAS(\n-      cublasLtMatmulPreferenceSetAttribute(preference, CUBLASLT_MATMUL_PREF_REDUCTION_SCHEME_MASK,\n-                                           &reduction_scheme_mask, sizeof(reduction_scheme_mask)));\n   const auto A_alignment = _getAlignment(reinterpret_cast<uintptr_t>(param.A));\n   const auto B_alignment = _getAlignment(reinterpret_cast<uintptr_t>(param.B));\n   const auto C_alignment = _getAlignment(reinterpret_cast<uintptr_t>(C));\n",
+  "seeded": [
+    {
+      "id": "case-transformerengine-3440-b1",
+      "file": "transformer_engine/common/gemm/cublaslt_gemm.cu",
+      "line_start": 749,
+      "line_end": 751,
+      "category": "logic",
+      "description": "L40 cublas heuristics [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/TransformerEngine",
+    "number": 3440,
+    "merged_at": "2026-09-01T17:18:11Z",
+    "merge_commit": "8adc4948809c59cc92ca9455cf218744aa568bbf",
+    "title": "[Core] Fix L40 cublas heuristics",
+    "language": "cuda",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

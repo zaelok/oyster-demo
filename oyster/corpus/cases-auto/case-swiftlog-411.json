@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftlog-411",
+  "source": {
+    "pr": "https://github.com/apple/swift-log/pull/411",
+    "repo": "apple/swift-log",
+    "number": 411
+  },
+  "diff": "--- a/Package.swift\n+++ b/Package.swift\n@@ -1,3 +1,4 @@\n+// swift-tools-version:6.1\n //===----------------------------------------------------------------------===//\n //\n // This source file is part of the Swift Logging API open source project\n--- a/Package@swift-6.0.swift\n+++ b/Package@swift-6.0.swift\n@@ -57,5 +57,8 @@ where [.executable, .test, .regular].contains(\n     // https://github.com/swiftlang/swift-evolution/blob/main/proposals/0409-access-level-on-imports.md\n     settings.append(.enableUpcomingFeature(\"InternalImportsByDefault\"))\n \n+    // https://docs.swift.org/compiler/documentation/diagnostics/nonisolated-nonsending-by-default/\n+    settings.append(.enableUpcomingFeature(\"NonisolatedNonsendingByDefault\"))\n+\n     target.swiftSettings = settings\n }\n--- a/Package@swift-6.1.swift\n+++ b/Package@swift-6.1.swift\n@@ -75,5 +75,8 @@ where [.executable, .test, .regular].contains(\n     // https://github.com/swiftlang/swift-evolution/blob/main/proposals/0409-access-level-on-imports.md\n     settings.append(.enableUpcomingFeature(\"InternalImportsByDefault\"))\n \n+    // https://docs.swift.org/compiler/documentation/diagnostics/nonisolated-nonsending-by-default/\n+    settings.append(.enableUpcomingFeature(\"NonisolatedNonsendingByDefault\"))\n+\n     target.swiftSettings = settings\n }\n",
+  "seeded": [
+    {
+      "id": "case-swiftlog-411-b1",
+      "file": "Package@swift-6.0.swift",
+      "line_start": 60,
+      "line_end": 62,
+      "category": "logic",
+      "description": "Only use unsafe flag on Swift 6.2 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftlog-411-b2",
+      "file": "Package@swift-6.1.swift",
+      "line_start": 78,
+      "line_end": 80,
+      "category": "logic",
+      "description": "Only use unsafe flag on Swift 6.2 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-log",
+    "number": 411,
+    "merged_at": "2026-02-16T17:22:18Z",
+    "merge_commit": "bbd81b6725ae874c69e9b8c8804d462356b55523",
+    "title": "Fix: Only use unsafe flag on Swift 6.2",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

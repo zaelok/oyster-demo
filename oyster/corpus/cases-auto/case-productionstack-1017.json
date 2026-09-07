@@ -1,0 +1,54 @@
+{
+  "id": "case-productionstack-1017",
+  "source": {
+    "pr": "https://github.com/vllm-project/production-stack/pull/1017",
+    "repo": "vllm-project/production-stack",
+    "number": 1017
+  },
+  "diff": "--- a/src/vllm_router/services/request_service/request.py\n+++ b/src/vllm_router/services/request_service/request.py\n@@ -415,21 +415,7 @@ async def route_general_request(\n     # Same as vllm, Get request_id from X-Request-Id header if available\n     request_id = request.headers.get(\"X-Request-Id\") or str(uuid.uuid4())\n     request_body = await request.body()\n-    try:\n-        request_json = json.loads(request_body) if request_body else {}\n-    except (json.JSONDecodeError, UnicodeDecodeError, RecursionError):\n-        return JSONResponse(\n-            status_code=400,\n-            content={\"error\": \"Invalid request: request body must be valid JSON.\"},\n-            headers={\"X-Request-Id\": request_id},\n-        )\n-\n-    if not isinstance(request_json, dict):\n-        return JSONResponse(\n-            status_code=400,\n-            content={\"error\": \"Invalid request: request body must be a JSON object.\"},\n-            headers={\"X-Request-Id\": request_id},\n-        )\n+    request_json = json.loads(request_body) if request_body else {}\n \n     # OpenTelemetry tracing: extract incoming context and create parent span\n     span, span_context = None, None\n@@ -1135,8 +1121,6 @@ async def route_general_transcriptions(\n ):\n     \"\"\"Handles audio transcription requests by parsing form data and proxying to backend.\"\"\"\n \n-    request_id = request.headers.get(\"X-Request-Id\") or str(uuid.uuid4())\n-\n     try:\n         form = await request.form()\n \n@@ -1154,13 +1138,6 @@ async def route_general_transcriptions(\n         return JSONResponse(\n             status_code=400,\n             content={\"error\": f\"Invalid request: missing '{e.args[0]}' in form data.\"},\n-            headers={\"X-Request-Id\": request_id},\n-        )\n-    except (TypeError, ValueError):\n-        return JSONResponse(\n-            status_code=400,\n-            content={\"error\": \"Invalid multipart/form-data request\"},\n-            headers={\"X-Request-Id\": request_id},\n         )\n \n     logger.debug(\"==== Enter audio_transcriptions ====\")\n",
+  "seeded": [
+    {
+      "id": "case-productionstack-1017-b1",
+      "file": "src/vllm_router/services/request_service/request.py",
+      "line_start": 418,
+      "line_end": 418,
+      "category": "logic",
+      "description": "Return 400 for malformed request payloads [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-productionstack-1017-b2",
+      "file": "src/vllm_router/services/request_service/request.py",
+      "line_start": 1123,
+      "line_end": 1125,
+      "category": "logic",
+      "description": "Return 400 for malformed request payloads [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-productionstack-1017-b3",
+      "file": "src/vllm_router/services/request_service/request.py",
+      "line_start": 1140,
+      "line_end": 1142,
+      "category": "logic",
+      "description": "Return 400 for malformed request payloads [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/production-stack",
+    "number": 1017,
+    "merged_at": "2026-08-05T16:53:16Z",
+    "merge_commit": "a6c01db05f65f556235413ba8dbcfb0c01132fff",
+    "title": "[Router][Bugfix] Return 400 for malformed request payloads",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "case-litellm-39964",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39964",
+    "repo": "BerriAI/litellm",
+    "number": 39964
+  },
+  "diff": "--- a/litellm/litellm_core_utils/litellm_logging.py\n+++ b/litellm/litellm_core_utils/litellm_logging.py\n@@ -5675,8 +5675,8 @@ def get_error_information(\n             error_code=error_status,\n             error_class=error_class,\n             llm_provider=_llm_provider_in_exception,\n-            traceback=_redact_string(traceback_info),\n-            error_message=_redact_string(error_message),\n+            traceback=traceback_info,\n+            error_message=error_message,\n             error_rate_limit_category=rate_limit_category,\n             error_rate_limit_type=rate_limit_type,\n             error_budget_entity_type=budget_error.entity_type if budget_error else None,\n--- a/litellm/proxy/utils.py\n+++ b/litellm/proxy/utils.py\n@@ -2568,8 +2568,6 @@ async def post_call_failure_hook(\n         # Remove before callbacks iterate \u2014 not serialisable\n         request_data.pop(\"litellm_logging_obj\", None)\n \n-        redacted_traceback_str: Final = _redact_string(traceback_str) if traceback_str is not None else None\n-\n         # Track the first HTTPException returned or raised by any callback\n         transformed_exception: HTTPException | None = None\n \n@@ -2588,7 +2586,7 @@ async def post_call_failure_hook(\n                             request_data=request_data,\n                             user_api_key_dict=user_api_key_dict,\n                             original_exception=original_exception,\n-                            traceback_str=redacted_traceback_str,\n+                            traceback_str=traceback_str,\n                         )\n                         # If callback returned an HTTPException, use it (first one wins)\n                         if isinstance(hook_result, HTTPException) and transformed_exception is None:\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39964-b1",
+      "file": "litellm/litellm_core_utils/litellm_logging.py",
+      "line_start": 5678,
+      "line_end": 5679,
+      "category": "security",
+      "description": "fix(proxy): redact provider keys from pass-through failure tracebacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39964-b2",
+      "file": "litellm/proxy/utils.py",
+      "line_start": 2570,
+      "line_end": 2572,
+      "category": "security",
+      "description": "fix(proxy): redact provider keys from pass-through failure tracebacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39964-b3",
+      "file": "litellm/proxy/utils.py",
+      "line_start": 2589,
+      "line_end": 2589,
+      "category": "security",
+      "description": "fix(proxy): redact provider keys from pass-through failure tracebacks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39964,
+    "merged_at": "2026-09-05T23:48:05Z",
+    "merge_commit": "02cbff4918dc50fade3fbd265d4046d9be6e6ac2",
+    "title": "fix(proxy): redact provider keys from pass-through failure tracebacks",
+    "language": "python",
+    "category_reasons": [
+      "redact",
+      "api key"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

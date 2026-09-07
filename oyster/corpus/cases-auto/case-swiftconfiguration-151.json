@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftconfiguration-151",
+  "source": {
+    "pr": "https://github.com/apple/swift-configuration/pull/151",
+    "repo": "apple/swift-configuration",
+    "number": 151
+  },
+  "diff": "--- a/Sources/Configuration/Providers/Files/FileProvider.swift\n+++ b/Sources/Configuration/Providers/Files/FileProvider.swift\n@@ -182,9 +182,9 @@ public struct FileProvider<Snapshot: FileConfigSnapshot>: Sendable {\n     ) async throws {\n         let fileContents = try await fileSystem.fileContents(atPath: filePath)\n         let providerName = \"FileProvider<\\(Snapshot.self)>\"\n-        if fileContents != nil {\n+        if let fileContents {\n             self._snapshot = try snapshotType.init(\n-                data: fileContents!.bytes,\n+                data: fileContents.bytes,\n                 providerName: providerName,\n                 parsingOptions: parsingOptions\n             )\n",
+  "seeded": [
+    {
+      "id": "case-swiftconfiguration-151-b1",
+      "file": "Sources/Configuration/Providers/Files/FileProvider.swift",
+      "line_start": 185,
+      "line_end": 185,
+      "category": "logic",
+      "description": "compiler crash on Swift 6.2.3 debug builds [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftconfiguration-151-b2",
+      "file": "Sources/Configuration/Providers/Files/FileProvider.swift",
+      "line_start": 187,
+      "line_end": 187,
+      "category": "logic",
+      "description": "compiler crash on Swift 6.2.3 debug builds [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-configuration",
+    "number": 151,
+    "merged_at": "2026-01-30T12:30:19Z",
+    "merge_commit": "b4768bd68d8a6fb356bd372cb41905046244fcae",
+    "title": "Fix compiler crash on Swift 6.2.3 debug builds",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

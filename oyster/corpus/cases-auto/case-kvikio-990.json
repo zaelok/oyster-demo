@@ -1,0 +1,36 @@
+{
+  "id": "case-kvikio-990",
+  "source": {
+    "pr": "https://github.com/rapidsai/kvikio/pull/990",
+    "repo": "rapidsai/kvikio",
+    "number": 990
+  },
+  "diff": "--- a/cpp/src/remote_handle.cpp\n+++ b/cpp/src/remote_handle.cpp\n@@ -14,6 +14,7 @@\n #include <sstream>\n #include <stdexcept>\n #include <string>\n+#include <tuple>\n \n #include <kvikio/bounce_buffer.hpp>\n #include <kvikio/defaults.hpp>\n@@ -657,7 +658,8 @@ bool S3EndpointWithPresignedUrl::is_url_valid(std::string const& url) noexcept\n RemoteEndpointType infer_remote_endpoint_type(std::string const& url)\n {\n   KVIKIO_NVTX_FUNC_RANGE();\n-  auto [endpoint, _] = infer_endpoint_impl(url, get_default_allow_list(), false);\n+  auto [endpoint, _]              = infer_endpoint_impl(url, get_default_allow_list(), false);\n+  std::tie(endpoint, std::ignore) = infer_endpoint_impl(url, get_default_allow_list(), false);\n   return endpoint->remote_endpoint_type();\n }\n \n",
+  "seeded": [
+    {
+      "id": "case-kvikio-990-b1",
+      "file": "cpp/src/remote_handle.cpp",
+      "line_start": 661,
+      "line_end": 662,
+      "category": "logic",
+      "description": "unused variable handling in `infer_remote_endpoint_type` [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "rapidsai/kvikio",
+    "number": 990,
+    "merged_at": "2026-06-24T17:36:04Z",
+    "merge_commit": "0b5b1a564b6ee266aa35d90e3f53ddf3d0b413c1",
+    "title": "Fix unused variable handling in `infer_remote_endpoint_type`",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

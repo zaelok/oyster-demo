@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkjava-295",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-java/pull/295",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 295
+  },
+  "diff": "--- a/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\n+++ b/anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt\n@@ -1,6 +1,5 @@\n package com.anthropic.helpers\n \n-import com.anthropic.core.JsonMissing\n import com.anthropic.core.JsonObject\n import com.anthropic.core.jsonMapper\n import com.anthropic.errors.AnthropicInvalidDataException\n@@ -449,16 +448,14 @@ class BetaMessageAccumulator private constructor() {\n                                 \"Missing input JSON for index $index.\"\n                             )\n \n                         val parsedInput =\n-                            if (inputJson.trim() == \"\") JsonMissing.of()\n-                            else\n-                                try {\n-                                    JSON_MAPPER.readValue(inputJson, JsonObject::class.java)\n-                                } catch (e: Exception) {\n-                                    throw AnthropicInvalidDataException(\n-                                        \"Unable to parse tool parameter JSON from model. Please retry your request or adjust your prompt. Error: ${e}. JSON: $inputJson\"\n-                                    )\n-                                }\n+                            try {\n+                                JSON_MAPPER.readValue(inputJson, JsonObject::class.java)\n+                            } catch (e: Exception) {\n+                                throw AnthropicInvalidDataException(\n+                                    \"Unable to parse tool parameter JSON from model. Please retry your request or adjust your prompt. Error: ${e}. JSON: $inputJson\"\n+                                )\n+                            }\n \n                         messageContent[index] =\n                             when {\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkjava-295-b1",
+      "file": "anthropic-java-core/src/main/kotlin/com/anthropic/helpers/BetaMessageAccumulator.kt",
+      "line_start": 452,
+      "line_end": 458,
+      "category": "logic",
+      "description": "fix(client): BetaMessageAccumulator crash on empty tool input [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 295,
+    "merged_at": "2026-01-07T21:00:10Z",
+    "merge_commit": "e0fe6788bd8a5529fdc493e73cbc532497622bc3",
+    "title": "fix(client): BetaMessageAccumulator crash on empty tool input",
+    "language": "kotlin",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

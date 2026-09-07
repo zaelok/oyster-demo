@@ -130,6 +130,7 @@ id: code-review
 path: oyster/corpus/cases
 commit: cba004d1
 source_tier: reversed-fixes            # reversed-fixes | bug-introducing-commits | planted | production
+review: human                          # human | none; a corpus nobody reviewed is a different corpus
 date_cutoff: 2025-09-01                # cases merged after this date, contamination control
 facet_tags: [language, repository, category]
 license_note: excerpts keep their original licenses, see SOURCES.md

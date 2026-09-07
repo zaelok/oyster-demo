@@ -1,0 +1,54 @@
+{
+  "id": "case-apex-2018",
+  "source": {
+    "pr": "https://github.com/NVIDIA/apex/pull/2018",
+    "repo": "NVIDIA/apex",
+    "number": 2018
+  },
+  "diff": "--- a/apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass.h\n+++ b/apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass.h\n@@ -128,11 +128,8 @@ void group_norm_nhwc_bwd_one_pass_setup(Group_norm_nhwc_bwd_params& params, size\n   // The number of blocks per grid.\n   int max_blocks_per_grid = blocks_per_sm * props.multiProcessorCount;\n \n-  if (props.major == 8 || props.major == 11 || props.major == 12) {\n-    blocks_per_slice = std::min(blocks_per_slice, max_blocks_per_grid);\n-  } else {\n-    assert(blocks_per_slice <= max_blocks_per_grid);\n-  }\n+  // Make sure we are safe to run that many blocks\n+  assert(blocks_per_slice <= max_blocks_per_grid);\n \n   // The number of blocks per slice is the X dimension of the grid.\n   grid.x = blocks_per_slice;\n--- a/apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh\n+++ b/apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh\n@@ -173,44 +173,6 @@ __global__ __launch_bounds__(THREADS_PER_BLOCK_) void group_norm_nhwc_bwd_one_pa\n       mean_2 += dx_norm_y;\n     }\n \n-    for (int extra_hwi = hwi + gridDim.x * params.acts_per_block; extra_hwi < params.hw;\n-         extra_hwi += gridDim.x * params.acts_per_block) {\n-      for (int ii = 0; ii < ACTS_PER_THREAD; ++ii) {\n-        int hwj = extra_hwi + ii * ACTS_PER_LOOP;\n-        IOType2 x_extra = IOTraits::zero();\n-        IOType2 dy_extra = IOTraits::zero();\n-        if (is_active && hwj < params.hw) {\n-          x_extra = *reinterpret_cast<const IOType2*>(&x_ptr[hwj * params.c]);\n-          dy_extra = *reinterpret_cast<const IOType2*>(&dy_ptr[hwj * params.c]);\n-        }\n-\n-        float2 x_f2 = IOTraits::unpack(x_extra);\n-        float2 dy_f2 = IOTraits::unpack(dy_extra);\n-\n-        float x_norm_x = (x_f2.x - x_mean) * rcp_x_stddev;\n-        float x_norm_y = (x_f2.y - x_mean) * rcp_x_stddev;\n-\n-        if (params.with_swish) {\n-          float x_gn_x = x_norm_x * gamma_f2.x + beta_f2.x;\n-          float x_gn_y = x_norm_y * gamma_f2.y + beta_f2.y;\n-          float s_x = sigmoid(x_gn_x);\n-          float s_y = sigmoid(x_gn_y);\n-          dy_f2.x = dy_f2.x * s_x * (1.f + x_gn_x * (1.f - s_x));\n-          dy_f2.y = dy_f2.y * s_y * (1.f + x_gn_y * (1.f - s_y));\n-        }\n-\n-        dgamma_dbeta.x += dy_f2.x * x_norm_x;\n-        dgamma_dbeta.y += dy_f2.y * x_norm_y;\n-        dgamma_dbeta.z += dy_f2.x;\n-        dgamma_dbeta.w += dy_f2.y;\n-\n-        float dx_norm_x = dy_f2.x * gamma_f2.x;\n-        float dx_norm_y = dy_f2.y * gamma_f2.y;\n-        mean_1 += dx_norm_x * x_norm_x + dx_norm_y * x_norm_y;\n-        mean_2 += dx_norm_x + dx_norm_y;\n-      }\n-    }\n-\n     // Pack valid gradients.\n     float2 sums = make_float2(0.f, 0.f);\n     if (ACTIVE_THREADS == THREADS_PER_BLOCK || is_active) {\n@@ -351,41 +308,6 @@ __global__ __launch_bounds__(THREADS_PER_BLOCK_) void group_norm_nhwc_bwd_one_pa\n         *reinterpret_cast<IOType2*>(&dx_ptr[hwj * params.c]) = IOTraits::pack(dx);\n       }\n     }\n-\n-    for (int extra_hwi = hwi + gridDim.x * params.acts_per_block; extra_hwi < params.hw;\n-         extra_hwi += gridDim.x * params.acts_per_block) {\n-      for (int ii = 0; ii < ACTS_PER_THREAD; ++ii) {\n-        int hwj = extra_hwi + ii * ACTS_PER_LOOP;\n-        if (!is_active || hwj >= params.hw) {\n-          continue;\n-        }\n-\n-        float2 x_f2 = IOTraits::unpack(*reinterpret_cast<const IOType2*>(&x_ptr[hwj * params.c]));\n-        float2 dy_f2 = IOTraits::unpack(*reinterpret_cast<const IOType2*>(&dy_ptr[hwj * params.c]));\n-\n-        float2 x_norm;\n-        x_norm.x = (x_f2.x - x_mean) * rcp_x_stddev;\n-        x_norm.y = (x_f2.y - x_mean) * rcp_x_stddev;\n-\n-        if (params.with_swish) {\n-          float x_gn_x = x_norm.x * gamma_f2.x + beta_f2.x;\n-          float x_gn_y = x_norm.y * gamma_f2.y + beta_f2.y;\n-          float s_x = sigmoid(x_gn_x);\n-          float s_y = sigmoid(x_gn_y);\n-          dy_f2.x = dy_f2.x * s_x * (1.f + x_gn_x * (1.f - s_x));\n-          dy_f2.y = dy_f2.y * s_y * (1.f + x_gn_y * (1.f - s_y));\n-        }\n-\n-        float2 dx_norm;\n-        dx_norm.x = dy_f2.x * gamma_f2.x;\n-        dx_norm.y = dy_f2.y * gamma_f2.y;\n-\n-        float2 dx;\n-        dx.x = (dx_norm.x - (x_norm.x * mean_1 + mean_2)) * rcp_x_stddev;\n-        dx.y = (dx_norm.y - (x_norm.y * mean_1 + mean_2)) * rcp_x_stddev;\n-\n-      }\n-    }\n   }\n \n   // The completion barrier.\n",
+  "seeded": [
+    {
+      "id": "case-apex-2018-b1",
+      "file": "apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass.h",
+      "line_start": 131,
+      "line_end": 132,
+      "category": "logic",
+      "description": "GroupNorm NHWC one-pass backward execution [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-apex-2018-b2",
+      "file": "apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh",
+      "line_start": 175,
+      "line_end": 177,
+      "category": "logic",
+      "description": "GroupNorm NHWC one-pass backward execution [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-apex-2018-b3",
+      "file": "apex/contrib/csrc/group_norm/group_norm_nhwc_bwd_one_pass_kernel.cuh",
+      "line_start": 310,
+      "line_end": 312,
+      "category": "logic",
+      "description": "GroupNorm NHWC one-pass backward execution [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/apex",
+    "number": 2018,
+    "merged_at": "2026-08-27T07:57:11Z",
+    "merge_commit": "77a4b7a824c988c62fae477b05bf87727512c309",
+    "title": "Fix GroupNorm NHWC one-pass backward execution",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

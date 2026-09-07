@@ -1,0 +1,54 @@
+{
+  "id": "case-coremltools-2771",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2771",
+    "repo": "apple/coremltools",
+    "number": 2771
+  },
+  "diff": "--- a/coremltools/converters/mil/frontend/torch/ops.py\n+++ b/coremltools/converters/mil/frontend/torch/ops.py\n@@ -7340,20 +7340,6 @@ def clamp(context, node):\n     context.add(res, node.name)\n \n \n-def _zero_out_band(x: Var, lower: int, upper: int) -> Var:\n-    \"\"\"\n-    Zero out the ``band_part(lower, upper)`` band of ``x``, keeping everything else.\n-\n-    The obvious ``x - band_part(x, lower, upper)`` evaluates to NaN wherever ``x`` holds\n-    +/-inf, so select against a mask instead, which does not depend on the values of x.\n-    \"\"\"\n-    in_band = mb.band_part(\n-        x=mb.fill(shape=mb.shape(x=x), value=1.0), lower=lower, upper=upper\n-    )\n-    zero = mb.cast(x=mb.const(val=0), dtype=builtin_to_string(x.dtype))\n-    return mb.select(cond=mb.cast(x=in_band, dtype=\"bool\"), a=zero, b=x)\n-\n-\n @register_torch_op\n def triu(context, node):\n     assert context.frontend != TorchFrontend.EXECUTORCH, \"triu is not a core aten op\"\n@@ -7373,7 +7359,16 @@ def triu(context, node):\n     if diagonal <= 0:\n         res = mb.band_part(x=x, lower=-diagonal, upper=-1)\n     else:\n-        res = _zero_out_band(x, lower=-1, upper=diagonal - 1)\n+        y = mb.band_part(x=x, lower=-1, upper=diagonal - 1)\n+        use_bool = False\n+        if types.is_bool(x.dtype):\n+            # The `mb.sub` op doesn't support bool.\n+            use_bool = True\n+            x = mb.cast(x=x, dtype=\"int32\")\n+            y = mb.cast(x=y, dtype=\"int32\")\n+        res = mb.sub(x=x, y=y)\n+        if use_bool:\n+            res = mb.cast(x=res, dtype=\"bool\")\n     context.add(res, node.name)\n \n \n@@ -7396,7 +7391,16 @@ def tril(context, node):\n     if diagonal >= 0:\n         res = mb.band_part(x=x, lower=-1, upper=diagonal)\n     else:\n-        res = _zero_out_band(x, lower=-diagonal - 1, upper=-1)\n+        y = mb.band_part(x=x, lower=-diagonal - 1, upper=-1)\n+        use_bool = False\n+        if types.is_bool(x.dtype):\n+            # The `mb.sub` op doesn't support bool.\n+            use_bool = True\n+            x = mb.cast(x=x, dtype=\"int32\")\n+            y = mb.cast(x=y, dtype=\"int32\")\n+        res = mb.sub(x=x, y=y)\n+        if use_bool:\n+            res = mb.cast(x=res, dtype=\"bool\")\n     context.add(res, node.name)\n \n \n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2771-b1",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 7342,
+      "line_end": 7344,
+      "category": "logic",
+      "description": "torch.triu/torch.tril turning infinite input into NaN [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-coremltools-2771-b2",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 7362,
+      "line_end": 7371,
+      "category": "logic",
+      "description": "torch.triu/torch.tril turning infinite input into NaN [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-coremltools-2771-b3",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 7394,
+      "line_end": 7403,
+      "category": "logic",
+      "description": "torch.triu/torch.tril turning infinite input into NaN [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/coremltools",
+    "number": 2771,
+    "merged_at": "2026-08-05T19:46:08Z",
+    "merge_commit": "f9ff1c0ca972e33614eb639263cfb2e37f01afc7",
+    "title": "Fix torch.triu/torch.tril turning infinite input into NaN",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

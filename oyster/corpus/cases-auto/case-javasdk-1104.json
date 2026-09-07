@@ -1,0 +1,36 @@
+{
+  "id": "case-javasdk-1104",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/java-sdk/pull/1104",
+    "repo": "modelcontextprotocol/java-sdk",
+    "number": 1104
+  },
+  "diff": "--- a/mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\n+++ b/mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java\n@@ -32,9 +32,7 @@ public Mono<McpSchema.JSONRPCResponse> handleRequest(McpTransportContext transpo\n \t\t\tMcpSchema.JSONRPCRequest request) {\n \t\tMcpStatelessRequestHandler<?> requestHandler = this.requestHandlers.get(request.method());\n \t\tif (requestHandler == null) {\n-\t\t\treturn Mono.just(new McpSchema.JSONRPCResponse(McpSchema.JSONRPC_VERSION, request.id(), null,\n-\t\t\t\t\tnew McpSchema.JSONRPCResponse.JSONRPCError(McpSchema.ErrorCodes.METHOD_NOT_FOUND,\n-\t\t\t\t\t\t\t\"Method not found: \" + request.method(), null)));\n+\t\t\treturn Mono.error(new McpError(\"Missing handler for request type: \" + request.method()));\n \t\t}\n \t\treturn requestHandler.handle(transportContext, request.params())\n \t\t\t.map(result -> new McpSchema.JSONRPCResponse(McpSchema.JSONRPC_VERSION, request.id(), result, null))\n",
+  "seeded": [
+    {
+      "id": "case-javasdk-1104-b1",
+      "file": "mcp-core/src/main/java/io/modelcontextprotocol/server/DefaultMcpStatelessServerHandler.java",
+      "line_start": 35,
+      "line_end": 35,
+      "category": "logic",
+      "description": "Backport #800: fix error behavior on unregistered handlers in stateless server handler [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/java-sdk",
+    "number": 1104,
+    "merged_at": "2026-08-26T12:00:30Z",
+    "merge_commit": "76f6451a0a3dbd99fc6fd368eb83b0e7b1928e23",
+    "title": "Backport #800: fix error behavior on unregistered handlers in stateless server handler",
+    "language": "java",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

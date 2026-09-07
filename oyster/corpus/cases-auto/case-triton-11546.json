@@ -1,0 +1,36 @@
+{
+  "id": "case-triton-11546",
+  "source": {
+    "pr": "https://github.com/triton-lang/triton/pull/11546",
+    "repo": "triton-lang/triton",
+    "number": 11546
+  },
+  "diff": "--- a/lib/Analysis/AxisInfo.cpp\n+++ b/lib/Analysis/AxisInfo.cpp\n@@ -725,12 +725,18 @@ class RemOpAxisInfoVisitor final : public BinaryOpVisitorImpl<OpTy> {\n \n   int64_t getDivisibility(OpTy op, const AxisInfo &lhs, const AxisInfo &rhs,\n                           int dim) override {\n-    auto contiguity = getContiguity(op, lhs, rhs, dim);\n-    auto divisibility = gcd(lhs.getDivisibility(dim), rhs.getDivisibility(dim));\n-    if (lhs.getContiguity(dim) > contiguity ||\n-        rhs.getContiguity(dim) > contiguity)\n-      divisibility = gcd(divisibility, contiguity);\n-    return divisibility;\n+    if (rhs.getConstancy(dim) > 1) {\n+      // lhs: d_lhs * k = gcd(d_lhs, d_rhs) * k' * k = gcd(d_lhs, d_rhs) * k''\n+      // rhs: d_rhs * p = gcd(d_lhs, d_rhs) * p' * p = gcd(d_lhs, d_rhs) * p''\n+      // lhs = gcd(d_lhs, d_rhs) * k'' = gcd(d_lhs, d_rhs) * d + r\n+      // r must be divisible by gcd(d_lhs, d_rhs)\n+      return gcd(lhs.getDivisibility(dim), rhs.getDivisibility(dim));\n+    }\n+    // Otherwise we shouldn't assume any divisibility.\n+    // For example:\n+    // lhs: [2, 2, 4, 4], rhs: [0, 1, 2, 3]\n+    // lhs % rhs = [0, 0, 0, 1]\n+    return 1;\n   };\n };\n \n",
+  "seeded": [
+    {
+      "id": "case-triton-11546-b1",
+      "file": "lib/Analysis/AxisInfo.cpp",
+      "line_start": 728,
+      "line_end": 739,
+      "category": "logic",
+      "description": "remainder divisibility at result group boundaries [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "triton-lang/triton",
+    "number": 11546,
+    "merged_at": "2026-09-02T14:44:38Z",
+    "merge_commit": "4af25c84e8cd9672cac1ad2eb4301fe86f612c9a",
+    "title": "[Analysis] Fix remainder divisibility at result group boundaries",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

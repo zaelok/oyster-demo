@@ -99,6 +99,24 @@ current SDK before relying on them:
 
 Any OpenAI-compatible endpoint (self-hosted, gateway, third-party) fits the OpenAI row.
 
+## 3b. Two corpus tiers
+
+`oyster/corpus/cases/` is the reviewed tier: 17 cases a person signed off on, the ground
+truth behind every committed number. `oyster/corpus/cases-auto/` is the auto tier: cases
+built by `tools/build_corpus.py` from merged fix PRs in public repositories and accepted by
+mechanical gates only; nobody checked the labels (its README says exactly what is real and
+what is a guess). `--corpus` is repeatable, so a run can take either tier or both:
+
+```bash
+uv run python -m oyster.cli eval --provider claude-code --corpus oyster/corpus/cases-auto --out results-auto.md
+uv run python -m oyster.cli eval --provider claude-code --corpus oyster/corpus/cases --corpus oyster/corpus/cases-auto
+```
+
+Report the tiers separately. A catch rate over unreviewed labels measures the labels as much
+as the model; the honest sentence is "on the auto tier, N cases, unreviewed", never a merged
+number. Rebuild the tier with `uv run python -m tools.build_corpus`; a warm `.corpus-cache/`
+makes the rebuild offline and identical, a cold one re-searches GitHub and picks up newer PRs.
+
 ## 4. Comparing runs without fooling yourself
 
 - **Same corpus commit.** The results header records it. Two tables from different corpus

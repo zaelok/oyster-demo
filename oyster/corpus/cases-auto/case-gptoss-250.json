@@ -1,0 +1,54 @@
+{
+  "id": "case-gptoss-250",
+  "source": {
+    "pr": "https://github.com/openai/gpt-oss/pull/250",
+    "repo": "openai/gpt-oss",
+    "number": 250
+  },
+  "diff": "--- a/gpt_oss/tools/simple_browser/backend.py\n+++ b/gpt_oss/tools/simple_browser/backend.py\n@@ -193,19 +193,13 @@ class YouComBackend(Backend):\n     \"\"\"Backend that uses the You.com Search API.\"\"\"\n \n     source: str = chz.field(doc=\"Description of the backend source\")\n-    api_key: str | None = chz.field(\n-        doc=\"You.com API key. Uses YDC_API_KEY environment variable if not provided.\",\n-        default=None,\n-    )\n \n     BASE_URL: str = \"https://api.ydc-index.io\"\n \n     def _get_api_key(self) -> str:\n-        key = self.api_key or os.environ.get(\"YDC_API_KEY\")\n+        key = os.environ.get(\"YDC_API_KEY\")\n         if not key:\n-            raise BackendError(\n-                \"You.com API key not provided. Get one at https://you.com/platform\"\n-            )\n+            raise BackendError(\"You.com API key not provided\")\n         return key\n \n     \n",
+  "seeded": [
+    {
+      "id": "case-gptoss-250-b1",
+      "file": "gpt_oss/tools/simple_browser/backend.py",
+      "line_start": 195,
+      "line_end": 197,
+      "category": "security",
+      "description": "Add api_key constructor param to YouComBackend and improve missing-key error [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gptoss-250-b2",
+      "file": "gpt_oss/tools/simple_browser/backend.py",
+      "line_start": 200,
+      "line_end": 200,
+      "category": "security",
+      "description": "Add api_key constructor param to YouComBackend and improve missing-key error [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gptoss-250-b3",
+      "file": "gpt_oss/tools/simple_browser/backend.py",
+      "line_start": 202,
+      "line_end": 202,
+      "category": "security",
+      "description": "Add api_key constructor param to YouComBackend and improve missing-key error [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/gpt-oss",
+    "number": 250,
+    "merged_at": "2026-07-24T18:56:01Z",
+    "merge_commit": "7b583341fe16729127f6d5b94a7b09ccae97e1a1",
+    "title": "Add api_key constructor param to YouComBackend and improve missing-key error",
+    "language": "python",
+    "category_reasons": [
+      "api_key"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

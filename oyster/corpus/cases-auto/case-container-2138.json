@@ -1,0 +1,36 @@
+{
+  "id": "case-container-2138",
+  "source": {
+    "pr": "https://github.com/apple/container/pull/2138",
+    "repo": "apple/container",
+    "number": 2138
+  },
+  "diff": "--- a/Sources/Services/ContainerAPIService/Client/Parser.swift\n+++ b/Sources/Services/ContainerAPIService/Client/Parser.swift\n@@ -433,7 +433,6 @@ public struct Parser {\n                     fs.type = Filesystem.FSType.virtiofs\n                 case \"tmpfs\":\n                     fs.type = Filesystem.FSType.tmpfs\n-                    fs.source = \"tmpfs\"\n                 case \"volume\":\n                     isVolume = true\n                 default:\n",
+  "seeded": [
+    {
+      "id": "case-container-2138-b1",
+      "file": "Sources/Services/ContainerAPIService/Client/Parser.swift",
+      "line_start": 435,
+      "line_end": 437,
+      "category": "security",
+      "description": "tmpfs mount source field left empty for --mount type=tmpfs [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/container",
+    "number": 2138,
+    "merged_at": "2026-08-27T03:53:28Z",
+    "merge_commit": "388d964f382456c6b906f3c67e6daf6ec05b752a",
+    "title": "Fix tmpfs mount source field left empty for --mount type=tmpfs",
+    "language": "swift",
+    "category_reasons": [
+      "authenticat"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

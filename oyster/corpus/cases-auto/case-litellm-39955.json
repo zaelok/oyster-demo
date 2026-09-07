@@ -1,0 +1,45 @@
+{
+  "id": "case-litellm-39955",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39955",
+    "repo": "BerriAI/litellm",
+    "number": 39955
+  },
+  "diff": "--- a/litellm/router_strategy/adaptive_router/adaptive_router.py\n+++ b/litellm/router_strategy/adaptive_router/adaptive_router.py\n@@ -123,12 +123,7 @@ def _init_cold_start_cells(self) -> None:\n                 self._cells[(rt, model)] = initial_cell(prefs, rt)\n \n     async def load_state_from_db(self, prisma_client: Any) -> None:\n-        \"\"\"Add each row's persisted delta to a freshly computed cold-start prior.\n-\n-        A row holds an accumulated delta, not a full posterior, and can be one-sided\n-        (e.g. beta=0) - assigning it straight into the cell would zero out a Beta shape\n-        parameter and crash thompson_sample() on every later draw for that cell.\n-        \"\"\"\n+        \"\"\"Override cold-start cells with persisted state. Called once at startup.\"\"\"\n         if prisma_client is None:\n             return\n         try:\n@@ -144,12 +139,7 @@ async def load_state_from_db(self, prisma_client: Any) -> None:\n                     continue\n                 if row.model_name not in self.config.available_models:\n                     continue\n-                prefs = self.model_to_prefs.get(row.model_name) or _default_prefs()\n-                prior = initial_cell(prefs, rt)\n-                self._cells[(rt, row.model_name)] = BanditCell(\n-                    alpha=prior.alpha + row.alpha,\n-                    beta=prior.beta + row.beta,\n-                )\n+                self._cells[(rt, row.model_name)] = BanditCell(alpha=row.alpha, beta=row.beta)\n                 loaded += 1\n             verbose_router_logger.info(\n                 \"AdaptiveRouter[%s]: loaded %d cells from DB\",\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39955-b1",
+      "file": "litellm/router_strategy/adaptive_router/adaptive_router.py",
+      "line_start": 126,
+      "line_end": 126,
+      "category": "logic",
+      "description": "fix(adaptive_router): add the persisted delta to the cold-start prior on load [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39955-b2",
+      "file": "litellm/router_strategy/adaptive_router/adaptive_router.py",
+      "line_start": 142,
+      "line_end": 142,
+      "category": "logic",
+      "description": "fix(adaptive_router): add the persisted delta to the cold-start prior on load [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39955,
+    "merged_at": "2026-09-06T01:02:04Z",
+    "merge_commit": "91ae13d07d9c798f26afe0f73a15b7da3a3d9c7c",
+    "title": "fix(adaptive_router): add the persisted delta to the cold-start prior on load",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

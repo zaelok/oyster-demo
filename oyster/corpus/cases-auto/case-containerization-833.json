@@ -1,0 +1,54 @@
+{
+  "id": "case-containerization-833",
+  "source": {
+    "pr": "https://github.com/apple/containerization/pull/833",
+    "repo": "apple/containerization",
+    "number": 833
+  },
+  "diff": "--- a/Sources/ContainerizationOCI/Platform.swift\n+++ b/Sources/ContainerizationOCI/Platform.swift\n@@ -250,22 +250,25 @@ extension Platform: Hashable {\n \n     /// `==` compares if **lhs** and **rhs** are the exact same platforms.\n     public static func == (lhs: Platform, rhs: Platform) -> Bool {\n-        guard lhs.os == rhs.os else {\n-            return false\n-        }\n-        guard lhs.architecture == rhs.architecture else {\n-            return false\n-        }\n-\n         //  NOTE:\n         //  If the platform struct was created by setting the fields directly and not using (from: String)\n         //  then, there is a possibility that for arm64 architecture, the variant may be set to nil\n         //  In that case, the variant should be assumed to v8\n-        if lhs.architecture == \"arm64\" {\n-            return (lhs.variant ?? \"v8\") == (rhs.variant ?? \"v8\")\n+        if lhs.architecture == \"arm64\" && rhs.architecture == \"arm64\" {\n+            // The following checks effectively verify\n+            // that one operand has nil value and other has \"v8\"\n+            if lhs.variant == nil || rhs.variant == nil {\n+                if lhs.variant == \"v8\" || rhs.variant == \"v8\" {\n+                    return true\n+                }\n+            }\n         }\n \n-        return lhs.variant == rhs.variant\n+        let osEqual = lhs.os == rhs.os\n+        let archEqual = lhs.architecture == rhs.architecture\n+        let variantEqual = lhs.variant == rhs.variant\n+\n+        return osEqual && archEqual && variantEqual\n     }\n \n     public func hash(into hasher: inout Swift.Hasher) {\n",
+  "seeded": [
+    {
+      "id": "case-containerization-833-b1",
+      "file": "Sources/ContainerizationOCI/Platform.swift",
+      "line_start": 252,
+      "line_end": 254,
+      "category": "logic",
+      "description": "bug when comparing the Platform struct [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-containerization-833-b2",
+      "file": "Sources/ContainerizationOCI/Platform.swift",
+      "line_start": 257,
+      "line_end": 264,
+      "category": "logic",
+      "description": "bug when comparing the Platform struct [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-containerization-833-b3",
+      "file": "Sources/ContainerizationOCI/Platform.swift",
+      "line_start": 267,
+      "line_end": 271,
+      "category": "logic",
+      "description": "bug when comparing the Platform struct [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/containerization",
+    "number": 833,
+    "merged_at": "2026-08-06T18:18:02Z",
+    "merge_commit": "2ec221af5af45c156688bba323cc733f9f49c840",
+    "title": "Fix bug when comparing the Platform struct",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

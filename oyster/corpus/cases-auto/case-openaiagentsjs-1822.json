@@ -1,0 +1,36 @@
+{
+  "id": "case-openaiagentsjs-1822",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-js/pull/1822",
+    "repo": "openai/openai-agents-js",
+    "number": 1822
+  },
+  "diff": "--- a/packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts\n+++ b/packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts\n@@ -316,8 +316,6 @@ export class OpenAIResponsesCompactionSession\n       await this.underlyingSession.clearSession();\n       this.compactionCandidateItems = [];\n       this.sessionItems = [];\n-      this.responseId = undefined;\n-      this.lastStore = undefined;\n     });\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-openaiagentsjs-1822-b1",
+      "file": "packages/agents-openai/src/memory/openaiResponsesCompactionSession.ts",
+      "line_start": 318,
+      "line_end": 320,
+      "category": "logic",
+      "description": "fix(openai): reset compaction state on clear [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-js",
+    "number": 1822,
+    "merged_at": "2026-09-05T03:01:26Z",
+    "merge_commit": "8a98743495b460d73b492b066f10954e41b19814",
+    "title": "fix(openai): reset compaction state on clear",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

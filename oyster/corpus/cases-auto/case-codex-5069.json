@@ -1,0 +1,45 @@
+{
+  "id": "case-codex-5069",
+  "source": {
+    "pr": "https://github.com/openai/codex/pull/5069",
+    "repo": "openai/codex",
+    "number": 5069
+  },
+  "diff": "--- a/codex-rs/cloud-tasks/src/lib.rs\n+++ b/codex-rs/cloud-tasks/src/lib.rs\n@@ -972,19 +972,7 @@ pub async fn run_main(_cli: Cli, _codex_linux_sandbox_exe: Option<PathBuf>) -> a\n                                                 let backend = Arc::clone(&backend);\n                                                 let best_of_n = page.best_of_n;\n                                                 tokio::spawn(async move {\n-                                                    let git_ref = if let Ok(cwd) = std::env::current_dir() {\n-                                                        if let Some(branch) = codex_core::git_info::default_branch_name(&cwd).await {\n-                                                            branch\n-                                                        } else if let Some(branch) = codex_core::git_info::current_branch_name(&cwd).await {\n-                                                            branch\n-                                                        } else {\n-                                                            \"main\".to_string()\n-                                                        }\n-                                                    } else {\n-                                                        \"main\".to_string()\n-                                                    };\n-\n-                                                    let result = codex_cloud_tasks_client::CloudBackend::create_task(&*backend, &env, &text, &git_ref, false, best_of_n).await;\n+                                                    let result = codex_cloud_tasks_client::CloudBackend::create_task(&*backend, &env, &text, \"main\", false, best_of_n).await;\n                                                     let evt = match result {\n                                                         Ok(ok) => app::AppEvent::NewTaskSubmitted(Ok(ok)),\n                                                         Err(e) => app::AppEvent::NewTaskSubmitted(Err(format!(\"{e}\"))),\n--- a/codex-rs/core/src/git_info.rs\n+++ b/codex-rs/core/src/git_info.rs\n@@ -260,10 +260,6 @@ async fn get_default_branch(cwd: &Path) -> Option<String> {\n     get_default_branch_local(cwd).await\n }\n \n-pub async fn default_branch_name(cwd: &Path) -> Option<String> {\n-    get_default_branch(cwd).await\n-}\n-\n /// Attempt to determine the repository's default branch name from local branches.\n async fn get_default_branch_local(cwd: &Path) -> Option<String> {\n     for candidate in [\"main\", \"master\"] {\n",
+  "seeded": [
+    {
+      "id": "case-codex-5069-b1",
+      "file": "codex-rs/cloud-tasks/src/lib.rs",
+      "line_start": 975,
+      "line_end": 975,
+      "category": "logic",
+      "description": "handling of non-main default branches for cloud task submissions [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-codex-5069-b2",
+      "file": "codex-rs/core/src/git_info.rs",
+      "line_start": 262,
+      "line_end": 264,
+      "category": "logic",
+      "description": "handling of non-main default branches for cloud task submissions [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/codex",
+    "number": 5069,
+    "merged_at": "2025-10-28T18:02:25Z",
+    "merge_commit": "65107d24a2013b20de964a44406b657e579020bc",
+    "title": "Fix handling of non-main default branches for cloud task submissions",
+    "language": "rust",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

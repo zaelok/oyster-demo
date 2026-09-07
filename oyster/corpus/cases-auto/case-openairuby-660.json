@@ -1,0 +1,45 @@
+{
+  "id": "case-openairuby-660",
+  "source": {
+    "pr": "https://github.com/openai/openai-ruby/pull/660",
+    "repo": "openai/openai-ruby",
+    "number": 660
+  },
+  "diff": "--- a/lib/openai/request_options.rb\n+++ b/lib/openai/request_options.rb\n@@ -7,15 +7,6 @@ module OpenAI\n   # When making a request, you can pass an actual {RequestOptions} instance, or\n   # simply pass a Hash with symbol keys matching the attributes on this class.\n   class RequestOptions < OpenAI::Internal::Type::BaseModel\n-    module ExtraQueryValue\n-      extend OpenAI::Internal::Type::Union\n-\n-      variant String\n-      variant OpenAI::Internal::Type::ArrayOf[String]\n-    end\n-\n-    private_constant :ExtraQueryValue\n-\n     # @api private\n     #\n     # @param opts [OpenAI::RequestOptions, Hash{Symbol=>Object}]\n@@ -47,10 +37,7 @@ def self.validate!(opts)\n     #   `query` given at the client level.\n     #\n     #   @return [Hash{String=>Array<String>, String, nil}, nil]\n-    optional(\n-      :extra_query,\n-      OpenAI::Internal::Type::HashOf[{union: ExtraQueryValue}, nil?: true]\n-    )\n+    optional :extra_query, OpenAI::Internal::Type::HashOf[OpenAI::Internal::Type::ArrayOf[String]]\n \n     # @!attribute extra_headers\n     #   Extra headers to send with the request. These are `.merged`\u2019d into any\n",
+  "seeded": [
+    {
+      "id": "case-openairuby-660-b1",
+      "file": "lib/openai/request_options.rb",
+      "line_start": 9,
+      "line_end": 11,
+      "category": "logic",
+      "description": "accept documented RequestOptions extra query values [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openairuby-660-b2",
+      "file": "lib/openai/request_options.rb",
+      "line_start": 40,
+      "line_end": 40,
+      "category": "logic",
+      "description": "accept documented RequestOptions extra query values [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-ruby",
+    "number": 660,
+    "merged_at": "2026-09-06T18:27:45Z",
+    "merge_commit": "e168aa47ee9ff81150a901c4eba1f236dea0dcf6",
+    "title": "fix: accept documented RequestOptions extra query values",
+    "language": "ruby",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

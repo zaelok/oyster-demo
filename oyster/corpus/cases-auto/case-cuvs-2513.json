@@ -1,0 +1,54 @@
+{
+  "id": "case-cuvs-2513",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cuvs/pull/2513",
+    "repo": "NVIDIA/cuvs",
+    "number": 2513
+  },
+  "diff": "--- a/cpp/bench/ann/src/common/benchmark.hpp\n+++ b/cpp/bench/ann/src/common/benchmark.hpp\n@@ -1,4 +1,5 @@\n /*\n+ * SPDX-FileCopyrightText: Copyright (c) 2023-2026, NVIDIA CORPORATION.\n  * SPDX-License-Identifier: Apache-2.0\n  */\n #pragma once\n@@ -360,50 +360,55 @@ void bench_search(::benchmark::State& state,\n     std::size_t match_count = 0;\n     std::size_t total_count = 0;\n \n-    const size_t start_batch_offset = (state.thread_index() * n_queries) % query_set_size;\n-    auto orig_query_idx             = [&](size_t i_out_idx) -> size_t {\n-      const size_t batch_num  = i_out_idx / n_queries;\n-      const size_t i_in_batch = i_out_idx % n_queries;\n-      const size_t batch_offset =\n-        (start_batch_offset + batch_num * queries_stride) % query_set_size;\n-      return batch_offset + i_in_batch;\n-    };\n-\n-    int num_workers =\n-      static_cast<int>(std::thread::hardware_concurrency()) / benchmark_n_threads;  // includes main\n-    if (num_workers < 1) { num_workers = 1; }\n-    num_workers                  = std::min(num_workers, std::max(1, static_cast<int>(rows)));\n-    const int num_helper_threads = num_workers - 1;\n-\n-    std::vector<std::thread> recall_workers;\n-    recall_workers.reserve(num_helper_threads);\n-    std::vector<std::size_t> local_match_count(num_workers, 0);\n-    std::vector<std::size_t> local_total_count(num_workers, 0);\n-\n-    auto recall_range = [&](size_t start, size_t end, int tid) {\n-      for (size_t i_out_idx = start; i_out_idx < end; ++i_out_idx) {\n-        auto* candidates       = neighbors_host + i_out_idx * k;\n-        auto [matching, total] = gt_maps->count_matches(orig_query_idx(i_out_idx), candidates, k);\n-        local_match_count[tid] += matching;\n-        local_total_count[tid] += total;\n+    // We go through the groundtruth with same stride as the benchmark loop.\n+    size_t out_offset   = 0;\n+    size_t batch_offset = (state.thread_index() * n_queries) % query_set_size;\n+    // Avoid CPU oversubscription when parallelizing recall calculation loop\n+    int num_recall_calculation_worker_threads =\n+      std::thread::hardware_concurrency() / benchmark_n_threads - 1;  // -1 for the main thread\n+    // ensure non-negative number of workers (possible if hardware_concurrency()\n+    // does not return an expected value) by clamping to 0\n+    if (num_recall_calculation_worker_threads < 0) { num_recall_calculation_worker_threads = 0; }\n+    while (out_offset < rows) {\n+      std::vector<std::thread> recall_calculation_workers;\n+      recall_calculation_workers.reserve(num_recall_calculation_worker_threads);\n+      std::vector<std::size_t> local_match_count(num_recall_calculation_worker_threads + 1);\n+      std::vector<std::size_t> local_total_count(num_recall_calculation_worker_threads + 1);\n+      int chunk_size =\n+        n_queries / (num_recall_calculation_worker_threads + 1);  // +1 for the main thread\n+      int remainder           = n_queries % (num_recall_calculation_worker_threads + 1);\n+      auto recall_calculation = [&](int start, int end, int tid) -> void {\n+        for (int i = start; i < end; ++i) {\n+          size_t i_orig_idx = batch_offset + i;\n+          size_t i_out_idx  = out_offset + i;\n+          if (i_out_idx < rows) {\n+            auto* candidates       = neighbors_host + i_out_idx * k;\n+            auto [matching, total] = gt_maps->count_matches(i_orig_idx, candidates, k);\n+            local_match_count[tid] += matching;\n+            local_total_count[tid] += total;\n+          }\n+        }\n+      };\n+      // launch worker threads\n+      int start = 0;\n+      for (int tid = 0; tid < num_recall_calculation_worker_threads; tid++) {\n+        int end = start + chunk_size;\n+        if (tid < remainder) { ++end; }\n+        recall_calculation_workers.emplace_back(recall_calculation, start, end, tid);\n+        start = end;\n+      }\n+      // main thread works on last chunk\n+      recall_calculation(start, n_queries, num_recall_calculation_worker_threads);\n+      // join all worker threads\n+      for (auto& worker : recall_calculation_workers) {\n+        worker.join();\n       }\n-    };\n-\n-    const size_t chunk_size = rows / static_cast<size_t>(num_workers);\n-    const size_t remainder  = rows % static_cast<size_t>(num_workers);\n-    size_t start            = 0;\n-    for (int tid = 0; tid < num_helper_threads; ++tid) {\n-      size_t end = start + chunk_size + (static_cast<size_t>(tid) < remainder ? 1 : 0);\n-      recall_workers.emplace_back(recall_range, start, end, tid);\n-      start = end;\n+      match_count += std::accumulate(local_match_count.begin(), local_match_count.end(), 0);\n+      total_count += std::accumulate(local_total_count.begin(), local_total_count.end(), 0);\n+\n+      out_offset += n_queries;\n+      batch_offset = (batch_offset + queries_stride) % query_set_size;\n     }\n-    recall_range(start, rows, num_helper_threads);\n-    for (auto& worker : recall_workers) {\n-      worker.join();\n-    }\n-    match_count = std::accumulate(local_match_count.begin(), local_match_count.end(), size_t{0});\n-    total_count = std::accumulate(local_total_count.begin(), local_total_count.end(), size_t{0});\n-\n     double actual_recall = static_cast<double>(match_count) / static_cast<double>(total_count);\n     /* NOTE: recall in the throughput mode & filtering\n \n",
+  "seeded": [
+    {
+      "id": "case-cuvs-2513-b1",
+      "file": "cpp/bench/ann/src/common/benchmark.hpp",
+      "line_start": 363,
+      "line_end": 404,
+      "category": "logic",
+      "description": "reduce recall calculation time at small batch [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cuvs-2513-b2",
+      "file": "cpp/bench/ann/src/common/benchmark.hpp",
+      "line_start": 406,
+      "line_end": 410,
+      "category": "logic",
+      "description": "reduce recall calculation time at small batch [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cuvs-2513-b3",
+      "file": "cpp/bench/ann/src/common/benchmark.hpp",
+      "line_start": 411,
+      "line_end": 413,
+      "category": "logic",
+      "description": "reduce recall calculation time at small batch [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cuvs",
+    "number": 2513,
+    "merged_at": "2026-09-03T13:41:57Z",
+    "merge_commit": "32203ac559b49f016f1a1ec6ab77a3cde8578c8c",
+    "title": "Fix: reduce recall calculation time at small batch",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

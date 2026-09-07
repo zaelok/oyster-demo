@@ -1,0 +1,36 @@
+{
+  "id": "case-litellm-39972",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39972",
+    "repo": "BerriAI/litellm",
+    "number": 39972
+  },
+  "diff": "--- a/litellm/responses/file_search/emulated_handler.py\n+++ b/litellm/responses/file_search/emulated_handler.py\n@@ -459,14 +459,7 @@ async def _execute_file_search_tool_calls(\n         queries_from_call = _resolve_queries_from_args(args, input)\n \n         vs_id_arg = args.get(\"vector_store_id\")\n-        if vs_id_arg is not None and vs_id_arg not in all_vs_ids:\n-            verbose_logger.warning(\n-                \"file_search emulated: model picked vector_store_id=%r outside the request's vector_store_ids %s; \"\n-                \"searching the request's stores instead\",\n-                vs_id_arg,\n-                all_vs_ids,\n-            )\n-        vs_ids_for_call = [cast(str, vs_id_arg)] if vs_id_arg in all_vs_ids else all_vs_ids  # cast-ok: request id\n+        vs_ids_for_call = [cast(str, vs_id_arg)] if vs_id_arg else all_vs_ids  # cast-ok: model-supplied, as today\n \n         queries, results = await _run_vector_searches(\n             queries=queries_from_call,\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39972-b1",
+      "file": "litellm/responses/file_search/emulated_handler.py",
+      "line_start": 462,
+      "line_end": 462,
+      "category": "logic",
+      "description": "fix(file_search): scope emulated file_search to the request's vector stores [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39972,
+    "merged_at": "2026-09-06T00:07:04Z",
+    "merge_commit": "0aa346cba5ec4ccb3b6d1eacc61ab68b9825b0ed",
+    "title": "fix(file_search): scope emulated file_search to the request's vector stores",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

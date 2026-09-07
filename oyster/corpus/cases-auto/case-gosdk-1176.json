@@ -1,0 +1,45 @@
+{
+  "id": "case-gosdk-1176",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/go-sdk/pull/1176",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1176
+  },
+  "diff": "--- a/mcp/server.go\n+++ b/mcp/server.go\n@@ -1035,9 +1035,6 @@ func (s *Server) readResource(ctx context.Context, req *ReadResourceRequest) (*R\n \tif err != nil {\n \t\treturn nil, err\n \t}\n-\tif res == nil {\n-\t\treturn nil, fmt.Errorf(\"reading resource %s: read handler returned nil information\", uri)\n-\t}\n \tif err := handleMultiRoundTripResult(req.Session, s.opts.Logger, res); err != nil {\n \t\treturn nil, err\n \t}\n@@ -1045,7 +1042,7 @@ func (s *Server) readResource(ctx context.Context, req *ReadResourceRequest) (*R\n \tif res.resultType == resultTypeInputRequired {\n \t\treturn res, nil\n \t}\n-\tif res.Contents == nil {\n+\tif res == nil || res.Contents == nil {\n \t\treturn nil, fmt.Errorf(\"reading resource %s: read handler returned nil information\", uri)\n \t}\n \t// As a convenience, populate some fields.\n",
+  "seeded": [
+    {
+      "id": "case-gosdk-1176-b1",
+      "file": "mcp/server.go",
+      "line_start": 1037,
+      "line_end": 1039,
+      "category": "logic",
+      "description": "mcp: avoid panicking when a resource handler returns nil [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gosdk-1176-b2",
+      "file": "mcp/server.go",
+      "line_start": 1045,
+      "line_end": 1045,
+      "category": "logic",
+      "description": "mcp: avoid panicking when a resource handler returns nil [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1176,
+    "merged_at": "2026-08-17T08:44:54Z",
+    "merge_commit": "0eb1600eef060d0ef75e8df648b568ad4f358323",
+    "title": "mcp: avoid panicking when a resource handler returns nil",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

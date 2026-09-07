@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkpython-1275",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-python/pull/1275",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1275
+  },
+  "diff": "--- a/src/anthropic/lib/_parse/_transform.py\n+++ b/src/anthropic/lib/_parse/_transform.py\n@@ -110,10 +110,6 @@ def transform_schema(\n \n         strict_schema[\"type\"] = type_\n \n-    enum = json_schema.pop(\"enum\", None)\n-    if is_list(enum):\n-        strict_schema['enum'] = enum\n-\n     description = json_schema.pop(\"description\", None)\n     if description is not None:\n         strict_schema[\"description\"] = description\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkpython-1275-b1",
+      "file": "src/anthropic/lib/_parse/_transform.py",
+      "line_start": 112,
+      "line_end": 114,
+      "category": "logic",
+      "description": "fix(transform schema): support enums [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1275,
+    "merged_at": "2026-03-20T13:51:32Z",
+    "merge_commit": "8289533921c64d17f7aa7690bfc0a3d18b84bb74",
+    "title": "fix(transform schema): support enums",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

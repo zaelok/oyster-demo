@@ -1,0 +1,36 @@
+{
+  "id": "case-coremltools-2778",
+  "source": {
+    "pr": "https://github.com/apple/coremltools/pull/2778",
+    "repo": "apple/coremltools",
+    "number": 2778
+  },
+  "diff": "--- a/coremltools/converters/mil/frontend/torch/ops.py\n+++ b/coremltools/converters/mil/frontend/torch/ops.py\n@@ -8521,10 +8521,8 @@ def roll(context, node):\n \n     for s, i in zip(shift, dims):\n         dim = _utils.pymil_value_at(shape, i)\n-        if s < 0:\n-            start_idx = mb.mod(x=int(-s), y=dim)\n-        else:\n-            start_idx = mb.sub(x=dim, y=mb.mod(x=int(s), y=dim))\n+        s = mb.mod(x=s, y=dim)\n+        start_idx = mb.sub(x=dim, y=s)\n         indices0 = mb.range_1d(end=dim, start=start_idx, step=1)\n         indices1 = mb.range_1d(end=start_idx, start=0, step=1)\n         indices = mb.concat(values=[indices0, indices1], axis=0)\n",
+  "seeded": [
+    {
+      "id": "case-coremltools-2778-b1",
+      "file": "coremltools/converters/mil/frontend/torch/ops.py",
+      "line_start": 8524,
+      "line_end": 8525,
+      "category": "logic",
+      "description": "torch.roll with a negative shift on a dynamic dimension [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/coremltools",
+    "number": 2778,
+    "merged_at": "2026-08-06T19:23:57Z",
+    "merge_commit": "e884c64709825797c4e2cf6061101405eb893dc1",
+    "title": "Fix torch.roll with a negative shift on a dynamic dimension",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

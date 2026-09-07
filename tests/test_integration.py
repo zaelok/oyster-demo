@@ -93,7 +93,7 @@ def _imports(path: Path):
 
 def test_every_module_directory_has_an_init():
     for directory in [PACKAGE, *[p for p in PACKAGE.rglob("*") if p.is_dir()]]:
-        if directory.name in {"cases", "__pycache__"}:
+        if directory.name in {"cases", "cases-auto", "__pycache__"}:
             continue
         assert (directory / "__init__.py").exists(), f"{directory} lacks __init__.py"
 

@@ -1,0 +1,36 @@
+{
+  "id": "case-servicetalk-3604",
+  "source": {
+    "pr": "https://github.com/apple/servicetalk/pull/3604",
+    "repo": "apple/servicetalk",
+    "number": 3604
+  },
+  "diff": "--- a/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/LoadBalancerBuilder.java\n+++ b/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/LoadBalancerBuilder.java\n@@ -88,6 +88,8 @@ LoadBalancerBuilder<ResolvedAddress, C> loadBalancerObserver(\n      * that have been determined to be unhealthy or slow. The details of the selection process are determined by the\n      * {@link LoadBalancingPolicy} while the health status is determined by the outlier detection configuration.\n      *\n+     * @param outlierDetectorConfig the {@link OutlierDetectorConfig} to use, or {@code null} to use the default\n+     *                              outlier detection.\n      * @return {code this}\n      * @see #loadBalancingPolicy(LoadBalancingPolicy)\n      * @see OutlierDetectorConfigs for common preconfigured policies\n--- a/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\n+++ b/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java\n@@ -461,10 +461,6 @@ public static final class Builder {\n          */\n         public Builder(final OutlierDetectorConfig outlierDetectorConfig) {\n             this.ewmaHalfLife = outlierDetectorConfig.ewmaHalfLife;\n-            this.ewmaCancellationPenalty = outlierDetectorConfig.ewmaCancellationPenalty;\n-            this.ewmaErrorPenalty = outlierDetectorConfig.ewmaErrorPenalty;\n-            this.concurrentRequestPenalty = outlierDetectorConfig.concurrentRequestPenalty;\n-            this.cancellationIsError = outlierDetectorConfig.cancellationIsError;\n             this.failedConnectionsThreshold = outlierDetectorConfig.failedConnectionsThreshold;\n             this.intervalJitter = outlierDetectorConfig.failureDetectorIntervalJitter;\n             this.serviceDiscoveryResubscribeInterval = outlierDetectorConfig.serviceDiscoveryResubscribeInterval;\n@@ -657,6 +653,7 @@ public Builder consecutive5xx(final int consecutive5xx) {\n          * <p>\n          * These tasks can include detection of outlier or the active revival checks.\n          * <p>\n+         * This method will also use either the default jitter or the provided interval, whichever is smaller.\n          * <p>\n          * Defaults to 10 second interval with 3 second jitter.\n          *\n--- a/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinLoadBalancerBuilder.java\n+++ b/servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/RoundRobinLoadBalancerBuilder.java\n@@ -145,6 +145,7 @@ RoundRobinLoadBalancerBuilder<ResolvedAddress, C> healthCheckResubscribeInterval\n      * Use a negative value of the argument to disable health checking.\n      *\n      * @param threshold number of consecutive connection failures to consider a host unhealthy and eligible for\n+     * background health checking. Use negative value to disable the health checking mechanism.\n      * @return {@code this}.\n      * @see #backgroundExecutor(Executor)\n      */\n",
+  "seeded": [
+    {
+      "id": "case-servicetalk-3604-b1",
+      "file": "servicetalk-loadbalancer/src/main/java/io/servicetalk/loadbalancer/OutlierDetectorConfig.java",
+      "line_start": 463,
+      "line_end": 465,
+      "category": "logic",
+      "description": "loadbalancer: fix OutlierDetectorConfig copy constructor and align builder javadoc [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/servicetalk",
+    "number": 3604,
+    "merged_at": "2026-08-12T19:42:52Z",
+    "merge_commit": "c52184afab4f57ca863d936e2c08cd65c2642d46",
+    "title": "loadbalancer: fix OutlierDetectorConfig copy constructor and align builder javadoc",
+    "language": "java",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

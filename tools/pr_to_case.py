@@ -34,7 +34,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from oyster.corpus import load_case_file
+from oyster.corpus import load_case_dict
 from oyster.types import CATEGORIES
 
 MODES = ("reverse", "additive")
@@ -608,12 +608,11 @@ def review_sheet(report: Report) -> str:
     return "\n".join(lines) + "\n"
 
 
-def run(
+def build(
     view: dict,
     diff_text: str,
     *,
     case_id: str,
-    out_dir: Path,
     source: dict,
     mode: str = "reverse",
     keep_tests: bool = False,
@@ -623,7 +622,10 @@ def run(
     only: Sequence[str] = (),
     category: str | None = None,
     max_lines: int = 200,
-) -> tuple[Path, Path, str]:
+) -> tuple[dict, Report]:
+    """The mechanical part without touching the filesystem: the draft case as a JSON-ready
+    dict plus the report behind the review sheet. `run` writes both; batch tools gate on the
+    report first and decide what to write."""
     if mode not in MODES:
         raise ValueError(f"mode must be one of {MODES}, got {mode!r}")
     title = str(view.get("title", ""))
@@ -655,12 +657,8 @@ def run(
         guessed, reasons = category, ["--category override"]
 
     draft = build_draft(case_id, output_files, seeded, guessed, title, source)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    json_path = out_dir / f"{case_id}.json"
-    json_path.write_text(json.dumps(draft, indent=2) + "\n", encoding="utf-8")
-
     try:
-        load_case_file(json_path)
+        load_case_dict(draft, case_id)
         verdict = "OK"
     except ValueError as exc:
         verdict = f"REJECTED: {exc}"
@@ -682,9 +680,46 @@ def run(
         max_lines=max_lines,
         verdict=verdict,
     )
+    return draft, report
+
+
+def run(
+    view: dict,
+    diff_text: str,
+    *,
+    case_id: str,
+    out_dir: Path,
+    source: dict,
+    mode: str = "reverse",
+    keep_tests: bool = False,
+    keep_new_files: bool = False,
+    keep_removed_comments: bool = False,
+    keep_trivial: bool = False,
+    only: Sequence[str] = (),
+    category: str | None = None,
+    max_lines: int = 200,
+) -> tuple[Path, Path, str]:
+    """`build`, then write the draft JSON and its review sheet under out_dir."""
+    draft, report = build(
+        view,
+        diff_text,
+        case_id=case_id,
+        source=source,
+        mode=mode,
+        keep_tests=keep_tests,
+        keep_new_files=keep_new_files,
+        keep_removed_comments=keep_removed_comments,
+        keep_trivial=keep_trivial,
+        only=only,
+        category=category,
+        max_lines=max_lines,
+    )
+    out_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / f"{case_id}.json"
+    json_path.write_text(json.dumps(draft, indent=2) + "\n", encoding="utf-8")
     review_path = out_dir / f"{case_id}.review.md"
     review_path.write_text(review_sheet(report), encoding="utf-8")
-    return json_path, review_path, verdict
+    return json_path, review_path, report.verdict
 
 
 def build_parser() -> argparse.ArgumentParser:

@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftnioextras-319",
+  "source": {
+    "pr": "https://github.com/apple/swift-nio-extras/pull/319",
+    "repo": "apple/swift-nio-extras",
+    "number": 319
+  },
+  "diff": "--- a/Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\n+++ b/Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift\n@@ -70,7 +70,6 @@ public final class HTTPResumableUploadHandler: ChannelDuplexHandler {\n         if let existingUpload = self.upload {\n             existingUpload.end(handler: self, error: nil)\n         }\n-        self.context = context\n         let upload = self.createUpload()\n         upload.scheduleOnEventLoop(self.eventLoop)\n         upload.attachUploadHandler(self.sendableView, channel: context.channel)\n",
+  "seeded": [
+    {
+      "id": "case-swiftnioextras-319-b1",
+      "file": "Sources/NIOResumableUpload/HTTPResumableUploadHandler.swift",
+      "line_start": 72,
+      "line_end": 74,
+      "category": "logic",
+      "description": "HTTPResumableUploadHandler dropping responses after the first request on a connection [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-nio-extras",
+    "number": 319,
+    "merged_at": "2026-07-20T14:04:54Z",
+    "merge_commit": "aedcd7e2d4f2c55056a02c43b4011fc802b89ebe",
+    "title": "Fix HTTPResumableUploadHandler dropping responses after the first request on a connection",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-openairuby-656",
+  "source": {
+    "pr": "https://github.com/openai/openai-ruby/pull/656",
+    "repo": "openai/openai-ruby",
+    "number": 656
+  },
+  "diff": "--- a/lib/openai/internal/transport/base_client.rb\n+++ b/lib/openai/internal/transport/base_client.rb\n@@ -414,10 +414,7 @@ def initialize(\n \n           path = OpenAI::Internal::Util.interpolate_path(uninterpolated_path)\n \n-          query = OpenAI::Internal::Transport::RequestBodyMerge.merge(\n-            req[:query].to_h,\n-            opts[:extra_query].to_h\n-          )\n+          query = OpenAI::Internal::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)\n \n           url = OpenAI::Internal::Util.join_parsed_uri(\n             @base_url_components,\n--- a/lib/openai/internal/type/base_page.rb\n+++ b/lib/openai/internal/type/base_page.rb\n@@ -59,8 +59,8 @@ def to_enum = super(:auto_paging_each)\n         # @param page_data [Object]\n         def initialize(client:, req:, response_metadata:, page_data:)\n           options = req[:options].to_h\n-          query = OpenAI::Internal::Transport::RequestBodyMerge\n-            .merge(req[:query].to_h, options[:extra_query].to_h)\n+          query = OpenAI::Internal::Util\n+            .deep_merge(req[:query].to_h, options[:extra_query].to_h)\n             .to_h { |key, value| [key == \"after\" ? :after : key, value] }\n \n           @client = client\n",
+  "seeded": [
+    {
+      "id": "case-openairuby-656-b1",
+      "file": "lib/openai/internal/transport/base_client.rb",
+      "line_start": 417,
+      "line_end": 417,
+      "category": "security",
+      "description": "deduplicate string-keyed query overrides [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openairuby-656-b2",
+      "file": "lib/openai/internal/type/base_page.rb",
+      "line_start": 62,
+      "line_end": 63,
+      "category": "security",
+      "description": "deduplicate string-keyed query overrides [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-ruby",
+    "number": 656,
+    "merged_at": "2026-09-06T17:38:42Z",
+    "merge_commit": "c066e6295f6a73c43d6f909a1d81e0e447b7ac61",
+    "title": "fix: deduplicate string-keyed query overrides",
+    "language": "ruby",
+    "category_reasons": [
+      "authenticat"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

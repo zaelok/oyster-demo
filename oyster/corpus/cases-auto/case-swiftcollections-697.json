@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftcollections-697",
+  "source": {
+    "pr": "https://github.com/apple/swift-collections/pull/697",
+    "repo": "apple/swift-collections",
+    "number": 697
+  },
+  "diff": "--- a/Sources/SortedCollections/SortedDictionary/SortedDictionary+Keys.swift\n+++ b/Sources/SortedCollections/SortedDictionary/SortedDictionary+Keys.swift\n@@ -239,7 +239,7 @@ extension SortedDictionary.Keys: Equatable {\n   public static func ==(lhs: Self, rhs: Self) -> Bool {\n     if lhs.count != rhs.count { return false }\n     for (e1, e2) in zip(lhs, rhs) {\n-      if e1 != e2 {\n+      if e1 == e2 {\n         return false\n       }\n     }\n--- a/Sources/SortedCollections/SortedDictionary/SortedDictionary+SubSequence.swift\n+++ b/Sources/SortedCollections/SortedDictionary/SortedDictionary+SubSequence.swift\n@@ -300,7 +300,7 @@ extension SortedDictionary.SubSequence: Equatable where Value: Equatable {\n   public static func ==(lhs: Self, rhs: Self) -> Bool {\n     if lhs.count != rhs.count { return false }\n     for (e1, e2) in zip(lhs, rhs) {\n-      if e1 != e2 {\n+      if e1 == e2 {\n         return false\n       }\n     }\n--- a/Sources/SortedCollections/SortedDictionary/SortedDictionary+Values.swift\n+++ b/Sources/SortedCollections/SortedDictionary/SortedDictionary+Values.swift\n@@ -258,7 +258,7 @@ extension SortedDictionary.Values: Equatable where Value: Equatable {\n   public static func ==(lhs: Self, rhs: Self) -> Bool {\n     if lhs.count != rhs.count { return false }\n     for (e1, e2) in zip(lhs, rhs) {\n-      if e1 != e2 {\n+      if e1 == e2 {\n         return false\n       }\n     }\n",
+  "seeded": [
+    {
+      "id": "case-swiftcollections-697-b1",
+      "file": "Sources/SortedCollections/SortedDictionary/SortedDictionary+Keys.swift",
+      "line_start": 242,
+      "line_end": 242,
+      "category": "logic",
+      "description": "inverted SortedDictionary Keys/Values/SubSequence equality [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcollections-697-b2",
+      "file": "Sources/SortedCollections/SortedDictionary/SortedDictionary+SubSequence.swift",
+      "line_start": 303,
+      "line_end": 303,
+      "category": "logic",
+      "description": "inverted SortedDictionary Keys/Values/SubSequence equality [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcollections-697-b3",
+      "file": "Sources/SortedCollections/SortedDictionary/SortedDictionary+Values.swift",
+      "line_start": 261,
+      "line_end": 261,
+      "category": "logic",
+      "description": "inverted SortedDictionary Keys/Values/SubSequence equality [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-collections",
+    "number": 697,
+    "merged_at": "2026-08-11T21:25:33Z",
+    "merge_commit": "2dae6db88fb7e4e0b8f176370ab0d0a2cbaeb4e2",
+    "title": "Fix inverted SortedDictionary Keys/Values/SubSequence equality",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

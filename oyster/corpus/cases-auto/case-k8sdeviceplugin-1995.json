@@ -1,0 +1,54 @@
+{
+  "id": "case-k8sdeviceplugin-1995",
+  "source": {
+    "pr": "https://github.com/NVIDIA/k8s-device-plugin/pull/1995",
+    "repo": "NVIDIA/k8s-device-plugin",
+    "number": 1995
+  },
+  "diff": "--- a/cmd/config-manager/main.go\n+++ b/cmd/config-manager/main.go\n@@ -405,17 +405,17 @@ func updateSymlink(config string, f *Flags) (bool, error) {\n \t\t\treturn false, nil\n \t\t}\n \t} else if !os.IsNotExist(err) && !errors.Is(err, syscall.EINVAL) {\n-\t\treturn false, fmt.Errorf(\"error reading symlink %s: %w\", f.ConfigFileDst, err)\n+\t\treturn false, fmt.Errorf(\"error reading symlink '%s': %v\", f.ConfigFileDst, err)\n \t}\n \n \terr = os.Remove(f.ConfigFileDst)\n \tif err != nil && !os.IsNotExist(err) {\n-\t\treturn false, fmt.Errorf(\"error removing existing config: %w\", err)\n+\t\treturn false, fmt.Errorf(\"error removing existing config: %v\", err)\n \t}\n \n \terr = os.Symlink(src, f.ConfigFileDst)\n \tif err != nil {\n-\t\treturn false, fmt.Errorf(\"error creating symlink: %w\", err)\n+\t\treturn false, fmt.Errorf(\"error creating symlink: %v\", err)\n \t}\n \n \treturn true, nil\n",
+  "seeded": [
+    {
+      "id": "case-k8sdeviceplugin-1995-b1",
+      "file": "cmd/config-manager/main.go",
+      "line_start": 408,
+      "line_end": 408,
+      "category": "logic",
+      "description": "address review feedback on config-manager symlink handling [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-k8sdeviceplugin-1995-b2",
+      "file": "cmd/config-manager/main.go",
+      "line_start": 413,
+      "line_end": 413,
+      "category": "logic",
+      "description": "address review feedback on config-manager symlink handling [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-k8sdeviceplugin-1995-b3",
+      "file": "cmd/config-manager/main.go",
+      "line_start": 418,
+      "line_end": 418,
+      "category": "logic",
+      "description": "address review feedback on config-manager symlink handling [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/k8s-device-plugin",
+    "number": 1995,
+    "merged_at": "2026-09-01T22:34:06Z",
+    "merge_commit": "325c1b2d3ad97e98a8239a545df0c4e5d852ea45",
+    "title": "fix: address review feedback on config-manager symlink handling",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-vllm-55461",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm/pull/55461",
+    "repo": "vllm-project/vllm",
+    "number": 55461
+  },
+  "diff": "--- a/vllm/v1/kv_offload/cpu/policies/arc.py\n+++ b/vllm/v1/kv_offload/cpu/policies/arc.py\n@@ -145,15 +145,9 @@ def next_candidate(\n \n             if candidate is None:\n                 entry = next_candidate(t2_iter)\n-                if entry is not None:\n-                    candidate = (*entry, False)\n-\n-            if candidate is None:\n-                entry = next_candidate(t1_iter)\n                 if entry is None:\n                     return None\n-                candidate = (*entry, True)\n-                virtual_t1_size -= 1\n+                candidate = (*entry, False)\n \n             candidates.append(candidate)\n \n",
+  "seeded": [
+    {
+      "id": "case-vllm-55461-b1",
+      "file": "vllm/v1/kv_offload/cpu/policies/arc.py",
+      "line_start": 147,
+      "line_end": 149,
+      "category": "logic",
+      "description": "Fall back to T1 when ARC cannot reclaim enough entries from T2 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-vllm-55461-b2",
+      "file": "vllm/v1/kv_offload/cpu/policies/arc.py",
+      "line_start": 150,
+      "line_end": 150,
+      "category": "logic",
+      "description": "Fall back to T1 when ARC cannot reclaim enough entries from T2 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm",
+    "number": 55461,
+    "merged_at": "2026-09-06T10:28:19Z",
+    "merge_commit": "dd0760165c17fdf750b1aa8e2a26ac885eafd598",
+    "title": "[Bugfix] Fall back to T1 when ARC cannot reclaim enough entries from T2",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-warp-1879",
+  "source": {
+    "pr": "https://github.com/NVIDIA/warp/pull/1879",
+    "repo": "NVIDIA/warp",
+    "number": 1879
+  },
+  "diff": "--- a/warp/examples/fem/example_elastic_shape_optimization.py\n+++ b/warp/examples/fem/example_elastic_shape_optimization.py\n@@ -291,7 +291,9 @@ def __init__(\n         self.renderer = fem_example_utils.Plot()\n \n         # Initialize Adam optimizer\n-        self._vertex_positions_scalar = self._vertex_positions.view(wp.float32).flatten()\n+        # Current implementation assumes scalar arrays, so cast our vec2 arrays to scalars\n+        self._vertex_positions_scalar = wp.array(self._vertex_positions, dtype=wp.float32).flatten()\n+        self._vertex_positions_scalar.grad = wp.array(self._vertex_positions.grad, dtype=wp.float32).flatten()\n         self.optimizer = Adam([self._vertex_positions_scalar], lr=lr)\n \n         self._rebuild_fem_structures(degree)\n",
+  "seeded": [
+    {
+      "id": "case-warp-1879-b1",
+      "file": "warp/examples/fem/example_elastic_shape_optimization.py",
+      "line_start": 294,
+      "line_end": 296,
+      "category": "logic",
+      "description": "FEM shape optimization not moving vertices [GH-1832] [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/warp",
+    "number": 1879,
+    "merged_at": "2026-09-02T18:42:21Z",
+    "merge_commit": "16a0e371881c485aa3990e1af30ca86e49f712ee",
+    "title": "Fix FEM shape optimization not moving vertices [GH-1832]",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

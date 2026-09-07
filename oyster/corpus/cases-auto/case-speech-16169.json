@@ -1,0 +1,36 @@
+{
+  "id": "case-speech-16169",
+  "source": {
+    "pr": "https://github.com/NVIDIA-NeMo/Speech/pull/16169",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16169
+  },
+  "diff": "--- a/nemo/collections/audio/losses/maxine/losses_combined.py\n+++ b/nemo/collections/audio/losses/maxine/losses_combined.py\n@@ -186,8 +186,8 @@ def forward(\n         if input_length is None:\n             input_length = torch.full((estimate.shape[0],), estimate.shape[1]).to(device)\n         source_lengths_l = torch.where(input_length > min_len, min_len, input_length)\n-        primary_audio = target[..., :min_len]\n-        predicted_audio = estimate[..., :min_len]\n+        primary_audio = estimate[..., :min_len]\n+        predicted_audio = target[..., :min_len]\n \n         loss_total = torch.tensor([0.0]).to(device)\n \n",
+  "seeded": [
+    {
+      "id": "case-speech-16169-b1",
+      "file": "nemo/collections/audio/losses/maxine/losses_combined.py",
+      "line_start": 189,
+      "line_end": 190,
+      "category": "logic",
+      "description": "fix(audio): correct estimate/target routing into CombinedLoss's ASR loss [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16169,
+    "merged_at": "2026-09-04T16:00:00Z",
+    "merge_commit": "60ce9407ef60a3327ffaf2c15931b9b3b834afc2",
+    "title": "fix(audio): correct estimate/target routing into CombinedLoss's ASR loss",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

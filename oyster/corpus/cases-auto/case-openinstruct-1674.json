@@ -1,0 +1,45 @@
+{
+  "id": "case-openinstruct-1674",
+  "source": {
+    "pr": "https://github.com/allenai/open-instruct/pull/1674",
+    "repo": "allenai/open-instruct",
+    "number": 1674
+  },
+  "diff": "--- a/open_instruct/utils.py\n+++ b/open_instruct/utils.py\n@@ -617,6 +617,7 @@ def combine_dataset(\n             Whether to keep ids for training that are added during mixing.\n             Used primarily in mix_data.py for saving, or the saved dataset has IDs already.\n     \"\"\"\n+    assert len(splits) == len(dataset_mixer), \"Number of splits must match the number of datasets.\"\n     if isinstance(dataset_mixer, list):\n         assert len(dataset_mixer) % 2 == 0, f\"Data mixer list length is not even: {dataset_mixer}\"\n         mixer_dict = {}\n@@ -627,7 +628,6 @@ def combine_dataset(\n             mixer_dict[dataset_mixer[i]] = value\n             i += 2\n         dataset_mixer = mixer_dict\n-    assert len(splits) == len(dataset_mixer), \"Number of splits must match the number of datasets.\"\n \n     if any(frac_or_samples < 0 for frac_or_samples in dataset_mixer.values()):\n         raise ValueError(\"Dataset fractions / lengths cannot be negative.\")\n",
+  "seeded": [
+    {
+      "id": "case-openinstruct-1674-b1",
+      "file": "open_instruct/utils.py",
+      "line_start": 620,
+      "line_end": 620,
+      "category": "logic",
+      "description": "combine_dataset asserting splits count before list-to-dict conversion [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openinstruct-1674-b2",
+      "file": "open_instruct/utils.py",
+      "line_start": 630,
+      "line_end": 632,
+      "category": "logic",
+      "description": "combine_dataset asserting splits count before list-to-dict conversion [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/open-instruct",
+    "number": 1674,
+    "merged_at": "2026-05-12T14:29:11Z",
+    "merge_commit": "b1e2eaf7ec5dd03d08089e51f2b71d2786569027",
+    "title": "Fix combine_dataset asserting splits count before list-to-dict conversion",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-rslearn-698",
+  "source": {
+    "pr": "https://github.com/allenai/rslearn/pull/698",
+    "repo": "allenai/rslearn",
+    "number": 698
+  },
+  "diff": "--- a/rslearn/train/tasks/per_pixel_regression.py\n+++ b/rslearn/train/tasks/per_pixel_regression.py\n@@ -345,8 +345,8 @@ def update(\n             assert preds.shape[1] == 1\n             preds = preds[:, 0, :, :]\n         mask = torch.stack([target[\"valid\"].get_hw_tensor() > 0 for target in targets])\n-        preds = preds[mask] / self.scale_factor\n-        labels = labels[mask] / self.scale_factor\n+        preds = preds[mask]\n+        labels = labels[mask]\n         if len(preds) == 0:\n             return\n \n",
+  "seeded": [
+    {
+      "id": "case-rslearn-698-b1",
+      "file": "rslearn/train/tasks/per_pixel_regression.py",
+      "line_start": 348,
+      "line_end": 349,
+      "category": "logic",
+      "description": "Per-pixel regression metrics [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/rslearn",
+    "number": 698,
+    "merged_at": "2026-08-04T04:01:02Z",
+    "merge_commit": "0017bf9a9bd06d3c2cb783c0e635e0532d0abb13",
+    "title": "[Bugfix] Per-pixel regression metrics",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

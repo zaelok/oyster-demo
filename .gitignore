@@ -20,3 +20,6 @@ dist/
 
 # Local preview config for the in-app browser.
 /.claude/
+
+# Cached GitHub search results, PR metadata and diffs for tools/build_corpus.py.
+/.corpus-cache/

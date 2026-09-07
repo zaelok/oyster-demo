@@ -1,0 +1,36 @@
+{
+  "id": "case-cudapython-2739",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cuda-python/pull/2739",
+    "repo": "NVIDIA/cuda-python",
+    "number": 2739
+  },
+  "diff": "--- a/cuda_pathfinder/cuda/pathfinder/_binaries/supported_nvidia_binaries.py\n+++ b/cuda_pathfinder/cuda/pathfinder/_binaries/supported_nvidia_binaries.py\n@@ -14,7 +14,7 @@\n     # Core compilation tools\n     \"nvcc\": (_CUDA13_BIN, _CUDA_NVCC_BIN),\n     \"nvdisasm\": (_CUDA13_BIN, _CUDA_NVCC_BIN),\n-    \"cuobjdump\": (_CUDA13_BIN, _CUDA_NVCC_BIN),\n+    \"cuobjdump\": (_CUDA_NVCC_BIN,),\n     \"nvprune\": (_CUDA_NVCC_BIN,),\n     \"fatbinary\": (_CUDA13_BIN, _CUDA_NVCC_BIN),\n     \"bin2c\": (_CUDA13_BIN, _CUDA_NVCC_BIN),\n",
+  "seeded": [
+    {
+      "id": "case-cudapython-2739-b1",
+      "file": "cuda_pathfinder/cuda/pathfinder/_binaries/supported_nvidia_binaries.py",
+      "line_start": 17,
+      "line_end": 17,
+      "category": "logic",
+      "description": "fix(pathfinder): find cuobjdump in the nvidia/cu13/bin wheel layout [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cuda-python",
+    "number": 2739,
+    "merged_at": "2026-08-31T16:06:07Z",
+    "merge_commit": "3373ae235c515d91830cf41b8a6b98cb1b97d3c3",
+    "title": "fix(pathfinder): find cuobjdump in the nvidia/cu13/bin wheel layout",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkpython-1124",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-python/pull/1124",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1124
+  },
+  "diff": "--- a/src/anthropic/lib/tools/_beta_runner.py\n+++ b/src/anthropic/lib/tools/_beta_runner.py\n@@ -108,9 +108,7 @@ def append_messages(self, *messages: BetaMessageParam | ParsedBetaMessage[Respon\n             for message in messages\n         ]\n         self._messages_modified = True\n-        self.set_messages_params(\n-            lambda params: {**params, \"messages\": [*params[\"messages\"], *message_params]}\n-        )\n+        self.set_messages_params(lambda params: {**params, \"messages\": [*self._params[\"messages\"], *message_params]})\n         self._cached_tool_call_response = None\n \n     def _should_stop(self) -> bool:\n@@ -453,6 +451,7 @@ async def _check_and_compact(self) -> bool:\n                 messages.pop()\n \n         messages = [\n+            *self._params[\"messages\"],\n             BetaMessageParam(\n                 role=\"user\",\n                 content=self._compaction_control.get(\"summary_prompt\", DEFAULT_SUMMARY_PROMPT),\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkpython-1124-b1",
+      "file": "src/anthropic/lib/tools/_beta_runner.py",
+      "line_start": 111,
+      "line_end": 111,
+      "category": "logic",
+      "description": "fix(tools): use filtered messages list in async compaction [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1124,
+    "merged_at": "2026-03-02T10:26:30Z",
+    "merge_commit": "710d666f80b7667e3551c1a68d7c0ffaad115de1",
+    "title": "fix(tools): use filtered messages list in async compaction",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

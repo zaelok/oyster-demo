@@ -1,0 +1,46 @@
+{
+  "id": "case-openaiagentspython-4707",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-python/pull/4707",
+    "repo": "openai/openai-agents-python",
+    "number": 4707
+  },
+  "diff": "--- a/src/agents/extensions/sandbox/cloudflare/sandbox.py\n+++ b/src/agents/extensions/sandbox/cloudflare/sandbox.py\n@@ -222,8 +222,8 @@ def __init__(self) -> None:\n         self._buf = b\"\"\n         self._skip_leading_lf = False\n \n-    def decode(self, text: str | bytes) -> list[str]:\n-        data = text.encode(\"utf-8\") if isinstance(text, str) else text\n+    def decode(self, text: str) -> list[str]:\n+        data = text.encode(\"utf-8\")\n         if self._skip_leading_lf and data:\n             # The previous chunk ended on a CR, which already terminated its line. A LF\n             # opening this chunk is the second half of that CRLF, so consume it instead of\n@@ -895,7 +895,8 @@ async def _exec_internal(\n \n                 async for chunk in resp.content.iter_any():\n                     raw_stream.extend(chunk)\n-                    for line in line_decoder.decode(chunk):\n+                    text = chunk.decode(\"utf-8\")\n+                    for line in line_decoder.decode(text):\n                         event = sse_decoder.decode(line)\n                         if event is None:\n                             continue\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentspython-4707-b1",
+      "file": "src/agents/extensions/sandbox/cloudflare/sandbox.py",
+      "line_start": 225,
+      "line_end": 226,
+      "category": "security",
+      "description": "fix(sandbox): preserve UTF-8 boundaries in Cloudflare SSE [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaiagentspython-4707-b2",
+      "file": "src/agents/extensions/sandbox/cloudflare/sandbox.py",
+      "line_start": 898,
+      "line_end": 899,
+      "category": "security",
+      "description": "fix(sandbox): preserve UTF-8 boundaries in Cloudflare SSE [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-python",
+    "number": 4707,
+    "merged_at": "2026-08-27T23:16:58Z",
+    "merge_commit": "374b54d75306025d84aef40277b3f9cd0e63da80",
+    "title": "fix(sandbox): preserve UTF-8 boundaries in Cloudflare SSE",
+    "language": "python",
+    "category_reasons": [
+      "security",
+      "api_key"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-swiftcrypto-423",
+  "source": {
+    "pr": "https://github.com/apple/swift-crypto/pull/423",
+    "repo": "apple/swift-crypto",
+    "number": 423
+  },
+  "diff": "--- a/Sources/CryptoExtras/RSA/RSA.swift\n+++ b/Sources/CryptoExtras/RSA/RSA.swift\n@@ -508,7 +508,7 @@ extension _RSA.Encryption {\n         /// - Warning: Key sizes less than 2048 are not recommended and should only be used for compatibility reasons.\n         public init(unsafePEMRepresentation pemRepresentation: String) throws {\n             self.backing = try BackingPublicKey(pemRepresentation: pemRepresentation)\n-            guard self.keySizeInBits >= 1024, self.keySizeInBits % 8 == 0 else { throw CryptoKitError.incorrectParameterSize }\n+            guard self.keySizeInBits >= 2048, self.keySizeInBits % 8 == 0 else { throw CryptoKitError.incorrectParameterSize }\n         }\n \n         /// Construct an RSA public key from a DER representation.\n@@ -675,13 +675,6 @@ extension _RSA.Encryption {\n     internal enum Digest {\n         case sha1\n         case sha256\n-\n-        var hashBitLength: Int {\n-            switch self {\n-            case .sha1: return 160\n-            case .sha256: return 256\n-            }\n-        }\n     }\n }\n \n@@ -702,6 +694,7 @@ extension _RSA.Encryption.PublicKey {\n     /// Return the maximum amount of data in bytes this key can encrypt in a single operation when using\n     /// the specified padding mode.\n     ///\n+    /// ## Common values:\n     ///\n     /// Key size|Padding|Max length\n     /// -|-|-\n@@ -711,8 +703,8 @@ extension _RSA.Encryption.PublicKey {\n     /// 4096|PKCS-OAEP|470 bytes\n     public func maximumEncryptSize(with padding: _RSA.Encryption.Padding) -> Int {\n         switch padding.backing {\n-        case let .pkcs1_oaep(Digest):\n-            return (self.keySizeInBits / 8) - (2 * Digest.hashBitLength / 8) - 2\n+        case .pkcs1_oaep:\n+            return (self.keySizeInBits / 8) - 42\n         }\n     }\n     \n",
+  "seeded": [
+    {
+      "id": "case-swiftcrypto-423-b1",
+      "file": "Sources/CryptoExtras/RSA/RSA.swift",
+      "line_start": 511,
+      "line_end": 511,
+      "category": "logic",
+      "description": "Incorrect maximum encryption size for RSA OAEP [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcrypto-423-b2",
+      "file": "Sources/CryptoExtras/RSA/RSA.swift",
+      "line_start": 677,
+      "line_end": 679,
+      "category": "logic",
+      "description": "Incorrect maximum encryption size for RSA OAEP [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcrypto-423-b3",
+      "file": "Sources/CryptoExtras/RSA/RSA.swift",
+      "line_start": 706,
+      "line_end": 707,
+      "category": "logic",
+      "description": "Incorrect maximum encryption size for RSA OAEP [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-crypto",
+    "number": 423,
+    "merged_at": "2025-10-29T10:58:47Z",
+    "merge_commit": "e8ed8867ec23bccf5f3bb9342148fa8deaff9b49",
+    "title": "Incorrect maximum encryption size for RSA OAEP",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

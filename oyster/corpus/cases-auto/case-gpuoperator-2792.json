@@ -1,0 +1,55 @@
+{
+  "id": "case-gpuoperator-2792",
+  "source": {
+    "pr": "https://github.com/NVIDIA/gpu-operator/pull/2792",
+    "repo": "NVIDIA/gpu-operator",
+    "number": 2792
+  },
+  "diff": "--- a/api/nvidia/v1/clusterpolicy_types.go\n+++ b/api/nvidia/v1/clusterpolicy_types.go\n@@ -19,7 +19,6 @@ package v1\n import (\n \t\"fmt\"\n \t\"os\"\n-\t\"reflect\"\n \t\"strings\"\n \n \tkata_v1alpha1 \"github.com/NVIDIA/k8s-kata-manager/api/v1alpha1/config\"\n@@ -2088,14 +2087,6 @@ func imagePath(repository string, image string, version string, imagePathEnvName\n \n // ImagePath sets image path for given component type\n func ImagePath(spec interface{}) (string, error) {\n-\tif spec == nil {\n-\t\treturn \"\", fmt.Errorf(\"invalid nil spec to construct image path\")\n-\t}\n-\tvalue := reflect.ValueOf(spec)\n-\tif value.Kind() == reflect.Pointer && value.IsNil() {\n-\t\treturn \"\", fmt.Errorf(\"invalid nil spec to construct image path: %T\", spec)\n-\t}\n-\n \tswitch v := spec.(type) {\n \tcase *DriverSpec:\n \t\tconfig := spec.(*DriverSpec)\n@@ -2137,7 +2128,8 @@ func ImagePath(spec interface{}) (string, error) {\n \t\tconfig := spec.(*DriverManagerSpec)\n \t\treturn imagePath(config.Repository, config.Image, config.Version, \"DRIVER_MANAGER_IMAGE\")\n \tcase *GPUDirectStorageSpec:\n-\t\treturn imagePath(v.Repository, v.Image, v.Version, \"GDS_IMAGE\")\n+\t\tconfig := spec.(*GPUDirectStorageSpec)\n+\t\treturn imagePath(config.Repository, config.Image, config.Version, \"GDS_IMAGE\")\n \tcase *GDRCopySpec:\n \t\tconfig := spec.(*GDRCopySpec)\n \t\treturn imagePath(config.Repository, config.Image, config.Version, \"GDRCOPY_IMAGE\")\n--- a/cmd/gpuop-cfg/validate/clusterpolicy/images.go\n+++ b/cmd/gpuop-cfg/validate/clusterpolicy/images.go\n@@ -106,17 +106,17 @@ func validateImages(ctx context.Context, spec *v1.ClusterPolicySpec) error {\n \t\treturn fmt.Errorf(\"failed to validate image %s: %v\", path, err)\n \t}\n \n-\tif spec.GPUDirectStorage != nil {\n-\t\tpath, err = v1.ImagePath(spec.GPUDirectStorage)\n-\t\tif err != nil {\n-\t\t\treturn fmt.Errorf(\"failed to construct the image path: %v\", err)\n-\t\t}\n-\t\tpath += \"-ubuntu22.04\"\n-\n-\t\terr = validateImage(ctx, path)\n-\t\tif err != nil {\n-\t\t\treturn fmt.Errorf(\"failed to validate image %s: %v\", path, err)\n-\t\t}\n+\t// GPUDirectStorage\n+\tpath, err = v1.ImagePath(spec.GPUDirectStorage)\n+\tif err != nil {\n+\t\treturn fmt.Errorf(\"failed to construct the image path: %v\", err)\n+\t}\n+\t// For GDS driver, we must append the os-tag\n+\tpath += \"-ubuntu22.04\"\n+\n+\terr = validateImage(ctx, path)\n+\tif err != nil {\n+\t\treturn fmt.Errorf(\"failed to validate image %s: %v\", path, err)\n \t}\n \n \t// VFIOManager\n",
+  "seeded": [
+    {
+      "id": "case-gpuoperator-2792-b1",
+      "file": "api/nvidia/v1/clusterpolicy_types.go",
+      "line_start": 2089,
+      "line_end": 2091,
+      "category": "security",
+      "description": "gpuop-cfg panic when validating a ClusterPolicy with no GDS configuration [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gpuoperator-2792-b2",
+      "file": "api/nvidia/v1/clusterpolicy_types.go",
+      "line_start": 2131,
+      "line_end": 2132,
+      "category": "security",
+      "description": "gpuop-cfg panic when validating a ClusterPolicy with no GDS configuration [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gpuoperator-2792-b3",
+      "file": "cmd/gpuop-cfg/validate/clusterpolicy/images.go",
+      "line_start": 109,
+      "line_end": 119,
+      "category": "security",
+      "description": "gpuop-cfg panic when validating a ClusterPolicy with no GDS configuration [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/gpu-operator",
+    "number": 2792,
+    "merged_at": "2026-08-26T16:05:24Z",
+    "merge_commit": "e466ce397d0695b052d09e9d6b36783206033acf",
+    "title": "Fix gpuop-cfg panic when validating a ClusterPolicy with no GDS configuration",
+    "language": "go",
+    "category_reasons": [
+      "secret",
+      "sensitive"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

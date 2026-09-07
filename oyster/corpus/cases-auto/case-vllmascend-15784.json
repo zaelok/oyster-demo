@@ -1,0 +1,36 @@
+{
+  "id": "case-vllmascend-15784",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-ascend/pull/15784",
+    "repo": "vllm-project/vllm-ascend",
+    "number": 15784
+  },
+  "diff": "--- a/vllm_ascend/device/device_op.py\n+++ b/vllm_ascend/device/device_op.py\n@@ -798,9 +798,6 @@ def prepare_dsa_indexer_key_scale(indexer_scale_cache):\n     def apply_dsa_q_rms(q, eps, q_norm_without_weight=None):\n         \"\"\"Apply Q RMS norm. Non-A5: triton_q_rms.\n         A5: uses q_norm_without_weight callable when provided.\"\"\"\n-        if q_norm_without_weight is not None:\n-            return q_norm_without_weight(q)\n-\n         if triton_q_rms is not None:\n             return triton_q_rms(q, eps)\n         else:\n",
+  "seeded": [
+    {
+      "id": "case-vllmascend-15784-b1",
+      "file": "vllm_ascend/device/device_op.py",
+      "line_start": 800,
+      "line_end": 802,
+      "category": "logic",
+      "description": "Honor q_norm_without_weight callable in BaseDeviceAdapt\u2026 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-ascend",
+    "number": 15784,
+    "merged_at": "2026-09-04T17:54:20Z",
+    "merge_commit": "958930f7ed8ae7f4ebeeca9197e8fcdf12bc0bab",
+    "title": "[Bugfix][DSA] Honor q_norm_without_weight callable in BaseDeviceAdapt\u2026",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

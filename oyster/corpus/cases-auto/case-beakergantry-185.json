@@ -1,0 +1,45 @@
+{
+  "id": "case-beakergantry-185",
+  "source": {
+    "pr": "https://github.com/allenai/beaker-gantry/pull/185",
+    "repo": "allenai/beaker-gantry",
+    "number": 185
+  },
+  "diff": "--- a/gantry/launch.py\n+++ b/gantry/launch.py\n@@ -318,7 +318,7 @@ def launch_experiment(\n                     raise ValueError(f\"Invalid weka mount: '{m}'\")\n             weka_buckets.append((source, target))\n \n-        if weka_buckets and not hostnames and (not tags or \"storage:weka\" not in tags):\n+        if weka_buckets and (not tags or \"storage:weka\" not in tags):\n             tags = list(tags or [])\n             tags.append(\"storage:weka\")\n \n@@ -339,11 +339,6 @@ def launch_experiment(\n \n         # Validate clusters.\n         if clusters or gpu_types or tags:\n-            if hostnames:\n-                raise ConfigurationError(\n-                    \"Cannot specify hostnames with additional cluster selection constraints\"\n-                )\n-\n             constraints = []\n             if clusters:\n                 constraints.append(f'''name matches any of: \"{'\", \"'.join(clusters)}\"''')\n",
+  "seeded": [
+    {
+      "id": "case-beakergantry-185-b1",
+      "file": "gantry/launch.py",
+      "line_start": 321,
+      "line_end": 321,
+      "category": "logic",
+      "description": "bug with hostnames + weka mount [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-beakergantry-185-b2",
+      "file": "gantry/launch.py",
+      "line_start": 341,
+      "line_end": 343,
+      "category": "logic",
+      "description": "bug with hostnames + weka mount [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/beaker-gantry",
+    "number": 185,
+    "merged_at": "2026-03-07T00:13:11Z",
+    "merge_commit": "6281f6a0e9d5a6347284ce7c05b84750e70f4322",
+    "title": "Fix bug with hostnames + weka mount",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

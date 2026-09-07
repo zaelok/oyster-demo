@@ -1,0 +1,45 @@
+{
+  "id": "case-swift-91927",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift/pull/91927",
+    "repo": "swiftlang/swift",
+    "number": 91927
+  },
+  "diff": "--- a/lib/IRGen/LoadableByAddress.cpp\n+++ b/lib/IRGen/LoadableByAddress.cpp\n@@ -2435,6 +2435,22 @@ static void rewriteFunction(StructLoweringState &pass,\n     }\n   }\n \n+  for (StoreInst *instr : pass.storeInstsToMod) {\n+    SILValue src = instr->getSrc();\n+    SILValue tgt = instr->getDest();\n+    SILType srcType = src->getType();\n+    SILType tgtType = tgt->getType();\n+    assert(srcType && \"Expected an address-type source\");\n+    assert(tgtType.isAddress() && \"Expected an address-type target\");\n+    assert(srcType == tgtType && \"Source and target type do not match\");\n+    (void)srcType;\n+    (void)tgtType;\n+\n+    SILBuilderWithScope copyBuilder(instr);\n+    createOutlinedCopyCall(copyBuilder, src, tgt, pass);\n+    instr->getParent()->erase(instr);\n+  }\n+\n   for (RetainValueInst *instr : pass.retainInstsToMod) {\n     SILBuilderWithScope retainBuilder(instr);\n     retainBuilder.createRetainValueAddr(\n@@ -2544,22 +2560,6 @@ static void rewriteFunction(StructLoweringState &pass,\n     instr->eraseFromParent();\n   }\n \n-  for (StoreInst *instr : pass.storeInstsToMod) {\n-    SILValue src = instr->getSrc();\n-    SILValue tgt = instr->getDest();\n-    SILType srcType = src->getType();\n-    SILType tgtType = tgt->getType();\n-    assert(srcType && \"Expected an address-type source\");\n-    assert(tgtType.isAddress() && \"Expected an address-type target\");\n-    assert(srcType == tgtType && \"Source and target type do not match\");\n-    (void)srcType;\n-    (void)tgtType;\n-\n-    SILBuilderWithScope copyBuilder(instr);\n-    createOutlinedCopyCall(copyBuilder, src, tgt, pass);\n-    instr->getParent()->erase(instr);\n-  }\n-\n   for (MethodInst *instr : pass.methodInstsToMod) {\n     SILType currSILType = instr->getType();\n     auto currSILFunctionType = currSILType.castTo<SILFunctionType>();\n",
+  "seeded": [
+    {
+      "id": "case-swift-91927-b1",
+      "file": "lib/IRGen/LoadableByAddress.cpp",
+      "line_start": 2438,
+      "line_end": 2453,
+      "category": "logic",
+      "description": "LoadableByAddress for stores of closures involving large loadable types [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swift-91927-b2",
+      "file": "lib/IRGen/LoadableByAddress.cpp",
+      "line_start": 2562,
+      "line_end": 2564,
+      "category": "logic",
+      "description": "LoadableByAddress for stores of closures involving large loadable types [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift",
+    "number": 91927,
+    "merged_at": "2026-09-04T01:33:49Z",
+    "merge_commit": "b803dc0f2124a5f6aa681745b1f9705e074792fd",
+    "title": "Fix LoadableByAddress for stores of closures involving large loadable types",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

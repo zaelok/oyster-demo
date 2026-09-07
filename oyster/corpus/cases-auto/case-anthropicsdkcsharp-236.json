@@ -1,0 +1,36 @@
+{
+  "id": "case-anthropicsdkcsharp-236",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-csharp/pull/236",
+    "repo": "anthropics/anthropic-sdk-csharp",
+    "number": 236
+  },
+  "diff": "--- a/src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\n+++ b/src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs\n@@ -1089,11 +1089,6 @@ bool hasHostedFiles\n                 (betaHeaders ??= []).Add(\"files-api-2025-04-14\");\n             }\n \n-            if (createParams.RawBodyData.ContainsKey(\"context_management\"))\n-            {\n-                (betaHeaders ??= []).Add(\"context-management-2025-06-27\");\n-            }\n-\n             if (options is not null)\n             {\n                 if (options.Instructions is { } instructions)\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkcsharp-236-b1",
+      "file": "src/Anthropic/Services/Beta/Messages/AnthropicBetaClientExtensions.cs",
+      "line_start": 1091,
+      "line_end": 1093,
+      "category": "logic",
+      "description": "fix(meai): add context-management beta header when raw template carries context_management [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-csharp",
+    "number": 236,
+    "merged_at": "2026-08-11T20:36:01Z",
+    "merge_commit": "e2d087628c3946c515aa9e06c06509fd15478b12",
+    "title": "fix(meai): add context-management beta header when raw template carries context_management",
+    "language": "csharp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

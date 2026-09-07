@@ -1,6 +1,16 @@
+import json
+
 import pytest
 
-from oyster.corpus import load_case_file, load_cases, parse_diff, validate_case, validate_corpus
+from oyster.corpus import (
+    load_case_dict,
+    load_case_file,
+    load_cases,
+    load_corpora,
+    parse_diff,
+    validate_case,
+    validate_corpus,
+)
 from oyster.types import CorpusCase, SeededBug
 from tests.conftest import CORPUS_DIR, INVALID_DIR
 
@@ -91,3 +101,48 @@ def test_templates_and_readme_are_not_loaded_as_cases():
     assert load_cases(real_corpus) == () or all(
         case.id.startswith("case-") for case in load_cases(real_corpus)
     )
+
+
+def test_load_case_dict_enforces_the_filename_rule():
+    raw = json.loads((CORPUS_DIR / "case-01.json").read_text(encoding="utf-8"))
+    assert load_case_dict(raw, "case-01").id == "case-01"
+    with pytest.raises(ValueError, match="does not match filename stem"):
+        load_case_dict(raw, "case-99")
+
+
+def test_load_corpora_unions_tiers_and_rejects_shared_ids(tmp_path):
+    tier_a = tmp_path / "a"
+    tier_b = tmp_path / "b"
+    tier_a.mkdir()
+    tier_b.mkdir()
+    raw = json.loads((CORPUS_DIR / "case-01.json").read_text(encoding="utf-8"))
+    (tier_a / "case-01.json").write_text(json.dumps(raw), encoding="utf-8")
+    raw_b = dict(raw, id="case-02")
+    (tier_b / "case-02.json").write_text(json.dumps(raw_b), encoding="utf-8")
+    assert [case.id for case in load_corpora([tier_a, tier_b])] == ["case-01", "case-02"]
+    (tier_b / "case-01.json").write_text(json.dumps(raw), encoding="utf-8")
+    with pytest.raises(ValueError, match="duplicated across the corpus"):
+        load_corpora([tier_a, tier_b])
+
+
+def test_auto_tier_loads_and_is_disjoint_from_the_reviewed_tier():
+    """The machine-labelled tier must satisfy every validator rule the reviewed tier does,
+    carry its provenance, and never repeat a reviewed PR."""
+    from pathlib import Path
+
+    auto = Path("oyster/corpus/cases-auto")
+    reviewed = Path("oyster/corpus/cases")
+    if not any(auto.glob("case-*.json")):
+        pytest.skip("auto tier not built")
+    cases = load_corpora([reviewed, auto])
+    assert len(cases) > 17
+    reviewed_urls = {
+        json.loads(p.read_text(encoding="utf-8"))["source"]["pr"]
+        for p in reviewed.glob("case-*.json")
+    }
+    for path in auto.glob("case-*.json"):
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        assert raw["meta"]["tier"] == "auto", path
+        assert raw["meta"]["language"], path
+        assert raw["source"]["pr"] not in reviewed_urls, path
+        assert all("auto label" in bug["description"] for bug in raw["seeded"]), path

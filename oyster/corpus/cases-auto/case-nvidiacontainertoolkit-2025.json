@@ -1,0 +1,36 @@
+{
+  "id": "case-nvidiacontainertoolkit-2025",
+  "source": {
+    "pr": "https://github.com/NVIDIA/nvidia-container-toolkit/pull/2025",
+    "repo": "NVIDIA/nvidia-container-toolkit",
+    "number": 2025
+  },
+  "diff": "--- a/pkg/nvcdi/lib-wsl.go\n+++ b/pkg/nvcdi/lib-wsl.go\n@@ -18,7 +18,6 @@ package nvcdi\n \n import (\n \t\"fmt\"\n-\t\"slices\"\n \n \t\"tags.cncf.io/container-device-interface/pkg/cdi\"\n \t\"tags.cncf.io/container-device-interface/specs-go\"\n@@ -28,10 +27,7 @@ type wsllib nvcdilib\n \n var _ deviceSpecGeneratorFactory = (*wsllib)(nil)\n \n-func (l *wsllib) DeviceSpecGenerators(ids ...string) (DeviceSpecGenerator, error) {\n-\tif slices.Contains(ids, \"none\") {\n-\t\treturn emptyDeviceSpecGenerator(\"none\"), nil\n-\t}\n+func (l *wsllib) DeviceSpecGenerators(...string) (DeviceSpecGenerator, error) {\n \treturn l, nil\n }\n \n",
+  "seeded": [
+    {
+      "id": "case-nvidiacontainertoolkit-2025-b1",
+      "file": "pkg/nvcdi/lib-wsl.go",
+      "line_start": 30,
+      "line_end": 30,
+      "category": "logic",
+      "description": "wsl: honor none value for NVIDIA_VISIBLE_DEVICES envvar [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/nvidia-container-toolkit",
+    "number": 2025,
+    "merged_at": "2026-08-25T16:03:20Z",
+    "merge_commit": "b5a4721daa18ec48fb3bcc2c9e04cbd6baff373a",
+    "title": "wsl: honor none value for NVIDIA_VISIBLE_DEVICES envvar",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

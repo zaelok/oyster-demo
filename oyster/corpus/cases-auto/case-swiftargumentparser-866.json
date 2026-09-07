@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftargumentparser-866",
+  "source": {
+    "pr": "https://github.com/apple/swift-argument-parser/pull/866",
+    "repo": "apple/swift-argument-parser",
+    "number": 866
+  },
+  "diff": "--- a/Sources/ArgumentParser/Parsing/CommandParser.swift\n+++ b/Sources/ArgumentParser/Parsing/CommandParser.swift\n@@ -110,23 +110,14 @@ extension CommandParser {\n   /// - Parameters:\n   ///   - split: The remaining arguments to examine.\n   ///   - requireSoloArgument: `true` if the built-in flag must be the only\n+  ///     one remaining for this to catch it.\n   ///\n   /// - Throws: If a built-in flag is found.\n   func checkForBuiltInFlags(\n     _ split: SplitArguments,\n     requireSoloArgument: Bool = false\n   ) throws {\n-    if requireSoloArgument {\n-      guard split.count >= 1 else { return }\n-\n-      let originIndex = split.elements[split.elements.startIndex].index\n-        .inputIndex\n-      for element in split.elements {\n-        guard element.index.inputIndex == originIndex else {\n-          return\n-        }\n-      }\n-    }\n+    guard !requireSoloArgument || split.originalInput.count == 1 else { return }\n \n     // Look for help flags\n     guard\n",
+  "seeded": [
+    {
+      "id": "case-swiftargumentparser-866-b1",
+      "file": "Sources/ArgumentParser/Parsing/CommandParser.swift",
+      "line_start": 120,
+      "line_end": 120,
+      "category": "logic",
+      "description": "-help in nested subcommands with default subcommands [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-argument-parser",
+    "number": 866,
+    "merged_at": "2026-03-20T12:04:38Z",
+    "merge_commit": "4453aa97f3f9c6b58fab3361265f7688b59855d2",
+    "title": "Fix --help in nested subcommands with default subcommands",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

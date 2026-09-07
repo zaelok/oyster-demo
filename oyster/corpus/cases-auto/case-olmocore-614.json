@@ -1,0 +1,36 @@
+{
+  "id": "case-olmocore-614",
+  "source": {
+    "pr": "https://github.com/allenai/OLMo-core/pull/614",
+    "repo": "allenai/OLMo-core",
+    "number": 614
+  },
+  "diff": "--- a/src/olmo_core/train/callbacks/speed_monitor.py\n+++ b/src/olmo_core/train/callbacks/speed_monitor.py\n@@ -110,7 +110,7 @@ def pre_train(self):\n                     self.device_peak_flops_per_second = int(4.5e15 * dense_correction)\n                 else:  # for other GPU types, assume A100\n                     # data from https://www.nvidia.com/en-us/data-center/a100/\n-                    self.device_peak_flops_per_second = int(624e12 * dense_correction)\n+                    self.device_peak_flops_per_second = int(312e12 * dense_correction)\n             log.info(\n                 f\"Device: {device_name}, Device peak Flops/s: {self.device_peak_flops_per_second}\"\n             )\n",
+  "seeded": [
+    {
+      "id": "case-olmocore-614-b1",
+      "file": "src/olmo_core/train/callbacks/speed_monitor.py",
+      "line_start": 113,
+      "line_end": 113,
+      "category": "logic",
+      "description": "A100 peak flops spec in speed monitor [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/OLMo-core",
+    "number": 614,
+    "merged_at": "2026-02-20T20:46:11Z",
+    "merge_commit": "db2b6eff2b8099e30ae43a934aa33725814dfb9a",
+    "title": "Fix A100 peak flops spec in speed monitor",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

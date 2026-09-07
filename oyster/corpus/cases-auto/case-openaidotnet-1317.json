@@ -1,0 +1,54 @@
+{
+  "id": "case-openaidotnet-1317",
+  "source": {
+    "pr": "https://github.com/openai/openai-dotnet/pull/1317",
+    "repo": "openai/openai-dotnet",
+    "number": 1317
+  },
+  "diff": "--- a/OpenAI/src/Custom/Realtime/RealtimeClient.cs\n+++ b/OpenAI/src/Custom/Realtime/RealtimeClient.cs\n@@ -110,12 +110,10 @@ private static Uri GetWebSocketEndpoint(RealtimeClientOptions options = null)\n             _ => uriBuilder.Scheme\n         };\n         uriBuilder.Query = \"\";\n-        string path = uriBuilder.Path.TrimEnd('/');\n-        if (!path.EndsWith(\"/realtime\", StringComparison.Ordinal))\n+        if (!uriBuilder.Path.EndsWith(\"/realtime\"))\n         {\n-            path += \"/realtime\";\n+            uriBuilder.Path += uriBuilder.Path[uriBuilder.Path.Length - 1] == '/' ? \"realtime\" : \"/realtime\";\n         }\n-        uriBuilder.Path = path;\n \n         return uriBuilder.Uri;\n     }\n@@ -125,4 +123,4 @@ internal void RaiseOnSendingCommand<T>(T session, BinaryData data)\n \n     internal void RaiseOnReceivingCommand<T>(T session, BinaryData data)\n         => OnReceivingCommand?.Invoke(session, data);\n-}\n+}\n\\ No newline at end of file\n",
+  "seeded": [
+    {
+      "id": "case-openaidotnet-1317-b1",
+      "file": "OpenAI/src/Custom/Realtime/RealtimeClient.cs",
+      "line_start": 113,
+      "line_end": 113,
+      "category": "logic",
+      "description": "fix(realtime): normalize trailing slash in websocket endpoint [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaidotnet-1317-b2",
+      "file": "OpenAI/src/Custom/Realtime/RealtimeClient.cs",
+      "line_start": 115,
+      "line_end": 115,
+      "category": "logic",
+      "description": "fix(realtime): normalize trailing slash in websocket endpoint [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaidotnet-1317-b3",
+      "file": "OpenAI/src/Custom/Realtime/RealtimeClient.cs",
+      "line_start": 116,
+      "line_end": 118,
+      "category": "logic",
+      "description": "fix(realtime): normalize trailing slash in websocket endpoint [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-dotnet",
+    "number": 1317,
+    "merged_at": "2026-08-24T17:12:23Z",
+    "merge_commit": "1b22ade2e78565880626ab3569289a0e33f008c6",
+    "title": "fix(realtime): normalize trailing slash in websocket endpoint",
+    "language": "csharp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

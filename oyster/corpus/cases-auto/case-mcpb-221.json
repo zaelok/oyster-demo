@@ -1,0 +1,36 @@
+{
+  "id": "case-mcpb-221",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/mcpb/pull/221",
+    "repo": "modelcontextprotocol/mcpb",
+    "number": 221
+  },
+  "diff": "--- a/src/shared/config.ts\n+++ b/src/shared/config.ts\n@@ -117,9 +117,7 @@ export async function getMcpConfigForManifest(\n \n       result.command = platformConfig.command || result.command;\n       result.args = platformConfig.args || result.args;\n-      result.env = platformConfig.env\n-        ? { ...result.env, ...platformConfig.env }\n-        : result.env;\n+      result.env = platformConfig.env || result.env;\n     }\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-mcpb-221-b1",
+      "file": "src/shared/config.ts",
+      "line_start": 120,
+      "line_end": 120,
+      "category": "logic",
+      "description": "merge platform_overrides env with base env instead of replacing [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/mcpb",
+    "number": 221,
+    "merged_at": "2026-04-13T17:59:07Z",
+    "merge_commit": "7f4596d8c8c8cb78f84cd5cdf99fce67b39c7136",
+    "title": "fix: merge platform_overrides env with base env instead of replacing",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

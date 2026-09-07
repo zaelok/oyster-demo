@@ -1,0 +1,45 @@
+{
+  "id": "case-cudfspark-15870",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cudf-spark/pull/15870",
+    "repo": "NVIDIA/cudf-spark",
+    "number": 15870
+  },
+  "diff": "--- a/integration_tests/src/main/python/data_gen.py\n+++ b/integration_tests/src/main/python/data_gen.py\n@@ -919,31 +919,6 @@ def _date_to_iso_string(data):\n     return data.strftime(\"%Y-%m-%d\").zfill(10)\n \n \n-def _normalize_pyspark_scalar(data, data_type):\n-    if data is None:\n-        return None\n-\n-    if isinstance(data_type, ArrayType):\n-        assert isinstance(data, (list, tuple))\n-        return type(data)(_normalize_pyspark_scalar(x, data_type.elementType) for x in data)\n-    elif isinstance(data_type, StructType):\n-        assert isinstance(data, tuple) and len(data) == len(data_type.fields)\n-        return tuple(\n-            _normalize_pyspark_scalar(x, field.dataType)\n-            for x, field in zip(data, data_type.fields))\n-    elif isinstance(data_type, DateType):\n-        return _date_to_iso_string(data)\n-    elif isinstance(data_type, MapType):\n-        assert isinstance(data, dict)\n-        return {\n-            _normalize_pyspark_scalar(key, data_type.keyType):\n-                _normalize_pyspark_scalar(value, data_type.valueType)\n-            for key, value in data.items()\n-        }\n-    else:\n-        return data\n-\n-\n def _mark_as_lit(data, data_type):\n     # To support nested types, 'data_type' is required.\n     assert data_type is not None\n@@ -1010,7 +985,9 @@ def gen_scalar_values(data_gen, count, seed=None, force_no_nulls=False):\n \n     def gen_value():\n         value = src.gen(force_no_nulls=force_no_nulls)\n-        return _normalize_pyspark_scalar(value, data_type)\n+        if value is not None and isinstance(data_type, DateType):\n+            return _date_to_iso_string(value)\n+        return value\n \n     return (gen_value() for i in range(0, count))\n \n",
+  "seeded": [
+    {
+      "id": "case-cudfspark-15870-b1",
+      "file": "integration_tests/src/main/python/data_gen.py",
+      "line_start": 921,
+      "line_end": 923,
+      "category": "logic",
+      "description": "nested date scalar normalization [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cudfspark-15870-b2",
+      "file": "integration_tests/src/main/python/data_gen.py",
+      "line_start": 988,
+      "line_end": 990,
+      "category": "logic",
+      "description": "nested date scalar normalization [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cudf-spark",
+    "number": 15870,
+    "merged_at": "2026-09-03T23:07:20Z",
+    "merge_commit": "b275bd6195b76c8b12f7dca3901a23f108c1d1ad",
+    "title": "Fix nested date scalar normalization",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

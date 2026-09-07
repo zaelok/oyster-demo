@@ -1,0 +1,36 @@
+{
+  "id": "case-whisper-2812",
+  "source": {
+    "pr": "https://github.com/openai/whisper/pull/2812",
+    "repo": "openai/whisper",
+    "number": 2812
+  },
+  "diff": "--- a/whisper/model.py\n+++ b/whisper/model.py\n@@ -121,9 +121,6 @@ def qkv_attention(\n         v = v.view(*v.shape[:2], self.n_head, -1).permute(0, 2, 1, 3)\n \n         if SDPA_AVAILABLE and MultiHeadAttention.use_sdpa:\n-            if k.shape[0] == 1 and q.shape[0] != 1:\n-                k = k.expand(q.shape[0], *k.shape[1:])\n-                v = v.expand(q.shape[0], *v.shape[1:])\n             a = scaled_dot_product_attention(\n                 q, k, v, is_causal=mask is not None and n_ctx > 1\n             )\n",
+  "seeded": [
+    {
+      "id": "case-whisper-2812-b1",
+      "file": "whisper/model.py",
+      "line_start": 123,
+      "line_end": 125,
+      "category": "logic",
+      "description": "SDPA cross-attention falling back to the math kernel [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/whisper",
+    "number": 2812,
+    "merged_at": "2026-07-28T20:18:30Z",
+    "merge_commit": "5f86d1d86363843179951550570367b37c5d6f78",
+    "title": "Fix: SDPA cross-attention falling back to the math kernel",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

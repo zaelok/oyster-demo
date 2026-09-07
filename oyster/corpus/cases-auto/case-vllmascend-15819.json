@@ -1,0 +1,36 @@
+{
+  "id": "case-vllmascend-15819",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-ascend/pull/15819",
+    "repo": "vllm-project/vllm-ascend",
+    "number": 15819
+  },
+  "diff": "--- a/vllm_ascend/spec_decode/dspark_proposer.py\n+++ b/vllm_ascend/spec_decode/dspark_proposer.py\n@@ -413,9 +413,6 @@ def dummy_run(\n             aclgraph_runtime_mode=aclgraph_runtime_mode,\n             is_draft_model=True,\n             draft_attn_metadatas=[],\n-            eplb_heat_collection_status=(\n-                self.runner.eplb_heat_collection_status if self.runner.dynamic_eplb else False\n-            ),\n         ):\n             if is_profile:\n                 self.model.precompute_and_store_context_kv(context_states, context_positions)\n",
+  "seeded": [
+    {
+      "id": "case-vllmascend-15819-b1",
+      "file": "vllm_ascend/spec_decode/dspark_proposer.py",
+      "line_start": 415,
+      "line_end": 417,
+      "category": "logic",
+      "description": "Pass eplb_heat_collection_status to DSpark dummy_run [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-ascend",
+    "number": 15819,
+    "merged_at": "2026-09-06T08:22:57Z",
+    "merge_commit": "e9ccfbeb171c07efb4235ebce44afabc0ed28b1e",
+    "title": "[BugFix] Pass eplb_heat_collection_status to DSpark dummy_run",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

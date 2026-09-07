@@ -1,0 +1,36 @@
+{
+  "id": "case-megatronlm-6982",
+  "source": {
+    "pr": "https://github.com/NVIDIA/Megatron-LM/pull/6982",
+    "repo": "NVIDIA/Megatron-LM",
+    "number": 6982
+  },
+  "diff": "--- a/megatron/core/optimizer/distrib_optimizer.py\n+++ b/megatron/core/optimizer/distrib_optimizer.py\n@@ -470,9 +470,7 @@ def _build_model_and_main_param_groups(\n \n                 # fp32 params.\n                 elif model_param.type() == 'torch.cuda.FloatTensor':\n-                    shard_model_param = model_param.detach().view(-1)[\n-                        param_range.start : param_range.end\n-                    ]\n+                    shard_model_param = model_param.view(-1)[param_range.start : param_range.end]\n                     model_fp32_params_this_group.append(model_param)\n                     shard_fp32_params_this_group.append(shard_model_param)\n                     tensor_parallel.copy_tensor_model_parallel_attributes(\n",
+  "seeded": [
+    {
+      "id": "case-megatronlm-6982-b1",
+      "file": "megatron/core/optimizer/distrib_optimizer.py",
+      "line_start": 473,
+      "line_end": 473,
+      "category": "logic",
+      "description": "fix(optimizer): detach FP32 model params before creating shards in DistributedOptimizer [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/Megatron-LM",
+    "number": 6982,
+    "merged_at": "2026-09-02T08:46:57Z",
+    "merge_commit": "d5ff7ea72cffe1eb1daedaa2c7b2858694ab0d3c",
+    "title": "fix(optimizer): detach FP32 model params before creating shards in DistributedOptimizer",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

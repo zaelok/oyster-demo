@@ -1,0 +1,45 @@
+{
+  "id": "case-cudfspark-15900",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cudf-spark/pull/15900",
+    "repo": "NVIDIA/cudf-spark",
+    "number": 15900
+  },
+  "diff": "--- a/sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala\n+++ b/sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala\n@@ -1071,13 +1071,14 @@ case class GpuMapZipWith(\n     boundIntermediate: Seq[GpuExpression] = Seq.empty)\n     extends GpuMapTwoArgumentHigherOrderFunction {\n \n-  @transient lazy val MapType(keyType1, _, _) = argument1.dataType\n-  @transient lazy val MapType(keyType2, _, _) = argument2.dataType\n+  @transient lazy val MapType(keyType1, valueType1, valueContainsNull1) = argument1.dataType\n+  @transient lazy val MapType(keyType2, valueType2, valueContainsNull2) = argument2.dataType\n \n   @transient lazy val keyType =\n     TypeCoercion.findCommonTypeDifferentOnlyInNullFlags(keyType1, keyType2).get\n \n-  override def dataType: DataType = MapType(keyType, function.dataType, function.nullable)\n+  override def dataType: DataType = MapType(keyType, function.dataType, \n+    valueContainsNull1 || valueContainsNull2)\n \n   override def prettyName: String = \"map_zip_with\"\n \n",
+  "seeded": [
+    {
+      "id": "case-cudfspark-15900-b1",
+      "file": "sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala",
+      "line_start": 1074,
+      "line_end": 1075,
+      "category": "security",
+      "description": "map_zip_with lambda result nullability [fast-ut] [databricks] [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cudfspark-15900-b2",
+      "file": "sql-plugin/src/main/scala/com/nvidia/spark/rapids/higherOrderFunctions.scala",
+      "line_start": 1080,
+      "line_end": 1081,
+      "category": "security",
+      "description": "map_zip_with lambda result nullability [fast-ut] [databricks] [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cudf-spark",
+    "number": 15900,
+    "merged_at": "2026-09-05T04:12:42Z",
+    "merge_commit": "9ae2b979370c65e64f1f1fa0db9b8c7c71b55d89",
+    "title": "[AutoSparkUT] Fix map_zip_with lambda result nullability [fast-ut] [databricks]",
+    "language": "scala",
+    "category_reasons": [
+      "inject"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "case-openaiagentspython-4663",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-python/pull/4663",
+    "repo": "openai/openai-agents-python",
+    "number": 4663
+  },
+  "diff": "--- a/src/agents/voice/models/openai_stt.py\n+++ b/src/agents/voice/models/openai_stt.py\n@@ -177,11 +177,7 @@ def _start_turn(self) -> None:\n                     if self._trace_include_sensitive_data\n                     else None\n                 ),\n-                \"prompt\": (\n-                    transcription_config.get(\"prompt\")\n-                    if self._trace_include_sensitive_data\n-                    else None\n-                ),\n+                \"prompt\": transcription_config.get(\"prompt\"),\n                 \"turn_detection\": self._turn_detection,\n             },\n         )\n@@ -557,11 +553,7 @@ async def transcribe(\n             model_config={\n                 \"temperature\": self._non_null_or_not_given(settings.temperature),\n                 \"language\": self._non_null_or_not_given(settings.language),\n-                \"prompt\": (\n-                    self._non_null_or_not_given(settings.prompt)\n-                    if trace_include_sensitive_data\n-                    else None\n-                ),\n+                \"prompt\": self._non_null_or_not_given(settings.prompt),\n             },\n         ) as span:\n             try:\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentspython-4663-b1",
+      "file": "src/agents/voice/models/openai_stt.py",
+      "line_start": 180,
+      "line_end": 180,
+      "category": "security",
+      "description": "fix(voice): redact STT prompts from traces [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaiagentspython-4663-b2",
+      "file": "src/agents/voice/models/openai_stt.py",
+      "line_start": 556,
+      "line_end": 556,
+      "category": "security",
+      "description": "fix(voice): redact STT prompts from traces [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-python",
+    "number": 4663,
+    "merged_at": "2026-08-26T02:02:29Z",
+    "merge_commit": "1df6e81474a439d4fff8eac227743cfb3f5d2d6d",
+    "title": "fix(voice): redact STT prompts from traces",
+    "language": "python",
+    "category_reasons": [
+      "redact",
+      "sensitive"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

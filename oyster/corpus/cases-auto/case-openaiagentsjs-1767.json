@@ -1,0 +1,36 @@
+{
+  "id": "case-openaiagentsjs-1767",
+  "source": {
+    "pr": "https://github.com/openai/openai-agents-js/pull/1767",
+    "repo": "openai/openai-agents-js",
+    "number": 1767
+  },
+  "diff": "--- a/packages/agents-openai/src/openaiResponsesModel.ts\n+++ b/packages/agents-openai/src/openaiResponsesModel.ts\n@@ -3958,10 +3958,6 @@ export class OpenAIResponsesModel implements Model {\n             }\n           } else if (terminalResponse) {\n             finalResponse = terminalResponse;\n-            if (span && request.tracing === true) {\n-              span.spanData.response_id = terminalResponse.id;\n-              span.spanData._response = terminalResponse;\n-            }\n             const { response: _response, ...remainingEvent } = terminalEvent;\n             const {\n               output: _output,\n",
+  "seeded": [
+    {
+      "id": "case-openaiagentsjs-1767-b1",
+      "file": "packages/agents-openai/src/openaiResponsesModel.ts",
+      "line_start": 3960,
+      "line_end": 3962,
+      "category": "security",
+      "description": "fix(openai): preserve response span data on early stream close [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-agents-js",
+    "number": 1767,
+    "merged_at": "2026-08-28T08:00:09Z",
+    "merge_commit": "4b539bbccde506ac87509ddf581a69bd3bc63ab4",
+    "title": "fix(openai): preserve response span data on early stream close",
+    "language": "typescript",
+    "category_reasons": [
+      "redact"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

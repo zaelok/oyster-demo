@@ -1,0 +1,36 @@
+{
+  "id": "case-pkl-1816",
+  "source": {
+    "pr": "https://github.com/apple/pkl/pull/1816",
+    "repo": "apple/pkl",
+    "number": 1816
+  },
+  "diff": "--- a/pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\n+++ b/pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java\n@@ -115,9 +115,7 @@ public VmMap getImports() {\n         if (bodyNode instanceof WrapperNode wrapper) {\n           bodyNode = (ExpressionNode) wrapper.getDelegateNode();\n         }\n-        if (bodyNode instanceof ImportNode importNode) {\n-          builder.add(member.getName().toString(), importNode.getImportUri().toString());\n-        }\n+        builder.add(member.getName().toString(), ((ImportNode) bodyNode).getImportUri().toString());\n       }\n     }\n     return builder.build();\n--- a/stdlib/reflect.pkl\n+++ b/stdlib/reflect.pkl\n@@ -201,6 +201,7 @@ external class Module extends Declaration {\n   /// Map keys are the identifiers by which imports are accessed within this module.\n   /// Map values are the URIs of the imported modules.\n   ///\n+  /// Does not cover import expressions.\n   imports: Map<String, Uri>\n \n   /// The classes declared in this module.\n",
+  "seeded": [
+    {
+      "id": "case-pkl-1816-b1",
+      "file": "pkl-core/src/main/java/org/pkl/core/runtime/VmTyped.java",
+      "line_start": 118,
+      "line_end": 118,
+      "category": "logic",
+      "description": "reflect crash on modules using glob imports [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/pkl",
+    "number": 1816,
+    "merged_at": "2026-08-25T19:04:46Z",
+    "merge_commit": "a90eb74c2de63f5cb1a16f847f91c228eb9a9141",
+    "title": "Fix reflect crash on modules using glob imports",
+    "language": "java",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

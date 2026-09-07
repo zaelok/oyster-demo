@@ -1,0 +1,36 @@
+{
+  "id": "case-raft-3134",
+  "source": {
+    "pr": "https://github.com/NVIDIA/raft/pull/3134",
+    "repo": "NVIDIA/raft",
+    "number": 3134
+  },
+  "diff": "--- a/cpp/include/raft/core/detail/copy.hpp\n+++ b/cpp/include/raft/core/detail/copy.hpp\n@@ -303,10 +303,12 @@ __device__ auto increment_indices(IdxType* indices,\n       }\n     }(i);\n \n-    auto const max_index = md.extent(real_index) - IdxType{1};\n-    auto const quotient  = increment / index_strides[real_index];\n-    auto const cur_index = quotient < max_index ? quotient : max_index;\n-    increment -= cur_index * index_strides[real_index];\n+    auto cur_index = IdxType{};\n+\n+    while (cur_index < md.extent(real_index) - 1 && increment >= index_strides[real_index]) {\n+      increment -= index_strides[real_index];\n+      ++cur_index;\n+    }\n     indices[real_index] = cur_index;\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-raft-3134-b1",
+      "file": "cpp/include/raft/core/detail/copy.hpp",
+      "line_start": 306,
+      "line_end": 311,
+      "category": "logic",
+      "description": "striding in mdspan 1d copies [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/raft",
+    "number": 3134,
+    "merged_at": "2026-09-03T11:40:34Z",
+    "merge_commit": "9f40aa9e1d98d6b71ff6f133e72db7cb13998fce",
+    "title": "Fix striding in mdspan 1d copies",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

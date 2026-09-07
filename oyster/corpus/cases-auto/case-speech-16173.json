@@ -1,0 +1,36 @@
+{
+  "id": "case-speech-16173",
+  "source": {
+    "pr": "https://github.com/NVIDIA-NeMo/Speech/pull/16173",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16173
+  },
+  "diff": "--- a/nemo/collections/asr/models/label_models.py\n+++ b/nemo/collections/asr/models/label_models.py\n@@ -765,10 +765,8 @@ def verify_speakers_batch(self, audio_files_pairs, threshold=0.7, batch_size=32,\n         X = embs1.unsqueeze(dim=1)\n         Y = embs2.unsqueeze(dim=2)\n         # Score\n-        similarity_scores = torch.matmul(X, Y).squeeze(-1).squeeze(-1) / (\n-            (\n-                torch.matmul(X, X.permute(0, 2, 1)).squeeze(-1).squeeze(-1)\n-            )\n+        similarity_scores = torch.matmul(X, Y).squeeze() / (\n+            (torch.matmul(X, X.permute(0, 2, 1)).squeeze() * torch.matmul(Y.permute(0, 2, 1), Y).squeeze()) ** 0.5\n         )\n         similarity_scores = (similarity_scores + 1) / 2\n \n",
+  "seeded": [
+    {
+      "id": "case-speech-16173-b1",
+      "file": "nemo/collections/asr/models/label_models.py",
+      "line_start": 768,
+      "line_end": 769,
+      "category": "logic",
+      "description": "fix(asr): keep the batch dimension in verify_speakers_batch for a single pair [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA-NeMo/Speech",
+    "number": 16173,
+    "merged_at": "2026-09-02T14:16:39Z",
+    "merge_commit": "ea1ebf55b25fceff372f885b4e7b5803f3d33dea",
+    "title": "fix(asr): keep the batch dimension in verify_speakers_batch for a single pair",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

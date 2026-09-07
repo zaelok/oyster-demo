@@ -1,0 +1,36 @@
+{
+  "id": "case-litellm-39848",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39848",
+    "repo": "BerriAI/litellm",
+    "number": 39848
+  },
+  "diff": "--- a/litellm/types/utils.py\n+++ b/litellm/types/utils.py\n@@ -3096,6 +3096,7 @@ class GuardrailMode(TypedDict, total=False):\n \n # The rest of the record: what the guardrail is, what it decided, how long it took and what it cost.\n # None of these reproduce the prompt, so a redacted record keeps them and stays explainable.\n+# `test_every_guardrail_field_is_classified` fails if a field is added to the record without being\n # placed in one set or the other, so a new field is dropped from redacted records rather than\n # shipped unexamined.\n AUDIT_GUARDRAIL_FIELDS: Final[frozenset[str]] = frozenset(\n@@ -3120,7 +3120,6 @@ class GuardrailMode(TypedDict, total=False):\n         \"guardrail_action\",\n         \"guardrail_usage\",\n         \"guardrail_cost\",\n-        \"guardrail_cost_by_unit\",\n         \"guardrail_cost_in_spend\",\n     }\n )\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39848-b1",
+      "file": "litellm/types/utils.py",
+      "line_start": 3122,
+      "line_end": 3124,
+      "category": "security",
+      "description": "fix(datadog_llm_obs): keep guardrail_cost_by_unit on redacted spans [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39848,
+    "merged_at": "2026-09-05T03:02:34Z",
+    "merge_commit": "df3b8a699d6b077e19b73da5fed2b120864a650b",
+    "title": "fix(datadog_llm_obs): keep guardrail_cost_by_unit on redacted spans",
+    "language": "python",
+    "category_reasons": [
+      "redact"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

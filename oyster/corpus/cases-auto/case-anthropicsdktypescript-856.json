@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdktypescript-856",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-typescript/pull/856",
+    "repo": "anthropics/anthropic-sdk-typescript",
+    "number": 856
+  },
+  "diff": "--- a/src/lib/BetaMessageStream.ts\n+++ b/src/lib/BetaMessageStream.ts\n@@ -118,8 +118,6 @@ export class BetaMessageStream<ParsedT = null> implements AsyncIterable<BetaMess\n     response: Response;\n     request_id: string | null | undefined;\n   }> {\n-    this.#catchingPromiseCreated = true;\n-\n     const response = await this.#connectedPromise;\n     if (!response) {\n       throw new Error('Could not resolve a `Response` object');\n--- a/src/lib/MessageStream.ts\n+++ b/src/lib/MessageStream.ts\n@@ -112,8 +112,6 @@ export class MessageStream implements AsyncIterable<MessageStreamEvent> {\n     response: Response;\n     request_id: string | null | undefined;\n   }> {\n-    this.#catchingPromiseCreated = true;\n-\n     const response = await this.#connectedPromise;\n     if (!response) {\n       throw new Error('Could not resolve a `Response` object');\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdktypescript-856-b1",
+      "file": "src/lib/BetaMessageStream.ts",
+      "line_start": 120,
+      "line_end": 122,
+      "category": "logic",
+      "description": "fix(streams): ensure errors are catchable [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdktypescript-856-b2",
+      "file": "src/lib/MessageStream.ts",
+      "line_start": 114,
+      "line_end": 116,
+      "category": "logic",
+      "description": "fix(streams): ensure errors are catchable [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-typescript",
+    "number": 856,
+    "merged_at": "2025-12-05T12:32:33Z",
+    "merge_commit": "a480eafbcbebc83510446b6280f91f969de531f9",
+    "title": "fix(streams): ensure errors are catchable ",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

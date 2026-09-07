@@ -1,0 +1,36 @@
+{
+  "id": "case-tensorrt-4836",
+  "source": {
+    "pr": "https://github.com/NVIDIA/TensorRT/pull/4836",
+    "repo": "NVIDIA/TensorRT",
+    "number": 4836
+  },
+  "diff": "--- a/tools/Polygraphy/polygraphy/config.py\n+++ b/tools/Polygraphy/polygraphy/config.py\n@@ -31,7 +31,7 @@\n This can be configured by setting the 'POLYGRAPHY_AUTOINSTALL_DEPS' environment variable.\n \"\"\"\n \n-ASK_BEFORE_INSTALL = bool(os.environ.get(\"POLYGRAPHY_ASK_BEFORE_INSTALL\", \"0\") != \"0\")\n+ASK_BEFORE_INSTALL = bool(os.environ.get(\"POLYGRAPHY_ASK_BEFORE_INSTALL\", \"0\" != \"0\"))\n \"\"\"\n bool: Whether Polygraphy should ask before automatically installing required Python packages.\n Has no effect if AUTOINSTALL_DEPS is not enabled.\n",
+  "seeded": [
+    {
+      "id": "case-tensorrt-4836-b1",
+      "file": "tools/Polygraphy/polygraphy/config.py",
+      "line_start": 34,
+      "line_end": 34,
+      "category": "logic",
+      "description": "Polygraphy - fix POLYGRAPHY_ASK_BEFORE_INSTALL=0 still enabling the install prompt [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/TensorRT",
+    "number": 4836,
+    "merged_at": "2026-08-25T21:23:36Z",
+    "merge_commit": "c93b7d4893184af4882f9f1862e13a5c64b8677d",
+    "title": "Polygraphy - fix POLYGRAPHY_ASK_BEFORE_INSTALL=0 still enabling the install prompt",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

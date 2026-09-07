@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftcorelibsfoundation-5502",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-corelibs-foundation/pull/5502",
+    "repo": "swiftlang/swift-corelibs-foundation",
+    "number": 5502
+  },
+  "diff": "--- a/Sources/CoreFoundation/CFDate.c\n+++ b/Sources/CoreFoundation/CFDate.c\n@@ -168,7 +168,11 @@ CF_PRIVATE void __CFDateInitialize(void) {\n     __CFTSRRate = 1.0e7;\n     __CF1_TSRRate = 1.0 / __CFTSRRate;\n #elif TARGET_OS_LINUX || TARGET_OS_BSD || TARGET_OS_WASI\n-    __CFTSRRate = (double)NSEC_PER_SEC;\n+    struct timespec res;\n+    if (clock_getres(CLOCK_MONOTONIC, &res) != 0) {\n+        HALT;\n+    }\n+    __CFTSRRate = res.tv_sec + (1000000000 * res.tv_nsec);\n     __CF1_TSRRate = 1.0 / __CFTSRRate;\n #else\n #error Unable to initialize date\n",
+  "seeded": [
+    {
+      "id": "case-swiftcorelibsfoundation-5502-b1",
+      "file": "Sources/CoreFoundation/CFDate.c",
+      "line_start": 171,
+      "line_end": 175,
+      "category": "logic",
+      "description": "CFRunLoop timeouts breaking under coarse-resolution CLOCK_MONOTONIC [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-corelibs-foundation",
+    "number": 5502,
+    "merged_at": "2026-07-07T02:52:44Z",
+    "merge_commit": "699830769888002c055f19509cb1161798904dc7",
+    "title": "[6.4.x] Fix CFRunLoop timeouts breaking under coarse-resolution CLOCK_MONOTONIC",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

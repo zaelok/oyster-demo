@@ -1,0 +1,36 @@
+{
+  "id": "case-swift-91965",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift/pull/91965",
+    "repo": "swiftlang/swift",
+    "number": 91965
+  },
+  "diff": "--- a/lib/ClangImporter/ImportDecl.cpp\n+++ b/lib/ClangImporter/ImportDecl.cpp\n@@ -3414,13 +3414,8 @@ namespace {\n                                           : ConstantConvertKind::None,\n             isStatic, decl,\n             importer::convertClangAccess(clangEnum->getAccess()));\n-\n-        auto key = Impl.getImportedDeclsKey(decl, getVersion());\n-        Impl.ImportedDecls[key] = result;\n-\n-        if (key.first != decl->getCanonicalDecl())\n-          result->addAttribute(\n-            new (Impl.SwiftContext) DisfavoredOverloadAttr(/*Implicit=*/true));\n+        Impl.ImportedDecls[Impl.getImportedDeclsKey(decl, getVersion())] =\n+            result;\n \n         // If this is a compatibility stub, mark it as such.\n         if (correctSwiftName)\n",
+  "seeded": [
+    {
+      "id": "case-swift-91965-b1",
+      "file": "lib/ClangImporter/ImportDecl.cpp",
+      "line_start": 3417,
+      "line_end": 3418,
+      "category": "logic",
+      "description": "inconsistent enum ambiguity [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift",
+    "number": 91965,
+    "merged_at": "2026-09-04T19:02:05Z",
+    "merge_commit": "57629ee526c6fe27fd25bac89725aec8b1cf753e",
+    "title": "[ClangImported] Fix inconsistent enum ambiguity",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-gptoss-182",
+  "source": {
+    "pr": "https://github.com/openai/gpt-oss/pull/182",
+    "repo": "openai/gpt-oss",
+    "number": 182
+  },
+  "diff": "--- a/gpt_oss/tools/python_docker/docker_tool.py\n+++ b/gpt_oss/tools/python_docker/docker_tool.py\n@@ -78,11 +78,7 @@ def call_python_script_with_uv(script: str) -> str:\n         exec_result = subprocess.run(\n             [\"uv\", \"run\", \"--no-project\", \"python\", script_path],\n             capture_output=True)\n-        return (\n-            exec_result.stdout.decode(\"utf-8\")\n-            if exec_result.returncode == 0\n-            else exec_result.stderr.decode(\"utf-8\")\n-        )\n+        return exec_result.stdout.decode(\"utf-8\")\n \n \n class PythonTool(Tool):\n",
+  "seeded": [
+    {
+      "id": "case-gptoss-182-b1",
+      "file": "gpt_oss/tools/python_docker/docker_tool.py",
+      "line_start": 81,
+      "line_end": 81,
+      "category": "logic",
+      "description": "Capture stderr for python tool with uv as backend [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/gpt-oss",
+    "number": 182,
+    "merged_at": "2025-09-15T19:28:14Z",
+    "merge_commit": "415ee5eeebabf61066ff32d85c5ecf979a1dbf46",
+    "title": "[Bugfix]Capture stderr for python tool with uv as backend",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

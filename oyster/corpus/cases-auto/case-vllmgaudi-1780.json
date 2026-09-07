@@ -1,0 +1,54 @@
+{
+  "id": "case-vllmgaudi-1780",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-gaudi/pull/1780",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1780
+  },
+  "diff": "--- a/vllm_gaudi/ops/hpu_fused_moe.py\n+++ b/vllm_gaudi/ops/hpu_fused_moe.py\n@@ -828,8 +828,6 @@ def create_fused_moe_router(\n     zero_expert_type: str | None = None,\n     num_logical_experts: int | None = None,\n     hash_indices_table: torch.Tensor | None = None,\n-    bias_vl: torch.Tensor | None = None,\n-    image_sentinel_lo: int = 0,\n ) -> FusedMoERouter:\n     \"\"\"\n     Factory function to create the appropriate FusedMoERouter subclass based on\n@@ -879,12 +876,6 @@ def create_fused_moe_router(\n         hash_indices_table: Used to map input_ids to experts, needed for\n             Deepseek V4\n \n-    Vision routing bias arguments (upstream vLLM PR 54566+):\n-        bias_vl: Vision routing bias for image tokens (Deepseek V4).\n-        image_sentinel_lo: First of five consecutive in-vocab image sentinel\n-            ids (0 = vision routing disabled). Both are forwarded to\n-            FusedTopKBiasRouter, which owns the vision-bias routing path.\n-\n     Returns:\n         An instance of the appropriate FusedMoERouter subclass\n     \"\"\"\n@@ -953,8 +944,6 @@ def create_fused_moe_router(\n             hash_indices_table=hash_indices_table,\n             num_fused_shared_experts=num_fused_shared_experts,\n             shared_expert_weight=shared_expert_weight,\n-            bias_vl=bias_vl,\n-            image_sentinel_lo=image_sentinel_lo,\n         )\n \n     return FusedTopKRouter(\n",
+  "seeded": [
+    {
+      "id": "case-vllmgaudi-1780-b1",
+      "file": "vllm_gaudi/ops/hpu_fused_moe.py",
+      "line_start": 830,
+      "line_end": 832,
+      "category": "logic",
+      "description": "Accept bias_vl and image_sentinel_lo in HPU MoE router factory [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-vllmgaudi-1780-b2",
+      "file": "vllm_gaudi/ops/hpu_fused_moe.py",
+      "line_start": 878,
+      "line_end": 880,
+      "category": "logic",
+      "description": "Accept bias_vl and image_sentinel_lo in HPU MoE router factory [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-vllmgaudi-1780-b3",
+      "file": "vllm_gaudi/ops/hpu_fused_moe.py",
+      "line_start": 946,
+      "line_end": 948,
+      "category": "logic",
+      "description": "Accept bias_vl and image_sentinel_lo in HPU MoE router factory [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1780,
+    "merged_at": "2026-09-03T13:57:35Z",
+    "merge_commit": "b24b0319070c60522ec5374d047e2505c1072997",
+    "title": "[FIX_FOR_VLLM_CUSTOM=a56654d6de060495ff2db3b1d9ff0b187084d1a9] Accept bias_vl and image_sentinel_lo in HPU MoE router factory",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

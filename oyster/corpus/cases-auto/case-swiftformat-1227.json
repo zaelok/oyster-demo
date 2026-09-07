@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftformat-1227",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-format/pull/1227",
+    "repo": "swiftlang/swift-format",
+    "number": 1227
+  },
+  "diff": "--- a/Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\n+++ b/Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift\n@@ -4057,12 +4057,6 @@ private final class TokenStreamCreator: SyntaxVisitor {\n     {\n       parenthesizedExpr = nextExpr\n     }\n-    while let parent = parenthesizedExpr?.parent,\n-      parent.is(OptionalChainingExprSyntax.self) || parent.is(ForceUnwrapExprSyntax.self),\n-      parent.firstToken(viewMode: .sourceAccurate) == parenthesizedExpr?.firstToken(viewMode: .sourceAccurate)\n-    {\n-      parenthesizedExpr = parent\n-    }\n     return parenthesizedExpr\n   }\n \n",
+  "seeded": [
+    {
+      "id": "case-swiftformat-1227-b1",
+      "file": "Sources/SwiftFormat/PrettyPrint/TokenStreamCreator.swift",
+      "line_start": 4059,
+      "line_end": 4061,
+      "category": "logic",
+      "description": "?. wrapping misread as a ternary [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-format",
+    "number": 1227,
+    "merged_at": "2026-06-26T15:04:02Z",
+    "merge_commit": "acdf4e4f41d22bb7e04e6efa423432191a844c64",
+    "title": "Fix ?. wrapping misread as a ternary",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

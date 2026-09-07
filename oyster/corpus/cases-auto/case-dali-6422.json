@@ -1,0 +1,36 @@
+{
+  "id": "case-dali-6422",
+  "source": {
+    "pr": "https://github.com/NVIDIA/DALI/pull/6422",
+    "repo": "NVIDIA/DALI",
+    "number": 6422
+  },
+  "diff": "--- a/tools/wds2idx.py\n+++ b/tools/wds2idx.py\n@@ -89,7 +89,7 @@ def _get_data_tar(self):\n             stderr=subprocess.PIPE,\n         )\n         tar_types_sizes_proc = subprocess.Popen(  # nosec B603, B607\n-            [\"tar\", \"--verbose\", \"--list\", \"--numeric-owner\", \"--file\", self.uri],\n+            [\"tar\", \"--verbose\", \"--list\", \"--file\", self.uri],\n             stdout=subprocess.PIPE,\n             stderr=subprocess.PIPE,\n         )\n",
+  "seeded": [
+    {
+      "id": "case-dali-6422-b1",
+      "file": "tools/wds2idx.py",
+      "line_start": 92,
+      "line_end": 92,
+      "category": "logic",
+      "description": "wds2idx parsing with spaced tar owners [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/DALI",
+    "number": 6422,
+    "merged_at": "2026-07-15T12:46:12Z",
+    "merge_commit": "3c733be82905d083540ecdc7c1c53d0630dd6a9c",
+    "title": "Fix wds2idx parsing with spaced tar owners",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

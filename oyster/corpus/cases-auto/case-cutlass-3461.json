@@ -1,0 +1,45 @@
+{
+  "id": "case-cutlass-3461",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cutlass/pull/3461",
+    "repo": "NVIDIA/cutlass",
+    "number": 3461
+  },
+  "diff": "--- a/examples/python/CuTeDSL/cute/blackwell/kernel/distributed/distributed_gemm_blockscaled_all_reduce_ldmcxstmc_blackwell.py\n+++ b/examples/python/CuTeDSL/cute/blackwell/kernel/distributed/distributed_gemm_blockscaled_all_reduce_ldmcxstmc_blackwell.py\n@@ -3410,6 +3410,7 @@ def run_distributed_test(\n         tensors[\"cute_tensor_c\"],\n         (m, n, k, l),\n         stream,\n+        lambda x: x,\n         tensors[\"cute_tensor_comm_in_mc\"],\n         tensors[\"cute_tensor_comm_out_mc\"],\n         tensors[\"cute_tensor_flag_unicast\"],\n@@ -3651,6 +3652,7 @@ def make_kernel_args(ws):\n             cute_c,\n             (m, n, k, l),\n             stream,\n+            lambda x: x,\n             comm_in_mc,\n             comm_out_mc,\n             flag_uc,\n",
+  "seeded": [
+    {
+      "id": "case-cutlass-3461-b1",
+      "file": "examples/python/CuTeDSL/cute/blackwell/kernel/distributed/distributed_gemm_blockscaled_all_reduce_ldmcxstmc_blackwell.py",
+      "line_start": 3413,
+      "line_end": 3413,
+      "category": "logic",
+      "description": "sm100a bs gemm ar kernel signature issue fix [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cutlass-3461-b2",
+      "file": "examples/python/CuTeDSL/cute/blackwell/kernel/distributed/distributed_gemm_blockscaled_all_reduce_ldmcxstmc_blackwell.py",
+      "line_start": 3655,
+      "line_end": 3655,
+      "category": "logic",
+      "description": "sm100a bs gemm ar kernel signature issue fix [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cutlass",
+    "number": 3461,
+    "merged_at": "2026-08-14T03:09:31Z",
+    "merge_commit": "564d267e4c992c456d12ad02665f9acedf7708f1",
+    "title": "[Distributed] sm100a bs gemm ar kernel signature issue fix",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

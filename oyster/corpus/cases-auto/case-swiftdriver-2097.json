@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftdriver-2097",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-driver/pull/2097",
+    "repo": "swiftlang/swift-driver",
+    "number": 2097
+  },
+  "diff": "--- a/Sources/SwiftDriver/Driver/Driver.swift\n+++ b/Sources/SwiftDriver/Driver/Driver.swift\n@@ -2521,9 +2521,6 @@ extension Driver {\n       case .scanDependencies:\n         compilerOutputType = .jsonDependencies\n \n-      case .emitSupportedArguments, .emitSupportedFeatures:\n-        compilerOutputType = .jsonCompilerFeatures\n-\n       default:\n         fatalError(\"unhandled output mode option \\(outputOption)\")\n       }\n--- a/Sources/SwiftDriver/Jobs/Planning.swift\n+++ b/Sources/SwiftDriver/Jobs/Planning.swift\n@@ -728,13 +728,6 @@ extension Driver {\n       )\n     }\n \n-    if parsedOptions.hasArgument(.emitSupportedArguments, .emitSupportedFeatures) {\n-      return try toolchain.emitSupportedCompilerFeaturesJob(\n-        requiresInPlaceExecution: true,\n-        swiftCompilerPrefixArgs: swiftCompilerPrefixArgs\n-      )\n-    }\n-\n     if parsedOptions.hasArgument(.version) || parsedOptions.hasArgument(.version_) {\n       return Job(\n         moduleName: moduleOutputInfo.name,\n",
+  "seeded": [
+    {
+      "id": "case-swiftdriver-2097-b1",
+      "file": "Sources/SwiftDriver/Driver/Driver.swift",
+      "line_start": 2523,
+      "line_end": 2525,
+      "category": "logic",
+      "description": "crash when using -emit-supported-arguments [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftdriver-2097-b2",
+      "file": "Sources/SwiftDriver/Jobs/Planning.swift",
+      "line_start": 730,
+      "line_end": 732,
+      "category": "logic",
+      "description": "crash when using -emit-supported-arguments [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-driver",
+    "number": 2097,
+    "merged_at": "2026-03-05T18:34:04Z",
+    "merge_commit": "cd5d65fbdc13566f9f1093513e569d29fce17ac7",
+    "title": "Fix crash when using -emit-supported-arguments",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-triton-11558",
+  "source": {
+    "pr": "https://github.com/triton-lang/triton/pull/11558",
+    "repo": "triton-lang/triton",
+    "number": 11558
+  },
+  "diff": "--- a/lib/Dialect/TritonGPU/Transforms/RemoveLayoutConversions.cpp\n+++ b/lib/Dialect/TritonGPU/Transforms/RemoveLayoutConversions.cpp\n@@ -299,7 +299,7 @@ SmallVector<Value> LayoutPropagation::propagateToUsers(Value value,\n     if (auto yieldOp = dyn_cast<scf::YieldOp>(user)) {\n       auto parent = yieldOp->getParentOp();\n       SmallVector<Value> valuesToPropagate;\n-      if (isa<scf::ForOp, scf::IfOp>(parent))\n+      if (isa<scf::ForOp, scf::IfOp, scf::WhileOp>(parent))\n         valuesToPropagate.push_back(parent->getResult(use.getOperandNumber()));\n       if (auto forOp = dyn_cast<scf::ForOp>(parent))\n         valuesToPropagate.push_back(\n",
+  "seeded": [
+    {
+      "id": "case-triton-11558-b1",
+      "file": "lib/Dialect/TritonGPU/Transforms/RemoveLayoutConversions.cpp",
+      "line_start": 302,
+      "line_end": 302,
+      "category": "logic",
+      "description": "layout propagation for while-loop yields [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "triton-lang/triton",
+    "number": 11558,
+    "merged_at": "2026-09-02T20:59:22Z",
+    "merge_commit": "0b1ef3be704d5f8f3e994c33cf8c0bc5ab2a98f7",
+    "title": "[BACKEND] Fix layout propagation for while-loop yields",
+    "language": "cpp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-litellm-39815",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39815",
+    "repo": "BerriAI/litellm",
+    "number": 39815
+  },
+  "diff": "--- a/litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\n+++ b/litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py\n@@ -524,16 +524,18 @@ def translate_anthropic_messages_to_openai(\n                                 self._add_cache_control_if_applicable(content, tool_call, model)\n                                 tool_calls.append(tool_call)\n                             elif content.get(\"type\") == \"thinking\":\n                                 thinking_block = ChatCompletionThinkingBlock(\n                                     type=\"thinking\",\n                                     thinking=content.get(\"thinking\") or \"\",\n                                     signature=content.get(\"signature\") or \"\",\n+                                    cache_control=content.get(\"cache_control\", {}),\n                                 )\n                                 thinking_blocks.append(thinking_block)\n                             elif content.get(\"type\") == \"redacted_thinking\":\n                                 redacted_thinking_block = ChatCompletionRedactedThinkingBlock(\n                                     type=\"redacted_thinking\",\n                                     data=content.get(\"data\") or \"\",\n+                                    cache_control=content.get(\"cache_control\", {}),\n                                 )\n                                 thinking_blocks.append(redacted_thinking_block)\n \n",
+  "seeded": [
+    {
+      "id": "case-litellm-39815-b1",
+      "file": "litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py",
+      "line_start": 531,
+      "line_end": 531,
+      "category": "logic",
+      "description": "fix(anthropic): never carry cache_control on translated thinking blocks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-litellm-39815-b2",
+      "file": "litellm/llms/anthropic/experimental_pass_through/adapters/transformation.py",
+      "line_start": 538,
+      "line_end": 538,
+      "category": "logic",
+      "description": "fix(anthropic): never carry cache_control on translated thinking blocks [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39815,
+    "merged_at": "2026-09-05T00:19:00Z",
+    "merge_commit": "aa3d59d086acbe8ca945b3c6391d0037766c9e0a",
+    "title": "fix(anthropic): never carry cache_control on translated thinking blocks",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

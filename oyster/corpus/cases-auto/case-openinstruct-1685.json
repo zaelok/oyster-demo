@@ -1,0 +1,36 @@
+{
+  "id": "case-openinstruct-1685",
+  "source": {
+    "pr": "https://github.com/allenai/open-instruct/pull/1685",
+    "repo": "allenai/open-instruct",
+    "number": 1685
+  },
+  "diff": "--- a/open_instruct/dpo_utils.py\n+++ b/open_instruct/dpo_utils.py\n@@ -707,7 +707,7 @@ def _get_batch_logps(\n     loss_mask = labels[:, 1:] != -100\n \n     if average_log_prob:\n-        return (per_token_logps * loss_mask).sum(-1) / loss_mask.sum(-1).clamp(min=1)\n+        return (per_token_logps * loss_mask).sum(-1) / loss_mask.sum(-1)\n     else:\n         return (per_token_logps * loss_mask).sum(-1)\n \n",
+  "seeded": [
+    {
+      "id": "case-openinstruct-1685-b1",
+      "file": "open_instruct/dpo_utils.py",
+      "line_start": 710,
+      "line_end": 710,
+      "category": "logic",
+      "description": "_get_batch_logps NaN on fully-masked sequences (DPO) [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/open-instruct",
+    "number": 1685,
+    "merged_at": "2026-05-12T18:44:01Z",
+    "merge_commit": "94a17b99a7704d62e17d36a9a01d909081924d1f",
+    "title": "Fix _get_batch_logps NaN on fully-masked sequences (DPO)",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

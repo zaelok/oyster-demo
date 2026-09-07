@@ -1,0 +1,36 @@
+{
+  "id": "case-openairuby-655",
+  "source": {
+    "pr": "https://github.com/openai/openai-ruby/pull/655",
+    "repo": "openai/openai-ruby",
+    "number": 655
+  },
+  "diff": "--- a/lib/openai/helpers/structured_output/json_schema_converter.rb\n+++ b/lib/openai/helpers/structured_output/json_schema_converter.rb\n@@ -109,7 +109,7 @@ def cache_def!(state, type:, &blk)\n                 stored[OpenAI::Helpers::StructuredOutput::JsonSchemaConverter::RECURSIVE] = true\n               end\n \n-              pointers.first.slice(:$ref).tap do\n+              pointers.first.except(OpenAI::Helpers::StructuredOutput::JsonSchemaConverter::NO_REF).tap do\n                 pointers << _1\n               end\n             else\n",
+  "seeded": [
+    {
+      "id": "case-openairuby-655-b1",
+      "file": "lib/openai/helpers/structured_output/json_schema_converter.rb",
+      "line_start": 112,
+      "line_end": 112,
+      "category": "security",
+      "description": "isolate structured output field metadata [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-ruby",
+    "number": 655,
+    "merged_at": "2026-09-06T16:59:02Z",
+    "merge_commit": "7f3cec8663175c9ac1be12368bcf1c3717ca2466",
+    "title": "fix: isolate structured output field metadata",
+    "language": "ruby",
+    "category_reasons": [
+      "leak+key"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

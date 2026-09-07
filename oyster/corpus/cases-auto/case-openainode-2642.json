@@ -1,0 +1,45 @@
+{
+  "id": "case-openainode-2642",
+  "source": {
+    "pr": "https://github.com/openai/openai-node/pull/2642",
+    "repo": "openai/openai-node",
+    "number": 2642
+  },
+  "diff": "--- a/ecosystem-tests/cli.ts\n+++ b/ecosystem-tests/cli.ts\n@@ -612,29 +612,9 @@ function parseArgs() {\n         description: 'number of parallel jobs to run',\n       },\n       retry: {\n-        type: 'string',\n-        default: '0',\n+        type: 'number',\n+        default: 0,\n         description: 'number of times to retry failing jobs',\n-        coerce: (value: unknown) => {\n-          const retry = Number(value);\n-          const decimal = /^[+-]?(?<whole>\\d*)(?:\\.(?<fraction>\\d*))?(?:e(?<exponent>[+-]?\\d+))?$/iu.exec(\n-            String(value).trim(),\n-          )?.groups;\n-          let hasFraction = false;\n-          if (decimal) {\n-            const { whole = '', fraction = '', exponent = '0' } = decimal;\n-            const digits = whole + fraction;\n-            let significantDigits = digits.length;\n-            while (digits[significantDigits - 1] === '0') {\n-              significantDigits--;\n-            }\n-            hasFraction = significantDigits > 0 && Number(exponent) < significantDigits - whole.length;\n-          }\n-          if (!Number.isSafeInteger(retry) || retry < 0 || hasFraction) {\n-            throw new Error('--retry must be a non-negative safe integer.');\n-          }\n-          return retry;\n-        },\n       },\n       retryDelay: {\n         type: 'number',\n",
+  "seeded": [
+    {
+      "id": "case-openainode-2642-b1",
+      "file": "ecosystem-tests/cli.ts",
+      "line_start": 615,
+      "line_end": 616,
+      "category": "logic",
+      "description": "fix(ecosystem): reject invalid retry counts [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openainode-2642-b2",
+      "file": "ecosystem-tests/cli.ts",
+      "line_start": 617,
+      "line_end": 619,
+      "category": "logic",
+      "description": "fix(ecosystem): reject invalid retry counts [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-node",
+    "number": 2642,
+    "merged_at": "2026-09-05T20:39:56Z",
+    "merge_commit": "d0e2bcf021cb73d8137179cf03948ff35e745f42",
+    "title": "fix(ecosystem): reject invalid retry counts",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "case-gosdk-1184",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/go-sdk/pull/1184",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1184
+  },
+  "diff": "--- a/mcp/streamable.go\n+++ b/mcp/streamable.go\n@@ -2016,7 +2016,6 @@ const (\n \treconnectGrowFactor = 1.5\n \t// reconnectMaxDelay caps the backoff delay, preventing it from growing indefinitely.\n \treconnectMaxDelay = 30 * time.Second\n-\tcloseDeleteTimeout = 5 * time.Second\n )\n \n var (\n@@ -2772,9 +2767,7 @@ func (c *streamableClientConn) Close() error {\n \t\t\t// No session was established (e.g. the server is stateless),\n \t\t\t// so there is nothing to delete.\n \t\t} else {\n-\t\t\treqCtx, stop := context.WithTimeout(c.ctx, closeDeleteTimeout)\n-\t\t\tdefer stop()\n-\t\t\treq, err := http.NewRequestWithContext(reqCtx, http.MethodDelete, c.url, nil)\n+\t\t\treq, err := http.NewRequestWithContext(c.ctx, http.MethodDelete, c.url, nil)\n \t\t\tif err != nil {\n \t\t\t\tc.closeErr = err\n \t\t\t} else {\n",
+  "seeded": [
+    {
+      "id": "case-gosdk-1184-b1",
+      "file": "mcp/streamable.go",
+      "line_start": 2018,
+      "line_end": 2020,
+      "category": "logic",
+      "description": "mcp: bound streamable Close DELETE so a silent peer cannot hang teardown [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-gosdk-1184-b2",
+      "file": "mcp/streamable.go",
+      "line_start": 2770,
+      "line_end": 2770,
+      "category": "logic",
+      "description": "mcp: bound streamable Close DELETE so a silent peer cannot hang teardown [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/go-sdk",
+    "number": 1184,
+    "merged_at": "2026-08-21T10:31:12Z",
+    "merge_commit": "3d6450fccf564e7c92a54d4274c35635a8c39821",
+    "title": "mcp: bound streamable Close DELETE so a silent peer cannot hang teardown",
+    "language": "go",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

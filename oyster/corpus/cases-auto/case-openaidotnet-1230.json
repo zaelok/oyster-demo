@@ -1,0 +1,36 @@
+{
+  "id": "case-openaidotnet-1230",
+  "source": {
+    "pr": "https://github.com/openai/openai-dotnet/pull/1230",
+    "repo": "openai/openai-dotnet",
+    "number": 1230
+  },
+  "diff": "--- a/OpenAI/src/Utility/DataEncodingHelpers.cs\n+++ b/OpenAI/src/Utility/DataEncodingHelpers.cs\n@@ -27,17 +27,7 @@ public static bool TryParseDataUri(string dataUri, out BinaryData? bytes, out st\n         }\n \n         string matchedBase64Data = parsedDataUri.Groups[\"data\"].Value;\n-        byte[] matchedBase64RawBytes;\n-        try\n-        {\n-            matchedBase64RawBytes = Convert.FromBase64String(matchedBase64Data);\n-        }\n-        catch (FormatException)\n-        {\n-            bytes = null;\n-            bytesMediaType = null;\n-            return false;\n-        }\n+        byte[] matchedBase64RawBytes = Convert.FromBase64String(matchedBase64Data);\n         \n         bytes = BinaryData.FromBytes(matchedBase64RawBytes);\n         bytesMediaType = parsedDataUri.Groups[\"type\"].Value;\n@@ -49,4 +39,4 @@ public static string CreateDataUri(BinaryData bytes, string bytesMediaType)\n         string base64Bytes = Convert.ToBase64String(bytes.ToArray());\n         return $\"data:{bytesMediaType};base64,{base64Bytes}\";\n     }\n-}\n+}\n\\ No newline at end of file\n",
+  "seeded": [
+    {
+      "id": "case-openaidotnet-1230-b1",
+      "file": "OpenAI/src/Utility/DataEncodingHelpers.cs",
+      "line_start": 30,
+      "line_end": 30,
+      "category": "logic",
+      "description": "data URI TryParse contract [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-dotnet",
+    "number": 1230,
+    "merged_at": "2026-07-22T05:19:47Z",
+    "merge_commit": "767d0c489b38adf8c7796573c6864905a5a58158",
+    "title": "Fix data URI TryParse contract",
+    "language": "csharp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

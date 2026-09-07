@@ -1,0 +1,36 @@
+{
+  "id": "case-cupy-10273",
+  "source": {
+    "pr": "https://github.com/cupy/cupy/pull/10273",
+    "repo": "cupy/cupy",
+    "number": 10273
+  },
+  "diff": "--- a/cupyx/scipy/special/_lambertw.py\n+++ b/cupyx/scipy/special/_lambertw.py\n@@ -9,7 +9,7 @@\n \n _lambertw_scalar = _core.create_ufunc(\n     \"cupyx_scipy_lambertw_scalar\",\n-    (\"Dld->D\", \"Flf->F\"),\n+    (\"Dld->D\", \"Fif->f\"),\n     \"out0 = xsf::lambertw(in0, in1, in2)\",\n     preamble=lambertw_preamble,\n     doc='''Internal function. Do not use.''')\n",
+  "seeded": [
+    {
+      "id": "case-cupy-10273-b1",
+      "file": "cupyx/scipy/special/_lambertw.py",
+      "line_start": 12,
+      "line_end": 12,
+      "category": "logic",
+      "description": "MAINT: fix `cupyx.scipy.special.lambertw` signature [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "cupy/cupy",
+    "number": 10273,
+    "merged_at": "2026-09-05T17:40:53Z",
+    "merge_commit": "467cf5b731961ecdfbad4b1ba9f1f87f030a5c6f",
+    "title": "MAINT: fix `cupyx.scipy.special.lambertw` signature",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

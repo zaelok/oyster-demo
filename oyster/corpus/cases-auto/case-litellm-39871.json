@@ -1,0 +1,36 @@
+{
+  "id": "case-litellm-39871",
+  "source": {
+    "pr": "https://github.com/BerriAI/litellm/pull/39871",
+    "repo": "BerriAI/litellm",
+    "number": 39871
+  },
+  "diff": "--- a/litellm/integrations/cloudzero/cz_stream_api.py\n+++ b/litellm/integrations/cloudzero/cz_stream_api.py\n@@ -97,11 +97,7 @@ def _group_by_date(self, data: pl.DataFrame) -> dict[str, pl.DataFrame]:\n                 continue\n \n         # Convert lists back to DataFrames\n-        return {\n-            date_key: pl.DataFrame(records, infer_schema_length=None)\n-            for date_key, records in daily_batches.items()\n-            if records\n-        }\n+        return {date_key: pl.DataFrame(records) for date_key, records in daily_batches.items() if records}\n \n     def _parse_and_convert_timestamp(self, timestamp_str: str) -> datetime:\n         \"\"\"Parse timestamp string and convert to UTC.\"\"\"\n",
+  "seeded": [
+    {
+      "id": "case-litellm-39871-b1",
+      "file": "litellm/integrations/cloudzero/cz_stream_api.py",
+      "line_start": 100,
+      "line_end": 100,
+      "category": "security",
+      "description": "fix(cloudzero): infer daily batch schema from every row [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "litellm",
+    "repo": "BerriAI/litellm",
+    "number": 39871,
+    "merged_at": "2026-09-05T19:09:54Z",
+    "merge_commit": "73e1cfb378e9d45c0a92266d6a763e61440cc862",
+    "title": "fix(cloudzero): infer daily batch schema from every row",
+    "language": "python",
+    "category_reasons": [
+      "authoriz"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

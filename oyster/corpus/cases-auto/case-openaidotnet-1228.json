@@ -1,0 +1,36 @@
+{
+  "id": "case-openaidotnet-1228",
+  "source": {
+    "pr": "https://github.com/openai/openai-dotnet/pull/1228",
+    "repo": "openai/openai-dotnet",
+    "number": 1228
+  },
+  "diff": "--- a/OpenAI.Responses/src/Custom/ResponseContentPart.cs\n+++ b/OpenAI.Responses/src/Custom/ResponseContentPart.cs\n@@ -17,7 +17,7 @@ public partial class ResponseContentPart\n     public ResponseContentPartKind Kind\n     {\n         get => InternalType.ToString().ToResponseContentPartKind();\n-        private set => InternalType = value.ToSerialString();\n+        private set => InternalType = Kind.ToSerialString();\n     }\n \n     // CUSTOM: Exposed input text properties.\n",
+  "seeded": [
+    {
+      "id": "case-openaidotnet-1228-b1",
+      "file": "OpenAI.Responses/src/Custom/ResponseContentPart.cs",
+      "line_start": 20,
+      "line_end": 20,
+      "category": "logic",
+      "description": "ResponseContentPart kind setter [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-dotnet",
+    "number": 1228,
+    "merged_at": "2026-07-24T07:11:41Z",
+    "merge_commit": "383860cbcf7e51de24fb11bf390267be4077dc98",
+    "title": "Fix ResponseContentPart kind setter",
+    "language": "csharp",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case-servers-4717",
+  "source": {
+    "pr": "https://github.com/modelcontextprotocol/servers/pull/4717",
+    "repo": "modelcontextprotocol/servers",
+    "number": 4717
+  },
+  "diff": "--- a/src/memory/index.ts\n+++ b/src/memory/index.ts\n@@ -74,47 +74,24 @@ export class KnowledgeGraphManager {\n     try {\n       const data = await fs.readFile(this.memoryFilePath, \"utf-8\");\n       const lines = data.split(\"\\n\").filter(line => line.trim() !== \"\");\n-      const graph: KnowledgeGraph = { entities: [], relations: [] };\n-\n-      for (const line of lines) {\n-        let item: unknown;\n-        try {\n-          item = JSON.parse(line);\n-        } catch {\n-          console.error(\"Skipping malformed line in memory file\");\n-          continue;\n+      return lines.reduce((graph: KnowledgeGraph, line) => {\n+        const item = JSON.parse(line);\n+        if (item.type === \"entity\") {\n+          graph.entities.push({\n+            name: item.name,\n+            entityType: item.entityType,\n+            observations: item.observations\n+          });\n         }\n-\n-        if (typeof item !== \"object\" || item === null) {\n-          console.error(\"Skipping non-object line in memory file\");\n-          continue;\n-        }\n-\n-        const record = item as Record<string, unknown>;\n-        if (record.type === \"entity\") {\n-          const parsed = EntitySchema.safeParse(item);\n-          if (parsed.success) {\n-            graph.entities.push(parsed.data);\n-          } else {\n-            console.error(\n-              \"Skipping invalid entity in memory file:\",\n-              parsed.error.issues.map(issue => `${issue.path.join(\".\")}: ${issue.message}`).join(\", \")\n-            );\n-          }\n-        } else if (record.type === \"relation\") {\n-          const parsed = RelationSchema.safeParse(item);\n-          if (parsed.success) {\n-            graph.relations.push(parsed.data);\n-          } else {\n-            console.error(\n-              \"Skipping invalid relation in memory file:\",\n-              parsed.error.issues.map(issue => `${issue.path.join(\".\")}: ${issue.message}`).join(\", \")\n-            );\n-          }\n+        if (item.type === \"relation\") {\n+          graph.relations.push({\n+            from: item.from,\n+            to: item.to,\n+            relationType: item.relationType\n+          });\n         }\n-      }\n-\n-      return graph;\n+        return graph;\n+      }, { entities: [], relations: [] });\n     } catch (error) {\n       if (error instanceof Error && 'code' in error && (error as any).code === \"ENOENT\") {\n         return { entities: [], relations: [] };\n",
+  "seeded": [
+    {
+      "id": "case-servers-4717-b1",
+      "file": "src/memory/index.ts",
+      "line_start": 77,
+      "line_end": 84,
+      "category": "logic",
+      "description": "fix(memory): validate knowledge graph entries when loading from disk [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-servers-4717-b2",
+      "file": "src/memory/index.ts",
+      "line_start": 86,
+      "line_end": 91,
+      "category": "logic",
+      "description": "fix(memory): validate knowledge graph entries when loading from disk [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-servers-4717-b3",
+      "file": "src/memory/index.ts",
+      "line_start": 93,
+      "line_end": 94,
+      "category": "logic",
+      "description": "fix(memory): validate knowledge graph entries when loading from disk [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "mcp",
+    "repo": "modelcontextprotocol/servers",
+    "number": 4717,
+    "merged_at": "2026-09-03T01:34:59Z",
+    "merge_commit": "c3d8e43d1f31a4ac99b7136eb7d8c7958ed9c376",
+    "title": "fix(memory): validate knowledge graph entries when loading from disk",
+    "language": "typescript",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

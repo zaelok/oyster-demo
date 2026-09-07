@@ -1,0 +1,55 @@
+{
+  "id": "case-olmocookbook-178",
+  "source": {
+    "pr": "https://github.com/allenai/olmo-cookbook/pull/178",
+    "repo": "allenai/olmo-cookbook",
+    "number": 178
+  },
+  "diff": "--- a/src/cookbook/cli/utils.py\n+++ b/src/cookbook/cli/utils.py\n@@ -116,9 +116,8 @@ def get_aws_access_key_id() -> Optional[str]:\n     if \"AWS_ACCESS_KEY_ID\" in os.environ:\n         return os.environ[\"AWS_ACCESS_KEY_ID\"]\n \n-    credentials_path = os.path.expanduser(\"~/.aws/credentials\")\n-    if os.path.exists(credentials_path):\n-        with open(credentials_path, \"r\") as f:\n+    if os.path.exists(\"~/.aws/credentials\"):\n+        with open(\"~/.aws/credentials\", \"r\") as f:\n             for line in f:\n                 if line.startswith(\"aws_access_key_id\"):\n                     return line.split(\"=\")[1].strip()\n@@ -141,9 +140,8 @@ def get_aws_secret_access_key() -> Optional[str]:\n     if \"AWS_SECRET_ACCESS_KEY\" in os.environ:\n         return os.environ[\"AWS_SECRET_ACCESS_KEY\"]\n \n-    credentials_path = os.path.expanduser(\"~/.aws/credentials\")\n-    if os.path.exists(credentials_path):\n-        with open(credentials_path, \"r\") as f:\n+    if os.path.exists(\"~/.aws/credentials\"):\n+        with open(\"~/.aws/credentials\", \"r\") as f:\n             for line in f:\n                 if line.startswith(\"aws_secret_access_key\"):\n                     return line.split(\"=\")[1].strip()\n@@ -393,7 +391,6 @@ def make_eval_run_name(\n     name_suffix: str | None = None,\n ) -> str:\n     path_no_scheme = (p := urlparse(checkpoint_path)).netloc + p.path\n-    path_no_scheme = path_no_scheme.rstrip(\"/\")\n \n     step_suffix = None\n     if re.search(r\"/step\\d+[^/]*/?$\", checkpoint_path):\n",
+  "seeded": [
+    {
+      "id": "case-olmocookbook-178-b1",
+      "file": "src/cookbook/cli/utils.py",
+      "line_start": 119,
+      "line_end": 120,
+      "category": "security",
+      "description": "couple of bugs in eval experimental launching [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-olmocookbook-178-b2",
+      "file": "src/cookbook/cli/utils.py",
+      "line_start": 143,
+      "line_end": 144,
+      "category": "security",
+      "description": "couple of bugs in eval experimental launching [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-olmocookbook-178-b3",
+      "file": "src/cookbook/cli/utils.py",
+      "line_start": 393,
+      "line_end": 395,
+      "category": "security",
+      "description": "couple of bugs in eval experimental launching [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/olmo-cookbook",
+    "number": 178,
+    "merged_at": "2025-11-05T18:04:08Z",
+    "merge_commit": "29b0594e8bc704d3daf0494a452971d144a99eae",
+    "title": "fix couple of bugs in eval experimental launching",
+    "language": "python",
+    "category_reasons": [
+      "credential",
+      "secret"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

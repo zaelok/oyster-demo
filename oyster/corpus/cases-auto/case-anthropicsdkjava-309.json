@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdkjava-309",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-java/pull/309",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 309
+  },
+  "diff": "--- a/anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\n+++ b/anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt\n@@ -213,9 +213,8 @@ internal class JsonSchemaValidator private constructor() {\n         val type = schema.get(TYPE)\n         val ref = schema.get(REF)\n \n-        val presentCount = listOf(anyOf != null, type != null, ref != null).count { it }\n         verify(\n-            presentCount == 1,\n+            (anyOf != null).xor(type != null).xor(ref != null),\n             path,\n             { \"Expected exactly one of '$TYPE' or '$ANY_OF' or '$REF'.\" },\n         ) {\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkjava-309-b1",
+      "file": "anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt",
+      "line_start": 215,
+      "line_end": 217,
+      "category": "logic",
+      "description": "fix(client): correct \"exactly one\" check in JSON schema validator [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdkjava-309-b2",
+      "file": "anthropic-java-core/src/main/kotlin/com/anthropic/core/JsonSchemaValidator.kt",
+      "line_start": 217,
+      "line_end": 217,
+      "category": "logic",
+      "description": "fix(client): correct \"exactly one\" check in JSON schema validator [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-java",
+    "number": 309,
+    "merged_at": "2026-03-09T19:57:04Z",
+    "merge_commit": "6e58ba95500b8eaf5b8810c3c7d407ec1bc24375",
+    "title": "fix(client): correct \"exactly one\" check in JSON schema validator",
+    "language": "kotlin",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "case-swiftdriver-2114",
+  "source": {
+    "pr": "https://github.com/swiftlang/swift-driver/pull/2114",
+    "repo": "swiftlang/swift-driver",
+    "number": 2114
+  },
+  "diff": "--- a/Sources/SwiftDriver/ExplicitModuleBuilds/ExplicitDependencyBuildPlanner.swift\n+++ b/Sources/SwiftDriver/ExplicitModuleBuilds/ExplicitDependencyBuildPlanner.swift\n@@ -354,7 +354,7 @@ public typealias ExternalTargetModuleDetailsMap = [ModuleDependencyId: ExternalT\n       try Self.serializeModuleDependencies(for: moduleId,\n                                            swiftDependencyArtifacts: swiftDependencyArtifacts,\n                                            clangDependencyArtifacts: clangDependencyArtifacts,\n-                                           shouldAbstractPath: useAbstractPath)\n+                                           shouldAbstractPath: cas != nil)\n     if let cas = cas {\n       // When using a CAS, write JSON into CAS and pass the ID on command-line.\n       let casID = try cas.store(data: dependencyFileContent)\n",
+  "seeded": [
+    {
+      "id": "case-swiftdriver-2114-b1",
+      "file": "Sources/SwiftDriver/ExplicitModuleBuilds/ExplicitDependencyBuildPlanner.swift",
+      "line_start": 357,
+      "line_end": 357,
+      "category": "logic",
+      "description": "for PR 2112 [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "swiftlang/swift-driver",
+    "number": 2114,
+    "merged_at": "2026-04-09T04:28:32Z",
+    "merge_commit": "146c76bcc616428246c77c928ce3513cf5056ec9",
+    "title": "Fix for PR 2112",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

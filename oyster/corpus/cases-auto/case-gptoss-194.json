@@ -1,0 +1,36 @@
+{
+  "id": "case-gptoss-194",
+  "source": {
+    "pr": "https://github.com/openai/gpt-oss/pull/194",
+    "repo": "openai/gpt-oss",
+    "number": 194
+  },
+  "diff": "--- a/gpt_oss/metal/source/context.c\n+++ b/gpt_oss/metal/source/context.c\n@@ -524,8 +524,6 @@ static enum gptoss_status process_tokens(\n                     if (status != gptoss_status_success) {\n                         return status;\n                     }\n-                    gptoss_metal_command_buffer_release(command_buffer);\n-\n                     const size_t E = model->num_experts;\n                     const size_t T = num_block_output_tokens * model->num_active_experts;\n \n",
+  "seeded": [
+    {
+      "id": "case-gptoss-194-b1",
+      "file": "gpt_oss/metal/source/context.c",
+      "line_start": 526,
+      "line_end": 528,
+      "category": "logic",
+      "description": "Metal: fix resource leak in prefill [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/gpt-oss",
+    "number": 194,
+    "merged_at": "2025-09-22T21:41:36Z",
+    "merge_commit": "423fa024646427c0b9bb22eed7704478ce991d99",
+    "title": "Metal: fix resource leak in prefill",
+    "language": "c",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

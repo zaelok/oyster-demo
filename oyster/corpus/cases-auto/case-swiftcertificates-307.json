@@ -1,0 +1,45 @@
+{
+  "id": "case-swiftcertificates-307",
+  "source": {
+    "pr": "https://github.com/apple/swift-certificates/pull/307",
+    "repo": "apple/swift-certificates",
+    "number": 307
+  },
+  "diff": "--- a/Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\n+++ b/Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift\n@@ -137,7 +137,7 @@ struct CMSSignerInfo: DERImplicitlyTaggable, BERImplicitlyTaggable, Hashable, Se\n                 node in\n                 return try DER.set(\n                     of: CMSAttribute.self,\n-                    identifier: .init(tagWithNumber: 1, tagClass: .contextSpecific),\n+                    identifier: .init(tagWithNumber: 0, tagClass: .contextSpecific),\n                     rootNode: node\n                 )\n             }\n@@ -192,7 +192,7 @@ struct CMSSignerInfo: DERImplicitlyTaggable, BERImplicitlyTaggable, Hashable, Se\n                 node in\n                 return try BER.set(\n                     of: CMSAttribute.self,\n-                    identifier: .init(tagWithNumber: 1, tagClass: .contextSpecific),\n+                    identifier: .init(tagWithNumber: 0, tagClass: .contextSpecific),\n                     rootNode: node\n                 )\n             }\n",
+  "seeded": [
+    {
+      "id": "case-swiftcertificates-307-b1",
+      "file": "Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift",
+      "line_start": 140,
+      "line_end": 140,
+      "category": "logic",
+      "description": "`CMSSignerInfo`'s `unsignedAttrs` tag [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-swiftcertificates-307-b2",
+      "file": "Sources/X509/CryptographicMessageSyntax/CMSSignerInfo.swift",
+      "line_start": 195,
+      "line_end": 195,
+      "category": "logic",
+      "description": "`CMSSignerInfo`'s `unsignedAttrs` tag [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "apple",
+    "repo": "apple/swift-certificates",
+    "number": 307,
+    "merged_at": "2026-08-27T19:07:05Z",
+    "merge_commit": "c8aece90ea05f9866bd392a5bf13b5cae56c0e03",
+    "title": "Fix `CMSSignerInfo`'s `unsignedAttrs` tag",
+    "language": "swift",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

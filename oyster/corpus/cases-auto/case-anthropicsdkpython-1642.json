@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdkpython-1642",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-python/pull/1642",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1642
+  },
+  "diff": "--- a/src/anthropic/lib/_parse/_transform.py\n+++ b/src/anthropic/lib/_parse/_transform.py\n@@ -80,6 +80,11 @@ def transform_schema(\n     strict_schema: dict[str, Any] = {}\n     json_schema = {**json_schema}\n \n+    ref = json_schema.pop(\"$ref\", None)\n+    if ref is not None:\n+        strict_schema[\"$ref\"] = ref\n+        return strict_schema\n+\n     defs = json_schema.pop(\"$defs\", None)\n     if defs is not None:\n         strict_defs: dict[str, Any] = {}\n@@ -91,11 +93,6 @@ def transform_schema(\n         for name, schema in defs.items():\n             strict_defs[name] = transform_schema(schema)\n \n-    ref = json_schema.pop(\"$ref\", None)\n-    if ref is not None:\n-        strict_schema[\"$ref\"] = ref\n-        return strict_schema\n-\n     type_: Optional[SupportedTypes] = json_schema.pop(\"type\", None)\n     any_of = json_schema.pop(\"anyOf\", None)\n     one_of = json_schema.pop(\"oneOf\", None)\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkpython-1642-b1",
+      "file": "src/anthropic/lib/_parse/_transform.py",
+      "line_start": 83,
+      "line_end": 87,
+      "category": "logic",
+      "description": "fix(transform schema): preserve $defs when schema root is a $ref [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdkpython-1642-b2",
+      "file": "src/anthropic/lib/_parse/_transform.py",
+      "line_start": 95,
+      "line_end": 97,
+      "category": "logic",
+      "description": "fix(transform schema): preserve $defs when schema root is a $ref [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1642,
+    "merged_at": "2026-06-04T16:38:06Z",
+    "merge_commit": "fc58e06b78407b447c50dfea109c6fb300f4b97d",
+    "title": "fix(transform schema): preserve $defs when schema root is a $ref",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

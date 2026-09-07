@@ -1,0 +1,45 @@
+{
+  "id": "case-openaipython-3757",
+  "source": {
+    "pr": "https://github.com/openai/openai-python/pull/3757",
+    "repo": "openai/openai-python",
+    "number": 3757
+  },
+  "diff": "--- a/src/openai/lib/_parsing/_embeddings.py\n+++ b/src/openai/lib/_parsing/_embeddings.py\n@@ -20,15 +20,11 @@ def parse_embedding_response(\n     if not obj.data:\n         raise ValueError(\"No embedding data received\")\n \n-    if not any(isinstance(embedding.embedding, str) for embedding in obj.data):\n-        return obj\n-\n-    use_numpy = has_numpy()\n     for embedding in obj.data:\n         data = cast(object, embedding.embedding)\n         if not isinstance(data, str):\n             continue\n-        if not use_numpy:\n+        if not has_numpy():\n             # use array for base64 optimisation\n             embedding.embedding = array.array(\"f\", base64.b64decode(data)).tolist()\n         else:\n",
+  "seeded": [
+    {
+      "id": "case-openaipython-3757-b1",
+      "file": "src/openai/lib/_parsing/_embeddings.py",
+      "line_start": 22,
+      "line_end": 24,
+      "category": "logic",
+      "description": "avoid repeated numpy checks for embeddings [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-openaipython-3757-b2",
+      "file": "src/openai/lib/_parsing/_embeddings.py",
+      "line_start": 27,
+      "line_end": 27,
+      "category": "logic",
+      "description": "avoid repeated numpy checks for embeddings [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/openai-python",
+    "number": 3757,
+    "merged_at": "2026-08-28T22:38:55Z",
+    "merge_commit": "b19c2161b1eac80fbf1f6f67a64a50af99c53356",
+    "title": "fix: avoid repeated numpy checks for embeddings",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

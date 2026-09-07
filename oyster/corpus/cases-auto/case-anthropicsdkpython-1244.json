@@ -1,0 +1,45 @@
+{
+  "id": "case-anthropicsdkpython-1244",
+  "source": {
+    "pr": "https://github.com/anthropics/anthropic-sdk-python/pull/1244",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1244
+  },
+  "diff": "--- a/src/anthropic/_client.py\n+++ b/src/anthropic/_client.py\n@@ -513,18 +513,12 @@ def _make_status_error(\n         if response.status_code == 409:\n             return _exceptions.ConflictError(err_msg, response=response, body=body)\n \n-        if response.status_code == 413:\n-            return _exceptions.RequestTooLargeError(err_msg, response=response, body=body)\n-\n         if response.status_code == 422:\n             return _exceptions.UnprocessableEntityError(err_msg, response=response, body=body)\n \n         if response.status_code == 429:\n             return _exceptions.RateLimitError(err_msg, response=response, body=body)\n \n-        if response.status_code == 529:\n-            return _exceptions.OverloadedError(err_msg, response=response, body=body)\n-\n         if response.status_code >= 500:\n             return _exceptions.InternalServerError(err_msg, response=response, body=body)\n         return APIStatusError(err_msg, response=response, body=body)\n",
+  "seeded": [
+    {
+      "id": "case-anthropicsdkpython-1244-b1",
+      "file": "src/anthropic/_client.py",
+      "line_start": 515,
+      "line_end": 517,
+      "category": "logic",
+      "description": "fix(client): AsyncAnthropic._make_status_error missing 529 and 413 cases [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-anthropicsdkpython-1244-b2",
+      "file": "src/anthropic/_client.py",
+      "line_start": 521,
+      "line_end": 523,
+      "category": "logic",
+      "description": "fix(client): AsyncAnthropic._make_status_error missing 529 and 413 cases [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "anthropics",
+    "repo": "anthropics/anthropic-sdk-python",
+    "number": 1244,
+    "merged_at": "2026-03-16T21:05:31Z",
+    "merge_commit": "05220bc1c1079fe01f5c4babc007ec7a990859d9",
+    "title": "fix(client): AsyncAnthropic._make_status_error missing 529 and 413 cases",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

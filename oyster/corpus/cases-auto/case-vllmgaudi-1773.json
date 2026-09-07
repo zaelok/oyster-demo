@@ -1,0 +1,45 @@
+{
+  "id": "case-vllmgaudi-1773",
+  "source": {
+    "pr": "https://github.com/vllm-project/vllm-gaudi/pull/1773",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1773
+  },
+  "diff": "--- a/vllm_gaudi/ops/hpu_fused_moe.py\n+++ b/vllm_gaudi/ops/hpu_fused_moe.py\n@@ -627,41 +627,6 @@ def forward_oot(\n             return output.view(*input_shape)\n \n \n-def _launch_shared_experts_overlap(runner: MoERunnerBase, shared_experts_input: torch.Tensor | None) -> bool:\n-    \"\"\"Start the shared-expert multi-stream overlap, tolerating either upstream API.\n-\n-    Upstream keeps flip-flopping on how the aux-stream launch is spelled: vllm#51838\n-    added ``SharedExperts.maybe_forward_async`` plus a ``shared_experts_overlapping``\n-    kwarg on ``MoERunner._apply_quant_method``, vllm#52024 reverted to\n-    ``MoERunner._maybe_sync_shared_experts_stream``, and vllm#52033 re-landed the\n-\n-    On Gaudi every shape is a no-op \u2014 upstream gates the multi-stream path on\n-    ``current_platform.is_cuda_alike()`` \u2014 so falling through to \"no overlap\" on an\n-    unrecognised future shape stays functionally correct.\n-\n-    Args:\n-        runner: The upstream ``MoERunner`` (``self`` of the patched forward).\n-        shared_experts_input: Shared-expert input, or None when there are none.\n-\n-    Returns:\n-        True iff the launch was asynchronous, meaning the caller must pass\n-        ``shared_experts_overlapping=True`` down to ``_apply_quant_method``.\n-    \"\"\"\n-    sync_stream = getattr(runner, \"_maybe_sync_shared_experts_stream\", None)\n-    if sync_stream is not None:\n-        sync_stream(shared_experts_input)\n-        return False\n-\n-    shared_experts = getattr(runner, \"_shared_experts\", None)\n-    if shared_experts is None or shared_experts_input is None:\n-        return False\n-\n-    forward_async = getattr(shared_experts, \"maybe_forward_async\", None)\n-    if forward_async is None:\n-        return False\n-    return bool(forward_async(shared_experts_input))\n-\n-\n def patched_fused_moe_forward(\n     self,\n     hidden_states: torch.Tensor,\n@@ -710,7 +672,15 @@ def patched_fused_moe_forward(\n         # is initialized on routed_experts (which the runner holds directly), so\n         # unlike the old FusedMoE-layer-based init we do NOT need the layer here.\n         self.routed_experts._ensure_moe_quant_config_init()\n-        shared_experts_overlapping = _launch_shared_experts_overlap(self, shared_experts_input)\n+        # Sync the aux/main stream for shared-expert multi-stream overlap,\n+        # mirroring upstream MoERunner._forward_impl. vllm PR #52024 reverted the\n+        # dual-stream decode work: SharedExperts.maybe_forward_async was removed\n+        # (folded back into maybe_sync_shared_experts_stream, re-exposed on the\n+        # runner as _maybe_sync_shared_experts_stream), and _apply_quant_method no\n+        # longer takes a shared_experts_overlapping flag \u2014 overlap is decided\n+        # internally. On HPU (not CUDA-alike) this is a no-op and the shared\n+        # experts run synchronously inside _apply_quant_method.\n+        self._maybe_sync_shared_experts_stream(shared_experts_input)\n         # Apply the gate if the runner holds it (mirrors _forward_impl).\n         if self.gate is not None:\n             if self._fse_fuse_gate:\n@@ -723,12 +690,14 @@ def patched_fused_moe_forward(\n                 router_logits, _ = self.gate(hidden_states)\n         # Core MoERunner._apply_quant_method takes no layer argument \u2014 it reads\n         # everything it needs off the runner (self.routed_experts / self.router).\n-        extra_quant_kwargs = {\"shared_experts_overlapping\": True} if shared_experts_overlapping else {}\n+        # Call it exactly as upstream _forward_impl does. vllm PR #52024 dropped\n+        # the shared_experts_overlapping argument: overlap is decided internally\n+        # and the shared-expert output is stashed on self._shared_experts.\n         shared_output, fused_hidden = self._apply_quant_method(\n             hidden_states=hidden_states,\n             router_logits=router_logits,\n             shared_experts_input=shared_experts_input,\n             input_ids=input_ids,\n         )\n         result = self._maybe_combine(shared_output, fused_hidden)\n     else:\n",
+  "seeded": [
+    {
+      "id": "case-vllmgaudi-1773-b1",
+      "file": "vllm_gaudi/ops/hpu_fused_moe.py",
+      "line_start": 629,
+      "line_end": 631,
+      "category": "logic",
+      "description": "detect MoE shared-experts overlap API [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-vllmgaudi-1773-b2",
+      "file": "vllm_gaudi/ops/hpu_fused_moe.py",
+      "line_start": 675,
+      "line_end": 683,
+      "category": "logic",
+      "description": "detect MoE shared-experts overlap API [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/vllm-gaudi",
+    "number": 1773,
+    "merged_at": "2026-08-31T16:00:19Z",
+    "merge_commit": "1953e1a5c1a71003dbfd931344177c2ddf4f9d79",
+    "title": "[FIX_FOR_VLLM_CUSTOM=488b6da105222f4f8130b3aae4a0e67cfc61f522] Feature-detect MoE shared-experts overlap API",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

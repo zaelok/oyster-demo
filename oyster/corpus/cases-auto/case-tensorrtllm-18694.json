@@ -1,0 +1,36 @@
+{
+  "id": "case-tensorrtllm-18694",
+  "source": {
+    "pr": "https://github.com/NVIDIA/TensorRT-LLM/pull/18694",
+    "repo": "NVIDIA/TensorRT-LLM",
+    "number": 18694
+  },
+  "diff": "--- a/cpp/tensorrt_llm/batch_manager/kv_cache_manager_v2/coldPageCopy.cu\n+++ b/cpp/tensorrt_llm/batch_manager/kv_cache_manager_v2/coldPageCopy.cu\n@@ -111,7 +111,7 @@ void copyPageIndicesToDevice(CUdeviceptr dst, PageIndexPair const* src, size_t n\n     attributes.srcAccessOrder = CU_MEMCPY_SRC_ACCESS_ORDER_DURING_API_CALL;\n     attributes.srcLocHint.type = CU_MEM_LOCATION_TYPE_HOST;\n     attributes.dstLocHint.type = CU_MEM_LOCATION_TYPE_DEVICE;\n-    attributes.flags = 0;\n+    attributes.flags = CU_MEMCPY_FLAG_PREFER_OVERLAP_WITH_COMPUTE;\n     size_t firstCopy = 0;\n #if CUDA_VERSION < 13000\n     size_t failIdx = std::numeric_limits<size_t>::max();\n",
+  "seeded": [
+    {
+      "id": "case-tensorrtllm-18694-b1",
+      "file": "cpp/tensorrt_llm/batch_manager/kv_cache_manager_v2/coldPageCopy.cu",
+      "line_start": 114,
+      "line_end": 114,
+      "category": "logic",
+      "description": "Drop overlap hint from KV cache page-index upload [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/TensorRT-LLM",
+    "number": 18694,
+    "merged_at": "2026-09-04T15:03:15Z",
+    "merge_commit": "f7b7f221d5ed85eedeb67bc760e33f7bca6da45f",
+    "title": "[https://nvbugs/6674826][fix] Drop overlap hint from KV cache page-index upload",
+    "language": "cuda",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

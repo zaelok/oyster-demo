@@ -1,0 +1,54 @@
+{
+  "id": "case-cudf-23973",
+  "source": {
+    "pr": "https://github.com/NVIDIA/cudf/pull/23973",
+    "repo": "NVIDIA/cudf",
+    "number": 23973
+  },
+  "diff": "--- a/cpp/src/copying/contiguous_split.cu\n+++ b/cpp/src/copying/contiguous_split.cu\n@@ -894,11 +894,6 @@ struct split_key_functor {\n   int operator() __device__(int buf_index) const { return buf_index / num_src_bufs; }\n };\n \n-struct wide_split_key_functor {\n-  int const num_src_bufs;\n-  int operator() __device__(std::ptrdiff_t buf_index) const { return buf_index / num_src_bufs; }\n-};\n-\n /**\n  * @brief Writes values to the dst_offset field of the dst_buf_info struct\n  */\n@@ -1321,11 +1314,8 @@ std::unique_ptr<packed_partition_buf_size_and_dst_buf_info> compute_splits(\n \n   // compute start offset for each output buffer for each split\n   {\n-    auto const keys =\n-      cuda::transform_iterator(cuda::counting_iterator<std::ptrdiff_t>{0},\n-                               wide_split_key_functor{static_cast<int>(num_src_bufs)});\n     auto const keys = cudf::detail::make_counting_transform_iterator(\n       0, split_key_functor{static_cast<int>(num_src_bufs)});\n     auto values =\n       cudf::detail::make_counting_transform_iterator(0, buf_size_functor{d_dst_buf_info});\n \n--- a/cpp/src/io/parquet/reader_impl_preprocess_utils.cuh\n+++ b/cpp/src/io/parquet/reader_impl_preprocess_utils.cuh\n@@ -13,6 +13,6 @@\n #include <cuda/stream>\n #include <thrust/logical.h>\n \n #include <future>\n #include <span>\n #include <vector>\n@@ -477,11 +476,7 @@ struct page_to_string_size {\n  */\n struct set_str_offset_fn {\n   PageInfo* p;\n-  __device__ constexpr void operator()(std::ptrdiff_t i, size_t value) const\n-  __device__ constexpr void operator()(size_type i, size_t value) const\n-  {\n-    p[i].str_offset = value;\n-  }\n+  __device__ constexpr void operator()(size_type i, size_t value) const { p[i].str_offset = value; }\n };\n \n /**\n",
+  "seeded": [
+    {
+      "id": "case-cudf-23973-b1",
+      "file": "cpp/src/copying/contiguous_split.cu",
+      "line_start": 896,
+      "line_end": 898,
+      "category": "logic",
+      "description": "Work around CUDA 12.9 scan corruption on Blackwell [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cudf-23973-b2",
+      "file": "cpp/src/copying/contiguous_split.cu",
+      "line_start": 1316,
+      "line_end": 1318,
+      "category": "logic",
+      "description": "Work around CUDA 12.9 scan corruption on Blackwell [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-cudf-23973-b3",
+      "file": "cpp/src/io/parquet/reader_impl_preprocess_utils.cuh",
+      "line_start": 479,
+      "line_end": 479,
+      "category": "logic",
+      "description": "Work around CUDA 12.9 scan corruption on Blackwell [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "cuda",
+    "repo": "NVIDIA/cudf",
+    "number": 23973,
+    "merged_at": "2026-09-04T00:01:45Z",
+    "merge_commit": "86b2a5bad9cfca6d72b233968d3e2338d6fad6f9",
+    "title": "Work around CUDA 12.9 scan corruption on Blackwell",
+    "language": "cuda",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

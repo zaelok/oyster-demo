@@ -1,0 +1,36 @@
+{
+  "id": "case-productionstack-1021",
+  "source": {
+    "pr": "https://github.com/vllm-project/production-stack/pull/1021",
+    "repo": "vllm-project/production-stack",
+    "number": 1021
+  },
+  "diff": "--- a/src/vllm_router/services/request_service/request.py\n+++ b/src/vllm_router/services/request_service/request.py\n@@ -1242,37 +1242,12 @@ async def proxy_multipart_request(\n     request_stats = request_stats_monitor.get_request_stats(time.time())\n \n     # pick one using the router's configured logic (roundrobin, least-loaded, etc.)\n-    if isinstance(\n-        router,\n-        (\n-            KvawareRouter,\n-            PrefixAwareRouter,\n-            SessionRouter,\n-            DisaggregatedPrefillOrchestratedRouter,\n-        ),\n-    ):\n-        chosen_url = await router.route_request(\n-            endpoints,\n-            engine_stats,\n-            request_stats,\n-            request,\n-            {},  # no JSON body for multipart/form-data\n-        )\n-    elif isinstance(router, DisaggregatedPrefillRouter):\n-        chosen_url = router.route_request(\n-            endpoints,\n-            engine_stats,\n-            request_stats,\n-            request,\n-            {},  # no JSON body for multipart/form-data\n-        )\n-    else:\n-        chosen_url = router.route_request(\n-            endpoints,\n-            engine_stats,\n-            request_stats,\n-            request,\n-        )\n+    chosen_url = router.route_request(\n+        endpoints,\n+        engine_stats,\n+        request_stats,\n+        request,\n+    )\n     logger.info(\n         \"Proxying multi-part form request for model %s to %s\", model, chosen_url\n     )\n",
+  "seeded": [
+    {
+      "id": "case-productionstack-1021-b1",
+      "file": "src/vllm_router/services/request_service/request.py",
+      "line_start": 1245,
+      "line_end": 1250,
+      "category": "logic",
+      "description": "Handle all router types correctly in proxy_multipart_request [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/production-stack",
+    "number": 1021,
+    "merged_at": "2026-07-28T19:35:12Z",
+    "merge_commit": "51022d6564da46363638cd646b0323a0ca9d4926",
+    "title": "[Router][Bugfix] Handle all router types correctly in proxy_multipart_request",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

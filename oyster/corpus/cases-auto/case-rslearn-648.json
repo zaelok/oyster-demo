@@ -1,0 +1,36 @@
+{
+  "id": "case-rslearn-648",
+  "source": {
+    "pr": "https://github.com/allenai/rslearn/pull/648",
+    "repo": "allenai/rslearn",
+    "number": 648
+  },
+  "diff": "--- a/rslearn/models/olmoearth_pretrain/optimizer.py\n+++ b/rslearn/models/olmoearth_pretrain/optimizer.py\n@@ -38,9 +38,7 @@ def get_layer_id(\n     relative = name[len(encoder_prefix) + 1 :]\n     if relative.startswith(\"model.blocks.\"):\n         return int(relative.split(\".\")[2])\n-    if relative.startswith(\"model.patch_embeddings\") or relative.startswith(\n-        \"model.composite_encodings\"\n-    ):\n+    if relative.startswith(\"model.patch_embeddings\"):\n         return 0\n     return num_layers\n \n",
+  "seeded": [
+    {
+      "id": "case-rslearn-648-b1",
+      "file": "rslearn/models/olmoearth_pretrain/optimizer.py",
+      "line_start": 41,
+      "line_end": 41,
+      "category": "logic",
+      "description": "LLRD not hitting channel embeddings [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "allenai",
+    "repo": "allenai/rslearn",
+    "number": 648,
+    "merged_at": "2026-05-21T15:40:31Z",
+    "merge_commit": "f80eb9a7ea167c4196361b386a824bd6c36384a1",
+    "title": "Fix LLRD not hitting channel embeddings",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

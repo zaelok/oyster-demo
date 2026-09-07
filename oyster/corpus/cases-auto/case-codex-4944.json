@@ -1,0 +1,54 @@
+{
+  "id": "case-codex-4944",
+  "source": {
+    "pr": "https://github.com/openai/codex/pull/4944",
+    "repo": "openai/codex",
+    "number": 4944
+  },
+  "diff": "--- a/codex-rs/tui/src/bottom_pane/chat_composer_history.rs\n+++ b/codex-rs/tui/src/bottom_pane/chat_composer_history.rs\n@@ -59,15 +59,14 @@ impl ChatComposerHistory {\n             return;\n         }\n \n-        self.history_cursor = None;\n-        self.last_history_text = None;\n-\n         // Avoid inserting a duplicate if identical to the previous entry.\n         if self.local_history.last().is_some_and(|prev| prev == text) {\n             return;\n         }\n \n         self.local_history.push(text.to_string());\n+        self.history_cursor = None;\n+        self.last_history_text = None;\n     }\n \n     /// Should Up/Down key presses be interpreted as history navigation given\n--- a/codex-rs/tui/src/chatwidget/tests.rs\n+++ b/codex-rs/tui/src/chatwidget/tests.rs\n@@ -615,27 +615,6 @@ fn alt_up_edits_most_recent_queued_message() {\n     );\n }\n \n-fn enqueueing_history_prompt_multiple_times_is_stable() {\n-    let (mut chat, _rx, _op_rx) = make_chatwidget_manual();\n-\n-    chat.bottom_pane.set_composer_text(\"repeat me\".to_string());\n-    chat.handle_key_event(KeyEvent::new(KeyCode::Enter, KeyModifiers::NONE));\n-\n-    chat.bottom_pane.set_task_running(true);\n-\n-    for _ in 0..3 {\n-        chat.handle_key_event(KeyEvent::new(KeyCode::Up, KeyModifiers::NONE));\n-        assert_eq!(chat.bottom_pane.composer_text(), \"repeat me\");\n-\n-        chat.handle_key_event(KeyEvent::new(KeyCode::Enter, KeyModifiers::NONE));\n-    }\n-\n-    assert_eq!(chat.queued_user_messages.len(), 3);\n-    for message in chat.queued_user_messages.iter() {\n-        assert_eq!(message.text, \"repeat me\");\n-    }\n-}\n-\n #[test]\n fn streaming_final_answer_keeps_task_running_state() {\n     let (mut chat, _rx, mut op_rx) = make_chatwidget_manual();\n",
+  "seeded": [
+    {
+      "id": "case-codex-4944-b1",
+      "file": "codex-rs/tui/src/bottom_pane/chat_composer_history.rs",
+      "line_start": 61,
+      "line_end": 63,
+      "category": "logic",
+      "description": "CLI UP/ENTER [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-codex-4944-b2",
+      "file": "codex-rs/tui/src/bottom_pane/chat_composer_history.rs",
+      "line_start": 68,
+      "line_end": 69,
+      "category": "logic",
+      "description": "CLI UP/ENTER [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-codex-4944-b3",
+      "file": "codex-rs/tui/src/chatwidget/tests.rs",
+      "line_start": 617,
+      "line_end": 619,
+      "category": "logic",
+      "description": "CLI UP/ENTER [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/codex",
+    "number": 4944,
+    "merged_at": "2025-10-08T14:07:30Z",
+    "merge_commit": "876d4f450af2da406cbabc5196449558f8b9bedf",
+    "title": "bug: fix CLI UP/ENTER",
+    "language": "rust",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "added",
+      "deletion-only"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

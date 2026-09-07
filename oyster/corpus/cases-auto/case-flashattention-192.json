@@ -1,0 +1,54 @@
+{
+  "id": "case-flashattention-192",
+  "source": {
+    "pr": "https://github.com/vllm-project/flash-attention/pull/192",
+    "repo": "vllm-project/flash-attention",
+    "number": 192
+  },
+  "diff": "--- a/flash_attn/cute/interface.py\n+++ b/flash_attn/cute/interface.py\n@@ -708,12 +708,8 @@ def _flash_attn_fwd(\n     total_mblocks = batch_size * num_head_kv * num_m_blocks\n     num_n_blocks = (seqlen_k_loaded + tile_n - 1) // tile_n\n     num_SMs = 132 if is_fake_mode() else torch.cuda.get_device_properties(device).multi_processor_count\n-\n-    use_dedicated_hd256_kernel = arch // 10 in [10, 11] and head_dim == 256 and head_dim_v == 256\n     if arch // 10 == 12:\n         assert num_splits == 1, \"SM120 forward only supports num_splits=1\"\n-    elif use_dedicated_hd256_kernel:\n-        num_splits = 1  # the dedicated hd=256 kernel has no SplitKV variant\n     elif num_splits < 1:\n         num_splits = num_splits_heuristic(total_mblocks, num_SMs, num_n_blocks, 128)\n \n@@ -760,6 +755,8 @@ def _flash_attn_fwd(\n         and (tile_m % qhead_per_kvhead == 0 or not pack_gqa)\n     )\n \n+    # hd=256 forward uses the dedicated Blackwell-family kernel.\n+    use_dedicated_hd256_kernel = arch // 10 in [10, 11] and head_dim == 256 and head_dim_v == 256\n     use_2cta_instrs = use_2cta_instrs or use_dedicated_hd256_kernel\n     if use_dedicated_hd256_kernel:\n         hd256_varlen_b1 = cu_seqlens_q is not None and batch_size == 1\n",
+  "seeded": [
+    {
+      "id": "case-flashattention-192-b1",
+      "file": "flash_attn/cute/interface.py",
+      "line_start": 710,
+      "line_end": 712,
+      "category": "logic",
+      "description": "heuristic for hdim 256 kernel [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-192-b2",
+      "file": "flash_attn/cute/interface.py",
+      "line_start": 712,
+      "line_end": 714,
+      "category": "logic",
+      "description": "heuristic for hdim 256 kernel [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-flashattention-192-b3",
+      "file": "flash_attn/cute/interface.py",
+      "line_start": 758,
+      "line_end": 759,
+      "category": "logic",
+      "description": "heuristic for hdim 256 kernel [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "vllm",
+    "repo": "vllm-project/flash-attention",
+    "number": 192,
+    "merged_at": "2026-09-01T13:55:54Z",
+    "merge_commit": "88a8b4c9980b7060ac249742b4be8dd8a2769e9d",
+    "title": "Fix heuristic for hdim 256 kernel",
+    "language": "python",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "deletion-only",
+      "deletion-only",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}

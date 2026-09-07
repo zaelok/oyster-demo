@@ -1,0 +1,45 @@
+{
+  "id": "case-codex-4967",
+  "source": {
+    "pr": "https://github.com/openai/codex/pull/4967",
+    "repo": "openai/codex",
+    "number": 4967
+  },
+  "diff": "--- a/codex-rs/tui/src/terminal_palette.rs\n+++ b/codex-rs/tui/src/terminal_palette.rs\n@@ -11,7 +11,7 @@ pub fn best_color(target: (u8, u8, u8)) -> Color {\n         #[allow(clippy::disallowed_methods)]\n         Color::Rgb(r, g, b)\n     } else if color_level.has_256\n-        && let Some((i, _)) = xterm_fixed_colors().min_by(|(_, a), (_, b)| {\n+        && let Some((i, _)) = xterm_fixed_colors().enumerate().min_by(|(_, a), (_, b)| {\n             perceptual_distance(*a, target)\n                 .partial_cmp(&perceptual_distance(*b, target))\n                 .unwrap_or(std::cmp::Ordering::Equal)\n@@ -236,8 +236,8 @@ mod imp {\n }\n \n /// The subset of Xterm colors that are usually consistent across terminals.\n-fn xterm_fixed_colors() -> impl Iterator<Item = (usize, (u8, u8, u8))> {\n-    XTERM_COLORS.into_iter().enumerate().skip(16)\n+pub fn xterm_fixed_colors() -> impl Iterator<Item = (u8, u8, u8)> {\n+    XTERM_COLORS.into_iter().skip(16)\n }\n \n // Xterm colors; derived from https://ss64.com/bash/syntax-colors.html\n",
+  "seeded": [
+    {
+      "id": "case-codex-4967-b1",
+      "file": "codex-rs/tui/src/terminal_palette.rs",
+      "line_start": 14,
+      "line_end": 14,
+      "category": "logic",
+      "description": "tui: fix off-by-16 in terminal_palette [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    },
+    {
+      "id": "case-codex-4967-b2",
+      "file": "codex-rs/tui/src/terminal_palette.rs",
+      "line_start": 239,
+      "line_end": 240,
+      "category": "logic",
+      "description": "tui: fix off-by-16 in terminal_palette [auto label from the fix PR title: says what the fix did, not what the defect is]"
+    }
+  ],
+  "meta": {
+    "tier": "auto",
+    "org": "openai",
+    "repo": "openai/codex",
+    "number": 4967,
+    "merged_at": "2025-10-08T21:57:32Z",
+    "merge_commit": "f4bc03d7c049aaec020d431498949dfb6523f32e",
+    "title": "tui: fix off-by-16 in terminal_palette",
+    "language": "rust",
+    "category_reasons": [
+      "default"
+    ],
+    "seeded_kinds": [
+      "added",
+      "added"
+    ],
+    "generator": "tools/build_corpus.py"
+  }
+}
