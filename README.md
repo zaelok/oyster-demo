@@ -7,7 +7,7 @@ number came from, including the ones where it was wrong.
 
 ![ci](https://github.com/zaelok/oyster-demo/actions/workflows/ci.yml/badge.svg)
 ![license](https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-blue)
-![tests](https://img.shields.io/badge/tests-165%20offline-brightgreen)
+![tests](https://img.shields.io/badge/tests-166%20offline-brightgreen)
 
 **The result so far.** Three code-review strategies over the same 314 seeded bugs, reversed
 from 183 merged bug-fix PRs in 89 public repositories (146 searched: Apple, OpenAI, AI2, Anthropic, MCP,
@@ -37,7 +37,7 @@ false-positive column.
 
 ```bash
 git clone https://github.com/zaelok/oyster-demo && cd oyster-demo && uv sync
-uv run pytest -q                                            # 165 tests, offline
+uv run pytest -q                                            # 166 tests, offline
 uv run python -m oyster.cli eval --provider mock --fixtures fixtures/claude-code/haiku45-sonnet5-cheapnone --corpus oyster/corpus/cases-auto
 ```
 
@@ -177,7 +177,7 @@ flowchart LR
 - **Corpus**: two tiers. The reviewed tier (17 cases, 21 bugs) was labelled by hand; the
   auto tier (183 cases, 314 bugs, from 89 of 146 searched public repositories) was built by
   `tools/build_corpus.py` with unreviewed labels. They are run and reported separately.
-- **Tests**: 165, all offline.
+- **Tests**: 166, all offline.
 
 ## Conclusions after four runs
 
