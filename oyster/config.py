@@ -1,5 +1,7 @@
-"""Settings and model bindings. Rates are placeholders: a human verifies them against
-published pricing before any real API run, and results.md records what was used."""
+"""Settings and model bindings. The defaults are the model ids and list rates every committed
+run used, so a bare clone replays the committed fixtures (fixture keys include the model id);
+a human verifies the rates against published pricing before any new paid run, and results.md
+records what was used."""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -19,12 +21,12 @@ class Settings(BaseSettings):
     # The API provider ignores these; the results header records them.
     cheap_effort: str = ""
     strong_effort: str = ""
-    cheap_model_id: str = "claude-haiku-4-5-20251001"
-    strong_model_id: str = "claude-sonnet-4-5"
-    cheap_rate_in: float = 1.00  # dollars per 1M tokens, VERIFY before real runs
+    cheap_model_id: str = "claude-haiku-4-5"
+    strong_model_id: str = "claude-sonnet-5"
+    cheap_rate_in: float = 1.00  # dollars per 1M tokens, Anthropic list rates as of 2026-09
     cheap_rate_out: float = 5.00
-    strong_rate_in: float = 3.00
-    strong_rate_out: float = 15.00
+    strong_rate_in: float = 2.00
+    strong_rate_out: float = 10.00
     cache_discount: float = 0.90
     budget_dollars: float = 1.00
     latency_tolerance_s: float = 120.0

@@ -46,7 +46,7 @@ uv run python -m tools.run_matrix --provider anthropic
 writes `results/<config>/{priors,results}.json`, `results.md`, `run.log`, and a combined
 `results/summary.md`. Each run prints a rough cost estimate and, without `--yes`, waits for
 confirmation. Every completion is recorded as a mock fixture under `fixtures/mock/` so the
-run replays offline afterwards. Rates are placeholders in `oyster/config.py` and the matrix;
+run replays offline afterwards. The defaults in `oyster/config.py` are the model ids and list rates the committed runs used, which is what lets a bare clone replay their fixtures; verify rates against published pricing before a new paid runpy` and the matrix;
 verify them against the vendor's price list before a paid run and keep the values in the
 results header honest.
 

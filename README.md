@@ -1,8 +1,38 @@
 # OYSTER
 
 **O**rchestration with **Y**our **S**uccess metrics, **T**ransparent **E**valuation & **R**outing.
+A cost-aware orchestrator for multi-model workflows: it calibrates every step on your own
+ground truth, picks a path under your budget and success metrics, and shows where every
+number came from, including the ones where it was wrong.
 
 ![ci](https://github.com/zaelok/oyster-demo/actions/workflows/ci.yml/badge.svg)
+![license](https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-blue)
+![tests](https://img.shields.io/badge/tests-165%20offline-brightgreen)
+
+**The result so far.** Three code-review strategies over the same 314 seeded bugs, reversed
+from 183 merged bug-fix PRs in 146 public repositories (Apple, OpenAI, AI2, Anthropic, MCP,
+NVIDIA and the CUDA ecosystem, vLLM, LiteLLM), run with Claude Haiku 4.5 and Claude Sonnet 5,
+token counts as the API reported them:
+
+| strategy | $ total | bugs caught (strict) | $ per bug caught |
+|---|---|---|---|
+| A · one cheap pass (Haiku) | $0.31 | **192 / 314** | $0.0016 |
+| B · cheap → strong cascade (Haiku → Sonnet) | $2.63 | 184 / 314 | $0.0143 |
+| C · reviewer → critic → reviewer (Sonnet) | $5.50 | 177 / 314 | $0.0311 |
+
+Spending 8× and 17× more caught fewer bugs. The selector, reasoning from per-skill priors
+under an independence assumption, predicted C would win, in this run and the three before it;
+it won once. Security bugs were the hole every strategy shared: 16 to 25 percent caught,
+against 61 to 100 for the rest. Every completion is a retained fixture, so the table replays
+offline, to the cent, with no key. [What four runs add up to →](docs/CONCLUSIONS.md)
+
+```bash
+git clone https://github.com/zaelok/oyster-demo && cd oyster-demo && uv sync
+uv run pytest -q                                            # 165 tests, offline
+uv run python -m oyster.cli eval --provider mock --fixtures fixtures/claude-code/haiku45-sonnet5-cheapnone --corpus oyster/corpus/cases-auto
+```
+
+---
 
 OYSTER is the optimizer inside a larger idea: a **skill forest**, where every capability an
 organization or a person relies on is a measured skill with its own ground truth, skills
@@ -105,7 +135,7 @@ Seven principles hold the picture together; the full statement is in
 
 ```mermaid
 flowchart LR
-  CORP["Corpus<br/>17 cases · 21 seeded bugs<br/>reversed public bug-fix PRs"] --> A
+  CORP["Corpus, two tiers<br/>reviewed: 17 cases · 21 bugs<br/>auto: 183 cases · 314 bugs<br/>reversed public bug-fix PRs"] --> A
   CORP --> B
   CORP --> C
   subgraph FLOWS["Three flows over three skills"]
@@ -133,10 +163,10 @@ flowchart LR
 - **Results page**: `tools/build_site.py` writes a single-file page with the table, a
   selection explorer and per-case provenance; the `pages` workflow publishes it once the
   repository is public.
-- **Corpus**: two tiers. The reviewed tier (17 cases) is behind every committed number; the
-  auto tier (183 cases from 146 public repositories, labels unreviewed) is built by
-  `tools/build_corpus.py` and evaluated separately.
-- **Tests**: 164, all offline.
+- **Corpus**: two tiers. The reviewed tier (17 cases, 21 bugs) was labelled by hand; the
+  auto tier (183 cases, 314 bugs, from 146 public repositories) was built by
+  `tools/build_corpus.py` with unreviewed labels. They are run and reported separately.
+- **Tests**: 165, all offline.
 
 ## Conclusions after four runs
 
