@@ -137,7 +137,7 @@ flowchart LR
   `tools/build_corpus.py` and evaluated separately.
 - **Tests**: 164, all offline.
 
-## Results: first run
+## Results: first run (chat window, estimated tokens)
 
 17 cases, 21 seeded bugs, cheap-model = Claude Haiku 4.5 (no extended thinking), strong-model
 = Claude Sonnet 5 (medium effort), run in conversation mode on a claude.ai subscription. Full
@@ -178,6 +178,44 @@ Caveats, in addition to the Limitations below: the corpus is reversed fixes, whi
 correct code being replaced and are easier than wild bugs; several requests shared one chat
 context per message; these repos are popular enough that the fixes may be in training data;
 and 21 bugs is a small sample, so a one- or two-bug difference between paths is noise.
+
+## Results: second run (Claude Code CLI, API-reported tokens)
+
+Same 17 cases and 21 bugs, same model pair, run through the Claude Code CLI on the
+subscription (`--provider claude-code` via `tools/run_matrix.py`), which returns the token
+counts the API billed. Two executor settings, because the CLI's default is adaptive thinking
+on every model. Full tables with per-case detail: [`results/cli/summary.md`](results/cli/summary.md).
+
+| executor setting | path | $ total | strict | loose | $/bug (strict) | false positives | p50 latency |
+|---|---|---|---|---|---|---|---|
+| Haiku thinking on (CLI default) | A | $0.5132 | 13 | 14 | $0.0395 | 4 | 45.8s |
+| | B | $0.6411 | 18 | 18 | $0.0356 | 2 | 53.3s |
+| | C | $0.3247 | 18 | 18 | $0.0180 | 2 | 14.9s |
+| Haiku thinking off (`OYSTER_CHEAP_EFFORT=none`) | A | $0.0254 | 18 | 20 | $0.0014 | 3 | 2.8s |
+| | B | $0.1411 | 18 | 18 | $0.0078 | 3 | 7.2s |
+| | C | $0.3020 | 20 | 20 | $0.0151 | 2 | 16.7s |
+
+Sonnet 5 ran at the CLI default in both rows (about 300 output tokens per call, so it barely
+thought). Every completion is a fixture under `fixtures/claude-code/`, so both tables replay
+offline.
+
+What changed and what did not:
+
+- **The harness is part of the executor.** At the CLI's default, Haiku 4.5 spent a median
+  4,900 output tokens per call (max 20,701) thinking, took 46 s median (max 188 s), cost forty
+  times the chat run, and caught fewer bugs than with thinking off (13 versus 18). This is why
+  a registry executor carries settings and harness, and why a results header without them is
+  not comparable to anything.
+- **The ranking is not stable.** In the chat run C was worst; here C was best (20 of 21 with
+  Haiku off) because the second reviewer kept the upstream catches instead of drifting off
+  them. The selector picked C in all three runs; it was wrong once and right twice. Twenty-one
+  bugs cannot rank these paths. What a run can show is which mechanism moved: last-node-wins
+  drift, present in one run and absent in the next, is the difference between the two verdicts.
+- **Thinking off beat thinking on for the cheap scanner**, 18 versus 13 strict on the same
+  prompts. One run each; a hypothesis for the auto tier, not a result.
+- **Real dollars run 2 to 3 times the estimates.** The CLI wraps each prompt in its own
+  scaffolding, so billed input roughly doubles, and `chars // 4` undercounts. Relative order
+  between paths held.
 
 ## Quickstart
 

@@ -47,7 +47,7 @@ class RecordingProvider:
             "model_id": completion.model_id,
         }
         (self.fixtures_dir / f"{key}.json").write_text(
-            json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n"
         )
         with self._lock:
             self.recorded.append(key)

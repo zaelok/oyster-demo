@@ -17,7 +17,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from oyster.corpus import load_cases
+from oyster.corpus import load_corpora
 from oyster.evaluation import LIMITATIONS
 from oyster.graph.catalog import CATALOG
 
@@ -48,26 +48,39 @@ def _header(results_md: Path) -> dict:
     return info
 
 
-def collect(results_root: Path, corpus_dir: Path) -> dict:
+def run_dirs(results_root: Path) -> list[Path]:
+    """Every directory holding a results.json, one or two levels below results/: the first
+    runs sit at results/<run>/, run_matrix writes results/<batch>/<config>/."""
+    found = []
+    for first in sorted(p for p in results_root.iterdir() if p.is_dir()):
+        if (first / "results.json").exists():
+            found.append(first)
+        found.extend(
+            second
+            for second in sorted(p for p in first.iterdir() if p.is_dir())
+            if (second / "results.json").exists()
+        )
+    return found
+
+
+def collect(results_root: Path, corpus_dirs: Sequence[Path]) -> dict:
     runs = []
-    for run_dir in sorted(p for p in results_root.iterdir() if p.is_dir()):
+    for run_dir in run_dirs(results_root):
         results_json = run_dir / "results.json"
-        if not results_json.exists():
-            continue
         priors = {}
         if (run_dir / "priors.json").exists():
             priors = json.loads((run_dir / "priors.json").read_text(encoding="utf-8"))
         data = json.loads(results_json.read_text(encoding="utf-8"))
         runs.append(
             {
-                "name": run_dir.name,
+                "name": run_dir.relative_to(results_root).as_posix(),
                 **_header(run_dir / "results.md"),
                 "priors": priors,
                 "results": data["results"],
                 "reports": data["reports"],
             }
         )
-    cases = [asdict(case) for case in load_cases(corpus_dir)]
+    cases = [asdict(case) for case in load_corpora([Path(d) for d in corpus_dirs])]
     paths = [asdict(path) for path in CATALOG]
     return {
         "built": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -335,8 +348,8 @@ if (!D.runs.length) { document.querySelector('main').insertAdjacentHTML('afterbe
 """
 
 
-def build(results_root: Path, corpus_dir: Path, out: Path) -> Path:
-    data = collect(results_root, corpus_dir)
+def build(results_root: Path, corpus_dirs: Sequence[Path], out: Path) -> Path:
+    data = collect(results_root, corpus_dirs)
     payload = json.dumps(data).replace("</", "<\\/")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(TEMPLATE.replace("__DATA__", payload), encoding="utf-8")
@@ -346,10 +359,20 @@ def build(results_root: Path, corpus_dir: Path, out: Path) -> Path:
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="build_site", description=__doc__)
     parser.add_argument("--results", default="results")
-    parser.add_argument("--corpus", default="oyster/corpus/cases")
+    parser.add_argument(
+        "--corpus",
+        action="append",
+        default=None,
+        help="case directory, repeatable; default: every tier under oyster/corpus/",
+    )
     parser.add_argument("--out", default="site/index.html")
     args = parser.parse_args(argv)
-    out = build(Path(args.results), Path(args.corpus), Path(args.out))
+    corpus = args.corpus or [
+        str(d)
+        for d in (Path("oyster/corpus/cases"), Path("oyster/corpus/cases-auto"))
+        if d.is_dir()
+    ]
+    out = build(Path(args.results), [Path(d) for d in corpus], Path(args.out))
     print(f"wrote {out} ({out.stat().st_size} bytes)")
     return 0
 
