@@ -49,13 +49,14 @@ points wide. That difference is the reason the auto tier exists.
    (13 against 18), in the setting where it was made to think; with thinking off (run 3) it
    caught 18 and C's 20 was inside the noise that run 4 then resolved.
 
-2. **Security bugs are the shared hole.** Every path in every run caught 16 to 25 percent of
-   bugs whose PR text carried security vocabulary, against 61 to 100 percent of the rest. A
-   second pass, a stronger model of the same family, and a critique round all left it. The
-   fix is not a longer flow on the same executors; it is a different executor for that facet
-   (a security-specialised skill or tool, or a person), which is a routing decision and the
-   reason the platform design keeps a sparse matrix of executor by facet rather than one
-   quality number per model.
+2. **"Security" is a category disagreement, not a detection hole.** On run 4 the 32 bugs
+   whose PR text carried security vocabulary were found at the loose level 29, 29 and 25
+   times by A, B and C, the same rate as the other 282, and labelled security 5, 6 and 6
+   times: the models call them logic. On the reviewed tier the four security bugs went 1 to 3
+   of 4 loose across runs, too few to say anything. An earlier draft of this document called
+   this a hole every path shared; it is a disagreement between a keyword label and a model
+   about what "security" means, and adjudicating it is a person's job, which is what the
+   reviewed tier is for and why the sparse matrix keeps facets and executors apart.
 
 3. **An executor is a model plus its settings plus its harness.** At the CLI's default, Haiku
    4.5 spent a median 4,900 output tokens per call thinking, took 46 seconds, cost twenty
@@ -64,8 +65,15 @@ points wide. That difference is the reason the auto tier exists.
    that names only the model is not an executor, and a results table whose header does not
    name the settings is not comparable to anything.
 
-4. **The independence prior over-predicts multi-node flows, consistently.** The selector
-   chose C in all four runs; C was best in one. Two mechanisms, both visible in the retained
+4. **The independence prior over-predicts multi-node flows, by construction.** Under
+   1 − ∏(1 − r) a path with more nodes can never predict lower quality than its prefix, and
+   the predicted costs ($0.02 to $0.04 per case) never approach the $1 budget, so the longest
+   feasible path wins whenever the budget is slack. The selector chose C in all four runs (in
+   run 2 by elimination: A and B failed the 120 s latency tolerance on Haiku's p95 of 188 s;
+   unconstrained, C still ranked first at 0.57 against 0.47 and 0.32); C was best in one. The
+   printed predicted quality also averages over three categories including style, which has
+   no calibrated rate and contributes zero, so it is not on the scale of the measured rate.
+   Two mechanisms, both visible in the retained
    results: a critic re-judges the findings it is handed rather than detecting independently
    (alone it catches 0.33 of logic bugs on the auto tier, the lowest of the three skills), and
    the last-node-wins transfer rule lets a later reviewer drop an upstream catch. Both mean
@@ -74,14 +82,16 @@ points wide. That difference is the reason the auto tier exists.
    run gets its own measured prior and the formula is used only for flows never run.
 
 5. **Label quality can be measured.** 43 of A's 235 loose catches on run 4 (18 percent) sat
-   on the seeded lines with a different category from the keyword rule's. Some of that
-   disagreement is the model's, so 18 percent is an upper bound on the auto tier's category
-   noise, not a point estimate. Two more facets of the labels show through: bugs the
+   on the seeded lines with a different category from the keyword rule's; 24 of the 43 are the
+   security cases of point 2. Some of that disagreement is the model's, so 18 percent is an
+   upper bound on the auto tier's category noise, not a point estimate. Two more facets of the
+   labels show through: bugs the
    fix corrected by adding code (the seeded range is the neighbouring lines) were caught 50 to
    52 percent against 60 to 66 for bugs on replaced lines; and bugs from PRs merged in
-   August and September 2026 were caught 57 percent against 68 for earlier ones. Training-data
-   contamination is the obvious reading of the second and the reason corpora carry a date
-   cutoff; a shift in the repository mix is the other, and this data cannot separate them.
+   August and September 2026 were caught 57 percent against 68 for earlier ones, intervals
+   overlapping. Training-data contamination cannot be the reading for path A: Haiku 4.5's
+   published cutoff precedes every PR in the corpus. A shift in the repository mix over time
+   is the remaining candidate, and this data cannot test it.
 
 6. **With a person in the loop the dollar column stops deciding, but not always the same
    way.** On the reviewed tier a human cost `h` above about three cents per missed bug flips
@@ -90,8 +100,20 @@ points wide. That difference is the reason the auto tier exists.
 
 ## What the runs do not show
 
-- **Run-to-run variance is large and unmodelled.** The same 21 bugs gave A 15, 13 and 18
-  strict catches across three runs under two settings. Each run is one replicate; the
+- **A no-model baseline scores like a model.** Flagging every non-trivial added block as a
+  logic bug scores 180 of 314 strict (202 loose, 0 false positives) on the auto tier and 17
+  of 21 on the reviewed tier, at $0, because a reversed fix makes every changed block a seeded
+  bug and the corpus has no decoy hunks. The tables compare paths on the same task; they do
+  not measure recall against an absolute bar, and precision is only the false-positive count.
+  Decoy hunks are the fix.
+- **Two auto-tier cases carry inline test names** (codex-5016, codex-4944: Rust `#[test]`
+  functions survived the test-file filter, which is path-based), and the comment stripper
+  removed `#`-prefixed code lines (attributes, preprocessor directives) from removed sides.
+  The tool is fixed for future builds; the committed cases are unchanged so the numbers stay
+  reproducible, and both are listed in the tier's README.
+- **Variance across settings is large and no configuration has been replicated.** The same
+  21 bugs gave A 15, 13 and 18 strict catches across three runs under three settings (chat
+  with estimated tokens, CLI thinking on, CLI thinking off). Each run is one replicate; the
   platform design asks for k of them under a run manifest, and until they exist a one- or
   two-bug difference between paths on the reviewed tier is noise by construction.
 - **One model family and one prompt set.** Whether a materially stronger deep reviewer (Opus

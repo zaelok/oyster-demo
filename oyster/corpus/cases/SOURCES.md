@@ -29,5 +29,5 @@ Every case is a merged bug-fix PR from a public repository, reversed so the fixe
 Each case embeds a short excerpt (the reversed hunks of one merged pull request) from the
 repository linked in its row. Those excerpts remain under their original licenses (Apache-2.0,
 BSD-3-Clause and MIT across the sources above) and their copyright stays with their authors;
-the link is the attribution. The repository's own license covers the engine, the tooling and
+`THIRD-PARTY-NOTICES.md` at the repository root names each source repository's license and reproduces the license texts, and the link is the attribution to the change. The repository's own license covers the engine, the tooling and
 the labels, not the excerpts.

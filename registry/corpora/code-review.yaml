@@ -5,6 +5,6 @@ source_tier: reversed-fixes
 review: human
 date_cutoff: 2025-09-01
 facet_tags: [language, repository, category]
-license_note: excerpts keep their original licenses, see oyster/corpus/cases/SOURCES.md
+license_note: excerpts keep their original licenses, see THIRD-PARTY-NOTICES.md and oyster/corpus/cases/SOURCES.md
 size: {cases: 17, expected: 21}
 by_category: {logic: 17, security: 4, style: 0}

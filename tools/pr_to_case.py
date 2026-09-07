@@ -113,7 +113,12 @@ _LEAK_RE = re.compile(
     re.IGNORECASE,
 )
 _PR_URL_RE = re.compile(r"github\.com/([^/]+)/([^/]+)/pull/(\d+)")
-_COMMENT_RE = re.compile(r"^\s*(//|#|/\*|\*|--|<!--)")
+# A '#' line is a comment unless it is a preprocessor directive, a Rust/Swift attribute or a
+# shebang: those are code and must survive the removed-comment stripper.
+_COMMENT_RE = re.compile(
+    r"^\s*(//|#(?![\[!]|(?:include|define|undef|pragma|if|ifdef|ifndef|elif|else|endif"
+    r"|error|import)\b)|/\*|\*|--|<!--)"
+)
 _TRIVIAL_LINE_RE = re.compile(
     r"^\s*($|//|#|/\*|\*|--|<!--|import\b|from\s+\S+\s+import\b|package\b|use\b"
     r"|\"[^\"]*\"\s*$|'[^']*'\s*$|[{}()\[\];,]+\s*$|\}?\s*else\s*\{?\s*$)"

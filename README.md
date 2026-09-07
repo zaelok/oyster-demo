@@ -12,7 +12,8 @@ number came from, including the ones where it was wrong.
 **The result so far.** Three code-review strategies over the same 314 seeded bugs, reversed
 from 183 merged bug-fix PRs in 89 public repositories (146 searched: Apple, OpenAI, AI2, Anthropic, MCP,
 NVIDIA and the CUDA ecosystem, vLLM, LiteLLM), run with Claude Haiku 4.5 and Claude Sonnet 5,
-token counts as the API reported them:
+token counts as the API reported them, priced at list rates (the subscription route billed
+nothing):
 
 | strategy | $ total | bugs caught (strict) | $ per bug caught |
 |---|---|---|---|
@@ -22,9 +23,17 @@ token counts as the API reported them:
 
 Spending 8× and 17× more did not catch more bugs: 192, 184 and 177, with overlapping 95% intervals on the rates and no overlap on the costs. The selector, reasoning from per-skill priors
 under an independence assumption, predicted C would win, in this run and the three before it;
-it won once. Security bugs were the hole every strategy shared: 16 to 25 percent caught,
-against 61 to 100 for the rest. Every completion is a retained fixture, so the table replays
-offline, to the cent, with no key. [What four runs add up to →](docs/CONCLUSIONS.md)
+it won once. Bugs whose PR text carried security vocabulary were found as often as the rest
+(29 of 32 at the loose level) but almost never labelled security by the models (5 or 6 of 32
+strict): a category disagreement, not a detection hole. Every completion is a retained
+fixture, so the table replays offline, to the cent, with no key.
+[What four runs add up to →](docs/CONCLUSIONS.md)
+
+A heuristic with no model that flags every non-trivial added block as a logic bug scores
+180 of 314 strict (202 loose) at $0, because in a reversed fix every changed block is a
+seeded bug by construction and the corpus has no decoy hunks. Read the table as a comparison
+between paths on the same task, not as recall against an absolute bar; precision is only the
+false-positive column.
 
 ```bash
 git clone https://github.com/zaelok/oyster-demo && cd oyster-demo && uv sync
@@ -45,8 +54,10 @@ instance (pull-request review), and the shapes the other parts must fit.
 
 The claim under test in the first instance: an orchestrator operating on a uniform graph
 representation can select, under an explicit cost budget, a review strategy whose measured
-bugs-caught-per-dollar beats any fixed single strategy, and can show its work. Four measured
-runs are below, including the places where the optimizer was wrong, and
+bugs-caught-per-dollar beats any fixed single strategy, and can show its work. As written,
+the claim failed in all four runs: the selector maximises predicted quality under a budget,
+never looks at dollars per bug, and picked the worst dollars-per-bug path each time. Four
+measured runs are below, including the places where the optimizer was wrong, and
 [`docs/CONCLUSIONS.md`](docs/CONCLUSIONS.md) says what they add up to.
 
 ## The north star
@@ -178,22 +189,29 @@ cross-run table, the calibrated priors and the threats to validity, is
 1. **Spending more did not catch more.** On 314 bugs the cheap single pass caught the most, at
    an eighth and a seventeenth of the other paths' cost. On the 21-bug tier it trailed once,
    by five, in the run where it was made to think; the same pass with thinking off caught 18.
-2. **Security bugs are the shared hole**: 16 to 25 percent caught by every path in every run,
-   against 61 to 100 for the rest. That is a routing problem (a different executor for that
-   facet), not a longer-flow problem.
+2. **"Security" is a label disagreement, not a detection hole.** On 314 bugs the models found
+   security-labelled bugs as often as the rest (29 of 32 loose) and called them logic (5 or 6
+   of 32 strict). Whether the keyword label or the model is right is a question for a person,
+   which is what the reviewed tier is for.
 3. **An executor is model + settings + harness.** The CLI's default thinking made Haiku
    twenty times more expensive and worse than the same model with thinking off. Numbers
    without the settings in the header are not comparable.
-4. **The independence prior over-predicts multi-node flows.** The selector chose C in four
-   runs of four; C was best in one. Critics re-judge rather than detect, and last-node-wins
+4. **The independence prior over-predicts multi-node flows, by construction.** Under
+   1 − ∏(1 − r) a longer path can never predict lower quality, so with a slack budget the
+   longest feasible path wins every time; the runs measure how wrong that is. The selector
+   chose C in four runs of four (in run 2 by elimination, A and B having failed the latency
+   tolerance); C was best in one. Critics re-judge rather than detect, and last-node-wins
    drops upstream catches. Measured flow priors are the specified fix.
 5. **Label noise is measurable**: 18 percent of the cheap pass's catches on the auto tier
-   disagreed with the keyword category, an upper bound on the label's category noise; absence
-   bugs and newer PRs are harder, the latter consistent with training-data contamination.
-6. **Run-to-run variance is large and unmodelled**: the same 21 bugs gave the cheap pass 15,
-   13 and 18 catches across runs. Replicates are the next thing the reviewed tier needs.
+   disagreed with the keyword category (24 of the 43 are the security cases above), an upper
+   bound on the label's category noise. Absence bugs and newer PRs are harder; for the newer
+   ones no explanation this data can test (Haiku 4.5's training cutoff precedes every PR in
+   the corpus, so contamination is not one).
+6. **Variance across settings is large and no configuration has been replicated**: the same
+   21 bugs gave the cheap pass 15, 13 and 18 catches under three settings. Replicates are the
+   next thing the reviewed tier needs.
 
-## Results: first run (chat window, estimated tokens)
+## Results: run 1 (chat window, estimated tokens)
 
 17 cases, 21 seeded bugs, cheap-model = Claude Haiku 4.5 (no extended thinking), strong-model
 = Claude Sonnet 5 (medium effort), run in conversation mode on a claude.ai subscription. Full
@@ -235,7 +253,7 @@ correct code being replaced and are easier than wild bugs; several requests shar
 context per message; these repos are popular enough that the fixes may be in training data;
 and 21 bugs is a small sample, so a one- or two-bug difference between paths is noise.
 
-## Results: second run (Claude Code CLI, API-reported tokens)
+## Results: runs 2 and 3 (Claude Code CLI, API-reported tokens)
 
 Same 17 cases and 21 bugs, same model pair, run through the Claude Code CLI on the
 subscription (`--provider claude-code` via `tools/run_matrix.py`), which returns the token
@@ -265,7 +283,8 @@ What changed and what did not:
   not comparable to anything.
 - **The ranking is not stable.** In the chat run C was worst; here C was best (20 of 21 with
   Haiku off) because the second reviewer kept the upstream catches instead of drifting off
-  them. The selector picked C in all three runs; it was wrong once and right twice. Twenty-one
+  them. The selector picked C in all three runs, in run 2 by elimination after A and B failed
+  the latency tolerance; it was wrong once and right twice. Twenty-one
   bugs cannot rank these paths. What a run can show is which mechanism moved: last-node-wins
   drift, present in one run and absent in the next, is the difference between the two verdicts.
 - **Thinking off beat thinking on for the cheap scanner**, 18 versus 13 strict on the same
@@ -274,7 +293,7 @@ What changed and what did not:
   scaffolding, so billed input roughly doubles, and `chars // 4` undercounts. Relative order
   between paths held.
 
-## Results: third run (the auto tier: 183 cases, 314 bugs)
+## Results: run 4 (the auto tier: 183 cases, 314 bugs)
 
 Same configuration as the second row above (Haiku 4.5 thinking off, Sonnet 5 at the CLI
 default, API-reported tokens), over the unreviewed tier. Full table with per-case detail:
@@ -291,8 +310,11 @@ default, API-reported tokens), over the unreviewed tier. Full table with per-cas
   strict rates overlap at 95%, so quality cannot rank the paths; the costs are not in doubt.
   The selector predicted C again (0.44) and C measured worst again. The second run's C-wins
   was the small sample, not the mechanism.
-- **Security is the hole, for every path.** Bugs whose PR text carried security vocabulary:
-  16 to 19 percent caught (n=32), against 61 to 66 for the rest (n=282). Third run in a row.
+- **"Security" is a category disagreement, not a hole.** Bugs whose PR text carried security
+  vocabulary (n=32) were found at the loose level 29, 29 and 25 times by A, B and C, the same
+  rate as the rest, and labelled security 5, 6 and 6 times. The models call them logic; the
+  keyword rule calls them security; nobody has adjudicated. The reviewed tier's four security
+  bugs are too few to settle it (1 to 3 of 4 loose across runs).
 - **Absence bugs are harder than wrong-line bugs.** Where the fix only added code, so the
   seeded range is the neighbouring lines, 50 to 52 percent; where it replaced lines, 60 to
   66. Part of that is the anchor's arbitrariness, a label question rather than a model one.
@@ -301,10 +323,12 @@ default, API-reported tokens), over the unreviewed tier. Full table with per-cas
   that is the model's category, most of it is the rule's, so it is an upper bound on category
   label noise: the price of a tier nobody reviewed, measured rather than assumed.
 - **Newer PRs are harder.** Bugs from PRs merged in August and September 2026: 57 percent
-  caught (n=194, 0.50 to 0.64); earlier ones: 68 (n=120, 0.59 to 0.75). Training-data
-  contamination is the obvious hypothesis and the reason corpora carry a date cutoff; a shift
-  in the repository mix is the other. This data cannot separate them.
-- By language, Go was lowest (33 to 42 percent, n=24), Swift and Python highest (60 to 71);
+  caught (n=194, 0.50 to 0.64); earlier ones: 68 (n=120, 0.59 to 0.75). The intervals
+  overlap, and training-data contamination cannot explain it for path A: Haiku 4.5's published
+  cutoff precedes every PR in the corpus. A shift in the repository mix over time is the
+  remaining candidate; this data cannot test it.
+- By language, among those with at least 40 bugs, Go was lowest (33 to 42 percent, n=24),
+  Swift highest (61 to 71, n=49) and Python 58 to 63 (n=146);
   by repository group, LiteLLM lowest (35 to 41, n=17). Small facets; read them as directions.
 
 About 1,070 CLI calls on a subscription, 45 minutes with four workers, no halts, no parse
@@ -440,8 +464,8 @@ the provenance) and what is a guess (the category, the description, whether the 
 findable from the diff alone); the funnel is in
 [`BUILD-REPORT.md`](oyster/corpus/cases-auto/BUILD-REPORT.md) and every PR considered is in
 `candidates.jsonl`. `--corpus` is repeatable, the tiers are evaluated separately, and their
-numbers are never merged. The auto tier has not been run yet: at six calls per case it is
-about 1,100 requests, a job for `--provider claude-code` rather than a chat window.
+numbers are never merged. The auto tier's run is the run 4 section above: about 1,070 CLI
+calls, a job for `--provider claude-code` rather than a chat window.
 
 ## Reading `results.md`
 
@@ -525,6 +549,9 @@ the places a judgment call was needed, and what was decided.
    diff slot left empty, and `cached_prefix=` the diff, which the anthropic provider places in
    the system block with `cache_control` ahead of everything else. The diff appears exactly once
    and every node on the same case shares the cache hit. Template wording is never edited.
+   (Through the CLI the diff was not cached in practice: cached tokens were zero on Haiku and
+   under 7 percent of input on Sonnet. Dollars are unaffected; the cache line is a design
+   intent the CLI route did not realise.)
 2. **Hook budgets.** `run_path` takes an optional run-level `budget` (default unbounded, the
    spec signature has none). `BudgetHook` carries its own budget and applies the stricter of
    the two, halting when spend so far plus the node's predicted cost from priors would exceed it.
@@ -579,7 +606,7 @@ ability.
 
 ## Status
 
-- Engine, first instance, three measured runs (a chat window with estimated tokens; the
+- Engine, first instance, four measured runs (a chat window with estimated tokens; the
   Claude Code CLI with API-reported tokens on the reviewed tier under two executor settings
   and on the auto tier), scenario plugin with a second instance as the genericity test,
   registry with the first entry, platform and instance designs: done.
@@ -587,10 +614,21 @@ ability.
   + Fable 5.1) on either tier, the CLI-default-thinking setting on the auto tier, style bugs
   in the corpus, a human baseline on the same diffs, and the build/CI instance's phase 0.
 
+## Authorship
+
+The design documents, the build spec, the choice of models and corpora, the review of the
+reviewed tier's labels, the runs, and every editorial decision in these documents are the
+author's. The code and its tests were written by coding agents from the build spec under the
+author's direction, in one day, and every commit says so. The measurements are what they are;
+the interpretation is the author's.
+
 ## License
 
 [PolyForm Strict 1.0.0](LICENSE): you may read and run this software for noncommercial
 purposes. Distributing it, modifying it or building on it, and any commercial use need a
-separate license from the author. It is published to be read and evaluated. The corpus embeds
-short excerpts of third-party code that stay under their original licenses; see
-[`oyster/corpus/cases/SOURCES.md`](oyster/corpus/cases/SOURCES.md).
+separate license from the author. It is published to be read and evaluated. Both corpus tiers
+embed short excerpts of third-party code that stay under their original licenses:
+[`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) names every source repository's license
+and reproduces the license texts, and the per-case attribution is in
+[`oyster/corpus/cases/SOURCES.md`](oyster/corpus/cases/SOURCES.md) and
+[`oyster/corpus/cases-auto/SOURCES.md`](oyster/corpus/cases-auto/SOURCES.md).

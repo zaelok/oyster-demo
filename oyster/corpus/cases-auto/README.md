@@ -51,6 +51,22 @@ How it was built, in order (counts in `BUILD-REPORT.md`, every PR considered in
 5. Fill round-robin across organisations and repositories, newest first, under per-org and
    per-repository caps, until the target is met.
 
+Known issues in the committed build (kept as built so the recorded runs stay reproducible;
+the tool is fixed for the next build):
+
+- `case-codex-5016` and `case-codex-4944` carry inline Rust `#[test]` functions whose names
+  describe the bug; the test filter is path-based and did not catch them.
+- The removed-comment stripper treated every `#`-prefixed line as a comment, so attributes
+  and preprocessor directives on the removed side were dropped (hunk counts were adjusted;
+  the diffs stay valid). Fixed in `tools/pr_to_case.py`.
+- `case-swiftlog-411` seeds a `Package.swift` manifest change and `case-cuvs-2513` a license
+  header line: both passed the source-file gate and neither is a defect a reviewer would look
+  for. Manifests and headers should be excluded by the gate.
+- 112 of 314 bugs are `deletion-only` with a three-line window around an arbitrary anchor.
+- A heuristic that flags every non-trivial added block scores 180 of 314 strict at no cost:
+  the tier has no decoy hunks, so recall on it is cheap to inflate and precision is only
+  measured by the false-positive count.
+
 Promoting a case to the reviewed tier means a person reads the diff, confirms or fixes the
 category and range, rewrites the description as what is wrong, and moves the file to
 `../cases/` with a row in that directory's `SOURCES.md`. Until then it stays here.

@@ -762,9 +762,11 @@ def write_sources(out_dir: Path, accepted: Sequence[Entry], since: str) -> None:
         (
             "Each case embeds a short excerpt (the reversed hunks of one merged pull request) "
             "from the repository linked in its row. Those excerpts remain under their original "
-            "licenses and their copyright stays with their authors; the link is the "
-            "attribution. The repository's own license covers the engine, the tooling and the "
-            "labels, not the excerpts."
+            "licenses and their copyright stays with their authors; `THIRD-PARTY-NOTICES.md` "
+            "at the repository root names each source repository's license and reproduces the "
+            "license texts, and the link in the row is the attribution to the change. The "
+            "repository's own license covers the engine, the tooling and the labels, not the "
+            "excerpts."
         ),
     ]
     (out_dir / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
@@ -780,6 +782,8 @@ def write_candidates(out_dir: Path, entries: Sequence[Entry]) -> None:
                 row = asdict(entry)
                 row["url"] = entry.url
             else:
+                # No author login on rows that were not accepted: the funnel needs the
+                # decision, not a list of people.
                 row = {
                     "repo": entry.repo,
                     "number": entry.number,

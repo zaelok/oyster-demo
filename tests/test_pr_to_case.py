@@ -315,3 +315,30 @@ def test_category_override_and_file_filter(tmp_path):
     )
     case = load_case_file(tmp_path / "case-78.json")
     assert {bug.category for bug in case.seeded} == {"style"}
+
+
+def test_comment_stripper_keeps_directives_and_attributes():
+    """'#' starts a comment in Python and shell, but '#[test]', '#include' and '#!' are code;
+    the removed-comment stripper must leave them alone (red-team finding, 2026-09-07)."""
+    from tools.pr_to_case import _COMMENT_RE
+
+    for code in (
+        "#[test]",
+        "#[cfg(test)]",
+        "#include <stdio.h>",
+        "#define X 1",
+        "#if FOO",
+        "#!/bin/sh",
+        "#import <Foo/Foo.h>",
+    ):
+        assert not _COMMENT_RE.match(code), code
+    for comment in (
+        "# a comment",
+        "#comment",
+        "# import later",
+        "// x",
+        "/* x",
+        "-- sql",
+        "<!-- html",
+    ):
+        assert _COMMENT_RE.match(comment), comment

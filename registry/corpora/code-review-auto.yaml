@@ -6,7 +6,7 @@ review: none                            # machine-labelled; description = PR tit
 generator: tools/build_corpus.py
 date_cutoff: 2025-09-01
 facet_tags: [language, repository, category, kind]
-license_note: excerpts keep their original licenses, see oyster/corpus/cases-auto/SOURCES.md
+license_note: excerpts keep their original licenses, see THIRD-PARTY-NOTICES.md and oyster/corpus/cases-auto/SOURCES.md
 size: {cases: 183, expected: 314}
 by_category: {logic: 164, security: 19, style: 0}
 by_kind: {added: 202, deletion-only: 112}
