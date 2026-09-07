@@ -1,11 +1,11 @@
 """Subscription-backed provider: shells out to the Claude Code CLI in print mode.
 
 No API key and no API billing. The CLI authenticates with the user's Claude subscription:
-either the stored login (`claude auth login`, read from the keychain) or a `claude setup-token`
-token in CLAUDE_CODE_OAUTH_TOKEN. `--bare` mode, which skips hooks, plugins and keychain
-reads, is used only when the token variable is present, because bare mode never reads the
-stored login. ANTHROPIC_API_KEY is removed from the CLI's environment on purpose: with it set
-the CLI would bill the API, and the API route is `--provider anthropic`. Its JSON result
+either the stored login (`claude auth login`) or a `claude setup-token` token handed over in
+CLAUDE_CODE_OAUTH_TOKEN. `--bare` is deliberately not used: in this CLI bare mode authenticates
+with an API key only and ignores OAuth entirely, so it would defeat the subscription route.
+ANTHROPIC_API_KEY is removed from the CLI's environment on purpose: with it set the CLI would
+bill the API, and the API route is `--provider anthropic`. Its JSON result
 carries the token usage the API actually reported, so the pricing formula prices the run at
 API list rates: the table shows what the run would have cost through the API, not what was
 charged, which for a subscription is nothing beyond quota.
@@ -40,8 +40,9 @@ DEFAULT_CLI_CANDIDATES = (
 # `claude setup-token`, or the CLI would report "Not logged in" inside the run.
 STRIPPED_ENV_PREFIXES = ("CLAUDECODE", "CLAUDE_CODE_", "CLAUDE_PID", "CLAUDE_EFFORT")
 KEPT_ENV = ("CLAUDE_CODE_OAUTH_TOKEN",)
-# API credentials would make the CLI bill the API instead of the subscription.
-STRIPPED_ENV_EXACT = ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")
+# API credentials would make the CLI bill the API instead of the subscription; a base URL
+# from the desktop app would route the run through the app's proxy instead of the token.
+STRIPPED_ENV_EXACT = ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_BASE_URL")
 TOKEN_ENV = "CLAUDE_CODE_OAUTH_TOKEN"
 LOGIN_HINT = (
     " (the CLI is not authenticated: run `claude auth login` once, or `claude setup-token` "
@@ -93,8 +94,7 @@ class ClaudeCodeProvider:
     ):
         self.cli = cli or find_cli()
         # A token from settings (.env) or the environment; either way the CLI gets it in
-        # CLAUDE_CODE_OAUTH_TOKEN and runs in --bare mode. Without one, the stored login is
-        # read, which --bare would skip.
+        # CLAUDE_CODE_OAUTH_TOKEN. Without one, the CLI's stored login is used.
         self.oauth_token = oauth_token or None
         self.cwd = Path(cwd) if cwd else Path(tempfile.mkdtemp(prefix="oyster-claude-code-"))
         self._runner = runner
@@ -160,7 +160,6 @@ class ClaudeCodeProvider:
             "--max-turns",
             "1",
             "--no-session-persistence",
-            *(("--bare",) if self._token() else ()),
             *self.extra_args,
         ]
         last_error = ""

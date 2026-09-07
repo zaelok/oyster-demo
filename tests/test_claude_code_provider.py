@@ -143,17 +143,21 @@ def test_clean_env_keeps_the_oauth_token_and_drops_the_desktop_app_variables(mon
     assert "CLAUDECODE" not in env
 
 
-def test_bare_mode_only_with_a_token_and_api_keys_never_reach_the_cli(tmp_path, monkeypatch):
+def test_never_bare_and_api_keys_never_reach_the_cli(tmp_path, monkeypatch):
+    """Bare mode authenticates with an API key only, so it would silently defeat the
+    subscription route; the API key itself is removed for the same reason."""
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-api03-x")
+    monkeypatch.setenv("ANTHROPIC_BASE_URL", "http://127.0.0.1:1/proxy")
     monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
     runner = FakeRunner([_result(), _result()])
     provider = _provider(runner, tmp_path)
     provider.complete("claude-haiku-4-5", "", "user", "diff")
     assert "--bare" not in runner.calls[0]["args"]
     assert "ANTHROPIC_API_KEY" not in runner.calls[0]["env"]
+    assert "ANTHROPIC_BASE_URL" not in runner.calls[0]["env"]
     monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "sk-ant-oat01-x")
     provider.complete("claude-haiku-4-5", "", "user", "diff")
-    assert "--bare" in runner.calls[1]["args"]
+    assert "--bare" not in runner.calls[1]["args"]
     assert runner.calls[1]["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-x"
 
 
@@ -173,4 +177,4 @@ def test_token_from_settings_reaches_the_cli_and_enables_bare_mode(tmp_path, mon
     )
     provider.complete("claude-haiku-4-5", "", "user", "diff")
     assert runner.calls[0]["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-t"
-    assert "--bare" in runner.calls[0]["args"]
+    assert "--bare" not in runner.calls[0]["args"]
