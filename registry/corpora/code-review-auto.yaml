@@ -1,0 +1,16 @@
+id: code-review-auto
+path: oyster/corpus/cases-auto
+commit: 6ce6f4c4fafc5f3894692b983e20dc0faf7c962f
+source_tier: reversed-fixes
+review: none                            # machine-labelled; description = PR title, category = keyword rule
+generator: tools/build_corpus.py
+date_cutoff: 2025-09-01
+facet_tags: [language, repository, category, kind]
+license_note: excerpts keep their original licenses, see oyster/corpus/cases-auto/SOURCES.md
+size: {cases: 183, expected: 314}
+by_category: {logic: 164, security: 19, style: 0}
+by_kind: {added: 202, deletion-only: 112}
+by_language: {python: 85, swift: 27, go: 12, typescript: 11, cpp: 10, ruby: 7, c: 6, kotlin: 5, java: 5, csharp: 5, rust: 5, cuda: 4, scala: 1}
+by_org: {apple: 40, openai: 30, allenai: 20, anthropics: 15, mcp: 10, cuda: 39, litellm: 9, vllm: 20}
+funnel: {search_hits: 8971, title_filtered: 2355, accepted: 183, report: oyster/corpus/cases-auto/BUILD-REPORT.md}
+evaluated_by: []                        # no profile yet; run with --corpus oyster/corpus/cases-auto
